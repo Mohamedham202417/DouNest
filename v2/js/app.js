@@ -380,8 +380,6 @@ function renderNotFound() {
 }
 
 
-import { RARE_TOOLS } from "./rare-tools.js";
-
 function renderRareTools() {
   const main = document.getElementById("main");
   main.innerHTML = `
@@ -404,8 +402,6 @@ function renderRareTools() {
 
 route("/rare", renderRareTools);
 
-
-import { AI_TOOLS } from "./ai-directory.js";
 
 function renderAIDirectory() {
   const main = document.getElementById("main");
@@ -433,8 +429,6 @@ function renderAIDirectory() {
 
 route("/ai", renderAIDirectory);
 
-
-import { getArticles, getArticle } from "./articles.js";
 
 function renderArticlesList() {
   const main = document.getElementById("main");
