@@ -708,6 +708,9 @@ input[type="color"] {
   color: var(--text);
 }
 
+.v2-entry { margin-top: 18px; }
+.v2-entry a { gap: 8px; }
+
 .result-box {
   margin-top: 14px;
   padding: 14px;
