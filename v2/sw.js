@@ -1,8 +1,9 @@
-const CACHE = "dounest-v2-10lang";
+const CACHE = "dounest-v2-11lang-expansion";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./assets/styles.css",
   "./js/app.js", "./js/router.js", "./js/storage.js", "./js/toast.js",
   "./js/langs.js", "./js/i18n.js", "./js/registry.js",
+  "./js/rare-tools.js", "./js/ai-directory.js", "./js/articles.js",
   "./js/tools/base64.js", "./js/tools/color-converter.js",
   "./js/tools/color-picker.js", "./js/tools/hash-generator.js",
   "./js/tools/image-compressor.js", "./js/tools/json-formatter.js",
@@ -10,6 +11,8 @@ const ASSETS = [
   "./js/tools/password-generator.js", "./js/tools/pdf-to-txt.js",
   "./js/tools/qr-code.js", "./js/tools/text-case.js",
   "./js/tools/url-encoder.js", "./js/tools/uuid-generator.js",
+  "./js/tools/csv-to-json.js", "./js/tools/diff-checker.js",
+  "./js/tools/regex-tester.js", "./js/tools/unit-converter.js",
   "./js/tools/word-counter.js"
 ];
 
