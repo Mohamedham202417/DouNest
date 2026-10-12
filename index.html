@@ -121,13 +121,33 @@
       </ul>
     </section>
 
+    <section id="onboarding" class="onboarding-panel hidden" aria-label="Quick start">
+      <p class="onboarding-title" data-i18n="onboardingTitle">ابدأ بسرعة</p>
+      <p class="onboarding-copy" data-i18n="onboardingCopy">ابحث عن الأداة، افتحها، ثم انسخ أو نزّل النتيجة — كل شيء محلي داخل متصفحك.</p>
+      <button id="dismissOnboarding" type="button" class="secondary-btn" data-i18n="gotIt">فهمت</button>
+    </section>
+
+    <section class="quick-access" aria-labelledby="quick-access-title">
+      <h2 id="quick-access-title" class="section-kicker" data-i18n="quickAccess">الوصول السريع</h2>
+      <div class="quick-columns">
+        <div>
+          <p class="quick-label" data-i18n="recentTools">آخر الأدوات استخدامًا</p>
+          <div id="recentToolsRow" class="quick-row"></div>
+        </div>
+        <div>
+          <p class="quick-label" data-i18n="favoriteTools">الأدوات المفضلة</p>
+          <div id="favoriteToolsRow" class="quick-row"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="tools" class="tools-section" aria-labelledby="tools-title">
       <div class="section-heading">
         <div>
           <p class="section-kicker" data-i18n="collection">المجموعة</p>
           <h2 id="tools-title" data-i18n="toolsTitle">اختر أداتك</h2>
         </div>
-        <span id="toolCount" class="tool-count">10 أدوات</span>
+        <span id="toolCount" class="tool-count">16 أدوات</span>
       </div>
 
       <div id="categoryRow" class="category-row" role="group" aria-label="تصنيفات الأدوات">
@@ -268,6 +288,84 @@
             <span aria-hidden="true">↗</span>
           </button>
         </article>
+
+        <article class="tool-card" data-category="text" data-search="csv json converter table rows columns تحويل csv json">
+          <div class="card-top">
+            <span class="tool-icon icon-green" aria-hidden="true">▤</span>
+            <span class="local-badge" data-i18n="browserBadge">داخل المتصفح</span>
+          </div>
+          <h3 data-i18n="csvJsonTitle">CSV ⇄ JSON</h3>
+          <p data-i18n="csvJsonDesc">حوّل CSV إلى JSON أو العكس بسرعة مع معاينة النتيجة.</p>
+          <button type="button" class="open-tool" data-tool="csvjson">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <article class="tool-card" data-category="developer" data-search="jwt token decode inspect claims json web token">
+          <div class="card-top">
+            <span class="tool-icon icon-purple" aria-hidden="true">⌁</span>
+            <span class="local-badge" data-i18n="browserBadge">داخل المتصفح</span>
+          </div>
+          <h3 data-i18n="jwtTitle">JWT Inspector</h3>
+          <p data-i18n="jwtDesc">افحص Header وPayload لأي JWT محليًا دون إرسال التوكن.</p>
+          <button type="button" class="open-tool" data-tool="jwt">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <article class="tool-card" data-category="developer" data-search="hash checksum sha256 md5 file text">
+          <div class="card-top">
+            <span class="tool-icon icon-orange" aria-hidden="true">#</span>
+            <span class="local-badge" data-i18n="browserBadge">داخل المتصفح</span>
+          </div>
+          <h3 data-i18n="hashTitle">Hash & Checksum</h3>
+          <p data-i18n="hashDesc">احسب SHA-256 وMD5 للنصوص أو الملفات للتحقق السريع.</p>
+          <button type="button" class="open-tool" data-tool="hash">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <article class="tool-card" data-category="developer" data-search="regex tester expression pattern flags match">
+          <div class="card-top">
+            <span class="tool-icon icon-blue" aria-hidden="true">.*</span>
+            <span class="local-badge" data-i18n="instantBadge">فوري</span>
+          </div>
+          <h3 data-i18n="regexTitle">Regex Tester</h3>
+          <p data-i18n="regexDesc">اختبر التعبيرات النمطية مباشرة وشاهد المطابقات.</p>
+          <button type="button" class="open-tool" data-tool="regex">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <article class="tool-card" data-category="utilities" data-search="timestamp unix date time converter">
+          <div class="card-top">
+            <span class="tool-icon icon-pink" aria-hidden="true">⏱</span>
+            <span class="local-badge" data-i18n="instantBadge">فوري</span>
+          </div>
+          <h3 data-i18n="timestampTitle">Timestamp Converter</h3>
+          <p data-i18n="timestampDesc">حوّل Unix timestamp إلى تاريخ والعكس لحظيًا.</p>
+          <button type="button" class="open-tool" data-tool="timestamp">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <article class="tool-card" data-category="text" data-search="slug generator text cleanup url title">
+          <div class="card-top">
+            <span class="tool-icon icon-green" aria-hidden="true">≋</span>
+            <span class="local-badge" data-i18n="instantBadge">فوري</span>
+          </div>
+          <h3 data-i18n="slugTitle">Slug Generator</h3>
+          <p data-i18n="slugDesc">نظّف النص وحوّله إلى Slug جاهز للروابط.</p>
+          <button type="button" class="open-tool" data-tool="slug">
+            <span data-i18n="openTool">فتح الأداة</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
       </div>
 
       <p id="noResults" class="no-results hidden" data-i18n="noResults">
@@ -299,6 +397,7 @@
       <a href="legal.html#about" data-i18n="aboutLink">حول</a>
       <a href="legal.html#contact" data-i18n="contactLink">اتصل بنا</a>
       <a href="legal.html#faq" data-i18n="faqLink">الأسئلة الشائعة</a>
+      <a href="local-processing.html" data-i18n="localProcessingLink">كيف تعمل المعالجة المحلية؟</a>
     </nav>
 
     <p>
