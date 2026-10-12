@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<script>
+  // تحويل المسارات النظيفة إلى Hash Router
+  (function(){
+    var p = location.pathname.replace(/^\/ToolNest/, "") || "/";
+    location.replace("/ToolNest/#" + p + location.search + location.hash);
+  })();
+</script></head><body></body></html>
