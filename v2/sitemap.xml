@@ -19,4 +19,14 @@
   <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/image-compressor</loc><priority>1.0</priority></url>
   <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/color-picker</loc><priority>0.9</priority></url>
   <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/lorem-ipsum</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/rare</loc><priority>0.8</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/ai</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/articles</loc><priority>0.8</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/pdf-to-word</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/merge-pdf</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/compress-pdf</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/unit-converter</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/regex-tester</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/diff-checker</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/v2/#/tools/csv-to-json</loc><priority>0.9</priority></url>
 </urlset>

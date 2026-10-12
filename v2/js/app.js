@@ -4,6 +4,9 @@ import { route, initRouter } from "./router.js";
 import { TOOLS, CATEGORIES, getTool, pick } from "./registry.js";
 import { favorites, recent, ratings, comments, storage } from "./storage.js";
 import { toastSuccess, toastError } from "./toast.js";
+import { RARE_TOOLS } from "./rare-tools.js";
+import { AI_TOOLS } from "./ai-directory.js";
+import { getArticles, getArticle } from "./articles.js";
 
 /* ========= Theme ========= */
 const savedTheme = storage.get("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
@@ -375,6 +378,114 @@ function renderNotFound() {
       <a class="btn btn-primary" href="#/" style="display:inline-block;margin-top:12px">${t("nav.allTools")}</a>
     </div>`;
 }
+
+
+import { RARE_TOOLS } from "./rare-tools.js";
+
+function renderRareTools() {
+  const main = document.getElementById("main");
+  main.innerHTML = `
+    <h1 style="margin:24px 0 16px">${getLang() === "ar" ? "أدوات نادرة" : "Rare Tools"}</h1>
+    <p style="color:var(--text-muted);margin-bottom:20px">
+      ${getLang() === "ar" ? "أدوات خارجية يصعب العثور عليها، مع شرح مفصل لاستخدامها." : "External tools that are hard to find, with detailed usage explanations."}
+    </p>
+    <div class="tools-grid">
+      ${RARE_TOOLS.map(tool => `
+        <a class="tool-card" href="${tool.url}" target="_blank" rel="noopener">
+          <div class="icon">🔗</div>
+          <h3>${tool.name[getLang()] || tool.name.en}</h3>
+          <p>${tool.desc[getLang()] || tool.desc.en}</p>
+          <div class="rating-mini">${getLang() === "ar" ? "خارجي" : "External"}</div>
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
+route("/rare", renderRareTools);
+
+
+import { AI_TOOLS } from "./ai-directory.js";
+
+function renderAIDirectory() {
+  const main = document.getElementById("main");
+  main.innerHTML = `
+    <h1 style="margin:24px 0 16px">${getLang() === "ar" ? "دليل أدوات الذكاء الاصطناعي" : "AI Tools Directory"}</h1>
+    <p style="color:var(--text-muted);margin-bottom:20px">
+      ${getLang() === "ar" ? "أفضل أدوات AI مصنفة حسب الاستخدام، مع شرح مختصر لكل أداة." : "Best AI tools categorized by use, with a brief description for each."}
+    </p>
+    ${AI_TOOLS.map(cat => `
+      <section class="section">
+        <h2>${cat.category[getLang()] || cat.category.en}</h2>
+        <div class="tools-grid">
+          ${cat.items.map(item => `
+            <a class="tool-card" href="${item.url}" target="_blank" rel="noopener">
+              <div class="icon">🤖</div>
+              <h3>${item.name}</h3>
+              <p>${item.desc[getLang()] || item.desc.en}</p>
+            </a>
+          `).join("")}
+        </div>
+      </section>
+    `).join("")}
+  `;
+}
+
+route("/ai", renderAIDirectory);
+
+
+import { getArticles, getArticle } from "./articles.js";
+
+function renderArticlesList() {
+  const main = document.getElementById("main");
+  const list = getArticles();
+  main.innerHTML = `
+    <h1 style="margin:24px 0 16px">${getLang() === "ar" ? "المقالات" : "Articles"}</h1>
+    <div class="tools-grid">
+      ${list.map(a => `
+        <a class="tool-card" href="#/articles/${a.slug}">
+          <div class="icon">📝</div>
+          <h3>${a.title[getLang()] || a.title.en}</h3>
+          <p>${a.excerpt[getLang()] || a.excerpt.en}</p>
+          <div class="rating-mini">${a.date}</div>
+        </a>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderArticle({ slug }) {
+  const article = getArticle(slug);
+  const main = document.getElementById("main");
+  if (!article) return renderNotFound();
+  main.innerHTML = `
+    <nav class="breadcrumb">
+      <a href="#/">DouNest</a><span class="sep">›</span>
+      <a href="#/articles">${getLang() === "ar" ? "المقالات" : "Articles"}</a><span class="sep">›</span>
+      <span class="current">${article.title[getLang()] || article.title.en}</span>
+    </nav>
+    <article class="section" style="margin-top:16px">
+      <h1>${article.title[getLang()] || article.title.en}</h1>
+      <p style="color:var(--text-muted)">${article.date}</p>
+      <div class="explanation">${markdownToHtml(article.content[getLang()] || article.content.en)}</div>
+    </article>
+  `;
+}
+
+function markdownToHtml(md) {
+  return md
+    .replace(/^### (.*$)/gm, "<h3>$1</h3>")
+    .replace(/^## (.*$)/gm, "<h2>$1</h2>")
+    .replace(/^# (.*$)/gm, "<h1>$1</h1>")
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(.*?)\*/g, "<em>$1</em>")
+    .replace(/\n\n/g, "</p><p>")
+    .replace(/^(.+)$/gm, "<p>$1</p>");
+}
+
+route("/articles", renderArticlesList);
+route("/articles/:slug", renderArticle);
+
 
 /* ========= Routes ========= */
 route("/", renderHome);
