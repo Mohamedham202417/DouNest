@@ -14,6 +14,12 @@ A mobile-first, bilingual, static tools website.
 - Color converter
 - Base64 encoder/decoder
 - URL encoder/decoder
+- CSV/JSON converter
+- JWT inspector
+- Hash/checksum generator (SHA-256, MD5)
+- Regex tester
+- Timestamp converter
+- Slug generator
 
 ## Run locally
 

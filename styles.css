@@ -256,6 +256,71 @@ button { cursor: pointer; }
 .hero-notes li { display: inline-flex; align-items: center; gap: 7px; }
 .hero-notes li span:first-child { color: #44b88d; font-weight: 800; }
 
+.onboarding-panel {
+  max-width: 900px;
+  margin: -20px auto 36px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.onboarding-title {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.onboarding-copy {
+  margin: 0 0 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.quick-access {
+  max-width: 1120px;
+  margin: 0 auto 22px;
+  padding: 0 25px;
+}
+
+.quick-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.quick-label {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.quick-row {
+  min-height: 42px;
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  padding: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quick-btn {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 10px;
+}
+
+.quick-empty {
+  color: var(--muted);
+  font-size: 11px;
+}
+
 .tools-section {
   max-width: 1120px;
   margin: 0 auto;
@@ -372,6 +437,20 @@ button { cursor: pointer; }
 
 .tool-card h3 { font-size: 17px; margin: 0 0 8px; }
 .tool-card p { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0 0 18px; }
+.tool-card .card-top .tool-fav {
+  border: 1px solid var(--line);
+  background: var(--input);
+  color: var(--muted);
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 15px;
+  margin-inline-start: auto;
+}
+.tool-card .card-top .tool-fav.active {
+  color: #d78a27;
+  border-color: rgba(215,138,39,.45);
+}
 
 .open-tool {
   margin-top: auto;
@@ -548,6 +627,12 @@ footer p { margin: 0; flex: 1; }
   font-size: 12px;
 }
 
+.tool-body input[type="file"].drop-hover {
+  border-style: solid;
+  border-color: var(--accent);
+  background: rgba(110,92,246,.08);
+}
+
 .tool-body input[type="range"] {
   width: 100%;
   accent-color: var(--accent);
@@ -696,6 +781,9 @@ input[type="color"] {
   .hero h1 { font-size: clamp(42px,12vw,62px); letter-spacing: -1.7px; }
   .hero-copy { font-size: 14px; }
   .hero-notes { gap: 10px 15px; }
+  .quick-access { padding: 0 17px; }
+  .quick-columns { grid-template-columns: 1fr; }
+  .onboarding-panel { margin: -14px 17px 26px; }
   .tools-section { padding: 0 17px 25px; }
   .tool-grid { gap: 11px; }
   .tool-card { padding: 16px; min-height: 230px; }

@@ -124,7 +124,57 @@
       base64Error: 'تعذر فك الترميز. تحقق من النص.',
       urlEncode: 'تشفير',
       urlDecode: 'فك تشفير',
-      urlError: 'تعذر فك الترميز.'
+      urlError: 'تعذر فك الترميز.',
+      onboardingTitle: 'ابدأ بسرعة',
+      onboardingCopy: 'ابحث عن الأداة، افتحها، ثم انسخ أو نزّل النتيجة — كل شيء محلي داخل متصفحك.',
+      gotIt: 'فهمت',
+      quickAccess: 'الوصول السريع',
+      recentTools: 'آخر الأدوات استخدامًا',
+      favoriteTools: 'الأدوات المفضلة',
+      emptyRecent: 'لا توجد أدوات حديثة بعد.',
+      emptyFavorites: 'أضف أدوات للمفضلة للوصول السريع.',
+      localProcessingLink: 'كيف تعمل المعالجة المحلية؟',
+      csvJsonTitle: 'CSV ⇄ JSON',
+      csvJsonDesc: 'حوّل CSV إلى JSON أو العكس بسرعة مع معاينة النتيجة.',
+      jwtTitle: 'JWT Inspector',
+      jwtDesc: 'افحص Header وPayload لأي JWT محليًا دون إرسال التوكن.',
+      hashTitle: 'Hash & Checksum',
+      hashDesc: 'احسب SHA-256 وMD5 للنصوص أو الملفات للتحقق السريع.',
+      regexTitle: 'Regex Tester',
+      regexDesc: 'اختبر التعبيرات النمطية مباشرة وشاهد المطابقات.',
+      timestampTitle: 'Timestamp Converter',
+      timestampDesc: 'حوّل Unix timestamp إلى تاريخ والعكس لحظيًا.',
+      slugTitle: 'Slug Generator',
+      slugDesc: 'نظّف النص وحوّله إلى Slug جاهز للروابط.',
+      favAdd: 'أضف للمفضلة',
+      favRemove: 'إزالة من المفضلة',
+      localPrivacyHint: 'المعالجة تتم محليًا في متصفحك.',
+      convertCsvToJson: 'CSV ← JSON',
+      convertJsonToCsv: 'JSON ← CSV',
+      csvInput: 'CSV',
+      jsonInputData: 'JSON',
+      tokenInput: 'JWT Token',
+      decodeToken: 'فك التوكن',
+      header: 'Header',
+      payload: 'Payload',
+      invalidToken: 'JWT غير صالح.',
+      hashAlgorithm: 'الخوارزمية',
+      fileOptional: 'ملف (اختياري)',
+      calculateHash: 'احسب',
+      regexPattern: 'النمط',
+      regexFlags: 'Flags',
+      regexText: 'النص',
+      testRegex: 'اختبر',
+      matches: 'النتائج',
+      unixTimestamp: 'Unix Timestamp',
+      isoDate: 'ISO Date',
+      toDate: 'حوّل لتاريخ',
+      toTimestamp: 'حوّل لتوقيت',
+      sourceText: 'النص الأصلي',
+      slugOutputLabel: 'Slug الناتج',
+      makeSlug: 'إنشاء Slug',
+      cleanText: 'تنظيف النص',
+      copiedUrl: 'تم نسخ الرابط المباشر.'
     },
 
     en: {
@@ -249,7 +299,57 @@
       base64Error: 'Could not decode. Check the input.',
       urlEncode: 'Encode',
       urlDecode: 'Decode',
-      urlError: 'Could not decode.'
+      urlError: 'Could not decode.',
+      onboardingTitle: 'Quick start',
+      onboardingCopy: 'Find a tool, open it, then copy or download the result — everything runs locally in your browser.',
+      gotIt: 'Got it',
+      quickAccess: 'Quick access',
+      recentTools: 'Recently used',
+      favoriteTools: 'Favorites',
+      emptyRecent: 'No recent tools yet.',
+      emptyFavorites: 'Add tools to favorites for quick access.',
+      localProcessingLink: 'How local processing works',
+      csvJsonTitle: 'CSV ⇄ JSON',
+      csvJsonDesc: 'Convert CSV to JSON or back with instant preview.',
+      jwtTitle: 'JWT Inspector',
+      jwtDesc: 'Inspect JWT header and payload locally without sending the token.',
+      hashTitle: 'Hash & Checksum',
+      hashDesc: 'Generate SHA-256 and MD5 for text or files.',
+      regexTitle: 'Regex Tester',
+      regexDesc: 'Test regex patterns and see matches instantly.',
+      timestampTitle: 'Timestamp Converter',
+      timestampDesc: 'Convert Unix timestamps to dates and back instantly.',
+      slugTitle: 'Slug Generator',
+      slugDesc: 'Clean text and generate URL-ready slugs.',
+      favAdd: 'Add to favorites',
+      favRemove: 'Remove from favorites',
+      localPrivacyHint: 'Processing happens locally in your browser.',
+      convertCsvToJson: 'CSV ← JSON',
+      convertJsonToCsv: 'JSON ← CSV',
+      csvInput: 'CSV',
+      jsonInputData: 'JSON',
+      tokenInput: 'JWT token',
+      decodeToken: 'Decode token',
+      header: 'Header',
+      payload: 'Payload',
+      invalidToken: 'Invalid JWT token.',
+      hashAlgorithm: 'Algorithm',
+      fileOptional: 'File (optional)',
+      calculateHash: 'Calculate',
+      regexPattern: 'Pattern',
+      regexFlags: 'Flags',
+      regexText: 'Text',
+      testRegex: 'Test',
+      matches: 'Matches',
+      unixTimestamp: 'Unix timestamp',
+      isoDate: 'ISO date',
+      toDate: 'To date',
+      toTimestamp: 'To timestamp',
+      sourceText: 'Source text',
+      slugOutputLabel: 'Slug output',
+      makeSlug: 'Generate slug',
+      cleanText: 'Clean text',
+      copiedUrl: 'Direct URL copied.'
     }
   };
 
@@ -260,10 +360,56 @@
 
   let activeCategory = 'all';
   let lastFocused = null;
+  const TOOL_IDS = [
+    'compress', 'convert', 'json', 'diff', 'words', 'units', 'password', 'color', 'base64', 'url',
+    'csvjson', 'jwt', 'hash', 'regex', 'timestamp', 'slug'
+  ];
+  const FAVORITES_KEY = 'toolnest-favorites';
+  const RECENTS_KEY = 'toolnest-recents';
 
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
   const modal = $('#toolModal');
+
+  function readJsonStorage(key, fallback) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) return fallback;
+      const parsed = JSON.parse(raw);
+      return Array.isArray(fallback) ? (Array.isArray(parsed) ? parsed : fallback) : (parsed ?? fallback);
+    } catch {
+      return fallback;
+    }
+  }
+
+  function writeJsonStorage(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {}
+  }
+
+  function getFavorites() {
+    return readJsonStorage(FAVORITES_KEY, []).filter((tool) => TOOL_IDS.includes(tool));
+  }
+
+  function getRecents() {
+    return readJsonStorage(RECENTS_KEY, []).filter((tool) => TOOL_IDS.includes(tool));
+  }
+
+  function getToolSetting(key, fallback) {
+    try {
+      const value = localStorage.getItem(`toolnest-setting:${key}`);
+      return value === null ? fallback : value;
+    } catch {
+      return fallback;
+    }
+  }
+
+  function setToolSetting(key, value) {
+    try {
+      localStorage.setItem(`toolnest-setting:${key}`, String(value));
+    } catch {}
+  }
 
   function t(key) {
     return translations[lang][key] || translations.en[key] || key;
@@ -323,11 +469,16 @@
 
   function updateToolCount(visibleCount) {
     const label = lang === 'ar' ? 'أدوات' : 'TOOLS';
-    $('#toolCount').textContent = `${String(visibleCount).padStart(2, '0')} ${label}`;
+    const element = $('#toolCount');
+    if (element) {
+      element.textContent = `${String(visibleCount).padStart(2, '0')} ${label}`;
+    }
   }
 
   function filterTools() {
-    const query = normalizeText($('#searchInput').value);
+    const search = $('#searchInput');
+    if (!search) return;
+    const query = normalizeText(search.value);
     let visibleCount = 0;
 
     $$('.tool-card').forEach((card) => {
@@ -340,8 +491,101 @@
       if (show) visibleCount++;
     });
 
-    $('#noResults').classList.toggle('hidden', visibleCount !== 0);
+    const noResults = $('#noResults');
+    if (noResults) noResults.classList.toggle('hidden', visibleCount !== 0);
     updateToolCount(visibleCount);
+  }
+
+  function toggleFavorite(tool) {
+    const favorites = getFavorites();
+    const exists = favorites.includes(tool);
+    const next = exists ? favorites.filter((id) => id !== tool) : favorites.concat(tool);
+    writeJsonStorage(FAVORITES_KEY, next);
+    renderFavoriteButtons();
+    renderQuickAccess();
+  }
+
+  function markRecent(tool) {
+    const recents = getRecents().filter((id) => id !== tool);
+    recents.unshift(tool);
+    writeJsonStorage(RECENTS_KEY, recents.slice(0, 8));
+    renderQuickAccess();
+  }
+
+  function toolTitleById(tool) {
+    const keyMap = {
+      compress: 'compressTitle',
+      convert: 'convertTitle',
+      json: 'jsonTitle',
+      diff: 'diffTitle',
+      words: 'wordsTitle',
+      units: 'unitsTitle',
+      password: 'passwordTitle',
+      color: 'colorTitle',
+      base64: 'base64Title',
+      url: 'urlTitle',
+      csvjson: 'csvJsonTitle',
+      jwt: 'jwtTitle',
+      hash: 'hashTitle',
+      regex: 'regexTitle',
+      timestamp: 'timestampTitle',
+      slug: 'slugTitle'
+    };
+    return t(keyMap[tool] || tool);
+  }
+
+  function renderQuickAccessRow(containerId, items, emptyText) {
+    const container = $('#' + containerId);
+    if (!container) return;
+    container.innerHTML = '';
+    if (!items.length) {
+      container.innerHTML = `<span class="quick-empty">${emptyText}</span>`;
+      return;
+    }
+    items.forEach((tool) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'quick-btn';
+      button.textContent = toolTitleById(tool);
+      button.addEventListener('click', () => openModal(tool, true));
+      container.appendChild(button);
+    });
+  }
+
+  function renderQuickAccess() {
+    renderQuickAccessRow('recentToolsRow', getRecents(), t('emptyRecent'));
+    renderQuickAccessRow('favoriteToolsRow', getFavorites(), t('emptyFavorites'));
+  }
+
+  function renderFavoriteButtons() {
+    const favorites = getFavorites();
+    $$('.tool-card').forEach((card) => {
+      const tool = card.querySelector('.open-tool')?.dataset.tool;
+      if (!tool) return;
+      const button = card.querySelector('.tool-fav');
+      if (!button) return;
+      const active = favorites.includes(tool);
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-label', active ? t('favRemove') : t('favAdd'));
+      button.textContent = active ? '★' : '☆';
+    });
+  }
+
+  function attachFavoriteButtons() {
+    $$('.tool-card').forEach((card) => {
+      const top = $('.card-top', card);
+      const tool = $('.open-tool', card)?.dataset.tool;
+      if (!top || !tool || $('.tool-fav', card)) return;
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'tool-fav';
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        toggleFavorite(tool);
+      });
+      top.appendChild(button);
+    });
+    renderFavoriteButtons();
   }
 
   function applyLanguage() {
@@ -373,14 +617,21 @@
       element.placeholder = t(element.dataset.i18nPlaceholder);
     });
 
-    $('#langBtn').textContent = lang === 'ar' ? 'EN' : 'عربي';
-    $('#langBtn').setAttribute('aria-label', t('switchLanguage'));
-    $('#themeBtn').setAttribute('aria-label', t('themeLabel'));
-    $('#closeModal').setAttribute('aria-label', t('closeDialog'));
+    const langBtn = $('#langBtn');
+    if (langBtn) {
+      langBtn.textContent = lang === 'ar' ? 'EN' : 'عربي';
+      langBtn.setAttribute('aria-label', t('switchLanguage'));
+    }
+    const themeBtn = $('#themeBtn');
+    if (themeBtn) themeBtn.setAttribute('aria-label', t('themeLabel'));
+    const closeBtn = $('#closeModal');
+    if (closeBtn) closeBtn.setAttribute('aria-label', t('closeDialog'));
 
     filterTools();
+    renderFavoriteButtons();
+    renderQuickAccess();
 
-    if (!modal.classList.contains('hidden')) {
+    if (modal && !modal.classList.contains('hidden')) {
       const currentTool = modal.dataset.currentTool;
       if (currentTool) renderTool(currentTool);
     }
@@ -393,20 +644,31 @@
     document.body.classList.toggle('dark', dark);
   }
 
-  function openModal(tool) {
+  function openModal(tool, fromQuick = false) {
+    if (!TOOL_IDS.includes(tool) || !modal) return;
     lastFocused = document.activeElement;
     modal.dataset.currentTool = tool;
     modal.classList.remove('hidden');
     modal.setAttribute('aria-hidden', 'false');
 
     renderTool(tool);
+    markRecent(tool);
 
-    $('#closeModal').focus();
+    const closeButton = $('#closeModal');
+    if (closeButton) closeButton.focus();
     document.body.style.overflow = 'hidden';
+
+    const page = location.pathname.endsWith('/tool.html') || location.pathname.endsWith('tool.html')
+      ? 'tool.html'
+      : 'index.html';
+    const query = `?tool=${encodeURIComponent(tool)}`;
+    if (!fromQuick || page.includes('index')) {
+      history.replaceState({}, '', `${page}${query}`);
+    }
   }
 
   function closeModal() {
-    if (modal.classList.contains('hidden')) return;
+    if (!modal || modal.classList.contains('hidden')) return;
 
     modal.classList.add('hidden');
     modal.setAttribute('aria-hidden', 'true');
@@ -420,6 +682,14 @@
     if (lastFocused && typeof lastFocused.focus === 'function') {
       lastFocused.focus();
     }
+
+    if (location.pathname.endsWith('/tool.html') || location.pathname.endsWith('tool.html')) {
+      const firstTool = getRecents()[0] || 'compress';
+      openModal(firstTool, true);
+      return;
+    }
+
+    history.replaceState({}, '', 'index.html');
   }
 
   function trapFocus(event) {
@@ -456,7 +726,13 @@
       password: 'passwordTitle',
       color: 'colorTitle',
       base64: 'base64Title',
-      url: 'urlTitle'
+      url: 'urlTitle',
+      csvjson: 'csvJsonTitle',
+      jwt: 'jwtTitle',
+      hash: 'hashTitle',
+      regex: 'regexTitle',
+      timestamp: 'timestampTitle',
+      slug: 'slugTitle'
     };
 
     $('#modalTitle').textContent = t(titleMap[tool] || 'workspace');
@@ -479,6 +755,25 @@
       renderBase64Tool(body);
     } else if (tool === 'url') {
       renderUrlTool(body);
+    } else if (tool === 'csvjson') {
+      renderCsvJsonTool(body);
+    } else if (tool === 'jwt') {
+      renderJwtTool(body);
+    } else if (tool === 'hash') {
+      renderHashTool(body);
+    } else if (tool === 'regex') {
+      renderRegexTool(body);
+    } else if (tool === 'timestamp') {
+      renderTimestampTool(body);
+    } else if (tool === 'slug') {
+      renderSlugTool(body);
+    }
+
+    if (!$('.tool-privacy-hint', body)) {
+      const hint = document.createElement('p');
+      hint.className = 'hint tool-privacy-hint';
+      hint.textContent = t('localPrivacyHint');
+      body.prepend(hint);
     }
   }
 
@@ -528,6 +823,27 @@
     const preview = $('#imagePreview');
     const info = $('#imageInfo');
     const download = $('#downloadImage');
+    const processButton = $('#processImage');
+
+    const applyDropState = (hover) => fileInput.classList.toggle('drop-hover', hover);
+    ['dragenter', 'dragover'].forEach((eventName) => {
+      fileInput.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        applyDropState(true);
+      });
+    });
+    ['dragleave', 'drop'].forEach((eventName) => {
+      fileInput.addEventListener(eventName, (event) => {
+        event.preventDefault();
+        applyDropState(false);
+      });
+    });
+    fileInput.addEventListener('drop', (event) => {
+      const files = event.dataTransfer?.files;
+      if (!files || !files.length) return;
+      fileInput.files = files;
+      fileInput.dispatchEvent(new Event('change'));
+    });
 
     fileInput.addEventListener('change', () => {
       const selected = fileInput.files && fileInput.files[0];
@@ -594,16 +910,31 @@
 
     if (isCompress) {
       const qualityInput = $('#quality');
+      const storedQuality = Number(getToolSetting('compress-quality', qualityInput.value));
+      if (Number.isFinite(storedQuality) && storedQuality >= 10 && storedQuality <= 100) {
+        qualityInput.value = String(storedQuality);
+      }
+      $('#qualityValue').textContent = `${qualityInput.value}%`;
       qualityInput.addEventListener('input', () => {
         $('#qualityValue').textContent = `${qualityInput.value}%`;
+        setToolSetting('compress-quality', qualityInput.value);
       });
+    } else {
+      const formatSelect = $('#imageFormat');
+      const storedFormat = getToolSetting('convert-format', formatSelect.value);
+      if (Array.from(formatSelect.options).some((option) => option.value === storedFormat)) {
+        formatSelect.value = storedFormat;
+      }
+      formatSelect.addEventListener('change', () => setToolSetting('convert-format', formatSelect.value));
     }
 
-    $('#processImage').addEventListener('click', () => {
+    processButton.addEventListener('click', () => {
+      if (processButton.disabled) return;
       if (!file || !img) {
         status(t('chooseFile'), 'error');
         return;
       }
+      processButton.disabled = true;
 
       try {
         const canvas = document.createElement('canvas');
@@ -631,6 +962,7 @@
         const done = (blob) => {
           if (!blob) {
             status(t('unsupported'), 'error');
+            processButton.disabled = false;
             return;
           }
 
@@ -661,6 +993,7 @@
           }
 
           status(t('imageReady'), 'success');
+          processButton.disabled = false;
         };
 
         const quality = isCompress ? Number($('#quality').value) / 100 : 0.92;
@@ -672,6 +1005,7 @@
         }
       } catch {
         status(t('unsupported'), 'error');
+        processButton.disabled = false;
       }
     });
   }
@@ -1005,9 +1339,23 @@
     const lengthInput = $('#passwordLength');
     const output = $('#passwordOutput');
     const strengthElement = $('#passwordStrength');
+    const optionIds = ['uppercase', 'lowercase', 'numbers', 'symbols', 'excludeAmbiguous'];
+
+    const storedLength = Number(getToolSetting('password-length', lengthInput.value));
+    if (Number.isFinite(storedLength) && storedLength >= 6 && storedLength <= 64) {
+      lengthInput.value = String(storedLength);
+    }
+    $('#passwordLengthValue').textContent = lengthInput.value;
+    optionIds.forEach((id) => {
+      const element = $('#' + id);
+      const stored = getToolSetting(`password-${id}`, element.checked ? '1' : '0');
+      element.checked = stored === '1';
+      element.addEventListener('change', () => setToolSetting(`password-${id}`, element.checked ? '1' : '0'));
+    });
 
     lengthInput.addEventListener('input', () => {
       $('#passwordLengthValue').textContent = lengthInput.value;
+      setToolSetting('password-length', lengthInput.value);
     });
 
     function getStrength(password) {
@@ -1257,43 +1605,414 @@
     });
   }
 
+  function parseCsv(text) {
+    const rows = [];
+    let row = [];
+    let value = '';
+    let inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+      const char = text[i];
+      const next = text[i + 1];
+      if (char === '"' && inQuotes && next === '"') {
+        value += '"';
+        i++;
+      } else if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        row.push(value);
+        value = '';
+      } else if ((char === '\n' || char === '\r') && !inQuotes) {
+        if (char === '\r' && next === '\n') i++;
+        row.push(value);
+        if (row.some((cell) => cell !== '')) rows.push(row);
+        row = [];
+        value = '';
+      } else {
+        value += char;
+      }
+    }
+    row.push(value);
+    if (row.some((cell) => cell !== '')) rows.push(row);
+    return rows;
+  }
+
+  function toCsvCell(value) {
+    const raw = String(value ?? '');
+    if (/[",\n\r]/.test(raw)) {
+      return `"${raw.replace(/"/g, '""')}"`;
+    }
+    return raw;
+  }
+
+  function renderCsvJsonTool(body) {
+    body.innerHTML = `
+      <label for="csvInput">${t('csvInput')}</label>
+      <textarea id="csvInput"></textarea>
+      <label for="jsonInputData">${t('jsonInputData')}</label>
+      <textarea id="jsonInputData"></textarea>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="csvToJson">${t('convertCsvToJson')}</button>
+        <button type="button" class="secondary-btn" id="jsonToCsv">${t('convertJsonToCsv')}</button>
+      </div>
+      <pre id="csvJsonOutput" class="result-box hidden"></pre>
+    `;
+    const output = $('#csvJsonOutput');
+    $('#csvToJson').addEventListener('click', () => {
+      try {
+        const rows = parseCsv($('#csvInput').value);
+        if (!rows.length) throw new Error('empty');
+        const [headers, ...dataRows] = rows;
+        const json = dataRows.map((row) => {
+          const item = {};
+          headers.forEach((header, index) => {
+            item[(header || '').trim()] = row[index] ?? '';
+          });
+          return item;
+        });
+        output.textContent = JSON.stringify(json, null, 2);
+        output.classList.remove('hidden');
+        status(t('jsonValid'), 'success');
+      } catch {
+        output.classList.add('hidden');
+        status(t('invalidJson'), 'error');
+      }
+    });
+    $('#jsonToCsv').addEventListener('click', () => {
+      try {
+        const data = JSON.parse($('#jsonInputData').value);
+        if (!Array.isArray(data) || !data.length) throw new Error('invalid');
+        const headers = Array.from(new Set(data.flatMap((item) => Object.keys(item || {}))));
+        const csvRows = [
+          headers.map(toCsvCell).join(','),
+          ...data.map((item) => headers.map((header) => toCsvCell(item?.[header] ?? '')).join(','))
+        ];
+        output.textContent = csvRows.join('\n');
+        output.classList.remove('hidden');
+        status(t('imageReady'), 'success');
+      } catch {
+        output.classList.add('hidden');
+        status(t('invalidJson'), 'error');
+      }
+    });
+  }
+
+  function decodeBase64Url(value) {
+    const pad = '='.repeat((4 - (value.length % 4)) % 4);
+    const base64 = (value + pad).replace(/-/g, '+').replace(/_/g, '/');
+    const binary = window.atob(base64);
+    const bytes = Uint8Array.from(binary, (char) => char.charCodeAt(0));
+    return new TextDecoder().decode(bytes);
+  }
+
+  function renderJwtTool(body) {
+    body.innerHTML = `
+      <label for="jwtInput">${t('tokenInput')}</label>
+      <textarea id="jwtInput" spellcheck="false"></textarea>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="decodeJwt">${t('decodeToken')}</button>
+        <button type="button" class="secondary-btn" id="copyJwt">${t('copy')}</button>
+      </div>
+      <label>${t('header')}</label>
+      <pre id="jwtHeader" class="result-box"></pre>
+      <label>${t('payload')}</label>
+      <pre id="jwtPayload" class="result-box"></pre>
+    `;
+    const header = $('#jwtHeader');
+    const payload = $('#jwtPayload');
+    $('#decodeJwt').addEventListener('click', () => {
+      try {
+        const token = $('#jwtInput').value.trim();
+        const parts = token.split('.');
+        if (parts.length < 2) throw new Error('invalid');
+        header.textContent = JSON.stringify(JSON.parse(decodeBase64Url(parts[0])), null, 2);
+        payload.textContent = JSON.stringify(JSON.parse(decodeBase64Url(parts[1])), null, 2);
+        status(t('jsonValid'), 'success');
+      } catch {
+        header.textContent = '';
+        payload.textContent = '';
+        status(t('invalidToken'), 'error');
+      }
+    });
+    $('#copyJwt').addEventListener('click', async () => {
+      await copyText(`${header.textContent}\n\n${payload.textContent}`.trim());
+      status(t('copied'), 'success');
+    });
+  }
+
+  function md5(text) {
+    function rotateLeft(lValue, shiftBits) {
+      return (lValue << shiftBits) | (lValue >>> (32 - shiftBits));
+    }
+    function addUnsigned(lX, lY) {
+      const lX4 = lX & 0x40000000;
+      const lY4 = lY & 0x40000000;
+      const lX8 = lX & 0x80000000;
+      const lY8 = lY & 0x80000000;
+      const lResult = (lX & 0x3FFFFFFF) + (lY & 0x3FFFFFFF);
+      if (lX4 & lY4) return lResult ^ 0x80000000 ^ lX8 ^ lY8;
+      if (lX4 | lY4) {
+        if (lResult & 0x40000000) return lResult ^ 0xC0000000 ^ lX8 ^ lY8;
+        return lResult ^ 0x40000000 ^ lX8 ^ lY8;
+      }
+      return lResult ^ lX8 ^ lY8;
+    }
+    function f(x, y, z) { return (x & y) | ((~x) & z); }
+    function g(x, y, z) { return (x & z) | (y & (~z)); }
+    function h(x, y, z) { return x ^ y ^ z; }
+    function i(x, y, z) { return y ^ (x | (~z)); }
+    function ff(a, b, c, d, x, s, ac) { return addUnsigned(rotateLeft(addUnsigned(addUnsigned(a, f(b, c, d)), addUnsigned(x, ac)), s), b); }
+    function gg(a, b, c, d, x, s, ac) { return addUnsigned(rotateLeft(addUnsigned(addUnsigned(a, g(b, c, d)), addUnsigned(x, ac)), s), b); }
+    function hh(a, b, c, d, x, s, ac) { return addUnsigned(rotateLeft(addUnsigned(addUnsigned(a, h(b, c, d)), addUnsigned(x, ac)), s), b); }
+    function ii(a, b, c, d, x, s, ac) { return addUnsigned(rotateLeft(addUnsigned(addUnsigned(a, i(b, c, d)), addUnsigned(x, ac)), s), b); }
+    function convertToWordArray(string) {
+      const lWordCount = (((string.length + 8) - ((string.length + 8) % 64)) / 64 + 1) * 16;
+      const lWordArray = Array(lWordCount - 1);
+      let lByteCount = 0;
+      while (lByteCount < string.length) {
+        const lWordIndex = (lByteCount - (lByteCount % 4)) / 4;
+        const lBytePosition = (lByteCount % 4) * 8;
+        lWordArray[lWordIndex] = lWordArray[lWordIndex] | (string.charCodeAt(lByteCount) << lBytePosition);
+        lByteCount++;
+      }
+      const lWordIndex = (lByteCount - (lByteCount % 4)) / 4;
+      const lBytePosition = (lByteCount % 4) * 8;
+      lWordArray[lWordIndex] = lWordArray[lWordIndex] | (0x80 << lBytePosition);
+      lWordArray[lWordCount - 2] = string.length << 3;
+      lWordArray[lWordCount - 1] = string.length >>> 29;
+      return lWordArray;
+    }
+    function wordToHex(lValue) {
+      let wordToHexValue = '';
+      for (let lCount = 0; lCount <= 3; lCount++) {
+        const lByte = (lValue >>> (lCount * 8)) & 255;
+        const wordToHexValueTemp = `0${lByte.toString(16)}`;
+        wordToHexValue += wordToHexValueTemp.substr(wordToHexValueTemp.length - 2, 2);
+      }
+      return wordToHexValue;
+    }
+    const x = convertToWordArray(unescape(encodeURIComponent(text)));
+    let a = 0x67452301;
+    let b = 0xEFCDAB89;
+    let c = 0x98BADCFE;
+    let d = 0x10325476;
+    for (let k = 0; k < x.length; k += 16) {
+      const aa = a; const bb = b; const cc = c; const dd = d;
+      a = ff(a, b, c, d, x[k + 0], 7, 0xD76AA478); d = ff(d, a, b, c, x[k + 1], 12, 0xE8C7B756); c = ff(c, d, a, b, x[k + 2], 17, 0x242070DB); b = ff(b, c, d, a, x[k + 3], 22, 0xC1BDCEEE);
+      a = ff(a, b, c, d, x[k + 4], 7, 0xF57C0FAF); d = ff(d, a, b, c, x[k + 5], 12, 0x4787C62A); c = ff(c, d, a, b, x[k + 6], 17, 0xA8304613); b = ff(b, c, d, a, x[k + 7], 22, 0xFD469501);
+      a = ff(a, b, c, d, x[k + 8], 7, 0x698098D8); d = ff(d, a, b, c, x[k + 9], 12, 0x8B44F7AF); c = ff(c, d, a, b, x[k + 10], 17, 0xFFFF5BB1); b = ff(b, c, d, a, x[k + 11], 22, 0x895CD7BE);
+      a = ff(a, b, c, d, x[k + 12], 7, 0x6B901122); d = ff(d, a, b, c, x[k + 13], 12, 0xFD987193); c = ff(c, d, a, b, x[k + 14], 17, 0xA679438E); b = ff(b, c, d, a, x[k + 15], 22, 0x49B40821);
+      a = gg(a, b, c, d, x[k + 1], 5, 0xF61E2562); d = gg(d, a, b, c, x[k + 6], 9, 0xC040B340); c = gg(c, d, a, b, x[k + 11], 14, 0x265E5A51); b = gg(b, c, d, a, x[k + 0], 20, 0xE9B6C7AA);
+      a = gg(a, b, c, d, x[k + 5], 5, 0xD62F105D); d = gg(d, a, b, c, x[k + 10], 9, 0x02441453); c = gg(c, d, a, b, x[k + 15], 14, 0xD8A1E681); b = gg(b, c, d, a, x[k + 4], 20, 0xE7D3FBC8);
+      a = gg(a, b, c, d, x[k + 9], 5, 0x21E1CDE6); d = gg(d, a, b, c, x[k + 14], 9, 0xC33707D6); c = gg(c, d, a, b, x[k + 3], 14, 0xF4D50D87); b = gg(b, c, d, a, x[k + 8], 20, 0x455A14ED);
+      a = gg(a, b, c, d, x[k + 13], 5, 0xA9E3E905); d = gg(d, a, b, c, x[k + 2], 9, 0xFCEFA3F8); c = gg(c, d, a, b, x[k + 7], 14, 0x676F02D9); b = gg(b, c, d, a, x[k + 12], 20, 0x8D2A4C8A);
+      a = hh(a, b, c, d, x[k + 5], 4, 0xFFFA3942); d = hh(d, a, b, c, x[k + 8], 11, 0x8771F681); c = hh(c, d, a, b, x[k + 11], 16, 0x6D9D6122); b = hh(b, c, d, a, x[k + 14], 23, 0xFDE5380C);
+      a = hh(a, b, c, d, x[k + 1], 4, 0xA4BEEA44); d = hh(d, a, b, c, x[k + 4], 11, 0x4BDECFA9); c = hh(c, d, a, b, x[k + 7], 16, 0xF6BB4B60); b = hh(b, c, d, a, x[k + 10], 23, 0xBEBFBC70);
+      a = hh(a, b, c, d, x[k + 13], 4, 0x289B7EC6); d = hh(d, a, b, c, x[k + 0], 11, 0xEAA127FA); c = hh(c, d, a, b, x[k + 3], 16, 0xD4EF3085); b = hh(b, c, d, a, x[k + 6], 23, 0x04881D05);
+      a = hh(a, b, c, d, x[k + 9], 4, 0xD9D4D039); d = hh(d, a, b, c, x[k + 12], 11, 0xE6DB99E5); c = hh(c, d, a, b, x[k + 15], 16, 0x1FA27CF8); b = hh(b, c, d, a, x[k + 2], 23, 0xC4AC5665);
+      a = ii(a, b, c, d, x[k + 0], 6, 0xF4292244); d = ii(d, a, b, c, x[k + 7], 10, 0x432AFF97); c = ii(c, d, a, b, x[k + 14], 15, 0xAB9423A7); b = ii(b, c, d, a, x[k + 5], 21, 0xFC93A039);
+      a = ii(a, b, c, d, x[k + 12], 6, 0x655B59C3); d = ii(d, a, b, c, x[k + 3], 10, 0x8F0CCC92); c = ii(c, d, a, b, x[k + 10], 15, 0xFFEFF47D); b = ii(b, c, d, a, x[k + 1], 21, 0x85845DD1);
+      a = ii(a, b, c, d, x[k + 8], 6, 0x6FA87E4F); d = ii(d, a, b, c, x[k + 15], 10, 0xFE2CE6E0); c = ii(c, d, a, b, x[k + 6], 15, 0xA3014314); b = ii(b, c, d, a, x[k + 13], 21, 0x4E0811A1);
+      a = ii(a, b, c, d, x[k + 4], 6, 0xF7537E82); d = ii(d, a, b, c, x[k + 11], 10, 0xBD3AF235); c = ii(c, d, a, b, x[k + 2], 15, 0x2AD7D2BB); b = ii(b, c, d, a, x[k + 9], 21, 0xEB86D391);
+      a = addUnsigned(a, aa); b = addUnsigned(b, bb); c = addUnsigned(c, cc); d = addUnsigned(d, dd);
+    }
+    return (wordToHex(a) + wordToHex(b) + wordToHex(c) + wordToHex(d)).toLowerCase();
+  }
+
+  function bytesToHex(buffer) {
+    return Array.from(new Uint8Array(buffer))
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+  }
+
+  function renderHashTool(body) {
+    body.innerHTML = `
+      <label for="hashInput">${t('input')}</label>
+      <textarea id="hashInput"></textarea>
+      <label for="hashFile">${t('fileOptional')}</label>
+      <input id="hashFile" type="file">
+      <label for="hashAlgo">${t('hashAlgorithm')}</label>
+      <select id="hashAlgo">
+        <option value="SHA-256">SHA-256</option>
+        <option value="MD5">MD5</option>
+      </select>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="hashRun">${t('calculateHash')}</button>
+        <button type="button" class="secondary-btn" id="hashCopy">${t('copy')}</button>
+      </div>
+      <input id="hashOutput" class="output-input" readonly>
+    `;
+    const output = $('#hashOutput');
+    $('#hashRun').addEventListener('click', async () => {
+      try {
+        const file = $('#hashFile').files?.[0];
+        const algo = $('#hashAlgo').value;
+        const text = file ? await file.text() : $('#hashInput').value;
+        if (algo === 'MD5') {
+          output.value = md5(text);
+        } else {
+          const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+          output.value = bytesToHex(hashBuffer);
+        }
+        status(t('imageReady'), 'success');
+      } catch {
+        status(t('unsupported'), 'error');
+      }
+    });
+    $('#hashCopy').addEventListener('click', async () => {
+      await copyText(output.value);
+      status(t('copied'), 'success');
+    });
+  }
+
+  function renderRegexTool(body) {
+    body.innerHTML = `
+      <label for="regexPattern">${t('regexPattern')}</label>
+      <input id="regexPattern" type="text" spellcheck="false">
+      <label for="regexFlags">${t('regexFlags')}</label>
+      <input id="regexFlags" type="text" value="g" spellcheck="false">
+      <label for="regexText">${t('regexText')}</label>
+      <textarea id="regexText"></textarea>
+      <button type="button" class="action-btn" id="regexRun">${t('testRegex')}</button>
+      <pre id="regexOutput" class="result-box"></pre>
+    `;
+    $('#regexRun').addEventListener('click', () => {
+      try {
+        const pattern = $('#regexPattern').value;
+        const flags = $('#regexFlags').value;
+        const text = $('#regexText').value;
+        const regex = new RegExp(pattern, flags);
+        const result = [];
+        let match;
+        while ((match = regex.exec(text)) !== null) {
+          result.push(`${match[0]} @${match.index}`);
+          if (!regex.global) break;
+          if (match[0] === '') regex.lastIndex++;
+        }
+        $('#regexOutput').textContent = result.length ? result.join('\n') : '—';
+        status('');
+      } catch (error) {
+        $('#regexOutput').textContent = error.message;
+        status(t('unsupported'), 'error');
+      }
+    });
+  }
+
+  function renderTimestampTool(body) {
+    body.innerHTML = `
+      <label for="unixInput">${t('unixTimestamp')}</label>
+      <input id="unixInput" type="text">
+      <label for="isoInput">${t('isoDate')}</label>
+      <input id="isoInput" type="text" placeholder="2026-10-12T09:00:00Z">
+      <div class="button-row">
+        <button type="button" class="action-btn" id="tsToDate">${t('toDate')}</button>
+        <button type="button" class="secondary-btn" id="dateToTs">${t('toTimestamp')}</button>
+      </div>
+      <input id="timestampOutput" class="output-input" readonly>
+    `;
+    const output = $('#timestampOutput');
+    $('#tsToDate').addEventListener('click', () => {
+      const value = Number($('#unixInput').value.trim());
+      if (!Number.isFinite(value)) {
+        status(t('unsupported'), 'error');
+        return;
+      }
+      const ms = value > 9999999999 ? value : value * 1000;
+      output.value = new Date(ms).toISOString();
+      status('');
+    });
+    $('#dateToTs').addEventListener('click', () => {
+      const value = Date.parse($('#isoInput').value.trim());
+      if (!Number.isFinite(value)) {
+        status(t('unsupported'), 'error');
+        return;
+      }
+      output.value = String(Math.floor(value / 1000));
+      status('');
+    });
+  }
+
+  function renderSlugTool(body) {
+    body.innerHTML = `
+      <label for="slugSource">${t('sourceText')}</label>
+      <textarea id="slugSource"></textarea>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="generateSlug">${t('makeSlug')}</button>
+        <button type="button" class="secondary-btn" id="cleanText">${t('cleanText')}</button>
+      </div>
+      <label for="slugOutput">${t('slugOutputLabel')}</label>
+      <input id="slugOutput" class="output-input" readonly>
+    `;
+    const source = $('#slugSource');
+    const output = $('#slugOutput');
+    const normalize = (text) => text
+      .normalize('NFKD')
+      .replace(/[\u064B-\u0652]/g, '')
+      .replace(/[^\p{L}\p{N}\s-]/gu, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .toLowerCase();
+    $('#generateSlug').addEventListener('click', () => {
+      output.value = normalize(source.value);
+      status('');
+    });
+    $('#cleanText').addEventListener('click', () => {
+      source.value = source.value.replace(/\s+/g, ' ').trim();
+      output.value = normalize(source.value);
+      status('');
+    });
+  }
+
   function bindEvents() {
-    $('#searchInput').addEventListener('input', filterTools);
+    const searchInput = $('#searchInput');
+    if (searchInput) searchInput.addEventListener('input', filterTools);
 
-    $('#categoryRow').addEventListener('click', (event) => {
-      const button = event.target.closest('button[data-category]');
-      if (!button) return;
+    const categoryRow = $('#categoryRow');
+    if (categoryRow) {
+      categoryRow.addEventListener('click', (event) => {
+        const button = event.target.closest('button[data-category]');
+        if (!button) return;
 
-      activeCategory = button.dataset.category;
+        activeCategory = button.dataset.category;
 
-      $$('.category-chip').forEach((chip) => {
-        chip.classList.toggle('active', chip === button);
+        $$('.category-chip').forEach((chip) => {
+          chip.classList.toggle('active', chip === button);
+        });
+
+        filterTools();
       });
+    }
 
-      filterTools();
-    });
+    const langBtn = $('#langBtn');
+    if (langBtn) {
+      langBtn.addEventListener('click', () => {
+        lang = lang === 'ar' ? 'en' : 'ar';
+        localStorage.setItem('toolnest-lang', lang);
+        applyLanguage();
+      });
+    }
 
-    $('#langBtn').addEventListener('click', () => {
-      lang = lang === 'ar' ? 'en' : 'ar';
-      localStorage.setItem('toolnest-lang', lang);
-      applyLanguage();
-    });
-
-    $('#themeBtn').addEventListener('click', () => {
-      const dark = document.documentElement.classList.toggle('dark');
-      document.body.classList.toggle('dark', dark);
-      localStorage.setItem('toolnest-theme', dark ? 'dark' : 'light');
-    });
+    const themeBtn = $('#themeBtn');
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const dark = document.documentElement.classList.toggle('dark');
+        document.body.classList.toggle('dark', dark);
+        localStorage.setItem('toolnest-theme', dark ? 'dark' : 'light');
+      });
+    }
 
     $$('.open-tool').forEach((button) => {
       button.addEventListener('click', () => openModal(button.dataset.tool));
     });
 
-    $('#closeModal').addEventListener('click', closeModal);
+    const closeModalButton = $('#closeModal');
+    if (closeModalButton) closeModalButton.addEventListener('click', closeModal);
 
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) closeModal();
-    });
+    if (modal) {
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+      });
+    }
 
     document.addEventListener('keydown', (event) => {
       const active = document.activeElement;
@@ -1302,26 +2021,51 @@
         active.isContentEditable
       );
 
-      if (event.key === '/' && !isEditing && modal.classList.contains('hidden')) {
+      if (event.key === '/' && !isEditing && modal && modal.classList.contains('hidden') && $('#searchInput')) {
         event.preventDefault();
         $('#searchInput').focus();
       }
 
-      if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
+      if (event.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
         closeModal();
       }
 
-      if (event.key === 'Tab' && !modal.classList.contains('hidden')) {
+      if (event.key === 'Tab' && modal && !modal.classList.contains('hidden')) {
         trapFocus(event);
       }
+
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && modal && !modal.classList.contains('hidden')) {
+        const action = $('#toolBody .action-btn');
+        if (action) action.click();
+      }
     });
+
+    const onboarding = $('#onboarding');
+    const dismiss = $('#dismissOnboarding');
+    if (onboarding && dismiss) {
+      const dismissed = localStorage.getItem('toolnest-onboarding-dismissed') === '1';
+      onboarding.classList.toggle('hidden', dismissed);
+      dismiss.addEventListener('click', () => {
+        localStorage.setItem('toolnest-onboarding-dismissed', '1');
+        onboarding.classList.add('hidden');
+      });
+    }
   }
 
   function init() {
     applyStoredTheme();
-    $('#year').textContent = new Date().getFullYear();
+    const year = $('#year');
+    if (year) year.textContent = new Date().getFullYear();
+    attachFavoriteButtons();
     bindEvents();
     applyLanguage();
+    renderQuickAccess();
+
+    const params = new URLSearchParams(location.search);
+    const requestedTool = params.get('tool');
+    if (requestedTool && TOOL_IDS.includes(requestedTool)) {
+      openModal(requestedTool, true);
+    }
   }
 
   init();
