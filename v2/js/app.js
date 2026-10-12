@@ -1,12 +1,12 @@
-import { t, getLang, setLang, applyTranslations } from "./i18n.js";
-import { LANGS } from "./langs.js";
-import { route, initRouter } from "./router.js";
-import { TOOLS, CATEGORIES, getTool, pick } from "./registry.js";
-import { favorites, recent, ratings, comments, storage } from "./storage.js";
-import { toastSuccess, toastError } from "./toast.js";
-import { RARE_TOOLS } from "./rare-tools.js";
-import { AI_TOOLS } from "./ai-directory.js";
-import { getArticles, getArticle } from "./articles.js";
+import { t, getLang, setLang, applyTranslations } from "./i18n.js?v=5353482";
+import { LANGS } from "./langs.js?v=5353482";
+import { route, initRouter } from "./router.js?v=5353482";
+import { TOOLS, CATEGORIES, getTool, pick } from "./registry.js?v=5353482";
+import { favorites, recent, ratings, comments, storage } from "./storage.js?v=5353482";
+import { toastSuccess, toastError } from "./toast.js?v=5353482";
+import { RARE_TOOLS } from "./rare-tools.js?v=5353482";
+import { AI_TOOLS } from "./ai-directory.js?v=5353482";
+import { getArticles, getArticle } from "./articles.js?v=5353482";
 
 /* ========= Theme ========= */
 const savedTheme = storage.get("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
