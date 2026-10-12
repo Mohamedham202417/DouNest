@@ -3,10 +3,33 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ToolNest — Tool</title>
+  <title>ToolNest — صفحة الأداة</title>
+  <meta name="description" content="صفحة مستقلة لكل أداة في ToolNest مع شرح الاستخدام والتشغيل داخل المتصفح.">
+  <meta name="robots" content="index,follow">
+  <link id="canonicalLink" rel="canonical" href="https://toolnest.example/tool.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ToolNest">
+  <meta property="og:title" content="ToolNest — صفحة الأداة" data-seo="og-title">
+  <meta property="og:description" content="أداة مستقلة داخل المتصفح مع شرح واضح." data-seo="og-description">
+  <meta property="og:url" content="https://toolnest.example/tool.html" data-seo="og-url">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ToolNest — صفحة الأداة" data-seo="twitter-title">
+  <meta name="twitter:description" content="أداة مستقلة داخل المتصفح مع شرح واضح." data-seo="twitter-description">
+
+  <script>
+    try {
+      if (localStorage.getItem('toolnest-theme') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  </script>
+
   <link rel="stylesheet" href="styles.css">
+  <script id="toolSchema" type="application/ld+json"></script>
 </head>
-<body dir="rtl">
+<body dir="rtl" class="tool-page-body">
   <header class="topbar" id="top">
     <a class="brand" href="index.html" aria-label="ToolNest — الرئيسية">
       <span class="brand-mark" aria-hidden="true">✳</span>
@@ -15,38 +38,41 @@
     <div class="top-actions">
       <button id="themeBtn" class="icon-btn" type="button" aria-label="تبديل المظهر">☼</button>
       <button id="langBtn" class="ghost-btn" type="button">EN</button>
-      <a class="nav-cta" href="index.html#tools"><span>كل الأدوات</span></a>
+      <a class="nav-cta" href="index.html#tools" data-i18n="backToTools">العودة إلى كل الأدوات</a>
     </div>
   </header>
 
-  <main class="tools-section" style="padding-top:0;">
-    <p class="hero-copy" style="text-align:start;max-width:none;margin:0 0 16px;">رابط مباشر لأداة واحدة. يمكنك مشاركة هذا الرابط للوصول السريع.</p>
-  </main>
+  <main class="tool-page-main" id="main">
+    <section class="tool-page-intro" aria-labelledby="modalTitle">
+      <p class="section-kicker" data-i18n="workspace">مساحة العمل</p>
+      <h1 id="modalTitle">الأداة</h1>
+      <p id="toolLead" class="hero-copy tool-lead"></p>
+    </section>
 
-  <div
-    id="toolModal"
-    class="modal-backdrop"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalTitle"
-    aria-hidden="false"
-  >
-    <div class="modal" role="document">
-      <div class="modal-header">
-        <h2 id="modalTitle"></h2>
-        <a href="index.html#tools" class="secondary-btn" style="text-decoration:none;">رجوع</a>
-        <button id="closeModal" class="close-btn" type="button" aria-label="إغلاق">×</button>
-      </div>
+    <section class="tool-shell" aria-label="Tool workspace">
       <div id="toolBody" class="tool-body"></div>
       <p id="statusMessage" class="status-message" role="status" aria-live="polite"></p>
-    </div>
-  </div>
+    </section>
 
-  <input id="searchInput" type="search" class="hidden">
-  <div id="categoryRow" class="hidden"></div>
-  <span id="toolCount" class="hidden"></span>
-  <p id="noResults" class="hidden"></p>
-  <span id="year" class="hidden"></span>
+    <section id="toolGuide" class="tool-guide" aria-labelledby="toolGuideTitle">
+      <h2 id="toolGuideTitle" data-i18n="toolGuideTitle">شرح الأداة</h2>
+      <p id="toolGuideSummary" class="tool-guide-summary"></p>
+      <div class="tool-guide-grid">
+        <article class="tool-guide-card">
+          <h3 data-i18n="guideHowItWorks">كيف تعمل؟</h3>
+          <ul id="toolGuideHow"></ul>
+        </article>
+        <article class="tool-guide-card">
+          <h3 data-i18n="guideWhenToUse">متى تستخدمها؟</h3>
+          <ul id="toolGuideWhen"></ul>
+        </article>
+        <article class="tool-guide-card">
+          <h3 data-i18n="guideNotes">ملاحظات مهمة</h3>
+          <ul id="toolGuideNotes"></ul>
+        </article>
+      </div>
+    </section>
+  </main>
 
   <script src="app.js" defer></script>
 </body>

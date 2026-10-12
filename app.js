@@ -174,7 +174,15 @@
       slugOutputLabel: 'Slug الناتج',
       makeSlug: 'إنشاء Slug',
       cleanText: 'تنظيف النص',
-      copiedUrl: 'تم نسخ الرابط المباشر.'
+      copiedUrl: 'تم نسخ الرابط المباشر.',
+      backToTools: 'العودة إلى كل الأدوات',
+      toolPageIntroPrefix: 'صفحة مستقلة لهذه الأداة:',
+      toolGuideTitle: 'شرح الأداة',
+      guideHowItWorks: 'كيف تعمل؟',
+      guideWhenToUse: 'متى تستخدمها؟',
+      guideNotes: 'ملاحظات مهمة',
+      invalidToolTitle: 'الأداة غير موجودة',
+      invalidToolCopy: 'الرابط الحالي غير صالح. اختر أداة من صفحة الأدوات.'
     },
 
     en: {
@@ -349,7 +357,15 @@
       slugOutputLabel: 'Slug output',
       makeSlug: 'Generate slug',
       cleanText: 'Clean text',
-      copiedUrl: 'Direct URL copied.'
+      copiedUrl: 'Direct URL copied.',
+      backToTools: 'Back to all tools',
+      toolPageIntroPrefix: 'Dedicated page for this tool:',
+      toolGuideTitle: 'Tool guide',
+      guideHowItWorks: 'How it works',
+      guideWhenToUse: 'When to use it',
+      guideNotes: 'Important notes',
+      invalidToolTitle: 'Tool not found',
+      invalidToolCopy: 'The current URL is invalid. Please choose a tool from the tools page.'
     }
   };
 
@@ -364,6 +380,198 @@
     'compress', 'convert', 'json', 'diff', 'words', 'units', 'password', 'color', 'base64', 'url',
     'csvjson', 'jwt', 'hash', 'regex', 'timestamp', 'slug'
   ];
+  const TOOL_TITLE_KEYS = {
+    compress: 'compressTitle',
+    convert: 'convertTitle',
+    json: 'jsonTitle',
+    diff: 'diffTitle',
+    words: 'wordsTitle',
+    units: 'unitsTitle',
+    password: 'passwordTitle',
+    color: 'colorTitle',
+    base64: 'base64Title',
+    url: 'urlTitle',
+    csvjson: 'csvJsonTitle',
+    jwt: 'jwtTitle',
+    hash: 'hashTitle',
+    regex: 'regexTitle',
+    timestamp: 'timestampTitle',
+    slug: 'slugTitle'
+  };
+  const TOOL_DESCRIPTION_KEYS = {
+    compress: 'compressDesc',
+    convert: 'convertDesc',
+    json: 'jsonDesc',
+    diff: 'diffDesc',
+    words: 'wordsDesc',
+    units: 'unitsDesc',
+    password: 'passwordDesc',
+    color: 'colorDesc',
+    base64: 'base64Desc',
+    url: 'urlDesc',
+    csvjson: 'csvJsonDesc',
+    jwt: 'jwtDesc',
+    hash: 'hashDesc',
+    regex: 'regexDesc',
+    timestamp: 'timestampDesc',
+    slug: 'slugDesc'
+  };
+  const isStandaloneToolPage = /(^|\/)tool\.html$/.test(location.pathname);
+  let standaloneToolId = null;
+  const TOOL_EXPLANATIONS = {
+    jwt: {
+      ar: {
+        summary: 'أداة JWT Inspector توضح محتوى التوكن لتسهيل المراجعة أثناء التطوير دون إرسال أي توكن خارج جهازك.',
+        how: [
+          'ألصق JWT كما هو بصيغة Header.Payload.Signature.',
+          'تقرأ الأداة القسمين الأول والثاني بصيغة Base64URL وتحوّلهما إلى JSON قابل للقراءة.',
+          'تعرض Header وPayload منفصلين لتتأكد من نوع الخوارزمية والـ claims.'
+        ],
+        when: [
+          'عند فحص توكن تسجيل الدخول أثناء تطوير APIs.',
+          'عند التحقق من القيم الزمنية مثل exp وiat.',
+          'عند مقارنة التوكن المتوقع بالتوكن الفعلي بسرعة.'
+        ],
+        notes: [
+          'الأداة لا تتحقق من التوقيع cryptographically.',
+          'لا تشارك التوكن الحقيقي في أي مكان عام حتى لو كانت المعالجة محلية.',
+          'إذا ظهر خطأ فغالبًا التنسيق أو الترميز غير صحيح.'
+        ]
+      },
+      en: {
+        summary: 'JWT Inspector helps you read token contents during development without sending tokens to any server.',
+        how: [
+          'Paste the JWT in Header.Payload.Signature format.',
+          'The tool decodes the first two Base64URL sections into readable JSON.',
+          'Header and payload are shown separately to inspect algorithm and claims.'
+        ],
+        when: [
+          'When debugging authentication tokens in APIs.',
+          'When checking time-based claims like exp and iat.',
+          'When comparing expected vs. actual token payload quickly.'
+        ],
+        notes: [
+          'This tool does not cryptographically verify signatures.',
+          'Never share real production tokens publicly.',
+          'Decode errors usually mean malformed token structure.'
+        ]
+      }
+    },
+    regex: {
+      ar: {
+        summary: 'Regex Tester يجعل فهم التعبيرات النمطية أسهل عبر عرض المطابقات مباشرة مع مكان كل تطابق.',
+        how: [
+          'اكتب النمط في حقل Pattern وأضف Flags مثل g أو i.',
+          'أدخل النص المراد اختباره في الحقل السفلي.',
+          'تشغّل الأداة البحث وتعرض كل تطابق مع موقعه داخل النص.'
+        ],
+        when: [
+          'قبل استخدام Regex في كود JavaScript.',
+          'عند تحسين نمط بحث معقد على بيانات نصية.',
+          'عند التحقق من أن النمط لا يفوّت حالات مهمة.'
+        ],
+        notes: [
+          'الـ Flags الخاطئة قد تغيّر النتائج بالكامل.',
+          'النمطات الثقيلة جدًا قد تكون بطيئة على نصوص ضخمة.',
+          'ابدأ بنمط بسيط ثم زِد التعقيد تدريجيًا.'
+        ]
+      },
+      en: {
+        summary: 'Regex Tester makes regular expressions easier to understand with instant match positions.',
+        how: [
+          'Enter your expression in Pattern and optional flags like g or i.',
+          'Paste the test text in the text area.',
+          'Run the tool to list each match with its index.'
+        ],
+        when: [
+          'Before using a regex in JavaScript code.',
+          'While refining complex text parsing rules.',
+          'When validating edge cases in matching behavior.'
+        ],
+        notes: [
+          'Flag combinations can radically change results.',
+          'Very heavy patterns can be slow on large text.',
+          'Start simple, then expand pattern complexity.'
+        ]
+      }
+    },
+    hash: {
+      ar: {
+        summary: 'Hash & Checksum يحسب بصمة نص أو ملف للتحقق من سلامة المحتوى أو مطابقته لقيمة مرجعية.',
+        how: [
+          'أدخل نصًا أو اختر ملفًا (اختياري).',
+          'اختر الخوارزمية المناسبة: SHA-256 أو MD5.',
+          'تُنتج الأداة قيمة Hash يمكن نسخها والمقارنة بها.'
+        ],
+        when: [
+          'عند التأكد من سلامة ملف بعد التحميل.',
+          'عند مقارنة نسختين من محتوى لمعرفة التطابق.',
+          'عند استخدام SHA-256 كجزء من اختبارات التطوير.'
+        ],
+        notes: [
+          'MD5 سريع لكنه غير مناسب للحماية الأمنية الحديثة.',
+          'للسياقات الحساسة استخدم SHA-256 أو أقوى.',
+          'قراءة ملفات ضخمة كنص قد لا تكون مناسبة لبعض التنسيقات الثنائية.'
+        ]
+      },
+      en: {
+        summary: 'Hash & Checksum computes fingerprints for text or files so you can validate integrity quickly.',
+        how: [
+          'Type text or optionally choose a file.',
+          'Select SHA-256 or MD5.',
+          'Copy the resulting hash and compare it against expected values.'
+        ],
+        when: [
+          'When verifying file integrity after download.',
+          'When checking whether two payloads are identical.',
+          'When using SHA-256 in development workflows.'
+        ],
+        notes: [
+          'MD5 is fast but not suitable for modern security needs.',
+          'Prefer SHA-256 for sensitive use cases.',
+          'Very large binary files may not be ideal via text reading paths.'
+        ]
+      }
+    },
+    csvjson: {
+      ar: {
+        summary: 'أداة CSV ⇄ JSON تحول بين الشكل الجدولي والشكل الكائني لتسريع تجهيز البيانات للاختبار أو التكامل.',
+        how: [
+          'استخدم زر CSV ← JSON لتحويل الصفوف إلى مصفوفة كائنات.',
+          'استخدم زر JSON ← CSV لتحويل مصفوفة كائنات إلى جدول.',
+          'تظهر النتيجة فورًا ويمكن نسخها مباشرة.'
+        ],
+        when: [
+          'عند تجهيز بيانات API من ملفات CSV.',
+          'عند تصدير استجابات JSON لتنسيق جدولي.',
+          'عند اختبار بنية البيانات بين أنظمة مختلفة.'
+        ],
+        notes: [
+          'احرص على صحة JSON قبل التحويل العكسي.',
+          'الأعمدة الناتجة تعتمد على مفاتيح الكائنات المتوفرة.',
+          'القيم التي تحتوي فواصل أو علامات اقتباس تُعالج بصيغة CSV القياسية.'
+        ]
+      },
+      en: {
+        summary: 'CSV ⇄ JSON converts between table-style rows and object arrays for faster data preparation.',
+        how: [
+          'Use CSV ← JSON to convert rows into object arrays.',
+          'Use JSON ← CSV to serialize arrays into CSV lines.',
+          'Preview is generated instantly for direct copy.'
+        ],
+        when: [
+          'When preparing API payloads from spreadsheets.',
+          'When exporting JSON into tabular formats.',
+          'When validating cross-system data structures.'
+        ],
+        notes: [
+          'Ensure JSON is valid before reverse conversion.',
+          'Columns come from detected object keys.',
+          'Quoted commas and quotes are handled using CSV escaping.'
+        ]
+      }
+    }
+  };
   const FAVORITES_KEY = 'toolnest-favorites';
   const RECENTS_KEY = 'toolnest-recents';
 
@@ -413,6 +621,14 @@
 
   function t(key) {
     return translations[lang][key] || translations.en[key] || key;
+  }
+
+  function toolUrl(tool) {
+    return `tool.html?tool=${encodeURIComponent(tool)}`;
+  }
+
+  function runtimeOrigin() {
+    return location.origin && /^https?:/i.test(location.origin) ? location.origin : 'https://toolnest.example';
   }
 
   function status(message, type = '') {
@@ -513,25 +729,7 @@
   }
 
   function toolTitleById(tool) {
-    const keyMap = {
-      compress: 'compressTitle',
-      convert: 'convertTitle',
-      json: 'jsonTitle',
-      diff: 'diffTitle',
-      words: 'wordsTitle',
-      units: 'unitsTitle',
-      password: 'passwordTitle',
-      color: 'colorTitle',
-      base64: 'base64Title',
-      url: 'urlTitle',
-      csvjson: 'csvJsonTitle',
-      jwt: 'jwtTitle',
-      hash: 'hashTitle',
-      regex: 'regexTitle',
-      timestamp: 'timestampTitle',
-      slug: 'slugTitle'
-    };
-    return t(keyMap[tool] || tool);
+    return t(TOOL_TITLE_KEYS[tool] || tool);
   }
 
   function renderQuickAccessRow(containerId, items, emptyText) {
@@ -543,12 +741,11 @@
       return;
     }
     items.forEach((tool) => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'quick-btn';
-      button.textContent = toolTitleById(tool);
-      button.addEventListener('click', () => openModal(tool, true));
-      container.appendChild(button);
+      const link = document.createElement('a');
+      link.className = 'quick-btn';
+      link.href = toolUrl(tool);
+      link.textContent = toolTitleById(tool);
+      container.appendChild(link);
     });
   }
 
@@ -595,7 +792,9 @@
     document.documentElement.setAttribute('dir', dir);
     document.body.setAttribute('dir', dir);
 
-    document.title = t('pageTitle');
+    if (!isStandaloneToolPage) {
+      document.title = t('pageTitle');
+    }
 
     const metaDescription = $('meta[name="description"]');
     if (metaDescription) {
@@ -634,6 +833,10 @@
     if (modal && !modal.classList.contains('hidden')) {
       const currentTool = modal.dataset.currentTool;
       if (currentTool) renderTool(currentTool);
+    }
+
+    if (isStandaloneToolPage && standaloneToolId) {
+      renderStandaloneToolPage(standaloneToolId);
     }
   }
 
@@ -713,29 +916,11 @@
 
   function renderTool(tool) {
     const body = $('#toolBody');
+    if (!body) return;
     body.innerHTML = '';
     status('');
-
-    const titleMap = {
-      compress: 'compressTitle',
-      convert: 'convertTitle',
-      json: 'jsonTitle',
-      diff: 'diffTitle',
-      words: 'wordsTitle',
-      units: 'unitsTitle',
-      password: 'passwordTitle',
-      color: 'colorTitle',
-      base64: 'base64Title',
-      url: 'urlTitle',
-      csvjson: 'csvJsonTitle',
-      jwt: 'jwtTitle',
-      hash: 'hashTitle',
-      regex: 'regexTitle',
-      timestamp: 'timestampTitle',
-      slug: 'slugTitle'
-    };
-
-    $('#modalTitle').textContent = t(titleMap[tool] || 'workspace');
+    const title = $('#modalTitle');
+    if (title) title.textContent = t(TOOL_TITLE_KEYS[tool] || 'workspace');
 
     if (tool === 'compress' || tool === 'convert') {
       renderImageTool(tool, body);
@@ -775,6 +960,100 @@
       hint.textContent = t('localPrivacyHint');
       body.prepend(hint);
     }
+  }
+
+  function renderToolGuide(tool) {
+    const guide = $('#toolGuide');
+    const summary = $('#toolGuideSummary');
+    const howList = $('#toolGuideHow');
+    const whenList = $('#toolGuideWhen');
+    const notesList = $('#toolGuideNotes');
+    if (!guide || !summary || !howList || !whenList || !notesList) return;
+
+    const key = lang === 'ar' ? 'ar' : 'en';
+    const info = TOOL_EXPLANATIONS[tool]?.[key];
+    const defaultSummary = t(TOOL_DESCRIPTION_KEYS[tool] || 'metaDescription');
+
+    const fillList = (list, items) => {
+      list.innerHTML = '';
+      (items || [defaultSummary]).forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    };
+
+    summary.textContent = info?.summary || defaultSummary;
+    fillList(howList, info?.how);
+    fillList(whenList, info?.when);
+    fillList(notesList, info?.notes || [t('localPrivacyHint')]);
+    guide.classList.remove('hidden');
+  }
+
+  function updateToolSeo(tool) {
+    const origin = runtimeOrigin();
+    const url = `${origin}/tool.html?tool=${encodeURIComponent(tool)}`;
+    const title = `${toolTitleById(tool)} | ToolNest`;
+    const description = t(TOOL_DESCRIPTION_KEYS[tool] || 'metaDescription');
+
+    document.title = title;
+
+    const metaDescription = $('meta[name="description"]');
+    if (metaDescription) metaDescription.setAttribute('content', description);
+
+    const canonical = $('#canonicalLink') || $('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', url);
+
+    const setMeta = (selector, content) => {
+      const element = $(selector);
+      if (element) element.setAttribute('content', content);
+    };
+    setMeta('meta[data-seo="og-title"]', title);
+    setMeta('meta[data-seo="og-description"]', description);
+    setMeta('meta[data-seo="og-url"]', url);
+    setMeta('meta[data-seo="twitter-title"]', title);
+    setMeta('meta[data-seo="twitter-description"]', description);
+
+    const schema = $('#toolSchema');
+    if (schema) {
+      schema.textContent = JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebApplication',
+        name: title,
+        applicationCategory: 'DeveloperApplication',
+        operatingSystem: 'Web Browser',
+        isAccessibleForFree: true,
+        inLanguage: ['ar', 'en'],
+        url,
+        description
+      });
+    }
+  }
+
+  function renderStandaloneToolPage(tool) {
+    standaloneToolId = tool;
+    const lead = $('#toolLead');
+
+    if (!TOOL_IDS.includes(tool)) {
+      const title = $('#modalTitle');
+      const body = $('#toolBody');
+      if (title) title.textContent = t('invalidToolTitle');
+      if (lead) lead.textContent = t('invalidToolCopy');
+      if (body) {
+        body.innerHTML = `<a class="action-btn" href="index.html#tools">${t('backToTools')}</a>`;
+      }
+      const guide = $('#toolGuide');
+      if (guide) guide.classList.add('hidden');
+      return;
+    }
+
+    renderTool(tool);
+    if (lead) {
+      lead.textContent = `${t('toolPageIntroPrefix')} ${toolTitleById(tool)}`;
+    }
+    renderToolGuide(tool);
+    updateToolSeo(tool);
+    markRecent(tool);
   }
 
   function renderImageTool(tool, body) {
@@ -2002,7 +2281,9 @@
     }
 
     $$('.open-tool').forEach((button) => {
-      button.addEventListener('click', () => openModal(button.dataset.tool));
+      if (button.tagName === 'BUTTON') {
+        button.addEventListener('click', () => openModal(button.dataset.tool));
+      }
     });
 
     const closeModalButton = $('#closeModal');
@@ -2056,13 +2337,22 @@
     applyStoredTheme();
     const year = $('#year');
     if (year) year.textContent = new Date().getFullYear();
-    attachFavoriteButtons();
+    if (!isStandaloneToolPage) {
+      attachFavoriteButtons();
+    }
     bindEvents();
     applyLanguage();
-    renderQuickAccess();
+    if (!isStandaloneToolPage) {
+      renderQuickAccess();
+    }
 
     const params = new URLSearchParams(location.search);
     const requestedTool = params.get('tool');
+    if (isStandaloneToolPage) {
+      renderStandaloneToolPage(TOOL_IDS.includes(requestedTool) ? requestedTool : 'compress');
+      return;
+    }
+
     if (requestedTool && TOOL_IDS.includes(requestedTool)) {
       openModal(requestedTool, true);
     }

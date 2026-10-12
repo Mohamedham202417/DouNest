@@ -11,4 +11,21 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <url><loc>https://toolnest.example/tool.html?tool=compress</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=convert</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=json</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=diff</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=words</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=units</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=password</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=color</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=base64</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=url</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=csvjson</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=jwt</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=hash</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=regex</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=timestamp</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://toolnest.example/tool.html?tool=slug</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 </urlset>

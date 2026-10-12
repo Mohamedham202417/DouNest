@@ -314,6 +314,9 @@ button { cursor: pointer; }
   font-size: 12px;
   font-weight: 700;
   padding: 7px 10px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
 }
 
 .quick-empty {
@@ -764,6 +767,80 @@ input[type="color"] {
   margin: 8px 0;
 }
 
+.tool-page-main {
+  max-width: 980px;
+  margin: 0 auto 52px;
+  padding: 0 24px;
+}
+
+.tool-page-intro {
+  margin: 20px 0 18px;
+}
+
+.tool-page-intro h1 {
+  margin: 0 0 10px;
+  font-size: clamp(29px, 5vw, 42px);
+}
+
+.tool-lead {
+  margin: 0;
+  text-align: start;
+  max-width: none;
+}
+
+.tool-shell {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+}
+
+.tool-guide {
+  margin-top: 20px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--surface);
+  padding: 22px;
+}
+
+.tool-guide h2 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.tool-guide-summary {
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.tool-guide-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.tool-guide-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.tool-guide-card h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.tool-guide-card ul {
+  margin: 0;
+  padding-inline-start: 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
 .strength { font-size: 12px; font-weight: 800; }
 .strength.weak { color: var(--error); }
 .strength.medium { color: #d78a27; }
@@ -771,6 +848,7 @@ input[type="color"] {
 
 @media (max-width: 900px) {
   .tool-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tool-guide-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
@@ -785,6 +863,8 @@ input[type="color"] {
   .quick-columns { grid-template-columns: 1fr; }
   .onboarding-panel { margin: -14px 17px 26px; }
   .tools-section { padding: 0 17px 25px; }
+  .tool-page-main { padding: 0 17px; }
+  .tool-shell, .tool-guide { padding: 16px; }
   .tool-grid { gap: 11px; }
   .tool-card { padding: 16px; min-height: 230px; }
   .card-top { margin-bottom: 15px; }
