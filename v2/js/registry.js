@@ -151,7 +151,7 @@ export const TOOLS = [
     usage: { ar: ["اختر العدد والنوع.", "اضغط تنفيذ.", "انسخ النص."], en: ["Choose count and type.", "Click Run.", "Copy the text."] },
     explanation: { ar: ["نص لاتيني يُستخدم كحشو بصري."], en: ["Latin filler text for layouts."] },
     faq: [], related: ["word-counter", "text-case", "json-formatter"]
-  }
+  },
 /* ===== أدوات التحويل ===== */
 {
   slug: "pdf-to-word",
