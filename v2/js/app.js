@@ -169,7 +169,7 @@ async function renderToolPage({ slug }) {
 
   main.innerHTML = `
     <nav class="breadcrumb">
-      <a href="#/">ToolNest</a><span class="sep">›</span>
+      <a href="#/">DouNest</a><span class="sep">›</span>
       <a href="#/tools">${t("nav.allTools")}</a><span class="sep">›</span>
       <span class="current">${pick(tool.name)}</span>
     </nav>
@@ -309,7 +309,7 @@ function escapeHtml(s) {
 }
 
 /* ========= SEO: meta + JSON-LD ========= */
-const SITE = "https://mohamedham202417.github.io/ToolNest";
+const SITE = "https://mohamedham202417.github.io/DouNest";
 
 function setMeta(attr, key, val) {
   let el = document.querySelector(`meta[${attr}="${key}"]`);
@@ -323,7 +323,7 @@ function setLink(rel, href) {
 }
 
 function injectSEO(tool) {
-  document.title = `${pick(tool.name)} — ${t("hero.title")} | ToolNest`;
+  document.title = `${pick(tool.name)} — ${t("hero.title")} | DouNest`;
   setMeta("name", "description", pick(tool.short));
   setMeta("property", "og:title", document.title);
   setMeta("property", "og:description", pick(tool.short));

@@ -1,18 +1,20 @@
 {
-  "name": "ToolNest — صندوق أدواتك اليومية",
-  "short_name": "ToolNest",
-  "description": "أدوات ويب تعمل محليًا: JSON, Base64, JWT, Hash وغيرها.",
+  "name": "DouNest — أدواتك اليومية في مكان واحد",
+  "short_name": "DouNest",
+  "description": "أدوات ويب مجانية تعمل محليًا داخل متصفحك: JSON وBase64 وJWT وPDF وQR وضغط الصور وغيرها.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
-  "background_color": "#0b1220",
-  "theme_color": "#0ea5e9",
+  "background_color": "#050b1d",
+  "theme_color": "#1478ff",
   "lang": "ar",
   "dir": "rtl",
   "icons": [
-    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' rx='32' fill='%230ea5e9'/%3E%3Ctext x='96' y='128' font-size='110' text-anchor='middle' fill='white'%3E🪺%3C/text%3E%3C/svg%3E",
-      "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
-    { "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='96' fill='%230ea5e9'/%3E%3Ctext x='256' y='340' font-size='300' text-anchor='middle' fill='white'%3E🪺%3C/text%3E%3C/svg%3E",
-      "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" }
+    {
+      "src": "assets/dounest-logo.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

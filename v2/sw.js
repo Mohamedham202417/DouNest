@@ -1,4 +1,4 @@
-const CACHE = "toolnest-v2-10lang";
+const CACHE = "dounest-v2-10lang";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./assets/styles.css",
   "./js/app.js", "./js/router.js", "./js/storage.js", "./js/toast.js",

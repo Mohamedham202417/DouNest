@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://mohamedham202417.github.io/ToolNest/</loc><priority>1.0</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/about</loc><priority>0.5</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/about</loc><priority>0.5</priority></url>
   <!-- أضف رابطًا لكل أداة: -->
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/json-formatter</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/base64</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/url-encoder</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/jwt-decoder</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/hash-generator</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/uuid-generator</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/password-generator</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/color-converter</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/word-counter</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/text-case</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/pdf-to-txt</loc><priority>1.0</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/qr-code</loc><priority>1.0</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/image-compressor</loc><priority>1.0</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/color-picker</loc><priority>0.9</priority></url>
-  <url><loc>https://mohamedham202417.github.io/ToolNest/#/tools/lorem-ipsum</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/json-formatter</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/base64</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/url-encoder</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/jwt-decoder</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/hash-generator</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/uuid-generator</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/password-generator</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/color-converter</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/word-counter</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/text-case</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/pdf-to-txt</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/qr-code</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/image-compressor</loc><priority>1.0</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/color-picker</loc><priority>0.9</priority></url>
+  <url><loc>https://mohamedham202417.github.io/DouNest/#/tools/lorem-ipsum</loc><priority>0.9</priority></url>
 </urlset>

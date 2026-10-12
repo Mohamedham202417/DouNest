@@ -1,4 +1,4 @@
-# ToolNest — Free Browser Tools
+# DouNest — Free Browser Tools
 
 A mobile-first, bilingual, static tools website.
 
@@ -34,7 +34,7 @@ python3 -m http.server 8080
 
 ## Enhanced modular version
 
-The implementation from the shared design is available at [`v2/`](v2/), while the existing homepage and its current tools remain intact. On GitHub Pages, open `/ToolNest/v2/` to use the enhanced version.
+The implementation from the shared design is available at [`v2/`](v2/), while the existing homepage and its current tools remain intact. On GitHub Pages, open `/DouNest/v2/` to use the enhanced version.
 
 The modular version includes bilingual Arabic/English navigation, responsive styling, hash-based tool pages, favorites, recent tools, local ratings/comments, and PWA support. Its included tools are JSON formatter, Base64, URL encoder/decoder, JWT decoder, SHA hash generator, UUID generator, password generator, color converter, word counter, and text-case converter.
 

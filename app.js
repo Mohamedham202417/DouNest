@@ -3,7 +3,7 @@
 
   const translations = {
     ar: {
-      pageTitle: 'ToolNest — أدوات تقنية مجانية',
+      pageTitle: 'DouNest — أدوات تقنية مجانية',
       metaDescription: 'أدوات تقنية مجانية داخل المتصفح: ضغط الصور، تحويل الصيغ، تنسيق JSON، مقارنة النصوص، محول الوحدات، مولد كلمات المرور، عداد الكلمات، محول الألوان، Base64، وترميز الروابط.',
       explore: 'استكشف الأدوات',
       v2Link: 'جرّب الإصدار المطوّر',
@@ -179,7 +179,7 @@
     },
 
     en: {
-      pageTitle: 'ToolNest — Free Browser Tools',
+      pageTitle: 'DouNest — Free Browser Tools',
       metaDescription: 'Free browser utilities: image compression, format conversion, JSON formatting, text comparison, unit conversion, password generator, word counter, color converter, Base64, and URL encoding.',
       explore: 'Explore tools',
       v2Link: 'Try the enhanced version',
@@ -810,7 +810,7 @@
         <button type="button" class="action-btn" id="processImage">
           ${t(isCompress ? 'compress' : 'convert')}
         </button>
-        <a id="downloadImage" class="secondary-btn hidden" download="toolnest-image.webp">
+        <a id="downloadImage" class="secondary-btn hidden" download="dounest-image.webp">
           ${t('downloadFile')}
         </a>
       </div>
@@ -982,7 +982,7 @@
 
           const extension = extensionMap[mime] || 'png';
           download.href = outUrl;
-          download.download = `toolnest-image.${extension}`;
+          download.download = `dounest-image.${extension}`;
           download.classList.remove('hidden');
 
           const sizeLine = `${t('sizeBefore')}: ${formatBytes(file.size)} · ${t('sizeAfter')}: ${formatBytes(blob.size)}`;
@@ -1015,7 +1015,7 @@
   function renderJsonTool(body) {
     body.innerHTML = `
       <label for="jsonInput">${t('jsonInput')}</label>
-      <textarea id="jsonInput" spellcheck="false" placeholder='{"name":"ToolNest","free":true}'></textarea>
+      <textarea id="jsonInput" spellcheck="false" placeholder='{"name":"DouNest","free":true}'></textarea>
 
       <div class="button-row">
         <button type="button" class="action-btn" id="formatJson">${t('formatJson')}</button>
