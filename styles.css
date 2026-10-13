@@ -638,6 +638,24 @@ footer p { margin: 0; flex: 1; }
   accent-color: var(--accent);
 }
 
+.tool-guide-box {
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--input);
+  font-size: 12px;
+}
+
+.tool-guide-box h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

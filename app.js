@@ -48,6 +48,7 @@
       privacyTitle: 'ملفاتك تبقى عندك.',
       privacyCopy: 'أدوات الصور تعمل محليًا داخل المتصفح. لا يتم رفع الملفات إلى خادم في هذا الإصدار.',
       footerText: 'أدوات عملية، بلا تعقيد.',
+      articlesLink: 'المقالات والدروس',
       privacyLink: 'الخصوصية',
       termsLink: 'الشروط',
       aboutLink: 'حول',
@@ -175,7 +176,26 @@
       slugOutputLabel: 'Slug الناتج',
       makeSlug: 'إنشاء Slug',
       cleanText: 'تنظيف النص',
-      copiedUrl: 'تم نسخ الرابط المباشر.'
+      copiedUrl: 'تم نسخ الرابط المباشر.',
+      sqlTitle: 'منسّق SQL',
+      sqlDesc: 'نسّق ورتّب استعلامات SQL وأوامر قواعد البيانات بوضوح.',
+      codegenTitle: 'JSON إلى كود',
+      codegenDesc: 'حوّل بيانات JSON إلى واجهات TypeScript أو هياكل Go و Python تلقائياً.',
+      uuidTitle: 'مولّد UUID / ULID',
+      uuidDesc: 'أنشئ معرّفات فريدة عشوائية (UUID v4 / ULID) بصيغ متعددة.',
+      resizerTitle: 'تغيير حجم الصور',
+      resizerDesc: 'عدّل أبعاد الصور (العرض والارتفاع) مخصصاً مع الحفاظ على التناسب.',
+      formatSql: 'تنسيق SQL',
+      sqlInput: 'استعلام SQL',
+      generateCode: 'توليد الكود',
+      targetLang: 'اللغة المستهدفة',
+      uuidCount: 'العدد',
+      uuidType: 'النوع',
+      generateUuid: 'توليد المعرفات',
+      imageWidth: 'العرض (px)',
+      imageHeight: 'الارتفاع (px)',
+      lockRatio: 'الحفاظ على نسبة العرض والارتفاع',
+      resizeImage: 'تعديل الحجم'
     },
 
     en: {
@@ -224,6 +244,7 @@
       privacyTitle: 'Your files stay yours.',
       privacyCopy: 'Image tools run locally in your browser. This version does not upload files to a server.',
       footerText: 'Useful tools, without the fuss.',
+      articlesLink: 'Articles & Guides',
       privacyLink: 'Privacy',
       termsLink: 'Terms',
       aboutLink: 'About',
@@ -351,7 +372,26 @@
       slugOutputLabel: 'Slug output',
       makeSlug: 'Generate slug',
       cleanText: 'Clean text',
-      copiedUrl: 'Direct URL copied.'
+      copiedUrl: 'Direct URL copied.',
+      sqlTitle: 'SQL Formatter',
+      sqlDesc: 'Format and beautify SQL queries and database commands clearly.',
+      codegenTitle: 'JSON to Code',
+      codegenDesc: 'Convert JSON data into TypeScript interfaces, Go structs, or Python TypedDict automatically.',
+      uuidTitle: 'UUID / ULID Generator',
+      uuidDesc: 'Generate random unique identifiers (UUID v4 / ULID) in multiple formats.',
+      resizerTitle: 'Image Resizer',
+      resizerDesc: 'Change image dimensions (width & height) with custom aspect ratio lock.',
+      formatSql: 'Format SQL',
+      sqlInput: 'SQL query',
+      generateCode: 'Generate code',
+      targetLang: 'Target language',
+      uuidCount: 'Count',
+      uuidType: 'Format',
+      generateUuid: 'Generate IDs',
+      imageWidth: 'Width (px)',
+      imageHeight: 'Height (px)',
+      lockRatio: 'Lock aspect ratio',
+      resizeImage: 'Resize image'
     }
   };
 
@@ -364,7 +404,7 @@
   let lastFocused = null;
   const TOOL_IDS = [
     'compress', 'convert', 'json', 'diff', 'words', 'units', 'password', 'color', 'base64', 'url',
-    'csvjson', 'jwt', 'hash', 'regex', 'timestamp', 'slug'
+    'csvjson', 'jwt', 'hash', 'regex', 'timestamp', 'slug', 'sql', 'codegen', 'uuid', 'resizer'
   ];
   const FAVORITES_KEY = 'toolnest-favorites';
   const RECENTS_KEY = 'toolnest-recents';
@@ -531,7 +571,11 @@
       hash: 'hashTitle',
       regex: 'regexTitle',
       timestamp: 'timestampTitle',
-      slug: 'slugTitle'
+      slug: 'slugTitle',
+      sql: 'sqlTitle',
+      codegen: 'codegenTitle',
+      uuid: 'uuidTitle',
+      resizer: 'resizerTitle'
     };
     return t(keyMap[tool] || tool);
   }
@@ -734,7 +778,11 @@
       hash: 'hashTitle',
       regex: 'regexTitle',
       timestamp: 'timestampTitle',
-      slug: 'slugTitle'
+      slug: 'slugTitle',
+      sql: 'sqlTitle',
+      codegen: 'codegenTitle',
+      uuid: 'uuidTitle',
+      resizer: 'resizerTitle'
     };
 
     $('#modalTitle').textContent = t(titleMap[tool] || 'workspace');
@@ -769,6 +817,14 @@
       renderTimestampTool(body);
     } else if (tool === 'slug') {
       renderSlugTool(body);
+    } else if (tool === 'sql') {
+      renderSqlTool(body);
+    } else if (tool === 'codegen') {
+      renderCodegenTool(body);
+    } else if (tool === 'uuid') {
+      renderUuidTool(body);
+    } else if (tool === 'resizer') {
+      renderResizerTool(body);
     }
 
     if (!$('.tool-privacy-hint', body)) {
@@ -777,6 +833,76 @@
       hint.textContent = t('localPrivacyHint');
       body.prepend(hint);
     }
+
+    renderToolGuide(tool, body);
+  }
+
+  function renderToolGuide(tool, body) {
+    const guides = {
+      compress: {
+        ar: {
+          steps: ['اختر صورة من جهازك أو اسحبها إلى مربع التحميل.', 'حدد نسبة الجودة المطلوب الضغط بناءً عليها.', 'اضغط على "ضغط الصورة" لمباشرة المعالجة.', 'احفظ الصورة المضغوطة بالضغط على "تنزيل الصورة".'],
+          useCases: 'تسريع تحميل صفحات الموقع، تقليل استهلاك البيانات، وتجهيز الصور للمرفقات.',
+          faq: 'معالجة الصور تتم بالكامل داخل متصفحك دون إرسال أي صورة لأي خادم.'
+        },
+        en: {
+          steps: ['Select or drag & drop an image into the drop zone.', 'Adjust the compression quality percentage.', 'Click "Compress image" to execute.', 'Save the compressed file via "Download image".'],
+          useCases: 'Boosting webpage performance, reducing bandwidth, and preparing email attachments.',
+          faq: 'Processing is performed 100% locally in your browser.'
+        }
+      },
+      json: {
+        ar: {
+          steps: ['ألصق نص JSON غير المنسق.', 'اضغط على "تنسيق والتحقق".', 'شاهد النتيجة المنسقة مع كشف أخطاء البنية إن وجدت.', 'انسخ النتيجة بنقرة واحدة.'],
+          useCases: 'فحص استجابات API، وترتيب ملفات الإعدادات، وإصلاح أخطاء الأقواس والفاصلات.',
+          faq: 'البيانات المعالجة لا تغادر متصفحك إطلاقاً.'
+        },
+        en: {
+          steps: ['Paste unformatted JSON text.', 'Click "Format & validate".', 'View formatted JSON or line-by-line syntax error messages.', 'Click "Copy" to copy output.'],
+          useCases: 'API payload inspection, formatting configs, and debugging syntax errors.',
+          faq: 'Data remains private inside your local browser memory.'
+        }
+      },
+      sql: {
+        ar: {
+          steps: ['أدخل استعلام SQL الخاص بك.', 'اضغط على "تنسيق SQL".', 'استعرض الأوامر مرتبة ومبرزة للكلمات المفتاحية.', 'انسخ الاستعلام المنسق.'],
+          useCases: 'قراءة وتنظيم الاستعلامات المعقدة وتوثيق قواعد البيانات.',
+          faq: 'يدعم جميع جمل SQL الشائعة مثل SELECT, JOIN, WHERE, GROUP BY.'
+        },
+        en: {
+          steps: ['Paste your raw SQL query.', 'Click "Format SQL".', 'Review formatted output with capitalized keywords.', 'Copy formatted query.'],
+          useCases: 'Cleaning up complex SQL queries for documentation and code reviews.',
+          faq: 'Supports standard clauses including SELECT, JOIN, WHERE, and GROUP BY.'
+        }
+      }
+    };
+
+    const guide = guides[tool]?.[lang] || {
+      steps: [
+        lang === 'ar' ? 'أدخل البيانات أو اختر الملف المطلوب.' : 'Input data or select the target file.',
+        lang === 'ar' ? 'انقر على زر المعالجة للتنفيذ اللحظي.' : 'Click the process button for instant execution.',
+        lang === 'ar' ? 'استعرض النتيجة وقم بنسخها أو تنزيلها.' : 'Review output and copy or download it.'
+      ],
+      useCases: lang === 'ar' ? 'إنجاز المهام التقنية اليومية بسرعة وسلاسة مع الضمان الكامل للخصوصية.' : 'Daily technical tasks handled quickly with maximum privacy.',
+      faq: lang === 'ar' ? 'تتم جميع المعالجات محلياً في ذاكرة جهازك دون رفع أي بيانات إلى خادم خارجي.' : 'All operations run locally in your browser memory with zero server uploads.'
+    };
+
+    const guideBox = document.createElement('div');
+    guideBox.className = 'tool-guide-box';
+    guideBox.style.cssText = 'margin-top:22px; padding:16px; border:1px solid var(--line); border-radius:14px; background:var(--input); font-size:12px;';
+
+    guideBox.innerHTML = `
+      <h4 style="margin:0 0 8px; font-size:13px; color:var(--accent); display:flex; align-items:center; gap:6px;">
+        <span>📖</span> <span>${lang === 'ar' ? 'دليل الاستخدام والأسئلة الشائعة' : 'User Guide & FAQ'}</span>
+      </h4>
+      <ol style="padding-inline-start:18px; margin:6px 0 10px; line-height:1.7;">
+        ${guide.steps.map((s) => `<li>${s}</li>`).join('')}
+      </ol>
+      <p style="margin:5px 0; color:var(--muted);"><strong>${lang === 'ar' ? 'حالات الاستخدام:' : 'Use Cases:'}</strong> ${guide.useCases}</p>
+      <p style="margin:5px 0; color:var(--muted);"><strong>${lang === 'ar' ? 'الأمان والخصوصية:' : 'Security & Privacy:'}</strong> ${guide.faq}</p>
+    `;
+
+    body.appendChild(guideBox);
   }
 
   function renderImageTool(tool, body) {
@@ -1962,6 +2088,316 @@
       source.value = source.value.replace(/\s+/g, ' ').trim();
       output.value = normalize(source.value);
       status('');
+    });
+  }
+
+  function formatSqlText(sql) {
+    if (!sql) return '';
+    const keywords = [
+      'SELECT', 'FROM', 'WHERE', 'AND', 'OR', 'ORDER BY', 'GROUP BY', 'HAVING', 'LIMIT', 'OFFSET',
+      'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'CROSS JOIN', 'JOIN', 'ON', 'INSERT INTO', 'VALUES',
+      'UPDATE', 'SET', 'DELETE FROM', 'CREATE TABLE', 'ALTER TABLE', 'DROP TABLE', 'AS', 'IN',
+      'NOT', 'LIKE', 'BETWEEN', 'UNION ALL', 'UNION', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END'
+    ];
+    let formatted = sql;
+    keywords.forEach((kw) => {
+      const regex = new RegExp(`\\b${kw}\\b`, 'gi');
+      formatted = formatted.replace(regex, kw);
+    });
+    const majorClauses = [
+      'SELECT', 'FROM', 'WHERE', 'ORDER BY', 'GROUP BY', 'HAVING', 'LIMIT', 'OFFSET',
+      'INNER JOIN', 'LEFT JOIN', 'RIGHT JOIN', 'JOIN', 'INSERT INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE FROM'
+    ];
+    majorClauses.forEach((clause) => {
+      const regex = new RegExp(`(?<=\\s|^)(${clause})(?=\\s)`, 'g');
+      formatted = formatted.replace(regex, '\n$1');
+    });
+    return formatted.trim();
+  }
+
+  function renderSqlTool(body) {
+    body.innerHTML = `
+      <label for="sqlSource">${t('sqlInput')}</label>
+      <textarea id="sqlSource" spellcheck="false" placeholder="select id, name from users where status = 'active' order by created_at desc"></textarea>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="formatSqlBtn">${t('formatSql')}</button>
+        <button type="button" class="secondary-btn" id="copySqlBtn">${t('copy')}</button>
+      </div>
+      <label for="sqlResult">${t('output')}</label>
+      <pre id="sqlResult" class="result-box hidden"></pre>
+    `;
+    const source = $('#sqlSource');
+    const result = $('#sqlResult');
+    $('#formatSqlBtn').addEventListener('click', () => {
+      const formatted = formatSqlText(source.value);
+      result.textContent = formatted;
+      result.classList.remove('hidden');
+      status(t('jsonValid'), 'success');
+    });
+    $('#copySqlBtn').addEventListener('click', async () => {
+      await copyText(result.textContent || source.value);
+      status(t('copied'), 'success');
+    });
+  }
+
+  function renderCodegenTool(body) {
+    body.innerHTML = `
+      <label for="jsonSource">${t('jsonInput')}</label>
+      <textarea id="jsonSource" spellcheck="false" placeholder='{"id": 1, "name": "DouNest", "active": true}'></textarea>
+      <label for="targetLangSelect">${t('targetLang')}</label>
+      <select id="targetLangSelect">
+        <option value="ts">TypeScript Interface</option>
+        <option value="go">Go Struct</option>
+        <option value="py">Python TypedDict</option>
+      </select>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="generateCodeBtn">${t('generateCode')}</button>
+        <button type="button" class="secondary-btn" id="copyCodeBtn">${t('copy')}</button>
+      </div>
+      <label for="codeResult">${t('output')}</label>
+      <pre id="codeResult" class="result-box hidden"></pre>
+    `;
+    const source = $('#jsonSource');
+    const result = $('#codeResult');
+    const langSelect = $('#targetLangSelect');
+
+    function toTypescript(obj, name = 'RootObject') {
+      if (typeof obj !== 'object' || obj === null) return `type ${name} = ${typeof obj};`;
+      if (Array.isArray(obj)) return `type ${name} = ${obj.length ? typeof obj[0] : 'any'}[];`;
+      const lines = [`interface ${name} {`];
+      for (const [key, val] of Object.entries(obj)) {
+        let type = typeof val;
+        if (val === null) type = 'any';
+        else if (Array.isArray(val)) type = `${val.length ? typeof val[0] : 'any'}[]`;
+        else if (type === 'object') type = 'Record<string, any>';
+        lines.push(`  ${key}: ${type};`);
+      }
+      lines.push('}');
+      return lines.join('\n');
+    }
+
+    function toGo(obj, name = 'RootObject') {
+      if (typeof obj !== 'object' || obj === null) return `type ${name} interface{}`;
+      const capitalize = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+      const lines = [`type ${name} struct {`];
+      for (const [key, val] of Object.entries(obj)) {
+        let type = 'interface{}';
+        if (typeof val === 'string') type = 'string';
+        else if (typeof val === 'number') type = Number.isInteger(val) ? 'int' : 'float64';
+        else if (typeof val === 'boolean') type = 'bool';
+        else if (Array.isArray(val)) type = '[]interface{}';
+        lines.push(`\t${capitalize(key)} ${type} \`json:"${key}"\``);
+      }
+      lines.push('}');
+      return lines.join('\n');
+    }
+
+    function toPython(obj, name = 'RootObject') {
+      const lines = [`from typing import TypedDict, List, Any\n\nclass ${name}(TypedDict):`];
+      if (typeof obj !== 'object' || obj === null) {
+        lines.push('    pass');
+        return lines.join('\n');
+      }
+      const keys = Object.keys(obj);
+      if (!keys.length) {
+        lines.push('    pass');
+        return lines.join('\n');
+      }
+      for (const [key, val] of Object.entries(obj)) {
+        let type = 'Any';
+        if (typeof val === 'string') type = 'str';
+        else if (typeof val === 'number') type = Number.isInteger(val) ? 'int' : 'float';
+        else if (typeof val === 'boolean') type = 'bool';
+        else if (Array.isArray(val)) type = 'List[Any]';
+        lines.push(`    ${key}: ${type}`);
+      }
+      return lines.join('\n');
+    }
+
+    $('#generateCodeBtn').addEventListener('click', () => {
+      try {
+        const parsed = JSON.parse(source.value);
+        const lang = langSelect.value;
+        let code = '';
+        if (lang === 'ts') code = toTypescript(parsed);
+        else if (lang === 'go') code = toGo(parsed);
+        else code = toPython(parsed);
+        result.textContent = code;
+        result.classList.remove('hidden');
+        status(t('jsonValid'), 'success');
+      } catch (err) {
+        result.classList.add('hidden');
+        status(t('invalidJson'), 'error');
+      }
+    });
+
+    $('#copyCodeBtn').addEventListener('click', async () => {
+      await copyText(result.textContent);
+      status(t('copied'), 'success');
+    });
+  }
+
+  function renderUuidTool(body) {
+    body.innerHTML = `
+      <div class="field-row">
+        <div>
+          <label for="uuidCount">${t('uuidCount')}</label>
+          <input id="uuidCount" type="number" min="1" max="50" value="5">
+        </div>
+        <div>
+          <label for="uuidType">${t('uuidType')}</label>
+          <select id="uuidType">
+            <option value="v4">UUID v4 (Standard)</option>
+            <option value="v4-upper">UUID v4 (UPPERCASE)</option>
+            <option value="v4-nodash">UUID v4 (No Hyphens)</option>
+            <option value="ulid">ULID</option>
+          </select>
+        </div>
+      </div>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="generateUuidBtn">${t('generateUuid')}</button>
+        <button type="button" class="secondary-btn" id="copyUuidBtn">${t('copy')}</button>
+      </div>
+      <label for="uuidResult">${t('output')}</label>
+      <textarea id="uuidResult" readonly></textarea>
+    `;
+
+    function makeUuidV4() {
+      if (crypto.randomUUID) return crypto.randomUUID();
+      return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) =>
+        (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+      );
+    }
+
+    function makeUlid() {
+      const ENCODING = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+      const now = Date.now();
+      let timeStr = '';
+      let time = now;
+      for (let i = 0; i < 10; i++) {
+        timeStr = ENCODING[time % 32] + timeStr;
+        time = Math.floor(time / 32);
+      }
+      const randomBytes = new Uint8Array(10);
+      crypto.getRandomValues(randomBytes);
+      let randStr = '';
+      for (let i = 0; i < 10; i++) {
+        randStr += ENCODING[randomBytes[i] % 32];
+      }
+      return timeStr + randStr;
+    }
+
+    function generate() {
+      const count = Math.min(50, Math.max(1, Number($('#uuidCount').value) || 1));
+      const type = $('#uuidType').value;
+      const list = [];
+      for (let i = 0; i < count; i++) {
+        if (type === 'ulid') {
+          list.push(makeUlid());
+        } else {
+          let id = makeUuidV4();
+          if (type === 'v4-upper') id = id.toUpperCase();
+          if (type === 'v4-nodash') id = id.replace(/-/g, '');
+          list.push(id);
+        }
+      }
+      $('#uuidResult').value = list.join('\n');
+      status('');
+    }
+
+    $('#generateUuidBtn').addEventListener('click', generate);
+    $('#copyUuidBtn').addEventListener('click', async () => {
+      await copyText($('#uuidResult').value);
+      status(t('copied'), 'success');
+    });
+
+    generate();
+  }
+
+  function renderResizerTool(body) {
+    body.innerHTML = `
+      <label for="resizeFile">${t('selectImage')}</label>
+      <input id="resizeFile" type="file" accept="image/*">
+      <img id="resizePreview" class="preview-img hidden" alt="">
+      <div class="field-row">
+        <div>
+          <label for="resizeWidth">${t('imageWidth')}</label>
+          <input id="resizeWidth" type="number" min="1" max="10000">
+        </div>
+        <div>
+          <label for="resizeHeight">${t('imageHeight')}</label>
+          <input id="resizeHeight" type="number" min="1" max="10000">
+        </div>
+      </div>
+      <label class="check" style="margin-top:10px;">
+        <input id="lockRatio" type="checkbox" checked> ${t('lockRatio')}
+      </label>
+      <div class="button-row">
+        <button type="button" class="action-btn" id="processResize">${t('resizeImage')}</button>
+        <a id="downloadResize" class="secondary-btn hidden" download="resized-image.png">${t('downloadFile')}</a>
+      </div>
+    `;
+
+    const fileInput = $('#resizeFile');
+    const preview = $('#resizePreview');
+    const widthInput = $('#resizeWidth');
+    const heightInput = $('#resizeHeight');
+    const lockCheck = $('#lockRatio');
+    const download = $('#downloadResize');
+
+    let img = null;
+    let aspectRatio = 1;
+
+    fileInput.addEventListener('change', () => {
+      const file = fileInput.files?.[0];
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      const temp = new Image();
+      temp.onload = () => {
+        img = temp;
+        preview.src = url;
+        preview.classList.remove('hidden');
+        widthInput.value = temp.naturalWidth;
+        heightInput.value = temp.naturalHeight;
+        aspectRatio = temp.naturalWidth / temp.naturalHeight;
+      };
+      temp.src = url;
+    });
+
+    widthInput.addEventListener('input', () => {
+      if (lockCheck.checked && aspectRatio && widthInput.value) {
+        heightInput.value = Math.round(Number(widthInput.value) / aspectRatio);
+      }
+    });
+
+    heightInput.addEventListener('input', () => {
+      if (lockCheck.checked && aspectRatio && heightInput.value) {
+        widthInput.value = Math.round(Number(heightInput.value) * aspectRatio);
+      }
+    });
+
+    $('#processResize').addEventListener('click', () => {
+      if (!img) {
+        status(t('chooseFile'), 'error');
+        return;
+      }
+      const w = Number(widthInput.value);
+      const h = Number(heightInput.value);
+      if (!w || !h) return;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const outUrl = URL.createObjectURL(blob);
+        download.href = outUrl;
+        download.classList.remove('hidden');
+        status(t('imageReady'), 'success');
+      }, 'image/png');
     });
   }
 
