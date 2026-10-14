@@ -1,19 +1,80 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>404 — الصفحة غير موجودة</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>DouNest — أدوات تقنية مجانية</title>
+<meta name="description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mohamedham202417.github.io/DouNest/" />
+<link rel="manifest" href="/DouNest/manifest.json" />
+<link rel="icon" type="image/png" sizes="32x32" href="/DouNest/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="/DouNest/assets/icon-192.png" />
+<link rel="apple-touch-icon" href="/DouNest/assets/icon-192.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DouNest" />
+<meta property="og:title" content="DouNest — أدوات تقنية مجانية" />
+<meta property="og:description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta property="og:url" content="https://mohamedham202417.github.io/DouNest/" />
+<meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<meta property="og:locale" content="ar_AR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="DouNest — أدوات تقنية مجانية" />
+<meta name="twitter:description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/DouNest/assets/styles.css" />
+<script>
+  try {
+    var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
+    if (!_t) _t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = _t;
+  } catch (e) {}
+</script>
+<script src="/DouNest/config.js"></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
-<body dir="rtl">
-  <main style="min-height:100vh; display:grid; place-items:center; padding:24px; text-align:center;">
-    <div>
-      <p class="section-kicker">404</p>
-      <h1 style="margin:0 0 12px;">الصفحة غير موجودة</h1>
-      <p style="color:var(--muted); margin:0 0 20px;">يبدو أنك وصلت إلى رابط غير صحيح.</p>
-      <a class="action-btn" href="index.html">العودة إلى الرئيسية</a>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/DouNest/" class="brand" aria-label="DouNest">
+        <img src="/DouNest/assets/dounest-logo.png" class="brand-logo" alt="DouNest" width="38" height="38" />
+        <span class="brand-name">DouNest</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a href="/DouNest/">الرئيسية</a>
+        <a href="/DouNest/tools/">كل الأدوات</a>
+        <a href="/DouNest/rare/">أدوات نادرة</a>
+        <a href="/DouNest/ai/">دليل AI</a>
+        <a href="/DouNest/articles/">المقالات</a>
+        <a href="/DouNest/about/">حول</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <div id="lang-menu" class="lang-menu"></div>
+      </div>
     </div>
+  </header>
+  <main id="main" class="container" role="main" tabindex="-1">
+<div class="empty notfound"><h1>⏳</h1><p>جارٍ التحميل… / Loading…</p></div>
   </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <nav class="footer-nav" aria-label="Legal">
+        <a href="/DouNest/privacy/">سياسة الخصوصية</a>
+        <a href="/DouNest/terms/">شروط الاستخدام</a>
+        <a href="/DouNest/ai/">دليل AI</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="/DouNest/js/app.js"></script>
 </body>
 </html>

@@ -1,0 +1,58 @@
+/**
+ * ============================================================
+ * DouNest v3 — Central configuration (single source of truth)
+ * ============================================================
+ * Edit this file, then run `node build.mjs` to regenerate the
+ * SEO landing pages, sitemap.xml and sw.js.
+ *
+ * IMPORTANT values for you:
+ *  - origin + repoPath  : where the site lives (GitHub Pages)
+ *  - adsense.client     : your AdSense publisher id (ca-pub-XXXX)
+ *  - affiliateId        : your affiliate/sub id used by affiliate links
+ *  - featured           : paid placements you sell to tool owners
+ *  - support.url        : your BuyMeACoffee (or Ko-fi) page
+ *  - analytics.gaId     : GA4 measurement id (G-XXXXXXX)
+ */
+var DouNestConfig = {
+  /* ---- Site identity & hosting ---- */
+  siteName: "DouNest",
+  origin: "https://mohamedham202417.github.io",
+  repoPath: "DouNest",        // "" when using a custom domain at site root
+  base: "auto",               // "auto" detects /DouNest/ automatically; or force "/" or "/DouNest/"
+  twitter: "",                // e.g. "@yourhandle"
+
+  /* ---- 1) Google AdSense ----
+     Fill client + per-position slot ids after approval.
+     While empty, reserved (invisible-to-users) placeholders are rendered. */
+  adsense: {
+    client: "",               // "ca-pub-XXXXXXXXXXXXXXXX"
+    slots: { top: "", inline: "", footer: "" }
+  },
+
+  /* ---- 2) Affiliate program ----
+     affiliateId is appended to outbound links of domains mapped here.
+     Example: "hostinger.com": "ref"  ->  ?ref=YOUR_ID          */
+  affiliateId: "",
+  affiliates: {
+    // "hostinger.com": "ref",
+    // "namecheap.com": "ref",
+    // "nordvpn.com": "ref"
+  },
+
+  /* ---- 3) Featured / sponsored placements (you sell these) ----
+     Example:
+     featured: [
+       { title: "CoolTool", desc: "What it does", url: "https://…", img: "https://…" }
+     ]                                                            */
+  featured: [],
+
+  /* ---- 4) Support / donation ---- */
+  support: {
+    url: "https://www.buymeacoffee.com/"   // <- put your page here
+  },
+
+  /* ---- Analytics ---- */
+  analytics: {
+    gaId: ""                  // "G-XXXXXXXXXX" (leave "" to disable)
+  }
+};

@@ -1,0 +1,10 @@
+{
+  "name": "dounest-v3",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "description": "DouNest — free browser tools. Static site + SEO page generator.",
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

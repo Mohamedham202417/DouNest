@@ -1,0 +1,520 @@
+#!/usr/bin/env node
+/**
+ * ============================================================
+ * DouNest v3 — Build script (SEO page generator)
+ * ============================================================
+ * Usage:  node build.mjs
+ *
+ * Generates:
+ *   1. tools/<slug>/index.html   — 30 crawlable landing pages with
+ *      prerendered Arabic content (usage + explanation + FAQ) and full
+ *      meta/JSON-LD. The SPA hydrates the interactive workspace.
+ *   2. articles/<slug>/index.html
+ *   3. about|privacy|terms/index.html
+ *   4. 404.html — SPA fallback for GitHub Pages clean URLs
+ *   5. sitemap.xml — valid, fragment-free URLs
+ *   6. sw.js — service worker with a synced asset list (fixes the v2
+ *      cache/query mismatch)
+ *
+ * Single source of truth: config.js + js/registry.js + js/articles.js
+ */
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { TOOLS } from "./js/registry.js";
+import { getArticles } from "./js/articles.js";
+import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
+import { RARE_TOOLS as RARE_TOOLS_DATA } from "./js/rare-tools.js";
+
+const ROOT = dirname(fileURLToPath(import.meta.url));
+const NOW = new Date().toISOString().slice(0, 10);
+
+/* ---------- read config.js (plain JS object assignment) ---------- */
+const cfgSrc = readFileSync(join(ROOT, "config.js"), "utf-8");
+const m = cfgSrc.match(/=\s*(\{[\s\S]*\});?\s*$/m);
+if (!m) throw new Error("cannot parse config.js");
+const CFG = new Function(`return ${m[1]}`)();
+
+const BASE = CFG.repoPath ? `/${CFG.repoPath}/` : "/";
+const SITE = (CFG.origin || "").replace(/\/$/, "") + BASE;
+
+/* ---------- i18n mini-pack (build-time strings) ---------- */
+const L = {
+  ar: {
+    allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
+    faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "يعمل محلياً في متصفحك",
+    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI",
+    about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام",
+    back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن"
+  },
+  en: {
+    allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
+    faq: "FAQ", related: "Related tools", local: "Runs locally in your browser",
+    home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory",
+    about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms",
+    back: "Back to all tools", read: "Read the article", runIn: "Open the tool"
+  }
+};
+const pick = (obj, lang) => (obj && (obj[lang] || obj.en)) || "";
+const relPrefix = (p) => "../".repeat(p.split("/").filter(Boolean).length); // from page folder to site root
+const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+/* ---------- shared page template (absolute asset paths) ---------- */
+function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false }) {
+  const url = SITE + canonicalPath;
+  // Relative prefix that reaches the site root from this page's folder.
+  // Works on GitHub Pages (/DouNest/tools/x/), custom domains and local servers alike.
+  const depth = canonicalPath ? canonicalPath.split("/").filter(Boolean).length : 0;
+  const up = absolute ? BASE : relPrefix(canonicalPath);
+  const R = (p) => up + p; // resolve a root-relative path from this page
+  const ld = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "DouNest",
+      "url": SITE,
+      "inLanguage": lang,
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${SITE}tools/?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    },
+    ...jsonLd
+  ].map(g => `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`).join("\n");
+
+  return `<!DOCTYPE html>
+<html lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}" />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="${url}" />
+<link rel="manifest" href="${R("manifest.json")}" />
+<link rel="icon" type="image/png" sizes="32x32" href="${R("assets/favicon-32.png")}" />
+<link rel="icon" type="image/png" sizes="192x192" href="${R("assets/icon-192.png")}" />
+<link rel="apple-touch-icon" href="${R("assets/icon-192.png")}" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DouNest" />
+<meta property="og:title" content="${esc(title)}" />
+<meta property="og:description" content="${esc(description)}" />
+<meta property="og:url" content="${url}" />
+<meta property="og:image" content="${SITE}assets/og-cover.png" />
+<meta property="og:locale" content="${lang === "ar" ? "ar_AR" : "en_US"}" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="${esc(title)}" />
+<meta name="twitter:description" content="${esc(description)}" />
+<meta name="twitter:image" content="${SITE}assets/og-cover.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="${R("assets/styles.css")}" />
+<script>
+  try {
+    var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
+    if (!_t) _t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = _t;
+  } catch (e) {}
+</script>
+<script src="${R("config.js")}"></script>
+${ld}
+</head>
+<body>
+  <a class="skip-link" href="#main">${lang === "ar" ? "تخطَّ إلى المحتوى" : "Skip to content"}</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="${R("")}" class="brand" aria-label="DouNest">
+        <img src="${R("assets/dounest-logo.png")}" class="brand-logo" alt="DouNest" width="38" height="38" />
+        <span class="brand-name">DouNest</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a href="${R("")}">${L[lang].home}</a>
+        <a href="${R("tools/")}">${L[lang].allTools}</a>
+        <a href="${R("rare/")}">${L[lang].rare}</a>
+        <a href="${R("ai/")}">${L[lang].ai}</a>
+        <a href="${R("articles/")}">${L[lang].articles}</a>
+        <a href="${R("about/")}">${L[lang].about}</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <div id="lang-menu" class="lang-menu"></div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container" role="main" tabindex="-1">
+${bodyContent}
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> DouNest — ${L[lang].local}</span>
+      <nav class="footer-nav" aria-label="Legal">
+        <a href="${R("privacy/")}">${L[lang].privacy}</a>
+        <a href="${R("terms/")}">${L[lang].terms}</a>
+        <a href="${R("ai/")}">${L[lang].ai}</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="${R("js/app.js")}"></script>
+</body>
+</html>`;
+}
+
+function writePage(relPath, content) {
+  const file = join(ROOT, relPath);
+  mkdirSync(dirname(file), { recursive: true });
+  writeFileSync(file, content);
+  console.log("  ✓", relPath);
+}
+
+/* ---------- 1) tool landing pages (Arabic prerendered) ---------- */
+const AR = L.ar;
+console.log("→ tool pages");
+for (const tool of TOOLS) {
+  const name = pick(tool.name, "ar");
+  const short = pick(tool.short, "ar");
+  const usage = tool.usage.ar || tool.usage.en || [];
+  const expl = tool.explanation.ar || tool.explanation.en || [];
+  const faq = tool.faq || [];
+  const related = (tool.related || []).map(getToolB).filter(Boolean);
+  const up = relPrefix(`tools/${tool.slug}/`);
+
+  const body = `
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="${up}">DouNest</a><span class="sep">›</span>
+      <a href="${up}tools/">${AR.allTools}</a><span class="sep">›</span>
+      <span class="current">${esc(name)}</span>
+    </nav>
+    <header class="tool-header">
+      <div class="tool-header-main">
+        <div class="icon big cat-${tool.category}" aria-hidden="true">${tool.icon}</div>
+        <div>
+          <h1>${esc(name)}</h1>
+          <p class="lead">${esc(short)}</p>
+          <div class="tool-meta">
+            <span class="badge success">🔒 ${AR.local}</span>
+            <span class="badge ghost">${esc(tool.category)}</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="tool-layout">
+      <div class="tool-maincol">
+        <section class="workspace" id="tool-workspace">
+          <p class="empty" style="margin:0">${esc(short)}</p>
+        </section>
+        <section class="section">
+          <h2>${AR.usage}</h2>
+          <ol class="steps">${usage.map(s => `<li>${esc(s)}</li>`).join("")}</ol>
+        </section>
+        <section class="section">
+          <h2>${AR.explanation}</h2>
+          <div class="explanation">${expl.map(p => `<p>${esc(p)}</p>`).join("")}</div>
+        </section>
+        ${faq.length ? `
+        <section class="section">
+          <h2>${AR.faq}</h2>
+          ${faq.map(f => `<details class="faq-item"><summary>${esc(pick(f.q, "ar"))}</summary><p>${esc(pick(f.a, "ar"))}</p></details>`).join("")}
+        </section>` : ""}
+      </div>
+      <aside class="tool-sidecol">
+        ${related.length ? `
+        <div class="side-box">
+          <h3>${AR.related}</h3>
+          <div class="related-list">
+            ${related.map(rt => `<a class="related-item" href="${up}tools/${rt.slug}/"><span class="icon sm">${rt.icon}</span><span>${esc(pick(rt.name, "ar"))}</span></a>`).join("")}
+          </div>
+        </div>` : ""}
+      </aside>
+    </div>`;
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org", "@type": "WebApplication",
+      "name": name, "description": short,
+      "url": `${SITE}tools/${tool.slug}/`,
+      "applicationCategory": "UtilityApplication", "operatingSystem": "Any",
+      "inLanguage": "ar",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    faq.length ? {
+      "@context": "https://schema.org", "@type": "FAQPage",
+      "mainEntity": faq.map(f => ({
+        "@type": "Question",
+        "name": pick(f.q, "ar"),
+        "acceptedAnswer": { "@type": "Answer", "text": pick(f.a, "ar") }
+      }))
+    } : null,
+    {
+      "@context": "https://schema.org", "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "DouNest", "item": SITE },
+        { "@type": "ListItem", "position": 2, "name": AR.allTools, "item": `${SITE}tools/` },
+        { "@type": "ListItem", "position": 3, "name": name, "item": `${SITE}tools/${tool.slug}/` }
+      ]
+    }
+  ].filter(Boolean);
+
+  writePage(
+    `tools/${tool.slug}/index.html`,
+    shell({
+      title: `${name} — DouNest`,
+      description: short,
+      canonicalPath: `tools/${tool.slug}/`,
+      jsonLd,
+      bodyContent: body
+    })
+  );
+}
+function getToolB(slug) { return TOOLS.find(t2 => t2.slug === slug); }
+
+/* ---------- 2) article pages ---------- */
+console.log("→ article pages");
+const mdToHtml = (md) => esc(md)
+  .replace(/^### (.*$)/gm, "<h3>$1</h3>")
+  .replace(/^## (.*$)/gm, "<h2>$1</h2>")
+  .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+  .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+  .replace(/\n\n/g, "</p><p>")
+  .replace(/^(?!<[hp])(.+)$/gm, "<p>$1</p>");
+
+for (const a of getArticles()) {
+  const title = pick(a.title, "ar");
+  const excerpt = pick(a.excerpt, "ar");
+  const up = relPrefix(`articles/${a.slug}/`);
+  const body = `
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="${up}">DouNest</a><span class="sep">›</span>
+      <a href="${up}articles/">${AR.articles}</a><span class="sep">›</span>
+      <span class="current">${esc(title)}</span>
+    </nav>
+    <article class="section article-body">
+      <h1>${esc(title)}</h1>
+      <p class="article-date">${a.date}</p>
+      <div class="explanation">${mdToHtml(a.content.ar || a.content.en)}</div>
+    </article>`;
+  writePage(
+    `articles/${a.slug}/index.html`,
+    shell({
+      title: `${title} — DouNest`,
+      description: excerpt,
+      canonicalPath: `articles/${a.slug}/`,
+      jsonLd: [{
+        "@context": "https://schema.org", "@type": "Article",
+        "headline": title, "datePublished": a.date,
+        "inLanguage": "ar",
+        "author": { "@type": "Organization", "name": "DouNest" }
+      }],
+      bodyContent: body
+    })
+  );
+}
+
+/* ---------- 3) legal/info pages ---------- */
+console.log("→ static pages");
+const LEGAL = {
+  about: { title: "حول DouNest", desc: "DouNest مجموعة أدوات ويب مجانية تعمل بالكامل داخل متصفحك." },
+  privacy: { title: "سياسة الخصوصية — DouNest", desc: "كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة." },
+  terms: { title: "شروط الاستخدام — DouNest", desc: "شروط استخدام أدوات DouNest المجانية." }
+};
+for (const [slug, meta] of Object.entries(LEGAL)) {
+  writePage(
+    `${slug}/index.html`,
+    shell({
+      title: meta.title,
+      description: meta.desc,
+      canonicalPath: `${slug}/`,
+      bodyContent: `<section class="page-head"><h1>${esc(meta.title)}</h1><p>${esc(meta.desc)}</p>
+        <p class="empty" style="max-width:560px;margin:0 auto">النسخة الكاملة لهذه الصفحة تُعرض داخل التطبيق عند فتحها في المتصفح.</p></section>`
+    })
+  );
+}
+
+
+/* ---------- 3b) AI directory + Rare tools landing pages (monetization pages) ---------- */
+console.log("→ ai/rare landing pages");
+const affWrapBuild = (url) => {
+  try {
+    const u = new URL(url);
+    const host = u.hostname.replace(/^www\./, "");
+    const map = CFG.affiliates || {};
+    if (map[host] && CFG.affiliateId) u.searchParams.set(map[host], CFG.affiliateId);
+    return { href: esc(u.toString()), rel: "sponsored noopener" };
+  } catch { return { href: esc(url), rel: "noopener" }; }
+};
+
+{
+  const up = relPrefix("ai/");
+  const cards = AI_TOOLS_DATA.map(cat => `
+      <section class="section">
+        <h2 class="section-title">${esc(pick(cat.category, "ar"))}</h2>
+        <div class="tools-grid">
+          ${cat.items.map(item => {
+            const a = affWrapBuild(item.url);
+            return `<a class="tool-card external" href="${a.href}" target="_blank" rel="${a.rel}">
+              <div class="icon" aria-hidden="true">🤖</div>
+              <h3>${esc(item.name)}</h3>
+              <p>${esc(pick(item.desc, "ar"))}</p>
+              <div class="card-foot"><span class="badge tiny">AI</span></div>
+            </a>`;
+          }).join("")}
+        </div>
+      </section>`).join("");
+  writePage(
+    "ai/index.html",
+    shell({
+      title: "دليل أدوات الذكاء الاصطناعي — DouNest",
+      description: "أفضل أدوات AI مصنفة حسب الاستخدام: نماذج محادثة، توليد صور، برمجة، وإنتاجية — مع إفصاح عن الروابط التابعة.",
+      canonicalPath: "ai/",
+      bodyContent: `
+    <section class="page-head">
+      <h1>دليل أدوات الذكاء الاصطناعي</h1>
+      <p>أفضل أدوات AI مصنفة حسب الاستخدام، مع شرح مختصر لكل أداة.</p>
+    </section>
+    <p class="disclosure">ℹ️ تحتوي هذه الصفحة على روابط تابعة؛ إذا اشتريت عبرها فقد نحصل على عمولة دون أي تكلفة إضافية عليك.</p>
+${cards}`
+    })
+  );
+}
+{
+  const up = relPrefix("rare/");
+  const cards = RARE_TOOLS_DATA.map(tool => {
+    const a = affWrapBuild(tool.url);
+    return `<a class="tool-card external" href="${a.href}" target="_blank" rel="${a.rel}">
+      <div class="icon" aria-hidden="true">🧭</div>
+      <h3>${esc(pick(tool.name, "ar"))}</h3>
+      <p>${esc(pick(tool.desc, "ar"))}</p>
+      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
+    </a>`;
+  }).join("");
+  writePage(
+    "rare/index.html",
+    shell({
+      title: "أدوات نادرة يصعب العثور عليها — DouNest",
+      description: "مجموعة مختارة من الأدوات الخارجية النادرة مع شرح لكل أداة: Can I Use، Wayback Machine، وأكثر.",
+      canonicalPath: "rare/",
+      bodyContent: `
+    <section class="page-head">
+      <h1>أدوات نادرة</h1>
+      <p>أدوات خارجية مختارة بعناية يصعب العثور عليها، مع شرح لكل أداة.</p>
+    </section>
+    <p class="disclosure">ℹ️ تحتوي هذه الصفحة على روابط تابعة؛ إذا اشتريت عبرها فقد نحصل على عمولة دون أي تكلفة إضافية عليك.</p>
+    <div class="tools-grid">
+${cards}
+    </div>`
+    })
+  );
+}
+
+/* ---------- 4) 404.html (SPA fallback, absolute paths) ---------- */
+console.log("→ 404.html fallback");
+writePage("404.html", shell({
+  title: "DouNest — أدوات تقنية مجانية",
+  description: "30+ أداة ويب مجانية تعمل محلياً داخل متصفحك.",
+  canonicalPath: "",
+  absolute: true,
+  bodyContent: `<div class="empty notfound"><h1>⏳</h1><p>جارٍ التحميل… / Loading…</p></div>`
+}));
+
+/* ---------- 5) sitemap.xml ---------- */
+console.log("→ sitemap.xml");
+const urls = [
+  { p: "", pr: "1.0" },
+  { p: "tools/", pr: "0.9" },
+  ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.9" })),
+  { p: "articles/", pr: "0.7" },
+  ...getArticles().map(a => ({ p: `articles/${a.slug}/`, pr: "0.7" })),
+  { p: "ai/", pr: "0.6" },
+  { p: "rare/", pr: "0.6" },
+  { p: "about/", pr: "0.4" },
+  { p: "privacy/", pr: "0.3" },
+  { p: "terms/", pr: "0.3" }
+];
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url><loc>${SITE}${u.p}</loc><lastmod>${NOW}</lastmod><priority>${u.pr}</priority></url>`).join("\n")}
+</urlset>
+`;
+writeFileSync(join(ROOT, "sitemap.xml"), sitemap);
+console.log("  ✓ sitemap.xml (" + urls.length + " URLs)");
+
+/* ---------- 6) sw.js (synced asset list, query-tolerant) ---------- */
+console.log("→ sw.js");
+function walk(dir, prefix = "") {
+  const out = [];
+  for (const e of readdirSync(join(ROOT, dir, prefix || "."), { withFileTypes: true })) {
+    const rel = prefix + e.name;
+    if (e.isDirectory()) out.push(...walk(dir, rel + "/"));
+    else if (e.isFile()) out.push(dir + "/" + rel);
+  }
+  return out;
+}
+const toolPages = TOOLS.map(t2 => `tools/${t2.slug}/index.html`);
+const articlePages = getArticles().map(a => `articles/${a.slug}/index.html`);
+const jsFiles = walk("js");
+const ASSETS = [
+  "./", "./index.html", "./404.html", "./manifest.json",
+  "./assets/styles.css", "./assets/dounest-logo.png",
+  "./assets/og-cover.png", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/favicon-32.png",
+  "./config.js",
+  ...jsFiles.map(f => "./" + f),
+  ...toolPages.map(p => "./" + p),
+  ...articlePages.map(p => "./" + p),
+  "./about/index.html", "./privacy/index.html", "./terms/index.html",
+  "./sitemap.xml", "./robots.txt"
+];
+const BUILD_ID = "v3-" + NOW + "-" + Date.now().toString(36);
+const sw = `/* DouNest v3 — generated by build.mjs (${BUILD_ID}) */
+const CACHE = "dounest-${BUILD_ID}";
+const ASSETS = ${JSON.stringify(ASSETS, null, 2)};
+
+self.addEventListener("install", e => {
+  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+});
+self.addEventListener("activate", e => {
+  e.waitUntil(caches.keys().then(keys =>
+    Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
+  ).then(() => self.clients.claim()));
+});
+self.addEventListener("fetch", e => {
+  const req = e.request;
+  if (req.method !== "GET") return;
+  const url = new URL(req.url);
+  if (url.origin !== location.origin) return;
+
+  // navigations: network first, cache fallback (offline)
+  if (req.mode === "navigate") {
+    e.respondWith(
+      fetch(req).then(res => {
+        const copy = res.clone();
+        caches.open(CACHE).then(c => c.put(req, copy)).catch(() => {});
+        return res;
+      }).catch(() =>
+        caches.match(req, { ignoreSearch: true })
+          .then(r => r || caches.match("./"))
+      )
+    );
+    return;
+  }
+
+  // static assets: stale-while-revalidate
+  e.respondWith(
+    caches.match(req, { ignoreSearch: true }).then(cached => {
+      const refresh = fetch(req).then(res => {
+        if (res && res.ok) caches.open(CACHE).then(c => c.put(req, res.clone())).catch(() => {});
+        return res;
+      }).catch(() => cached);
+      return cached || refresh;
+    })
+  );
+});
+`;
+writeFileSync(join(ROOT, "sw.js"), sw);
+console.log("  ✓ sw.js (" + ASSETS.length + " cached assets)");
+
+console.log("\n✔ Build complete —", TOOLS.length, "tool pages,", getArticles().length, "articles.");
