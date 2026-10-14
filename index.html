@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
 <title>DouNest — أدوات تقنية مجانية تعمل داخل المتصفح</title>
-<meta name="description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك: JSON، Base64، JWT، PDF، QR، ضغط الصور وغيرها — بدون رفع أي ملفات وبدون تسجيل." />
+<meta name="description" content="44+ أداة ويب مجانية تعمل محلياً داخل متصفحك: PDF، صور، Excel، OCR، إزالة خلفية، JSON، QR وأكثر — بدون رفع أي ملفات وبدون تسجيل." />
 <meta name="robots" content="index,follow" />
 
 <!-- Filled at runtime per route (app.js injectSEO) -->
@@ -18,7 +18,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="DouNest — أدوات تقنية مجانية تعمل داخل المتصفح" />
-<meta property="og:description" content="30+ أداة مجانية تعمل محلياً داخل متصفحك — بدون رفع ملفات." />
+<meta property="og:description" content="44+ أداة مجانية تعمل محلياً داخل متصفحك — بدون رفع ملفات." />
 <meta property="og:image" content="assets/og-cover.png" />
 <meta name="twitter:card" content="summary_large_image" />
 
@@ -37,6 +37,26 @@
   } catch (e) {}
 </script>
 <script src="config.js"></script>
+<script>
+/* DouNest self-heal: purge stale service worker + caches after every deploy,
+   so users can never stay stuck on an old cached version (topbar/lang bugs). */
+(function(){
+  var B="v3-2026-10-14-mv857w8q";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
 
 <script type="application/ld+json">
 {
@@ -66,6 +86,7 @@
         <a href="./rare/" data-i18n="nav.rare">أدوات نادرة</a>
         <a href="./ai/" data-i18n="nav.ai">دليل AI</a>
         <a href="./articles/" data-i18n="nav.articles">المقالات</a>
+        <a href="./faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
         <a href="./favorites/" data-i18n="nav.favorites">المفضلة</a>
         <a href="./about/" data-i18n="nav.about">حول</a>
       </nav>
@@ -88,6 +109,7 @@
       <nav class="footer-nav" aria-label="Legal">
         <a href="./privacy/" data-i18n="legal.privacy">سياسة الخصوصية</a>
         <a href="./terms/" data-i18n="legal.terms">شروط الاستخدام</a>
+        <a href="./faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
         <a href="./ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
     </div>

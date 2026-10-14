@@ -23,6 +23,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { TOOLS, CATEGORIES } from "./js/registry.js";
 import { getArticles } from "./js/articles.js";
+import { getFAQ, FAQ_CATS } from "./js/faq.js";
 import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
 import { RARE_TOOLS as RARE_TOOLS_DATA } from "./js/rare-tools.js";
 
@@ -35,6 +36,7 @@ const CAT_LABEL_AR = {
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const NOW = new Date().toISOString().slice(0, 10);
+const BUILD_ID = "v3-" + NOW + "-" + Date.now().toString(36);
 
 /* ---------- read config.js (plain JS object assignment) ---------- */
 const cfgSrc = readFileSync(join(ROOT, "config.js"), "utf-8");
@@ -52,14 +54,18 @@ const L = {
     faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "يعمل محلياً في متصفحك",
     home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI",
     about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام",
-    back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن"
+    back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
+    faqNav: "الأسئلة الشائعة", faqTitle: "الأسئلة الشائعة",
+    faqSub: "إجابات مباشرة لأكثر الأسئلة بحثاً حول تحويل الصيغ وملفات PDF والصور والخصوصية — كل شيء يعمل داخل متصفحك."
   },
   en: {
     allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
     faq: "FAQ", related: "Related tools", local: "Runs locally in your browser",
     home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory",
     about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms",
-    back: "Back to all tools", read: "Read the article", runIn: "Open the tool"
+    back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
+    faqNav: "FAQ", faqTitle: "Frequently Asked Questions",
+    faqSub: "Straight answers to the most-searched questions about file conversion, PDF, images and privacy — everything runs inside your browser."
   }
 };
 const pick = (obj, lang) => (obj && (obj[lang] || obj.en)) || "";
@@ -127,6 +133,26 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
   } catch (e) {}
 </script>
 <script src="${R("config.js")}"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="__DN_BUILD__";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
 ${ld}
 </head>
 <body>
@@ -145,7 +171,8 @@ ${ld}
         <a href="${R("rare/")}">${L[lang].rare}</a>
         <a href="${R("ai/")}">${L[lang].ai}</a>
         <a href="${R("articles/")}">${L[lang].articles}</a>
-        <a href="${R("favorites/")}">${L[lang].fav}</a>
+        <a href="${R("faq/")}">${L[lang].faqNav}</a>
+        <a href="${R("favorites/")}" rel="nofollow">${L[lang].fav}</a>
         <a href="${R("about/")}">${L[lang].about}</a>
       </nav>
       <div class="topbar-actions">
@@ -443,7 +470,7 @@ console.log("→ tools hub page");
     "tools/index.html",
     shell({
       title: "كل الأدوات — DouNest",
-      description: "30 أداة مجانية تعمل محلياً في متصفحك: JSON، Base64، JWT، PDF، QR، ألوان، نصوص، وأكثر — مصنّفة حسب الاستخدام.",
+      description: TOOLS.length + " أداة مجانية تعمل محلياً في متصفحك: JSON، Base64، JWT، PDF، QR، ألوان، نصوص، Excel، إزالة خلفية الصور، OCR، وأكثر — مصنّفة حسب الاستخدام.",
       canonicalPath: "tools/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "CollectionPage",
@@ -452,7 +479,7 @@ console.log("→ tools hub page");
       bodyContent: `
     <section class="page-head">
       <h1>كل الأدوات</h1>
-      <p>30+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
+      <p>${TOOLS.length}+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
     </section>
 ${cards}`
     })
@@ -497,6 +524,60 @@ writePage(
   })
 );
 
+/* ---------- 3d') FAQ page (SEO: FAQPage schema + People-Also-Ask targets) ---------- */
+console.log("→ faq page");
+{
+  const up = relPrefix("faq/");
+  const faqItems = getFAQ();
+  const cats = Object.entries(FAQ_CATS);
+  const sections = cats.map(([id, label]) => {
+    const items = faqItems.filter(f => f.cat === id);
+    if (!items.length) return "";
+    return `
+    <section class="section">
+      <h2 class="section-title">${esc(pick(label, "ar"))}</h2>
+      ${items.map(f => `
+      <details class="faq-item">
+        <summary>${esc(f.q.ar)}</summary>
+        <p>${esc(f.a.ar)}</p>
+      </details>`).join("")}
+    </section>`;
+  }).join("");
+  const enSection = `
+    <section class="section">
+      <h2 class="section-title">English</h2>
+      ${faqItems.slice(0, 6).map(f => `
+      <details class="faq-item">
+        <summary>${esc(f.q.en)}</summary>
+        <p>${esc(f.a.en)}</p>
+      </details>`).join("")}
+    </section>`;
+  writePage(
+    "faq/index.html",
+    shell({
+      title: "الأسئلة الشائعة — تحويل الصيغ وPDF والصور | DouNest",
+      description: "إجابات لأكثر أسئلة البحث شيوعاً: تحويل صورة إلى PDF، إزالة الخلفية، ضغط PDF، استخراج نص OCR، HEIC إلى JPG، Excel إلى CSV — وكل ذلك بدون رفع ملفاتك.",
+      canonicalPath: "faq/",
+      jsonLd: [{
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqItems.map(f => ({
+          "@type": "Question",
+          "name": f.q.ar,
+          "acceptedAnswer": { "@type": "Answer", "text": f.a.ar }
+        }))
+      }],
+      bodyContent: `
+    <section class="page-head">
+      <h1>${esc(L.ar.faqTitle)}</h1>
+      <p>${esc(L.ar.faqSub)}</p>
+    </section>
+${sections}
+${enSection}`
+    })
+  );
+}
+
 /* ---------- 4) 404.html (SPA fallback, absolute paths) ---------- */
 console.log("→ 404.html fallback");
 writePage("404.html", shell({
@@ -514,6 +595,7 @@ const urls = [
   { p: "", pr: "1.0" },
   { p: "tools/", pr: "0.9" },
   ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.9" })),
+  { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
   ...getArticles().map(a => ({ p: `articles/${a.slug}/`, pr: "0.7" })),
   { p: "ai/", pr: "0.6" },
@@ -555,17 +637,27 @@ const ASSETS = [
   "./articles/index.html",
   ...articlePages.map(p => "./" + p),
   "./favorites/index.html",
+  "./faq/index.html",
   "./ai/index.html", "./rare/index.html",
   "./about/index.html", "./privacy/index.html", "./terms/index.html",
   "./sitemap.xml", "./robots.txt"
 ];
-const BUILD_ID = "v3-" + NOW + "-" + Date.now().toString(36);
 const sw = `/* DouNest v3 — generated by build.mjs (${BUILD_ID}) */
 const CACHE = "dounest-${BUILD_ID}";
 const ASSETS = ${JSON.stringify(ASSETS, null, 2)};
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
+  /* hardened: one missing asset must never abort the whole install
+     (this is what left users stuck on stale v2 caches before) */
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(c => Promise.allSettled(ASSETS.map(a => c.add(a))))
+      .then(rs => {
+        const failed = rs.filter(r => r.status === "rejected");
+        if (failed.length) console.warn("[sw] skipped " + failed.length + " uncachable assets");
+        return self.skipWaiting();
+      })
+  );
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys =>
@@ -607,5 +699,27 @@ self.addEventListener("fetch", e => {
 `;
 writeFileSync(join(ROOT, "sw.js"), sw);
 console.log("  ✓ sw.js (" + ASSETS.length + " cached assets)");
+
+/* ---------- 7) inject build id into every html (self-heal token) ---------- */
+console.log("→ inject __DN_BUILD__ tokens");
+function walkHtml(dir) {
+  const out = [];
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    if (e.name === "node_modules" || e.name.startsWith(".")) continue;
+    const p = join(dir, e.name);
+    if (e.isDirectory()) out.push(...walkHtml(p));
+    else if (e.isFile() && e.name.endsWith(".html")) out.push(p);
+  }
+  return out;
+}
+let injected = 0;
+for (const p of walkHtml(ROOT)) {
+  const src = readFileSync(p, "utf-8");
+  if (src.includes("__DN_BUILD__")) {
+    writeFileSync(p, src.split("__DN_BUILD__").join(BUILD_ID));
+    injected++;
+  }
+}
+console.log("  ✓ build id injected into " + injected + " pages");
 
 console.log("\n✔ Build complete —", TOOLS.length, "tool pages,", getArticles().length, "articles.");

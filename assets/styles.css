@@ -133,6 +133,7 @@ button { font-family: inherit; cursor: pointer; }
 .topnav a {
   color: var(--text-muted); font-weight: 550; font-size: 14.5px;
   white-space: nowrap; padding: 7px 11px; border-radius: 9px;
+  flex-shrink: 0; /* never squeeze links — overlap made the topbar look broken on phones */
   transition: color .15s, background .15s;
 }
 .topnav a:hover { color: var(--text); background: var(--grad-soft); }
@@ -614,4 +615,102 @@ textarea.search-input { min-height: 110px; resize: vertical; }
 
 @media print {
   .topbar, .footer, .ad-slot, .support-btn, #toast-container { display: none !important; }
+}
+
+/* ========= v3.1 additions: progress, thumbnails, tables, docx preview ========= */
+.progress {
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-muted, #888) 22%, transparent);
+  overflow: hidden;
+  margin: 10px 0;
+}
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #7c3aed, #06b6d4);
+  transition: width .25s ease;
+}
+
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+  gap: 10px;
+}
+.thumb {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--text-muted, #888) 25%, transparent);
+  background: color-mix(in srgb, var(--text-muted, #888) 10%, transparent);
+  cursor: pointer;
+  transition: transform .15s ease, border-color .15s ease;
+  min-height: 72px;
+}
+.thumb:hover { transform: translateY(-2px); border-color: #7c3aed; }
+.thumb img {
+  width: 100%;
+  height: 72px;
+  object-fit: cover;
+  display: block;
+}
+.thumb span {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  font-size: 11px;
+  padding: 2px 6px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0,0,0,.72));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  direction: ltr;
+}
+
+.csv-preview {
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 100%;
+}
+.csv-preview th, .csv-preview td {
+  border: 1px solid color-mix(in srgb, var(--text-muted, #888) 28%, transparent);
+  padding: 6px 10px;
+  text-align: start;
+  white-space: nowrap;
+  max-width: 240px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.csv-preview th {
+  background: color-mix(in srgb, #7c3aed 12%, transparent);
+  font-weight: 700;
+}
+
+.docx-preview {
+  border: 1px solid color-mix(in srgb, var(--text-muted, #888) 22%, transparent);
+  border-radius: 14px;
+  padding: 22px clamp(14px, 4vw, 34px);
+  max-height: 480px;
+  overflow: auto;
+  line-height: 1.85;
+  background: color-mix(in srgb, var(--text-muted, #888) 6%, transparent);
+  margin-top: 12px;
+}
+.docx-preview h1, .docx-preview h2, .docx-preview h3 { margin: 1em 0 .45em; line-height: 1.35; }
+.docx-preview img { max-width: 100%; height: auto; }
+.docx-preview table { border-collapse: collapse; width: 100%; }
+.docx-preview td, .docx-preview th { border: 1px solid color-mix(in srgb, var(--text-muted, #888) 35%, transparent); padding: 6px 10px; }
+
+/* mobile: comfortable touch targets + tighter grids */
+@media (max-width: 640px) {
+  .thumb-grid { grid-template-columns: repeat(auto-fill, minmax(76px, 1fr)); gap: 8px; }
+  .thumb img { height: 60px; }
+  input[type="file"], select, input[type="number"], input[type="text"] {
+    min-height: 44px;
+  }
+  .btn { min-height: 44px; }
+  .row.wrap { align-items: stretch; }
+  .field { flex: 1 1 100%; }
 }

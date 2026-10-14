@@ -143,7 +143,7 @@ export const TOOLS = [
     short: { ar: "اضغط JPG/PNG/WebP محليًا.", en: "Compress JPG/PNG/WebP locally.", fr: "Compresser JPG/PNG/WebP localement.", es: "Comprime JPG/PNG/WebP localmente.", de: "JPG/PNG/WebP lokal komprimieren.", tr: "JPG/PNG/WebP'yi yerel sıkıştır.", ru: "Сжатие JPG/PNG/WebP локально.", zh: "本地压缩 JPG/PNG/WebP。", hi: "JPG/PNG/WebP स्थानीय रूप से कंप्रेस करें।", pt: "Comprima JPG/PNG/WebP localmente." },
     usage: { ar: ["اختر صورة.", "اضبط الجودة.", "نزّل النسخة المضغوطة."], en: ["Choose an image.", "Set quality.", "Download the compressed version."] },
     explanation: { ar: ["تستخدم Canvas API لضغط الصورة.", "لا يُرفع الملف لأي خادم."], en: ["Uses the Canvas API to re-encode images.", "Nothing is uploaded."] },
-    faq: [], related: ["image-to-base64", "pdf-to-txt", "color-picker"]
+    faq: [], related: ["resize-image", "pdf-to-txt", "color-picker"]
   },
   {
     slug: "color-picker", icon: "🖌️", category: "color",
@@ -232,7 +232,7 @@ export const TOOLS = [
   short: { ar: "حوّل بيانات CSV إلى صيغة JSON.", en: "Convert CSV data to JSON.", fr: "Convertir des données CSV en JSON.", es: "Convierte datos CSV a JSON.", de: "CSV-Daten in JSON konvertieren.", tr: "CSV verilerini JSON'a dönüştür.", ru: "Преобразование CSV в JSON.", zh: "将 CSV 数据转换为 JSON。", hi: "CSV डेटा को JSON में बदलें।", pt: "Converta dados CSV para JSON." },
   usage: { ar: ["الصق CSV.", "اضغط تحويل.", "انسخ JSON."], en: ["Paste CSV.", "Click Convert.", "Copy JSON."] },
   explanation: { ar: ["تحليل CSV يدعم الفواصل والعلامات."], en: ["CSV parsing supports commas and quotes."] },
-  faq: [], related: ["json-to-csv", "json-formatter", "yaml-to-json"]
+  faq: [], related: ["json-to-csv", "json-formatter", "excel-to-json"]
 },
 {
   slug: "json-to-csv",
@@ -242,7 +242,7 @@ export const TOOLS = [
   short: { ar: "حوّل مصفوفات JSON إلى CSV.", en: "Convert JSON arrays to CSV.", fr: "Convertir des tableaux JSON en CSV.", es: "Convierte arrays JSON a CSV.", de: "JSON-Arrays in CSV konvertieren.", tr: "JSON dizilerini CSV'ye dönüştür.", ru: "Преобразование массивов JSON в CSV.", zh: "将 JSON 数组转换为 CSV。", hi: "JSON सरणियों को CSV में बदलें।", pt: "Converta arrays JSON para CSV." },
   usage: { ar: ["الصق JSON.", "اضغط تحويل.", "نزّل CSV."], en: ["Paste JSON.", "Click Convert.", "Download CSV."] },
   explanation: { ar: ["تسطيح الكائنات المتداخلة."], en: ["Flattens nested objects."] },
-  faq: [], related: ["csv-to-json", "json-formatter", "yaml-to-json"]
+  faq: [], related: ["csv-to-json", "json-formatter", "excel-to-json"]
 },
 
 /* ===== أدوات المطورين ===== */
@@ -337,6 +337,212 @@ export const TOOLS = [
   usage: { ar: ["أدخل الطول والوزن.", "اقرأ النتيجة."], en: ["Enter height and weight.", "Read result."] },
   explanation: { ar: ["تصنيف من نحافة إلى سمنة مفرطة."], en: ["Classification from underweight to obese."] },
   faq: [], related: ["age-calculator", "percentage-calculator", "unit-converter"]
+},
+{
+  slug: "image-to-pdf",
+  icon: "📄",
+  category: "media",
+  name: { ar: "صورة إلى PDF", en: "Image to PDF", fr: "Image vers PDF", es: "Imagen a PDF", de: "Bild zu PDF", tr: "Görselden PDF'ye", ru: "Изображение в PDF", zh: "图片转 PDF", hi: "इमेज से PDF", pt: "Imagem para PDF" },
+  short: { ar: "حوّل صور JPG أو PNG إلى ملف PDF واحد.", en: "Convert JPG/PNG images into one PDF file.", fr: "Convertissez des images JPG/PNG en un seul PDF.", es: "Convierte imágenes JPG/PNG en un solo PDF.", de: "JPG-/PNG-Bilder in eine PDF-Datei umwandeln.", tr: "JPG/PNG görsellerini tek PDF'ye dönüştür.", ru: "Конвертируйте JPG/PNG в один PDF.", zh: "将 JPG/PNG 图片转换为一个 PDF 文件。", hi: "JPG/PNG इमेज को एक PDF में बदलें।", pt: "Converta imagens JPG/PNG em um único PDF." },
+  usage: { ar: ["اختر صورة أو أكثر (JPG/PNG/WebP).", "رتّب الصور واختر حجم الصفحة والاتجاه والهامش.", "اضغط «إنشاء PDF».", "نزّل الملف الناتج."], en: ["Pick one or more images (JPG/PNG/WebP).", "Arrange order, choose page size, orientation and margin.", "Press Create PDF.", "Download the result."] },
+  explanation: { ar: ["أشهر استخدام لهذه الأداة هو تحويل مستندات مصوّرة أو فواتير أو واجبات إلى ملف PDF واحد منسّق.", "تُضمَّن الصور بجودتها الأصلية داخل صفحات بالحجم الذي تختاره (A4 أو Letter أو بحجم الصورة نفسها).", "التحويل يتم داخل متصفحك عبر مكتبة pdf-lib — صورك لا تُرفع إلى أي خادم."], en: ["The most common use: turning photographed documents, invoices or homework into one tidy PDF.", "Images are embedded at original quality inside pages of your chosen size (A4, Letter, or fit-to-image).", "Conversion runs in your browser via pdf-lib — images never leave your device."] },
+  faq: [
+    { q: { ar: "هل يمكنني دمج عدة صور في PDF واحد؟", en: "Can I merge multiple images into one PDF?" },
+      a: { ar: "نعم، اختر أي عدد من الصور ورتّبها قبل التحويل، وستظهر كل صورة في صفحة مستقلة داخل الملف الواحد.", en: "Yes — pick as many images as you like, arrange their order, and each becomes its own page in the single output file." } },
+    { q: { ar: "هل تُرفع صوري إلى الإنترنت؟", en: "Are my photos uploaded to the internet?" },
+      a: { ar: "لا، العملية كلها تحدث داخل متصفحك ويمكنك حتى قطع الإنترنت بعد فتح الصفحة.", en: "No — everything happens inside your browser; you can even go offline after loading the page." } }
+  ],
+  related: ["merge-pdf", "compress-pdf", "image-converter"]
+},
+{
+  slug: "remove-background",
+  icon: "✂️",
+  category: "media",
+  name: { ar: "إزالة خلفية الصورة", en: "Remove Background", fr: "Supprimer l'arrière-plan", es: "Quitar fondo", de: "Hintergrund entfernen", tr: "Arka Planı Kaldır", ru: "Удалить фон", zh: "移除图片背景", hi: "बैकग्राउंड हटाएं", pt: "Remover fundo" },
+  short: { ar: "عزل الشخص أو العنصر بخلفية شفافة عبر AI داخل المتصفح.", en: "Isolate subjects with transparent background via in-browser AI.", fr: "Isolez le sujet avec un fond transparent via l'IA du navigateur.", es: "Aísla el sujeto con fondo transparente con IA en el navegador.", de: "Freistellung mit transparentem Hintergrund per KI im Browser.", tr: "Tarayıcıda AI ile şeffaf arka planlı kırpma.", ru: "Отделите объект с прозрачным фоном через ИИ в браузере.", zh: "在浏览器内用 AI 抠图，输出透明背景。", hi: "ब्राउज़र AI से पारदर्शी बैकग्राउंड के साथ सब्जेक्ट अलग करें।", pt: "Isole o objeto com fundo transparente via IA no navegador." },
+  usage: { ar: ["اختر صورة (يفضّل أن يكون العنصر الرئيسي واضحاً).", "انتظر تحميل النموذج لأول مرة (نحو 40MB ثم يُخزَّن).", "اضغط «إزالة الخلفية» وانتظر ثوانٍ.", "نزّل النتيجة بصيغة PNG شفافة أو أضف خلفية بلون."], en: ["Pick an image (clear main subject works best).", "Wait for first-time model download (~40MB, cached after).", "Press Remove Background and wait seconds.", "Download the transparent PNG or add a solid color background."] },
+  explanation: { ar: ["تعتمد الأداة على نموذج مفتوح المصدر (U²-Net عبر @imgly/background-removal) يعمل بمحرك ONNX داخل متصفحك.", "بعكس remove.bg والمواقع المشابهة، صورك لا تُرفع لأي خادم — النموذج نفسه يأتي إلى جهازك.", "النتيجة PNG بقناة شفافية كاملة، جاهزة للمتاجر الإلكترونية والعروض والتصميم."], en: ["Powered by the open-source U²-Net model (via @imgly/background-removal) running on ONNX inside your browser.", "Unlike remove.bg and similar sites, your photos stay on your device — the model comes to you.", "Output is a full-alpha PNG ready for e-commerce listings, presentations and design."] },
+  faq: [
+    { q: { ar: "لماذا يحمَّل نموذج كبير في أول استخدام؟", en: "Why does a large model download on first use?" },
+      a: { ar: "نموذج الذكاء الاصطناعي (~40MB) يُنزَّل مرة واحدة ثم يُخزَّن مؤقتاً، لتعمل كل المرات التالية بسرعة وبدون إنترنت.", en: "The AI model (~40MB) downloads once and is cached, so every later run is fast and works offline." } },
+    { q: { ar: "هل النتيجة مجانية بجودة كاملة؟", en: "Is the result free at full quality?" },
+      a: { ar: "نعم — بخلاف مواقع مثل remove.bg التي تحدّ الدقة المجانية، نتيجتك كاملة الدقة ودون علامة مائية لأنها تُنشأ على جهازك.", en: "Yes — unlike remove.bg which caps free resolution, your result is full-resolution and watermark-free because it's generated on your device." } }
+  ],
+  related: ["image-converter", "resize-image", "image-compressor"]
+},
+{
+  slug: "ocr-image-to-text",
+  icon: "🔍",
+  category: "media",
+  name: { ar: "استخراج نص من صورة OCR", en: "Image to Text (OCR)", fr: "Image vers texte (OCR)", es: "Imagen a texto (OCR)", de: "Bild zu Text (OCR)", tr: "Görselden Metne (OCR)", ru: "Изображение в текст (OCR)", zh: "图片转文字 (OCR)", hi: "इमेज से टेक्स्ट (OCR)", pt: "Imagem para texto (OCR)" },
+  short: { ar: "استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.", en: "Extract text from images and scans — Arabic & English.", fr: "Extrayez le texte des images — arabe et anglais.", es: "Extrae texto de imágenes — árabe e inglés.", de: "Text aus Bildern extrahieren — Arabisch & Englisch.", tr: "Görsellerden metin çıkar — Arapça ve İngilizce.", ru: "Извлеките текст из изображений — арабский и английский.", zh: "从图片提取文字 — 支持阿拉伯语和英语。", hi: "इमेज से टेक्स्ट निकालें — अरबी और अंग्रेज़ी।", pt: "Extraia texto de imagens — árabe e inglês." },
+  usage: { ar: ["اختر صورة تحتوي نصاً (لقطة شاشة أو صورة مستند).", "حدد اللغة: العربية أو الإنجليزية أو معاً.", "اضغط «استخراج النص» وانتظر شريط التقدم.", "انسخ النص أو نزّله كملف txt."], en: ["Pick an image containing text (screenshot or document photo).", "Choose language: Arabic, English, or both.", "Press Extract Text and watch the progress bar.", "Copy the text or download it as a .txt file."] },
+  explanation: { ar: ["يعمل المحرك عبر Tesseract.js — نسخة المتصفح من محرك Tesseract الشهير المفتوح المصدر بدقة 100+ لغة.", "يُعدّ OCR بالعربية ميزة نادرة في الأدوات المجانية؛ هنا يعمل كاملاً على جهازك بما يناسب المستندات الشخصية.", "لنتائج أفضل: استخدم صوراً واضحة بإضاءة جيدة ودقة عالية، وقصّ المساحات الزائدة قبل الاستخراج."], en: ["The engine is Tesseract.js — the browser port of the famous open-source Tesseract OCR with 100+ languages.", "Arabic OCR is rare among free tools; here it runs entirely on your device, ideal for personal documents.", "For best results: use sharp, well-lit, high-resolution images and crop empty margins first."] },
+  faq: [
+    { q: { ar: "هل يدعم الاستخراج النص العربي؟", en: "Does it support Arabic text?" },
+      a: { ar: "نعم، اختر «العربية» أو «عربي + إنجليزي» للنصوص المختلطة — تحميل بيانات اللغة يحدث لأول مرة فقط.", en: "Yes — choose Arabic or Arabic+English for mixed text; language data downloads only on first use." } },
+    { q: { ar: "أستطيع تحويل صورة إلى Word؟", en: "Can I convert an image to Word?" },
+      a: { ar: "استخرج النص أولاً ثم انسخه إلى أي محرر، أو استخدم أداة «CSV إلى Excel» للبيانات الجدولية.", en: "Extract the text first, paste it into any editor, or use the CSV to Excel tool for tabular data." } }
+  ],
+  related: ["pdf-to-txt", "word-counter", "csv-to-excel"]
+},
+{
+  slug: "heic-to-jpg",
+  icon: "📱",
+  category: "media",
+  name: { ar: "تحويل HEIC إلى JPG", en: "HEIC to JPG", fr: "HEIC vers JPG", es: "HEIC a JPG", de: "HEIC zu JPG", tr: "HEIC'den JPG'ye", ru: "HEIC в JPG", zh: "HEIC 转 JPG", hi: "HEIC से JPG", pt: "HEIC para JPG" },
+  short: { ar: "افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.", en: "Open iPhone HEIC photos and convert them to JPG.", fr: "Ouvrez les photos HEIC d'iPhone et convertissez-les en JPG.", es: "Abre fotos HEIC de iPhone y conviértelas a JPG.", de: "iPhone-HEIC-Fotos öffnen und zu JPG konvertieren.", tr: "iPhone HEIC fotoğraflarını JPG'ye çevir.", ru: "Откройте фото HEIC с iPhone и конвертируйте в JPG.", zh: "打开 iPhone 的 HEIC 照片并转换为 JPG。", hi: "iPhone की HEIC फोटो खोलें और JPG में बदलें।", pt: "Abra fotos HEIC do iPhone e converta para JPG." },
+  usage: { ar: ["اختر صورة أو أكثر بصيغة HEIC/HEIF.", "اضغط «تحويل».", "نزّل صور JPG الناتجة (دفعة كاملة تُنزَّل كأرشيف ZIP)."], en: ["Pick one or more HEIC/HEIF photos.", "Press Convert.", "Download the JPG results (batches arrive as a ZIP)."] },
+  explanation: { ar: ["HEIC هي الصيغة الافتراضية لكاميرا الآيفون منذ iOS 11، وتوفر حجماً أقل بجودة أعلى لكنها لا تُفتح على ويندوز وأندرويد ومواقع كثيرة.", "تعتمد الأداة على مكتبة heic2any مفتوحة المصدر (libheif) وتحوّل داخل متصفحك دون رفع.", "نصيحة: يمكنك تعطيل HEIC من إعدادات الآيفون (الكاميرا ← الصيغ ← الأكثر توافقاً)، لكن الأداة تظل الحل الأسرع للصور الموجودة."], en: ["HEIC is the default iPhone camera format since iOS 11 — smaller at higher quality, but Windows, Android and many sites can't open it.", "Powered by the open-source heic2any library (libheif), converting locally without uploads.", "Tip: you can disable HEIC on iPhone (Camera → Formats → Most Compatible), but this tool remains the fastest fix for existing photos."] },
+  faq: [
+    { q: { ar: "هل تفقد الصورة جودتها عند التحويل؟", en: "Does the photo lose quality when converted?" },
+      a: { ar: "الجودة قابلة للضبط وافتراضياً 92% — عملياً لن تلاحظ فرقاً، ويمكنك رفعها إلى 100%.", en: "Quality is adjustable and defaults to 92% — practically indistinguishable, and you can raise it to 100%." } },
+    { q: { ar: "كم صورة أحوّل دفعة واحدة؟", en: "How many photos can I convert at once?" },
+      a: { ar: "أي عدد — دفعات الصور الكبيرة تُنزَّل مجمعة في ملف ZIP واحد لتسهيل الحفظ على الهاتف.", en: "Any number — large batches arrive packed in a single ZIP for easy saving on phones." } }
+  ],
+  related: ["image-converter", "image-compressor", "resize-image"]
+},
+{
+  slug: "split-pdf",
+  icon: "✂️",
+  category: "media",
+  name: { ar: "تقسيم PDF", en: "Split PDF", fr: "Diviser PDF", es: "Dividir PDF", de: "PDF teilen", tr: "PDF Böl", ru: "Разделить PDF", zh: "拆分 PDF", hi: "PDF विभाजित करें", pt: "Dividir PDF" },
+  short: { ar: "استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.", en: "Extract pages or ranges from a PDF into separate files.", fr: "Extrayez des pages ou plages d'un PDF.", es: "Extrae páginas o rangos de un PDF.", de: "Seiten oder Bereiche aus einem PDF extrahieren.", tr: "PDF'den sayfa veya aralık çıkar.", ru: "Извлеките страницы или диапазоны из PDF.", zh: "从 PDF 提取页面或页码范围。", hi: "PDF से पेज या रेंज निकालें।", pt: "Extraia páginas ou intervalos de um PDF." },
+  usage: { ar: ["اختر ملف PDF.", "اكتب نطاقات الصفحات مثل: 1-3,5,8-10.", "اختر المخرج: ملف واحد بالصفحات المحددة أو كل صفحة ملفاً مستقلاً.", "اضغط «تقسيم» ونزّل النتيجة (الملفات المتعددة تصل كـ ZIP)."], en: ["Pick a PDF file.", "Type page ranges like 1-3,5,8-10.", "Choose output: one merged file of selected pages, or each page as its own file.", "Press Split and download (multi-file results come as ZIP)."] },
+  explanation: { ar: ["التقسيم أداة أساسية في كل المنافسين (iLovePDF وSmallpdf وPDF24) وتغيب عن كثير من البدائل المجانية.", "مفيدة لاستخراج فصل من كتاب، أو إرسال جزء من عقد، أو تقسيم مستند ضخم بين عدة أشخاص.", "تُنفَّذ عبر pdf-lib داخل متصفحك ولا يحتاج المستند أي رفع."], en: ["Splitting is a staple in every competitor (iLovePDF, Smallpdf, PDF24) and missing from many free alternatives.", "Use it to extract a book chapter, share part of a contract, or split a huge document between people.", "Runs via pdf-lib inside your browser — the document is never uploaded."] },
+  faq: [
+    { q: { ar: "كيف أكتب نطاق الصفحات؟", en: "How do I write page ranges?" },
+      a: { ar: "بفواصل: 1-3 تعني الصفحات من 1 إلى 3، و5 صفحة مفردة، و8-10 من 8 إلى 10 — مثال كامل: 1-3,5,8-10.", en: "Comma-separated: 1-3 means pages 1 through 3, 5 is a single page, 8-10 is 8 through 10 — full example: 1-3,5,8-10." } }
+  ],
+  related: ["merge-pdf", "rotate-pdf", "compress-pdf"]
+},
+{
+  slug: "pdf-to-jpg",
+  icon: "🖼️",
+  category: "media",
+  name: { ar: "PDF إلى صور", en: "PDF to Images", fr: "PDF vers images", es: "PDF a imágenes", de: "PDF zu Bilder", tr: "PDF'den görsellere", ru: "PDF в изображения", zh: "PDF 转图片", hi: "PDF से इमेज", pt: "PDF para imagens" },
+  short: { ar: "حوّل صفحات PDF إلى صور JPG بجودة قابلة للضبط.", en: "Render PDF pages to JPG images with adjustable quality.", fr: "Convertissez les pages PDF en images JPG.", es: "Convierte páginas PDF a imágenes JPG.", de: "PDF-Seiten in JPG-Bilder umwandeln.", tr: "PDF sayfalarını JPG'ye çevir.", ru: "Конвертируйте страницы PDF в JPG.", zh: "将 PDF 页面渲染为 JPG 图片。", hi: "PDF पेज को JPG इमेज में बदलें।", pt: "Renderize páginas PDF em imagens JPG." },
+  usage: { ar: ["اختر ملف PDF.", "حدد جودة JPG (افتراضي 90%).", "اضغط «تحويل» وانتظر معالجة الصفحات.", "صفحة واحدة تُنزَّل مباشرة، ومتعددة الصفحات تصل كأرشيف ZIP."], en: ["Pick a PDF file.", "Set JPG quality (default 90%).", "Press Convert and wait for pages to render.", "Single page downloads directly; multi-page results arrive as ZIP."] },
+  explanation: { ar: ["يُرسم كل صفحة عبر pdf.js من Mozilla على لوحة Canvas ثم يُرمَّز JPG — نفس تقنية عارض PDF في فايرفوكس.", "مفيد لتحويل شرائح أو تصاميم أو مستندات إلى صور قابلة للإدراج في العروض والشبكات الاجتماعية.", "كل المعالجة محلية — حتى المستندات السرية تبقى على جهازك."], en: ["Each page is rendered via Mozilla's pdf.js onto a canvas then encoded as JPG — the same technology as Firefox's PDF viewer.", "Great for turning slides, designs or documents into images for presentations and social media.", "All processing is local — even confidential documents stay on your device."] },
+  faq: [
+    { q: { ar: "ما جودة الصور الناتجة؟", en: "What is the output image quality?" },
+      a: { ar: "تُرسم الصفحات بدقة 2x من العرض الأصلي مع جودة JPG قابلة للضبط حتى 100% — مثالية للطباعة والشاشات العالية.", en: "Pages render at 2x their base width with JPG quality adjustable up to 100% — ideal for print and retina screens." } }
+  ],
+  related: ["image-to-pdf", "pdf-to-txt", "image-compressor"]
+},
+{
+  slug: "rotate-pdf",
+  icon: "🔄",
+  category: "media",
+  name: { ar: "تدوير صفحات PDF", en: "Rotate PDF", fr: "Pivoter PDF", es: "Rotar PDF", de: "PDF drehen", tr: "PDF Döndür", ru: "Повернуть PDF", zh: "旋转 PDF 页面", hi: "PDF घुमाएं", pt: "Girar PDF" },
+  short: { ar: "صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.", en: "Fix sideways PDF pages by rotating 90/180/270 degrees.", fr: "Redressez les pages PDF par rotation 90/180/270°.", es: "Corrige páginas PDF rotando 90/180/270°.", de: "PDF-Seiten um 90/180/270° drehen.", tr: "PDF sayfalarını 90/180/270° döndür.", ru: "Поверните страницы PDF на 90/180/270°.", zh: "将 PDF 页面旋转 90/180/270 度。", hi: "PDF पेज 90/180/270 डिग्री घुमाएं।", pt: "Gire páginas PDF em 90/180/270 graus." },
+  usage: { ar: ["اختر ملف PDF.", "حدد زاوية التدوير: 90 أو 180 أو 270 درجة.", "اختياري: حدد نطاق صفحات معين (اتركه فارغاً لكل الصفحات).", "اضغط «تدوير» ونزّل النسخة المصححة."], en: ["Pick a PDF file.", "Choose rotation: 90, 180 or 270 degrees.", "Optional: limit to specific page ranges (leave empty for all pages).", "Press Rotate and download the fixed copy."] },
+  explanation: { ar: ["يُحفظ التدوير داخل بنية الملف نفسها بشكل دائم — فتظهر الصفحات مستقيمة على أي قارئ وأي جهاز.", "يفيد المستندات الممسوحة ضوئياً باتجاه خاطئ أو الشرائح المقلوبة.", "تُنفَّذ العملية عبر pdf-lib محلياً وبثوانٍ حتى للملفات الكبيرة."], en: ["Rotation is saved permanently into the file structure — pages display upright in any reader on any device.", "Fixes scanned documents with wrong orientation or flipped slides.", "Powered by pdf-lib, local and fast even for large files."] },
+  faq: [
+    { q: { ar: "هل التدوير دائم أم مؤقت؟", en: "Is the rotation permanent?" },
+      a: { ar: "دائم — يُكتب في بيانات الملف نفسها، عكس خاصية العرض المؤقتة في بعض البرامج.", en: "Permanent — it is written into the file's metadata, unlike temporary viewer rotation in some apps." } }
+  ],
+  related: ["split-pdf", "merge-pdf", "compress-pdf"]
+},
+{
+  slug: "word-to-pdf",
+  icon: "📝",
+  category: "media",
+  name: { ar: "Word إلى PDF", en: "Word to PDF", fr: "Word vers PDF", es: "Word a PDF", de: "Word zu PDF", tr: "Word'den PDF'ye", ru: "Word в PDF", zh: "Word 转 PDF", hi: "Word से PDF", pt: "Word para PDF" },
+  short: { ar: "حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.", en: "Convert DOCX documents to PDF via the print dialog.", fr: "Convertissez des DOCX en PDF via l'impression.", es: "Convierte DOCX a PDF mediante impresión.", de: "DOCX über den Druckdialog zu PDF konvertieren.", tr: "DOCX belgeleri yazdırma ile PDF'ye çevir.", ru: "Конвертируйте DOCX в PDF через печать.", zh: "通过打印对话框将 DOCX 转为 PDF。", hi: "प्रिंट डायलॉग से DOCX को PDF में बदलें।", pt: "Converta DOCX em PDF via diálogo de impressão." },
+  usage: { ar: ["اختر ملف .docx.", "ستُعرض معاينة منسّقة لمحتوى المستند.", "اضغط «حفظ كـ PDF» فتفتح نافذة الطباعة.", "اختر «حفظ كـ PDF» من قائمة الطابعة، أو نزّل HTML/نصاً صريحاً."], en: ["Pick a .docx file.", "A formatted preview of the content is rendered.", "Press Save as PDF to open the print dialog.", "Choose Save as PDF in the printer list, or download clean HTML/text instead."] },
+  explanation: { ar: ["تعتمد الأداة على mammoth.js المفتوحة المصدر لتحويل DOCX إلى HTML نظيف مع الحفاظ على العناوين والقوائم والجداول.", "التحويل إلى PDF يتم عبر نافذة الطباعة المدمجة في المتصفح — طريقة موثوقة تعطي PDF حقيقياً قابلاً للتحديد والبحث.", "كل ذلك يحدث محلياً: عقودك وسيرتك الذاتية لا تغادر جهازك، بعكس مواقع التحويل التي ترفع المستندات لخوادمها."], en: ["Powered by open-source mammoth.js which turns DOCX into clean HTML preserving headings, lists and tables.", "PDF generation happens through the browser's built-in print dialog — a reliable way to get a real, searchable PDF.", "Everything is local: contracts and CVs never leave your device, unlike upload-based converters."] },
+  faq: [
+    { q: { ar: "لماذا تفتح نافذة الطباعة بدل تنزيل PDF مباشر؟", en: "Why does the print dialog open instead of a direct PDF download?" },
+      a: { ar: "نافذة الطباعة تمنحك PDF حقيقياً بجودة متجهات (نص قابل للتحديد والبحث) مع تحكم بالهوامش والحجم — وهي طريقة أكثر موثوقية من توليد PDF صوري.", en: "The print dialog produces a real vector PDF (selectable, searchable text) with margin and size control — more reliable than a rasterized PDF." } },
+    { q: { ar: "هل تدعم الأداة اللغة العربية في المستند؟", en: "Does it support Arabic documents?" },
+      a: { ar: "نعم، المعاينة والطباعة تدعمان RTL والخطوط العربية بشكل كامل.", en: "Yes — preview and printing fully support RTL and Arabic fonts." } }
+  ],
+  related: ["pdf-to-word", "image-to-pdf", "pdf-to-txt"]
+},
+{
+  slug: "resize-image",
+  icon: "📐",
+  category: "media",
+  name: { ar: "تحجيم الصور", en: "Image Resizer", fr: "Redimensionner images", es: "Redimensionar imágenes", de: "Bilder skalieren", tr: "Görsel Boyutlandırıcı", ru: "Изменить размер изображений", zh: "调整图片尺寸", hi: "इमेज रीसाइज़र", pt: "Redimensionar imagens" },
+  short: { ar: "غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.", en: "Resize images by width or percentage with format conversion.", fr: "Redimensionnez par largeur ou pourcentage.", es: "Redimensiona por ancho o porcentaje.", de: "Größe nach Breite oder Prozent ändern.", tr: "Genişlik veya yüzdeye göre boyutlandır.", ru: "Измените размер по ширине или проценту.", zh: "按宽度或百分比调整图片尺寸。", hi: "चौड़ाई या प्रतिशत से इमेज रीसाइज़ करें।", pt: "Redimensione por largura ou porcentagem." },
+  usage: { ar: ["اختر صورة أو أكثر.", "حدد العرض الجديد بالبكسل أو نسبة مئوية من الأصل.", "اختر صيغة الإخراج والجودة.", "اضغط «تحجيم» ونزّل النتائج (دفعة كاملة = ZIP)."], en: ["Pick one or more images.", "Set the new width in pixels or a percentage of original.", "Choose output format and quality.", "Press Resize and download (batches arrive as ZIP)."] },
+  explanation: { ar: ["يحافظ التحويل تلقائياً على نسبة الأبعاد فلا تتشوه الصورة أبداً.", "الاستخدامات الأشهر: تصغير صور الشبكات الاجتماعية، توحيد أبعاد صور المتجر الإلكتروني، وتقليل حجم المرفقات.", "يعتمد التحويل على محرك Canvas المتجهي في المتصفح مع إعادة تموضع عالية الجودة."], en: ["Aspect ratio is preserved automatically so images never distort.", "Most common uses: sizing social media images, unifying marketplace photo dimensions, and shrinking email attachments.", "Resampling runs on the browser's canvas engine with high-quality smoothing."] },
+  faq: [
+    { q: { ar: "ماذا لو أدخلت العرض فقط؟", en: "What if I only enter width?" },
+      a: { ar: "يُحسب الارتفاع تلقائياً حسب نسبة الأبعاد الأصلية.", en: "Height is computed automatically from the original aspect ratio." } }
+  ],
+  related: ["image-compressor", "image-converter", "heic-to-jpg"]
+},
+{
+  slug: "excel-to-csv",
+  icon: "📊",
+  category: "dev",
+  name: { ar: "Excel إلى CSV", en: "Excel to CSV", fr: "Excel vers CSV", es: "Excel a CSV", de: "Excel zu CSV", tr: "Excel'den CSV'ye", ru: "Excel в CSV", zh: "Excel 转 CSV", hi: "Excel से CSV", pt: "Excel para CSV" },
+  short: { ar: "حوّل جداول XLSX/XLS إلى CSV مع اختيار الورقة والفاصل.", en: "Convert XLSX/XLS sheets to CSV with sheet & delimiter choice.", fr: "Convertissez XLSX/XLS en CSV avec choix de feuille.", es: "Convierte XLSX/XLS a CSV eligiendo hoja y delimitador.", de: "XLSX/XLS zu CSV mit Blatt- und Trennwahl.", tr: "XLSX/XLS'yi CSV'ye çevir (sayfa/ayraç seçimi ile).", ru: "Конвертируйте XLSX/XLS в CSV с выбором листа.", zh: "将 XLSX/XLS 转为 CSV，可选工作表与分隔符。", hi: "XLSX/XLS को CSV में बदलें (शीट और डेलिमिटर चयन)।", pt: "Converta XLSX/XLS para CSV com escolha de planilha." },
+  usage: { ar: ["اختر ملف Excel (.xlsx أو .xls).", "اختر الورقة المطلوبة من القائمة.", "حدد الفاصل: فاصلة أو فاصلة منقوطة.", "اضغط «تحويل» ونزّل CSV (كل الأوراق = ZIP)."], en: ["Pick an Excel file (.xlsx or .xls).", "Choose the sheet from the list.", "Pick the delimiter: comma or semicolon.", "Press Convert and download the CSV (all sheets = ZIP)."] },
+  explanation: { ar: ["تعتمد الأداة على SheetJS المفتوحة المصدر — نفس المكتبة التي تستخدمها شركات كبرى لمعالجة الجداول في المتصفح.", "الفاصل المنقوطة مفيد للمستخدمين الأوروبيين وعرب Excel حيث الفاصلة فاصلة عشرية.", "معالجة محلية 100%: بياناتك المالية والمشروعات لا تُرفع لأي خادم — ميزة تتفوق فيها على Convertio وFreeConvert."], en: ["Powered by open-source SheetJS — the same library used by major companies for in-browser spreadsheet processing.", "Semicolon delimiter helps European and Arabic Excel users where comma is the decimal separator.", "100% local processing: your financial and project data never uploads — a real edge over Convertio and FreeConvert."] },
+  faq: [
+    { q: { ar: "هل تدعم ملفات .xls القديمة؟", en: "Does it support legacy .xls files?" },
+      a: { ar: "نعم، تدعم XLSX وXLS وXLSB حتى ملفات Excel 97 القديمة.", en: "Yes — XLSX, XLS and XLSB are supported, including legacy Excel 97 files." } }
+  ],
+  related: ["csv-to-json", "json-to-csv", "csv-to-excel"]
+},
+{
+  slug: "csv-to-excel",
+  icon: "📗",
+  category: "dev",
+  name: { ar: "CSV إلى Excel", en: "CSV to Excel", fr: "CSV vers Excel", es: "CSV a Excel", de: "CSV zu Excel", tr: "CSV'den Excel'e", ru: "CSV в Excel", zh: "CSV 转 Excel", hi: "CSV से Excel", pt: "CSV para Excel" },
+  short: { ar: "حوّل ملفات CSV إلى جدول XLSX حقيقي يفتح في Excel.", en: "Turn CSV files into real XLSX spreadsheets that open in Excel.", fr: "Convertissez CSV en véritable XLSX pour Excel.", es: "Convierte CSV a XLSX real que abre en Excel.", de: "CSV in echte XLSX-Tabellen für Excel umwandeln.", tr: "CSV'yi Excel'de açılan gerçek XLSX'e çevir.", ru: "Преобразуйте CSV в настоящий XLSX для Excel.", zh: "将 CSV 转为可在 Excel 打开的 XLSX。", hi: "CSV को Excel में खुलने वाले असली XLSX में बदलें।", pt: "Transforme CSV em XLSX real para abrir no Excel." },
+  usage: { ar: ["اختر ملف CSV (يكشف الفاصل تلقائياً).", "راجع عدد الصفوف والأعمدة المكتشفة.", "اضغط «تحويل إلى Excel».", "نزّل ملف XLSX الجاهز للفتح في Excel أو Google Sheets."], en: ["Pick a CSV file (delimiter auto-detected).", "Review detected row and column counts.", "Press Convert to Excel.", "Download the XLSX ready for Excel or Google Sheets."] },
+  explanation: { ar: ["المشكلة الشائعة: فتح CSV مباشرة في Excel يكسر الترميز العربي ويضغط كل البيانات في عمود واحد.", "هذه الأداة تنتج XLSX حقيقياً بترميز UTF-8 سليم وخلية لكل قيمة — دون معالجات يدوية.", "يعمل كل شيء عبر SheetJS داخل متصفحك مع كشف تلقائي للفواصل والاقتباسات."], en: ["Common problem: opening CSV directly in Excel breaks Arabic encoding and squeezes everything into one column.", "This tool produces a genuine UTF-8 XLSX with one cell per value — no manual import wizard needed.", "Everything runs via SheetJS in your browser with automatic delimiter and quote handling."] },
+  faq: [
+    { q: { ar: "أي فاصل يدعم؟", en: "Which delimiters are supported?" },
+      a: { ar: "الفاصلة والفاصلة المنقوطة والجدولة (Tab) وغيرها — تُكتشف تلقائياً من الملف نفسه.", en: "Comma, semicolon, tab and more — detected automatically from the file itself." } }
+  ],
+  related: ["excel-to-csv", "csv-to-json", "json-to-csv"]
+},
+{
+  slug: "excel-to-json",
+  icon: "🧾",
+  category: "dev",
+  name: { ar: "Excel إلى JSON", en: "Excel to JSON", fr: "Excel vers JSON", es: "Excel a JSON", de: "Excel zu JSON", tr: "Excel'den JSON'a", ru: "Excel в JSON", zh: "Excel 转 JSON", hi: "Excel से JSON", pt: "Excel para JSON" },
+  short: { ar: "حوّل أوراق Excel إلى JSON جاهز للمبرمجين وواجهات API.", en: "Convert Excel sheets to JSON ready for developers and APIs.", fr: "Convertissez Excel en JSON prêt pour les API.", es: "Convierte Excel a JSON listo para APIs.", de: "Excel zu API-tauglichem JSON konvertieren.", tr: "Excel'i API'lere hazır JSON'a çevir.", ru: "Конвертируйте Excel в JSON для API.", zh: "将 Excel 转为可用于 API 的 JSON。", hi: "Excel को API-रेडी JSON में बदलें।", pt: "Converta Excel em JSON pronto para APIs." },
+  usage: { ar: ["اختر ملف Excel.", "اختر الورقة ووضع الإخراج: مصفوفة كائنات (الصف الأول مفاتيح) أو مصفوفة صفوف.", "اضغط «تحويل».", "انسخ JSON أو نزّله مباشرة."], en: ["Pick an Excel file.", "Choose the sheet and output mode: array of objects (first row as keys) or array of rows.", "Press Convert.", "Copy the JSON or download it."] },
+  explanation: { ar: ["وضع «مصفوفة كائنات» ينتج JSON بمعرّفات واضحة من صف العناوين — الأنسب لاستيراد البيانات في التطبيقات وقواعد البيانات.", "تُحوَّل القيم الرقمية والتواريخ بأنواعها الصحيحة تلقائياً حيث أمكن.", "أداة أساسية للمطورين والباحثين الذين يبدأون من جداول Excel وينتهون إلى واجهات برمجية."], en: ["Object-array mode produces JSON with clear keys from the header row — ideal for importing data into apps and databases.", "Numeric and date values are auto-typed where possible.", "A must-have for developers and analysts starting from spreadsheets and ending at APIs."] },
+  faq: [
+    { q: { ar: "ما الفرق بين وضعي الإخراج؟", en: "What is the difference between output modes?" },
+      a: { ar: "«كائنات» يفسر الصف الأول كمفاتيح وينتج [{عمود: قيمة}] — «صفوف» ينتج [[صف1],[صف2]] كما هي.", en: "Objects mode treats the first row as keys and outputs [{col: value}]; rows mode outputs [[row1],[row2]] as-is." } }
+  ],
+  related: ["csv-to-json", "json-formatter", "excel-to-csv"]
+},
+{
+  slug: "zip-files",
+  icon: "🗜️",
+  category: "dev",
+  name: { ar: "ضغط ملفات ZIP", en: "ZIP Files", fr: "Compresser en ZIP", es: "Comprimir en ZIP", de: "Dateien zippen", tr: "ZIP Sıkıştırma", ru: "Сжать в ZIP", zh: "打包 ZIP 文件", hi: "ZIP फ़ाइलें बनाएं", pt: "Compactar em ZIP" },
+  short: { ar: "اجمع أي عدد من الملفات في أرشيف ZIP واحد داخل المتصفح.", en: "Pack any number of files into one ZIP archive in your browser.", fr: "Regroupez vos fichiers en un ZIP dans le navigateur.", es: "Empaqueta archivos en un ZIP desde el navegador.", de: "Beliebige Dateien im Browser zu ZIP packen.", tr: "Tarayıcıda dosyaları tek ZIP'te topla.", ru: "Упакуйте файлы в ZIP прямо в браузере.", zh: "在浏览器中将多个文件打包为 ZIP。", hi: "ब्राउज़र में फ़ाइलें एक ZIP में पैक करें।", pt: "Empacote arquivos num ZIP direto no navegador." },
+  usage: { ar: ["اختر أي عدد من الملفات من أي نوع.", "اختياري: ضع الملفات داخل مجلد بأسماء محددة.", "اضغط «إنشاء ZIP».", "نزّل الأرشيف الجاهز للإرسال."], en: ["Pick any number of files of any type.", "Optional: place files inside a named folder.", "Press Create ZIP.", "Download the archive ready to share."] },
+  explanation: { ar: ["تعتمد الأداة على JSZip — المكتبة المفتوحة الأشهر المستخدمة في ملايين المواقع.", "على الهواتف خصوصاً يصعب إنشاء أرشيفات ZIP دون تطبيقات؛ هنا تنجزها في متصفحك بثوانٍ.", "مثالية لتجميع مستندات طلب وظيفة، أو صور مشروع، أو ملفات واجب جامعي في مرفق واحد."], en: ["Powered by JSZip — the most popular open-source zip library used across millions of sites.", "Especially on phones, creating ZIP archives usually requires apps; here it takes seconds in your browser.", "Perfect for bundling job application documents, project photos or university assignments into one attachment."] },
+  faq: [
+    { q: { ar: "هل يوجد حد لحجم الملفات؟", en: "Is there a size limit?" },
+      a: { ar: "الحد الوحيد ذاكرة جهازك نفسها — لا يوجد حد من جهتنا، عكس مواقع الرفع التي تحدد 100MB أو أقل مجاناً.", en: "The only limit is your device's memory — no caps on our side, unlike upload sites that restrict you to 100MB or less for free." } }
+  ],
+  related: ["split-pdf", "heic-to-jpg", "image-compressor"]
+},
+{
+  slug: "qr-scanner",
+  icon: "📷",
+  category: "media",
+  name: { ar: "قارئ QR من صورة", en: "QR Reader (Image)", fr: "Lecteur QR (image)", es: "Lector QR (imagen)", de: "QR-Leser (Bild)", tr: "QR Okuyucu (Görsel)", ru: "QR-читатель (изображение)", zh: "QR 读取器（图片）", hi: "QR रीडर (इमेज)", pt: "Leitor QR (imagem)" },
+  short: { ar: "اقرأ محتوى رمز QR من صورة أو لقطة شاشة.", en: "Decode a QR code from an image or screenshot.", fr: "Décodez un QR code depuis une image.", es: "Decodifica un QR desde una imagen.", de: "QR-Code aus Bild entschlüsseln.", tr: "Görselden QR kodunu çöz.", ru: "Декодируйте QR-код из изображения.", zh: "从图片或截图解码二维码。", hi: "इमेज या स्क्रीनशॉट से QR डिकोड करें।", pt: "Decodifique um QR de imagem ou print." },
+  usage: { ar: ["اختر صورة تحتوي رمز QR (لقطة شاشة أو صورة كاميرا).", "اضغط «فك الرمز».", "اقرأ المحتوى: رابط أو نص أو رقم هاتف.", "انسخه، أو افحص الرابط قبل فتحه."], en: ["Pick an image containing a QR code (screenshot or camera photo).", "Press Decode.", "Read the content: URL, text or phone number.", "Copy it, or inspect the link before opening."] },
+  explanation: { ar: ["يعمل فك الترميز عبر jsQR — مكتبة مفتوحة المصدر تعمل محلياً على بيانات البكسل مباشرة.", "الفائدة الأهم للأمان: افحص وجهة روابط QR المجهولة قبل فتحها على هاتفك.", "يعمل مع الصور والقطات من أي جهاز — لا يحتاج كاميرا مباشرة مثل تطبيقات المسح."], en: ["Decoding runs via jsQR — an open-source library operating directly on pixel data, fully local.", "Key security benefit: inspect where an unknown QR link leads before opening it on your phone.", "Works with images from any device — no live camera needed, unlike scanner apps."] },
+  faq: [
+    { q: { ar: "لماذا لا يقرأ الرمز؟", en: "Why won't it read my code?" },
+      a: { ar: "تأكد أن الرمز واضح ومضيء وغير مائل، وقص الصورة حول الرمز إن كانت كبيرة — وجرّب لقطة أوضح.", en: "Make sure the code is sharp, well-lit and straight; crop the image around the code if it's large — or try a sharper shot." } }
+  ],
+  related: ["qr-code", "base64", "url-encoder"]
 }
 
 ];

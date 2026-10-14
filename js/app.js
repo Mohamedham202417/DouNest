@@ -21,6 +21,7 @@ import { adSlot, disclosureBanner, featuredBlock, supportButton } from "./moneti
 import { RARE_TOOLS } from "./rare-tools.js";
 import { AI_TOOLS } from "./ai-directory.js";
 import { getArticles, getArticle } from "./articles.js";
+import { getFAQ, FAQ_CATS } from "./faq.js";
 
 /* ========= Config & base detection ========= */
 const CFG = window.DouNestConfig || {};
@@ -32,7 +33,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "about", "privacy", "terms", "support", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -845,6 +846,33 @@ function staticPage({ title, html, path }) {
   injectSEO({ title: `${title} — DouNest`, description: t("meta.description"), path });
 }
 
+function renderFaq() {
+  const items = getFAQ();
+  const lang = getLang();
+  const sections = Object.entries(FAQ_CATS).map(([id, label]) => {
+    const list = items.filter(f => f.cat === id);
+    if (!list.length) return "";
+    return `
+    <section class="section">
+      <h2 class="section-title">${escapeHtml(pick(label, lang))}</h2>
+      ${list.map(f => `
+      <details class="faq-item">
+        <summary>${escapeHtml(pick(f.q, lang))}</summary>
+        <p>${escapeHtml(pick(f.a, lang))}</p>
+      </details>`).join("")}
+    </section>`;
+  }).join("");
+  staticPage({
+    title: t("faq.title"),
+    path: "/faq",
+    html: `
+      <h1>${t("faq.title")}</h1>
+      <p>${t("faq.subtitle")}</p>
+      ${sections}
+      <p class="empty" style="max-width:560px;margin:0 auto">${t("faq.more")}</p>`
+  });
+}
+
 function renderAbout() {
   staticPage({
     title: t("about.title"),
@@ -941,6 +969,7 @@ route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);
 route("/articles/:slug", renderArticlePage);
 route("/about", renderAbout);
+route("/faq", renderFaq);
 route("/privacy", renderPrivacy);
 route("/terms", renderTerms);
 notFoundHandler = renderNotFound; // unresolved routes now render a real 404 view

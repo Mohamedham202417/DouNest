@@ -35,6 +35,26 @@
   } catch (e) {}
 </script>
 <script src="../../config.js"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="v3-2026-10-14-mv85oh15";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد QR","description":"أنشئ رموز QR للنصوص والروابط.","url":"https://mohamedham202417.github.io/DouNest/tools/qr-code/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"مولّد QR","item":"https://mohamedham202417.github.io/DouNest/tools/qr-code/"}]}</script>
@@ -55,7 +75,8 @@
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
-        <a href="../../favorites/">المفضلة</a>
+        <a href="../../faq/">الأسئلة الشائعة</a>
+        <a href="../../favorites/" rel="nofollow">المفضلة</a>
         <a href="../../about/">حول</a>
       </nav>
       <div class="topbar-actions">

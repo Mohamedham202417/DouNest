@@ -1,5 +1,6 @@
 import { t } from "../i18n.js";
 import { toastSuccess } from "../toast.js";
+import { loadEsm } from "../util.js";
 
 export function render(root) {
   root.innerHTML = `
@@ -26,14 +27,12 @@ export function render(root) {
   const size = root.querySelector("#size");
   const cv = root.querySelector("#cv");
 
-  const loadQr = () => new Promise((resolve, reject) => {
-    if (window.QRCode) return resolve(window.QRCode);
-    const s = document.createElement("script");
-    s.src = "https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js";
-    s.onload = () => resolve(window.QRCode);
-    s.onerror = reject;
-    document.head.appendChild(s);
-  });
+  // jsdelivr +esm wrapper: qrcode ships CJS only — its UMD "build/" path is
+  // NOT published, so we load the auto-converted ESM build instead
+  const loadQr = async () => {
+    const mod = await loadEsm("https://cdn.jsdelivr.net/npm/qrcode@1.5.3/+esm");
+    return mod.default || mod;
+  };
 
   const run = async () => {
     try {

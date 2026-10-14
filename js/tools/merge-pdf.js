@@ -44,7 +44,7 @@ export function render(root) {
     if (ordered.length < 2) return toastError(t("tool.noInput"));
     status.textContent = "⏳ pdf-lib …";
     try {
-      const { PDFDocument } = await loadEsm("https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.mjs");
+      const { PDFDocument } = await loadEsm("https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js");
       const out = await PDFDocument.create();
       for (const f of ordered) {
         const src = await PDFDocument.load(await f.arrayBuffer(), { ignoreEncryption: true });

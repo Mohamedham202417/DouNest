@@ -35,6 +35,26 @@
   } catch (e) {}
 </script>
 <script src="/DouNest/config.js"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="v3-2026-10-14-mv85oh15";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
 
 </head>
 <body>
@@ -53,7 +73,8 @@
         <a href="/DouNest/rare/">أدوات نادرة</a>
         <a href="/DouNest/ai/">دليل AI</a>
         <a href="/DouNest/articles/">المقالات</a>
-        <a href="/DouNest/favorites/">المفضلة</a>
+        <a href="/DouNest/faq/">الأسئلة الشائعة</a>
+        <a href="/DouNest/favorites/" rel="nofollow">المفضلة</a>
         <a href="/DouNest/about/">حول</a>
       </nav>
       <div class="topbar-actions">

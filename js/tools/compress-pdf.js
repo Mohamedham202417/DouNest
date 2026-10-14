@@ -50,7 +50,7 @@ export function render(root) {
     try {
       const pdfjs = await loadEsm(CDNP + "pdf.min.mjs");
       pdfjs.GlobalWorkerOptions.workerSrc = CDNP + "pdf.worker.min.mjs";
-      const { PDFDocument } = await loadEsm("https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.mjs");
+      const { PDFDocument } = await loadEsm("https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js");
 
       const pdf = await pdfjs.getDocument({ data: await f.arrayBuffer() }).promise;
       const outDoc = await PDFDocument.create();
