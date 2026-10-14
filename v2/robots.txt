@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://mohamedham202417.github.io/DouNest/v2/sitemap.xml

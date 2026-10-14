@@ -47,8 +47,10 @@ var DouNestConfig = {
   featured: [],
 
   /* ---- 4) Support / donation ---- */
+  /* Leave "" to hide the support button until you have your real page
+     (e.g. "https://www.buymeacoffee.com/YOURNAME"). */
   support: {
-    url: "https://www.buymeacoffee.com/"   // <- put your page here
+    url: ""
   },
 
   /* ---- Analytics ---- */

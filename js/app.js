@@ -105,16 +105,37 @@ function route(pattern, handler) {
   routes.push({ regex, keys, handler });
 }
 
-function currentPath() {
-  let p = location.pathname.startsWith(BASE) ? location.pathname.slice(BASE.length) : location.pathname;
-  p = p.replace(/index\.html$/, "").replace(/\/+$/, "");
+/**
+ * Strip the base prefix from a pathname. Defensive: strips it repeatedly so
+ * legacy doubled URLs like /DouNest/DouNest/tools/x recover cleanly.
+ * Custom domains (BASE = "/") pass through untouched.
+ */
+function stripBase(pathname) {
+  const root = BASE.replace(/\/$/, "");
+  if (!root) return pathname || "/";
+  let p = pathname || "/";
+  let guard = 0;
+  while ((p === root || p.startsWith(root + "/")) && guard++ < 6) {
+    p = p.slice(root.length) || "/";
+  }
+  return p;
+}
+
+function normalizeVirtual(p) {
+  p = (p || "/").replace(/index\.html$/, "").replace(/\/+$/, "");
   return "/" + p.replace(/^\/+/, "");
+}
+
+function currentPath() {
+  return normalizeVirtual(stripBase(location.pathname));
 }
 
 function resolve() {
   const path = currentPath();
-  const [pathname, queryStr] = path.split("?");
-  const query = new URLSearchParams(queryStr || "");
+  const [pathname] = path.split("?");
+  // merge query string from the real URL (location.search) — pathname never
+  // contains "?", so this is the only place /tools?q=… can be picked up
+  const query = new URLSearchParams(location.search || "");
   for (const r of routes) {
     const m = pathname.match(r.regex);
     if (m) {
@@ -123,11 +144,13 @@ function resolve() {
       r.handler(params, query);
       window.scrollTo({ top: 0, behavior: "instant" });
       moveFocusToMain();
+      syncTopnavActive();
       return;
     }
   }
   notFoundHandler();
   moveFocusToMain();
+  syncTopnavActive();
 }
 
 function moveFocusToMain() {
@@ -135,30 +158,94 @@ function moveFocusToMain() {
   if (main) { main.setAttribute("tabindex", "-1"); main.focus({ preventScroll: true }); }
 }
 
-/** Internal navigation with pushState + link interception. */
+/**
+ * Internal navigation with pushState.
+ * `path` is a VIRTUAL path ("/", "/tools", "/tools/json-formatter").
+ * The real URL is built as BASE + path exactly once — never doubled.
+ */
 function navigate(path) {
-  const url = BASE.replace(/\/$/, "") + path;
-  history.pushState({}, "", url === "" ? BASE : url);
+  const [rawPath, rawSearch] = String(path || "/").split("?");
+  const clean = normalizeVirtual(rawPath);
+  const search = rawSearch ? "?" + rawSearch : "";
+  const url = (clean === "/" ? BASE : BASE.replace(/\/$/, "") + clean + "/") + search;
+  if (url !== location.pathname + location.search) history.pushState({}, "", url);
   resolve();
 }
 
+/**
+ * Universal link interception: resolves ANY same-origin link — relative
+ * ("./tools/", "../about/") or absolute ("/DouNest/tools/") — to a virtual
+ * path, so the SPA handles every internal click with no full reloads and no
+ * base-path doubling. External / download / modified clicks pass through.
+ */
 document.addEventListener("click", (e) => {
+  if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
   const a = e.target.closest("a");
   if (!a || a.target === "_blank" || a.hasAttribute("download")) return;
   const href = a.getAttribute("href");
-  if (!href || !href.startsWith("/") || href.startsWith("//")) return;
-  if (a.host !== location.host && a.getAttribute("href")) return;
+  if (!href || href.startsWith("#")) return;
+  let url;
+  try { url = new URL(href, location.href); } catch { return; }
+  if (url.origin !== location.origin) return;
+  if (BASE !== "/" && !url.pathname.startsWith(BASE) && url.pathname !== BASE.replace(/\/$/, "")) return;
   e.preventDefault();
-  navigate(href);
+  navigate(stripBase(url.pathname) + (url.search || ""));
 });
 
 window.addEventListener("popstate", resolve);
 
-function link(path) { return BASE.replace(/\/$/, "") + path; }
+/**
+ * Absolutize every same-origin link ONCE at boot (before any pushState):
+ * relative hrefs re-resolve against the document base, which CHANGES after
+ * pushState — turning "./rare/" into /DouNest/tools/rare/ and silently
+ * breaking the topbar after the first SPA navigation. Rooted absolute
+ * hrefs are immune. Static HTML keeps relative hrefs for crawlers/no-JS.
+ */
+(function absolutizeLinks() {
+  const bootBase = location.href; // document base is still correct at boot
+  const root = BASE.replace(/\/$/, "");
+  document.querySelectorAll("a[href]").forEach(a => {
+    const href = a.getAttribute("href");
+    if (!href || href.startsWith("#") || href.startsWith("//") || /^[a-z]+:/i.test(href)) return;
+    try {
+      const u = new URL(href, bootBase);
+      if (u.origin !== location.origin) return;
+      const v = normalizeVirtual(stripBase(u.pathname));
+      a.setAttribute("href", root + (v === "/" ? "/" : v + "/"));
+    } catch {}
+  });
+})();
+
+/**
+ * Clean legacy doubled-base URLs (e.g. /DouNest/DouNest/tools/x — shared or
+ * bookmarked while the old bug was live) in the address bar itself.
+ */
+(function cleanDoubledUrl() {
+  const clean = stripBase(location.pathname);
+  if (clean !== location.pathname) {
+    const root = BASE.replace(/\/$/, "");
+    const v = normalizeVirtual(clean);
+    const target = (v === "/" ? BASE : root + v + "/") + location.search;
+    history.replaceState({}, "", target);
+  }
+})();
+
+function link(path) { return BASE.replace(/\/$/, "") + (path === "/" ? "/" : path + "/"); }
 
 /* ========= Shared UI helpers ========= */
 function activeNavClass(path) {
   return currentPath() === path || (path !== "/" && currentPath().startsWith(path)) ? "active" : "";
+}
+
+/** Highlight the matching topnav link for the current route. */
+function syncTopnavActive() {
+  const here = currentPath();
+  document.querySelectorAll(".topnav a").forEach(a => {
+    let vp;
+    try { vp = normalizeVirtual(stripBase(new URL(a.href, location.href).pathname)); } catch { return; }
+    const isActive = vp === here || (vp !== "/" && here.startsWith(vp + "/")) || (vp === "/" && here === "/");
+    a.classList.toggle("active", isActive);
+  });
 }
 
 function setLangDirLink() {
@@ -178,7 +265,9 @@ function setLinkEl(rel, href) {
   el.href = href;
 }
 function injectSEO({ title, description, path, jsonLd = [] }) {
-  const url = SITE_ROOT + path;
+  // canonical URLs match the static-file URLs (trailing slash) to avoid
+  // duplicate-content signals between SPA state and prerendered pages
+  const url = SITE_ROOT + (path === "/" ? "/" : path.replace(/\/$/, "") + "/");
   document.title = title;
   setMeta("name", "description", description);
   setMeta("property", "og:title", title);
@@ -192,7 +281,22 @@ function injectSEO({ title, description, path, jsonLd = [] }) {
   setMeta("name", "twitter:description", description);
   setMeta("name", "twitter:image", `${SITE_ROOT}/assets/og-cover.png`);
   setLinkEl("canonical", url);
-  setLinkEl("alternate", `${SITE_ROOT}${path}?lang=ar`);
+  // absolute favicon/manifest — pushState changes the document base, so
+  // relative icon URLs can silently break after SPA navigation
+  setLinkEl("manifest", `${SITE_ROOT}/manifest.json`);
+  document.querySelectorAll('link[rel="icon"], link[rel="apple-touch-icon"]').forEach(el => {
+    const sizes = el.getAttribute("sizes");
+    if (el.getAttribute("rel") === "apple-touch-icon" || sizes === "192x192") el.href = `${SITE_ROOT}/assets/icon-192.png`;
+    else if (sizes === "32x32") el.href = `${SITE_ROOT}/assets/favicon-32.png`;
+  });
+  // proper hreflang alternates (replace the previous single one)
+  document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
+  [["ar", "?lang=ar"], ["en", "?lang=en"], ["x-default", ""]].forEach(([hl, suffix]) => {
+    const el = document.createElement("link");
+    el.rel = "alternate"; el.hreflang = hl;
+    el.href = `${SITE_ROOT}${path}${suffix}`;
+    document.head.appendChild(el);
+  });
   document.querySelectorAll('script[data-ld="dyn"]').forEach(s => s.remove());
   jsonLd.forEach(g => {
     const s = document.createElement("script");
@@ -297,6 +401,25 @@ function score(tool, q) {
   return hay.includes(q);
 }
 
+/**
+ * ONE delegated favorites handler for the whole app — covers grid cards,
+ * recent-cards, favorites page and any future card container. Per-render
+ * wiring missed the recent-cards (their buttons had no handlers).
+ */
+function wireFavorites() {
+  document.getElementById("main")?.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-fav]");
+    if (!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    const slug = btn.dataset.fav;
+    const added = favorites.toggle(slug);
+    btn.classList.toggle("active", added);
+    btn.textContent = added ? "★" : "☆";
+    toastSuccess(added ? t("tool.favorite") : t("tool.unfavorite"));
+    if (currentPath() === "/favorites") renderFavorites();
+  });
+}
+
 function renderGrid() {
   const grid = document.getElementById("grid");
   if (!grid) return;
@@ -305,16 +428,6 @@ function renderGrid() {
     .filter(x => score(x, state.query));
   if (!list.length) { grid.innerHTML = `<div class="empty">${t("search.empty")}</div>`; return; }
   grid.innerHTML = list.map(toolCard).join("");
-  grid.querySelectorAll("[data-fav]").forEach(btn => {
-    btn.onclick = (e) => {
-      e.preventDefault(); e.stopPropagation();
-      const slug = btn.dataset.fav;
-      const added = favorites.toggle(slug);
-      btn.classList.toggle("active", added);
-      btn.textContent = added ? "★" : "☆";
-      toastSuccess(added ? t("tool.favorite") : t("tool.unfavorite"));
-    };
-  });
 }
 
 function toolCard(tool) {
@@ -370,13 +483,6 @@ function renderFavorites() {
     ${list.length
       ? `<div class="tools-grid">${list.map(toolCard).join("")}</div>`
       : `<div class="empty">${t("favorites.empty")}</div>`}`;
-  main.querySelectorAll("[data-fav]").forEach(btn => {
-    btn.onclick = (e) => {
-      e.preventDefault();
-      favorites.toggle(btn.dataset.fav);
-      renderFavorites();
-    };
-  });
   injectSEO({ title: `${t("nav.favorites")} — DouNest`, description: t("meta.description"), path: "/favorites" });
 }
 
@@ -837,8 +943,10 @@ route("/articles/:slug", renderArticlePage);
 route("/about", renderAbout);
 route("/privacy", renderPrivacy);
 route("/terms", renderTerms);
+notFoundHandler = renderNotFound; // unresolved routes now render a real 404 view
 
 /* ========= Boot ========= */
+wireFavorites();
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 setLangDirLink();

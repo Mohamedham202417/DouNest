@@ -21,10 +21,17 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { TOOLS } from "./js/registry.js";
+import { TOOLS, CATEGORIES } from "./js/registry.js";
 import { getArticles } from "./js/articles.js";
 import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
 import { RARE_TOOLS as RARE_TOOLS_DATA } from "./js/rare-tools.js";
+
+/* category ordering + Arabic labels for build-time prerendering */
+const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
+const CAT_LABEL_AR = {
+  text: "نصوص", encode: "ترميز", dev: "مطورين", color: "ألوان",
+  security: "أمان", media: "وسائط"
+};
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const NOW = new Date().toISOString().slice(0, 10);
@@ -60,7 +67,7 @@ const relPrefix = (p) => "../".repeat(p.split("/").filter(Boolean).length); // f
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /* ---------- shared page template (absolute asset paths) ---------- */
-function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false }) {
+function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false, noindex = false }) {
   const url = SITE + canonicalPath;
   // Relative prefix that reaches the site root from this page's folder.
   // Works on GitHub Pages (/DouNest/tools/x/), custom domains and local servers alike.
@@ -68,7 +75,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
   const up = absolute ? BASE : relPrefix(canonicalPath);
   const R = (p) => up + p; // resolve a root-relative path from this page
   const ld = [
-    {
+    noindex ? null : {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "DouNest",
@@ -81,7 +88,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
       }
     },
     ...jsonLd
-  ].map(g => `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`).join("\n");
+  ].filter(Boolean).map(g => `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`).join("\n");
 
   return `<!DOCTYPE html>
 <html lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}">
@@ -91,7 +98,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <meta name="theme-color" content="#7c3aed" />
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}" />
-<meta name="robots" content="index,follow" />
+<meta name="robots" content="${noindex ? "noindex,nofollow" : "index,follow"}" />
 <link rel="canonical" href="${url}" />
 <link rel="manifest" href="${R("manifest.json")}" />
 <link rel="icon" type="image/png" sizes="32x32" href="${R("assets/favicon-32.png")}" />
@@ -138,6 +145,7 @@ ${ld}
         <a href="${R("rare/")}">${L[lang].rare}</a>
         <a href="${R("ai/")}">${L[lang].ai}</a>
         <a href="${R("articles/")}">${L[lang].articles}</a>
+        <a href="${R("favorites/")}">${L[lang].fav}</a>
         <a href="${R("about/")}">${L[lang].about}</a>
       </nav>
       <div class="topbar-actions">
@@ -411,6 +419,84 @@ ${cards}
   );
 }
 
+/* ---------- 3b) Tools hub page (was missing -> /tools/ returned HTTP 404) ---------- */
+console.log("→ tools hub page");
+{
+  const cards = CATEGORIES_ORDER.map(catId => {
+    const items = TOOLS.filter(t2 => t2.category === catId);
+    if (!items.length) return "";
+    return `
+    <section class="section">
+      <h2 class="section-title">${esc(CAT_LABEL_AR[catId] || catId)}</h2>
+      <div class="tools-grid">
+        ${items.map(t2 => `
+        <a class="tool-card" href="${t2.slug}/">
+          <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
+          <h3>${esc(pick(t2.name, "ar"))}</h3>
+          <p>${esc(pick(t2.short, "ar"))}</p>
+          <div class="card-foot"><span class="badge tiny">${esc(CAT_LABEL_AR[t2.category] || t2.category)}</span></div>
+        </a>`).join("")}
+      </div>
+    </section>`;
+  }).join("");
+  writePage(
+    "tools/index.html",
+    shell({
+      title: "كل الأدوات — DouNest",
+      description: "30 أداة مجانية تعمل محلياً في متصفحك: JSON، Base64، JWT، PDF، QR، ألوان، نصوص، وأكثر — مصنّفة حسب الاستخدام.",
+      canonicalPath: "tools/",
+      jsonLd: [{
+        "@context": "https://schema.org", "@type": "CollectionPage",
+        "name": "كل الأدوات — DouNest", "url": `${SITE}tools/`, "inLanguage": "ar"
+      }],
+      bodyContent: `
+    <section class="page-head">
+      <h1>كل الأدوات</h1>
+      <p>30+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
+    </section>
+${cards}`
+    })
+  );
+}
+
+/* ---------- 3c) Articles hub page (was missing -> /articles/ returned HTTP 404) ---------- */
+console.log("→ articles hub page");
+{
+  const cards = getArticles().map(a => `
+      <a class="tool-card article" href="${a.slug}/">
+        <div class="icon" aria-hidden="true">📝</div>
+        <h3>${esc(pick(a.title, "ar"))}</h3>
+        <p>${esc(pick(a.excerpt, "ar"))}</p>
+        <div class="card-foot"><span class="badge tiny">${esc(a.date)}</span></div>
+      </a>`).join("");
+  writePage(
+    "articles/index.html",
+    shell({
+      title: "المقالات — DouNest",
+      description: "دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest.",
+      canonicalPath: "articles/",
+      bodyContent: `
+    <section class="page-head"><h1>المقالات</h1></section>
+    <div class="tools-grid">
+${cards}
+    </div>`
+    })
+  );
+}
+
+/* ---------- 3d) Favorites page (personal page — noindex) ---------- */
+console.log("→ favorites page");
+writePage(
+  "favorites/index.html",
+  shell({
+    title: "المفضلة — DouNest",
+    description: "أدواتك المفضلة المحفوظة على جهازك.",
+    canonicalPath: "favorites/",
+    noindex: true,
+    bodyContent: `<section class="page-head"><h1>⭐ المفضلة</h1><p>أدواتك المفضلة تُحفظ محلياً على جهازك فقط.</p></section>`
+  })
+);
+
 /* ---------- 4) 404.html (SPA fallback, absolute paths) ---------- */
 console.log("→ 404.html fallback");
 writePage("404.html", shell({
@@ -418,6 +504,7 @@ writePage("404.html", shell({
   description: "30+ أداة ويب مجانية تعمل محلياً داخل متصفحك.",
   canonicalPath: "",
   absolute: true,
+  noindex: true,
   bodyContent: `<div class="empty notfound"><h1>⏳</h1><p>جارٍ التحميل… / Loading…</p></div>`
 }));
 
@@ -463,8 +550,12 @@ const ASSETS = [
   "./assets/og-cover.png", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/favicon-32.png",
   "./config.js",
   ...jsFiles.map(f => "./" + f),
+  "./tools/index.html",
   ...toolPages.map(p => "./" + p),
+  "./articles/index.html",
   ...articlePages.map(p => "./" + p),
+  "./favorites/index.html",
+  "./ai/index.html", "./rare/index.html",
   "./about/index.html", "./privacy/index.html", "./terms/index.html",
   "./sitemap.xml", "./robots.txt"
 ];
