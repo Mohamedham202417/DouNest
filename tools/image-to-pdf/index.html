@@ -40,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9i6pc3";
+  var B="v3-2026-10-15-mv9itdsk";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -136,6 +136,7 @@
         </section>
       </div>
       <aside class="tool-sidecol">
+        <div class="side-box"><h3>دليل مرتبط</h3><a class="related-item" href="../../articles/image-to-pdf-guide/"><span class="icon sm">📖</span><span>اقرأ الدليل قبل استخدام الأداة</span></a></div>
         
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>

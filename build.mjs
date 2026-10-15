@@ -224,6 +224,13 @@ for (const tool of TOOLS) {
   const faq = tool.faq || [];
   const related = (tool.related || []).map(getToolB).filter(Boolean);
   const up = relPrefix(`tools/${tool.slug}/`);
+  const guideForTool = {
+    "excel-to-json": "excel-to-json-guide",
+    "pdf-to-word": "pdf-to-word-guide",
+    "image-to-pdf": "image-to-pdf-guide",
+    "csv-to-json": "csv-json-conversion-guide",
+    "json-to-csv": "csv-json-conversion-guide"
+  }[tool.slug];
 
   const body = `
     <nav class="breadcrumb" aria-label="breadcrumb">
@@ -269,6 +276,7 @@ for (const tool of TOOLS) {
         </section>` : ""}
       </div>
       <aside class="tool-sidecol">
+        ${guideForTool ? `<div class="side-box"><h3>دليل مرتبط</h3><a class="related-item" href="${up}articles/${guideForTool}/"><span class="icon sm">📖</span><span>اقرأ الدليل قبل استخدام الأداة</span></a></div>` : ""}
         ${related.length ? `
         <div class="side-box">
           <h3>${AR.related}</h3>
