@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/pdf/" />
 <link rel="manifest" href="../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/icon-192.png" />
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
@@ -24,6 +25,8 @@
 <meta name="twitter:description" content="ارفع ملف PDF مرة واحدة ثم نفّذ كل العمليات: ضغط، دمج، تقسيم، تدوير، إلى JPG، إلى TXT، إلى Word، وصور إلى PDF — كل شيء محلي داخل متصفحك بدون رفع ملفات." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles.css" />
@@ -40,7 +43,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9j8eh3";
+  var B="v3-2026-10-15-mv9slrv7";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -72,15 +75,15 @@
       <nav class="topnav" aria-label="Main">
         <a href="../">الرئيسية</a>
         <a href="../tools/">كل الأدوات</a>
-        <a href="../pdf/">مركز PDF</a>
-        <a href="../images/">مركز الصور</a>
-        <a href="../convert/">مركز التحويل</a>
-        <a href="../rare/">أدوات نادرة</a>
-        <a href="../ai/">دليل AI</a>
-        <a href="../articles/">المقالات</a>
-        <a href="../faq/">الأسئلة الشائعة</a>
-        <a href="../favorites/" rel="nofollow">المفضلة</a>
-        <a href="../about/">حول</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="../pdf/">مركز PDF</a><a href="../images/">مركز الصور</a>
+          <a href="../convert/">مركز التحويل</a><a href="../text/">مركز النصوص</a>
+          <a href="../dev/">مركز المطورين</a>
+          <a href="../security/">مركز الأمان</a>
+          <a href="../calculators/">الحاسبات</a>
+        </div></details>
+        <a href="../articles/">المقالات</a><a href="../faq/">الأسئلة الشائعة</a>
+        <a href="../rare/">أدوات نادرة</a><a href="../ai/">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -99,52 +102,70 @@
       <h2 class="section-title">أدوات PDF الفردية</h2>
       <div class="tools-grid">
         
-        <a class="tool-card" href="compress-pdf/">
+        <a class="tool-card" href="/DouNest/tools/compress-pdf/">
           <div class="icon cat-media" aria-hidden="true">🗜️</div>
           <h3>ضغط PDF</h3>
           <p>قلّل حجم ملف PDF دون فقدان الجودة.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="merge-pdf/">
+        <a class="tool-card" href="/DouNest/tools/merge-pdf/">
           <div class="icon cat-media" aria-hidden="true">📚</div>
           <h3>دمج PDF</h3>
           <p>اجمع عدة ملفات PDF في ملف واحد.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="split-pdf/">
+        <a class="tool-card" href="/DouNest/tools/split-pdf/">
           <div class="icon cat-media" aria-hidden="true">✂️</div>
           <h3>تقسيم PDF</h3>
           <p>استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="rotate-pdf/">
+        <a class="tool-card" href="/DouNest/tools/rotate-pdf/">
           <div class="icon cat-media" aria-hidden="true">🔄</div>
           <h3>تدوير صفحات PDF</h3>
           <p>صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="pdf-to-jpg/">
+        <a class="tool-card" href="/DouNest/tools/pdf-to-jpg/">
           <div class="icon cat-media" aria-hidden="true">🖼️</div>
           <h3>PDF إلى صور</h3>
           <p>حوّل صفحات PDF إلى صور JPG بجودة قابلة للضبط.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="pdf-to-txt/">
+        <a class="tool-card" href="/DouNest/tools/pdf-to-txt/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
           <h3>PDF إلى نص</h3>
           <p>استخرج النص من ملفات PDF محليًا.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="pdf-to-word/">
+        <a class="tool-card" href="/DouNest/tools/pdf-to-word/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
           <h3>PDF إلى Word</h3>
           <p>حوّل ملفات PDF إلى مستندات Word قابلة للتحرير.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="image-to-pdf/">
+        <a class="tool-card" href="/DouNest/tools/image-to-pdf/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
           <h3>صورة إلى PDF</h3>
           <p>حوّل صور JPG أو PNG إلى ملف PDF واحد.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/pdf-organize/">
+          <div class="icon cat-media" aria-hidden="true">🗂️</div>
+          <h3>ترتيب صفحات PDF</h3>
+          <p>أعد ترتيب الصفحات أو احذف صفحات محددة من PDF مجاناً داخل متصفحك، دون رفع الملف.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/pdf-watermark/">
+          <div class="icon cat-media" aria-hidden="true">💧</div>
+          <h3>علامة مائية PDF</h3>
+          <p>أضف علامة مائية نصية مائلة إلى صفحات PDF واضبط حجمها وشفافيتها محلياً في المتصفح.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/pdf-page-numbers/">
+          <div class="icon cat-media" aria-hidden="true">🔢</div>
+          <h3>ترقيم صفحات PDF</h3>
+          <p>أضف أرقاماً إلى صفحات ملف PDF وحدد موضعها ورقم البداية قبل تنزيل النسخة المعدّلة.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
       </div>

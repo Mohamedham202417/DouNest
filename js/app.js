@@ -34,7 +34,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "privacy", "terms", "faq", "support", "text", "dev", "security", "calculators", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -340,6 +340,10 @@ function renderHome() {
         <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${t("home.explorePdf")}</span></a>
         <a class="explore-card" href="${link("/images")}"><strong>🖼️ ${t("nav.images")}</strong><span>${t("home.exploreImages")}</span></a>
         <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${t("home.exploreConvert")}</span></a>
+        <a class="explore-card" href="${link("/text")}"><strong>✍️ ${getLang()==="en"?"Text center":"مركز النصوص"}</strong><span>${getLang()==="en"?"Clean, convert and analyze text":"تنظيف النصوص وتحويلها وتحليلها"}</span></a>
+        <a class="explore-card" href="${link("/dev")}"><strong>🧰 ${getLang()==="en"?"Developer center":"مركز المطورين"}</strong><span>JSON · Base64 · JWT · Hash</span></a>
+        <a class="explore-card" href="${link("/security")}"><strong>🔐 ${getLang()==="en"?"Security center":"مركز الأمان"}</strong><span>${getLang()==="en"?"Password tools and TOTP":"كلمات مرور ورموز TOTP"}</span></a>
+        <a class="explore-card" href="${link("/calculators")}"><strong>🧮 ${getLang()==="en"?"Calculators":"الحاسبات"}</strong><span>${getLang()==="en"?"Everyday calculators":"حاسبات يومية"}</span></a>
         <a class="explore-card" href="${link("/rare")}"><strong>💎 ${t("nav.rare")}</strong><span>${t("home.exploreRare")}</span></a>
         <a class="explore-card" href="${link("/articles")}"><strong>📝 ${t("nav.articles")}</strong><span>${t("home.exploreArticles")}</span></a>
       </div>
@@ -770,6 +774,35 @@ function renderRareDetailView({ slug }) {
   });
 }
 
+/* ========= Additional work centers ========= */
+async function renderAdditionalCenter({ center }) {
+  const main = document.getElementById("main");
+  const labels = {
+    text: ["✍️", "مركز النصوص — أدوات الكتابة والتحويل"],
+    dev: ["🧰", "مركز المطورين — أدوات البرمجة"],
+    security: ["🔐", "مركز الأمان — أدوات محلية"],
+    calculators: ["🧮", "مركز الحاسبات"]
+  };
+  const [icon, title] = labels[center] || ["🧰", center];
+  const related = {
+    text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"],
+    dev: ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"],
+    security: ["password-generator","password-strength","totp-generator","hash-generator"],
+    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]
+  };
+  main.innerHTML = `<section class="page-head"><h1>${icon} ${title}</h1><p>${getLang() === "en" ? "A local-first workbench: your input stays in this browser." : "مساحة عمل موحّدة تعمل محلياً — لا تُرسل مدخلاتك إلى خادم."}</p></section><section class="workspace" id="center-workspace"></section>${hubToolLinks(related[center] || [])}`;
+  injectSEO({ title: `${title} — DouNest`, description: title, path: `/${center}` });
+  try {
+    const mod = await import(`./hubs/${center}-hub.js`);
+    mod.render(main.querySelector("#center-workspace"));
+  } catch (e) { console.error("center load failed:", center, e); }
+}
+
+function hubToolLinks(slugs) {
+  const items = slugs.map(getTool).filter(Boolean);
+  return `<section class="section"><h2 class="section-title">${getLang()==="en"?"Related tools":"أدوات مرتبطة"}</h2><div class="tools-grid">${items.map(x=>`<a class="tool-card" href="${link("/tools/"+x.slug)}"><div class="icon cat-${x.category}" aria-hidden="true">${x.icon}</div><h3>${escapeHtml(pick(x.name,getLang()))}</h3><p>${escapeHtml(pick(x.short,getLang()))}</p></a>`).join("")}</div></section>`;
+}
+
 /* ========= Hubs (/pdf/, /images/ and /convert/) ========= */
 async function renderPdfHub() {
   const main = document.getElementById("main");
@@ -778,7 +811,8 @@ async function renderPdfHub() {
       <h1>📄 ${t("hub.pdfTitle")}</h1>
       <p>${t("hub.pdfSub")}</p>
     </section>
-    <section class="workspace" id="hub-workspace"></section>`;
+    <section class="workspace" id="hub-workspace"></section>
+    ${hubToolLinks(["compress-pdf","merge-pdf","split-pdf","rotate-pdf","pdf-to-jpg","pdf-to-txt","pdf-to-word","image-to-pdf","pdf-organize","pdf-watermark","pdf-page-numbers"])}`;
   injectSEO({ title: `${t("nav.pdf")} — DouNest`, description: t("hub.pdfSub"), path: "/pdf" });
   try {
     const mod = await import("./hubs/pdf-hub.js");
@@ -793,7 +827,8 @@ async function renderConvertHub() {
       <h1>🔄 ${t("hub.convertTitle")}</h1>
       <p>${t("hub.convertSub")}</p>
     </section>
-    <section class="workspace" id="hub-workspace"></section>`;
+    <section class="workspace" id="hub-workspace"></section>
+    ${hubToolLinks(["csv-to-json","json-to-csv","excel-to-csv","csv-to-excel","excel-to-json","pdf-to-word","word-to-pdf","image-converter","svg-to-png","json-yaml"])}`;
   injectSEO({ title: `${t("nav.convert")} — DouNest`, description: t("hub.convertSub"), path: "/convert" });
   try {
     const mod = await import("./hubs/convert-hub.js");
@@ -808,7 +843,8 @@ async function renderImageHub() {
       <h1>🖼️ ${t("hub.imagesTitle")}</h1>
       <p>${t("hub.imagesSub")}</p>
     </section>
-    <section class="workspace" id="hub-workspace"></section>`;
+    <section class="workspace" id="hub-workspace"></section>
+    ${hubToolLinks(["image-compressor","image-converter","resize-image","remove-background","ocr-image-to-text","heic-to-jpg","image-crop","image-rotate-flip","exif-viewer","favicon-generator"])}`;
   injectSEO({ title: `${t("nav.images")} — DouNest`, description: t("hub.imagesSub"), path: "/images" });
   try {
     const mod = await import("./hubs/image-hub.js");
@@ -1058,6 +1094,10 @@ route("/rare/:slug", renderRareDetailView);
 route("/pdf", renderPdfHub);
 route("/images", renderImageHub);
 route("/convert", renderConvertHub);
+route("/text", () => renderAdditionalCenter({ center: "text" }));
+route("/dev", () => renderAdditionalCenter({ center: "dev" }));
+route("/security", () => renderAdditionalCenter({ center: "security" }));
+route("/calculators", () => renderAdditionalCenter({ center: "calculators" }));
 route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);
 route("/articles/:slug", renderArticlePage);

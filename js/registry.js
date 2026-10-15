@@ -545,8 +545,119 @@ export const TOOLS = [
       a: { ar: "تأكد أن الرمز واضح ومضيء وغير مائل، وقص الصورة حول الرمز إن كانت كبيرة — وجرّب لقطة أوضح.", en: "Make sure the code is sharp, well-lit and straight; crop the image around the code if it's large — or try a sharper shot." } }
   ],
   related: ["qr-code", "base64", "url-encoder"]
+},
+{
+  slug: 'pdf-organize', icon: '🗂️', category: 'media',
+  name: { ar: 'ترتيب صفحات PDF', en: 'PDF Page Organizer' },
+  short: { ar: 'أعد ترتيب الصفحات أو احذف صفحات محددة من PDF مجاناً داخل متصفحك، دون رفع الملف.', en: 'Reorder or remove PDF pages.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'pdf-watermark', icon: '💧', category: 'media',
+  name: { ar: 'علامة مائية PDF', en: 'PDF Watermark' },
+  short: { ar: 'أضف علامة مائية نصية مائلة إلى صفحات PDF واضبط حجمها وشفافيتها محلياً في المتصفح.', en: 'Add a text watermark to PDF pages.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'pdf-page-numbers', icon: '🔢', category: 'media',
+  name: { ar: 'ترقيم صفحات PDF', en: 'PDF Page Numbers' },
+  short: { ar: 'أضف أرقاماً إلى صفحات ملف PDF وحدد موضعها ورقم البداية قبل تنزيل النسخة المعدّلة.', en: 'Add page numbers to a PDF.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'image-crop', icon: '✂️', category: 'media',
+  name: { ar: 'قص الصور', en: 'Image Cropper' },
+  short: { ar: 'اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.', en: 'Crop images to common aspect ratios or custom dimensions.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'image-rotate-flip', icon: '🔄', category: 'media',
+  name: { ar: 'تدوير وقلب الصور', en: 'Rotate and Flip Images' },
+  short: { ar: 'دوّر الصور بزاوية 90 أو 180 درجة أو اقلبها أفقياً وعمودياً، ثم احفظ النسخة الجديدة.', en: 'Rotate images or flip them horizontally and vertically.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'exif-viewer', icon: '🔎', category: 'media',
+  name: { ar: 'عارض بيانات EXIF', en: 'EXIF Viewer' },
+  short: { ar: 'اعرض بيانات EXIF في صور JPEG، مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات الموقع، محلياً.', en: 'Inspect camera and date metadata in JPEG images.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'favicon-generator', icon: '⭐', category: 'media',
+  name: { ar: 'مولّد Favicon', en: 'Favicon Generator' },
+  short: { ar: 'حوّل صورتك إلى أيقونات Favicon متعددة الأحجام وملف ICO ومقتطف HTML جاهز لموقعك.', en: 'Turn an image into multi-size site icons and an ICO file.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'svg-to-png', icon: '🖼️', category: 'media',
+  name: { ar: 'تحويل SVG إلى PNG', en: 'SVG to PNG' },
+  short: { ar: 'حوّل رسومات SVG المتجهة إلى PNG شفاف وحدد العرض بالبكسل ولون الخلفية الاختياري.', en: 'Convert vector graphics into PNG images.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'json-yaml', icon: '🔁', category: 'dev',
+  name: { ar: 'تحويل JSON وYAML', en: 'JSON to YAML Converter' },
+  short: { ar: 'حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.', en: 'Convert JSON to YAML or back.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'markdown-to-html', icon: '📝', category: 'text',
+  name: { ar: 'تحويل Markdown إلى HTML', en: 'Markdown to HTML' },
+  short: { ar: 'حوّل نص Markdown إلى HTML أساسي، اعرض النتيجة وانسخها أو نزّلها من المتصفح مباشرة.', en: 'Convert Markdown into HTML locally.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'slug-generator', icon: '🔗', category: 'text',
+  name: { ar: 'مولّد Slug عربي', en: 'Arabic Slug Generator' },
+  short: { ar: 'أنشئ Slug صديقاً للروابط من عناوين عربية أو إنجليزية مع اختيار الفاصل والاحتفاظ بالعربية.', en: 'Turn titles into URL-friendly slugs.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'list-cleaner', icon: '🧹', category: 'text',
+  name: { ar: 'تنظيف القوائم', en: 'List Cleaner' },
+  short: { ar: 'نظّف القوائم من الفراغات والتكرار، وتجاهل حالة الأحرف أو رتّب العناصر حسب اختيارك.', en: 'Trim, deduplicate and sort lists.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'totp-generator', icon: '🔐', category: 'security',
+  name: { ar: 'مولّد رمز TOTP', en: 'TOTP 2FA Code Generator' },
+  short: { ar: 'أنشئ رمز TOTP للمصادقة الثنائية من سر Base32 داخل المتصفح دون إرسال السر إلى أي خادم.', en: 'Generate time-based 2FA codes locally.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
+},
+{
+  slug: 'password-strength', icon: '📊', category: 'security',
+  name: { ar: 'فاحص قوة كلمة المرور', en: 'Password Strength Checker' },
+  short: { ar: 'اختبر تقدير قوة كلمة المرور محلياً، واطلع على ملاحظات التحسين دون حفظها أو إرسالها.', en: 'Estimate password strength without uploading it.' },
+  usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
+  explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
+  faq: [], related: []
 }
-
 ];
 
 export const CATEGORIES = [

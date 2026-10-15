@@ -5,6 +5,7 @@
   "type": "module",
   "description": "DouNest — free browser tools. Static site + SEO page generator.",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "node build.mjs",
+    "test": "node scripts/check-site.mjs"
   }
 }
