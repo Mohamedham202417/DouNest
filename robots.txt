@@ -1,4 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /rare/security/
+Disallow: /rare/nmap/
+Disallow: /rare/wireshark/
+Disallow: /rare/burp-suite/
+Disallow: /rare/nuclei/
+Disallow: /rare/sqlmap/
+Disallow: /rare/metasploit/
+Disallow: /rare/hashcat/
+Disallow: /rare/john-the-ripper/
+Disallow: /rare/sherlock/
+Disallow: /rare/theharvester/
 
 Sitemap: https://mohamedham202417.github.io/DouNest/sitemap.xml

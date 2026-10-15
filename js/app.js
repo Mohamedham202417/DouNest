@@ -18,7 +18,8 @@ import { favorites, recent, ratings, comments, storage } from "./storage.js";
 import { toastSuccess, toastError } from "./toast.js";
 import { escapeHtml } from "./util.js";
 import { adSlot, disclosureBanner, featuredBlock, supportButton } from "./monetize.js";
-import { RARE_TOOLS } from "./rare-tools.js";
+import { RARE_TOOLS, RARE_CATS, getRareTool, getRareCat, rareByCat, SECURITY_WARNING } from "./rare-tools.js";
+import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML, securityWarningHTML } from "./rare-page.js";
 import { AI_TOOLS } from "./ai-directory.js";
 import { getArticles, getArticle } from "./articles.js";
 import { getFAQ, FAQ_CATS } from "./faq.js";
@@ -33,7 +34,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "convert", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -333,6 +334,16 @@ function renderHome() {
       </div>
     </section>
 
+    <section class="section slim">
+      <h2 class="section-title">🧭 ${t("home.explore")}</h2>
+      <div class="explore-strip">
+        <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${t("home.explorePdf")}</span></a>
+        <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${t("home.exploreConvert")}</span></a>
+        <a class="explore-card" href="${link("/rare")}"><strong>💎 ${t("nav.rare")}</strong><span>${t("home.exploreRare")}</span></a>
+        <a class="explore-card" href="${link("/articles")}"><strong>📝 ${t("nav.articles")}</strong><span>${t("home.exploreArticles")}</span></a>
+      </div>
+    </section>
+
     ${recentList.length ? `
     <section class="section slim">
       <h2 class="section-title">🕘 ${t("home.recent")}</h2>
@@ -397,7 +408,7 @@ function websiteJsonLd() {
 function score(tool, q) {
   if (!q) return true;
   q = q.toLowerCase();
-  const hay = [tool.slug, ...Object.values(tool.name || {}), ...Object.values(tool.short || {})]
+  const hay = [tool.slug, ...Object.values(tool.name || {}), ...Object.values(tool.short || {}), ...(tool.tags || [])]
     .join(" ").toLowerCase();
   return hay.includes(q);
 }
@@ -546,6 +557,11 @@ async function renderToolPage({ slug }) {
               <summary>${f.q[lang] || f.q.en}</summary>
               <p>${f.a[lang] || f.a.en}</p>
             </details>`).join("")}
+        </section>` : ""}
+        ${tool.tags?.length ? `
+        <section class="section">
+          <h2>${lang === "ar" ? "وسوم البحث" : "Hashtags"}</h2>
+          ${hashtagChipsHTML(tool.tags, lang, link("/tools") + "?q=")}
         </section>` : ""}
         ${adSlot("footer").outerHTML}
       </div>
@@ -707,32 +723,81 @@ async function renderToolPage({ slug }) {
   }
 }
 
-/* ========= Rare tools (affiliate-ready) ========= */
-function renderRareTools() {
+/* ========= Rare tools v4 (index / category / detail) ========= */
+function renderRareIndex() {
+  const lang = getLang();
+  const main = document.getElementById("main");
+  main.innerHTML = rareIndexHTML(lang, link("/rare"));
+  const d = disclosureBanner();
+  if (d) main.prepend(d);
+  injectSEO({
+    title: `${t("nav.rare")} — DouNest`,
+    description: t("rare.subtitle"),
+    path: "/rare"
+  });
+}
+
+function renderRareCatView({ cat }) {
+  const lang = getLang();
+  const main = document.getElementById("main");
+  const html = rareCatHTML(cat, lang, link("/rare"));
+  if (!html) return notFoundHandler();
+  main.innerHTML = html;
+  const c = getRareCat(cat);
+  injectSEO({
+    title: `${pick(c.name, lang)} — ${t("nav.rare")} — DouNest`,
+    description: pick(c.blurb, lang).slice(0, 155),
+    path: `/rare/${cat}`
+  });
+}
+
+function renderRareDetailView({ slug }) {
+  const lang = getLang();
+  const main = document.getElementById("main");
+  const tool = getRareTool(slug);
+  if (!tool) return notFoundHandler();
+  main.innerHTML = rareDetailHTML(slug, lang, link("/rare"), link("/tools") + "?q=");
+  injectSEO({
+    title: `${pick(tool.name, lang)} — ${t("nav.rare")} — DouNest`,
+    description: pick(tool.desc, lang).slice(0, 155),
+    path: `/rare/${slug}`,
+    jsonLd: tool.cat === "security" ? [] : [{
+      "@context": "https://schema.org", "@type": "Article",
+      "headline": pick(tool.name, lang), "inLanguage": lang,
+      "author": { "@type": "Organization", "name": "DouNest" }
+    }]
+  });
+}
+
+/* ========= Hubs (/pdf/ and /convert/) ========= */
+async function renderPdfHub() {
   const main = document.getElementById("main");
   main.innerHTML = `
     <section class="page-head">
-      <h1>${t("nav.rare")}</h1>
-      <p>${getLang() === "ar"
-        ? "أدوات خارجية مختارة بعناية يصعب العثور عليها، مع شرح لكل أداة."
-        : "Carefully selected external tools that are hard to find, with a note on each."}</p>
+      <h1>📄 ${t("hub.pdfTitle")}</h1>
+      <p>${t("hub.pdfSub")}</p>
     </section>
-    <div id="rare-disclosure"></div>
-    <div class="tools-grid">
-      ${RARE_TOOLS.map(tool => {
-        // affiliate-aware href (adds owner's sub-id when configured)
-        const anchor = affWrap(tool.url);
-        return `
-        <a class="tool-card external" href="${anchor.href}" target="_blank" rel="${anchor.rel}">
-          <div class="icon" aria-hidden="true">🧭</div>
-          <h3>${escapeHtml(pick(tool.name, getLang()))}</h3>
-          <p>${escapeHtml(pick(tool.desc, getLang()))}</p>
-          <div class="card-foot"><span class="badge tiny">${t("monetize.sponsored") || "External"}</span></div>
-        </a>`;
-      }).join("")}
-    </div>`;
-  main.querySelector("#rare-disclosure").appendChild(disclosureBanner());
-  injectSEO({ title: `${t("nav.rare")} — DouNest`, description: t("meta.description"), path: "/rare" });
+    <section class="workspace" id="hub-workspace"></section>`;
+  injectSEO({ title: `${t("nav.pdf")} — DouNest`, description: t("hub.pdfSub"), path: "/pdf" });
+  try {
+    const mod = await import("./hubs/pdf-hub.js");
+    mod.render(main.querySelector("#hub-workspace"));
+  } catch (e) { console.error("pdf hub load failed:", e); }
+}
+
+async function renderConvertHub() {
+  const main = document.getElementById("main");
+  main.innerHTML = `
+    <section class="page-head">
+      <h1>🔄 ${t("hub.convertTitle")}</h1>
+      <p>${t("hub.convertSub")}</p>
+    </section>
+    <section class="workspace" id="hub-workspace"></section>`;
+  injectSEO({ title: `${t("nav.convert")} — DouNest`, description: t("hub.convertSub"), path: "/convert" });
+  try {
+    const mod = await import("./hubs/convert-hub.js");
+    mod.render(main.querySelector("#hub-workspace"));
+  } catch (e) { console.error("convert hub load failed:", e); }
 }
 
 function affWrap(url) {
@@ -811,6 +876,7 @@ function renderArticlePage({ slug }) {
       <h1>${escapeHtml(pick(article.title, lang))}</h1>
       <p class="article-date">${article.date}</p>
       <div class="explanation">${markdownToHtml(article.content[lang] || article.content.en)}</div>
+      ${article.tags?.length ? `<div class="article-tags">${hashtagChipsHTML(article.tags, lang, link("/tools") + "?q=")}</div>` : ""}
     </article>`;
   injectSEO({
     title: `${pick(article.title, lang)} — DouNest`,
@@ -834,7 +900,10 @@ function markdownToHtml(md) {
     .replace(/^## (.*$)/gm, "<h2>$1</h2>")
     .replace(/^# (.*$)/gm, "<h1>$1</h1>")
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+    .replace(/\[(.*?)\]\((.*?)\)/g, (mm, txt, href) => {
+      const h = href.startsWith("/") ? (BASE.replace(/\/$/, "") + href) : href;
+      return `<a href="${h}">${txt}</a>`;
+    })
     .replace(/\n\n/g, "</p><p>")
     .replace(/^(?!<[hp])(.+)$/gm, "<p>$1</p>");
 }
@@ -964,7 +1033,14 @@ route("/", renderHome);
 route("/tools", renderAllTools);
 route("/tools/:slug", renderToolPage);
 route("/favorites", renderFavorites);
-route("/rare", renderRareTools);
+route("/rare", renderRareIndex);
+route("/rare/maps", () => renderRareCatView({ cat: "maps" }));
+route("/rare/security", () => renderRareCatView({ cat: "security" }));
+route("/rare/gems", () => renderRareCatView({ cat: "gems" }));
+route("/rare/classics", () => renderRareCatView({ cat: "classics" }));
+route("/rare/:slug", renderRareDetailView);
+route("/pdf", renderPdfHub);
+route("/convert", renderConvertHub);
 route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);
 route("/articles/:slug", renderArticlePage);

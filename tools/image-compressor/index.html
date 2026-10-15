@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ضاغط الصور","description":"اضغط JPG/PNG/WebP محليًا.","url":"https://mohamedham202417.github.io/DouNest/tools/image-compressor/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ضاغط الصور","description":"اضغط JPG/PNG/WebP محليًا.","keywords":"image-compressor, compression, ضغط-الصور, seo, performance, images","url":"https://mohamedham202417.github.io/DouNest/tools/image-compressor/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما أفضل قيمة جودة؟","acceptedAnswer":{"@type":"Answer","text":"0.7 للصور العادية و0.85 لصور المنتجات والمحافظ — القيم فوق 0.9 تضاعف الحجم بلا فرق يذكر."}},{"@type":"Question","name":"هل يُفقد أي بيانات نهائياً؟","acceptedAnswer":{"@type":"Answer","text":"نعم، ضغط JPEG تدميري بطبيعته — احفظ الأصل دائماً واضغط نسخة للنشر."}},{"@type":"Question","name":"هل تدعم PNG بالشفافية؟","acceptedAnswer":{"@type":"Answer","text":"الشفافية تُحفظ عند إخراج PNG، لكن التحويل إلى JPEG يمحوها لأن الصيغة لا تدعمها."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"ضاغط الصور","item":"https://mohamedham202417.github.io/DouNest/tools/image-compressor/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر صورة.</li><li>اضبط الجودة.</li><li>نزّل النسخة المضغوطة.</li></ol>
+          <ol class="steps"><li>اسحب صورة JPG أو PNG أو WebP إلى منطقة الرفع.</li><li>اضبط جودة الضغط على الشريط — 0.7 نقطة البداية المثالية.</li><li>فعّل تغيير الأبعاد إن أردت تصغير الأبعاد مع الضغط.</li><li>قارن الحجم قبل وبعد المعاينة الفورية.</li><li>نزّل الصورة المضغوطة، أو اضغط كل الصور دفعة واحدة في الوضع الجماعي.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تستخدم Canvas API لضغط الصورة.</p><p>لا يُرفع الملف لأي خادم.</p></div>
+          <div class="explanation"><p>ضغط الصور ليس خياراً في الويب الحديث بل واجب: صورة من الهاتف الحديث تزن 4-8 ميجابايت، وصفحة بثلاث صور كهذه تحمل زائراً 20 ميجابايت بلا سبب — بينما الجودة 0.7 تخفض الحجم إلى 10% تقريباً بفرق بصري لا يُلاحظ.</p><p>السر التقني في مفاضلة JPEG: الصيغة تضحّي بمعلومات لا تميزها العين البشرية، وكلما خفضت الجودة ضحّيت بأكثر — المنطقة 0.6-0.8 هي المياه المثالية حيث يكون التوفير هائلاً والتدهور غير مرئي.</p><p>الضغط المحلي عبر canvas المتصفح يعني لا رفع ولا انتظار سيرفر ولا حد للعدد — المئات من الصور تمر بسلاسة على جهازك مباشرة، وهي ميزة لا تقدمها معظم المواقع المجانية التي ترفع صورك إليها.</p><p>لمواقع SEO ضغط الصور إشارة ترتيب غير مباشرة قوية: سرعة الصفحة metric من مقاييس Core Web Vitals الرسمية، والصور الثقيلة هي عدوها الأول.</p><p>نصيحة أخيرة: للصور المعروضة بعرض 800 بكسل لا معنى لرفعها بـ 4000 بكسل — فعّل تغيير الأبعاد مع الضغط معاً للنتيجة المثلى.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>ما أفضل قيمة جودة؟</summary><p>0.7 للصور العادية و0.85 لصور المنتجات والمحافظ — القيم فوق 0.9 تضاعف الحجم بلا فرق يذكر.</p></details><details class="faq-item"><summary>هل يُفقد أي بيانات نهائياً؟</summary><p>نعم، ضغط JPEG تدميري بطبيعته — احفظ الأصل دائماً واضغط نسخة للنشر.</p></details><details class="faq-item"><summary>هل تدعم PNG بالشفافية؟</summary><p>الشفافية تُحفظ عند إخراج PNG، لكن التحويل إلى JPEG يمحوها لأن الصيغة لا تدعمها.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=image-compressor">#image-compressor</a><a class="hash-chip" href="/DouNest/tools/?q=compression">#compression</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%B6%D8%BA%D8%B7-%D8%A7%D9%84%D8%B5%D9%88%D8%B1">#ضغط-الصور</a><a class="hash-chip" href="/DouNest/tools/?q=seo">#seo</a><a class="hash-chip" href="/DouNest/tools/?q=performance">#performance</a><a class="hash-chip" href="/DouNest/tools/?q=images">#images</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً — DouNest</title>
-<meta name="description" content="ما الفرق بين أداة ترفع ملفاتك إلى خادم وأداة تعالجها محلياً؟ ولماذا هو مهم لك؟" />
+<title>أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق — DouNest</title>
+<meta name="description" content="دليل عملي يشرح ما يعرفه أي موقع عنك فعلاً: البصمة الرقمية، تتبع الإعلانات، تسريبات WebRTC، وكيف تفحص كل ذلك وتغلقه بخطوات مجانية محددة." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/" />
 <link rel="manifest" href="../../manifest.json" />
@@ -14,19 +14,20 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً — DouNest" />
-<meta property="og:description" content="ما الفرق بين أداة ترفع ملفاتك إلى خادم وأداة تعالجها محلياً؟ ولماذا هو مهم لك؟" />
+<meta property="og:title" content="أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق — DouNest" />
+<meta property="og:description" content="دليل عملي يشرح ما يعرفه أي موقع عنك فعلاً: البصمة الرقمية، تتبع الإعلانات، تسريبات WebRTC، وكيف تفحص كل ذلك وتغلقه بخطوات مجانية محددة." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً — DouNest" />
-<meta name="twitter:description" content="ما الفرق بين أداة ترفع ملفاتك إلى خادم وأداة تعالجها محلياً؟ ولماذا هو مهم لك؟" />
+<meta name="twitter:title" content="أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق — DouNest" />
+<meta name="twitter:description" content="دليل عملي يشرح ما يعرفه أي موقع عنك فعلاً: البصمة الرقمية، تتبع الإعلانات، تسريبات WebRTC، وكيف تفحص كل ذلك وتغلقه بخطوات مجانية محددة." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً","datePublished":"2026-10-14","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق","datePublished":"2026-10-12","keywords":"privacy, خصوصية, browser, tracking, أمن-معلومات, fingerprinting","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest"}}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -71,6 +72,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -89,12 +92,15 @@
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
       <a href="../../articles/">المقالات</a><span class="sep">›</span>
-      <span class="current">لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً</span>
+      <span class="current">أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق</span>
     </nav>
     <article class="section article-body">
-      <h1>لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً</h1>
-      <p class="article-date">2026-10-14</p>
-      <div class="explanation"><p>عندما تضغط صورة أو تحوّل ملف PDF عبر موقع عادي، غالباً يحدث التالي: ملفك يُرفع عبر الشبكة إلى خادمٍ في مكان ما من العالم، يُعالج هناك، ثم تُنزَّل النتيجة. أنت لا تعرف من يملك ذلك الخادم، ولا مدة بقاء الملف عليه، ولا من يمكنه الوصول إليه في هذه الأثناء.</p><p><h2>نموذج المعالجة المحلية يقلب المعادلة</h2></p><p>الأدوات التي تعمل داخل المتصفح — مثل كل أدوات DouNest — تستخدم قدرات المتصفح نفسه: Canvas لمعالجة الصور، وFileReader لقراءة الملفات، وWeb Crypto للتجزئة والتشفير. ملفك لا يترك جهازك إطلاقاً؛ العملية تتم في ذاكرة المتصفح ثم تُنزَّل النتيجة مباشرة. النتيجة العملية: لا رفع، لا انتظار في طابور خادم، ولا سؤال &quot;أين ذهب ملفي؟&quot;.</p><p><h2>ثلاث فوائد عملية تتجاوز الخصوصية</h2></p><p>السرعة: لا زمن رفع أو تنزيل، والمعالجة الفورية مفيدة جداً مع الملفات الكبيرة. التكلفة: صاحب الموقع لا يدفع سيرفات ضخمة، لذا يمكنه إبقاء الأدوات مجانية. العمل دون اتصال: بعد أول زيارة، تعمل معظم الأدوات من ذاكرة PWA حتى لو انقطع الإنترنت.</p><p><h2>متى تحتاج خادماً فعلاً؟</h2></p><p>بعض المهارات تتطلب موارد لا يملكها المتصفح: نماذج ذكاء اصطناعي ضخمة، أو معالجة فيديو ثقيلة، أو قواعد بيانات مشتركة. القاعدة العملية: إذا كانت المهمة &quot;تحويل شكل&quot; لبياناتك (ضغط، تحويل صيغة، تنسيق، تجزئة، توليد) فابحث عن نسخة محلية أولاً.</p><p><h2>كيف تتحقق أن الأداة محلية فعلاً؟</h2></p><p>افتح أدوات المطور (F12) ثم تبويب Network، وشغّل العملية على ملف حقيقي: إذا لم ترى أي طلب رفع (POST كبير) فهي محلية. جميع أدوات DouNest مصممة على هذا المبدأ، ويمكنك التحقق بنفسك في أي وقت.</p></div>
+      <h1>أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق</h1>
+      <p class="article-date">2026-10-12</p>
+      <div class="explanation"><p>في كل مرة تفتح فيها أي موقع، يحدث حوار صامت بين متصفحك وخوادم ذلك الموقع يكشف عنك تفاصيل أكثر مما تتوقع بكثير: جهازك، نظامك، شاشتك، خطوطك المثبتة، وحتى سلوك حركة الفأرة لديك. هذه المقالة تشرح بالضبط ماذا يتسرب، وكيف تفحصه بنفسك، وكيف تغلق أهم الثغرات في جلسة عمل واحدة مدتها عشر دقائق.</p><p><h2>البصمة الرقمية: لماذا لا تحتاج الشركات الكوكيز أصلاً</h2></p><p>ملفات الكوكيز هي الجزء المعروف والقديم من قصة التتبع، ويمكن حذفها بضغطة. الجزء الأحدث والأخطر هو البصمة الرقمية (Fingerprinting): مجموعة خصائص جهازك المجمعة تشكل هوية شبه فريدة لا تتغير بحذف الكوكيز ولا بتصفح خفي — عدد وترتيب الخطوط المثبتة، دقة شاشتك، عمق ألوانها، مناطقها الزمنية، نسخة محرك الرسوميات، ونتائج رسم تجريبية على لوحة Canvas. أبحاث EFF أثبتت أن هذا المزيج يميز مستخدماً من بين آلاف بمعدل خطأ ضئيل، ودون أن يضع الموقع أي ملف على جهازك إطلاقاً.</p><p><h2>الفحص العملي: اعرف ماذا تسرّب أنت تحديداً</h2></p><p>ابدأ بزيارة BrowserLeaks وتجول في صفحاته: سترى لوحة Canvas تخبرك أن رسمة تجريبية على جهازك تعطي بصمة فريدة، وصفحة WebRTC قد تكشف عنوانك المحلي الحقيقي خلف VPN، وصفحة الخطوط تحصر جهازك عبر قائمة خطوطه. ثم افتح صفحة التغطية في EFF Tracking diversity لتقيس مدى فريدة بصمتك إجمالاً.</p><p>الخطوة التالية ترفع مستوى الوعي: ضع المستعرض في وضع التصفح الخفي وأعد الفحص — ستكتشف أن البصمة نفسها لم تتغير، وهذا الدرس الجوهري: الخصوصية والبصمة مسألتان منفصلتان تماماً، ووضع التخفي لا يخفي الجهاز.</p><p><h2>إغلاق الثغرات: خطة العشر دقائق</h2></p><p>أولاً: اختر متصفحاً يحترم مقاومة البصمة — Firefox مع تفعيل الحماية الصارمة (resistFingerprinting) أو Brave المبني على هذا المبدأ أساساً. ثانياً: ثبّت إضافة مانع تتبع محترمة مثل uBlock Origin، فهي تحجب نصوص التتبع قبل أن تعمل أصلاً. ثالثاً: عطّل WebRTC في الإعدادات إن كنت تستخدم VPN فالخطر الأشهر هو تسرّب IP المحلي عبره. رابعاً: أوقف ميزة &quot;حفظ طرق الدفع&quot; و&quot;كلمات المرور&quot; في المتصفح إن كنت تشارك الجهاز، وانقلها لمدير كلمات مرور مستقل. خامساً: راجع أذونات المواقع (كاميرا، موقع جغرافي، إشعارات) وألغِ كل ما لم تستخدمه فعلاً.</p><p><h2>عادات تفوق الأدوات</h2></p><p>أقوى طبقة حماية لا تُشترى ولا تُثبّت: افصل هوياتك — متصفح أو ملف شخصي (Profile) للعمل وآخر للشخصي وثالث للتجارب، فيصعب ربط نشاطك. استخدم بريداً مؤقتاً من <a href="/DouNest/rare/">أدوات نادرة</a> للتسجيلات التي لا تثق بها، وولا تفتح روابط غريبة في نفس النافذة التي تسجل الدخول لبريدك الرئيسي فيها. وهذه العادات وحدها تعطي حماية تفوق أي إضافة.</p><p><h2>لماذا يهم هذا مالك الموقع أيضاً؟</h2></p><p>إن كنت تدير موقعاً فالفهم عكسي: زوارك قلقون من نفس ما تفحصه الآن، والمواقع التي تحترم الخصوصية تفوز بالثقة والاحتفاظ بالزوار. اختر أدوات تحليل لا تخزن هويات المستخدمين، واذكر بوضوح ماذا تجمع، واجعل أدواتك تعمل محلياً حيث أمكن — كل أدوات <a href="/DouNest/">DouNest</a> مثلاً تعمل كلياً داخل متصفح الزائر فلا تنتقل أي بيانات أصلاً، وهذا نموذج يستحق التقليد.</p><p><h2>الخلاصة</h2></p><p>خصوصيتك ليست سلعة تُشترى مرة واحدة بل ممارسة مستمرة: افحص بصمتك عبر BrowserLeaks، أغلق WebRTC، فعّل الحماية الصارمة، افصل هوياتك، وراجع الأذونات دورياً. عشر دقائق فعلية اليوم تقلل تتبعك بنسبة مذهلة — وبقية الرحلة عادات صغيرة تستمر.</p></div>
+      <div class="article-tags"><div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=privacy">#privacy</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AE%D8%B5%D9%88%D8%B5%D9%8A%D8%A9">#خصوصية</a><a class="hash-chip" href="/DouNest/tools/?q=browser">#browser</a><a class="hash-chip" href="/DouNest/tools/?q=tracking">#tracking</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%A3%D9%85%D9%86-%D9%85%D8%B9%D9%84%D9%88%D9%85%D8%A7%D8%AA">#أمن-معلومات</a><a class="hash-chip" href="/DouNest/tools/?q=fingerprinting">#fingerprinting</a>
+  </div></div>
     </article>
   </main>
   <footer class="footer">

@@ -4,8 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>أدوات نادرة يصعب العثور عليها — DouNest</title>
-<meta name="description" content="مجموعة مختارة من الأدوات الخارجية النادرة مع شرح لكل أداة: Can I Use، Wayback Machine، وأكثر." />
+<title>الأدوات النادرة — خرائط وأمن وجواهر GitHub — DouNest</title>
+<meta name="description" content="32 أداة ومشروعاً نادراً في 4 فئات: خرائط حية، أدوات اختراق أخلاقي تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/rare/" />
 <link rel="manifest" href="../manifest.json" />
@@ -14,19 +14,20 @@
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="أدوات نادرة يصعب العثور عليها — DouNest" />
-<meta property="og:description" content="مجموعة مختارة من الأدوات الخارجية النادرة مع شرح لكل أداة: Can I Use، Wayback Machine، وأكثر." />
+<meta property="og:title" content="الأدوات النادرة — خرائط وأمن وجواهر GitHub — DouNest" />
+<meta property="og:description" content="32 أداة ومشروعاً نادراً في 4 فئات: خرائط حية، أدوات اختراق أخلاقي تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/rare/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="أدوات نادرة يصعب العثور عليها — DouNest" />
-<meta name="twitter:description" content="مجموعة مختارة من الأدوات الخارجية النادرة مع شرح لكل أداة: Can I Use، Wayback Machine، وأكثر." />
+<meta name="twitter:title" content="الأدوات النادرة — خرائط وأمن وجواهر GitHub — DouNest" />
+<meta name="twitter:description" content="32 أداة ومشروعاً نادراً في 4 فئات: خرائط حية، أدوات اختراق أخلاقي تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles.css" />
+<link rel="stylesheet" href="../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -70,6 +71,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../">الرئيسية</a>
         <a href="../tools/">كل الأدوات</a>
+        <a href="../pdf/">مركز PDF</a>
+        <a href="../convert/">مركز التحويل</a>
         <a href="../rare/">أدوات نادرة</a>
         <a href="../ai/">دليل AI</a>
         <a href="../articles/">المقالات</a>
@@ -86,63 +89,325 @@
   <main id="main" class="container" role="main" tabindex="-1">
 
     <section class="page-head">
-      <h1>أدوات نادرة</h1>
-      <p>أدوات خارجية مختارة بعناية يصعب العثور عليها، مع شرح لكل أداة.</p>
+      <h1>الأدوات النادرة</h1>
+      <p>32 أداة ومشروعاً مختاراً بعناية في 4 فئات: خرائط حية، أدوات أمن تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة بالشرح والخطوات والوسوم.</p>
     </section>
-    <p class="disclosure">ℹ️ تحتوي هذه الصفحة على روابط تابعة؛ إذا اشتريت عبرها فقد نحصل على عمولة دون أي تكلفة إضافية عليك.</p>
-    <div class="tools-grid">
-<a class="tool-card external" href="https://caniuse.com/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Can I Use</h3>
-      <p>تحقق من دعم المتصفحات لميزات HTML/CSS/JS قبل استخدامها.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://bundlephobia.com/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Bundlephobia</h3>
-      <p>اعرف حجم أي حزمة npm قبل تثبيتها في مشروعك.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://transform.tools/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Transform Tools</h3>
-      <p>حوّل بين صيغ الأكواد: JSON to TypeScript, HTML to JSX, وغيرها.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://shodan.io/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Shodan</h3>
-      <p>محرك بحث للأجهزة المتصلة بالإنترنت (كاميرات، سيرفرات، أجهزة IoT).</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://web.archive.org/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Wayback Machine</h3>
-      <p>استعرض النسخ القديمة من أي موقع.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://10minutemail.com/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>10 Minute Mail</h3>
-      <p>بريد إلكتروني مؤقت لتفادي السبام.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://justscream.baby/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Just Scream</h3>
-      <p>موقع بسيط للصراخ لتخفيف التوتر.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://search.marginalia.nu/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>Marginalia Search</h3>
-      <p>محرك بحث يركز على المحتوى غير التجاري والمواقع الشخصية.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://browserleaks.com/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>BrowserLeaks</h3>
-      <p>اكشف ما يعرفه متصفحك عنك من بيانات.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a><a class="tool-card external" href="https://virustotal.com/" target="_blank" rel="sponsored noopener">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>VirusTotal</h3>
-      <p>افحص الملفات والروابط بحثًا عن البرمجيات الخبيثة.</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a>
+    
+    <section class="section" id="cat-maps">
+      <div class="rare-cat-head">
+        <span class="rare-cat-icon" aria-hidden="true">🗺️</span>
+        <div>
+          <h2 class="section-title">خرائط ومشاهدة الأرض <span class="rare-count">2</span></h2>
+          <p class="rare-tagline">أدوات تجعلك ترى كوكبك — ماضياً وحاضراً — بعين جديدة.</p>
+        </div>
+      </div>
+      <p class="rare-blurb">من الخرائط التاريخية المتداخلة إلى الكرة الأرضية الحية التي تعرض كل طائرة في السماء الآن، هذه الفئة مخصصة لمن يحب استكشاف الأرض من فوق. كل الأدوات مجانية وتعمل من المتصفح، وبعضها يوفر بيانات حية يستخدمها الصحفيون والباحثون فعلياً في عملهم اليومي.</p>
+      
+      <div class="tools-grid">
+        <a class="tool-card rare-card " href="/DouNest/rare/maplat/">
+    <div class="icon" aria-hidden="true">🗺️</div>
+    <h3>Maplat — خرائط التاريخ المتداخلة</h3>
+    <p>منصة يابانية مفتوحة المصدر تعرض الخرائط التاريخية فوق الخرائط الحديثة بشكل متداخل ودقيق، فتسمح لك بالتنقل عبر الزمن بين خريطة عمرها مئة عام وصور الأقم…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#maplat</span>
     </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/gods-eye-view/">
+    <div class="icon" aria-hidden="true">🛰️</div>
+    <h3>God&#39;s Eye View — عين تشاهد العالم مباشرة</h3>
+    <p>ليست أداة واحدة بل بوابة تجمع أشهر مصادر البيانات الحية لكوكب الأرض في مكان واحد: كرة أرضية ثلاثية الأبعاد تعرض كل طائرة في السماء الآن عبر ADS-B Exch…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#adsb</span>
+    </div>
+  </a>
+      </div>
+    </section>
+    <section class="section" id="cat-security">
+      <div class="rare-cat-head">
+        <span class="rare-cat-icon" aria-hidden="true">🛡️</span>
+        <div>
+          <h2 class="section-title">اختبار الاختراق الأخلاقي <span class="rare-count">10</span></h2>
+          <p class="rare-tagline">أشهر أدوات الأمن مفتوحة المصدر — صفحات تعريفية فقط مع تحذير قانوني إلزامي.</p>
+        </div>
+      </div>
+      <p class="rare-blurb">هنا تجد صفحات تعريفية شاملة لأشهر أدوات اختبار الاختراق في العالم: ماذا تفعل، لماذا تشتهر، وكيف تبدأ معها بشكل قانوني داخل مختبرك الخاص. هذه صفحات معلومات فقط — لا توجد أدوات تفاعلية هنا — وكل صفحة تحمل تحذيراً قانونياً واضحاً لأن استخدام هذه الأدوات خارج الأنظمة المرخص لك بها جريمة في معظم الدول.</p>
+      <div class="sec-warning" role="alert">
+    <p>⚠️ هذه الأدوات مخصصة لاختبار الاختراق الأخلاقي والأنظمة التي تملك إذنًا صريحًا باختبارها. استخدامها على أنظمة لا تملك صلاحية بها يعتبر جريمة في معظم الدول.</p>
+    <p class="sec-warning-sub">DouNest لا يستضيف أي أداة هنا ولا يوفر أي تنفيذ تفاعلي — هذه صفحات تعريفية وروابط إلى المشاريع الرسمية فقط.</p>
+  </div>
+      <div class="tools-grid">
+        <a class="tool-card rare-card rare-sec" href="/DouNest/rare/nmap/">
+    <div class="icon" aria-hidden="true">📡</div>
+    <h3>Nmap — ماسح الشبكات الأشهر</h3>
+    <p>Nmap هو ماسح الشبكات الأشهر في التاريخ وأساس أي اختبار اختراق محترم: يكتشف الأجهزة الحية في الشبكة، والمنافذ المفتوحة عليها، والخدمات العاملة، وحتى نظ…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#nmap</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/wireshark/">
+    <div class="icon" aria-hidden="true">🔬</div>
+    <h3>Wireshark — مجهر حزم الشبكة</h3>
+    <p>Wireshark هو محلل حزم الشبكة الأقوى والأشهر عالمياً، ويسمح لك برؤية كل ما يعبر بطاقة الشبكة لحظة بلحظة: طلبات DNS، مصافحات TLS، حزم TCP، وحتى محتوى ال…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#wireshark</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/burp-suite/">
+    <div class="icon" aria-hidden="true">🧪</div>
+    <h3>Burp Suite — منصة اختبار تطبيقات الويب</h3>
+    <p>Burp Suite من شركة PortSwigger هو المعيار الذهبي لاختبار أمان تطبيقات الويب: يعمل كبروكسي وسيط يمرّر كل طلبات المتصفح عبره، فيتيح لك اعتراض أي طلب وتع…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#burp-suite</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/nuclei/">
+    <div class="icon" aria-hidden="true">⚛️</div>
+    <h3>Nuclei — ماسح الثغرات القائم على القوالب</h3>
+    <p>Nuclei من مشروع Discovery هو ماسح ثغرات حديث مفتوح المصدر يعمل بنظام قوالب YAML بسيطة: كل قالب تصف ثغرة معروفة وكيفية فحصها، والمجتمع يضيف آلاف القوال…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#nuclei</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/sqlmap/">
+    <div class="icon" aria-hidden="true">💉</div>
+    <h3>SQLmap — أتمتة اكتشاف SQL Injection</h3>
+    <p>SQLmap هو الأداة المرجعية لاكتشاف واستغلال ثغرات حقن SQL تلقائياً: تعطيها طلباً واحداً تحتوي معاملاً مشتبهاً به، فتجرّب عشرات تقنيات الحقن، وتحدد نوع …</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#sqlmap</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/metasploit/">
+    <div class="icon" aria-hidden="true">🧰</div>
+    <h3>Metasploit — إطار عمل اختبار الاختراق الكامل</h3>
+    <p>Metasploit هو أشهر إطار عمل لاختبار الاختراق في العالم: يضم آلاف الوحدات لاكتشاف الثغرات واستغلالها وإنشاء الأحمال (payloads) والتعامل مع الجلسات بعد …</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#metasploit</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/hashcat/">
+    <div class="icon" aria-hidden="true">🔓</div>
+    <h3>Hashcat — فك تشفير الهاش بأقصى سرعة</h3>
+    <p>Hashcat هو أسرع أداة في العالم لكسر البصمات المشفرة (hashes): يستغل كامل قوة كرت الشاشة GPU لاختبار مليارات التخمينات في الثانية، ويدعم أكثر من 300 خو…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#hashcat</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/john-the-ripper/">
+    <div class="icon" aria-hidden="true">🗝️</div>
+    <h3>John the Ripper — الأداة الكلاسيكية لكسر الهاش</h3>
+    <p>John the Ripper هو الأداة الكلاسيكية الأقدم لاختبار قوة كلمات المرور، صدرت عام 1996 وما زالت قلب حزمة Jumbo الموسعة التي تدعم مئات الصيغ. تعمل على الم…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#john-the-ripper</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/sherlock/">
+    <div class="icon" aria-hidden="true">🔎</div>
+    <h3>Sherlock — تعقب اسم المستخدم عبر المئات من المواقع</h3>
+    <p>Sherlock مشروع مفتوح المصدر بلغة Python يبحث عن اسم مستخدم واحد في أكثر من 400 موقع اجتماعي ومنصة دفعة واحدة، ويخبرك أين تم تسجيله وأين لا. أداة OSINT…</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#sherlock</span>
+    </div>
+  </a><a class="tool-card rare-card rare-sec" href="/DouNest/rare/theharvester/">
+    <div class="icon" aria-hidden="true">📧</div>
+    <h3>theHarvester — جمع الإيميلات والنطاقات من المصادر المفتوحة</h3>
+    <p>theHarvester أداة OSINT شهيرة بلغة Python تجمع عناوين البريد الإلكتروني وأسماء النطاقات الفرعية والمضيفين المرتبطين بأي شركة من مصادر عامة مثل محركات …</p>
+    <div class="card-foot">
+      <span class="badge tiny">تعريفي + تحذير</span>
+      <span class="rare-tag">#theharvester</span>
+    </div>
+  </a>
+      </div>
+    </section>
+    <section class="section" id="cat-gems">
+      <div class="rare-cat-head">
+        <span class="rare-cat-icon" aria-hidden="true">💎</span>
+        <div>
+          <h2 class="section-title">جواهر GitHub <span class="rare-count">10</span></h2>
+          <p class="rare-tagline">مشاريع مفتوحة المصدر مدهشة لم تشهر بعد كما تستحق.</p>
+        </div>
+      </div>
+      <p class="rare-blurb">اخترنا لك عشر جواهر حقيقية من GitHub: أدوات تحول سكربت إلى تطبيق، وقاعدة بيانات فورية من ملف CSV، وآلة رسم تصنعها بنفسك، ومساعد ذكاء اصطناعي يعمل بلا إنترنت. كلها مشاريع حية ومهتمة بها مجتمعاتها، وكلها قابلة للتجربة اليوم دون أي تكلفة.</p>
+      
+      <div class="tools-grid">
+        <a class="tool-card rare-card " href="/DouNest/rare/dsq/">
+    <div class="icon" aria-hidden="true">🗃️</div>
+    <h3>dsq — نفّذ SQL على أي ملف بيانات</h3>
+    <p>dsq أداة سطر أوامر مدهشة تجعل ملفات CSV وJSON وTSV وExcel وParquet قاعدة بيانات فورية: مرّر أي ملف إليها واكتب استعلام SQL عادي، فتحصل على نتائج منظمة…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#dsq</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/polargraph/">
+    <div class="icon" aria-hidden="true">🖋️</div>
+    <h3>Polargraph — آلة رسم معلقة تصنعها بنفسك</h3>
+    <p>Polargraph مشروع مفتوح المصدر يحوّل لوحة وأقلام رصاص ومحركين خطوتين إلى آلة رسم معلقة ترسم أي صورة على حائط كامل بأسلوب فني مميز. يشمل المشروع فيرموير…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#polargraph</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/kata-containers/">
+    <div class="icon" aria-hidden="true">📦</div>
+    <h3>Kata Containers — حاويات بعزل الأجهزة الافتراضية</h3>
+    <p>Kata Containers مشروع يوحد أفضل عالمين: يشغّل الحاويات بنفس الخفة والسرعة المعتادة، لكن كل حاوية تعمل داخل جهاز افتراضي خفي خاص بها، فتحصل على عزل على…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#kata-containers</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/linkding/">
+    <div class="icon" aria-hidden="true">🔖</div>
+    <h3>Linkding — حافظة روابط ذاتية الاستضافة ببساطة فائقة</h3>
+    <p>Linkding خادم علامات مرجعية ذاتي الاستضافة مصمم ليكون سريعاً وخفيفاً بشكل استثنائي: واجهة نظيفة، بحث فوري، وسوم، أرشفة نصية للصفحات، وإضافة متصفح وتطب…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#linkding</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/reverse-engineering-book/">
+    <div class="icon" aria-hidden="true">🧩</div>
+    <h3>كتاب الهندسة العكسية المجاني</h3>
+    <p>مستودع Reverse-Engineering للمؤلف Kevin Thomas كتاب جامعي كامل مجاني بأكثر من 900 صفحة يعلّم الهندسة العكسية للأنظمة x64 خطوة بخطوة: من لغة التجميع إل…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#reverse-engineering</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/jan/">
+    <div class="icon" aria-hidden="true">🤖</div>
+    <h3>Jan — مساعد AI كامل يعمل دون إنترنت</h3>
+    <p>Jan بديل مفتوح المصدر لتطبيقات ChatGPT يعمل بالكامل على جهازك: ينزّل نماذج لغوية مفتوحة مثل Llama وMistral ويشغّلها محلياً بواجهة دردشة أنيقة، مع خادم…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#jan</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/windmill/">
+    <div class="icon" aria-hidden="true">🌬️</div>
+    <h3>Windmill — حوّل السكربتات إلى تطبيقات وسير عمل</h3>
+    <p>Windmill منصة مفتوحة المصدر تحوّل سكربتات Python وTypeScript وGo وBash إلى واجهات داخلية وسير عمل مجدولة في دقائق: اكتب دالة عادية، فيولّد النظام لها …</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#windmill</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/memos/">
+    <div class="icon" aria-hidden="true">🗒️</div>
+    <h3>Memos — تويتر خاص لملاحظاتك الذهنية</h3>
+    <p>Memos خدمة ملاحظات ذاتية الاستضافة بتجربة شبيهة بتدوينة مصغرة: تكتب فكرة سريعة، تُخزن فوراً في قاعدة بيانات ملكك، وتبقى قابلة للبحث بالوسوم والروابط ب…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#memos</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/excalidraw/">
+    <div class="icon" aria-hidden="true">✏️</div>
+    <h3>Excalidraw — سبورة برمجية بأسلوب يدوي ساحر</h3>
+    <p>Excalidraw سبورة افتراضية مفتوحة المصدر ترسم الأشكال بأسلوب اليد الحر الذي يجعل المخططات التقنية ودودة ومقروءة. تعمل مباشرة في المتصفح بدون حساب، وتدع…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#excalidraw</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/markwhen/">
+    <div class="icon" aria-hidden="true">📅</div>
+    <h3>Markwhen — جدول زمني من نص ماركداون</h3>
+    <p>Markwhen أداة عبقرية ببساطتها: تكتب تواريخ وأحداثاً في نص ماركداون عادي، فتحولها فوراً إلى مخطط جانت زمني أنيق قابل للتصدير. لا حسابات ولا خوادم، والم…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#markwhen</span>
+    </div>
+  </a>
+      </div>
+    </section>
+    <section class="section" id="cat-classics">
+      <div class="rare-cat-head">
+        <span class="rare-cat-icon" aria-hidden="true">🗝️</span>
+        <div>
+          <h2 class="section-title">كلاسيكيات لا يعرفها الجميع <span class="rare-count">10</span></h2>
+          <p class="rare-tagline">أدوات شهيرة داخل دوائر المتخصصين ومجهولة تماماً خارجها.</p>
+        </div>
+      </div>
+      <p class="rare-blurb">هذه الكلاسيكيات كانت البذرة الأولى لقسم الأدوات النادرة في DouNest، وقررنا الإبقاء عليها موسعة ومطورة: من Can I Use التي يفتحها كل مطور واجهات يومياً، إلى Wayback Machine كنز التاريخ الرقمي، إلى Marginalia الباحث عن الويب العميق غير التجاري. إن كنت جديداً هنا فهذه أفضل نقطة بداية.</p>
+      
+      <div class="tools-grid">
+        <a class="tool-card rare-card " href="/DouNest/rare/caniuse/">
+    <div class="icon" aria-hidden="true">🌐</div>
+    <h3>Can I Use — جداول دعم المتصفحات</h3>
+    <p>Can I Use هو المرجع العالمي للسؤال الذي يتكرر مئات المرات يومياً: هل تدعم هذه الميزة المتصفحات؟ اكتب اسم أي خاصية CSS أو واجهة JavaScript فتحصل على جد…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#caniuse</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/bundlephobia/">
+    <div class="icon" aria-hidden="true">⚖️</div>
+    <h3>Bundlephobia — وزن أي حزمة npm قبل تثبيتها</h3>
+    <p>Bundlephobia ميزان رقمي لحزم npm: اكتب اسم أي حزمة فترى حجمها بعد الضغط، وزمن تحميلها التقريبي على شبكة 3G، ودرجة أدائها، وبديلها الأخف إن وجد. تعرض أ…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#bundlephobia</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/transform-tools/">
+    <div class="icon" aria-hidden="true">🔁</div>
+    <h3>Transform Tools — المترجم الشامل بين صيغ المطورين</h3>
+    <p>Transform Tools مجموعة محولات ذكية بين صيغ يحتاجها المطورون أسبوعياً: JSON إلى TypeScript واجهات، HTML إلى JSX، JSON إلى GraphQL، SQL إلى أنواع برمجية…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#transform</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/shodan/">
+    <div class="icon" aria-hidden="true">🛰️</div>
+    <h3>Shodan — محرك بحث الأجهزة المتصلة</h3>
+    <p>Shodan محرك بحث يفهرس الإنترنت من زاوية مختلفة تماماً: بدلاً من صفحات الويب يفهرس الخوادم والكاميرات وأجهزة التوجيه وأي جهاز متصل يرد على الشبكة، مع ت…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#shodan</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/wayback/">
+    <div class="icon" aria-hidden="true">🏛️</div>
+    <h3>Wayback Machine — أرشيف الإنترنت الرقمي</h3>
+    <p>Wayback Machine من أرشيف الإنترنت تخزن نسخاً من مئات مليارات الصفحات منذ عام 1996: اكتب أي رابط فترى خطاً زمنياً بلقطات محفوظة عبر السنين، مع إمكانية …</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#wayback</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/10minmail/">
+    <div class="icon" aria-hidden="true">⏳</div>
+    <h3>10 Minute Mail — بريد مؤقت يحمي صندوقك</h3>
+    <p>10 Minute Mail يمنحك عنوان بريد حقيقي يعمل عشر دقائق ثم يموت: استلم رسالة التحقق من أي موقع، أكمل التسجيل، وانتهى الأمر دون أن يلمس صندوق بريدك الحقيق…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#temp-mail</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/just-scream/">
+    <div class="icon" aria-hidden="true">📢</div>
+    <h3>Just Scream — خط ساخن لتفريغ التوتر</h3>
+    <p>Just Scream موقع غريب الأطوار بمعنى جميل: تضغط زراً فيصرخ شخص حقيقي في مكبر الصوت بالنيابة عنك، لأن المشروع يوظف أشخاصاً يصرخون بحرية عند طلبك. بلا إع…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#fun</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/marginalia/">
+    <div class="icon" aria-hidden="true">🌿</div>
+    <h3>Marginalia — البحث في الويب العميق غير التجاري</h3>
+    <p>Marginalia محرك بحث سويدي مستقل قرر ببساطة تجاهل الصناعات التسويقية: يرفع المواقع الشخصية والمنتديات القديمة والموسوعات الصغيرة ويدس أضلاع المتاجر ومز…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#marginalia</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/browserleaks/">
+    <div class="icon" aria-hidden="true">🫥</div>
+    <h3>BrowserLeaks — اعرف ماذا يكشف متصفحك عنك</h3>
+    <p>BrowserLeaks مجموعة اختبارات حية تكشف كل ما يستطيع أي موقع معرفته عنك دون إذن: بصمة الخطوط، لوحة الرسم Canvas، WebRTC، تسريع GPU، الشاشة، اللغة، والكث…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#browserleaks</span>
+    </div>
+  </a><a class="tool-card rare-card " href="/DouNest/rare/virustotal/">
+    <div class="icon" aria-hidden="true">🦠</div>
+    <h3>VirusTotal — الفحص الشامل ضد كل المحركات</h3>
+    <p>VirusTotal خدمة Google المجانية التي تفحص أي ملف أو رابط عبر أكثر من سبعين محرك مكافحة فيروسات وقواعد بيانات سلوكية دفعة واحدة، وتعرض تقريراً شاملاً ف…</p>
+    <div class="card-foot">
+      <span class="badge tiny">خارجي</span>
+      <span class="rare-tag">#virustotal</span>
+    </div>
+  </a>
+      </div>
+    </section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">

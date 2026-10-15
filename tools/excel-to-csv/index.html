@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,8 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Excel إلى CSV","description":"حوّل جداول XLSX/XLS إلى CSV مع اختيار الورقة والفاصل.","url":"https://mohamedham202417.github.io/DouNest/tools/excel-to-csv/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل تدعم ملفات .xls القديمة؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تدعم XLSX وXLS وXLSB حتى ملفات Excel 97 القديمة."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Excel إلى CSV","description":"حوّل جداول XLSX/XLS إلى CSV مع اختيار الورقة والفاصل.","keywords":"excel-to-csv, excel, csv, بيانات, xlsx, data","url":"https://mohamedham202417.github.io/DouNest/tools/excel-to-csv/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"لماذا تظهر العربية مشوهة في Excel؟","acceptedAnswer":{"@type":"Answer","text":"كانت المشكلة في ملفات بلا BOM — ملفاتنا مع BOM فتفتح صحيحة مباشرة."}},{"@type":"Question","name":"أي ورقة تُحوّل من ملف متعدد؟","acceptedAnswer":{"@type":"Answer","text":"الأداة تعرض قائمة الأوراق — اختر المطلوبة؛ عادة الأولى هي الافتراضية."}},{"@type":"Question","name":"هل الصيغ والتنسيقات تنتقل؟","acceptedAnswer":{"@type":"Answer","text":"لا — CSV قيم فقط؛ النتائج المحسوبة تنتقل كقيم محفوظة."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"Excel إلى CSV","item":"https://mohamedham202417.github.io/DouNest/tools/excel-to-csv/"}]}</script>
 </head>
 <body>
@@ -73,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -113,16 +116,23 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر ملف Excel (.xlsx أو .xls).</li><li>اختر الورقة المطلوبة من القائمة.</li><li>حدد الفاصل: فاصلة أو فاصلة منقوطة.</li><li>اضغط «تحويل» ونزّل CSV (كل الأوراق = ZIP).</li></ol>
+          <ol class="steps"><li>اسحب ملف Excel (.xlsx) إلى منطقة الرفع.</li><li>اختر ورقة العمل المطلوبة إن كان الملف متعدد الأوراق.</li><li>راجع معاينة أول صفوف البيانات المستخرجة.</li><li>اضغط تحويل ليولد CSV بترميز UTF-8 صحيح للعربية.</li><li>نزّل الملف وافتحه في أي أداة بيانات أو برنامج جداول.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تعتمد الأداة على SheetJS المفتوحة المصدر — نفس المكتبة التي تستخدمها شركات كبرى لمعالجة الجداول في المتصفح.</p><p>الفاصل المنقوطة مفيد للمستخدمين الأوروبيين وعرب Excel حيث الفاصلة فاصلة عشرية.</p><p>معالجة محلية 100%: بياناتك المالية والمشروعات لا تُرفع لأي خادم — ميزة تتفوق فيها على Convertio وFreeConvert.</p></div>
+          <div class="explanation"><p>Excel صيغة غنية مغلقة جزئياً وCSV لغة التبادل العالمية للبيانات: أدوات التحليل وقواعد البيانات وأنظمة الاستيراد في كل منصة تقبل CSV وتتجاهل XLSX غالباً — التصدير إلى CSV هو جسر الدخول لعالم البيانات كله.</p><p>بنية XLSX الحقيقية مفاجئة: ملف ZIP يحوي XMLات — الأداة تفكها وتقرأ أوراق العمل والخلايا مباشرة في متصفحك، بلا مكتبات ثقيلة ولا خوادم معالجة تستقبل بيانات شركتك.</p><p>الترميز هو النقطة الحرجة للعربية: CSV بدون BOM يفتح في Excel بحروف مشوهة (Ø§Ù) — الأداة تولد UTF-8 مع BOM فيفتح الملف صحيحاً من النقرة الأولى، مشكلة تعذب الآلاف يومياً.</p><p>الصيغ والتنسيق لا تنتقل بالتصميم: CSV يحمل القيم فقط — لو احتاجت نتيجة صيغة تأكد أن Excel حسبها وحفظ القيمة، أو احسبها قبل التصدير.</p><p>حالة الاستخدام الأشهر: بيانات من نظام إداري تُصدر Excel، وتحتاج استيرادها في أداة تحليل أو قاعدة بيانات — CSV هنا هو الوسيط الموثوق الذي يقبلها الجميع.</p></div>
         </section>
         
         <section class="section">
           <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل تدعم ملفات .xls القديمة؟</summary><p>نعم، تدعم XLSX وXLS وXLSB حتى ملفات Excel 97 القديمة.</p></details>
+          <details class="faq-item"><summary>لماذا تظهر العربية مشوهة في Excel؟</summary><p>كانت المشكلة في ملفات بلا BOM — ملفاتنا مع BOM فتفتح صحيحة مباشرة.</p></details><details class="faq-item"><summary>أي ورقة تُحوّل من ملف متعدد؟</summary><p>الأداة تعرض قائمة الأوراق — اختر المطلوبة؛ عادة الأولى هي الافتراضية.</p></details><details class="faq-item"><summary>هل الصيغ والتنسيقات تنتقل؟</summary><p>لا — CSV قيم فقط؛ النتائج المحسوبة تنتقل كقيم محفوظة.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=excel-to-csv">#excel-to-csv</a><a class="hash-chip" href="/DouNest/tools/?q=excel">#excel</a><a class="hash-chip" href="/DouNest/tools/?q=csv">#csv</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA">#بيانات</a><a class="hash-chip" href="/DouNest/tools/?q=xlsx">#xlsx</a><a class="hash-chip" href="/DouNest/tools/?q=data">#data</a>
+  </div>
         </section>
       </div>
       <aside class="tool-sidecol">

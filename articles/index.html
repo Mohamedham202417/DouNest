@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles.css" />
+<link rel="stylesheet" href="../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -70,6 +71,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../">الرئيسية</a>
         <a href="../tools/">كل الأدوات</a>
+        <a href="../pdf/">مركز PDF</a>
+        <a href="../convert/">مركز التحويل</a>
         <a href="../rare/">أدوات نادرة</a>
         <a href="../ai/">دليل AI</a>
         <a href="../articles/">المقالات</a>
@@ -90,27 +93,51 @@
 
       <a class="tool-card article" href="json-guide/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>دليل JSON الشامل: من الصفر إلى الاحتراف</h3>
-        <p>كل ما تحتاج معرفته عن JSON: البنية، القواعد، الأخطاء الشائعة، وأفضل الممارسات العملية.</p>
+        <h3>دليل JSON الشامل 2026: من الصفر إلى الاحتراف بلا أخطاء</h3>
+        <p>كل ما تحتاج معرفته عن JSON في مكان واحد: البنية والقواعد الصارمة، الأخطاء التي تسقط المبتدئين والمحترفين، الفرق عن YAML وXML، والممارسات الاحترافية في التعامل مع واجهات API.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-14</span></div>
       </a>
       <a class="tool-card article" href="browser-privacy-tools/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>لماذا يجب أن تعمل أدواتك داخل المتصفح؟ مبدأ الخصوصية أولاً</h3>
-        <p>ما الفرق بين أداة ترفع ملفاتك إلى خادم وأداة تعالجها محلياً؟ ولماذا هو مهم لك؟</p>
-        <div class="card-foot"><span class="badge tiny">2026-10-14</span></div>
+        <h3>أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق</h3>
+        <p>دليل عملي يشرح ما يعرفه أي موقع عنك فعلاً: البصمة الرقمية، تتبع الإعلانات، تسريبات WebRTC، وكيف تفحص كل ذلك وتغلقه بخطوات مجانية محددة.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-12</span></div>
       </a>
       <a class="tool-card article" href="password-security-basics/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>أساسيات كلمات المرور القوية: دليل عملي مبسّط</h3>
-        <p>كيف تصنع كلمة مرور يصعب كسرها؟ وما دور مولد كلمات المرور والمدير الموثوق؟</p>
-        <div class="card-foot"><span class="badge tiny">2026-10-14</span></div>
+        <h3>أمان كلمات المرور 2026: الدليل العملي الكامل من التوليد إلى المصادقة الثنائية</h3>
+        <p>كيف تُسرق كلمات المرور فعلاً، ولماذا الطول أهم من التعقيد، وكتبت مدير كلمات المرور المناسب وتفعّل المصادقة الثنائية بذكاء — دليل عملي بخطوات محددة.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-10</span></div>
       </a>
       <a class="tool-card article" href="image-compression-web/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>ضغط الصور للويب: كيف تسرّع موقعك بحجم أصغر وجودة نفسها؟</h3>
-        <p>الصور هي أغلب حجم أي صفحة ويب. تعلّم كيف تضغطها بذكاء قبل رفعها.</p>
-        <div class="card-foot"><span class="badge tiny">2026-10-14</span></div>
+        <h3>ضغط الصور للويب: كيف تسرّع موقعك 3 أضعاف وتفوز في SEO</h3>
+        <p>الصور مسؤولة عن أغلب وزن صفحات الويب. تعلّم أنواع الضغط، واختيار الصيغة المناسبة، وأحجام العرض الصحيحة، وخطوات تطبيق كل ذلك على موقعك اليوم.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-08</span></div>
+      </a>
+      <a class="tool-card article" href="money-online/">
+        <div class="icon" aria-hidden="true">📝</div>
+        <h3>أفضل طرق الربح من الإنترنت 2026: دليل واقعي بلا أوهام</h3>
+        <p>دليل صادق ومفصل لأفضل طرق الربح من الإنترنت في 2026: العمل الحر، بيع المنتجات الرقمية، إنشاء المواقع، التسويق بالعمولة — مع توقعات دخل واقعية وأخطاء يجب تجنبها.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-13</span></div>
+      </a>
+      <a class="tool-card article" href="free-ai-tools/">
+        <div class="icon" aria-hidden="true">📝</div>
+        <h3>أفضل أدوات الذكاء الاصطناعي المجانية 2026: دليل الاستخدام العملي</h3>
+        <p>دليل عملي لأقوى أدوات الذكاء الاصطناعي المجانية في 2026: نماذج المحادثة، توليد الصور، البرمجة، ومعالجة المستندات — مع حالات استخدام حقيقية ونصائح إتقان.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-11</span></div>
+      </a>
+      <a class="tool-card article" href="file-formats/">
+        <div class="icon" aria-hidden="true">📝</div>
+        <h3>دليل صيغ الملفات الشامل: افهم الفرق بين كل الصيغ واختر الأنسب</h3>
+        <p>لماذا فشل ملفك في الفتح؟ دليل شامل يشرح صيغ الصور والمستندات والصوت والفيديو والبيانات، ومتى تختار كل واحدة، وكيف تحوّل بينها بأمان وبدون فقد جودة.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-09</span></div>
+      </a>
+      <a class="tool-card article" href="remove-background-guide/">
+        <div class="icon" aria-hidden="true">📝</div>
+        <h3>إزالة خلفية الصور: الدليل الكامل من الفكرة إلى نتيجة احترافية</h3>
+        <p>كيف تزيل خلفية أي صورة مجاناً وبجودة احترافية: متى تعمل الأدوات الآلية بامتياز، وكيف تجهّز الصورة المثالية، وكيف تستخدم النتيجة في متجرك وسيرتك وتصاميمك.</p>
+        <div class="card-foot"><span class="badge tiny">2026-10-07</span></div>
       </a>
     </div>
   </main>

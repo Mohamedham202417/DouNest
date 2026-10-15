@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"محوّل الصور","description":"حوّل بين JPG, PNG, WebP, AVIF, GIF.","url":"https://mohamedham202417.github.io/DouNest/tools/image-converter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"محوّل الصور","description":"حوّل بين JPG, PNG, WebP, AVIF, GIF.","keywords":"image-converter, webp, png, صيغ-الصور, jpg, seo","url":"https://mohamedham202417.github.io/DouNest/tools/image-converter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"أي صيغة أفضل لموقعي؟","acceptedAnswer":{"@type":"Answer","text":"WebP افتراضياً، وPNG للشعارات بشفافية، وJPG كبديل احتياطي عبر عنصر picture في HTML."}},{"@type":"Question","name":"لماذا زاد حجم صورتي بعد التحويل؟","acceptedAnswer":{"@type":"Answer","text":"غالباً حولت صورة فوتوغرافية إلى PNG — الصور الفوتوغرافية تزدهر في JPG/WebP وتنتفخ في PNG."}},{"@type":"Question","name":"هل تتأثر أبعاد الصورة؟","acceptedAnswer":{"@type":"Answer","text":"لا — التحويل يحفظ الأبعاد كما هي؛ لتغيير الأبعاد استخدم أداة تغيير الحجم المخصصة."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"محوّل الصور","item":"https://mohamedham202417.github.io/DouNest/tools/image-converter/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>ارفع صورة.</li><li>اختر الصيغة الهدف.</li><li>حمّل الناتج.</li></ol>
+          <ol class="steps"><li>اسحب صورك (PNG أو JPG أو WebP) إلى منطقة الرفع.</li><li>اختر الصيغة الهدف من الأزرار: WebP أو PNG أو JPG.</li><li>اضبط الجودة إن اخترت صيغة تدميرية مثل JPG أو WebP.</li><li>اضغط تحويل وشاهد النتائج جاهزة بالأحجام الجديدة.</li><li>نزّل كل صورة أو نزّلها جميعاً في ملف مضغوط واحد.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تستخدم Canvas API للتحويل بين الصيغ.</p></div>
+          <div class="explanation"><p>تحويل صيغ الصور حاجة يومية تتكرر من كل الاتجاهات: WebP لتسريع الموقع (أصغر بـ 30% من JPG بنفس الجودة)، وPNG للشعارات ذات الشفافية، وJPG للتوافق مع الأنظمة القديمة — كل صيغة لها سيناريو ملكها.</p><p>WebP بطلة القصة الحديثة: مدعومة في كل المتصفحات الحديثة منذ سنوات، وتقلل حجم الصور بشكل ملموس، وGoogle نفسها تروّج له في إرشادات الأداء الرسمية — تحويل مكتبتك إليه استثمار مباشر في سرعة موقعك.</p><p>القاعدة الذهبية: الشفافية تعيش في PNG وWebP وتموت في JPG؛ والصور الفوتوغرافية تفضّل JPG/WebP بينما الرسومات الحادة تفضّل PNG — احترام هذه القواعد يمنع 90% من مفاجآت التحويل.</p><p>التحويل يحدث عبر canvas المتصفح محلياً — صورك الشخصية والعائلية لا تُرفع لأي خادم، ميزة تجعلها آمنة تماماً للاستخدام المكثف.</p><p>الوضع الجماعي مع التنزيل المضغوط ZIP يحول مهمة مئات الصور إلى عملية واحدة — مصممة لمن يجهز مكتبات موقع كاملة دفعة واحدة.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>أي صيغة أفضل لموقعي؟</summary><p>WebP افتراضياً، وPNG للشعارات بشفافية، وJPG كبديل احتياطي عبر عنصر picture في HTML.</p></details><details class="faq-item"><summary>لماذا زاد حجم صورتي بعد التحويل؟</summary><p>غالباً حولت صورة فوتوغرافية إلى PNG — الصور الفوتوغرافية تزدهر في JPG/WebP وتنتفخ في PNG.</p></details><details class="faq-item"><summary>هل تتأثر أبعاد الصورة؟</summary><p>لا — التحويل يحفظ الأبعاد كما هي؛ لتغيير الأبعاد استخدم أداة تغيير الحجم المخصصة.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=image-converter">#image-converter</a><a class="hash-chip" href="/DouNest/tools/?q=webp">#webp</a><a class="hash-chip" href="/DouNest/tools/?q=png">#png</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%B5%D9%8A%D8%BA-%D8%A7%D9%84%D8%B5%D9%88%D8%B1">#صيغ-الصور</a><a class="hash-chip" href="/DouNest/tools/?q=jpg">#jpg</a><a class="hash-chip" href="/DouNest/tools/?q=seo">#seo</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

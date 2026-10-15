@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,8 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحجيم الصور","description":"غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.","url":"https://mohamedham202417.github.io/DouNest/tools/resize-image/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ماذا لو أدخلت العرض فقط؟","acceptedAnswer":{"@type":"Answer","text":"يُحسب الارتفاع تلقائياً حسب نسبة الأبعاد الأصلية."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحجيم الصور","description":"غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.","keywords":"resize-image, resize, أبعاد, images, seo, social-media","url":"https://mohamedham202417.github.io/DouNest/tools/resize-image/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما الفرق بين هذا والضغط؟","acceptedAnswer":{"@type":"Answer","text":"التغيير يعدل الأبعاد والبكسلات، والضغط يقلل جودة التخزين بنفس الأبعاد — استخدمهما معاً للأفضل."}},{"@type":"Question","name":"لماذا تشوهت صورتي؟","acceptedAnswer":{"@type":"Answer","text":"أدخلتي بعدين غير متطابقين النسبة — فعّل «الحفاظ على النسبة» أو أدخلي بُعداً واحداً فقط."}},{"@type":"Question","name":"هل التكبير يجيب جودة؟","acceptedAnswer":{"@type":"Answer","text":"لا — التكبير يضيف بكسلات مخترعة؛ الأدوات المدفوعة بالذكاء الاصطناعي أفضل لهذا الغرض."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"تحجيم الصور","item":"https://mohamedham202417.github.io/DouNest/tools/resize-image/"}]}</script>
 </head>
 <body>
@@ -73,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -113,16 +116,23 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر صورة أو أكثر.</li><li>حدد العرض الجديد بالبكسل أو نسبة مئوية من الأصل.</li><li>اختر صيغة الإخراج والجودة.</li><li>اضغط «تحجيم» ونزّل النتائج (دفعة كاملة = ZIP).</li></ol>
+          <ol class="steps"><li>اسحب صورة أو عدة صور إلى منطقة الرفع.</li><li>أدخل العرض أو الارتفاع الجديد — البعد الآخر يضبط تلقائياً بنفس النسبة.</li><li>أو اختر نسبة مئوية: 50% لتصغير سريع.</li><li>فعّل الحفاظ على النسبة لمنع تشويه الصورة.</li><li>نزّل النتائج فرادى أو في ZIP واحد للمجموعات.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>يحافظ التحويل تلقائياً على نسبة الأبعاد فلا تتشوه الصورة أبداً.</p><p>الاستخدامات الأشهر: تصغير صور الشبكات الاجتماعية، توحيد أبعاد صور المتجر الإلكتروني، وتقليل حجم المرفقات.</p><p>يعتمد التحويل على محرك Canvas المتجهي في المتصفح مع إعادة تموضع عالية الجودة.</p></div>
+          <div class="explanation"><p>تغيير أبعاد الصور حاجة خفية تتكرر في كل مكان: الموقع يطلب صورة غلاف 1200×630، ونموذج التأشيرة يريد صورة شخصية 600×600، ومتجر إلكتروني يفرض أبعاد منتجات محددة — كلها نفس العملية المتكررة.</p><p>الفرق الجوهري بين تغيير الأبعاد والضغط: الأول يعدل عدد البكسلات (800×600 بدل 4000×3000)، والثاني يحافظ على الأبعاد ويقلل جودة التخزين — غالباً تحتاج كليهما معاً لكنهما عمليتان منفصلتان.</p><p>الحفاظ على النسبة قاعدة لا تُكسر: تغيير عرض فقط دون ضبط الارتفاع يمط الصورة ويشوه الوجوه — الأداة تحسب البعد الثاني تلقائياً فلا تلحق الضرر.</p><p>التصغير آمن دائماً (تبديد بكسلات لا يضر)، أما التكبير الكبير فيفقد وضوحاً لأن البرنامج «يخترع» بكسلات جديدة — تجنب تكبير الصور الصغيرة إلى ملصقات.</p><p>الوضع الجماعي مخصص لحالات حقيقية: 200 صورة منتج يجب أن تصبح 800 بكسل عرضاً — مهمة دقائق هنا بدل ساعات في محرر صور.</p></div>
         </section>
         
         <section class="section">
           <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ماذا لو أدخلت العرض فقط؟</summary><p>يُحسب الارتفاع تلقائياً حسب نسبة الأبعاد الأصلية.</p></details>
+          <details class="faq-item"><summary>ما الفرق بين هذا والضغط؟</summary><p>التغيير يعدل الأبعاد والبكسلات، والضغط يقلل جودة التخزين بنفس الأبعاد — استخدمهما معاً للأفضل.</p></details><details class="faq-item"><summary>لماذا تشوهت صورتي؟</summary><p>أدخلتي بعدين غير متطابقين النسبة — فعّل «الحفاظ على النسبة» أو أدخلي بُعداً واحداً فقط.</p></details><details class="faq-item"><summary>هل التكبير يجيب جودة؟</summary><p>لا — التكبير يضيف بكسلات مخترعة؛ الأدوات المدفوعة بالذكاء الاصطناعي أفضل لهذا الغرض.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=resize-image">#resize-image</a><a class="hash-chip" href="/DouNest/tools/?q=resize">#resize</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%A3%D8%A8%D8%B9%D8%A7%D8%AF">#أبعاد</a><a class="hash-chip" href="/DouNest/tools/?q=images">#images</a><a class="hash-chip" href="/DouNest/tools/?q=seo">#seo</a><a class="hash-chip" href="/DouNest/tools/?q=social-media">#social-media</a>
+  </div>
         </section>
       </div>
       <aside class="tool-sidecol">

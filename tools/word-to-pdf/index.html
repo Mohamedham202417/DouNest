@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,8 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word إلى PDF","description":"حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.","url":"https://mohamedham202417.github.io/DouNest/tools/word-to-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"لماذا تفتح نافذة الطباعة بدل تنزيل PDF مباشر؟","acceptedAnswer":{"@type":"Answer","text":"نافذة الطباعة تمنحك PDF حقيقياً بجودة متجهات (نص قابل للتحديد والبحث) مع تحكم بالهوامش والحجم — وهي طريقة أكثر موثوقية من توليد PDF صوري."}},{"@type":"Question","name":"هل تدعم الأداة اللغة العربية في المستند؟","acceptedAnswer":{"@type":"Answer","text":"نعم، المعاينة والطباعة تدعمان RTL والخطوط العربية بشكل كامل."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word إلى PDF","description":"حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.","keywords":"word-to-pdf, docx, documents, تحويل, pdf, official","url":"https://mohamedham202417.github.io/DouNest/tools/word-to-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل التنسيق الكامل ينتقل؟","acceptedAnswer":{"@type":"Answer","text":"الأساسي نعم (عناوين وقوائم وجداول)؛ التخطيطات المعقدة تُبسط — للحالات الحرجة استخدم «حفظ كـ PDF» من Word نفسه."}},{"@type":"Question","name":"هل يدعم .doc القديم؟","acceptedAnswer":{"@type":"Answer","text":"لا — حوّله أولاً إلى .docx من Word نفسه (حفظ باسم) ثم مرره هنا."}},{"@type":"Question","name":"هل ملفي يُرفع لأي خادم؟","acceptedAnswer":{"@type":"Answer","text":"لا — القراءة والبناء كلاهما محلي؛ ملفك لا يغادر جهازك إطلاقاً."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"Word إلى PDF","item":"https://mohamedham202417.github.io/DouNest/tools/word-to-pdf/"}]}</script>
 </head>
 <body>
@@ -73,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -113,16 +116,23 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر ملف .docx.</li><li>ستُعرض معاينة منسّقة لمحتوى المستند.</li><li>اضغط «حفظ كـ PDF» فتفتح نافذة الطباعة.</li><li>اختر «حفظ كـ PDF» من قائمة الطابعة، أو نزّل HTML/نصاً صريحاً.</li></ol>
+          <ol class="steps"><li>اسحب ملف Word (.docx) إلى منطقة الرفع.</li><li>انتظر استخراج المحتوى: فقرات، عناوين، قوائم، وجداول.</li><li>راجع المعاينة النصية للمستند المحول.</li><li>اضغط توليد PDF لبناء المستند النهائي بالتنسيق الأساسي.</li><li>نزّل PDF الجاهز للمشاركة أو الطباعة فوراً.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تعتمد الأداة على mammoth.js المفتوحة المصدر لتحويل DOCX إلى HTML نظيف مع الحفاظ على العناوين والقوائم والجداول.</p><p>التحويل إلى PDF يتم عبر نافذة الطباعة المدمجة في المتصفح — طريقة موثوقة تعطي PDF حقيقياً قابلاً للتحديد والبحث.</p><p>كل ذلك يحدث محلياً: عقودك وسيرتك الذاتية لا تغادر جهازك، بعكس مواقع التحويل التي ترفع المستندات لخوادمها.</p></div>
+          <div class="explanation"><p>إرسال مستند Word للجهات الرسمية عن عادة سيئة: الخطوط تتغير، والتنسيق ينكسر، والصفحات تنزاح على أجهزة أخرى — بينما PDF يثبت شكله على كل شاشة، ولهذا كل الجهات الرسمية تطلبه حصراً.</p><p>الأداة تعمل على مرحلتين محليتين: قراءة بنية DOCX (وهو ZIP يحوي XML) واستخراج الفقرات والعناوين والقوائم والجداول، ثم بناء PDF نظيف عبر pdf-lib بهيكل منطقي واضح.</p><p>حدود التحويل بصدق: التنسيق الأساسي (عناوين، فقرات، قوائم، جداول) ينتقل جيداً، بينما التخطيطات المعقدة (صور عائمة، أعمدة متعددة، ترويسات فنية) تُبسط — للمستندات البصرية الحرجة استخدم Word نفسه بخيار «حفظ كـ PDF».</p><p>القيمة الحقيقية هنا للمستندات النصية: سيرة ذاتية، خطاب رسمي، تقرير بسيط — تتحول في ثوانٍ دون فتح برنامج مكتب ودون رفع الملف لأي موقع تحويل مشهور يطلب مستنداتك.</p><p>للخصوصية أهمية مضاعفة هنا: السيرة الذاتية تحتوي بياناتك الشخصية الكاملة — لا ترسلها لأي خادم أونلاين أبداً حين يمكنك التحويل محلياً في ثوانٍ.</p></div>
         </section>
         
         <section class="section">
           <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>لماذا تفتح نافذة الطباعة بدل تنزيل PDF مباشر؟</summary><p>نافذة الطباعة تمنحك PDF حقيقياً بجودة متجهات (نص قابل للتحديد والبحث) مع تحكم بالهوامش والحجم — وهي طريقة أكثر موثوقية من توليد PDF صوري.</p></details><details class="faq-item"><summary>هل تدعم الأداة اللغة العربية في المستند؟</summary><p>نعم، المعاينة والطباعة تدعمان RTL والخطوط العربية بشكل كامل.</p></details>
+          <details class="faq-item"><summary>هل التنسيق الكامل ينتقل؟</summary><p>الأساسي نعم (عناوين وقوائم وجداول)؛ التخطيطات المعقدة تُبسط — للحالات الحرجة استخدم «حفظ كـ PDF» من Word نفسه.</p></details><details class="faq-item"><summary>هل يدعم .doc القديم؟</summary><p>لا — حوّله أولاً إلى .docx من Word نفسه (حفظ باسم) ثم مرره هنا.</p></details><details class="faq-item"><summary>هل ملفي يُرفع لأي خادم؟</summary><p>لا — القراءة والبناء كلاهما محلي؛ ملفك لا يغادر جهازك إطلاقاً.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=word-to-pdf">#word-to-pdf</a><a class="hash-chip" href="/DouNest/tools/?q=docx">#docx</a><a class="hash-chip" href="/DouNest/tools/?q=documents">#documents</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AA%D8%AD%D9%88%D9%8A%D9%84">#تحويل</a><a class="hash-chip" href="/DouNest/tools/?q=pdf">#pdf</a><a class="hash-chip" href="/DouNest/tools/?q=official">#official</a>
+  </div>
         </section>
       </div>
       <aside class="tool-sidecol">

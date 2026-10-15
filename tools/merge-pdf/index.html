@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"دمج PDF","description":"اجمع عدة ملفات PDF في ملف واحد.","url":"https://mohamedham202417.github.io/DouNest/tools/merge-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"دمج PDF","description":"اجمع عدة ملفات PDF في ملف واحد.","keywords":"merge-pdf, pdf, documents, دمج, files, productivity","url":"https://mohamedham202417.github.io/DouNest/tools/merge-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يوجد حد لعدد الملفات أو الحجم؟","acceptedAnswer":{"@type":"Answer","text":"لا يوجد حد برمجي؛ القيد الوحيد ذاكرة متصفحك — عشرات الملفات والملفات الكبيرة تعمل عادة بسلاسة."}},{"@type":"Question","name":"هل تتأثر جودة الصفحات؟","acceptedAnswer":{"@type":"Answer","text":"لا — الصفحات تُنسخ كما هي بدون إعادة ضغط، فالنص والصور والجودة الأصلية محفوظة حرفياً."}},{"@type":"Question","name":"هل يمكنني دمج ملفات محمية بكلمة مرور؟","acceptedAnswer":{"@type":"Answer","text":"الملفات المشفرة بإذن فتح فقط قد تعمل؛ المشفرة كاملة تحتاج فك الحماية أولاً بأداتك الأصلية."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"دمج PDF","item":"https://mohamedham202417.github.io/DouNest/tools/merge-pdf/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>ارفع ملفات PDF.</li><li>رتّبها.</li><li>اضغط دمج.</li></ol>
+          <ol class="steps"><li>اسحب عدة ملفات PDF إلى منطقة الرفع دفعة واحدة.</li><li>رتب الملفات بالسحب أو بأزرار تحريك لأعلى/أسفل حسب الترتيب المطلوب.</li><li>راجع القائمة النهائية وعدد الملفات.</li><li>اضغط دمج لتوليد ملف PDF واحد يحوي كل الصفحات بالترتيب.</li><li>نزّل الملف المدموج — الأصلية تبقى كما هي دون أي مساس.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تستخدم pdf-lib لدمج الملفات محليًا.</p></div>
+          <div class="explanation"><p>دمج ملفات PDF هو عملية المستندات الأكثر تكراراً في الحياة العملية: أوراق طلب تأشيرة، مرفقات عرض عمل، فصول كتاب، فواتير شهرية — كلها تعطي أفضل شكل بملف واحد مرتب بدل عشر مرفقات مبعثرة.</p><p>الأداة تستخدم مكتبة pdf-lib مفتوحة المصدر داخل متصفحك: تقرأ بنية كل ملف، وتنسخ صفحاته حرفياً إلى مستند جديد — بدون إعادة ضغط أو إعادة توليد، فجودة الصفحات والنصوص والروابط الداخلية تُحفظ كما هي تماماً.</p><p>الخصوصية ليست تفصيلاً هنا: عقود العمل والتقارير المالية لا يجب أن ترفع لخادم غريب لعملية mechanical بسيطة كهذه؛ الدمج هنا يحدث في ذاكرة متصفحك فقط.</p><p>الترتيب مهم قبل الضغط: المصفوفة القابلة للسحب تتيح تجربة ترتيب مختلفة بسرعة، والنتيجة تتبع القائمة المعروضة حرفياً.</p><p>نصيحة تنظيمية: سمِّ الملفات بأرقام ترتيب (01-intro.pdf، 02-details.pdf) قبل الرفع لتختصر عملية الترتيب اليدوي كلها.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل يوجد حد لعدد الملفات أو الحجم؟</summary><p>لا يوجد حد برمجي؛ القيد الوحيد ذاكرة متصفحك — عشرات الملفات والملفات الكبيرة تعمل عادة بسلاسة.</p></details><details class="faq-item"><summary>هل تتأثر جودة الصفحات؟</summary><p>لا — الصفحات تُنسخ كما هي بدون إعادة ضغط، فالنص والصور والجودة الأصلية محفوظة حرفياً.</p></details><details class="faq-item"><summary>هل يمكنني دمج ملفات محمية بكلمة مرور؟</summary><p>الملفات المشفرة بإذن فتح فقط قد تعمل؛ المشفرة كاملة تحتاج فك الحماية أولاً بأداتك الأصلية.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=merge-pdf">#merge-pdf</a><a class="hash-chip" href="/DouNest/tools/?q=pdf">#pdf</a><a class="hash-chip" href="/DouNest/tools/?q=documents">#documents</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AF%D9%85%D8%AC">#دمج</a><a class="hash-chip" href="/DouNest/tools/?q=files">#files</a><a class="hash-chip" href="/DouNest/tools/?q=productivity">#productivity</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

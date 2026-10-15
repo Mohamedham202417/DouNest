@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,8 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل HEIC إلى JPG","description":"افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.","url":"https://mohamedham202417.github.io/DouNest/tools/heic-to-jpg/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل تفقد الصورة جودتها عند التحويل؟","acceptedAnswer":{"@type":"Answer","text":"الجودة قابلة للضبط وافتراضياً 92% — عملياً لن تلاحظ فرقاً، ويمكنك رفعها إلى 100%."}},{"@type":"Question","name":"كم صورة أحوّل دفعة واحدة؟","acceptedAnswer":{"@type":"Answer","text":"أي عدد — دفعات الصور الكبيرة تُنزَّل مجمعة في ملف ZIP واحد لتسهيل الحفظ على الهاتف."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل HEIC إلى JPG","description":"افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.","keywords":"heic-to-jpg, heic, iphone, تحويل-صور, images, conversion","url":"https://mohamedham202417.github.io/DouNest/tools/heic-to-jpg/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"لماذا آيفون يستخدم HEIC أصلاً؟","acceptedAnswer":{"@type":"Answer","text":"لتوفير مساحة التخزين: نفس الجودة بنصف الحجم تقريباً — استثمار موفق داخلياً ومزعج عند المشاركة."}},{"@type":"Question","name":"هل تفقد الصورة جودتها؟","acceptedAnswer":{"@type":"Answer","text":"تحويل HEIC→JPG إعادة ترميز خفيفة؛ بجودة افتراضية عالية الفرق غير مرئي عملياً."}},{"@type":"Question","name":"هل تُرفع صوري لأي خادم؟","acceptedAnswer":{"@type":"Answer","text":"لا — فك الترميز والتجميع كله داخل متصفحك، والصور لا تغادر جهازك."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"تحويل HEIC إلى JPG","item":"https://mohamedham202417.github.io/DouNest/tools/heic-to-jpg/"}]}</script>
 </head>
 <body>
@@ -73,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -113,16 +116,23 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر صورة أو أكثر بصيغة HEIC/HEIF.</li><li>اضغط «تحويل».</li><li>نزّل صور JPG الناتجة (دفعة كاملة تُنزَّل كأرشيف ZIP).</li></ol>
+          <ol class="steps"><li>اسحب صور HEIC/HEIF من آيفونك إلى منطقة الرفع.</li><li>انتظر التحويل الفوري لكل صورة إلى JPG متوافق.</li><li>راجع المعاينة والفرق في الحجم إن وجد.</li><li>نزّل الصور واحدة واحدة أو جميعها في ملف ZIP.</li><li>شاركها الآن مع أي جهاز أو موقع بدون مشاكل توافق.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>HEIC هي الصيغة الافتراضية لكاميرا الآيفون منذ iOS 11، وتوفر حجماً أقل بجودة أعلى لكنها لا تُفتح على ويندوز وأندرويد ومواقع كثيرة.</p><p>تعتمد الأداة على مكتبة heic2any مفتوحة المصدر (libheif) وتحوّل داخل متصفحك دون رفع.</p><p>نصيحة: يمكنك تعطيل HEIC من إعدادات الآيفون (الكاميرا ← الصيغ ← الأكثر توافقاً)، لكن الأداة تظل الحل الأسرع للصور الموجودة.</p></div>
+          <div class="explanation"><p>صيغة HEIC هي صيغة آيفون الحديثة: تضغط الصور بنصف حجم JPG تقريباً بجودة أعلى، لكنها تخلق معضلة التوافق: ويندوز القديم وأندرويد وبعض المواقع وخدمات الطباعة ترفضها صراحة — فترسل صورة عائلة وتصل «ملف غير مدعوم».</p><p>الأداة تفك ترميز HEIC محلياً في متصفحك عبر مكتبة heic2any المفتوحة — آيفون لا يلزم، ولا تثبيت برامج، وخصوصية صورك العائلية محفوظة بالكامل لأن الرفع غير موجود أصلاً.</p><p>JPG الناتج متوافق عالمياً 100%: يفتح في كل شيء منذ 1990 — الطباعة، والفيسبوك، ومواقع القبول الجامعي، والوثائق الرسمية كلها تقبله بلا نقاش.</p><p>حجم الناتج سيكون أكبر من الأصل (HEIC أكفأ بطبيعته) — هذا متوقع وسليم: أنت تدفع ثمن التوافق بحجم أكبر قليلاً، والحفاظ على أصل HEIC للتخزين الطويل ممارسة موصوفة.</p><p>الوضع الجماعي مع ZIP مهم لمستخدمي الآيفون تحديداً: كاميرا الوالدة تنقل 60 صورة رحلة دفعة واحدة وتخرجها ZIP واحد يفتح في أي مكان.</p></div>
         </section>
         
         <section class="section">
           <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل تفقد الصورة جودتها عند التحويل؟</summary><p>الجودة قابلة للضبط وافتراضياً 92% — عملياً لن تلاحظ فرقاً، ويمكنك رفعها إلى 100%.</p></details><details class="faq-item"><summary>كم صورة أحوّل دفعة واحدة؟</summary><p>أي عدد — دفعات الصور الكبيرة تُنزَّل مجمعة في ملف ZIP واحد لتسهيل الحفظ على الهاتف.</p></details>
+          <details class="faq-item"><summary>لماذا آيفون يستخدم HEIC أصلاً؟</summary><p>لتوفير مساحة التخزين: نفس الجودة بنصف الحجم تقريباً — استثمار موفق داخلياً ومزعج عند المشاركة.</p></details><details class="faq-item"><summary>هل تفقد الصورة جودتها؟</summary><p>تحويل HEIC→JPG إعادة ترميز خفيفة؛ بجودة افتراضية عالية الفرق غير مرئي عملياً.</p></details><details class="faq-item"><summary>هل تُرفع صوري لأي خادم؟</summary><p>لا — فك الترميز والتجميع كله داخل متصفحك، والصور لا تغادر جهازك.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=heic-to-jpg">#heic-to-jpg</a><a class="hash-chip" href="/DouNest/tools/?q=heic">#heic</a><a class="hash-chip" href="/DouNest/tools/?q=iphone">#iphone</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D8%B5%D9%88%D8%B1">#تحويل-صور</a><a class="hash-chip" href="/DouNest/tools/?q=images">#images</a><a class="hash-chip" href="/DouNest/tools/?q=conversion">#conversion</a>
+  </div>
         </section>
       </div>
       <aside class="tool-sidecol">

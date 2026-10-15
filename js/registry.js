@@ -8,6 +8,8 @@
  */
 
 
+import { TOOL_CONTENT } from "./tool-content.js";
+
 // Pure helper: returns translation for lang, or English fallback.
 // lang is passed explicitly so this module stays dependency-free (works in Node for the build script).
 export const pick = (obj, lang) => (obj && (obj[lang] || obj.en)) || "";
@@ -558,4 +560,18 @@ export const CATEGORIES = [
 ];
 
 export function getTool(slug) { return TOOLS.find(t => t.slug === slug); }
+
+/* ============================================================
+ * v4 enrichment: merge long-form content (js/tool-content.js)
+ * into every tool — deeper usage steps, richer explanation,
+ * more FAQ, and hashtags for SEO + on-page tag chips.
+ * ============================================================ */
+for (const tool of TOOLS) {
+  const extra = TOOL_CONTENT[tool.slug];
+  if (!extra) continue;
+  if (extra.usage) tool.usage = extra.usage;
+  if (extra.explanation) tool.explanation = extra.explanation;
+  if (extra.faq && extra.faq.length) tool.faq = extra.faq;
+  tool.tags = extra.tags || [];
+}
 

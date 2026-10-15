@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة العمر","description":"احسب عمرك بالسنوات والأيام.","url":"https://mohamedham202417.github.io/DouNest/tools/age-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة العمر","description":"احسب عمرك بالسنوات والأيام.","keywords":"age-calculator, age, عمر, dates, calculator, birthday","url":"https://mohamedham202417.github.io/DouNest/tools/age-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يحسب السنوات الكبيسة؟","acceptedAnswer":{"@type":"Answer","text":"نعم — التقويم الحقيقي كاملاً مع 29 فبراير، مطابق للسجلات الرسمية."}},{"@type":"Question","name":"هل التاريخ المستقبلي مدعوم؟","acceptedAnswer":{"@type":"Answer","text":"نعم — ضع تاريخاً مستقبلياً في خانة «إلى» لتحسب مدة وصولاً إليه."}},{"@type":"Question","name":"هل يُحفظ تاريخ ميلادي؟","acceptedAnswer":{"@type":"Answer","text":"لا — الحساب في الذاكرة فقط ولا يخزن ولا يرسل أي شيء إلى أي جهة."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"حاسبة العمر","item":"https://mohamedham202417.github.io/DouNest/tools/age-calculator/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>أدخل تاريخ الميلاد.</li><li>اقرأ النتيجة.</li></ol>
+          <ol class="steps"><li>اختر تاريخ الميلاد من المنتقي (اليوم، الشهر، السنة).</li><li>اختر تاريخ الحساب أو اتركه اليوم افتراضياً.</li><li>اقرأ العمر بالسنوات والأشهر والأيام بدقة كاملة.</li><li>شاهد إحصاءات إضافية: الأيام المعيشة، والساعات، وعمر الحيوان الأليف بالمقابل.</li><li>استخدم وضع المقارنة لمعرفة فارق العمر بين شخصين بدقة اليوم.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>حساب دقيق مع أيام الأسبوع المتبقية.</p></div>
+          <div class="explanation"><p>حساب العمر الدقيق يبدو بسيطاً ويلمس أخطاء خفية شهيرة: «أنا عمره 25» قد يعني 24 سنة و11 شهراً و30 يوماً — والفرق جوهري في المستندات الرسمية وطلبات التأشيرة والتسجيلات المدرسية والرياضية.</p><p>التعقيد الحقيقي في أشهر متفاوتة الأطوال: من 1 فبراير إلى 1 مارس شهر بالضبط في سنة عادية، لكن حساب نفس الفترة بأيام يختلف بين سنة كبيسة وعادية — الخوارزمية الصحيحة تعالج هذه الحالات كما تفعل السجلات الرسمية.</p><p>الاستخدامات الرسمية كثيرة: نماذج التأمين تتطلب العمر بالأيام في بعض الخطط، وحقوق التقاعد تحسب بالأشهر، ووثائق الهوية تحتاج تدقيقاً — الدقة باليوم ليست ترفاً هنا.</p><p>الإحصاءات الممتعة مفيدة أكثر مما تظن: عدد الأيام المعيشة يفسر إحساس «الزمن يمر أسرع»، ومقارنة عمر قطك البالغ 7 سنوات تعادل نحو 44 بشرية — أرقام تربطنا بزمننا.</p><p>وضع المقارنة الزوجية يخدم حالات عملية: فارق عمر الأشقاء، ومدة الزواج بالضبط، ومدة العمل في وظيفة — كلها «عمر» من تاريخ إلى تاريخ.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل يحسب السنوات الكبيسة؟</summary><p>نعم — التقويم الحقيقي كاملاً مع 29 فبراير، مطابق للسجلات الرسمية.</p></details><details class="faq-item"><summary>هل التاريخ المستقبلي مدعوم؟</summary><p>نعم — ضع تاريخاً مستقبلياً في خانة «إلى» لتحسب مدة وصولاً إليه.</p></details><details class="faq-item"><summary>هل يُحفظ تاريخ ميلادي؟</summary><p>لا — الحساب في الذاكرة فقط ولا يخزن ولا يرسل أي شيء إلى أي جهة.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=age-calculator">#age-calculator</a><a class="hash-chip" href="/DouNest/tools/?q=age">#age</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%B9%D9%85%D8%B1">#عمر</a><a class="hash-chip" href="/DouNest/tools/?q=dates">#dates</a><a class="hash-chip" href="/DouNest/tools/?q=calculator">#calculator</a><a class="hash-chip" href="/DouNest/tools/?q=birthday">#birthday</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

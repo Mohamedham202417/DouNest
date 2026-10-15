@@ -25,7 +25,8 @@ import { TOOLS, CATEGORIES } from "./js/registry.js";
 import { getArticles } from "./js/articles.js";
 import { getFAQ, FAQ_CATS } from "./js/faq.js";
 import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
-import { RARE_TOOLS as RARE_TOOLS_DATA } from "./js/rare-tools.js";
+import { RARE_CATS, RARE_TOOLS as RARE_TOOLS_DATA, rareByCat, getRareTool } from "./js/rare-tools.js";
+import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./js/rare-page.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -53,6 +54,7 @@ const L = {
     allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
     faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "يعمل محلياً في متصفحك",
     home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI",
+    pdf: "مركز PDF", convert: "مركز التحويل",
     about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام",
     back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
     faqNav: "الأسئلة الشائعة", faqTitle: "الأسئلة الشائعة",
@@ -62,6 +64,7 @@ const L = {
     allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
     faq: "FAQ", related: "Related tools", local: "Runs locally in your browser",
     home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory",
+    pdf: "PDF Hub", convert: "Convert Hub",
     about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms",
     back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
     faqNav: "FAQ", faqTitle: "Frequently Asked Questions",
@@ -125,6 +128,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="${R("assets/styles.css")}" />
+<link rel="stylesheet" href="${R("assets/styles-v4.css")}" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -168,6 +172,8 @@ ${ld}
       <nav class="topnav" aria-label="Main">
         <a href="${R("")}">${L[lang].home}</a>
         <a href="${R("tools/")}">${L[lang].allTools}</a>
+        <a href="${R("pdf/")}">${L[lang].pdf}</a>
+        <a href="${R("convert/")}">${L[lang].convert}</a>
         <a href="${R("rare/")}">${L[lang].rare}</a>
         <a href="${R("ai/")}">${L[lang].ai}</a>
         <a href="${R("articles/")}">${L[lang].articles}</a>
@@ -256,6 +262,11 @@ for (const tool of TOOLS) {
           <h2>${AR.faq}</h2>
           ${faq.map(f => `<details class="faq-item"><summary>${esc(pick(f.q, "ar"))}</summary><p>${esc(pick(f.a, "ar"))}</p></details>`).join("")}
         </section>` : ""}
+        ${(tool.tags && tool.tags.length) ? `
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          ${hashtagChipsHTML(tool.tags, "ar", `${BASE}tools/?q=`)}
+        </section>` : ""}
       </div>
       <aside class="tool-sidecol">
         ${related.length ? `
@@ -272,6 +283,7 @@ for (const tool of TOOLS) {
     {
       "@context": "https://schema.org", "@type": "WebApplication",
       "name": name, "description": short,
+      "keywords": (tool.tags || []).join(", "),
       "url": `${SITE}tools/${tool.slug}/`,
       "applicationCategory": "UtilityApplication", "operatingSystem": "Any",
       "inLanguage": "ar",
@@ -314,7 +326,10 @@ const mdToHtml = (md) => esc(md)
   .replace(/^### (.*$)/gm, "<h3>$1</h3>")
   .replace(/^## (.*$)/gm, "<h2>$1</h2>")
   .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-  .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2">$1</a>')
+  .replace(/\[(.*?)\]\((.*?)\)/g, (mm, txt, href) => {
+    const h = href.startsWith("/") ? (BASE.replace(/\/$/, "") + href) : href;
+    return `<a href="${h}">${txt}</a>`;
+  })
   .replace(/\n\n/g, "</p><p>")
   .replace(/^(?!<[hp])(.+)$/gm, "<p>$1</p>");
 
@@ -332,6 +347,7 @@ for (const a of getArticles()) {
       <h1>${esc(title)}</h1>
       <p class="article-date">${a.date}</p>
       <div class="explanation">${mdToHtml(a.content.ar || a.content.en)}</div>
+      ${a.tags?.length ? `<div class="article-tags">${hashtagChipsHTML(a.tags, "ar", `${BASE}tools/?q=`)}</div>` : ""}
     </article>`;
   writePage(
     `articles/${a.slug}/index.html`,
@@ -342,6 +358,7 @@ for (const a of getArticles()) {
       jsonLd: [{
         "@context": "https://schema.org", "@type": "Article",
         "headline": title, "datePublished": a.date,
+        "keywords": (a.tags || []).join(", "),
         "inLanguage": "ar",
         "author": { "@type": "Organization", "name": "DouNest" }
       }],
@@ -417,31 +434,119 @@ ${cards}`
   );
 }
 {
-  const up = relPrefix("rare/");
-  const cards = RARE_TOOLS_DATA.map(tool => {
-    const a = affWrapBuild(tool.url);
-    return `<a class="tool-card external" href="${a.href}" target="_blank" rel="${a.rel}">
-      <div class="icon" aria-hidden="true">🧭</div>
-      <h3>${esc(pick(tool.name, "ar"))}</h3>
-      <p>${esc(pick(tool.desc, "ar"))}</p>
-      <div class="card-foot"><span class="badge tiny">خارجي</span></div>
-    </a>`;
-  }).join("");
+  /* ---------- Rare tools v4: /rare/ index + 4 categories + 32 detail pages ---------- */
+  console.log("→ rare pages (index + categories + details)");
+  const RBASE = `${BASE}rare/`;
+
   writePage(
     "rare/index.html",
     shell({
-      title: "أدوات نادرة يصعب العثور عليها — DouNest",
-      description: "مجموعة مختارة من الأدوات الخارجية النادرة مع شرح لكل أداة: Can I Use، Wayback Machine، وأكثر.",
+      title: "الأدوات النادرة — خرائط وأمن وجواهر GitHub — DouNest",
+      description: "32 أداة ومشروعاً نادراً في 4 فئات: خرائط حية، أدوات اختراق أخلاقي تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة.",
       canonicalPath: "rare/",
+      bodyContent: rareIndexHTML("ar", RBASE)
+    })
+  );
+
+  for (const cat of RARE_CATS) {
+    const isSec = cat.id === "security";
+    writePage(
+      `rare/${cat.id}/index.html`,
+      shell({
+        title: `${pick(cat.name, "ar")} — أدوات نادرة — DouNest`,
+        description: pick(cat.blurb, "ar").slice(0, 158),
+        canonicalPath: `rare/${cat.id}/`,
+        noindex: isSec,
+        bodyContent: rareCatHTML(cat.id, "ar", RBASE)
+      })
+    );
+  }
+
+  for (const tool of RARE_TOOLS_DATA) {
+    const isSec = tool.cat === "security";
+    writePage(
+      `rare/${tool.slug}/index.html`,
+      shell({
+        title: `${pick(tool.name, "ar")} — أدوات نادرة — DouNest`,
+        description: pick(tool.desc, "ar").slice(0, 158),
+        canonicalPath: `rare/${tool.slug}/`,
+        noindex: isSec,
+        bodyContent: rareDetailHTML(tool.slug, "ar", RBASE, `${BASE}tools/?q=`)
+      })
+    );
+  }
+}
+
+/* ---------- 3b') PDF + Convert hub landing pages ---------- */
+console.log("→ pdf/convert hub pages");
+{
+  const pdfSlugs = ["compress-pdf", "merge-pdf", "split-pdf", "rotate-pdf", "pdf-to-jpg", "pdf-to-txt", "pdf-to-word", "image-to-pdf"];
+  const pdfTools = pdfSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
+  writePage(
+    "pdf/index.html",
+    shell({
+      title: "مركز PDF — ضغط ودمج وتقسيم وتحويل بضغطة زر | DouNest",
+      description: "ارفع ملف PDF مرة واحدة ثم نفّذ كل العمليات: ضغط، دمج، تقسيم، تدوير، إلى JPG، إلى TXT، إلى Word، وصور إلى PDF — كل شيء محلي داخل متصفحك بدون رفع ملفات.",
+      canonicalPath: "pdf/",
+      jsonLd: [{
+        "@context": "https://schema.org", "@type": "WebApplication",
+        "name": "مركز PDF — DouNest", "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any", "inLanguage": "ar",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }],
       bodyContent: `
     <section class="page-head">
-      <h1>أدوات نادرة</h1>
-      <p>أدوات خارجية مختارة بعناية يصعب العثور عليها، مع شرح لكل أداة.</p>
+      <h1>مركز PDF — كل أدوات PDF بضغطة زر</h1>
+      <p>ارفع ملفك مرة واحدة ثم اختر العملية: ضغط، دمج عدة ملفات، تقسيم كل صفحة، تدوير، تحويل إلى JPG أو TXT أو Word، أو تحويل صور إلى PDF. كل المعالجة تحدث داخل متصفحك — ملفاتك لا تُرفع لأي خادم إطلاقاً.</p>
     </section>
-    <p class="disclosure">ℹ️ تحتوي هذه الصفحة على روابط تابعة؛ إذا اشتريت عبرها فقد نحصل على عمولة دون أي تكلفة إضافية عليك.</p>
-    <div class="tools-grid">
-${cards}
-    </div>`
+    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات التفاعلية.</p></section>
+    <section class="section">
+      <h2 class="section-title">أدوات PDF الفردية</h2>
+      <div class="tools-grid">
+        ${pdfTools.map(t2 => `
+        <a class="tool-card" href="${t2.slug}/">
+          <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
+          <h3>${esc(pick(t2.name, "ar"))}</h3>
+          <p>${esc(pick(t2.short, "ar"))}</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>`).join("")}
+      </div>
+    </section>`
+    })
+  );
+
+  const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt"];
+  const convTools = [...new Set(convSlugs)].map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
+  writePage(
+    "convert/index.html",
+    shell({
+      title: "مركز التحويل — حوّل من وإلى أي صيغة | DouNest",
+      description: "أفلِت أي ملف وسيُكتشف نوعه تلقائياً لتعرض كل التحويلات المتاحة: صور بين PNG وJPG وWebP، وPDF إلى TXT وJPG وWord، وCSV وJSON وExcel باتجاهين — كل ذلك محلياً وبدون رفع ملفات.",
+      canonicalPath: "convert/",
+      jsonLd: [{
+        "@context": "https://schema.org", "@type": "WebApplication",
+        "name": "مركز التحويل — DouNest", "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any", "inLanguage": "ar",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }],
+      bodyContent: `
+    <section class="page-head">
+      <h1>مركز التحويل — من وإلى أي صيغة</h1>
+      <p>أفلِت ملفك مرة واحدة: نكتشف نوعه تلقائياً ونعرض كل التحويلات المتاحة بنقرة واحدة — صور بين PNG وJPG وWebP، وPDF إلى TXT وJPG وWord، وCSV وJSON وExcel باتجاهين، وWord إلى نص، ونص إلى PDF. كل شيء يحدث داخل متصفحك بدون رفع وبدون تسجيل.</p>
+    </section>
+    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة السحب والإفلات التفاعلية.</p></section>
+    <section class="section">
+      <h2 class="section-title">أدوات التحويل الفردية</h2>
+      <div class="tools-grid">
+        ${convTools.map(t2 => `
+        <a class="tool-card" href="${t2.slug}/">
+          <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
+          <h3>${esc(pick(t2.name, "ar"))}</h3>
+          <p>${esc(pick(t2.short, "ar"))}</p>
+          <div class="card-foot"><span class="badge tiny">تحويل</span></div>
+        </a>`).join("")}
+      </div>
+    </section>`
     })
   );
 }
@@ -595,11 +700,15 @@ const urls = [
   { p: "", pr: "1.0" },
   { p: "tools/", pr: "0.9" },
   ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.9" })),
+  { p: "pdf/", pr: "0.9" },
+  { p: "convert/", pr: "0.9" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
   ...getArticles().map(a => ({ p: `articles/${a.slug}/`, pr: "0.7" })),
   { p: "ai/", pr: "0.6" },
   { p: "rare/", pr: "0.6" },
+  ...RARE_CATS.filter(c => c.id !== "security").map(c => ({ p: `rare/${c.id}/`, pr: "0.5" })),
+  ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => ({ p: `rare/${t2.slug}/`, pr: "0.5" })),
   { p: "about/", pr: "0.4" },
   { p: "privacy/", pr: "0.3" },
   { p: "terms/", pr: "0.3" }
@@ -628,7 +737,7 @@ const articlePages = getArticles().map(a => `articles/${a.slug}/index.html`);
 const jsFiles = walk("js");
 const ASSETS = [
   "./", "./index.html", "./404.html", "./manifest.json",
-  "./assets/styles.css", "./assets/dounest-logo.png",
+  "./assets/styles.css", "./assets/styles-v4.css", "./assets/dounest-logo.png",
   "./assets/og-cover.png", "./assets/icon-192.png", "./assets/icon-512.png", "./assets/favicon-32.png",
   "./config.js",
   ...jsFiles.map(f => "./" + f),
@@ -639,6 +748,9 @@ const ASSETS = [
   "./favorites/index.html",
   "./faq/index.html",
   "./ai/index.html", "./rare/index.html",
+  "./pdf/index.html", "./convert/index.html",
+  ...RARE_CATS.filter(c => c.id !== "security").map(c => "./rare/" + c.id + "/index.html"),
+  ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => "./rare/" + t2.slug + "/index.html"),
   "./about/index.html", "./privacy/index.html", "./terms/index.html",
   "./sitemap.xml", "./robots.txt"
 ];

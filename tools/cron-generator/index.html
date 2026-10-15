@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد Cron","description":"أنشئ وافهم تعبيرات Cron.","url":"https://mohamedham202417.github.io/DouNest/tools/cron-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد Cron","description":"أنشئ وافهم تعبيرات Cron.","keywords":"cron, crontab, جدولة, linux, devops, مطورين","url":"https://mohamedham202417.github.io/DouNest/tools/cron-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ماذا تعني النجمة في حقل؟","acceptedAnswer":{"@type":"Answer","text":"تعني «كل» قيم هذا الحقل — نجمة في الساعات تعني كل ساعة ضمن قيم الحقول الأخرى."}},{"@type":"Question","name":"هل يتبع الخادم منطقتي الزمنية؟","acceptedAnswer":{"@type":"Answer","text":"cron يتبع منطقة الخادم الافتراضية — تحقق منها أو اضبط TZ في crontab لتجنب مفاجآت الفرق الزمني."}},{"@type":"Question","name":"ما الفرق بين cron و systemd timer؟","acceptedAnswer":{"@type":"Answer","text":"نفس الصيغة الزمنية غالباً؛ systemd يقدم سجلات أعقد وإعادة تشغيل ذكية، لكن cron أبسط وأوسع دعماً."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"مولّد Cron","item":"https://mohamedham202417.github.io/DouNest/tools/cron-generator/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر الحقول.</li><li>اقرأ التعبير.</li><li>انسخه.</li></ol>
+          <ol class="steps"><li>اضبط الحقول الخمسة: الدقيقة، الساعة، اليوم من الشهر، الشهر، يوم الأسبوع.</li><li>أو استخدم الأزرار السريعة لجداول شائعة: كل ساعة، يومياً، أسبوعياً.</li><li>شاهد التعبير يتشكل في الحقل الناتج أثناء الضبط.</li><li>اقرأ الوصف البشري المولّد للتأكد أن النمط يعني ما تقصده فعلاً.</li><li>انسخ التعبير واستخدمه في crontab أو في إعدادات جدولة مشروعك.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>ترجمة بشرية للتعبير مع عرض مواعيد التشغيل.</p></div>
+          <div class="explanation"><p>صيغة cron قياس صناعي عمره نصف قرن لتشغيل المهام دورياً: من نسخ قواعد البيانات ليلاً إلى تحديث التقارير كل ساعة إلى تنظيف الملفات المؤقتة أسبوعياً — كل سيرفر لينكس يعيش على هذه الصيغة الخمسة حقول.</p><p>لماذا مولّد بدل الكتابة اليدوية؟ لأن صيغة cron تتعارض مع الحدس البشري: يوم الأسبوع 0 أم 7؟ النجمة في حقل اليوم من الشهر مع يوم الأسبوع تعني OR لا AND؟ هذه الفخاخ تصطدم بها حتى المحترفون، والمولّد يضبطها بدقة.</p><p>الوصف البشري المولّد هو ميزة الأمان الحقيقية: «كل يوم اثنين وثلاثاء الساعة 9:00» — اقرأه وصححه قبل النسخ، فخطأ جدولة يعني نسخاً احتياطياً لم يحدث أو تقريراً لم يصل.</p><p>الحقول الخاصة مثل */5 (كل خمس دقائق) و1-5 (نطاق) و1,15 (قائمة) مدعومة بالأزرار — لا حاجة لحفظ رموزها الغامضة.</p><p>أشهر استخدامات جاهزة: 0 3 * * * (نسخ احتياطي 3 فجراً)، */15 * * * * (فحص صحة كل ربع ساعة)، 0 0 1 * * (تقرير شهري أول الشهر).</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>ماذا تعني النجمة في حقل؟</summary><p>تعني «كل» قيم هذا الحقل — نجمة في الساعات تعني كل ساعة ضمن قيم الحقول الأخرى.</p></details><details class="faq-item"><summary>هل يتبع الخادم منطقتي الزمنية؟</summary><p>cron يتبع منطقة الخادم الافتراضية — تحقق منها أو اضبط TZ في crontab لتجنب مفاجآت الفرق الزمني.</p></details><details class="faq-item"><summary>ما الفرق بين cron و systemd timer؟</summary><p>نفس الصيغة الزمنية غالباً؛ systemd يقدم سجلات أعقد وإعادة تشغيل ذكية، لكن cron أبسط وأوسع دعماً.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=cron">#cron</a><a class="hash-chip" href="/DouNest/tools/?q=crontab">#crontab</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AC%D8%AF%D9%88%D9%84%D8%A9">#جدولة</a><a class="hash-chip" href="/DouNest/tools/?q=linux">#linux</a><a class="hash-chip" href="/DouNest/tools/?q=devops">#devops</a><a class="hash-chip" href="/DouNest/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد UUID","description":"أنشئ UUID v4 عشوائيًا.","url":"https://mohamedham202417.github.io/DouNest/tools/uuid-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد UUID","description":"أنشئ UUID v4 عشوائيًا.","keywords":"uuid, identifier, مطورين, random, database, uuid-generator","url":"https://mohamedham202417.github.io/DouNest/tools/uuid-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يمكن أن يتكرر UUID v4؟","acceptedAnswer":{"@type":"Answer","text":"احتمالياً نعم لكنه عملياً مستحيل: فرص الاصطدام أقل بكثير من فرص ضربك برصاصة نيزك اليوم."}},{"@type":"Question","name":"ما الفرق بين v4 و v1؟","acceptedAnswer":{"@type":"Answer","text":"v1 مبنية على الوقت وعنوان الشبكة (قد يكشف مصدرها)، وv4 عشوائية بالكامل وأكثر خصوصية."}},{"@type":"Question","name":"هل UUID مناسب كمفتاح أساسي في قاعدة البيانات؟","acceptedAnswer":{"@type":"Answer","text":"نعم وخاصة في الأنظمة الموزعة، مع الانتباه لأن حجمه أكبر من الأعداد التسلسلية فأداء الفهارس يتأثر قليلاً."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"مولّد UUID","item":"https://mohamedham202417.github.io/DouNest/tools/uuid-generator/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر الكمية.</li><li>اضغط تنفيذ.</li><li>انسخ النتيجة.</li></ol>
+          <ol class="steps"><li>حدد عدد المعرّفات التي تريدها (من 1 إلى 100).</li><li>اختر النسخة: v4 العشوائية هي الافتراضية لمعظم الاستخدامات.</li><li>اضغط توليد لتظهر المعرفات في القائمة.</li><li>انسخها جميعاً بنقرة أو انسخ معرفاً واحداً بالضغط عليه.</li><li>أعد التوليد بحرية — كل معرف فريد احتمالياً لا يتكرر عملياً أبداً.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>UUID v4 معرّف عشوائي.</p></div>
+          <div class="explanation"><p>UUID معرف قياسي عالمي بطول 128 بت يُكتب 36 حرفاً بصيغة 8-4-4-4-12. النسخة v4 الأشهر تعتمد على العشوائية: احتمال تكرار معرفين من هذا النوع ضئيل لدرجة أن توليد بليون UUID في الثانية لمئة عام لن يصطدم بالتكرار عملياً.</p><p>لماذا لا نكفي بالعد التسلسلي 1، 2، 3؟ لأن الأنظمة الموزعة لا تجتمع على عداد مشترك؛ المعرف العشوائي يولّد في أي خادم أو جهاز أو فرع دون تنسيق مع أحد، وسيظل فريداً — هذا أساس تصميم قواعد البيانات الموزعة الحديثة.</p><p>الاستخدامات اليومية شاسعة: مفاتيح أجنبية في الجداول، معرفات طلبات API، أسماء ملفات لا تتصادم، معرفات جلسات، ومفاتيح تجريبية في الاختبارات.</p><p>هناك نسخ أخرى أقدم مثل v1 المبنية على العنوان الفيزيائي للشبكة والوقت، لكنها انخفضت شعبيتها لأنها تسرب معلومات عن مصدر التوليد، بينما v4 محايدة تماماً.</p><p>الأداة تستخدم crypto.getRandomValues المعتمدة تشفيرياً في متصفحك — ليست Math.random التي قد تتكرر، بل مصدر عشوائي حقيقي موجهة للأنظمة الأمنية.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل يمكن أن يتكرر UUID v4؟</summary><p>احتمالياً نعم لكنه عملياً مستحيل: فرص الاصطدام أقل بكثير من فرص ضربك برصاصة نيزك اليوم.</p></details><details class="faq-item"><summary>ما الفرق بين v4 و v1؟</summary><p>v1 مبنية على الوقت وعنوان الشبكة (قد يكشف مصدرها)، وv4 عشوائية بالكامل وأكثر خصوصية.</p></details><details class="faq-item"><summary>هل UUID مناسب كمفتاح أساسي في قاعدة البيانات؟</summary><p>نعم وخاصة في الأنظمة الموزعة، مع الانتباه لأن حجمه أكبر من الأعداد التسلسلية فأداء الفهارس يتأثر قليلاً.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=uuid">#uuid</a><a class="hash-chip" href="/DouNest/tools/?q=identifier">#identifier</a><a class="hash-chip" href="/DouNest/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/DouNest/tools/?q=random">#random</a><a class="hash-chip" href="/DouNest/tools/?q=database">#database</a><a class="hash-chip" href="/DouNest/tools/?q=uuid-generator">#uuid-generator</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

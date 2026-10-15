@@ -153,3 +153,28 @@ python3 -m http.server 8080   # local preview
 **Monetize:** fill `config.js` → analytics.gaId, adsense.client/slots, affiliateId, featured[], support.url. All placements and disclosures are handled by `js/monetize.js`.
 
 **Adding a tool:** append its metadata to `js/registry.js`, create `js/tools/<slug>.js` exporting `render(root)`, run `node build.mjs` — you get a working tool + an SEO landing page automatically.
+
+---
+
+## ⚠️ قاعدة النشر الحاسمة — لا تُدشّن المشروع داخل مجلد متداخل
+
+**سبب أشهر مشاكل الإطلاق** (الشريط العلوي وتبديل اللغة لا يعملان): رفع مجلد المشروع *داخل* مجلد آخر بنفس الاسم، فيصبح المسار `/DouNest/DouNest/...` وتفشل كل مسارات الموارد.
+
+### النشر الصحيح على GitHub Pages (خطوة بخطوة)
+
+1. اجعل **جذر المستودع** هو محتوى المشروع مباشرة: `index.html` و`config.js` و`js/` يجب أن تقع في الجذر — **ليس** داخل `DouNest/DouNest/`.
+2. ارفع كل الملفات المولّدة بعد `node build.mjs` (بما فيها `404.html` و`sitemap.xml` و`sw.js` ومجلدات `tools/` و`rare/` و`pdf/` و`convert/` و`articles/`).
+3. في إعدادات المستودع: Settings → Pages → Source: **Deploy from a branch** → branch: `main` → folder: **/(root)**.
+4. اترك `config.js` كما هو: `repoPath: "DouNest"` (لأن GitHub Pages سيخدم الموقع تحت `/DouNest/`).
+5. إن كان لديك دومين مخصص: اضبط `repoPath: ""` ثم أعد `node build.mjs` قبل الرفع.
+
+### فحص سريع بعد النشر
+
+- افتح `https://<user>.github.io/DouNest/` — إذا ظهرت الصفحة ثم فشلت الروابط، افتح سجل الشبكة: أي طلب إلى مسار يحتوي `/DouNest/DouNest/` يعني أنك رفعت المجلد داخل نفسه — أصلح البنية (اسحب *محتويات* المجلد لا المجلد نفسه) وأعد النشر.
+- الصفحات المصنفة noindex (قسم `/rare/security/`) طبيعي أن تُستبعد من الفهرسة — هذا مقصود.
+
+---
+
+## 🇬🇧 Deployment warning (English)
+
+**Never nest the project inside a same-named folder** (`/DouNest/DouNest/...` breaks the topbar and language switcher because every resource path 404s). Upload the *contents* of this folder to the **repository root**, enable GitHub Pages from `main` / `(root)`, keep `repoPath: "DouNest"` in `config.js` (or `""` for a custom domain, then rebuild), and verify after deploy that no request contains a doubled `/DouNest/DouNest/` path.

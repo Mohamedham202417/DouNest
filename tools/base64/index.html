@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ترميز Base64","description":"ترميز وفك ترميز نصوص Base64.","url":"https://mohamedham202417.github.io/DouNest/tools/base64/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ترميز Base64","description":"ترميز وفك ترميز نصوص Base64.","keywords":"base64, encoding, ترميز, data-uri, مطورين, unicode","url":"https://mohamedham202417.github.io/DouNest/tools/base64/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل Base64 تشفير آمن؟","acceptedAnswer":{"@type":"Answer","text":"إطلاقاً — إنها ترميز قابل للفك عكسياً بأي أداة. استخدم مكتبات تشفير حقيقية مثل AES لما يحتاج حماية."}},{"@type":"Question","name":"لماذا تزداد قيمة النص حجمًا؟","acceptedAnswer":{"@type":"Answer","text":"لأن كل 3 بايت تصبح 4 أحرف، فالزيادة نحو 33% طبيعية ومقصودة في التصميم."}},{"@type":"Question","name":"هل يدعم الترميز العربية والإيموجي؟","acceptedAnswer":{"@type":"Answer","text":"نعم، الأداة تعامل UTF-8 بشكل صحيح فلا تُتلف الحروف غير اللاتينية عند الترميز أو الفك."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"ترميز Base64","item":"https://mohamedham202417.github.io/DouNest/tools/base64/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اكتب النص.</li><li>اختر ترميز أو فك ترميز.</li><li>اضغط تنفيذ.</li><li>انسخ النتيجة.</li></ol>
+          <ol class="steps"><li>اختر الوضع: ترميز نص إلى Base64 أو فك ترميز Base64 إلى نص.</li><li>الصق النص أو الـ Base64 في مربع المدخل المناسب.</li><li>اضغط زر التنفيذ لتحصل على النتيجة فوراً.</li><li>انسخ الناتج بنقرة واحدة أو نزّله ملفاً.</li><li>للبيانات الثنائية الصغيرة، استخدم وضع رفع الملف لتشفيره مباشرة.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>Base64 طريقة لتحويل البيانات الثنائية إلى نص.</p></div>
+          <div class="explanation"><p>Base64 طريقة لتمثيل بيانات ثنائية بأحرف نصية آمنة، وُلدت لحاجة عملية: قنوات مثل البريد الإلكتروني وبعض بروتوكولات الويب مصممة للنص، فتحتاج الصور والتوقيعات والملفات إلى تمثيل نصي يمر عبرها دون أن تتلف.</p><p>الترميز يأخذ كل ثلاث بايتات ويحولها إلى أربعة أحرف من مجموعة آمنة من 64 رمزاً، لذلك يتضخم الحجم بنحو الثلث — وهذا طبيعي وليس خللاً، وهو ثمن التوافق الشامل الذي يقدمه.</p><p>أهم استخدام عملي اليوم هو Data URLs: تضمين صورة صغيرة مباشرة في CSS أو HTML كسلسلة base64 توفير طلب شبكة إضافياً، وهو ما تفعله الأداة لك من وضع رفع الملف مباشرة.</p><p>تنبيه أمني مهم: Base64 ترميز وليس تشفيراً؛ أي شخص يستطيع فكها في ثوانٍ، فلا تستخدمها أبداً لإخفاء كلمات مرور أو بيانات حساسة، وإنما لنقل البيانات عبر قنوات نصية فقط.</p><p>الأداة تتعامل مع Unicode بشكل صحيح — النصوص العربية والرموز التعبيرية تُرمز وتُفك دون تلف، وهي مشكلة كلاسيكية في تطبيقات base64 السريعة المكتوبة بشكل خاطئ.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل Base64 تشفير آمن؟</summary><p>إطلاقاً — إنها ترميز قابل للفك عكسياً بأي أداة. استخدم مكتبات تشفير حقيقية مثل AES لما يحتاج حماية.</p></details><details class="faq-item"><summary>لماذا تزداد قيمة النص حجمًا؟</summary><p>لأن كل 3 بايت تصبح 4 أحرف، فالزيادة نحو 33% طبيعية ومقصودة في التصميم.</p></details><details class="faq-item"><summary>هل يدعم الترميز العربية والإيموجي؟</summary><p>نعم، الأداة تعامل UTF-8 بشكل صحيح فلا تُتلف الحروف غير اللاتينية عند الترميز أو الفك.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=base64">#base64</a><a class="hash-chip" href="/DouNest/tools/?q=encoding">#encoding</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AA%D8%B1%D9%85%D9%8A%D8%B2">#ترميز</a><a class="hash-chip" href="/DouNest/tools/?q=data-uri">#data-uri</a><a class="hash-chip" href="/DouNest/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/DouNest/tools/?q=unicode">#unicode</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

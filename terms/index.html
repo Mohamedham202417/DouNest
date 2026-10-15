@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles.css" />
+<link rel="stylesheet" href="../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -70,6 +71,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../">الرئيسية</a>
         <a href="../tools/">كل الأدوات</a>
+        <a href="../pdf/">مركز PDF</a>
+        <a href="../convert/">مركز التحويل</a>
         <a href="../rare/">أدوات نادرة</a>
         <a href="../ai/">دليل AI</a>
         <a href="../articles/">المقالات</a>

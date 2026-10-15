@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة BMI","description":"احسب مؤشر كتلة الجسم.","url":"https://mohamedham202417.github.io/DouNest/tools/bmi-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة BMI","description":"احسب مؤشر كتلة الجسم.","keywords":"bmi, health, صحة, calculator, weight, fitness","url":"https://mohamedham202417.github.io/DouNest/tools/bmi-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل BMI مناسب للأطفال؟","acceptedAnswer":{"@type":"Answer","text":"لا يستخدم النطاقات البالغة — للأطفال نطاقات عمرية وجنسية خاصة تُقيّمها جداول نمو طبية."}},{"@type":"Question","name":"لماذا ظهر لي سمنة وأنا رياضي؟","acceptedAnswer":{"@type":"Answer","text":"العضة أكثف من الدهون؛ المؤشر لا يفرق بينهما — القياسات الجسمية التفصيلية أدق للحالات الرياضية."}},{"@type":"Question","name":"ما الوزن الصحي لطولي؟","acceptedAnswer":{"@type":"Answer","text":"جرّب وزناً افتراضياً حتى يصل المؤشر ل نطاق 18.5-24.9 — الأداة تعرضه فوراً."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"حاسبة BMI","item":"https://mohamedham202417.github.io/DouNest/tools/bmi-calculator/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>أدخل الطول والوزن.</li><li>اقرأ النتيجة.</li></ol>
+          <ol class="steps"><li>اختر نظام الوحدات: متري (سم/كجم) أو إمبراطوري (قدم/رطل).</li><li>أدخل طولك ووزنك الحاليين.</li><li>اقرأ مؤشر BMI الفوري مع تصنيفه الملوّن.</li><li>راجع مقياس التصنيف لترى موقعك بين النطاقات.</li><li>جرّب وزناً افتراضياً لترى ماذا يعني بلوغ النطاق الصحي.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تصنيف من نحافة إلى سمنة مفرطة.</p></div>
+          <div class="explanation"><p>مؤشر كتلة الجسم BMI هو أداة الفرز الصحية الأوسع استخداماً في العالم: وزنك بالكيلوغرام مقسوماً على مربع طولك بالمتر، والنتيجة تصنفك في نطاق: نحافة، طبيعي، زيادة، سمنة — أرقام بسيطة تحمل دلالة صحية واسعة.</p><p>النطاقات القياسية المعتمدة عالمياً: أقل من 18.5 نقص وزن، 18.5-24.9 طبيعي، 25-29.9 زيادة وزن، و30+ سمنة — الفجوات بينها صغيرة لكن دلالتها الصحية في الإحصاءات السكانية ضخمة.</p><p>حدود المؤشر يجب فهمها بصدق: هو فرز إحصائي للسكان لا تشخيص فردي؛ الرياضي العضلي الكثيف قد يظهر «سمنة» رغم لياقته، وكبار السن قد يظهرون «طبيعي» رغم نقص كتلة عضلية — استخدمه كبوصلة لا كحكم نهائي.</p><p>القيمة الحقيقية في الاتجاه لا الرقم: متابعة BMI شهرياً تكشف اتجاه وزنك قبل أن تلاحظه الميزان وحده — ارتفاع 2 نقطة خلال سنة إشارة أقوى من وزن ثابت رقمياً.</p><p>استخدمه مع مؤشرات أخرى لصورة كاملة: محيط الخصر، ونسبة الدهون، ومستوى النشاط — الصحة أرقام متعددة لا رقم واحد، وBMI بداية الحوار مع طبيبك لا نهايته.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل BMI مناسب للأطفال؟</summary><p>لا يستخدم النطاقات البالغة — للأطفال نطاقات عمرية وجنسية خاصة تُقيّمها جداول نمو طبية.</p></details><details class="faq-item"><summary>لماذا ظهر لي سمنة وأنا رياضي؟</summary><p>العضة أكثف من الدهون؛ المؤشر لا يفرق بينهما — القياسات الجسمية التفصيلية أدق للحالات الرياضية.</p></details><details class="faq-item"><summary>ما الوزن الصحي لطولي؟</summary><p>جرّب وزناً افتراضياً حتى يصل المؤشر ل نطاق 18.5-24.9 — الأداة تعرضه فوراً.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=bmi">#bmi</a><a class="hash-chip" href="/DouNest/tools/?q=health">#health</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%B5%D8%AD%D8%A9">#صحة</a><a class="hash-chip" href="/DouNest/tools/?q=calculator">#calculator</a><a class="hash-chip" href="/DouNest/tools/?q=weight">#weight</a><a class="hash-chip" href="/DouNest/tools/?q=fitness">#fitness</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         

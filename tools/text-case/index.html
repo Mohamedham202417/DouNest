@@ -27,6 +27,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
 <script>
   try {
     var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
@@ -39,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-14-mv85oh15";
+  var B="v3-2026-10-15-mv9i6pc3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -56,7 +57,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل حالة النص","description":"UPPER, lower, Title, Sentence.","url":"https://mohamedham202417.github.io/DouNest/tools/text-case/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل حالة النص","description":"UPPER, lower, Title, Sentence.","keywords":"text-case, uppercase, نصوص, camelCase, formatting, productivity","url":"https://mohamedham202417.github.io/DouNest/tools/text-case/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل تُحترم الحروف العربية في التحويل؟","acceptedAnswer":{"@type":"Answer","text":"العربية بلا حالة كبيرة/صغيرة فتبقى كما هي، وتتأثر فقط الأحرف اللاتينية المختلطة معها."}},{"@type":"Question","name":"ما الفرق بين Title Case و Sentence case؟","acceptedAnswer":{"@type":"Answer","text":"Title يكبر كل كلمة مهمة في العنوان، وSentence يكبر أول حرف من الجملة فقط."}},{"@type":"Question","name":"هل يتعامل مع الرموز والأرقام؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تُمرر كما هي دون مساس — التحويل يمس الحروف فقط."}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"تحويل حالة النص","item":"https://mohamedham202417.github.io/DouNest/tools/text-case/"}]}</script>
 </head>
 <body>
@@ -72,6 +74,8 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
+        <a href="../../pdf/">مركز PDF</a>
+        <a href="../../convert/">مركز التحويل</a>
         <a href="../../rare/">أدوات نادرة</a>
         <a href="../../ai/">دليل AI</a>
         <a href="../../articles/">المقالات</a>
@@ -112,13 +116,24 @@
         </section>
         <section class="section">
           <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق النص.</li><li>اختر الحالة.</li><li>انسخ النتيجة.</li></ol>
+          <ol class="steps"><li>الصق النص الذي تريد تحويل حالته في مربع الإدخال.</li><li>اختر التحويل: UPPERCASE للعناوين القوية أو lowercase للتصغير الكامل.</li><li>أو استخدم Title Case لكتابة كل كلمة بحرف كبير مناسب للعناوين.</li><li>أو Sentence case لجعل أول حرف من كل جملة كبيراً فقط.</li><li>احرص على camelCase أو snake_case للمتغيرات البرمجية، ثم انسخ الناتج.</li></ol>
         </section>
         <section class="section">
           <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تحويل حالة الأحرف مفيد للعناوين.</p></div>
+          <div class="explanation"><p>تحويل حالة النص يبدو بسيطاً حتى تصطدم بـ 500 سطر بيانات كُتبت كلها بأحرف كبيرة من نظام قديم، أو بعنوان أُرسل لك بحروف صغيرة كلها — الإصلاح اليدوي مستحيل عملياً، والأداة تنجزه بضغطة.</p><p>الصيغ البرمجية لها شروطها: camelCase للمتغيرات في جافاسكربت، snake_case في بايثون وSQL، kebab-case في أسماء الملفات وروابط URL — والخ بينها خطأً يكسر البناء أو يخلق أخطاء صامتة.</p><p>التحويلات الذكية تتجاوز تغيير الحرف: Sentence case يحتاج فهم حدود الجملة، وTitle Case يعرف الكلمات الصغيرة المستثناة (of, the, in...) وفق قواعد الأسلوب.</p><p>كتابة المحتوى تستفيد بنفس القدر: العناوين القياسية في المقالات والوثائق تتبع قواعد حالة محددة، وضبطها يدوياً في عنوان طويل خطأٌ بانتظار الحدوث.</p><p>للمعالجة الدفعية: الصق قائمة كاملة (أسماء مستخدمين، روابط، رموز SKU) وحولها دفعة واحدة بدل تحرير كل سطر على حدة.</p></div>
         </section>
         
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل تُحترم الحروف العربية في التحويل؟</summary><p>العربية بلا حالة كبيرة/صغيرة فتبقى كما هي، وتتأثر فقط الأحرف اللاتينية المختلطة معها.</p></details><details class="faq-item"><summary>ما الفرق بين Title Case و Sentence case؟</summary><p>Title يكبر كل كلمة مهمة في العنوان، وSentence يكبر أول حرف من الجملة فقط.</p></details><details class="faq-item"><summary>هل يتعامل مع الرموز والأرقام؟</summary><p>نعم، تُمرر كما هي دون مساس — التحويل يمس الحروف فقط.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=text-case">#text-case</a><a class="hash-chip" href="/DouNest/tools/?q=uppercase">#uppercase</a><a class="hash-chip" href="/DouNest/tools/?q=%D9%86%D8%B5%D9%88%D8%B5">#نصوص</a><a class="hash-chip" href="/DouNest/tools/?q=camelCase">#camelCase</a><a class="hash-chip" href="/DouNest/tools/?q=formatting">#formatting</a><a class="hash-chip" href="/DouNest/tools/?q=productivity">#productivity</a>
+  </div>
+        </section>
       </div>
       <aside class="tool-sidecol">
         
