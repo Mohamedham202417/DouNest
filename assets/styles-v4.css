@@ -156,3 +156,20 @@ html[data-theme="dark"] .sec-warning p { color: #fca5a5; }
 .wb-result textarea { resize: vertical; min-height: 140px; direction: auto; unicode-bidi: plaintext; }
 .wb-existing-tools { margin-top: 32px; }
 @media(max-width:640px) { .topnav-group > div { position: fixed; inset: 70px 12px auto 12px; max-height: 70vh; overflow:auto; } .wb-opts { grid-template-columns: 1fr; } }
+
+/* ---------- multilingual troubleshooting articles ---------- */
+.article-body .explanation { line-height: 1.82; overflow-wrap: anywhere; }
+.article-body .explanation h2 { margin: 2rem 0 .75rem; line-height: 1.35; }
+.article-body .explanation h3 { margin: 1.5rem 0 .5rem; line-height: 1.4; }
+.article-body .explanation p { margin: .85rem 0; }
+.article-body .explanation ul,
+.article-body .explanation ol { padding-inline-start: 1.65rem; margin: .75rem 0 1.2rem; }
+.article-body .explanation li { padding-inline-start: .18rem; margin: .42rem 0; }
+.article-body .explanation blockquote { margin: 1.25rem 0; padding: 1rem 1.25rem; border-inline-start: 4px solid var(--accent, #7c3aed); border-radius: 10px; background: color-mix(in srgb, var(--accent, #7c3aed) 7%, transparent); }
+.article-body .explanation blockquote p:first-child { margin-top: 0; }
+.article-body .explanation blockquote ul { margin-bottom: 0; }
+.article-body .explanation a { text-underline-offset: 3px; }
+.article-body .explanation code { padding: .12em .38em; border-radius: 5px; background: color-mix(in srgb, var(--text, #222) 8%, transparent); font-size: .92em; }
+.article-related { display: grid; gap: 6px; margin: 26px 0 0; padding: 14px 16px; border: 1px solid var(--border, rgba(120,120,150,.2)); border-radius: 12px; background: color-mix(in srgb, var(--accent, #7c3aed) 5%, transparent); }
+.article-related strong { font-size: 13px; color: var(--text-muted, #666); }
+.article-related a { font-weight: 650; text-underline-offset: 3px; }

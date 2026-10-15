@@ -4,24 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API — DouNest</title>
+<title>تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API | DouNest</title>
 <meta name="description" content="تعلّم تحويل ملفات Excel إلى JSON بطريقة صحيحة، اختيار الصف الأول كمفاتيح، التعامل مع الأوراق المتعددة، وتجنب أخطاء الترميز والبيانات الفارغة." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/" />
+<link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/" />
+<link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/en/" />
+<link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/en/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon-192.png" />
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API — DouNest" />
+<meta property="og:title" content="تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API | DouNest" />
 <meta property="og:description" content="تعلّم تحويل ملفات Excel إلى JSON بطريقة صحيحة، اختيار الصف الأول كمفاتيح، التعامل مع الأوراق المتعددة، وتجنب أخطاء الترميز والبيانات الفارغة." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API — DouNest" />
+<meta name="twitter:title" content="تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API | DouNest" />
 <meta name="twitter:description" content="تعلّم تحويل ملفات Excel إلى JSON بطريقة صحيحة، اختيار الصف الأول كمفاتيح، التعامل مع الأوراق المتعددة، وتجنب أخطاء الترميز والبيانات الفارغة." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9slrv7";
+  var B="v3-2026-10-15-mva1ykmz";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -60,7 +63,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API","datePublished":"2026-10-15","keywords":"excel, json, api, تحويل-ملفات, developer","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API","description":"تعلّم تحويل ملفات Excel إلى JSON بطريقة صحيحة، اختيار الصف الأول كمفاتيح، التعامل مع الأوراق المتعددة، وتجنب أخطاء الترميز والبيانات الفارغة.","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohamedham202417.github.io/DouNest/articles/excel-to-json-guide/"},"image":"https://mohamedham202417.github.io/DouNest/assets/og-cover.png","datePublished":"2026-10-15","dateModified":"2026-10-15","keywords":"excel, json, api, تحويل-ملفات, developer","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/"},"publisher":{"@type":"Organization","name":"DouNest","logo":{"@type":"ImageObject","url":"https://mohamedham202417.github.io/DouNest/assets/dounest-logo.png"}}}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -98,17 +101,24 @@
       <a href="../../articles/">المقالات</a><span class="sep">›</span>
       <span class="current">تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API</span>
     </nav>
-    <article class="section article-body">
+    <article class="section article-body" lang="ar">
       <h1>تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API</h1>
       <p class="article-date">2026-10-15</p>
-      <div class="explanation"><p>يبدو تحويل Excel إلى JSON بسيطاً، لكنه يصبح مربكاً عندما يحتوي الملف على أكثر من ورقة أو عناوين غير موحّدة أو خلايا فارغة. JSON هو الشكل الذي تتوقعه معظم واجهات API وتطبيقات الويب، لذلك يحتاج المطور إلى تحويل الجدول مع الحفاظ على أسماء الأعمدة وأنواع القيم قدر الإمكان.</p><p><h2>متى تحتاج إلى تحويل Excel إلى JSON؟</h2></p><p>يظهر هذا الاحتياج عند استيراد قائمة منتجات إلى متجر، نقل بيانات العملاء إلى نظام جديد، تجهيز ملف أولي لواجهة API، أو تحويل جدول داخلي إلى بيانات تستخدمها JavaScript. إذا كان الملف صغيراً أو حساساً، فالأفضل تنفيذ التحويل محلياً داخل المتصفح بدلاً من رفعه إلى خدمة غير معروفة.</p><p>استخدم <a href="/DouNest/tools/excel-to-json/">أداة Excel إلى JSON</a> لاختيار ورقة محددة ومعاينة النتيجة قبل تنزيلها. الأداة تدعم وضعين: مصفوفة كائنات مناسبة للـ API، ومصفوفة صفوف تحافظ على شكل الجدول الأصلي.</p><p><h2>الفرق بين وضع الكائنات ووضع الصفوف</h2></p><p>في وضع الكائنات يُعامل الصف الأول على أنه أسماء الحقول. فمثلاً يتحول الجدول التالي: &quot;name | price&quot; إلى كائنات مثل { &quot;name&quot;: &quot;Keyboard&quot;, &quot;price&quot;: 25 }. هذا الشكل سهل القراءة في JavaScript وPython وقواعد البيانات.</p><p>أما وضع الصفوف فينتج مصفوفة ثنائية الأبعاد تبدأ بالعناوين ثم القيم. هذا الخيار أفضل عندما تكون بعض الأعمدة بلا أسماء أو عندما تريد الحفاظ على ترتيب الأعمدة كما ظهر في Excel. لا تختَر وضع الكائنات قبل التأكد من أن الصف الأول يحتوي عناوين فريدة وواضحة.</p><p><h2>خطوات تنظيف الملف قبل التحويل</h2></p><p>1. اجعل لكل عمود اسماً واحداً وفريداً، مثل &quot;product_name&quot; و&quot;price&quot;.</p>
-<p>2. احذف الصفوف التوضيحية أعلى الجدول؛ يجب أن يبدأ الجدول الحقيقي من الصف الأول.</p>
-<p>3. تجنب دمج الخلايا، لأنه لا يمثل حقلاً واضحاً في JSON.</p>
-<p>4. راجع التواريخ والأرقام، خصوصاً أرقام الهواتف والرموز البريدية التي قد تفقد أصفارها الافتتاحية.</p>
-<p>5. افحص كل ورقة على حدة، ولا تفترض أن الورقة النشطة هي الورقة المطلوبة.</p><p>بعد التحويل، الصق الناتج في <a href="/DouNest/tools/json-formatter/">منسق JSON</a> للتحقق من الأقواس والأنواع والقراءة. إذا كنت تنقل البيانات إلى CSV أولاً، يمكنك استخدام <a href="/DouNest/tools/excel-to-csv/">Excel إلى CSV</a> ثم <a href="/DouNest/tools/csv-to-json/">CSV إلى JSON</a> للمقارنة.</p><p><h2>الخصوصية والتحقق من النتيجة</h2></p><p>ملف Excel قد يحتوي على أسماء أو أسعار أو بيانات داخلية. قبل استخدام أي خدمة خارجية، تحقق من سياسة الخصوصية ومكان معالجة الملف. أدوات DouNest تعمل محلياً في المتصفح؛ مع ذلك، مكتبة قراءة Excel تُحمّل من CDN عند أول استخدام، لذلك يحتاج التحويل الأول إلى اتصال بالإنترنت.</p><p>تحقق من عدد الصفوف قبل وبعد التحويل، وراجع عينة من أول سجل وآخر سجل، ثم اختبر JSON في التطبيق الذي سيستهلكه. وجود JSON صالح نحوياً لا يعني أن أسماء الحقول أو أنواع القيم مناسبة لنظامك.</p><p><h2>خلاصة سريعة</h2></p><p>أفضل نتيجة تأتي من جدول نظيف بعناوين فريدة، اختيار وضع الإخراج المناسب، ثم التحقق من JSON قبل دمجه في API. ابدأ بأداة Excel إلى JSON، واستخدم منسق JSON للمراجعة، ولا ترسل ملفاً حساساً إلى خدمة لا تثق بها.</p></div>
-      <div class="article-tags"><div class="hash-chips" aria-label="الوسوم">
-    <a class="hash-chip" href="/DouNest/tools/?q=excel">#excel</a><a class="hash-chip" href="/DouNest/tools/?q=json">#json</a><a class="hash-chip" href="/DouNest/tools/?q=api">#api</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D9%85%D9%84%D9%81%D8%A7%D8%AA">#تحويل-ملفات</a><a class="hash-chip" href="/DouNest/tools/?q=developer">#developer</a>
-  </div></div>
+      <div class="explanation"><p>يبدو تحويل Excel إلى JSON بسيطاً، لكنه يصبح مربكاً عندما يحتوي الملف على أكثر من ورقة أو عناوين غير موحّدة أو خلايا فارغة. JSON هو الشكل الذي تتوقعه معظم واجهات API وتطبيقات الويب، لذلك يحتاج المطور إلى تحويل الجدول مع الحفاظ على أسماء الأعمدة وأنواع القيم قدر الإمكان.</p>
+<h2>متى تحتاج إلى تحويل Excel إلى JSON؟</h2>
+<p>يظهر هذا الاحتياج عند استيراد قائمة منتجات إلى متجر، نقل بيانات العملاء إلى نظام جديد، تجهيز ملف أولي لواجهة API، أو تحويل جدول داخلي إلى بيانات تستخدمها JavaScript. إذا كان الملف صغيراً أو حساساً، فالأفضل تنفيذ التحويل محلياً داخل المتصفح بدلاً من رفعه إلى خدمة غير معروفة.</p>
+<p>استخدم <a href="/DouNest/tools/excel-to-json/">أداة Excel إلى JSON</a> لاختيار ورقة محددة ومعاينة النتيجة قبل تنزيلها. الأداة تدعم وضعين: مصفوفة كائنات مناسبة للـ API، ومصفوفة صفوف تحافظ على شكل الجدول الأصلي.</p>
+<h2>الفرق بين وضع الكائنات ووضع الصفوف</h2>
+<p>في وضع الكائنات يُعامل الصف الأول على أنه أسماء الحقول. فمثلاً يتحول الجدول التالي: &quot;name | price&quot; إلى كائنات مثل { &quot;name&quot;: &quot;Keyboard&quot;, &quot;price&quot;: 25 }. هذا الشكل سهل القراءة في JavaScript وPython وقواعد البيانات.</p>
+<p>أما وضع الصفوف فينتج مصفوفة ثنائية الأبعاد تبدأ بالعناوين ثم القيم. هذا الخيار أفضل عندما تكون بعض الأعمدة بلا أسماء أو عندما تريد الحفاظ على ترتيب الأعمدة كما ظهر في Excel. لا تختَر وضع الكائنات قبل التأكد من أن الصف الأول يحتوي عناوين فريدة وواضحة.</p>
+<h2>خطوات تنظيف الملف قبل التحويل</h2>
+<ol><li>اجعل لكل عمود اسماً واحداً وفريداً، مثل &quot;product_name&quot; و&quot;price&quot;.</li><li>احذف الصفوف التوضيحية أعلى الجدول؛ يجب أن يبدأ الجدول الحقيقي من الصف الأول.</li><li>تجنب دمج الخلايا، لأنه لا يمثل حقلاً واضحاً في JSON.</li><li>راجع التواريخ والأرقام، خصوصاً أرقام الهواتف والرموز البريدية التي قد تفقد أصفارها الافتتاحية.</li><li>افحص كل ورقة على حدة، ولا تفترض أن الورقة النشطة هي الورقة المطلوبة.</li></ol>
+<p>بعد التحويل، الصق الناتج في <a href="/DouNest/tools/json-formatter/">منسق JSON</a> للتحقق من الأقواس والأنواع والقراءة. إذا كنت تنقل البيانات إلى CSV أولاً، يمكنك استخدام <a href="/DouNest/tools/excel-to-csv/">Excel إلى CSV</a> ثم <a href="/DouNest/tools/csv-to-json/">CSV إلى JSON</a> للمقارنة.</p>
+<h2>الخصوصية والتحقق من النتيجة</h2>
+<p>ملف Excel قد يحتوي على أسماء أو أسعار أو بيانات داخلية. قبل استخدام أي خدمة خارجية، تحقق من سياسة الخصوصية ومكان معالجة الملف. أدوات DouNest تعمل محلياً في المتصفح؛ مع ذلك، مكتبة قراءة Excel تُحمّل من CDN عند أول استخدام، لذلك يحتاج التحويل الأول إلى اتصال بالإنترنت.</p>
+<p>تحقق من عدد الصفوف قبل وبعد التحويل، وراجع عينة من أول سجل وآخر سجل، ثم اختبر JSON في التطبيق الذي سيستهلكه. وجود JSON صالح نحوياً لا يعني أن أسماء الحقول أو أنواع القيم مناسبة لنظامك.</p>
+<h2>خلاصة سريعة</h2>
+<p>أفضل نتيجة تأتي من جدول نظيف بعناوين فريدة، اختيار وضع الإخراج المناسب، ثم التحقق من JSON قبل دمجه في API. ابدأ بأداة Excel إلى JSON، واستخدم منسق JSON للمراجعة، ولا ترسل ملفاً حساساً إلى خدمة لا تثق بها.</p></div><div class="article-tags"><div class="hash-chips" aria-label="موضوعات المقال"><span class="hash-chip">#excel</span><span class="hash-chip">#json</span><span class="hash-chip">#api</span><span class="hash-chip">#تحويل-ملفات</span><span class="hash-chip">#developer</span></div></div>
     </article>
   </main>
   <footer class="footer">

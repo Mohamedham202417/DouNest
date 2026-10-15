@@ -27,6 +27,7 @@ import { getFAQ, FAQ_CATS } from "./js/faq.js";
 import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
 import { RARE_CATS, RARE_TOOLS as RARE_TOOLS_DATA, rareByCat, getRareTool } from "./js/rare-tools.js";
 import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./js/rare-page.js";
+import { markdownToHtml } from "./js/lib/article-markdown.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -76,8 +77,11 @@ const relPrefix = (p) => "../".repeat(p.split("/").filter(Boolean).length); // f
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /* ---------- shared page template (absolute asset paths) ---------- */
-function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false, noindex = false }) {
+function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false, noindex = false, alternateLanguages = [], ogType = "website" }) {
   const url = SITE + canonicalPath;
+  const V = L[lang] || L.en;
+  const ogLocale = ({ ar: "ar_AR", en: "en_US", fr: "fr_FR", es: "es_ES", de: "de_DE", tr: "tr_TR", ru: "ru_RU", zh: "zh_CN", hi: "hi_IN", pt: "pt_BR" })[lang] || "en_US";
+  const content = String(bodyContent ?? "").trimEnd();
   // Relative prefix that reaches the site root from this page's folder.
   // Works on GitHub Pages (/DouNest/tools/x/), custom domains and local servers alike.
   const depth = canonicalPath ? canonicalPath.split("/").filter(Boolean).length : 0;
@@ -98,6 +102,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
     },
     ...jsonLd
   ].filter(Boolean).map(g => `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`).join("\n");
+  const hreflangLinks = alternateLanguages.map(item => `<link rel="alternate" hreflang="${esc(item.lang)}" href="${esc(item.url)}" />`).join("\n");
 
   return `<!DOCTYPE html>
 <html lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}">
@@ -109,18 +114,19 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <meta name="description" content="${esc(description)}" />
 <meta name="robots" content="${noindex ? "noindex,nofollow" : "index,follow"}" />
 <link rel="canonical" href="${url}" />
+${hreflangLinks}
 <link rel="manifest" href="${R("manifest.json")}" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="${R("feed.xml")}" />
 <link rel="icon" type="image/png" sizes="32x32" href="${R("assets/favicon-32.png")}" />
 <link rel="icon" type="image/png" sizes="192x192" href="${R("assets/icon-192.png")}" />
 <link rel="apple-touch-icon" href="${R("assets/icon-192.png")}" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="${esc(ogType)}" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
 <meta property="og:url" content="${url}" />
 <meta property="og:image" content="${SITE}assets/og-cover.png" />
-<meta property="og:locale" content="${lang === "ar" ? "ar_AR" : "en_US"}" />
+<meta property="og:locale" content="${ogLocale}" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(description)}" />
@@ -173,17 +179,17 @@ ${ld}
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="${R("")}">${L[lang].home}</a>
-        <a href="${R("tools/")}">${L[lang].allTools}</a>
+        <a href="${R("")}">${V.home}</a>
+        <a href="${R("tools/")}">${V.allTools}</a>
         <details class="topnav-group"><summary>${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
-          <a href="${R("pdf/")}">${L[lang].pdf}</a><a href="${R("images/")}">${L[lang].images}</a>
-          <a href="${R("convert/")}">${L[lang].convert}</a><a href="${R("text/")}">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
+          <a href="${R("pdf/")}">${V.pdf}</a><a href="${R("images/")}">${V.images}</a>
+          <a href="${R("convert/")}">${V.convert}</a><a href="${R("text/")}">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
           <a href="${R("dev/")}">${lang === "ar" ? "مركز المطورين" : "Developer center"}</a>
           <a href="${R("security/")}">${lang === "ar" ? "مركز الأمان" : "Security center"}</a>
           <a href="${R("calculators/")}">${lang === "ar" ? "الحاسبات" : "Calculators"}</a>
         </div></details>
-        <a href="${R("articles/")}">${L[lang].articles}</a><a href="${R("faq/")}">${L[lang].faqNav}</a>
-        <a href="${R("rare/")}">${L[lang].rare}</a><a href="${R("ai/")}">${L[lang].ai}</a>
+        <a href="${R("articles/")}">${V.articles}</a><a href="${R("faq/")}">${V.faqNav}</a>
+        <a href="${R("rare/")}">${V.rare}</a><a href="${R("ai/")}">${V.ai}</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -192,15 +198,15 @@ ${ld}
     </div>
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
-${bodyContent}
+${content}
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — ${L[lang].local}</span>
+      <span>© <span id="year"></span> DouNest — ${V.local}</span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="${R("privacy/")}">${L[lang].privacy}</a>
-        <a href="${R("terms/")}">${L[lang].terms}</a>
-        <a href="${R("ai/")}">${L[lang].ai}</a>
+        <a href="${R("privacy/")}">${V.privacy}</a>
+        <a href="${R("terms/")}">${V.terms}</a>
+        <a href="${R("ai/")}">${V.ai}</a>
       </nav>
     </div>
   </footer>
@@ -359,49 +365,63 @@ function getToolB(slug) { return TOOLS.find(t2 => t2.slug === slug); }
 
 /* ---------- 2) article pages ---------- */
 console.log("→ article pages");
-const mdToHtml = (md) => esc(md)
-  .replace(/^### (.*$)/gm, "<h3>$1</h3>")
-  .replace(/^## (.*$)/gm, "<h2>$1</h2>")
-  .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-  .replace(/\[(.*?)\]\((.*?)\)/g, (mm, txt, href) => {
-    const h = href.startsWith("/") ? (BASE.replace(/\/$/, "") + href) : href;
-    return `<a href="${h}">${txt}</a>`;
-  })
-  .replace(/\n\n/g, "</p><p>")
-  .replace(/^(?!<[hp])(.+)$/gm, "<p>$1</p>");
+const ARTICLE_LANGS = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
+const ARTICLE_LABELS = { ar: "المقالات", en: "Articles", fr: "Articles", es: "Artículos", de: "Artikel", tr: "Makaleler", ru: "Статьи", zh: "文章", hi: "लेख", pt: "Artigos" };
+const RELATED_LABELS = { ar: "دليل مرتبط", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
+const localizedTags = (article, lang) => Array.isArray(article.tags) ? article.tags : (article.tags?.[lang] || article.tags?.en || []);
 
 for (const a of getArticles()) {
-  const title = pick(a.title, "ar");
-  const excerpt = pick(a.excerpt, "ar");
-  const up = relPrefix(`articles/${a.slug}/`);
-  const body = `
+  const languages = ARTICLE_LANGS.filter(code => a.title?.[code] && a.content?.[code]);
+  for (const lang of languages) {
+    const title = pick(a.title, lang);
+    const excerpt = pick(a.excerpt, lang);
+    const tags = localizedTags(a, lang);
+    const canonicalPath = lang === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${lang}/`;
+    const pagePath = lang === "ar" ? `articles/${a.slug}/index.html` : `articles/${a.slug}/${lang}/index.html`;
+    const alternates = languages.map(code => ({
+      lang: code,
+      url: SITE + (code === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${code}/`)
+    }));
+    const englishPath = languages.includes("en") ? `articles/${a.slug}/en/` : `articles/${a.slug}/`;
+    alternates.push({ lang: "x-default", url: SITE + englishPath });
+    const tagsHtml = tags.length ? `<div class="article-tags"><div class="hash-chips" aria-label="${lang === "ar" ? "موضوعات المقال" : "Article topics"}">${tags.map(tag => `<span class="hash-chip">#${esc(tag)}</span>`).join("")}</div></div>` : "";
+    const up = relPrefix(canonicalPath);
+    const relatedSlug = a.slug === "speed-up-slow-windows-pc" ? "wifi-connected-no-internet" : a.slug === "wifi-connected-no-internet" ? "speed-up-slow-windows-pc" : null;
+    const relatedArticle = relatedSlug ? getArticles().find(item => item.slug === relatedSlug) : null;
+    const relatedHref = relatedSlug ? `${up}articles/${relatedSlug}/${lang === "ar" ? "" : `${lang}/`}` : "";
+    const relatedHtml = relatedArticle ? `<aside class="article-related"><strong>${esc(RELATED_LABELS[lang] || RELATED_LABELS.en)}</strong><a href="${relatedHref}">${esc(pick(relatedArticle.title, lang))}</a></aside>` : "";
+    const body = `
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="${up}">DouNest</a><span class="sep">›</span>
-      <a href="${up}articles/">${AR.articles}</a><span class="sep">›</span>
+      <a href="${up}articles/">${ARTICLE_LABELS[lang] || "Articles"}</a><span class="sep">›</span>
       <span class="current">${esc(title)}</span>
     </nav>
-    <article class="section article-body">
+    <article class="section article-body" lang="${lang}">
       <h1>${esc(title)}</h1>
-      <p class="article-date">${a.date}</p>
-      <div class="explanation">${mdToHtml(a.content.ar || a.content.en)}</div>
-      ${a.tags?.length ? `<div class="article-tags">${hashtagChipsHTML(a.tags, "ar", `${BASE}tools/?q=`)}</div>` : ""}
+      <p class="article-date">${a.date}${a.updated && a.updated !== a.date ? ` · ${lang === "ar" ? "آخر تحديث" : "Updated"}: ${a.updated}` : ""}</p>
+      <div class="explanation">${markdownToHtml(a.content[lang], BASE)}</div>${relatedHtml}${tagsHtml}
     </article>`;
-  writePage(
-    `articles/${a.slug}/index.html`,
-    shell({
-      title: `${title} — DouNest`,
+    const pageTitle = pick(a.metaTitle, lang) || title;
+    writePage(pagePath, shell({
+      lang,
+      title: `${pageTitle} | DouNest`,
       description: excerpt,
-      canonicalPath: `articles/${a.slug}/`,
+      canonicalPath,
+      alternateLanguages: alternates,
+      ogType: "article",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "Article",
-        "headline": title, "datePublished": a.date,
-        "keywords": (a.tags || []).join(", "),
-        "inLanguage": "ar",
-        "author": { "@type": "Organization", "name": "DouNest" }
+        "headline": title, "description": excerpt,
+        "mainEntityOfPage": { "@type": "WebPage", "@id": SITE + canonicalPath },
+        "image": `${SITE}assets/og-cover.png`,
+        "datePublished": a.date, "dateModified": a.updated || a.date,
+        "keywords": tags.join(", "), "inLanguage": lang,
+        "author": { "@type": "Organization", "name": "DouNest", "url": SITE },
+        "publisher": { "@type": "Organization", "name": "DouNest", "logo": { "@type": "ImageObject", "url": `${SITE}assets/dounest-logo.png` } }
       }],
       bodyContent: body
-    })
-  );
+    }));
+  }
 }
 
 /* ---------- 3) legal/info pages ---------- */
@@ -792,7 +812,9 @@ const urls = [
   { p: "text/", pr: "0.9" }, { p: "dev/", pr: "0.9" }, { p: "security/", pr: "0.9" }, { p: "calculators/", pr: "0.9" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
-  ...getArticles().map(a => ({ p: `articles/${a.slug}/`, pr: "0.7" })),
+  ...getArticles().flatMap(a => ARTICLE_LANGS.filter(code => a.title?.[code] && a.content?.[code]).map(code => ({
+    p: code === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${code}/`, pr: "0.7"
+  }))),
   { p: "ai/", pr: "0.6" },
   { p: "rare/", pr: "0.6" },
   ...RARE_CATS.filter(c => c.id !== "security").map(c => ({ p: `rare/${c.id}/`, pr: "0.5" })),
@@ -828,7 +850,9 @@ function walk(dir, prefix = "") {
   return out;
 }
 const toolPages = TOOLS.map(t2 => `tools/${t2.slug}/index.html`);
-const articlePages = getArticles().map(a => `articles/${a.slug}/index.html`);
+const articlePages = getArticles().flatMap(a => ARTICLE_LANGS.filter(code => a.title?.[code] && a.content?.[code]).map(code =>
+  code === "ar" ? `articles/${a.slug}/index.html` : `articles/${a.slug}/${code}/index.html`
+));
 const jsFiles = walk("js");
 const ASSETS = [
   "./", "./index.html", "./404.html", "./manifest.json",

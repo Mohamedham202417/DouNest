@@ -4,24 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة — DouNest</title>
+<title>CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة | DouNest</title>
 <meta name="description" content="افهم الفرق بين CSV وJSON، وتعامل مع الفواصل والترميز والحقول الفارغة قبل تحويل بياناتك بين الصيغتين." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/" />
+<link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/" />
+<link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/en/" />
+<link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/en/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon-192.png" />
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة — DouNest" />
+<meta property="og:title" content="CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة | DouNest" />
 <meta property="og:description" content="افهم الفرق بين CSV وJSON، وتعامل مع الفواصل والترميز والحقول الفارغة قبل تحويل بياناتك بين الصيغتين." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة — DouNest" />
+<meta name="twitter:title" content="CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة | DouNest" />
 <meta name="twitter:description" content="افهم الفرق بين CSV وJSON، وتعامل مع الفواصل والترميز والحقول الفارغة قبل تحويل بياناتك بين الصيغتين." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -43,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9slrv7";
+  var B="v3-2026-10-15-mva1ykmz";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -60,7 +63,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة","datePublished":"2026-10-15","keywords":"csv, json, data, api, تحويل-بيانات","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة","description":"افهم الفرق بين CSV وJSON، وتعامل مع الفواصل والترميز والحقول الفارغة قبل تحويل بياناتك بين الصيغتين.","mainEntityOfPage":{"@type":"WebPage","@id":"https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/"},"image":"https://mohamedham202417.github.io/DouNest/assets/og-cover.png","datePublished":"2026-10-15","dateModified":"2026-10-15","keywords":"csv, json, data, api, تحويل-بيانات","inLanguage":"ar","author":{"@type":"Organization","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/"},"publisher":{"@type":"Organization","name":"DouNest","logo":{"@type":"ImageObject","url":"https://mohamedham202417.github.io/DouNest/assets/dounest-logo.png"}}}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -98,13 +101,21 @@
       <a href="../../articles/">المقالات</a><span class="sep">›</span>
       <span class="current">CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة</span>
     </nav>
-    <article class="section article-body">
+    <article class="section article-body" lang="ar">
       <h1>CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة</h1>
       <p class="article-date">2026-10-15</p>
-      <div class="explanation"><p>CSV ممتاز للجداول، بينما JSON أفضل للبيانات المتداخلة وواجهات API. المشكلة تبدأ عندما يُستخدم أحدهما في المكان الخطأ: تحويل قائمة بسيطة إلى JSON سهل، لكن الأعمدة التي تحتوي على فواصل أو أسطر جديدة أو قيم فارغة تحتاج إلى مراجعة قبل الاعتماد على النتيجة.</p><p><h2>متى تختار CSV؟</h2></p><p>اختر CSV عندما تكون بياناتك جدولاً مستوياً: صفوفاً وأعمدة ثابتة يمكن فتحها في Excel أو Google Sheets. الملف خفيف وسهل التبادل، لكنه لا يمثل العلاقات المتداخلة جيداً. يجب أن تعرف الفاصل المستخدم؛ بعض الملفات تستخدم الفاصلة، وأخرى الفاصلة المنقوطة بسبب إعدادات اللغة.</p><p><h2>متى تختار JSON؟</h2></p><p>JSON مناسب للتطبيقات والـ API عندما تحتاج إلى كائنات وقوائم وحقول داخلية. استخدم <a href="/DouNest/tools/csv-to-json/">CSV إلى JSON</a> لتحويل الصف الأول إلى مفاتيح، ثم راجع الناتج في <a href="/DouNest/tools/json-formatter/">منسق JSON</a>. إذا أردت العودة إلى جدول، استخدم <a href="/DouNest/tools/json-to-csv/">JSON إلى CSV</a> وتحقق من أن الحقول المتداخلة لا تضيع.</p><p><h2>ثلاث مشكلات يجب فحصها</h2></p><p>الأولى هي الترميز: افتح الملفات العربية بترميز UTF-8 لتجنب ظهور حروف غير مفهومة. الثانية هي الفواصل داخل النص؛ يجب أن تكون القيمة محاطة بعلامات اقتباس حتى لا تُقسم إلى عمودين. الثالثة هي القيم الفارغة، إذ قد تتحول إلى نص فارغ أو &quot;null&quot; أو تُحذف حسب الأداة.</p><p>بعد التحويل، قارن عدد الصفوف، أسماء الأعمدة، وأول وآخر سجل. لا تكتفِ بكون الملف يفتح؛ اختبره في النظام الذي سيقرأه فعلياً.</p><p><h2>الخصوصية وجودة البيانات</h2></p><p>CSV وJSON ملفات نصية وقد تكشف بيانات كاملة عند مشاركتها. احتفظ بنسخة أصلية، أزل الأعمدة الحساسة قبل التصدير، ولا تخلط بين إخفاء العمود وحذف البيانات من الملف فعلاً. المعالجة المحلية تقلل نقل البيانات لكنها لا تعوّض مراجعة المحتوى قبل المشاركة.</p><p><h2>الخلاصة</h2></p><p>استخدم CSV للجداول المسطحة وJSON للبيانات المنظمة وواجهات API. افحص UTF-8 والفواصل والقيم الفارغة، ثم تحقق من عدد السجلات والحقول بعد التحويل. بهذه الخطوات يصبح الانتقال بين الصيغتين قابلاً للتكرار وآمناً.</p></div>
-      <div class="article-tags"><div class="hash-chips" aria-label="الوسوم">
-    <a class="hash-chip" href="/DouNest/tools/?q=csv">#csv</a><a class="hash-chip" href="/DouNest/tools/?q=json">#json</a><a class="hash-chip" href="/DouNest/tools/?q=data">#data</a><a class="hash-chip" href="/DouNest/tools/?q=api">#api</a><a class="hash-chip" href="/DouNest/tools/?q=%D8%AA%D8%AD%D9%88%D9%8A%D9%84-%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA">#تحويل-بيانات</a>
-  </div></div>
+      <div class="explanation"><p>CSV ممتاز للجداول، بينما JSON أفضل للبيانات المتداخلة وواجهات API. المشكلة تبدأ عندما يُستخدم أحدهما في المكان الخطأ: تحويل قائمة بسيطة إلى JSON سهل، لكن الأعمدة التي تحتوي على فواصل أو أسطر جديدة أو قيم فارغة تحتاج إلى مراجعة قبل الاعتماد على النتيجة.</p>
+<h2>متى تختار CSV؟</h2>
+<p>اختر CSV عندما تكون بياناتك جدولاً مستوياً: صفوفاً وأعمدة ثابتة يمكن فتحها في Excel أو Google Sheets. الملف خفيف وسهل التبادل، لكنه لا يمثل العلاقات المتداخلة جيداً. يجب أن تعرف الفاصل المستخدم؛ بعض الملفات تستخدم الفاصلة، وأخرى الفاصلة المنقوطة بسبب إعدادات اللغة.</p>
+<h2>متى تختار JSON؟</h2>
+<p>JSON مناسب للتطبيقات والـ API عندما تحتاج إلى كائنات وقوائم وحقول داخلية. استخدم <a href="/DouNest/tools/csv-to-json/">CSV إلى JSON</a> لتحويل الصف الأول إلى مفاتيح، ثم راجع الناتج في <a href="/DouNest/tools/json-formatter/">منسق JSON</a>. إذا أردت العودة إلى جدول، استخدم <a href="/DouNest/tools/json-to-csv/">JSON إلى CSV</a> وتحقق من أن الحقول المتداخلة لا تضيع.</p>
+<h2>ثلاث مشكلات يجب فحصها</h2>
+<p>الأولى هي الترميز: افتح الملفات العربية بترميز UTF-8 لتجنب ظهور حروف غير مفهومة. الثانية هي الفواصل داخل النص؛ يجب أن تكون القيمة محاطة بعلامات اقتباس حتى لا تُقسم إلى عمودين. الثالثة هي القيم الفارغة، إذ قد تتحول إلى نص فارغ أو &quot;null&quot; أو تُحذف حسب الأداة.</p>
+<p>بعد التحويل، قارن عدد الصفوف، أسماء الأعمدة، وأول وآخر سجل. لا تكتفِ بكون الملف يفتح؛ اختبره في النظام الذي سيقرأه فعلياً.</p>
+<h2>الخصوصية وجودة البيانات</h2>
+<p>CSV وJSON ملفات نصية وقد تكشف بيانات كاملة عند مشاركتها. احتفظ بنسخة أصلية، أزل الأعمدة الحساسة قبل التصدير، ولا تخلط بين إخفاء العمود وحذف البيانات من الملف فعلاً. المعالجة المحلية تقلل نقل البيانات لكنها لا تعوّض مراجعة المحتوى قبل المشاركة.</p>
+<h2>الخلاصة</h2>
+<p>استخدم CSV للجداول المسطحة وJSON للبيانات المنظمة وواجهات API. افحص UTF-8 والفواصل والقيم الفارغة، ثم تحقق من عدد السجلات والحقول بعد التحويل. بهذه الخطوات يصبح الانتقال بين الصيغتين قابلاً للتكرار وآمناً.</p></div><div class="article-tags"><div class="hash-chips" aria-label="موضوعات المقال"><span class="hash-chip">#csv</span><span class="hash-chip">#json</span><span class="hash-chip">#data</span><span class="hash-chip">#api</span><span class="hash-chip">#تحويل-بيانات</span></div></div>
     </article>
   </main>
   <footer class="footer">
