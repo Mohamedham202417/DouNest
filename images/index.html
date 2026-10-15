@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/images/" />
 <link rel="manifest" href="../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/icon-192.png" />
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
@@ -24,6 +25,8 @@
 <meta name="twitter:description" content="مركز صور شامل لتحويل الصيغ وضغط الصور وتغيير الحجم وإزالة الخلفية وتحويل الصور إلى PDF واستخراج النص من الصور وتحويل HEIC — كل شيء محلي داخل متصفحك." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/styles.css" />
@@ -40,7 +43,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9j8eh3";
+  var B="v3-2026-10-15-mv9slrv7";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -72,15 +75,15 @@
       <nav class="topnav" aria-label="Main">
         <a href="../">الرئيسية</a>
         <a href="../tools/">كل الأدوات</a>
-        <a href="../pdf/">مركز PDF</a>
-        <a href="../images/">مركز الصور</a>
-        <a href="../convert/">مركز التحويل</a>
-        <a href="../rare/">أدوات نادرة</a>
-        <a href="../ai/">دليل AI</a>
-        <a href="../articles/">المقالات</a>
-        <a href="../faq/">الأسئلة الشائعة</a>
-        <a href="../favorites/" rel="nofollow">المفضلة</a>
-        <a href="../about/">حول</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="../pdf/">مركز PDF</a><a href="../images/">مركز الصور</a>
+          <a href="../convert/">مركز التحويل</a><a href="../text/">مركز النصوص</a>
+          <a href="../dev/">مركز المطورين</a>
+          <a href="../security/">مركز الأمان</a>
+          <a href="../calculators/">الحاسبات</a>
+        </div></details>
+        <a href="../articles/">المقالات</a><a href="../faq/">الأسئلة الشائعة</a>
+        <a href="../rare/">أدوات نادرة</a><a href="../ai/">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -99,70 +102,94 @@
       <h2 class="section-title">أدوات الصور الفردية والمتخصصة</h2>
       <div class="tools-grid">
         
-        <a class="tool-card" href="image-converter/">
+        <a class="tool-card" href="/DouNest/tools/image-converter/">
           <div class="icon cat-media" aria-hidden="true">🔄</div>
           <h3>محوّل الصور</h3>
           <p>حوّل بين JPG, PNG, WebP, AVIF, GIF.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="image-compressor/">
+        <a class="tool-card" href="/DouNest/tools/image-compressor/">
           <div class="icon cat-media" aria-hidden="true">🖼️</div>
           <h3>ضاغط الصور</h3>
           <p>اضغط JPG/PNG/WebP محليًا.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="resize-image/">
+        <a class="tool-card" href="/DouNest/tools/resize-image/">
           <div class="icon cat-media" aria-hidden="true">📐</div>
           <h3>تحجيم الصور</h3>
           <p>غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="remove-background/">
+        <a class="tool-card" href="/DouNest/tools/remove-background/">
           <div class="icon cat-media" aria-hidden="true">✂️</div>
           <h3>إزالة خلفية الصورة</h3>
           <p>عزل الشخص أو العنصر بخلفية شفافة عبر AI داخل المتصفح.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="image-to-pdf/">
+        <a class="tool-card" href="/DouNest/tools/image-to-pdf/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
           <h3>صورة إلى PDF</h3>
           <p>حوّل صور JPG أو PNG إلى ملف PDF واحد.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="ocr-image-to-text/">
+        <a class="tool-card" href="/DouNest/tools/ocr-image-to-text/">
           <div class="icon cat-media" aria-hidden="true">🔍</div>
           <h3>استخراج نص من صورة OCR</h3>
           <p>استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="heic-to-jpg/">
+        <a class="tool-card" href="/DouNest/tools/heic-to-jpg/">
           <div class="icon cat-media" aria-hidden="true">📱</div>
           <h3>تحويل HEIC إلى JPG</h3>
           <p>افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="pdf-to-jpg/">
+        <a class="tool-card" href="/DouNest/tools/pdf-to-jpg/">
           <div class="icon cat-media" aria-hidden="true">🖼️</div>
           <h3>PDF إلى صور</h3>
           <p>حوّل صفحات PDF إلى صور JPG بجودة قابلة للضبط.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="qr-code/">
+        <a class="tool-card" href="/DouNest/tools/qr-code/">
           <div class="icon cat-media" aria-hidden="true">▦</div>
           <h3>مولّد QR</h3>
           <p>أنشئ رموز QR للنصوص والروابط.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="qr-scanner/">
+        <a class="tool-card" href="/DouNest/tools/qr-scanner/">
           <div class="icon cat-media" aria-hidden="true">📷</div>
           <h3>قارئ QR من صورة</h3>
           <p>اقرأ محتوى رمز QR من صورة أو لقطة شاشة.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
-        <a class="tool-card" href="color-picker/">
+        <a class="tool-card" href="/DouNest/tools/color-picker/">
           <div class="icon cat-color" aria-hidden="true">🖌️</div>
           <h3>منتقي الألوان</h3>
           <p>اختر لونًا واحصل على كل الصيغ.</p>
+          <div class="card-foot"><span class="badge tiny">صور</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/image-crop/">
+          <div class="icon cat-media" aria-hidden="true">✂️</div>
+          <h3>قص الصور</h3>
+          <p>اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.</p>
+          <div class="card-foot"><span class="badge tiny">صور</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/image-rotate-flip/">
+          <div class="icon cat-media" aria-hidden="true">🔄</div>
+          <h3>تدوير وقلب الصور</h3>
+          <p>دوّر الصور بزاوية 90 أو 180 درجة أو اقلبها أفقياً وعمودياً، ثم احفظ النسخة الجديدة.</p>
+          <div class="card-foot"><span class="badge tiny">صور</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/exif-viewer/">
+          <div class="icon cat-media" aria-hidden="true">🔎</div>
+          <h3>عارض بيانات EXIF</h3>
+          <p>اعرض بيانات EXIF في صور JPEG، مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات الموقع، محلياً.</p>
+          <div class="card-foot"><span class="badge tiny">صور</span></div>
+        </a>
+        <a class="tool-card" href="/DouNest/tools/favicon-generator/">
+          <div class="icon cat-media" aria-hidden="true">⭐</div>
+          <h3>مولّد Favicon</h3>
+          <p>حوّل صورتك إلى أيقونات Favicon متعددة الأحجام وملف ICO ومقتطف HTML جاهز لموقعك.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
       </div>

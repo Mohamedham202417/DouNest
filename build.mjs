@@ -110,6 +110,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <meta name="robots" content="${noindex ? "noindex,nofollow" : "index,follow"}" />
 <link rel="canonical" href="${url}" />
 <link rel="manifest" href="${R("manifest.json")}" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="${R("feed.xml")}" />
 <link rel="icon" type="image/png" sizes="32x32" href="${R("assets/favicon-32.png")}" />
 <link rel="icon" type="image/png" sizes="192x192" href="${R("assets/icon-192.png")}" />
 <link rel="apple-touch-icon" href="${R("assets/icon-192.png")}" />
@@ -125,6 +126,8 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <meta name="twitter:description" content="${esc(description)}" />
 <meta name="twitter:image" content="${SITE}assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="${R("assets/styles.css")}" />
@@ -172,15 +175,15 @@ ${ld}
       <nav class="topnav" aria-label="Main">
         <a href="${R("")}">${L[lang].home}</a>
         <a href="${R("tools/")}">${L[lang].allTools}</a>
-        <a href="${R("pdf/")}">${L[lang].pdf}</a>
-        <a href="${R("images/")}">${L[lang].images}</a>
-        <a href="${R("convert/")}">${L[lang].convert}</a>
-        <a href="${R("rare/")}">${L[lang].rare}</a>
-        <a href="${R("ai/")}">${L[lang].ai}</a>
-        <a href="${R("articles/")}">${L[lang].articles}</a>
-        <a href="${R("faq/")}">${L[lang].faqNav}</a>
-        <a href="${R("favorites/")}" rel="nofollow">${L[lang].fav}</a>
-        <a href="${R("about/")}">${L[lang].about}</a>
+        <details class="topnav-group"><summary>${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
+          <a href="${R("pdf/")}">${L[lang].pdf}</a><a href="${R("images/")}">${L[lang].images}</a>
+          <a href="${R("convert/")}">${L[lang].convert}</a><a href="${R("text/")}">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
+          <a href="${R("dev/")}">${lang === "ar" ? "مركز المطورين" : "Developer center"}</a>
+          <a href="${R("security/")}">${lang === "ar" ? "مركز الأمان" : "Security center"}</a>
+          <a href="${R("calculators/")}">${lang === "ar" ? "الحاسبات" : "Calculators"}</a>
+        </div></details>
+        <a href="${R("articles/")}">${L[lang].articles}</a><a href="${R("faq/")}">${L[lang].faqNav}</a>
+        <a href="${R("rare/")}">${L[lang].rare}</a><a href="${R("ai/")}">${L[lang].ai}</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -212,6 +215,31 @@ function writePage(relPath, content) {
   mkdirSync(dirname(file), { recursive: true });
   writeFileSync(file, content);
   console.log("  ✓", relPath);
+}
+
+/* ---------- 0) home page (pre-rendered for crawlers and no-JS visits) ---------- */
+console.log("→ pre-rendered home page");
+{
+  const centers = [
+    ["pdf/", "📄", "مركز PDF", "ضغط ودمج وتقسيم وتحويل الملفات"],
+    ["images/", "🖼️", "مركز الصور", "ضغط وتحويل وقص وإزالة بيانات الصور"],
+    ["convert/", "🔄", "مركز التحويل", "حوّل بين صيغ الملفات الشائعة"],
+    ["text/", "✍️", "مركز النصوص", "تنظيف وتحويل وتحليل النصوص"],
+    ["dev/", "🧰", "مركز المطورين", "JSON وBase64 وJWT وأدوات البرمجة"],
+    ["security/", "🔐", "مركز الأمان", "كلمات مرور وTOTP وأدوات أمان محلية"],
+    ["calculators/", "🧮", "مركز الحاسبات", "حاسبات يومية مجانية تعمل في المتصفح"]
+  ];
+  const popular = ["json-formatter", "image-compressor", "merge-pdf", "pdf-to-word", "csv-to-json", "password-generator", "qr-code", "remove-background", "image-to-pdf", "uuid-generator", "word-counter", "exif-viewer"]
+    .map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
+  const articles = getArticles().slice(0, 3);
+  const body = `<section class="page-head home-prerender"><h1>أدوات مجانية لتحويل الملفات ومعالجتها — DouNest</h1>
+    <p>استخدم ${TOOLS.length}+ أداة مجانية تعمل محلياً داخل متصفحك: PDF، صور، نصوص، Excel، JSON وأمان. لا تسجيل، ولا رفع للملفات.</p>
+    <form class="home-search" action="${BASE}tools/" method="get"><label for="home-q">ابحث عن أداة</label><input id="home-q" name="q" type="search" placeholder="مثال: ضغط PDF أو تحويل JSON"><button class="btn btn-primary">بحث</button></form></section>
+    <section class="section"><h2 class="section-title">مراكز العمل</h2><div class="explore-strip">${centers.map(([path,icon,name,desc]) => `<a class="explore-card" href="${BASE}${path}"><strong>${icon} ${name}</strong><span>${desc}</span></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">أدوات شائعة</h2><div class="tools-grid">${popular.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("")}</div><p><a href="${BASE}tools/">عرض كل الأدوات ←</a></p></section>
+    <section class="section"><h2 class="section-title">أدلة ونصائح</h2><div class="tools-grid">${articles.map(a => `<a class="tool-card article" href="${BASE}articles/${a.slug}/"><h3>${esc(pick(a.title,"ar"))}</h3><p>${esc(pick(a.excerpt,"ar"))}</p></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">خصوصيتك أولاً</h2><p>الأدوات تعالج الملفات في متصفحك. لا يتم رفعها إلى خادم DouNest. يمكنك قراءة <a href="${BASE}privacy/">سياسة الخصوصية</a> أو زيارة <a href="${BASE}faq/">الأسئلة الشائعة</a>.</p></section>`;
+  writePage("index.html", shell({ title: "DouNest — أدوات مجانية لتحويل الملفات ومعالجتها", description: `${TOOLS.length}+ أداة مجانية لمعالجة PDF والصور والنصوص والبيانات محلياً في المتصفح دون رفع الملفات.`, canonicalPath: "", jsonLd: [{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":SITE,"inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":`${SITE}tools/?q={search_term_string}`,"query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"ItemList","name":"مراكز العمل والأدوات الشائعة","itemListElement":centers.map(([path,_icon,name],i)=>({"@type":"ListItem","position":i+1,"name":name,"url":SITE+path}))}], bodyContent: body }));
 }
 
 /* ---------- 1) tool landing pages (Arabic prerendered) ---------- */
@@ -489,7 +517,7 @@ ${cards}`
 /* ---------- 3b') PDF + Convert hub landing pages ---------- */
 console.log("→ pdf/convert hub pages");
 {
-  const pdfSlugs = ["compress-pdf", "merge-pdf", "split-pdf", "rotate-pdf", "pdf-to-jpg", "pdf-to-txt", "pdf-to-word", "image-to-pdf"];
+  const pdfSlugs = ["compress-pdf", "merge-pdf", "split-pdf", "rotate-pdf", "pdf-to-jpg", "pdf-to-txt", "pdf-to-word", "image-to-pdf", "pdf-organize", "pdf-watermark", "pdf-page-numbers"];
   const pdfTools = pdfSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "pdf/index.html",
@@ -513,7 +541,7 @@ console.log("→ pdf/convert hub pages");
       <h2 class="section-title">أدوات PDF الفردية</h2>
       <div class="tools-grid">
         ${pdfTools.map(t2 => `
-        <a class="tool-card" href="${t2.slug}/">
+        <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
           <h3>${esc(pick(t2.name, "ar"))}</h3>
           <p>${esc(pick(t2.short, "ar"))}</p>
@@ -524,7 +552,7 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
-  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "qr-code", "qr-scanner", "color-picker"];
+  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "qr-code", "qr-scanner", "color-picker", "image-crop", "image-rotate-flip", "exif-viewer", "favicon-generator"];
   const imageTools = imageSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "images/index.html",
@@ -548,7 +576,7 @@ console.log("→ pdf/convert hub pages");
       <h2 class="section-title">أدوات الصور الفردية والمتخصصة</h2>
       <div class="tools-grid">
         ${imageTools.map(t2 => `
-        <a class="tool-card" href="${t2.slug}/">
+        <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
           <h3>${esc(pick(t2.name, "ar"))}</h3>
           <p>${esc(pick(t2.short, "ar"))}</p>
@@ -559,7 +587,7 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
-  const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt"];
+  const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt", "svg-to-png", "json-yaml"];
   const convTools = [...new Set(convSlugs)].map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "convert/index.html",
@@ -583,7 +611,7 @@ console.log("→ pdf/convert hub pages");
       <h2 class="section-title">أدوات التحويل الفردية</h2>
       <div class="tools-grid">
         ${convTools.map(t2 => `
-        <a class="tool-card" href="${t2.slug}/">
+        <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
           <h3>${esc(pick(t2.name, "ar"))}</h3>
           <p>${esc(pick(t2.short, "ar"))}</p>
@@ -593,6 +621,19 @@ console.log("→ pdf/convert hub pages");
     </section>`
     })
   );
+}
+
+/* ---------- 3c) Work centers: text, dev, security and calculators ---------- */
+console.log("→ additional work centers");
+for (const [slug, title, description, modulePath, related] of [
+  ["text", "مركز النصوص — تنظيف وتحويل وتحليل", "نظّم النصوص وحوّل Markdown إلى HTML وأنشئ Slug واحسب الكلمات — محلياً.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"]],
+  ["dev", "مركز المطورين — أدوات JSON وBase64 وJWT", "أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"]],
+  ["security", "مركز الأمان — كلمات مرور وTOTP محلياً", "أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator"]],
+  ["calculators", "مركز الحاسبات — حسابات مجانية في المتصفح", "حاسبات العمر ومؤشر كتلة الجسم والنسب والوحدات — سريعة ومجانية.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]]
+]) {
+  const items = related.map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
+  const cards = items.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("");
+  writePage(`${slug}/index.html`, shell({ title: `${title} | DouNest`, description, canonicalPath: `${slug}/`, jsonLd: [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+slug+"/","inLanguage":"ar"},{"@context":"https://schema.org","@type":"ItemList","itemListElement":items.map((t,i)=>({"@type":"ListItem","position":i+1,"name":pick(t.name,"ar"),"url":SITE+"tools/"+t.slug+"/"}))}], bodyContent: `<section class="page-head"><h1>${esc(title)}</h1><p>${esc(description)}</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section"><h2 class="section-title">أدوات ${esc(title.split("—")[0])}</h2><div class="tools-grid">${cards}</div></section>` }));
 }
 
 /* ---------- 3b) Tools hub page (was missing -> /tools/ returned HTTP 404) ---------- */
@@ -630,6 +671,7 @@ console.log("→ tools hub page");
       <h1>كل الأدوات</h1>
       <p>${TOOLS.length}+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
     </section>
+    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip">${[["pdf/","📄","مركز PDF"],["images/","🖼️","مركز الصور"],["convert/","🔄","مركز التحويل"],["text/","✍️","مركز النصوص"],["dev/","🧰","مركز المطورين"],["security/","🔐","مركز الأمان"],["calculators/","🧮","الحاسبات"]].map(([p,i,n])=>`<a class="explore-card" href="${BASE}${p}"><strong>${i} ${n}</strong><span>أدوات متخصصة في مساحة واحدة</span></a>`).join("")}</div></section>
 ${cards}`
     })
   );
@@ -731,7 +773,7 @@ ${enSection}`
 console.log("→ 404.html fallback");
 writePage("404.html", shell({
   title: "DouNest — أدوات تقنية مجانية",
-  description: "30+ أداة ويب مجانية تعمل محلياً داخل متصفحك.",
+  description: `${TOOLS.length}+ أداة ويب مجانية تعمل محلياً داخل متصفحك.`,
   canonicalPath: "",
   absolute: true,
   noindex: true,
@@ -743,10 +785,11 @@ console.log("→ sitemap.xml");
 const urls = [
   { p: "", pr: "1.0" },
   { p: "tools/", pr: "0.9" },
-  ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.9" })),
+  ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.8" })),
   { p: "pdf/", pr: "0.9" },
   { p: "images/", pr: "0.9" },
   { p: "convert/", pr: "0.9" },
+  { p: "text/", pr: "0.9" }, { p: "dev/", pr: "0.9" }, { p: "security/", pr: "0.9" }, { p: "calculators/", pr: "0.9" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
   ...getArticles().map(a => ({ p: `articles/${a.slug}/`, pr: "0.7" })),
@@ -760,11 +803,18 @@ const urls = [
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${SITE}${u.p}</loc><lastmod>${NOW}</lastmod><priority>${u.pr}</priority></url>`).join("\n")}
+${urls.map(u => `  <url><loc>${SITE}${u.p}</loc><lastmod>${NOW}</lastmod><changefreq>${u.p === "" || /^(pdf|images|convert|text|dev|security|calculators)\/$/.test(u.p) ? "weekly" : "monthly"}</changefreq><priority>${u.pr}</priority></url>`).join("\n")}
 </urlset>
 `;
 writeFileSync(join(ROOT, "sitemap.xml"), sitemap);
 console.log("  ✓ sitemap.xml (" + urls.length + " URLs)");
+
+/* ---------- 5b) RSS + robots ---------- */
+const xmlEsc = (v) => String(v || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
+const feedItems = getArticles().map(a => `<item><title>${xmlEsc(pick(a.title,"ar"))}</title><link>${SITE}articles/${a.slug}/</link><guid>${SITE}articles/${a.slug}/</guid><pubDate>${new Date(a.date || NOW).toUTCString()}</pubDate><description>${xmlEsc(pick(a.excerpt,"ar"))}</description></item>`).join("\n");
+writeFileSync(join(ROOT, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>DouNest — أدوات وأدلة</title><link>${SITE}</link><description>مقالات وأدلة عن أدوات المتصفح والتحويل والخصوصية</description><language>ar</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>${feedItems}</channel></rss>\n`);
+writeFileSync(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /rare/security/\nDisallow: /rare/nmap/\nDisallow: /rare/wireshark/\nDisallow: /rare/burp-suite/\nDisallow: /rare/nuclei/\nDisallow: /rare/sqlmap/\nDisallow: /rare/metasploit/\nDisallow: /rare/hashcat/\nDisallow: /rare/john-the-ripper/\nDisallow: /rare/sherlock/\nDisallow: /rare/theharvester/\nDisallow: /v2/\nDisallow: /favorites/\nSitemap: ${SITE}sitemap.xml\n`);
+console.log("  ✓ feed.xml + robots.txt");
 
 /* ---------- 6) sw.js (synced asset list, query-tolerant) ---------- */
 console.log("→ sw.js");
@@ -793,11 +843,12 @@ const ASSETS = [
   "./favorites/index.html",
   "./faq/index.html",
   "./ai/index.html", "./rare/index.html",
-  "./pdf/index.html", "./convert/index.html",
+  "./pdf/index.html", "./images/index.html", "./convert/index.html",
+  "./text/index.html", "./dev/index.html", "./security/index.html", "./calculators/index.html",
   ...RARE_CATS.filter(c => c.id !== "security").map(c => "./rare/" + c.id + "/index.html"),
   ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => "./rare/" + t2.slug + "/index.html"),
   "./about/index.html", "./privacy/index.html", "./terms/index.html",
-  "./sitemap.xml", "./robots.txt"
+  "./sitemap.xml", "./robots.txt", "./feed.xml"
 ];
 const sw = `/* DouNest v3 — generated by build.mjs (${BUILD_ID}) */
 const CACHE = "dounest-${BUILD_ID}";
@@ -856,6 +907,14 @@ self.addEventListener("fetch", e => {
 `;
 writeFileSync(join(ROOT, "sw.js"), sw);
 console.log("  ✓ sw.js (" + ASSETS.length + " cached assets)");
+
+/* ---------- 6b) align manifest with the current tool catalogue ---------- */
+const manifestPath = join(ROOT, "manifest.json");
+if (existsSync(manifestPath)) {
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf-8"));
+  manifest.description = `${TOOLS.length}+ free tools that run locally in your browser: PDF, images, text, data and developer tools.`;
+  writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
+}
 
 /* ---------- 7) inject build id into every html (self-heal token) ---------- */
 console.log("→ inject __DN_BUILD__ tokens");

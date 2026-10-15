@@ -10,6 +10,8 @@
 import { t, getLang } from "../i18n.js";
 import { toastSuccess, toastError } from "../toast.js";
 import { loadEsm, formatBytes, downloadBlob } from "../util.js";
+import { workbench } from "../hub-kit.js";
+import { CONVERT_ACTIONS } from "../lib/actions.js";
 
 const PDFJS = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/";
 const PDFLIB = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js";
@@ -59,6 +61,16 @@ export function render(root) {
 
     <div class="hub-status" id="cv-status" aria-live="polite">${L.ready}</div>
   `;
+
+  const more = document.createElement("section");
+  more.className = "section wb-existing-tools";
+  more.innerHTML = `<h3>${AR ? "تحويلات إضافية — SVG وJSON/YAML" : "Additional conversions — SVG and JSON/YAML"}</h3><div class="workspace" id="cv-advanced"></div>`;
+  root.appendChild(more);
+  workbench(root.querySelector("#cv-advanced"), {
+    icon: "🔄", accept: ".svg,.json,.yaml,.yml,application/json,image/svg+xml", multiple: false, resultPanel: true,
+    s: { drop: AR ? "أضف SVG أو JSON أو YAML" : "Add SVG, JSON or YAML", actions: AR ? "اختر التحويل" : "Choose conversion", ready: AR ? "جاهز" : "Ready", run: AR ? "تنفيذ التحويل" : "Convert" },
+    actions: [CONVERT_ACTIONS.svgToPng, CONVERT_ACTIONS.jsonYaml]
+  });
 
   const drop = root.querySelector("#cv-drop");
   const input = root.querySelector("#cv-input");

@@ -1,7 +1,7 @@
 {
   "name": "DouNest — Free Browser Tools",
   "short_name": "DouNest",
-  "description": "30+ free tools that run locally in your browser: JSON, Base64, JWT, PDF, QR, image compression and more.",
+  "description": "58+ free tools that run locally in your browser: PDF, images, text, data and developer tools.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
@@ -10,7 +10,17 @@
   "lang": "ar",
   "dir": "rtl",
   "icons": [
-    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

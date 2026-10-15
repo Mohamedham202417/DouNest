@@ -8,6 +8,8 @@
 import { t, getLang } from "../i18n.js";
 import { toastSuccess, toastError } from "../toast.js";
 import { loadEsm, formatBytes, downloadBlob } from "../util.js";
+import { workbench } from "../hub-kit.js";
+import { PDF_ACTIONS } from "../lib/actions.js";
 
 const PDFJS = "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.0.379/build/";
 const PDFLIB = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js";
@@ -59,6 +61,16 @@ export function render(root) {
 
     <div class="hub-status" id="pdf-status" aria-live="polite">${L.ready}</div>
   `;
+
+  const more = document.createElement("section");
+  more.className = "section wb-existing-tools";
+  more.innerHTML = `<h3>${AR ? "عمليات إضافية — ترتيب الصفحات والعلامة المائية والترقيم" : "Additional actions — organize, watermark and number pages"}</h3><div class="workspace" id="pdf-advanced"></div>`;
+  root.appendChild(more);
+  workbench(root.querySelector("#pdf-advanced"), {
+    icon: "📄", accept: ".pdf,application/pdf", multiple: true, resultPanel: true,
+    s: { drop: AR ? "أضف ملفاً لعمليات PDF الإضافية" : "Add a PDF for the additional actions", actions: AR ? "اختر العملية" : "Choose an action", ready: AR ? "جاهز" : "Ready", run: AR ? "تنفيذ" : "Run" },
+    actions: [PDF_ACTIONS.organize, PDF_ACTIONS.watermark, PDF_ACTIONS.pageNumbers]
+  });
 
   const drop = root.querySelector("#pdf-drop");
   const input = root.querySelector("#pdf-input");

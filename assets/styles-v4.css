@@ -135,3 +135,24 @@ html[data-theme="dark"] .sec-warning p { color: #fca5a5; }
   .hub-act { font-size: 13.5px; padding: 10px 8px; }
   .sec-warning { padding: 12px 14px; }
 }
+
+
+/* ---------- v5 shared workbench ---------- */
+.topnav-group { position: relative; white-space: nowrap; }
+.topnav-group > summary { cursor: pointer; list-style: none; padding: 8px 10px; color: inherit; }
+.topnav-group > summary::-webkit-details-marker { display: none; }
+.topnav-group > div { position: absolute; z-index: 100; inset-block-start: 100%; inset-inline-start: 0; min-width: 190px; display: grid; gap: 4px; padding: 8px; border: 1px solid var(--border, rgba(120,120,150,.2)); border-radius: 12px; background: var(--surface, #fff); box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+.topnav-group > div a { padding: 8px 10px; border-radius: 8px; white-space: nowrap; }
+.topnav-group > div a:hover { background: color-mix(in srgb, var(--accent, #7c3aed) 10%, transparent); }
+.wb-opts { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 12px; margin: 12px 0; }
+.wb-opt { display: grid; gap: 6px; font-size: 14px; color: var(--text, inherit); }
+.wb-opt input:not([type=checkbox]), .wb-opt select, .wb-opt textarea, .wb-input-text textarea, .wb-result textarea { width: 100%; min-width: 0; padding: 10px 12px; border: 1px solid var(--border, #ccd); border-radius: 10px; color: var(--text, inherit); background: var(--surface, #fff); font: inherit; }
+.wb-opt input[type=range] { padding: 0; }
+.wb-opt input[type=checkbox] { width: auto; }
+.wb-check { display: flex; align-items: center; gap: 8px; }
+.wb-wide { grid-column: 1/-1; }
+.wb-input-text, .wb-result { display: grid; gap: 8px; margin: 16px 0; }
+.wb-run-host { display: flex; justify-content: flex-start; margin-top: 12px; }
+.wb-result textarea { resize: vertical; min-height: 140px; direction: auto; unicode-bidi: plaintext; }
+.wb-existing-tools { margin-top: 32px; }
+@media(max-width:640px) { .topnav-group > div { position: fixed; inset: 70px 12px auto 12px; max-height: 70vh; overflow:auto; } .wb-opts { grid-template-columns: 1fr; } }

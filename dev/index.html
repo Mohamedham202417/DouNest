@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>مركز المطورين — أدوات JSON وBase64 وJWT | DouNest</title>
+<meta name="description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mohamedham202417.github.io/DouNest/dev/" />
+<link rel="manifest" href="../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icon-192.png" />
+<link rel="apple-touch-icon" href="../assets/icon-192.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DouNest" />
+<meta property="og:title" content="مركز المطورين — أدوات JSON وBase64 وJWT | DouNest" />
+<meta property="og:description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<meta property="og:url" content="https://mohamedham202417.github.io/DouNest/dev/" />
+<meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<meta property="og:locale" content="ar_AR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="مركز المطورين — أدوات JSON وBase64 وJWT | DouNest" />
+<meta name="twitter:description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<link rel="stylesheet" href="../assets/styles-v4.css" />
+<script>
+  try {
+    var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
+    if (!_t) _t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = _t;
+  } catch (e) {}
+</script>
+<script src="../config.js"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="v3-2026-10-15-mv9slrv7";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"مركز المطورين — أدوات JSON وBase64 وJWT","url":"https://mohamedham202417.github.io/DouNest/dev/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"منسّق JSON","url":"https://mohamedham202417.github.io/DouNest/tools/json-formatter/"},{"@type":"ListItem","position":2,"name":"ترميز Base64","url":"https://mohamedham202417.github.io/DouNest/tools/base64/"},{"@type":"ListItem","position":3,"name":"ترميز URL","url":"https://mohamedham202417.github.io/DouNest/tools/url-encoder/"},{"@type":"ListItem","position":4,"name":"مفكّك JWT","url":"https://mohamedham202417.github.io/DouNest/tools/jwt-decoder/"},{"@type":"ListItem","position":5,"name":"مولّد Hash","url":"https://mohamedham202417.github.io/DouNest/tools/hash-generator/"},{"@type":"ListItem","position":6,"name":"مولّد UUID","url":"https://mohamedham202417.github.io/DouNest/tools/uuid-generator/"},{"@type":"ListItem","position":7,"name":"مختبر Regex","url":"https://mohamedham202417.github.io/DouNest/tools/regex-tester/"},{"@type":"ListItem","position":8,"name":"مولّد Cron","url":"https://mohamedham202417.github.io/DouNest/tools/cron-generator/"},{"@type":"ListItem","position":9,"name":"منسّق SQL","url":"https://mohamedham202417.github.io/DouNest/tools/sql-formatter/"},{"@type":"ListItem","position":10,"name":"محوّل Unix Timestamp","url":"https://mohamedham202417.github.io/DouNest/tools/timestamp-converter/"},{"@type":"ListItem","position":11,"name":"تحويل JSON وYAML","url":"https://mohamedham202417.github.io/DouNest/tools/json-yaml/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="../" class="brand" aria-label="DouNest">
+        <img src="../assets/dounest-logo.png" class="brand-logo" alt="DouNest" width="38" height="38" />
+        <span class="brand-name">DouNest</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a href="../">الرئيسية</a>
+        <a href="../tools/">كل الأدوات</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="../pdf/">مركز PDF</a><a href="../images/">مركز الصور</a>
+          <a href="../convert/">مركز التحويل</a><a href="../text/">مركز النصوص</a>
+          <a href="../dev/">مركز المطورين</a>
+          <a href="../security/">مركز الأمان</a>
+          <a href="../calculators/">الحاسبات</a>
+        </div></details>
+        <a href="../articles/">المقالات</a><a href="../faq/">الأسئلة الشائعة</a>
+        <a href="../rare/">أدوات نادرة</a><a href="../ai/">دليل AI</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <div id="lang-menu" class="lang-menu"></div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container" role="main" tabindex="-1">
+<section class="page-head"><h1>مركز المطورين — أدوات JSON وBase64 وJWT</h1><p>أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp.</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section"><h2 class="section-title">أدوات مركز المطورين </h2><div class="tools-grid"><a class="tool-card" href="/DouNest/tools/json-formatter/"><div class="icon cat-dev" aria-hidden="true">{}</div><h3>منسّق JSON</h3><p>تنسيق، تصغير، والتحقق من صحة JSON.</p></a><a class="tool-card" href="/DouNest/tools/base64/"><div class="icon cat-encode" aria-hidden="true">64</div><h3>ترميز Base64</h3><p>ترميز وفك ترميز نصوص Base64.</p></a><a class="tool-card" href="/DouNest/tools/url-encoder/"><div class="icon cat-encode" aria-hidden="true">%</div><h3>ترميز URL</h3><p>ترميز وفك ترميز الروابط.</p></a><a class="tool-card" href="/DouNest/tools/jwt-decoder/"><div class="icon cat-dev" aria-hidden="true">🔑</div><h3>مفكّك JWT</h3><p>اقرأ محتوى رموز JWT.</p></a><a class="tool-card" href="/DouNest/tools/hash-generator/"><div class="icon cat-security" aria-hidden="true">#</div><h3>مولّد Hash</h3><p>أنشئ SHA-1/256/512.</p></a><a class="tool-card" href="/DouNest/tools/uuid-generator/"><div class="icon cat-dev" aria-hidden="true">🆔</div><h3>مولّد UUID</h3><p>أنشئ UUID v4 عشوائيًا.</p></a><a class="tool-card" href="/DouNest/tools/regex-tester/"><div class="icon cat-dev" aria-hidden="true">.*</div><h3>مختبر Regex</h3><p>اختبر التعبيرات النمطية مباشرة.</p></a><a class="tool-card" href="/DouNest/tools/cron-generator/"><div class="icon cat-dev" aria-hidden="true">⏰</div><h3>مولّد Cron</h3><p>أنشئ وافهم تعبيرات Cron.</p></a><a class="tool-card" href="/DouNest/tools/sql-formatter/"><div class="icon cat-dev" aria-hidden="true">🗃️</div><h3>منسّق SQL</h3><p>نسّق استعلامات SQL للقراءة.</p></a><a class="tool-card" href="/DouNest/tools/timestamp-converter/"><div class="icon cat-dev" aria-hidden="true">🕐</div><h3>محوّل Unix Timestamp</h3><p>حوّل بين Unix timestamp والتاريخ.</p></a><a class="tool-card" href="/DouNest/tools/json-yaml/"><div class="icon cat-dev" aria-hidden="true">🔁</div><h3>تحويل JSON وYAML</h3><p>حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.</p></a></div></section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <nav class="footer-nav" aria-label="Legal">
+        <a href="../privacy/">سياسة الخصوصية</a>
+        <a href="../terms/">شروط الاستخدام</a>
+        <a href="../ai/">دليل AI</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

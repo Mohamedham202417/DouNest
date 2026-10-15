@@ -11,5 +11,6 @@ Disallow: /rare/hashcat/
 Disallow: /rare/john-the-ripper/
 Disallow: /rare/sherlock/
 Disallow: /rare/theharvester/
-
+Disallow: /v2/
+Disallow: /favorites/
 Sitemap: https://mohamedham202417.github.io/DouNest/sitemap.xml

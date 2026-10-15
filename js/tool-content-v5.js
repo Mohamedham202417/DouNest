@@ -1,0 +1,73 @@
+/** DouNest v5 — accurate localized copy for tools introduced in this release. */
+export const TOOL_CONTENT_V5 = {
+  "pdf-organize": {
+    usage: { ar: ["اختر ملف PDF من جهازك.", "اكتب أرقام الصفحات بالترتيب المطلوب، مثلاً 3,1,4-6. الصفحات التي لا تذكرها تُحذف.", "نفّذ العملية ونزّل الملف الجديد."], en: ["Choose a PDF from your device.", "Enter page numbers in the desired order, e.g. 3,1,4-6. Pages you omit are removed.", "Run the action and download the new PDF."] },
+    explanation: { ar: ["يعيد ترتيب الصفحات أو يحذفها عبر إنشاء ملف PDF جديد محلياً في المتصفح.", "استخدم الترقيم ابتداءً من 1. يمكنك تكرار الرقم لإدراج نسخة من الصفحة.", "قد لا تعمل مع ملفات PDF المشفّرة أو التالفة."], en: ["Reorders or removes pages by creating a new PDF locally in your browser.", "Page numbering starts at 1. Repeating a number duplicates that page.", "Encrypted or damaged PDFs may not be supported."] },
+    faq: [{ q: { ar: "كيف أحذف صفحة؟", en: "How do I delete a page?" }, a: { ar: "اكتب أرقام الصفحات التي تريد الاحتفاظ بها فقط؛ الصفحات غير المذكورة لن تظهر في الناتج.", en: "Enter only the page numbers you want to keep; omitted pages are excluded." } }], tags: ["PDF", "ترتيب الصفحات", "حذف صفحات PDF"]
+  },
+  "pdf-watermark": {
+    usage: { ar: ["اختر ملف PDF.", "أدخل العلامة المائية بالأحرف اللاتينية، ثم اضبط الحجم والشفافية.", "نفّذ العملية لتنزيل نسخة تحمل العلامة على صفحاتها."], en: ["Choose a PDF.", "Enter a Latin-character watermark and adjust size and opacity.", "Run the action to download a copy with the watermark on its pages."] },
+    explanation: { ar: ["تُضاف علامة نصية مائلة إلى الصفحات محلياً باستخدام مكتبة PDF مفتوحة المصدر.", "الخط القياسي لا يدعم العربية في هذا التنفيذ؛ استبدل الأحرف العربية بعلامة لاتينية.", "لا تُرفع المستندات إلى DouNest."], en: ["A diagonal text watermark is applied locally using an open-source PDF library.", "The embedded standard font does not support Arabic in this version; use Latin characters.", "Documents are not uploaded to DouNest."] },
+    faq: [{ q: { ar: "هل يدعم نص العلامة العربية؟", en: "Can the watermark use Arabic?" }, a: { ar: "حالياً يُنصح بنص لاتيني لأن الخط المضمّن لا يتضمن محارف عربية.", en: "Use Latin text for now; the embedded font does not include Arabic glyphs." } }], tags: ["علامة مائية PDF", "PDF watermark"]
+  },
+  "pdf-page-numbers": {
+    usage: { ar: ["أضف ملف PDF.", "اختر موضع الرقم ورقم البداية.", "نفّذ العملية لتنزيل ملف مرقّم."], en: ["Add a PDF.", "Choose the number position and starting number.", "Run the action to download the numbered PDF."] },
+    explanation: { ar: ["تُكتب أرقام الصفحات بصيغة رقم الصفحة/الإجمالي داخل كل صفحة.", "التنفيذ محلي في متصفحك؛ قد لا تُقبل ملفات PDF المشفّرة."], en: ["Each page receives a page/total label.", "Processing is local in your browser; encrypted PDFs may not work."] },
+    faq: [{ q: { ar: "هل أستطيع بدء الترقيم من رقم مختلف؟", en: "Can numbering start at a different number?" }, a: { ar: "نعم، غيّر قيمة «ابدأ من» قبل التنفيذ.", en: "Yes. Change the Start at value before running the action." } }], tags: ["ترقيم PDF", "page numbers"]
+  },
+  "image-crop": {
+    usage: { ar: ["اختر صورة واحدة أو أكثر.", "اختر نسبة الأبعاد. تُوسّط الأداة القص تلقائياً؛ اختر «حر» لتحديد العرض والإحداثيات.", "حدد صيغة الناتج ثم نفّذ واحفظ."], en: ["Choose one or more images.", "Select an aspect ratio. The crop is centered automatically; choose Free to set width and coordinates.", "Choose an output format, then run and save."] },
+    explanation: { ar: ["يُنفّذ القص باستخدام Canvas داخل متصفحك دون رفع الصورة.", "النسب الجاهزة مناسبة للمربّع والمنشورات والفيديو العمودي والعريض.", "اختيار JPG يملأ الخلفية بالأبيض لأن JPG لا يدعم الشفافية."], en: ["Cropping uses Canvas in your browser; the image is not uploaded.", "Presets cover square, social portrait and widescreen formats.", "JPG output uses a white background because JPEG has no transparency."] },
+    faq: [{ q: { ar: "هل أرى معاينة مباشرة؟", en: "Is there a live preview?" }, a: { ar: "هذه النسخة تنفّذ القص عند الضغط على الزر، ولا تعرض معاينة قبل التنزيل.", en: "This version applies the crop when you run it; it does not show a pre-download preview." } }], tags: ["قص الصور", "image crop", "نسبة أبعاد"]
+  },
+  "image-rotate-flip": {
+    usage: { ar: ["اختر الصور.", "حدد زاوية التدوير، ويمكنك تفعيل القلب الأفقي أو العمودي.", "اختر صيغة الإخراج ثم نفّذ."], en: ["Choose images.", "Select a rotation angle and optionally flip horizontally or vertically.", "Choose an output format and run."] },
+    explanation: { ar: ["يُعاد رسم الصورة على Canvas في المتصفح مع الحفاظ على الأبعاد الصحيحة بعد تدوير 90 أو 270 درجة.", "عند التحويل إلى JPG تصبح المناطق الشفافة بيضاء."], en: ["The image is redrawn on a browser Canvas with dimensions adjusted for 90° or 270° rotation.", "Transparent areas turn white when exporting to JPG."] },
+    faq: [{ q: { ar: "هل تدعم العملية عدة صور؟", en: "Can I rotate multiple images?" }, a: { ar: "نعم، يمكن اختيار أكثر من صورة وتُنزّل النتائج منفصلة.", en: "Yes. Select multiple images; outputs are downloaded individually." } }], tags: ["تدوير صورة", "قلب صورة", "rotate image"]
+  },
+  "exif-viewer": {
+    usage: { ar: ["اختر صورة JPEG.", "اضغط عرض بيانات EXIF.", "انسخ القيم التي تحتاجها؛ لا ترسل الصورة إلى أي خادم."], en: ["Choose a JPEG image.", "Run View EXIF.", "Read the metadata values you need; the image is not sent to a server."] },
+    explanation: { ar: ["يعرض القارئ مجموعة من حقول EXIF الشائعة مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات GPS.", "يعمل هذا القارئ مع JPEG فقط ولا يضمن عرض كل الوسوم أو صيغ الصور الأخرى.", "افحص بيانات الموقع قبل مشاركة الصور إذا كانت الخصوصية مهمة لك."], en: ["The reader displays common EXIF fields such as camera model, capture date and some GPS data.", "This reader supports JPEG only and may not display every tag or other image formats.", "Check for location data before sharing images if privacy matters."] },
+    faq: [{ q: { ar: "لماذا لا تظهر بيانات الموقع؟", en: "Why is location data missing?" }, a: { ar: "قد لا تحتوي الصورة على GPS، أو قد تكون البيانات أزيلت عند تصديرها أو مشاركتها.", en: "The image may not contain GPS data, or the metadata may have been stripped during export or sharing." } }], tags: ["EXIF", "بيانات الصور", "خصوصية الصور", "GPS"]
+  },
+  "favicon-generator": {
+    usage: { ar: ["اختر صورة مربّعة أو قريبة من المربّع.", "نفّذ التوليد لتنزيل ZIP يحتوي PNG متعددة الأحجام وICO ومقتطف HTML.", "انسخ ملفات الأيقونة إلى موقعك وعدّل المسارات في المقتطف."], en: ["Choose a square or near-square image.", "Generate a ZIP containing multiple PNG sizes, an ICO and an HTML snippet.", "Copy the icons to your site and update the paths in the snippet."] },
+    explanation: { ar: ["تُقص الصورة إلى مربع من الوسط وتُصغّر إلى 16 و32 و48 و180 و192 و512 بكسل.", "قد تتطلب بعض المنصات أحجاماً أو ملفات manifest إضافية؛ راجع متطلبات منصة موقعك."], en: ["The image is center-cropped to a square and resized to 16, 32, 48, 180, 192 and 512 pixels.", "Some platforms need extra sizes or manifest files; check your hosting platform's requirements."] },
+    faq: [{ q: { ar: "هل أرفع ملف ZIP إلى DouNest؟", en: "Is my ZIP uploaded to DouNest?" }, a: { ar: "لا؛ يجري إنشاء الأيقونات والأرشيف محلياً في المتصفح.", en: "No. The icons and archive are created locally in your browser." } }], tags: ["favicon", "أيقونة الموقع", "ICO"]
+  },
+  "svg-to-png": {
+    usage: { ar: ["اختر ملف SVG.", "حدد عرض PNG ولون خلفية اختياري؛ اتركه فارغاً للشفافية.", "نفّذ التحويل لتنزيل PNG."], en: ["Choose an SVG file.", "Set the PNG width and an optional background color; leave it empty for transparency.", "Run the conversion to download the PNG."] },
+    explanation: { ar: ["يُحوّل الرسم المتجهي إلى صورة نقطية بالحجم المحدد داخل المتصفح.", "تُزال بعض العناصر النشطة والمراجع الخارجية من SVG قبل المعالجة للمساعدة على الأمان."], en: ["The vector drawing is rasterized to the requested width in your browser.", "Some active elements and external references are removed from the SVG before processing for safety."] },
+    faq: [{ q: { ar: "لماذا يبدو النص أو الخط مختلفاً؟", en: "Why does text or a font look different?" }, a: { ar: "قد لا تكون الخطوط المخصصة متاحة محلياً؛ حوّل النص إلى مسارات داخل برنامج التصميم عند الحاجة.", en: "Custom fonts may not be available locally; outline text in your design app when necessary." } }], tags: ["SVG إلى PNG", "تحويل SVG", "rasterize SVG"]
+  },
+  "json-yaml": {
+    usage: { ar: ["أضف ملف JSON/YAML أو الصق محتواه.", "اختر الاتجاه أو استخدم التحديد التلقائي.", "تحقق من النتيجة ونزّل الملف المحوّل."], en: ["Add a JSON/YAML file or paste its content.", "Choose a direction or use auto-detect.", "Check the result and download the converted file."] },
+    explanation: { ar: ["تعالج الأداة JSON وYAML الشائعين محلياً وتعرض النص الناتج قبل الحفظ.", "محلل YAML خفيف؛ قد لا يدعم بعض الميزات المتقدمة مثل anchors أو أنواع YAML الخاصة."], en: ["The tool converts common JSON and YAML locally and shows the output before saving.", "The lightweight YAML parser may not support advanced features such as anchors or special YAML types."] },
+    faq: [{ q: { ar: "هل تقبل كل صيغ YAML؟", en: "Does it support every YAML feature?" }, a: { ar: "لا، التحويل مخصص للبنية الشائعة من مفاتيح وقيم وقوائم؛ اختبر الملفات المعقدة بعد التحويل.", en: "No. It targets common key/value and list structures; verify complex files after conversion." } }], tags: ["JSON YAML", "JSON to YAML", "YAML to JSON"]
+  },
+  "markdown-to-html": {
+    usage: { ar: ["الصق Markdown أو اختر ملفاً نصياً.", "اضغط التحويل لعرض HTML الناتج.", "انسخ النتيجة أو نزّل ملف HTML."], en: ["Paste Markdown or choose a text file.", "Run the conversion to see the generated HTML.", "Copy the result or download the HTML file."] },
+    explanation: { ar: ["يدعم المحوّل أساسيات Markdown مثل العناوين والقوائم والروابط والاقتباسات والتنسيق.", "لا يحمّل مكتبة خارجية. تُعالج محارف HTML وتُقيّد روابط البروتوكولات الخطرة؛ راجع الناتج قبل نشره."], en: ["The converter supports core Markdown features such as headings, lists, links, quotes and emphasis.", "It does not load an external library. HTML characters are escaped and risky link protocols are restricted; review output before publishing."] },
+    faq: [{ q: { ar: "هل يدعم جداول Markdown؟", en: "Does it support Markdown tables?" }, a: { ar: "هذا الإصدار يركز على الصياغات الأساسية ولا يضمن دعم كل امتدادات Markdown.", en: "This version focuses on core syntax and does not guarantee every Markdown extension." } }], tags: ["Markdown HTML", "تحويل Markdown", "HTML"]
+  },
+  "slug-generator": {
+    usage: { ar: ["اكتب عنواناً واحداً أو عدة عناوين، كل عنوان في سطر.", "اختر الشرطة أو الشرطة السفلية، وقرر الاحتفاظ بالحروف العربية.", "انسخ الروابط الناتجة."], en: ["Enter one or more titles, one per line.", "Choose a hyphen or underscore, and whether to retain Arabic letters.", "Copy the generated slugs."] },
+    explanation: { ar: ["يزيل المولّد المسافات والرموز غير الملائمة للرابط ويحوّل الفراغات إلى فاصل.", "الحروف العربية محفوظة افتراضياً؛ تحقق من توافق الروابط مع نظام إدارة المحتوى الذي تستخدمه."], en: ["The generator replaces spaces and unsuitable punctuation with a separator.", "Arabic letters are preserved by default; check compatibility with your CMS." ] },
+    faq: [{ q: { ar: "هل يحوّل العربية إلى أحرف لاتينية؟", en: "Does it transliterate Arabic into Latin letters?" }, a: { ar: "لا؛ يحافظ على الحروف العربية أو يحذف غير اللاتيني عند تعطيل خيار الاحتفاظ بها.", en: "No. It preserves Arabic or removes non-Latin characters if that option is disabled." } }], tags: ["Slug", "رابط صديق لمحركات البحث", "SEO URL"]
+  },
+  "list-cleaner": {
+    usage: { ar: ["الصق عناصر القائمة، كل عنصر في سطر.", "اختر حذف المكرر والترتيب المطلوب.", "انسخ النتيجة المنظفة."], en: ["Paste list items, one per line.", "Choose deduplication and the desired sorting.", "Copy the cleaned result."] },
+    explanation: { ar: ["تُحذف المسافات الزائدة والأسطر الفارغة، ويمكن إزالة التكرارات مع تجاهل حالة الأحرف.", "يمكن إبقاء ترتيب العناصر أو فرزها أبجدياً أو حسب الطول."], en: ["Extra whitespace and empty lines are removed; duplicates can be ignored case-insensitively.", "Keep the original order or sort alphabetically or by length."] },
+    faq: [{ q: { ar: "هل يتغير ترتيب القائمة؟", en: "Will the list order change?" }, a: { ar: "يبقى كما هو افتراضياً؛ غيّر إعداد الترتيب إذا أردت فرزاً مختلفاً.", en: "It is preserved by default; change the sort option to reorder the list." } }], tags: ["تنظيف قائمة", "حذف التكرار", "deduplicate"]
+  },
+  "totp-generator": {
+    usage: { ar: ["أدخل السر المشترك بصيغة Base32.", "اختر طول الرمز والمدة إذا لزم.", "استخدم الرمز قبل انتهاء المؤقت."], en: ["Enter the shared secret in Base32.", "Choose the code length and period if needed.", "Use the code before its countdown expires."] },
+    explanation: { ar: ["ينفذ المولّد معيار TOTP محلياً عبر Web Crypto، من دون إرسال السر إلى خادم.", "لا تحفظ السر في جهاز عام، ولا تشارك رمز المصادقة أو السر مع الآخرين. الأداة ليست بديلاً عن تطبيق موثوق لحفظ أسرارك."], en: ["The generator implements TOTP locally using Web Crypto; the secret is not sent to a server.", "Do not store the secret on a public device or share it. This is not a replacement for a trusted authenticator and secure secret storage."] },
+    faq: [{ q: { ar: "هل يعرف DouNest سرّي؟", en: "Can DouNest see my secret?" }, a: { ar: "لا ترسله الأداة إلى خادم، لكن تجنّب إدخاله على جهاز لا تثق به.", en: "The tool does not send it to a server, but avoid entering secrets on devices you do not trust." } }], tags: ["TOTP", "2FA", "رمز مصادقة ثنائية"]
+  },
+  "password-strength": {
+    usage: { ar: ["اكتب كلمة مرور للاختبار.", "اقرأ التقييم والملاحظات المقترحة.", "لا تستخدم كلمة مرور حقيقية على جهاز عام أو غير موثوق."], en: ["Enter a password to test.", "Review the score and suggestions.", "Do not test a real password on an untrusted or public device."] },
+    explanation: { ar: ["يقيّم الفاحص خصائص تركيبية أساسية ويعرض تقديراً توجيهياً؛ لا يستخدم قاعدة بيانات تسريبات ولا يضمن حساب زمن كسر واقعي.", "يعمل محلياً في المتصفح ولا يحفظ كلمة المرور أو يرسلها."], en: ["The checker scores basic composition characteristics as a rough guide; it does not check breach databases or guarantee a real-world crack-time estimate.", "It runs locally and does not store or transmit the password."] },
+    faq: [{ q: { ar: "هل التقييم ضمان للأمان؟", en: "Is the score a security guarantee?" }, a: { ar: "لا. استخدم كلمة مرور فريدة وطويلة مع مدير كلمات مرور ومصادقة متعددة العوامل عند توفرها.", en: "No. Use a long unique password with a password manager and multi-factor authentication where available." } }], tags: ["قوة كلمة المرور", "password strength", "أمان"]
+  }
+};

@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/rare/jan/" />
 <link rel="manifest" href="../../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon-192.png" />
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
@@ -24,6 +25,8 @@
 <meta name="twitter:description" content="Jan بديل مفتوح المصدر لتطبيقات ChatGPT يعمل بالكامل على جهازك: ينزّل نماذج لغوية مفتوحة مثل Llama وMistral ويشغّلها محلياً بواجهة دردشة أنيقة، مع خادم API متو" />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../../assets/styles.css" />
@@ -40,7 +43,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9j8eh3";
+  var B="v3-2026-10-15-mv9slrv7";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -71,15 +74,15 @@
       <nav class="topnav" aria-label="Main">
         <a href="../../">الرئيسية</a>
         <a href="../../tools/">كل الأدوات</a>
-        <a href="../../pdf/">مركز PDF</a>
-        <a href="../../images/">مركز الصور</a>
-        <a href="../../convert/">مركز التحويل</a>
-        <a href="../../rare/">أدوات نادرة</a>
-        <a href="../../ai/">دليل AI</a>
-        <a href="../../articles/">المقالات</a>
-        <a href="../../faq/">الأسئلة الشائعة</a>
-        <a href="../../favorites/" rel="nofollow">المفضلة</a>
-        <a href="../../about/">حول</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="../../pdf/">مركز PDF</a><a href="../../images/">مركز الصور</a>
+          <a href="../../convert/">مركز التحويل</a><a href="../../text/">مركز النصوص</a>
+          <a href="../../dev/">مركز المطورين</a>
+          <a href="../../security/">مركز الأمان</a>
+          <a href="../../calculators/">الحاسبات</a>
+        </div></details>
+        <a href="../../articles/">المقالات</a><a href="../../faq/">الأسئلة الشائعة</a>
+        <a href="../../rare/">أدوات نادرة</a><a href="../../ai/">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>

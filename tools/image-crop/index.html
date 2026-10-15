@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>قص الصور — DouNest</title>
+<meta name="description" content="اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/image-crop/" />
+<link rel="manifest" href="../../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../../assets/icon-192.png" />
+<link rel="apple-touch-icon" href="../../assets/icon-192.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DouNest" />
+<meta property="og:title" content="قص الصور — DouNest" />
+<meta property="og:description" content="اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح." />
+<meta property="og:url" content="https://mohamedham202417.github.io/DouNest/tools/image-crop/" />
+<meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<meta property="og:locale" content="ar_AR" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="قص الصور — DouNest" />
+<meta name="twitter:description" content="اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح." />
+<meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../../assets/styles.css" />
+<link rel="stylesheet" href="../../assets/styles-v4.css" />
+<script>
+  try {
+    var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
+    if (!_t) _t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = _t;
+  } catch (e) {}
+</script>
+<script src="../../config.js"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="v3-2026-10-15-mv9slrv7";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"قص الصور","description":"اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.","keywords":"قص الصور, image crop, نسبة أبعاد","url":"https://mohamedham202417.github.io/DouNest/tools/image-crop/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل أرى معاينة مباشرة؟","acceptedAnswer":{"@type":"Answer","text":"هذه النسخة تنفّذ القص عند الضغط على الزر، ولا تعرض معاينة قبل التنزيل."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://mohamedham202417.github.io/DouNest/tools/"},{"@type":"ListItem","position":3,"name":"قص الصور","item":"https://mohamedham202417.github.io/DouNest/tools/image-crop/"}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="../../" class="brand" aria-label="DouNest">
+        <img src="../../assets/dounest-logo.png" class="brand-logo" alt="DouNest" width="38" height="38" />
+        <span class="brand-name">DouNest</span>
+      </a>
+      <nav class="topnav" aria-label="Main">
+        <a href="../../">الرئيسية</a>
+        <a href="../../tools/">كل الأدوات</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="../../pdf/">مركز PDF</a><a href="../../images/">مركز الصور</a>
+          <a href="../../convert/">مركز التحويل</a><a href="../../text/">مركز النصوص</a>
+          <a href="../../dev/">مركز المطورين</a>
+          <a href="../../security/">مركز الأمان</a>
+          <a href="../../calculators/">الحاسبات</a>
+        </div></details>
+        <a href="../../articles/">المقالات</a><a href="../../faq/">الأسئلة الشائعة</a>
+        <a href="../../rare/">أدوات نادرة</a><a href="../../ai/">دليل AI</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <div id="lang-menu" class="lang-menu"></div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container" role="main" tabindex="-1">
+
+    <nav class="breadcrumb" aria-label="breadcrumb">
+      <a href="../../">DouNest</a><span class="sep">›</span>
+      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
+      <span class="current">قص الصور</span>
+    </nav>
+    <header class="tool-header">
+      <div class="tool-header-main">
+        <div class="icon big cat-media" aria-hidden="true">✂️</div>
+        <div>
+          <h1>قص الصور</h1>
+          <p class="lead">اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.</p>
+          <div class="tool-meta">
+            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge ghost">media</span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="tool-layout">
+      <div class="tool-maincol">
+        <section class="workspace" id="tool-workspace">
+          <p class="empty" style="margin:0">اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.</p>
+        </section>
+        <section class="section">
+          <h2>طريقة الاستخدام</h2>
+          <ol class="steps"><li>اختر صورة واحدة أو أكثر.</li><li>اختر نسبة الأبعاد. تُوسّط الأداة القص تلقائياً؛ اختر «حر» لتحديد العرض والإحداثيات.</li><li>حدد صيغة الناتج ثم نفّذ واحفظ.</li></ol>
+        </section>
+        <section class="section">
+          <h2>شرح مفصّل</h2>
+          <div class="explanation"><p>يُنفّذ القص باستخدام Canvas داخل متصفحك دون رفع الصورة.</p><p>النسب الجاهزة مناسبة للمربّع والمنشورات والفيديو العمودي والعريض.</p><p>اختيار JPG يملأ الخلفية بالأبيض لأن JPG لا يدعم الشفافية.</p></div>
+        </section>
+        
+        <section class="section">
+          <h2>أسئلة شائعة</h2>
+          <details class="faq-item"><summary>هل أرى معاينة مباشرة؟</summary><p>هذه النسخة تنفّذ القص عند الضغط على الزر، ولا تعرض معاينة قبل التنزيل.</p></details>
+        </section>
+        
+        <section class="section">
+          <h2>وسوم البحث</h2>
+          <div class="hash-chips" aria-label="الوسوم">
+    <a class="hash-chip" href="/DouNest/tools/?q=%D9%82%D8%B5%20%D8%A7%D9%84%D8%B5%D9%88%D8%B1">#قص الصور</a><a class="hash-chip" href="/DouNest/tools/?q=image%20crop">#image crop</a><a class="hash-chip" href="/DouNest/tools/?q=%D9%86%D8%B3%D8%A8%D8%A9%20%D8%A3%D8%A8%D8%B9%D8%A7%D8%AF">#نسبة أبعاد</a>
+  </div>
+        </section>
+      </div>
+      <aside class="tool-sidecol">
+        
+        
+      </aside>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <nav class="footer-nav" aria-label="Legal">
+        <a href="../../privacy/">سياسة الخصوصية</a>
+        <a href="../../terms/">شروط الاستخدام</a>
+        <a href="../../ai/">دليل AI</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../../js/app.js"></script>
+</body>
+</html>

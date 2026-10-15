@@ -5,25 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
 <title>DouNest — أدوات تقنية مجانية</title>
-<meta name="description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta name="description" content="58+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
 <meta name="robots" content="noindex,nofollow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/" />
 <link rel="manifest" href="/DouNest/manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="/DouNest/feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="/DouNest/assets/favicon-32.png" />
 <link rel="icon" type="image/png" sizes="192x192" href="/DouNest/assets/icon-192.png" />
 <link rel="apple-touch-icon" href="/DouNest/assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="DouNest — أدوات تقنية مجانية" />
-<meta property="og:description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta property="og:description" content="58+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="DouNest — أدوات تقنية مجانية" />
-<meta name="twitter:description" content="30+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
+<meta name="twitter:description" content="58+ أداة ويب مجانية تعمل محلياً داخل متصفحك." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/DouNest/assets/styles.css" />
@@ -40,7 +43,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9j8eh3";
+  var B="v3-2026-10-15-mv9slrv7";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -71,15 +74,15 @@
       <nav class="topnav" aria-label="Main">
         <a href="/DouNest/">الرئيسية</a>
         <a href="/DouNest/tools/">كل الأدوات</a>
-        <a href="/DouNest/pdf/">مركز PDF</a>
-        <a href="/DouNest/images/">مركز الصور</a>
-        <a href="/DouNest/convert/">مركز التحويل</a>
-        <a href="/DouNest/rare/">أدوات نادرة</a>
-        <a href="/DouNest/ai/">دليل AI</a>
-        <a href="/DouNest/articles/">المقالات</a>
-        <a href="/DouNest/faq/">الأسئلة الشائعة</a>
-        <a href="/DouNest/favorites/" rel="nofollow">المفضلة</a>
-        <a href="/DouNest/about/">حول</a>
+        <details class="topnav-group"><summary>المراكز</summary><div>
+          <a href="/DouNest/pdf/">مركز PDF</a><a href="/DouNest/images/">مركز الصور</a>
+          <a href="/DouNest/convert/">مركز التحويل</a><a href="/DouNest/text/">مركز النصوص</a>
+          <a href="/DouNest/dev/">مركز المطورين</a>
+          <a href="/DouNest/security/">مركز الأمان</a>
+          <a href="/DouNest/calculators/">الحاسبات</a>
+        </div></details>
+        <a href="/DouNest/articles/">المقالات</a><a href="/DouNest/faq/">الأسئلة الشائعة</a>
+        <a href="/DouNest/rare/">أدوات نادرة</a><a href="/DouNest/ai/">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>

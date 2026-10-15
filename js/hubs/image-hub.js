@@ -5,6 +5,8 @@
 import { t, getLang } from "../i18n.js";
 import { toastSuccess, toastError } from "../toast.js";
 import { loadEsm, formatBytes, downloadBlob } from "../util.js";
+import { workbench } from "../hub-kit.js";
+import { IMAGE_ACTIONS } from "../lib/actions.js";
 
 const PDFLIB = "https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js";
 const BG_REMOVE = "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm";
@@ -52,6 +54,16 @@ export function render(root) {
     <div class="hub-status" id="img-status" aria-live="polite">${L.ready}</div>
     <p class="disclosure">🔒 ${AR ? "المعالجة الأساسية تتم محلياً داخل متصفحك — لا تُرفع صورك." : "Core processing runs locally in your browser — your images are not uploaded."}</p>
   `;
+
+  const more = document.createElement("section");
+  more.className = "section wb-existing-tools";
+  more.innerHTML = `<h3>${AR ? "عمليات صور إضافية — قص وتدوير وEXIF وFavicon" : "Additional image actions — crop, rotate, EXIF and favicon"}</h3><div class="workspace" id="img-advanced"></div>`;
+  root.appendChild(more);
+  workbench(root.querySelector("#img-advanced"), {
+    icon: "🖼️", accept: "image/*", multiple: true, resultPanel: true,
+    s: { drop: AR ? "أضف صوراً للعمليات الإضافية" : "Add images for additional actions", actions: AR ? "اختر العملية" : "Choose an action", ready: AR ? "جاهز" : "Ready", run: AR ? "تنفيذ" : "Run" },
+    actions: [IMAGE_ACTIONS.crop, IMAGE_ACTIONS.rotateFlip, IMAGE_ACTIONS.exif, IMAGE_ACTIONS.stripExif, IMAGE_ACTIONS.favicon]
+  });
 
   const drop = root.querySelector("#img-drop");
   const input = root.querySelector("#img-input");
