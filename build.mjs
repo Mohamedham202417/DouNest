@@ -53,7 +53,7 @@ const L = {
   ar: {
     allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
     faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "يعمل محلياً في متصفحك",
-    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI",
+    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور",
     pdf: "مركز PDF", convert: "مركز التحويل",
     about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام",
     back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
@@ -63,7 +63,7 @@ const L = {
   en: {
     allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
     faq: "FAQ", related: "Related tools", local: "Runs locally in your browser",
-    home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory",
+    home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory", images: "Image Hub",
     pdf: "PDF Hub", convert: "Convert Hub",
     about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms",
     back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
@@ -173,6 +173,7 @@ ${ld}
         <a href="${R("")}">${L[lang].home}</a>
         <a href="${R("tools/")}">${L[lang].allTools}</a>
         <a href="${R("pdf/")}">${L[lang].pdf}</a>
+        <a href="${R("images/")}">${L[lang].images}</a>
         <a href="${R("convert/")}">${L[lang].convert}</a>
         <a href="${R("rare/")}">${L[lang].rare}</a>
         <a href="${R("ai/")}">${L[lang].ai}</a>
@@ -523,6 +524,41 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
+  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "qr-code", "qr-scanner", "color-picker"];
+  const imageTools = imageSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
+  writePage(
+    "images/index.html",
+    shell({
+      title: "مركز الصور — تحويل وضغط وتغيير حجم وإزالة خلفية | DouNest",
+      description: "مركز صور شامل لتحويل الصيغ وضغط الصور وتغيير الحجم وإزالة الخلفية وتحويل الصور إلى PDF واستخراج النص من الصور وتحويل HEIC — كل شيء محلي داخل متصفحك.",
+      canonicalPath: "images/",
+      jsonLd: [{
+        "@context": "https://schema.org", "@type": "WebApplication",
+        "name": "مركز الصور — DouNest", "applicationCategory": "MultimediaApplication",
+        "operatingSystem": "Any", "inLanguage": "ar",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+      }],
+      bodyContent: `
+    <section class="page-head">
+      <h1>مركز الصور — كل أدوات الصور في مكان واحد</h1>
+      <p>ارفع صورة أو أكثر مرة واحدة ثم حوّل الصيغة، اضغط الحجم، غيّر الأبعاد، أزل الخلفية، أو أنشئ PDF. أضف أدوات الصور المتخصصة مثل OCR وHEIC وQR عند الحاجة — المعالجة الأساسية تحدث داخل متصفحك وبدون رفع ملفاتك.</p>
+    </section>
+    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات السريعة.</p></section>
+    <section class="section">
+      <h2 class="section-title">أدوات الصور الفردية والمتخصصة</h2>
+      <div class="tools-grid">
+        ${imageTools.map(t2 => `
+        <a class="tool-card" href="${t2.slug}/">
+          <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
+          <h3>${esc(pick(t2.name, "ar"))}</h3>
+          <p>${esc(pick(t2.short, "ar"))}</p>
+          <div class="card-foot"><span class="badge tiny">صور</span></div>
+        </a>`).join("")}
+      </div>
+    </section>`
+    })
+  );
+
   const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt"];
   const convTools = [...new Set(convSlugs)].map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
@@ -709,6 +745,7 @@ const urls = [
   { p: "tools/", pr: "0.9" },
   ...TOOLS.map(t2 => ({ p: `tools/${t2.slug}/`, pr: "0.9" })),
   { p: "pdf/", pr: "0.9" },
+  { p: "images/", pr: "0.9" },
   { p: "convert/", pr: "0.9" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },

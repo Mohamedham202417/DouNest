@@ -34,7 +34,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "convert", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "privacy", "terms", "faq", "support", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -338,6 +338,7 @@ function renderHome() {
       <h2 class="section-title">🧭 ${t("home.explore")}</h2>
       <div class="explore-strip">
         <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${t("home.explorePdf")}</span></a>
+        <a class="explore-card" href="${link("/images")}"><strong>🖼️ ${t("nav.images")}</strong><span>${t("home.exploreImages")}</span></a>
         <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${t("home.exploreConvert")}</span></a>
         <a class="explore-card" href="${link("/rare")}"><strong>💎 ${t("nav.rare")}</strong><span>${t("home.exploreRare")}</span></a>
         <a class="explore-card" href="${link("/articles")}"><strong>📝 ${t("nav.articles")}</strong><span>${t("home.exploreArticles")}</span></a>
@@ -769,7 +770,7 @@ function renderRareDetailView({ slug }) {
   });
 }
 
-/* ========= Hubs (/pdf/ and /convert/) ========= */
+/* ========= Hubs (/pdf/, /images/ and /convert/) ========= */
 async function renderPdfHub() {
   const main = document.getElementById("main");
   main.innerHTML = `
@@ -798,6 +799,21 @@ async function renderConvertHub() {
     const mod = await import("./hubs/convert-hub.js");
     mod.render(main.querySelector("#hub-workspace"));
   } catch (e) { console.error("convert hub load failed:", e); }
+}
+
+async function renderImageHub() {
+  const main = document.getElementById("main");
+  main.innerHTML = `
+    <section class="page-head">
+      <h1>🖼️ ${t("hub.imagesTitle")}</h1>
+      <p>${t("hub.imagesSub")}</p>
+    </section>
+    <section class="workspace" id="hub-workspace"></section>`;
+  injectSEO({ title: `${t("nav.images")} — DouNest`, description: t("hub.imagesSub"), path: "/images" });
+  try {
+    const mod = await import("./hubs/image-hub.js");
+    mod.render(main.querySelector("#hub-workspace"));
+  } catch (e) { console.error("image hub load failed:", e); }
 }
 
 function affWrap(url) {
@@ -1040,6 +1056,7 @@ route("/rare/gems", () => renderRareCatView({ cat: "gems" }));
 route("/rare/classics", () => renderRareCatView({ cat: "classics" }));
 route("/rare/:slug", renderRareDetailView);
 route("/pdf", renderPdfHub);
+route("/images", renderImageHub);
 route("/convert", renderConvertHub);
 route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);

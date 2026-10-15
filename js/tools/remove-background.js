@@ -55,7 +55,10 @@ export function render(root) {
     show(blob);
   }
   function show(blob) {
+    if (!blob) return;
+    if (preview.dataset.url) URL.revokeObjectURL(preview.dataset.url);
     const url = URL.createObjectURL(blob);
+    preview.dataset.url = url;
     preview.innerHTML = `
       <img src="${url}" alt="result" style="max-width:100%;max-height:420px;border-radius:12px;background:
         repeating-conic-gradient(#8882 0% 25%, transparent 0% 50%) 50% / 20px 20px">
@@ -82,7 +85,13 @@ export function render(root) {
       const mod = await import(
         "https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm"
       );
-      const blob = await mod.removeBackground(f, {
+      // The package exposes the remover as the ESM default export. Keep the
+      // named fallback for CDN wrappers that re-export it under its function name.
+      const removeBackground = mod.default || mod.removeBackground;
+      if (typeof removeBackground !== "function") throw new Error("Background removal module unavailable");
+      const blob = await removeBackground(f, {
+        model: "isnet_quint8",
+        output: { format: "image/png", type: "foreground" },
         progress: (key, cur, total) => {
           const p = Math.round((cur / (total || 1)) * 100);
           barfill.style.width = p + "%";

@@ -40,7 +40,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mv9itdsk";
+  var B="v3-2026-10-15-mv9j8eh3";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -72,6 +72,7 @@
         <a href="/DouNest/">الرئيسية</a>
         <a href="/DouNest/tools/">كل الأدوات</a>
         <a href="/DouNest/pdf/">مركز PDF</a>
+        <a href="/DouNest/images/">مركز الصور</a>
         <a href="/DouNest/convert/">مركز التحويل</a>
         <a href="/DouNest/rare/">أدوات نادرة</a>
         <a href="/DouNest/ai/">دليل AI</a>
