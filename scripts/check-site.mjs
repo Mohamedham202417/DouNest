@@ -3,6 +3,8 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { TOOLS } from "../js/registry.js";
 import * as ops from "../js/lib/ops.js";
+import { getArticle } from "../js/articles.js";
+import { markdownToHtml } from "../js/lib/article-markdown.js";
 
 const ROOT = new URL("../", import.meta.url);
 const read = (p) => readFileSync(new URL(p, ROOT), "utf8");
@@ -38,6 +40,33 @@ ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
 for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/"]) ok(sitemap.includes(`/DouNest/${p}`), `sitemap missing ${p}`);
+
+// The two new troubleshooting guides are statically rendered in all supported locales.
+const articleLocales = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
+for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
+  const article = getArticle(slug);
+  ok(Boolean(article), `missing article data: ${slug}`);
+  for (const lang of articleLocales) {
+    const page = lang === "ar" ? `articles/${slug}/index.html` : `articles/${slug}/${lang}/index.html`;
+    ok(existsSync(new URL(page, ROOT)), `missing localized article page: ${page}`);
+    const html = read(page);
+    ok((html.match(/<h1\b/g) || []).length === 1, `${page}: expected exactly one H1`);
+    const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
+    const path = lang === "ar" ? `articles/${slug}/` : `articles/${slug}/${lang}/`;
+    ok(canonical?.[1] === `https://mohamedham202417.github.io/DouNest/${path}`, `${page}: wrong canonical`);
+    ok(html.includes(`hreflang="${lang}"`), `${page}: self hreflang missing`);
+    ok(html.includes(`hreflang="x-default"`), `${page}: x-default hreflang missing`);
+    ok(html.includes(`<article class="section article-body" lang="${lang}">`), `${page}: document language missing`);
+    ok(html.includes('<meta property="og:type" content="article" />'), `${page}: Open Graph article type missing`);
+    ok(html.includes("<blockquote>") && /<ol>|<ul>/.test(html), `${page}: Markdown callout/list not rendered`);
+    ok(html.includes("article-related"), `${page}: related internal article link missing`);
+    const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+    ok(schemas.some(schema => schema["@type"] === "Article" && schema.inLanguage === lang), `${page}: Article JSON-LD missing or wrong language`);
+    ok(sitemap.includes(`/DouNest/${path}`), `sitemap missing ${path}`);
+  }
+}
+const markdownSafety = markdownToHtml("**safe**\n\n[x](javascript:alert(1))\n\n<img src=x onerror=alert(1)>");
+ok(markdownSafety.includes("<strong>safe</strong>") && !markdownSafety.includes("javascript:") && !markdownSafety.includes("<img"), "article Markdown must format safely without injecting HTML");
 
 // Deterministic operation checks (no network, no browser and no AI calls).
 const yaml = ops.jsonToYaml({ name: "DouNest", count: 2, tags: ["pdf", "image"] });

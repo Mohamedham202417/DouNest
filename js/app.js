@@ -22,6 +22,7 @@ import { RARE_TOOLS, RARE_CATS, getRareTool, getRareCat, rareByCat, SECURITY_WAR
 import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML, securityWarningHTML } from "./rare-page.js";
 import { AI_TOOLS } from "./ai-directory.js";
 import { getArticles, getArticle } from "./articles.js";
+import { markdownToHtml } from "./lib/article-markdown.js";
 import { getFAQ, FAQ_CATS } from "./faq.js";
 
 /* ========= Config & base detection ========= */
@@ -266,7 +267,7 @@ function setLinkEl(rel, href) {
   if (!el) { el = document.createElement("link"); el.rel = rel; document.head.appendChild(el); }
   el.href = href;
 }
-function injectSEO({ title, description, path, jsonLd = [] }) {
+function injectSEO({ title, description, path, jsonLd = [], alternateLanguages = [], ogType = "website" }) {
   // canonical URLs match the static-file URLs (trailing slash) to avoid
   // duplicate-content signals between SPA state and prerendered pages
   const url = SITE_ROOT + (path === "/" ? "/" : path.replace(/\/$/, "") + "/");
@@ -275,9 +276,10 @@ function injectSEO({ title, description, path, jsonLd = [] }) {
   setMeta("property", "og:title", title);
   setMeta("property", "og:description", description);
   setMeta("property", "og:url", url);
-  setMeta("property", "og:type", "website");
+  setMeta("property", "og:type", ogType);
   setMeta("property", "og:image", `${SITE_ROOT}/assets/og-cover.png`);
-  setMeta("property", "og:locale", getLang() === "ar" ? "ar_AR" : "en_US");
+  const ogLocale = ({ ar: "ar_AR", en: "en_US", fr: "fr_FR", es: "es_ES", de: "de_DE", tr: "tr_TR", ru: "ru_RU", zh: "zh_CN", hi: "hi_IN", pt: "pt_BR" })[getLang()] || "en_US";
+  setMeta("property", "og:locale", ogLocale);
   setMeta("name", "twitter:card", "summary_large_image");
   setMeta("name", "twitter:title", title);
   setMeta("name", "twitter:description", description);
@@ -293,10 +295,13 @@ function injectSEO({ title, description, path, jsonLd = [] }) {
   });
   // proper hreflang alternates (replace the previous single one)
   document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
-  [["ar", "?lang=ar"], ["en", "?lang=en"], ["x-default", ""]].forEach(([hl, suffix]) => {
+  const alternates = alternateLanguages.length
+    ? alternateLanguages.map(item => [item.lang, item.url])
+    : [["ar", `${url}?lang=ar`], ["en", `${url}?lang=en`], ["x-default", url]];
+  alternates.forEach(([hl, target]) => {
     const el = document.createElement("link");
     el.rel = "alternate"; el.hreflang = hl;
-    el.href = `${SITE_ROOT}${path}${suffix}`;
+    el.href = target;
     document.head.appendChild(el);
   });
   document.querySelectorAll('script[data-ld="dyn"]').forEach(s => s.remove());
@@ -899,11 +904,14 @@ function renderAIDirectory() {
 function renderArticlesList() {
   const main = document.getElementById("main");
   const list = getArticles();
+  const articlePath = (article, lang = getLang()) => article.content?.[lang]
+    ? (lang === "ar" ? `/articles/${article.slug}` : `/articles/${article.slug}/${lang}`)
+    : `/articles/${article.slug}`;
   main.innerHTML = `
     <section class="page-head"><h1>${t("nav.articles")}</h1></section>
     <div class="tools-grid">
       ${list.map(a => `
-        <a class="tool-card article" href="${link("/articles/" + a.slug)}">
+        <a class="tool-card article" href="${link(articlePath(a))}">
           <div class="icon" aria-hidden="true">📝</div>
           <h3>${escapeHtml(pick(a.title, getLang()))}</h3>
           <p>${escapeHtml(pick(a.excerpt, getLang()))}</p>
@@ -913,51 +921,65 @@ function renderArticlesList() {
   injectSEO({ title: `${t("nav.articles")} — DouNest`, description: t("meta.description"), path: "/articles" });
 }
 
-function renderArticlePage({ slug }) {
+const RELATED_ARTICLE_LABELS = { ar: "دليل مرتبط", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
+
+function renderArticlePage({ slug, lang: routeLang }) {
   const article = getArticle(slug);
   const main = document.getElementById("main");
   if (!article) return notFoundHandler();
-  const lang = getLang();
+  if (routeLang && (!LANGS.some(item => item.code === routeLang) || !article.content?.[routeLang])) return notFoundHandler();
+  if (routeLang && routeLang !== getLang()) { setLang(routeLang); return; }
+  if (!routeLang && getLang() !== "ar" && article.content?.[getLang()]) { navigate(`/articles/${slug}/${getLang()}`); return; }
+  const lang = routeLang || getLang();
+  const title = pick(article.title, lang);
+  const excerpt = pick(article.excerpt, lang);
+  const canonicalPath = routeLang ? `/articles/${slug}/${routeLang}` : `/articles/${slug}`;
+  const rawTags = Array.isArray(article.tags) ? article.tags : (article.tags?.[lang] || article.tags?.en || []);
+  const tagsHtml = rawTags.length ? `<div class="article-tags"><div class="hash-chips" aria-label="${lang === "ar" ? "موضوعات المقال" : "Article topics"}">${rawTags.map(tag => `<span class="hash-chip">#${escapeHtml(tag)}</span>`).join("")}</div></div>` : "";
+  const relatedSlug = slug === "speed-up-slow-windows-pc" ? "wifi-connected-no-internet" : slug === "wifi-connected-no-internet" ? "speed-up-slow-windows-pc" : null;
+  const relatedArticle = relatedSlug ? getArticle(relatedSlug) : null;
+  const relatedPath = relatedSlug ? (lang === "ar" ? `/articles/${relatedSlug}` : `/articles/${relatedSlug}/${lang}`) : "";
+  const relatedHtml = relatedArticle ? `<aside class="article-related"><strong>${escapeHtml(RELATED_ARTICLE_LABELS[lang] || RELATED_ARTICLE_LABELS.en)}</strong><a href="${link(relatedPath)}">${escapeHtml(pick(relatedArticle.title, lang))}</a></aside>` : "";
+  const metaTitle = pick(article.metaTitle, lang) || title;
+  const availableLangs = LANGS.filter(item => article.content?.[item.code]).map(item => item.code);
+  const alternateLanguages = availableLangs.map(code => ({
+    lang: code,
+    url: `${SITE_ROOT}/articles/${slug}/${code === "ar" ? "" : `${code}/`}`
+  }));
+  alternateLanguages.push({ lang: "x-default", url: `${SITE_ROOT}/articles/${slug}/en/` });
   main.innerHTML = `
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="${link("/")}">DouNest</a><span class="sep">›</span>
       <a href="${link("/articles")}">${t("nav.articles")}</a><span class="sep">›</span>
-      <span class="current">${escapeHtml(pick(article.title, lang))}</span>
+      <span class="current">${escapeHtml(title)}</span>
     </nav>
-    <article class="section article-body">
-      <h1>${escapeHtml(pick(article.title, lang))}</h1>
+    <article class="section article-body" lang="${lang}">
+      <h1>${escapeHtml(title)}</h1>
       <p class="article-date">${article.date}</p>
-      <div class="explanation">${markdownToHtml(article.content[lang] || article.content.en)}</div>
-      ${article.tags?.length ? `<div class="article-tags">${hashtagChipsHTML(article.tags, lang, link("/tools") + "?q=")}</div>` : ""}
+      <div class="explanation">${markdownToHtml(article.content[lang] || article.content.en, BASE)}</div>
+      ${relatedHtml}
+      ${tagsHtml}
     </article>`;
   injectSEO({
-    title: `${pick(article.title, lang)} — DouNest`,
-    description: pick(article.excerpt, lang),
-    path: `/articles/${slug}`,
+    title: `${metaTitle} | DouNest`,
+    description: excerpt,
+    path: canonicalPath,
     jsonLd: [{
       "@context": "https://schema.org",
       "@type": "Article",
-      "headline": pick(article.title, lang),
+      "headline": title,
+      "description": excerpt,
+      "mainEntityOfPage": { "@type": "WebPage", "@id": `${SITE_ROOT}${canonicalPath}/` },
       "datePublished": article.date,
+      "dateModified": article.updated || article.date,
+      "keywords": rawTags.join(", "),
       "inLanguage": lang,
-      "author": { "@type": "Organization", "name": "DouNest" }
-    }]
+      "author": { "@type": "Organization", "name": "DouNest", "url": `${SITE_ROOT}/` },
+      "publisher": { "@type": "Organization", "name": "DouNest", "logo": { "@type": "ImageObject", "url": `${SITE_ROOT}/assets/dounest-logo.png` } }
+    }],
+    alternateLanguages,
+    ogType: "article"
   });
-}
-
-function markdownToHtml(md) {
-  const esc = escapeHtml(md);
-  return esc
-    .replace(/^### (.*$)/gm, "<h3>$1</h3>")
-    .replace(/^## (.*$)/gm, "<h2>$1</h2>")
-    .replace(/^# (.*$)/gm, "<h1>$1</h1>")
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/\[(.*?)\]\((.*?)\)/g, (mm, txt, href) => {
-      const h = href.startsWith("/") ? (BASE.replace(/\/$/, "") + href) : href;
-      return `<a href="${h}">${txt}</a>`;
-    })
-    .replace(/\n\n/g, "</p><p>")
-    .replace(/^(?!<[hp])(.+)$/gm, "<p>$1</p>");
 }
 
 /* ========= Static pages ========= */
@@ -1077,6 +1099,15 @@ document.addEventListener("langchange", () => {
   renderLangMenu();
   setLangDirLink();
   applyTranslations();
+  const match = currentPath().match(/^\/articles\/([^/]+)(?:\/([a-z]{2}))?$/);
+  if (match) {
+    const article = getArticle(match[1]);
+    const nextLang = getLang();
+    if (article?.content?.[nextLang]) {
+      const target = nextLang === "ar" ? `/articles/${match[1]}` : `/articles/${match[1]}/${nextLang}`;
+      if (currentPath() !== target) { navigate(target); return; }
+    }
+  }
   resolve(); // re-render current route with new language
 });
 
@@ -1100,6 +1131,7 @@ route("/security", () => renderAdditionalCenter({ center: "security" }));
 route("/calculators", () => renderAdditionalCenter({ center: "calculators" }));
 route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);
+route("/articles/:slug/:lang", renderArticlePage);
 route("/articles/:slug", renderArticlePage);
 route("/about", renderAbout);
 route("/faq", renderFaq);
