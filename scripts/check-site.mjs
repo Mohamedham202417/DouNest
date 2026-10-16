@@ -44,6 +44,8 @@ for (const slug of ["pdf", "images", "convert", "text", "dev", "security", "calc
 const home = read("index.html");
 ok((home.match(/<h1\b/g) || []).length === 1, "home needs one H1");
 ok(/مراكز العمل/.test(home), "home center links missing");
+ok((home.match(/class="explore-card"/g) || []).length >= 7, "home work centers must render as separate cards");
+ok(home.includes("id=\"nav-toggle\"") && home.includes("id=\"topnav\""), "mobile navigation toggle/panel missing");
 ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
@@ -62,6 +64,9 @@ for (const id of ["convertWebp", "compressJpg", "resize", "crop", "rotateFlip", 
 for (const id of ["imageFormat", "csvToJson", "jsonToCsv", "xlsxToCsv", "xlsxToJson", "docxToText", "textToPdf", "svgToPng", "jsonYaml"])
   ok(Boolean(CONVERT_ACTIONS[id]), `conversion action missing: ${id}`);
 ok(read("assets/styles-v4.css").includes(".hub-drop {"), "shared workbench upload styling missing");
+ok(read("assets/styles-v4.css").includes(".explore-card {"), "home work center card styling missing");
+ok(read("assets/styles-v4.css").includes(".topnav.open { display: flex; }"), "mobile navigation popup styling missing");
+ok(read("js/hub-kit.js").includes("FILE_READ_FAILED") && read("js/hub-kit.js").includes("Download it to this device"), "file read errors should provide a clear local-file recovery step");
 ok(read("assets/styles.css").includes(".topnav-group > summary"), "center navigation dropdown styling missing");
 
 // The two new troubleshooting guides are statically rendered in all supported locales.

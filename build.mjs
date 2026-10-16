@@ -179,7 +179,7 @@ ${ld}
         <img src="${R("assets/dounest-logo.png")}" class="brand-logo" alt="DouNest" width="38" height="38" />
         <span class="brand-name">DouNest</span>
       </a>
-      <nav class="topnav" aria-label="Main">
+      <nav id="topnav" class="topnav" aria-label="Main">
         <a href="${R("")}" data-i18n="nav.home">${V.home}</a>
         <a href="${R("tools/")}" data-i18n="nav.allTools">${V.allTools}</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
@@ -193,6 +193,7 @@ ${ld}
         <a href="${R("rare/")}" data-i18n="nav.rare">${V.rare}</a><a href="${R("ai/")}" data-i18n="nav.ai">${V.ai}</a>
       </nav>
       <div class="topbar-actions">
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>

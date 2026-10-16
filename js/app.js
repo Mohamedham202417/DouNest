@@ -1094,6 +1094,22 @@ function renderNotFound() {
 
 /* ========= Header wiring ========= */
 function wireHeader() {
+  const nav = document.getElementById("topnav");
+  const navToggle = document.getElementById("nav-toggle");
+  if (nav && navToggle) {
+    const setOpen = open => {
+      nav.classList.toggle("open", open);
+      navToggle.setAttribute("aria-expanded", String(open));
+      navToggle.setAttribute("aria-label", open ? t("nav.closeMenu") : t("nav.openMenu"));
+      navToggle.textContent = open ? "×" : "☰";
+    };
+    navToggle.addEventListener("click", () => setOpen(!nav.classList.contains("open")));
+    nav.addEventListener("click", e => { if (e.target.closest("a")) setOpen(false); });
+    document.addEventListener("click", e => {
+      if (!nav.contains(e.target) && !navToggle.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") setOpen(false); });
+  }
   const support = supportButton("header");
   if (support) {
     const actions = document.querySelector(".topbar-actions");
