@@ -27,11 +27,11 @@ export function workbench(root, cfg) {
   const standaloneText = !!cfg.textMode;
   root.innerHTML = `
     <div class="hub-drop" id="wb-drop" role="button" tabindex="0" aria-label="${escapeHtml(label("drop", "Drop files here"))}">
-      <span class="hub-drop-icon" aria-hidden="true">${cfg.icon || "📁"}</span><p>${escapeHtml(label("drop", "Drop files here"))}</p>
+      <span class="hub-drop-icon" aria-hidden="true">${cfg.icon || "📁"}</span><p>${escapeHtml(label("drop", "Drop files here"))}</p><span class="hub-browse-hint">${escapeHtml(label("dropHelp", AR ? "اضغط لاختيار الملفات أو اسحبها إلى هنا" : "Click to browse or drag files here"))}</span>
       <input type="file" id="wb-input" ${cfg.multiple === false ? "" : "multiple"} accept="${escapeHtml(cfg.accept || "*/*")}" hidden>
     </div>
     ${standaloneText ? `<label class="wb-opt wb-input-text">${escapeHtml(label("textLabel", AR ? "النص أو المدخل" : "Text / input"))}<textarea id="wb-text" rows="8" placeholder="${escapeHtml(label("textPlaceholder", AR ? "الصق أو اكتب هنا…" : "Paste or type here…"))}"></textarea></label>` : ""}
-    <div class="hub-files" id="wb-files" hidden><h3>${escapeHtml(label("files", "Loaded files"))} <button class="btn btn-ghost btn-sm" id="wb-clear">${escapeHtml(label("clear", "Clear all"))}</button></h3><ul class="hub-filelist" id="wb-list"></ul></div>
+    <div class="hub-files" id="wb-files" hidden><h3>${escapeHtml(label("files", "Loaded files"))} <button class="btn btn-ghost btn-sm" id="wb-clear">${escapeHtml(label("clear", "Clear all"))}</button></h3><p class="wb-file-help">${escapeHtml(label("fileHelp", AR ? "رتّب الملفات بالأسهم قبل الدمج أو المعالجة المجمّعة." : "Use the arrows to set file order before merging or batch processing."))}</p><ul class="hub-filelist" id="wb-list"></ul></div>
     <div class="hub-actions" id="wb-actions" hidden><h3>${escapeHtml(label("actions", "Actions"))}</h3>
       <div class="hub-quality wb-opts" id="wb-opts"></div><div class="action-grid" id="wb-grid"></div></div>
     ${cfg.resultPanel ? `<div class="wb-result" id="wb-result" hidden><label>${escapeHtml(label("result", AR ? "النتيجة" : "Result"))}<textarea id="wb-result-text" rows="8" readonly></textarea><button class="btn btn-ghost btn-sm" id="wb-copy">${escapeHtml(label("copy", AR ? "نسخ" : "Copy"))}</button></div>` : ""}
@@ -58,23 +58,42 @@ export function workbench(root, cfg) {
     catch { resultText.select(); document.execCommand("copy"); }
   });
 
+  function accepts(file) {
+    if (cfg.filter && !cfg.filter(file)) return false;
+    const rules = String(cfg.accept || "").split(",").map(x => x.trim().toLowerCase()).filter(Boolean);
+    if (!rules.length) return true;
+    const name = file.name.toLowerCase(), type = (file.type || "").toLowerCase();
+    return rules.some(rule => rule.startsWith(".") ? name.endsWith(rule) : rule.endsWith("/*") ? type.startsWith(rule.slice(0, -1)) : type === rule);
+  }
   function add(more) {
-    const accepted = cfg.filter ? more.filter(cfg.filter) : more;
-    files = cfg.multiple === false ? accepted.slice(0, 1) : [...files, ...accepted];
+    const accepted = more.filter(accepts);
+    const rejected = more.length - accepted.length;
+    let limited = false;
+    if (rejected) statusEl.textContent = label("unsupported", AR ? `تُجاهل ${rejected} ملفاً بصيغة غير مدعومة.` : `${rejected} unsupported file(s) ignored.`);
+    if (cfg.maxFiles) {
+      const available = Math.max(0, cfg.maxFiles - (cfg.multiple === false ? 0 : files.length));
+      if (accepted.length > available) { limited = true; statusEl.textContent = label("fileLimit", AR ? `الحد الأقصى ${cfg.maxFiles} ملفات.` : `Maximum ${cfg.maxFiles} files.`); }
+      accepted.length = Math.min(accepted.length, available);
+    }
+    files = cfg.multiple === false ? accepted.slice(-1) : [...files, ...accepted];
     refresh();
+    if (accepted.length && !rejected && !limited) statusEl.textContent = label("queued", AR ? `تمت إضافة ${files.length} ملف — اختر العملية.` : `${files.length} file(s) ready — choose an action.`);
   }
   const state = () => ({ files, pdfs: files.filter(isPdf), imgs: files.filter(isImg), text: files.filter(f => !isPdf(f) && !isImg(f)) });
 
   function refresh() {
     filesWrap.hidden = !files.length;
-    list.innerHTML = files.map((f, i) => `<li><span class="hub-file-name">${escapeHtml(f.name)} — ${formatBytes(f.size)}</span><button class="btn btn-ghost btn-sm" data-rm="${i}" aria-label="remove">×</button></li>`).join("");
+    list.innerHTML = files.map((f, i) => `<li><span class="wb-file-index">${i + 1}</span><span class="hub-file-name">${escapeHtml(f.name)} <small>${formatBytes(f.size)}</small></span><span class="wb-file-controls"><button class="btn btn-ghost btn-sm" data-up="${i}" aria-label="${escapeHtml(label("moveUp", AR ? "تحريك إلى أعلى" : "Move up"))}"${i === 0 ? " disabled" : ""}>↑</button><button class="btn btn-ghost btn-sm" data-down="${i}" aria-label="${escapeHtml(label("moveDown", AR ? "تحريك إلى أسفل" : "Move down"))}"${i === files.length - 1 ? " disabled" : ""}>↓</button><button class="btn btn-ghost btn-sm" data-rm="${i}" aria-label="${escapeHtml(label("remove", AR ? "إزالة الملف" : "Remove file"))}">×</button></span></li>`).join("");
     list.querySelectorAll("[data-rm]").forEach(b => b.onclick = () => { files.splice(+b.dataset.rm, 1); refresh(); });
+    list.querySelectorAll("[data-up]").forEach(b => b.onclick = () => { const i = +b.dataset.up; [files[i - 1], files[i]] = [files[i], files[i - 1]]; refresh(); });
+    list.querySelectorAll("[data-down]").forEach(b => b.onclick = () => { const i = +b.dataset.down; [files[i + 1], files[i]] = [files[i], files[i + 1]]; refresh(); });
     renderActions();
   }
   function applicable(a, st) {
     if (a.visible && !a.visible(st)) return false;
     switch (a.needs || "any") {
       case "pdf": return st.pdfs.length >= 1;
+      case "pdfOne": return st.pdfs.length === 1;
       case "pdf2": return st.pdfs.length >= 2;
       case "image": return st.imgs.length >= 1;
       case "one": return st.files.length === 1;
@@ -123,11 +142,7 @@ export function workbench(root, cfg) {
     error: e => { statusEl.textContent = "❌ " + (e?.message || e); }
   };
 
-  grid.addEventListener("dblclick", async e => {
-    const btn = e.target.closest("[data-act]");
-    if (btn && selectedAction) await run(selectedAction, btn);
-  });
-  // Simple “Run” semantics: selecting the action creates an explicit run button.
+  // Selecting an action exposes its settings and one clear, explicit run button.
   const runHost = document.createElement("div");
   runHost.className = "wb-run-host";
   actionsWrap.appendChild(runHost);

@@ -13,6 +13,7 @@ export function render(root) {
       <label>PDF</label>
       <input type="file" id="file" accept="application/pdf">
     </div>
+    <p class="operation-note" role="note">${t("pdfc.warning")}</p>
     <div class="row">
       <div class="field"><label>${t("pdfc.level")}</label>
         <select id="scale">
@@ -29,7 +30,7 @@ export function render(root) {
       <button class="btn btn-primary" id="run" disabled>${t("tool.run")}</button>
       <button class="btn" id="download" disabled>${t("tool.download")}</button>
     </div>
-    <div id="status" style="color:var(--text-muted);font-size:13px;margin-top:8px"></div>
+    <div id="status" role="status" aria-live="polite" style="color:var(--text-muted);font-size:13px;margin-top:8px"></div>
   `;
   const file = root.querySelector("#file");
   const scaleSel = root.querySelector("#scale");
@@ -73,8 +74,10 @@ export function render(root) {
         p.drawImage(img, { x: 0, y: 0, width: img.width, height: img.height });
       }
       outBytes = await outDoc.save({ useObjectStreams: false });
-      const saved = ((1 - outBytes.length / f.size) * 100).toFixed(0);
-      status.textContent = `✓ ${formatBytes(f.size)} → ${formatBytes(outBytes.length)} (${saved}% ↓)`;
+      const delta = f.size - outBytes.length;
+      const change = Math.round(Math.abs(delta) / Math.max(1, f.size) * 100);
+      const sizeNote = delta > 0 ? `${change}% ${t("pdfc.smaller")}` : delta < 0 ? `${change}% ${t("pdfc.larger")}` : t("pdfc.same");
+      status.textContent = `✓ ${formatBytes(f.size)} → ${formatBytes(outBytes.length)} (${sizeNote})`;
       dl.disabled = false;
       toastSuccess(t("tool.result") + " ✓");
     } catch (e) {

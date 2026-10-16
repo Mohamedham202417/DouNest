@@ -12,7 +12,7 @@
 import { workbench, isPdf, isImg } from "../hub-kit.js";
 import * as ops from "./ops.js";
 
-const EN = () => document.documentElement.lang === "en";
+const EN = () => typeof document !== "undefined" && document.documentElement.lang === "en";
 const t2 = (ar, en) => (EN() ? en : ar);
 const isSvg = (f) => f.type === "image/svg+xml" || /\.svg$/i.test(f.name);
 const isYaml = (f) => /\.(ya?ml)$/i.test(f.name);
@@ -36,6 +36,56 @@ export function parsePageOrder(spec, total) {
 /* ============================== PDF ============================== */
 
 export const PDF_ACTIONS = {
+  compress: {
+    id: "compress", label: t2("تقليل حجم PDF (يعيد الرسم كصور)", "Reduce PDF size (rasterizes pages)"), icon: "🗜️", needs: "pdfOne",
+    options: [
+      { id: "scale", kind: "select", label: t2("دقة الصفحات", "Page resolution"), value: "1.1", choices: [{ v: "1.5", label: t2("أعلى", "Higher") }, { v: "1.1", label: t2("متوسطة", "Medium") }, { v: "0.8", label: t2("أقل / حجم أصغر", "Lower / smaller") }] },
+      { id: "quality", kind: "range", label: t2("جودة JPEG", "JPEG quality"), value: 0.7, min: 0.3, max: 0.95, step: 0.05 }
+    ],
+    async run(st, ui) {
+      const f = st.pdfs[0];
+      const blob = await ops.pdfCompressRaster(f, { scale: +ui.opt("scale"), quality: ui.opt("quality"), onProgress: (i,n) => ui.status(`${i}/${n}`) });
+      const delta = f.size - blob.size, pct = Math.round(Math.abs(delta) / Math.max(1,f.size) * 100);
+      ui.save(blob, `${ui.base(f.name)}-rasterized.pdf`);
+      ui.status(`✓ ${Math.round(f.size/1024)} KB → ${Math.round(blob.size/1024)} KB (${pct}% ${t2(delta >= 0 ? "أصغر أو مساوٍ" : "أكبر", delta >= 0 ? "smaller or same" : "larger")}) · ${t2("النص أصبح صوراً؛ افحص الملف.", "Text is rasterized; review the output.")}`);
+    }
+  },
+  merge: {
+    id: "merge", label: t2("دمج ملفات PDF", "Merge PDFs"), icon: "🔗", needs: "pdf2",
+    async run(st, ui) {
+      const blob = await ops.pdfMerge(st.pdfs);
+      ui.save(blob, "merged.pdf"); ui.status(`✓ ${st.pdfs.length} ${t2("ملفات مدمجة", "files merged")} · ${Math.round(blob.size/1024)} KB`);
+    }
+  },
+  split: {
+    id: "split", label: t2("تقسيم كل صفحة (ZIP)", "Split every page (ZIP)"), icon: "✂️", needs: "pdfOne",
+    async run(st, ui) {
+      const f = st.pdfs[0], blob = await ops.pdfSplitZip(f, (i,n) => ui.status(`${i}/${n}`));
+      ui.save(blob, `${ui.base(f.name)}-pages.zip`); ui.status("✓ " + t2("تم تقسيم الصفحات", "Pages split"));
+    }
+  },
+  rotate: {
+    id: "rotate", label: t2("تدوير جميع الصفحات", "Rotate all pages"), icon: "🔄", needs: "pdfOne",
+    options: [{ id: "angle", kind: "select", label: t2("الزاوية", "Angle"), value: 90, choices: [90,180,270].map(v => ({ v, label: `${v}°` })) }],
+    async run(st, ui) { const f=st.pdfs[0], blob=await ops.pdfRotate(f,ui.opt("angle")); ui.save(blob,`${ui.base(f.name)}-rotated.pdf`); ui.status("✓"); }
+  },
+  toJpg: {
+    id: "toJpg", label: t2("PDF إلى JPG (ZIP)", "PDF to JPG (ZIP)"), icon: "🖼️", needs: "pdfOne",
+    options: [{ id: "jpgQuality", kind: "range", label: t2("جودة JPG", "JPG quality"), value: 0.85, min: 0.4, max: 0.98, step: 0.02 }],
+    async run(st, ui) { const f=st.pdfs[0], blob=await ops.pdfToJpgZip(f,{quality:ui.opt("jpgQuality"),onProgress:(i,n)=>ui.status(`${i}/${n}`)}); ui.save(blob,`${ui.base(f.name)}-jpg.zip`); ui.status("✓"); }
+  },
+  toText: {
+    id: "toText", label: t2("استخراج النص إلى TXT", "Extract text to TXT"), icon: "📝", needs: "pdfOne",
+    async run(st,ui) { const f=st.pdfs[0], text=await ops.pdfExtractText(f,(i,n)=>ui.status(`${i}/${n}`)); ui.save(new Blob([text],{type:"text/plain;charset=utf-8"}),`${ui.base(f.name)}.txt`); ui.status("✓"); }
+  },
+  toWord: {
+    id: "toWord", label: t2("استخراج النص إلى DOC", "Extract text to DOC"), icon: "📄", needs: "pdfOne",
+    async run(st,ui) { const f=st.pdfs[0], blob=await ops.pdfToWordDoc(f,(i,n)=>ui.status(`${i}/${n}`)); ui.save(blob,`${ui.base(f.name)}-text.doc`); ui.status("✓ · "+t2("ملف DOC مبني على HTML؛ راجع التخطيط.","HTML-based DOC; review layout.")); }
+  },
+  imagesToPdf: {
+    id: "imagesToPdf", label: t2("صور إلى PDF", "Images to PDF"), icon: "📸", needs: "image",
+    async run(st,ui) { const blob=await ops.imagesToPdf(st.imgs); ui.save(blob,"images.pdf"); ui.status(`✓ ${st.imgs.length} ${t2("صور", "images")}`); }
+  },
   organize: {
     id: "organize", label: t2("إعادة ترتيب/حذف صفحات", "Reorder / delete pages"), icon: "🗂️", needs: "pdf",
     options: [
@@ -93,7 +143,45 @@ const RATIOS = {
   free: null, "1:1": 1, "4:5": 4 / 5, "16:9": 16 / 9, "9:16": 9 / 16, "3:2": 3 / 2
 };
 
+async function saveImageBatch(files, blobs, ui, suffix, extension) {
+  if (blobs.length === 1) {
+    ui.save(blobs[0], `${ui.base(files[0].name)}-${suffix}.${extension}`);
+    return [{ name: files[0].name, before: files[0].size, after: blobs[0].size }];
+  }
+  const Zip = await ops.jszip(), zip = new Zip();
+  blobs.forEach((blob, i) => zip.file(`${String(i+1).padStart(2,"0")}-${ui.base(files[i].name)}-${suffix}.${extension}`, blob));
+  ui.save(await zip.generateAsync({ type: "blob" }), `${suffix}-images.zip`);
+  return blobs.map((b,i) => ({ name: files[i].name, before: files[i].size, after: b.size }));
+}
+function imageSummary(rows, ui) {
+  const ar = !EN();
+  ui.result(rows.map(r => `${r.name}: ${Math.round(r.before/1024)} KB → ${Math.round(r.after/1024)} KB`).join("\n"));
+}
+
 export const IMAGE_ACTIONS = {
+  convertWebp: {
+    id: "convertWebp", label: t2("تحويل إلى WebP", "Convert to WebP"), icon: "⚡", needs: "image",
+    options: [{ id: "webpQuality", kind: "range", label: t2("جودة WebP", "WebP quality"), value: 0.82, min: 0.35, max: 1, step: 0.05 }],
+    async run(st,ui) { const blobs=await Promise.all(st.imgs.map(f=>ops.imageEncode(f,{format:"image/webp",quality:ui.opt("webpQuality")}))); const rows=await saveImageBatch(st.imgs,blobs,ui,"converted","webp"); imageSummary(rows,ui); ui.status("✓"); }
+  },
+  compressJpg: {
+    id: "compressJpg", label: t2("ضغط إلى JPG", "Compress to JPG"), icon: "🗜️", needs: "image",
+    options: [{ id: "jpgQuality", kind: "range", label: t2("جودة JPG", "JPG quality"), value: 0.82, min: 0.35, max: 1, step: 0.05 }],
+    async run(st,ui) { const blobs=await Promise.all(st.imgs.map(f=>ops.imageEncode(f,{format:"image/jpeg",quality:ui.opt("jpgQuality"),background:"#fff"}))); const rows=await saveImageBatch(st.imgs,blobs,ui,"compressed","jpg"); imageSummary(rows,ui); ui.status("✓ " + t2("خلفية JPG بيضاء؛ قارن الحجم.","JPEG background is white; compare sizes.")); }
+  },
+  resize: {
+    id: "resize", label: t2("تغيير العرض", "Resize width"), icon: "↔️", needs: "image",
+    options: [{ id: "newWidth", kind: "number", label: t2("العرض الأقصى (px)", "Maximum width (px)"), value: 1200, min: 16, max: 10000 }],
+    async run(st,ui) { const blobs=await Promise.all(st.imgs.map(f=>ops.imageEncode(f,{format:f.type==="image/png"?"image/png":"image/webp",width:ui.opt("newWidth")}))); const ext=st.imgs[0].type==="image/png"?"png":"webp"; const rows=await saveImageBatch(st.imgs,blobs,ui,"resized",ext); imageSummary(rows,ui); ui.status("✓"); }
+  },
+  removeBackground: {
+    id: "removeBackground", label: t2("إزالة الخلفية (صورة واحدة)", "Remove background (one image)"), icon: "✂️", needs: "image", visible: st => st.imgs.length === 1,
+    async run(st,ui) { ui.status(t2("جارٍ تحميل نموذج إزالة الخلفية…", "Loading background-removal model…")); const mod=await import("https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm"); const fn=mod.default||mod.removeBackground; if(typeof fn!=="function") throw new Error("Background-removal model unavailable"); const blob=await fn(st.imgs[0],{output:{format:"image/png",type:"foreground"},model:"isnet_quint8",progress:(key,cur,total)=>ui.status(`${key}: ${Math.round(cur/Math.max(1,total)*100)}%`)}); ui.save(blob,`${ui.base(st.imgs[0].name)}-no-background.png`); ui.status("✓"); }
+  },
+  toPdf: {
+    id: "toPdf", label: t2("صور إلى PDF", "Images to PDF"), icon: "📄", needs: "image",
+    async run(st,ui) { const blob=await ops.imagesToPdf(st.imgs); ui.save(blob,"images.pdf"); ui.status(`✓ ${st.imgs.length} ${t2("صور؛ الخلفيات الشفافة تصبح بيضاء.","images; transparent areas become white.")}`); }
+  },
   crop: {
     id: "crop", label: t2("قص الصورة", "Crop image"), icon: "✂️", needs: "image",
     options: [
@@ -195,7 +283,58 @@ export const IMAGE_ACTIONS = {
 
 /* ============================ CONVERT ============================ */
 
+function parseCSV(text) {
+  const rows=[]; let row=[], cell="", quoted=false;
+  for(let i=0;i<text.length;i++) { const c=text[i];
+    if(quoted) { if(c==='"' && text[i+1]==='"') { cell+='"'; i++; } else if(c==='"') quoted=false; else cell+=c; }
+    else if(c==='"') quoted=true;
+    else if(c===",") { row.push(cell); cell=""; }
+    else if(c==="\n" || c==="\r") { if(c==="\r"&&text[i+1]==="\n") i++; row.push(cell); cell=""; if(row.some(x=>x!=="")) rows.push(row); row=[]; }
+    else cell+=c;
+  }
+  row.push(cell); if(row.some(x=>x!=="")) rows.push(row); return rows;
+}
+const csvCell = v => { const s=v==null?"":typeof v==="object"?JSON.stringify(v):String(v); return /[",\n\r]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s; };
+async function readXlsxRows(file) {
+  const Zip=await ops.jszip(), zip=await Zip.loadAsync(await file.arrayBuffer());
+  let shared=[];
+  if(zip.file("xl/sharedStrings.xml")) { const doc=new DOMParser().parseFromString(await zip.file("xl/sharedStrings.xml").async("text"),"text/xml"); shared=[...doc.getElementsByTagName("si")].map(si=>[...si.getElementsByTagName("t")].map(n=>n.textContent).join("")); }
+  const name=zip.file("xl/worksheets/sheet1.xml")?"xl/worksheets/sheet1.xml":Object.keys(zip.files).find(n=>/^xl\/worksheets\/sheet\d+\.xml$/.test(n));
+  if(!name) throw new Error(t2("لم يُعثر على ورقة عمل XLSX","No XLSX worksheet found"));
+  const doc=new DOMParser().parseFromString(await zip.file(name).async("text"),"text/xml");
+  return [...doc.getElementsByTagName("row")].map(row=>[...row.getElementsByTagName("c")].map(cell=>{const v=cell.getElementsByTagName("v")[0]?.textContent??"";return cell.getAttribute("t")==="s"?(shared[+v]??""):v;}));
+}
+
 export const CONVERT_ACTIONS = {
+  imageFormat: {
+    id: "imageFormat", label: t2("تحويل صورة إلى PNG/JPG/WebP", "Convert image to PNG/JPG/WebP"), icon: "🖼️", needs: "image",
+    options: [{ id: "targetFormat", kind: "select", label: t2("صيغة الخرج", "Output format"), value: "image/png", choices: [{v:"image/png",label:"PNG"},{v:"image/jpeg",label:"JPG"},{v:"image/webp",label:"WebP"}] }],
+    async run(st,ui) { const format=ui.opt("targetFormat"),ext=format.split("/")[1].replace("jpeg","jpg"), blobs=[]; for(const f of st.imgs) blobs.push(await ops.imageEncode(f,{format,quality:0.9,background:"#fff"})); const rows=await saveImageBatch(st.imgs,blobs,ui,"converted",ext); imageSummary(rows,ui); ui.status("✓ " + t2("قد يفقد JPG الشفافية.","JPG may lose transparency.")); }
+  },
+  csvToJson: {
+    id: "csvToJson", label: t2("CSV → JSON", "CSV → JSON"), icon: "📊", needs: "one", visible: st=>st.files.some(f=>/\.csv$/i.test(f.name)),
+    async run(st,ui) { const f=st.files[0],rows=parseCSV(await f.text()); if(!rows.length) throw new Error("Empty CSV"); const headers=rows[0],out=rows.slice(1).map(r=>Object.fromEntries(headers.map((h,i)=>[h,r[i]??""]))); const text=JSON.stringify(out,null,2); ui.result(text); ui.save(new Blob([text],{type:"application/json"}),`${ui.base(f.name)}.json`); ui.status("✓"); }
+  },
+  jsonToCsv: {
+    id: "jsonToCsv", label: t2("JSON → CSV", "JSON → CSV"), icon: "📊", needs: "one", visible: st=>st.files.some(isJson),
+    async run(st,ui) { const f=st.files[0],data=JSON.parse(await f.text()),arr=Array.isArray(data)?data:[data],keys=[...new Set(arr.flatMap(o=>o&&typeof o==="object"?Object.keys(o):[]))]; const text="\uFEFF"+[keys.map(csvCell).join(","),...arr.map(o=>keys.map(k=>csvCell(o?.[k])).join(","))].join("\r\n"); ui.result(text); ui.save(new Blob([text],{type:"text/csv;charset=utf-8"}),`${ui.base(f.name)}.csv`); ui.status("✓"); }
+  },
+  xlsxToCsv: {
+    id: "xlsxToCsv", label: t2("XLSX → CSV (الورقة الأولى)", "XLSX → CSV (first sheet)"), icon: "📊", needs: "one", visible: st=>st.files.some(f=>/\.xlsx?$/i.test(f.name)),
+    async run(st,ui) { const f=st.files[0],rows=await readXlsxRows(f),text="\uFEFF"+rows.map(r=>r.map(csvCell).join(",")).join("\r\n"); ui.result(text); ui.save(new Blob([text],{type:"text/csv;charset=utf-8"}),`${ui.base(f.name)}.csv`); ui.status("✓ " + t2("الورقة الأولى فقط؛ الصيغ والتنسيقات لا تُحفظ.","First worksheet only; formulas and formatting are not preserved.")); }
+  },
+  xlsxToJson: {
+    id: "xlsxToJson", label: t2("XLSX → JSON (الورقة الأولى)", "XLSX → JSON (first sheet)"), icon: "📊", needs: "one", visible: st=>st.files.some(f=>/\.xlsx?$/i.test(f.name)),
+    async run(st,ui) { const f=st.files[0],rows=await readXlsxRows(f); if(!rows.length) throw new Error("Empty workbook"); const out=rows.slice(1).map(r=>Object.fromEntries(rows[0].map((h,i)=>[h,r[i]??""]))),text=JSON.stringify(out,null,2); ui.result(text); ui.save(new Blob([text],{type:"application/json"}),`${ui.base(f.name)}.json`); ui.status("✓ " + t2("الورقة الأولى فقط؛ الصيغ والتنسيقات لا تُحفظ.","First worksheet only; formulas and formatting are not preserved.")); }
+  },
+  docxToText: {
+    id: "docxToText", label: t2("DOCX → TXT", "DOCX → TXT"), icon: "📄", needs: "one", visible: st=>st.files.some(f=>/\.docx$/i.test(f.name)),
+    async run(st,ui) { const f=st.files[0],Zip=await ops.jszip(),zip=await Zip.loadAsync(await f.arrayBuffer()),entry=zip.file("word/document.xml"); if(!entry) throw new Error("Invalid DOCX"); const xml=await entry.async("text"),doc=new DOMParser().parseFromString(xml,"application/xml"); const text=[...doc.getElementsByTagName("w:p")].map(p=>[...p.getElementsByTagName("w:t")].map(n=>n.textContent).join("")).join("\n"); ui.result(text); ui.save(new Blob([text],{type:"text/plain;charset=utf-8"}),`${ui.base(f.name)}.txt`); ui.status("✓ " + t2("النص فقط؛ الصور والتنسيق لا يُحفظان.","Text only; images and formatting are not preserved.")); }
+  },
+  textToPdf: {
+    id: "textToPdf", label: t2("TXT → PDF (لاتيني فقط)", "TXT → PDF (Latin text only)"), icon: "📄", needs: "one", visible: st=>st.files.some(f=>/\.(txt|md)$/i.test(f.name)),
+    async run(st,ui) { const f=st.files[0],src=await f.text(),text=src.replace(/[^\x00-\xFF]/g,"?").slice(0,20000),{PDFDocument,StandardFonts}=await ops.pdfLib(),doc=await PDFDocument.create(),font=await doc.embedFont(StandardFonts.Helvetica); let page=doc.addPage([595,842]),y=800; for(const line of text.split(/\r?\n/)){if(y<50){page=doc.addPage([595,842]);y=800;} page.drawText(line.slice(0,90),{x:45,y,size:11,font}); y-=17;} const blob=new Blob([await doc.save()],{type:"application/pdf"}); ui.save(blob,`${ui.base(f.name)}.pdf`); ui.status("✓ " + t2("الأحرف غير اللاتينية تُستبدل بعلامة ؟.","Non-Latin characters are replaced with ?.")); }
+  },
   svgToPng: {
     id: "svgToPng", label: t2("SVG → PNG", "SVG → PNG"), icon: "🖼️", needs: "any",
     visible: st => st.files.some(isSvg),

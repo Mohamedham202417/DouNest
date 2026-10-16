@@ -138,6 +138,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 .topnav a:hover { color: var(--text); background: var(--grad-soft); }
 .topnav a.active { color: var(--primary); background: var(--grad-soft); font-weight: 700; }
+.topnav-group { position: relative; flex: 0 0 auto; align-self: center; }
+.topnav-group > summary { list-style: none; white-space: nowrap; cursor: pointer; color: var(--text-muted); font-weight: 650; font-size: 14.5px; padding: 7px 11px; border-radius: 9px; }
+.topnav-group > summary::-webkit-details-marker { display: none; }
+.topnav-group > summary::after { content: "⌄"; margin-inline-start: 6px; font-size: 12px; }
+.topnav-group[open] > summary { color: var(--primary); background: var(--grad-soft); }
+.topnav-group > div { position: absolute; z-index: 60; inset-block-start: calc(100% + 7px); inset-inline-end: 0; display: grid; gap: 3px; min-width: 210px; padding: 8px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface-solid); box-shadow: var(--shadow-lg); }
+.topnav-group > div a { display: block; padding: 9px 11px; border-radius: 9px; white-space: nowrap; }
 
 .topbar-actions { display: flex; gap: 7px; align-items: center; flex-shrink: 0; margin-inline-start: 4px; }
 

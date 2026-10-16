@@ -54,7 +54,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mva1ykmz";
+  var B="v3-2026-10-16-mvbiqocj";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -84,17 +84,17 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="../../../">Home</a>
-        <a href="../../../tools/">All Tools</a>
-        <details class="topnav-group"><summary>Centers</summary><div>
-          <a href="../../../pdf/">PDF Hub</a><a href="../../../images/">Image Hub</a>
-          <a href="../../../convert/">Convert Hub</a><a href="../../../text/">Text center</a>
-          <a href="../../../dev/">Developer center</a>
-          <a href="../../../security/">Security center</a>
-          <a href="../../../calculators/">Calculators</a>
+        <a href="../../../" data-i18n="nav.home">Home</a>
+        <a href="../../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../../articles/">Articles</a><a href="../../../faq/">FAQ</a>
-        <a href="../../../rare/">Rare Tools</a><a href="../../../ai/">AI Directory</a>
+        <a href="../../../articles/" data-i18n="nav.articles">Articles</a><a href="../../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -143,10 +143,10 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — Runs locally in your browser</span>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="../../../privacy/">Privacy Policy</a>
-        <a href="../../../terms/">Terms</a>
+        <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>

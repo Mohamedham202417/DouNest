@@ -46,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mva1ykmz";
+  var B="v3-2026-10-16-mvbiqocj";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -76,17 +76,17 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="../../">الرئيسية</a>
-        <a href="../../tools/">كل الأدوات</a>
-        <details class="topnav-group"><summary>المراكز</summary><div>
-          <a href="../../pdf/">مركز PDF</a><a href="../../images/">مركز الصور</a>
-          <a href="../../convert/">مركز التحويل</a><a href="../../text/">مركز النصوص</a>
-          <a href="../../dev/">مركز المطورين</a>
-          <a href="../../security/">مركز الأمان</a>
-          <a href="../../calculators/">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">الرئيسية</a>
+        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
+          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
+          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
+          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
         </div></details>
-        <a href="../../articles/">المقالات</a><a href="../../faq/">الأسئلة الشائعة</a>
-        <a href="../../rare/">أدوات نادرة</a><a href="../../ai/">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -122,10 +122,10 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="../../privacy/">سياسة الخصوصية</a>
-        <a href="../../terms/">شروط الاستخدام</a>
+        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
+        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

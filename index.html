@@ -44,7 +44,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mva1ykmz";
+  var B="v3-2026-10-16-mvbiqocj";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -75,17 +75,17 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="">الرئيسية</a>
-        <a href="tools/">كل الأدوات</a>
-        <details class="topnav-group"><summary>المراكز</summary><div>
-          <a href="pdf/">مركز PDF</a><a href="images/">مركز الصور</a>
-          <a href="convert/">مركز التحويل</a><a href="text/">مركز النصوص</a>
-          <a href="dev/">مركز المطورين</a>
-          <a href="security/">مركز الأمان</a>
-          <a href="calculators/">الحاسبات</a>
+        <a href="" data-i18n="nav.home">الرئيسية</a>
+        <a href="tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
+          <a href="pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="images/" data-i18n="nav.images">مركز الصور</a>
+          <a href="convert/" data-i18n="nav.convert">مركز التحويل</a><a href="text/" data-i18n="nav.text">مركز النصوص</a>
+          <a href="dev/" data-i18n="nav.developers">مركز المطورين</a>
+          <a href="security/" data-i18n="nav.security">مركز الأمان</a>
+          <a href="calculators/" data-i18n="nav.calculators">الحاسبات</a>
         </div></details>
-        <a href="articles/">المقالات</a><a href="faq/">الأسئلة الشائعة</a>
-        <a href="rare/">أدوات نادرة</a><a href="ai/">دليل AI</a>
+        <a href="articles/" data-i18n="nav.articles">المقالات</a><a href="faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -98,16 +98,16 @@
     <p>استخدم 58+ أداة مجانية تعمل محلياً داخل متصفحك: PDF، صور، نصوص، Excel، JSON وأمان. لا تسجيل، ولا رفع للملفات.</p>
     <form class="home-search" action="/DouNest/tools/" method="get"><label for="home-q">ابحث عن أداة</label><input id="home-q" name="q" type="search" placeholder="مثال: ضغط PDF أو تحويل JSON"><button class="btn btn-primary">بحث</button></form></section>
     <section class="section"><h2 class="section-title">مراكز العمل</h2><div class="explore-strip"><a class="explore-card" href="/DouNest/pdf/"><strong>📄 مركز PDF</strong><span>ضغط ودمج وتقسيم وتحويل الملفات</span></a><a class="explore-card" href="/DouNest/images/"><strong>🖼️ مركز الصور</strong><span>ضغط وتحويل وقص وإزالة بيانات الصور</span></a><a class="explore-card" href="/DouNest/convert/"><strong>🔄 مركز التحويل</strong><span>حوّل بين صيغ الملفات الشائعة</span></a><a class="explore-card" href="/DouNest/text/"><strong>✍️ مركز النصوص</strong><span>تنظيف وتحويل وتحليل النصوص</span></a><a class="explore-card" href="/DouNest/dev/"><strong>🧰 مركز المطورين</strong><span>JSON وBase64 وJWT وأدوات البرمجة</span></a><a class="explore-card" href="/DouNest/security/"><strong>🔐 مركز الأمان</strong><span>كلمات مرور وTOTP وأدوات أمان محلية</span></a><a class="explore-card" href="/DouNest/calculators/"><strong>🧮 مركز الحاسبات</strong><span>حاسبات يومية مجانية تعمل في المتصفح</span></a></div></section>
-    <section class="section"><h2 class="section-title">أدوات شائعة</h2><div class="tools-grid"><a class="tool-card" href="/DouNest/tools/json-formatter/"><div class="icon cat-dev" aria-hidden="true">{}</div><h3>منسّق JSON</h3><p>تنسيق، تصغير، والتحقق من صحة JSON.</p></a><a class="tool-card" href="/DouNest/tools/image-compressor/"><div class="icon cat-media" aria-hidden="true">🖼️</div><h3>ضاغط الصور</h3><p>اضغط JPG/PNG/WebP محليًا.</p></a><a class="tool-card" href="/DouNest/tools/merge-pdf/"><div class="icon cat-media" aria-hidden="true">📚</div><h3>دمج PDF</h3><p>اجمع عدة ملفات PDF في ملف واحد.</p></a><a class="tool-card" href="/DouNest/tools/pdf-to-word/"><div class="icon cat-media" aria-hidden="true">📄</div><h3>PDF إلى Word</h3><p>حوّل ملفات PDF إلى مستندات Word قابلة للتحرير.</p></a><a class="tool-card" href="/DouNest/tools/csv-to-json/"><div class="icon cat-dev" aria-hidden="true">📊</div><h3>CSV إلى JSON</h3><p>حوّل بيانات CSV إلى صيغة JSON.</p></a><a class="tool-card" href="/DouNest/tools/password-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد كلمات المرور</h3><p>كلمات مرور قوية عشوائية.</p></a><a class="tool-card" href="/DouNest/tools/qr-code/"><div class="icon cat-media" aria-hidden="true">▦</div><h3>مولّد QR</h3><p>أنشئ رموز QR للنصوص والروابط.</p></a><a class="tool-card" href="/DouNest/tools/remove-background/"><div class="icon cat-media" aria-hidden="true">✂️</div><h3>إزالة خلفية الصورة</h3><p>عزل الشخص أو العنصر بخلفية شفافة عبر AI داخل المتصفح.</p></a><a class="tool-card" href="/DouNest/tools/image-to-pdf/"><div class="icon cat-media" aria-hidden="true">📄</div><h3>صورة إلى PDF</h3><p>حوّل صور JPG أو PNG إلى ملف PDF واحد.</p></a><a class="tool-card" href="/DouNest/tools/uuid-generator/"><div class="icon cat-dev" aria-hidden="true">🆔</div><h3>مولّد UUID</h3><p>أنشئ UUID v4 عشوائيًا.</p></a><a class="tool-card" href="/DouNest/tools/word-counter/"><div class="icon cat-text" aria-hidden="true">🔢</div><h3>عدّاد الكلمات</h3><p>احسب الكلمات والأحرف والأسطر.</p></a><a class="tool-card" href="/DouNest/tools/exif-viewer/"><div class="icon cat-media" aria-hidden="true">🔎</div><h3>عارض بيانات EXIF</h3><p>اعرض بيانات EXIF في صور JPEG، مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات الموقع، محلياً.</p></a></div><p><a href="/DouNest/tools/">عرض كل الأدوات ←</a></p></section>
+    <section class="section"><h2 class="section-title">أدوات شائعة</h2><div class="tools-grid"><a class="tool-card" href="/DouNest/tools/json-formatter/"><div class="icon cat-dev" aria-hidden="true">{}</div><h3>منسّق JSON</h3><p>تنسيق، تصغير، والتحقق من صحة JSON.</p></a><a class="tool-card" href="/DouNest/tools/image-compressor/"><div class="icon cat-media" aria-hidden="true">🖼️</div><h3>ضاغط الصور</h3><p>اضغط JPG/PNG/WebP محليًا.</p></a><a class="tool-card" href="/DouNest/tools/merge-pdf/"><div class="icon cat-media" aria-hidden="true">📚</div><h3>دمج PDF</h3><p>اجمع عدة ملفات PDF في ملف واحد.</p></a><a class="tool-card" href="/DouNest/tools/pdf-to-word/"><div class="icon cat-media" aria-hidden="true">📄</div><h3>PDF إلى Word</h3><p>استخرج نص PDF إلى ملف DOC متوافق مع Word؛ قد يتغير تخطيط الصفحة.</p></a><a class="tool-card" href="/DouNest/tools/csv-to-json/"><div class="icon cat-dev" aria-hidden="true">📊</div><h3>CSV إلى JSON</h3><p>حوّل بيانات CSV إلى صيغة JSON.</p></a><a class="tool-card" href="/DouNest/tools/password-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد كلمات المرور</h3><p>كلمات مرور قوية عشوائية.</p></a><a class="tool-card" href="/DouNest/tools/qr-code/"><div class="icon cat-media" aria-hidden="true">▦</div><h3>مولّد QR</h3><p>أنشئ رموز QR للنصوص والروابط.</p></a><a class="tool-card" href="/DouNest/tools/remove-background/"><div class="icon cat-media" aria-hidden="true">✂️</div><h3>إزالة خلفية الصورة</h3><p>عزل الشخص أو العنصر بخلفية شفافة عبر AI داخل المتصفح.</p></a><a class="tool-card" href="/DouNest/tools/image-to-pdf/"><div class="icon cat-media" aria-hidden="true">📄</div><h3>صورة إلى PDF</h3><p>حوّل صور JPG أو PNG إلى ملف PDF واحد.</p></a><a class="tool-card" href="/DouNest/tools/uuid-generator/"><div class="icon cat-dev" aria-hidden="true">🆔</div><h3>مولّد UUID</h3><p>أنشئ UUID v4 عشوائيًا.</p></a><a class="tool-card" href="/DouNest/tools/word-counter/"><div class="icon cat-text" aria-hidden="true">🔢</div><h3>عدّاد الكلمات</h3><p>احسب الكلمات والأحرف والأسطر.</p></a><a class="tool-card" href="/DouNest/tools/exif-viewer/"><div class="icon cat-media" aria-hidden="true">🔎</div><h3>عارض بيانات EXIF</h3><p>اعرض بيانات EXIF في صور JPEG، مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات الموقع، محلياً.</p></a></div><p><a href="/DouNest/tools/">عرض كل الأدوات ←</a></p></section>
     <section class="section"><h2 class="section-title">أدلة ونصائح</h2><div class="tools-grid"><a class="tool-card article" href="/DouNest/articles/wifi-connected-no-internet/"><h3>Wi-Fi متصل لكن بلا إنترنت؟ حلول مجانية لـ Windows وiPhone وAndroid</h3><p>اكتشف هل الخلل من الجهاز أم الراوتر أم مزود الخدمة، ثم جرّب حلولاً مجانية آمنة لـWindows وiPhone وAndroid، مع جعل إعادة ضبط الشبكة آخر خطوة.</p></a><a class="tool-card article" href="/DouNest/articles/speed-up-slow-windows-pc/"><h3>هل أصبح حاسوب Windows 11 بطيئاً؟ 10 حلول مجانية لتحسين الأداء</h3><p>دليل آمن خطوة بخطوة لتشخيص بطء Windows 11 وتحسينه بأدوات النظام المجانية، من دون منظفات سجل مجهولة أو وعود زائفة بالسرعة.</p></a><a class="tool-card article" href="/DouNest/articles/json-guide/"><h3>دليل JSON الشامل 2026: من الصفر إلى الاحتراف بلا أخطاء</h3><p>كل ما تحتاج معرفته عن JSON في مكان واحد: البنية والقواعد الصارمة، الأخطاء التي تسقط المبتدئين والمحترفين، الفرق عن YAML وXML، والممارسات الاحترافية في التعامل مع واجهات API.</p></a></div></section>
     <section class="section"><h2 class="section-title">خصوصيتك أولاً</h2><p>الأدوات تعالج الملفات في متصفحك. لا يتم رفعها إلى خادم DouNest. يمكنك قراءة <a href="/DouNest/privacy/">سياسة الخصوصية</a> أو زيارة <a href="/DouNest/faq/">الأسئلة الشائعة</a>.</p></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="privacy/">سياسة الخصوصية</a>
-        <a href="terms/">شروط الاستخدام</a>
+        <a href="privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
+        <a href="terms/" data-i18n="nav.terms">شروط الاستخدام</a>
         <a href="ai/">دليل AI</a>
       </nav>
     </div>

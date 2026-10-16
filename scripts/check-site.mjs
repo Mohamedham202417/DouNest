@@ -5,6 +5,8 @@ import { TOOLS } from "../js/registry.js";
 import * as ops from "../js/lib/ops.js";
 import { getArticle } from "../js/articles.js";
 import { markdownToHtml } from "../js/lib/article-markdown.js";
+import { CENTER_CONTENT } from "../js/center-content.js";
+import { PDF_ACTIONS, IMAGE_ACTIONS, CONVERT_ACTIONS } from "../js/lib/actions.js";
 
 const ROOT = new URL("../", import.meta.url);
 const read = (p) => readFileSync(new URL(p, ROOT), "utf8");
@@ -32,6 +34,12 @@ for (const slug of ["pdf", "images", "convert", "text", "dev", "security", "calc
   const html = read(p);
   ok(html.includes("rel=\"canonical\""), `${p}: canonical missing`);
   ok((html.match(/<h1\b/g) || []).length === 1, `${p}: expected one H1`);
+  ok(html.includes("hub-guide") && html.includes('class="hub-steps"'), `${p}: detailed, crawlable guide missing`);
+  ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), `${p}: FAQ structured data missing`);
+  ok(html.includes('class="hub-faq"'), `${p}: visible FAQ section missing`);
+  for (const [question] of CENTER_CONTENT[slug].ar.faq) ok(html.includes(question), `${p}: FAQ is not visible in page content: ${question}`);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
+  checks++;
 }
 const home = read("index.html");
 ok((home.match(/<h1\b/g) || []).length === 1, "home needs one H1");
@@ -40,6 +48,21 @@ ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
 for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/"]) ok(sitemap.includes(`/DouNest/${p}`), `sitemap missing ${p}`);
+
+// Core file centers must use one shared queue and a complete, reusable action catalogue.
+for (const slug of ["pdf", "images", "convert"]) {
+  const source = read(`js/hubs/${slug === "pdf" ? "pdf-hub" : slug === "images" ? "image-hub" : "convert-hub"}.js`);
+  ok((source.match(/workbench\(root/g) || []).length === 1, `${slug}: expected one shared workbench`);
+  ok(!/id="(?:pdf|img|cv)-(?:drop|input)"|wb-existing-tools/.test(source), `${slug}: legacy duplicate upload area returned`);
+}
+for (const id of ["compress", "merge", "split", "rotate", "toJpg", "toText", "toWord", "organize", "watermark", "pageNumbers", "imagesToPdf"])
+  ok(Boolean(PDF_ACTIONS[id]), `PDF action missing: ${id}`);
+for (const id of ["convertWebp", "compressJpg", "resize", "crop", "rotateFlip", "exif", "stripExif", "favicon", "removeBackground", "toPdf"])
+  ok(Boolean(IMAGE_ACTIONS[id]), `image action missing: ${id}`);
+for (const id of ["imageFormat", "csvToJson", "jsonToCsv", "xlsxToCsv", "xlsxToJson", "docxToText", "textToPdf", "svgToPng", "jsonYaml"])
+  ok(Boolean(CONVERT_ACTIONS[id]), `conversion action missing: ${id}`);
+ok(read("assets/styles-v4.css").includes(".hub-drop {"), "shared workbench upload styling missing");
+ok(read("assets/styles.css").includes(".topnav-group > summary"), "center navigation dropdown styling missing");
 
 // The two new troubleshooting guides are statically rendered in all supported locales.
 const articleLocales = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];

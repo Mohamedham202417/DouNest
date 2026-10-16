@@ -44,7 +44,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-15-mva1ykmz";
+  var B="v3-2026-10-16-mvbiqocj";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,6 +62,7 @@
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز PDF — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يمكن ضغط PDF من دون فقدان النص؟","acceptedAnswer":{"@type":"Answer","text":"أداة الضغط الحالية تعيد رسم الصفحات كصور؛ لا تستخدمها عندما يجب أن يبقى النص قابلاً للبحث أو النسخ. احتفظ بالأصل واستخدم الملف المضغوط فقط بعد فحصه."}},{"@type":"Question","name":"كيف أدمج ملفات PDF بالترتيب الصحيح؟","acceptedAnswer":{"@type":"Answer","text":"أضف الملفات بالترتيب المطلوب؛ وإذا ظهرت أسهم ترتيب الملفات، استخدمها قبل تشغيل الدمج، ثم راجع الملف النهائي."}},{"@type":"Question","name":"هل أستطيع استخراج نص من PDF ممسوح ضوئياً؟","acceptedAnswer":{"@type":"Answer","text":"استخراج النص يعمل عندما يحتوي PDF على طبقة نصية. الصفحات التي هي صور ممسوحة ضوئياً تحتاج OCR، ولا يعني تصديرها إلى TXT أو Word أن OCR قد أُجري."}},{"@type":"Question","name":"هل تُرفع مستنداتي؟","acceptedAnswer":{"@type":"Answer","text":"ملفاتك المختارة تعالج في المتصفح ولا تُرسل إلى خادم DouNest. لا تستخدم جهازاً مشتركاً لمستندات حساسة، وامسح قائمة الملفات بعد الانتهاء."}},{"@type":"Question","name":"لماذا لم يصغر الملف؟","acceptedAnswer":{"@type":"Answer","text":"تحويل صفحات كثيرة إلى صور عالية الدقة قد يزيد الحجم. جرّب دقة أو جودة أقل على نسخة، وقارن الحجم والمقروئية قبل الاحتفاظ بها."}}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -74,17 +75,17 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="../">الرئيسية</a>
-        <a href="../tools/">كل الأدوات</a>
-        <details class="topnav-group"><summary>المراكز</summary><div>
-          <a href="../pdf/">مركز PDF</a><a href="../images/">مركز الصور</a>
-          <a href="../convert/">مركز التحويل</a><a href="../text/">مركز النصوص</a>
-          <a href="../dev/">مركز المطورين</a>
-          <a href="../security/">مركز الأمان</a>
-          <a href="../calculators/">الحاسبات</a>
+        <a href="../" data-i18n="nav.home">الرئيسية</a>
+        <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
+          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
+          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
+          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
+          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
         </div></details>
-        <a href="../articles/">المقالات</a><a href="../faq/">الأسئلة الشائعة</a>
-        <a href="../rare/">أدوات نادرة</a><a href="../ai/">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">المقالات</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -95,8 +96,8 @@
   <main id="main" class="container" role="main" tabindex="-1">
 
     <section class="page-head">
-      <h1>مركز PDF — كل أدوات PDF بضغطة زر</h1>
-      <p>ارفع ملفك مرة واحدة ثم اختر العملية: ضغط، دمج عدة ملفات، تقسيم كل صفحة، تدوير، تحويل إلى JPG أو TXT أو Word، أو تحويل صور إلى PDF. كل المعالجة تحدث داخل متصفحك — ملفاتك لا تُرفع لأي خادم إطلاقاً.</p>
+      <h1>مركز PDF — أدوات شائعة للدمج والتقسيم والتحويل</h1>
+      <p>أضف ملفاتك مرة واحدة لاختيار الضغط أو الدمج أو التقسيم أو التدوير أو تصدير الصفحات إلى JPG أو استخراج النص أو التحويل إلى Word، مع تحويل الصور إلى PDF. تُعالج الملفات المختارة داخل متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل مكتبات المعالجة من شبكة خارجية.</p>
     </section>
     <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات التفاعلية.</p></section>
     <section class="section">
@@ -106,7 +107,7 @@
         <a class="tool-card" href="/DouNest/tools/compress-pdf/">
           <div class="icon cat-media" aria-hidden="true">🗜️</div>
           <h3>ضغط PDF</h3>
-          <p>قلّل حجم ملف PDF دون فقدان الجودة.</p>
+          <p>قلّل حجم PDF بإعادة رسم الصفحات كصور؛ قد يفقد النص قابليته للبحث والنسخ.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/DouNest/tools/merge-pdf/">
@@ -142,7 +143,7 @@
         <a class="tool-card" href="/DouNest/tools/pdf-to-word/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
           <h3>PDF إلى Word</h3>
-          <p>حوّل ملفات PDF إلى مستندات Word قابلة للتحرير.</p>
+          <p>استخرج نص PDF إلى ملف DOC متوافق مع Word؛ قد يتغير تخطيط الصفحة.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/DouNest/tools/image-to-pdf/">
@@ -171,13 +172,14 @@
         </a>
       </div>
     </section>
+    <section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">اختر المهمة أولاً ثم حمّل الملفات المناسبة. تظل الملفات على جهازك أثناء المعالجة الأساسية، لكن بعض العمليات تعيد إنشاء الصفحات كصور وقد تفقد النص القابل للتحديد؛ احتفظ دائماً بالأصل وافحص الناتج قبل مشاركته.</p><h2>كيف تستخدم مركز PDF</h2><ol class="hub-steps"><li>اختر عملية PDF من الأزرار أو افتح أداة مستقلة إذا كنت تريد رابطاً مباشراً للمهمة.</li><li>أضف ملفاً واحداً أو أكثر بحسب العملية؛ يمكن ترتيب الملفات قبل دمجها، وتظهر الإعدادات الخاصة بعد اختيار المهمة.</li><li>نفّذ العملية، ثم افتح الملف الناتج وتحقق من ترتيب الصفحات والروابط والنص والجودة قبل اعتماد النسخة.</li></ol><section class="hub-guide-section"><h2>ماذا يمكنك إنجازه؟</h2><p>يدعم المركز ضغطاً بصرياً قابلاً للضبط، ودمج الملفات، وتقسيم PDF إلى صفحات منفردة، وتدوير الصفحات، وتحويل الصفحات إلى صور، واستخراج النص، وإنشاء PDF من الصور. تتوفر أيضاً أدوات لترتيب الصفحات وحذفها، وإضافة علامة مائية أو أرقام صفحات.</p></section><section class="hub-guide-section"><h2>تنبيه مهم حول الضغط والتحويل</h2><p>طريقة الضغط المعتمدة هنا تعيد رسم كل صفحة كصورة JPEG؛ لذلك قد لا يبقى النص قابلاً للبحث أو النسخ، وقد تتغير الروابط والعناصر التفاعلية. والضغط ليس مضموناً أن يقلل كل ملف: ملفات النصوص قد تكبر بعد تحويلها إلى صور. اختبر إعدادات الدقة والجودة ولا تستبدل ملفاً أصلياً مهماً.</p></section><section class="hub-guide-section"><h2>الخصوصية والتوافق</h2><p>لا نرسل ملفاتك المختارة إلى خادم DouNest. تُحمّل بعض مكتبات المعالجة عند أول استخدام من شبكة توزيع محتوى؛ يلزم اتصال بالإنترنت للتحميل الأول، كما قد تمنع ملفات PDF المشفرة أو التالفة إتمام العملية.</p></section><section class="hub-faq"><h2>أسئلة شائعة</h2><details><summary>هل يمكن ضغط PDF من دون فقدان النص؟</summary><p>أداة الضغط الحالية تعيد رسم الصفحات كصور؛ لا تستخدمها عندما يجب أن يبقى النص قابلاً للبحث أو النسخ. احتفظ بالأصل واستخدم الملف المضغوط فقط بعد فحصه.</p></details><details><summary>كيف أدمج ملفات PDF بالترتيب الصحيح؟</summary><p>أضف الملفات بالترتيب المطلوب؛ وإذا ظهرت أسهم ترتيب الملفات، استخدمها قبل تشغيل الدمج، ثم راجع الملف النهائي.</p></details><details><summary>هل أستطيع استخراج نص من PDF ممسوح ضوئياً؟</summary><p>استخراج النص يعمل عندما يحتوي PDF على طبقة نصية. الصفحات التي هي صور ممسوحة ضوئياً تحتاج OCR، ولا يعني تصديرها إلى TXT أو Word أن OCR قد أُجري.</p></details><details><summary>هل تُرفع مستنداتي؟</summary><p>ملفاتك المختارة تعالج في المتصفح ولا تُرسل إلى خادم DouNest. لا تستخدم جهازاً مشتركاً لمستندات حساسة، وامسح قائمة الملفات بعد الانتهاء.</p></details><details><summary>لماذا لم يصغر الملف؟</summary><p>تحويل صفحات كثيرة إلى صور عالية الدقة قد يزيد الحجم. جرّب دقة أو جودة أقل على نسخة، وقارن الحجم والمقروئية قبل الاحتفاظ بها.</p></details></section></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — يعمل محلياً في متصفحك</span>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="../privacy/">سياسة الخصوصية</a>
-        <a href="../terms/">شروط الاستخدام</a>
+        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
+        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
         <a href="../ai/">دليل AI</a>
       </nav>
     </div>

@@ -173,18 +173,7 @@ export const TOOLS = [
     es: "PDF a Word", de: "PDF zu Word", tr: "PDF'ten Word",
     ru: "PDF в Word", zh: "PDF 转 Word", hi: "PDF से Word", pt: "PDF para Word"
   },
-  short: {
-    ar: "حوّل ملفات PDF إلى مستندات Word قابلة للتحرير.",
-    en: "Convert PDF files to editable Word documents.",
-    fr: "Convertir des PDF en documents Word modifiables.",
-    es: "Convierte archivos PDF a documentos Word editables.",
-    de: "PDF-Dateien in bearbeitbare Word-Dokumente umwandeln.",
-    tr: "PDF dosyalarını düzenlenebilir Word belgelerine dönüştür.",
-    ru: "Преобразование PDF в редактируемые документы Word.",
-    zh: "将 PDF 文件转换为可编辑的 Word 文档。",
-    hi: "PDF फ़ाइलों को संपादन योग्य Word दस्तावेज़ों में बदलें।",
-    pt: "Converta arquivos PDF em documentos Word editáveis."
-  },
+  short: { ar: "استخرج نص PDF إلى ملف DOC متوافق مع Word؛ قد يتغير تخطيط الصفحة.", en: "Extract PDF text to a Word-compatible DOC file; page layout may change.", fr: "Extrayez le texte PDF vers un fichier DOC compatible Word ; la mise en page peut changer.", es: "Extrae texto PDF a un archivo DOC compatible con Word; el diseño puede cambiar.", de: "PDF-Text in eine Word-kompatible DOC-Datei extrahieren; das Layout kann sich ändern.", tr: "PDF metnini Word uyumlu DOC dosyasına çıkarın; sayfa düzeni değişebilir.", ru: "Извлечение текста PDF в DOC-файл для Word; макет страницы может измениться.", zh: "将 PDF 文本提取到兼容 Word 的 DOC 文件；页面布局可能改变。", hi: "PDF पाठ को Word-संगत DOC फ़ाइल में निकालें; पृष्ठ लेआउट बदल सकता है।", pt: "Extraia o texto do PDF para DOC compatível com Word; o layout pode mudar." },
   usage: {
     ar: ["ارفع ملف PDF.", "اضغط تحويل.", "حمّل ملف Word الناتج."],
     en: ["Upload a PDF file.", "Click Convert.", "Download the Word file."]
@@ -211,7 +200,7 @@ export const TOOLS = [
   icon: "🗜️",
   category: "media",
   name: { ar: "ضغط PDF", en: "Compress PDF", fr: "Compresser PDF", es: "Comprimir PDF", de: "PDF komprimieren", tr: "PDF Sıkıştır", ru: "Сжать PDF", zh: "压缩 PDF", hi: "PDF कंप्रेस करें", pt: "Comprimir PDF" },
-  short: { ar: "قلّل حجم ملف PDF دون فقدان الجودة.", en: "Reduce PDF file size without losing quality.", fr: "Réduire la taille du PDF sans perte de qualité.", es: "Reduce el tamaño del PDF sin perder calidad.", de: "PDF-Dateigröße ohne Qualitätsverlust reduzieren.", tr: "Kalite kaybı olmadan PDF boyutunu küçült.", ru: "Уменьшение размера PDF без потери качества.", zh: "在不损失质量的情况下减小 PDF 文件大小。", hi: "गुणवत्ता खोए बिना PDF फ़ाइल का आकार कम करें।", pt: "Reduza o tamanho do PDF sem perder qualidade." },
+  short: { ar: "قلّل حجم PDF بإعادة رسم الصفحات كصور؛ قد يفقد النص قابليته للبحث والنسخ.", en: "Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.", fr: "Réduisez un PDF en pixellisant ses pages ; le texte sélectionnable peut être perdu.", es: "Reduce el PDF rasterizando las páginas; el texto seleccionable puede perderse.", de: "PDF-Seiten werden gerastert; durchsuchbarer oder auswählbarer Text kann verloren gehen.", tr: "Sayfalar görsele dönüştürülür; aranabilir veya seçilebilir metin kaybolabilir.", ru: "Страницы растрируются; поиск и выделение текста могут быть утрачены.", zh: "通过将页面栅格化来缩小 PDF；可搜索或可选中的文本可能丢失。", hi: "पृष्ठों को रास्टराइज़ करके PDF छोटा करें; खोजने योग्य या चुनने योग्य पाठ खो सकता है।", pt: "Reduza o PDF rasterizando as páginas; o texto selecionável pode ser perdido." },
   usage: { ar: ["ارفع ملف PDF.", "اضغط ضغط.", "حمّل الملف المضغوط."], en: ["Upload a PDF.", "Click Compress.", "Download the compressed file."] },
   explanation: { ar: ["تستخدم pdf-lib لإعادة ترميز الملف بحجم أصغر."], en: ["Uses pdf-lib to re-encode the file smaller."] },
   faq: [], related: ["pdf-to-word", "merge-pdf", "image-compressor"]
@@ -685,4 +674,3 @@ for (const tool of TOOLS) {
   if (extra.faq && extra.faq.length) tool.faq = extra.faq;
   tool.tags = extra.tags || [];
 }
-
