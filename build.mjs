@@ -28,6 +28,7 @@ import { AI_TOOLS as AI_TOOLS_DATA } from "./js/ai-directory.js";
 import { RARE_CATS, RARE_TOOLS as RARE_TOOLS_DATA, rareByCat, getRareTool } from "./js/rare-tools.js";
 import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./js/rare-page.js";
 import { markdownToHtml } from "./js/lib/article-markdown.js";
+import { centerContentMarkup, centerFaqSchema } from "./js/center-content.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -179,17 +180,17 @@ ${ld}
         <span class="brand-name">DouNest</span>
       </a>
       <nav class="topnav" aria-label="Main">
-        <a href="${R("")}">${V.home}</a>
-        <a href="${R("tools/")}">${V.allTools}</a>
-        <details class="topnav-group"><summary>${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
-          <a href="${R("pdf/")}">${V.pdf}</a><a href="${R("images/")}">${V.images}</a>
-          <a href="${R("convert/")}">${V.convert}</a><a href="${R("text/")}">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
-          <a href="${R("dev/")}">${lang === "ar" ? "مركز المطورين" : "Developer center"}</a>
-          <a href="${R("security/")}">${lang === "ar" ? "مركز الأمان" : "Security center"}</a>
-          <a href="${R("calculators/")}">${lang === "ar" ? "الحاسبات" : "Calculators"}</a>
+        <a href="${R("")}" data-i18n="nav.home">${V.home}</a>
+        <a href="${R("tools/")}" data-i18n="nav.allTools">${V.allTools}</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
+          <a href="${R("pdf/")}" data-i18n="nav.pdf">${V.pdf}</a><a href="${R("images/")}" data-i18n="nav.images">${V.images}</a>
+          <a href="${R("convert/")}" data-i18n="nav.convert">${V.convert}</a><a href="${R("text/")}" data-i18n="nav.text">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
+          <a href="${R("dev/")}" data-i18n="nav.developers">${lang === "ar" ? "مركز المطورين" : "Developer center"}</a>
+          <a href="${R("security/")}" data-i18n="nav.security">${lang === "ar" ? "مركز الأمان" : "Security center"}</a>
+          <a href="${R("calculators/")}" data-i18n="nav.calculators">${lang === "ar" ? "الحاسبات" : "Calculators"}</a>
         </div></details>
-        <a href="${R("articles/")}">${V.articles}</a><a href="${R("faq/")}">${V.faqNav}</a>
-        <a href="${R("rare/")}">${V.rare}</a><a href="${R("ai/")}">${V.ai}</a>
+        <a href="${R("articles/")}" data-i18n="nav.articles">${V.articles}</a><a href="${R("faq/")}" data-i18n="nav.faq">${V.faqNav}</a>
+        <a href="${R("rare/")}" data-i18n="nav.rare">${V.rare}</a><a href="${R("ai/")}" data-i18n="nav.ai">${V.ai}</a>
       </nav>
       <div class="topbar-actions">
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
@@ -202,10 +203,10 @@ ${content}
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — ${V.local}</span>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">${V.local}</span></span>
       <nav class="footer-nav" aria-label="Legal">
-        <a href="${R("privacy/")}">${V.privacy}</a>
-        <a href="${R("terms/")}">${V.terms}</a>
+        <a href="${R("privacy/")}" data-i18n="nav.privacy">${V.privacy}</a>
+        <a href="${R("terms/")}" data-i18n="nav.terms">${V.terms}</a>
         <a href="${R("ai/")}">${V.ai}</a>
       </nav>
     </div>
@@ -550,11 +551,11 @@ console.log("→ pdf/convert hub pages");
         "name": "مركز PDF — DouNest", "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }],
+      }, centerFaqSchema("pdf", "ar")],
       bodyContent: `
     <section class="page-head">
-      <h1>مركز PDF — كل أدوات PDF بضغطة زر</h1>
-      <p>ارفع ملفك مرة واحدة ثم اختر العملية: ضغط، دمج عدة ملفات، تقسيم كل صفحة، تدوير، تحويل إلى JPG أو TXT أو Word، أو تحويل صور إلى PDF. كل المعالجة تحدث داخل متصفحك — ملفاتك لا تُرفع لأي خادم إطلاقاً.</p>
+      <h1>مركز PDF — أدوات شائعة للدمج والتقسيم والتحويل</h1>
+      <p>أضف ملفاتك مرة واحدة لاختيار الضغط أو الدمج أو التقسيم أو التدوير أو تصدير الصفحات إلى JPG أو استخراج النص أو التحويل إلى Word، مع تحويل الصور إلى PDF. تُعالج الملفات المختارة داخل متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل مكتبات المعالجة من شبكة خارجية.</p>
     </section>
     <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات التفاعلية.</p></section>
     <section class="section">
@@ -568,7 +569,8 @@ console.log("→ pdf/convert hub pages");
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>`).join("")}
       </div>
-    </section>`
+    </section>
+    ${centerContentMarkup("pdf", "ar")}`
     })
   );
 
@@ -578,18 +580,18 @@ console.log("→ pdf/convert hub pages");
     "images/index.html",
     shell({
       title: "مركز الصور — تحويل وضغط وتغيير حجم وإزالة خلفية | DouNest",
-      description: "مركز صور شامل لتحويل الصيغ وضغط الصور وتغيير الحجم وإزالة الخلفية وتحويل الصور إلى PDF واستخراج النص من الصور وتحويل HEIC — كل شيء محلي داخل متصفحك.",
+      description: "حوّل الصور واضغطها وغيّر أبعادها أو أنشئ PDF. تتوفر أدوات متخصصة لإزالة الخلفية وOCR وHEIC وQR؛ تُعالج الصور المختارة في المتصفح.",
       canonicalPath: "images/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "WebApplication",
         "name": "مركز الصور — DouNest", "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }],
+      }, centerFaqSchema("images", "ar")],
       bodyContent: `
     <section class="page-head">
-      <h1>مركز الصور — كل أدوات الصور في مكان واحد</h1>
-      <p>ارفع صورة أو أكثر مرة واحدة ثم حوّل الصيغة، اضغط الحجم، غيّر الأبعاد، أزل الخلفية، أو أنشئ PDF. أضف أدوات الصور المتخصصة مثل OCR وHEIC وQR عند الحاجة — المعالجة الأساسية تحدث داخل متصفحك وبدون رفع ملفاتك.</p>
+      <h1>مركز الصور — التحويل والضغط وتغيير الأبعاد</h1>
+      <p>أضف صورة أو أكثر مرة واحدة لتحويل الصيغ أو ضغطها أو تغيير أبعادها أو تدويرها وإنشاء PDF. وتتوفر أدوات منفردة لإزالة الخلفية وOCR وHEIC وQR. تبقى الملفات المختارة في متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل بعض المكتبات أو النماذج من شبكة خارجية.</p>
     </section>
     <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات السريعة.</p></section>
     <section class="section">
@@ -603,7 +605,8 @@ console.log("→ pdf/convert hub pages");
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>`).join("")}
       </div>
-    </section>`
+    </section>
+    ${centerContentMarkup("images", "ar")}`
     })
   );
 
@@ -612,19 +615,19 @@ console.log("→ pdf/convert hub pages");
   writePage(
     "convert/index.html",
     shell({
-      title: "مركز التحويل — حوّل من وإلى أي صيغة | DouNest",
-      description: "أفلِت أي ملف وسيُكتشف نوعه تلقائياً لتعرض كل التحويلات المتاحة: صور بين PNG وJPG وWebP، وPDF إلى TXT وJPG وWord، وCSV وJSON وExcel باتجاهين — كل ذلك محلياً وبدون رفع ملفات.",
+      title: "مركز تحويل الملفات — صيغ شائعة مدعومة | DouNest",
+      description: "حوّل الصور وملفات PDF وCSV وJSON وXLSX وDOCX عبر مسارات محددة. تُعالج الملفات المختارة في المتصفح ولا تُرسل إلى خادم DouNest.",
       canonicalPath: "convert/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "WebApplication",
         "name": "مركز التحويل — DouNest", "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }],
+      }, centerFaqSchema("convert", "ar")],
       bodyContent: `
     <section class="page-head">
-      <h1>مركز التحويل — من وإلى أي صيغة</h1>
-      <p>أفلِت ملفك مرة واحدة: نكتشف نوعه تلقائياً ونعرض كل التحويلات المتاحة بنقرة واحدة — صور بين PNG وJPG وWebP، وPDF إلى TXT وJPG وWord، وCSV وJSON وExcel باتجاهين، وWord إلى نص، ونص إلى PDF. كل شيء يحدث داخل متصفحك بدون رفع وبدون تسجيل.</p>
+      <h1>مركز تحويل الملفات — صيغ شائعة ومسارات واضحة</h1>
+      <p>أضف ملفاً واحداً ليُكتشف نوعه وتظهر مسارات التحويل المدعومة: صور PNG وJPG وWebP، واستخراج النص من PDF أو تصدير صفحاته كصور، وCSV وJSON، وXLSX إلى CSV أو JSON، وDOCX إلى نص، وTXT إلى PDF، وSVG إلى PNG، وJSON إلى YAML والعكس. تُعالج الملفات المختارة في متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل مكتبات عند الطلب من شبكة خارجية.</p>
     </section>
     <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة السحب والإفلات التفاعلية.</p></section>
     <section class="section">
@@ -638,7 +641,8 @@ console.log("→ pdf/convert hub pages");
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>`).join("")}
       </div>
-    </section>`
+    </section>
+    ${centerContentMarkup("convert", "ar")}`
     })
   );
 }
@@ -653,7 +657,7 @@ for (const [slug, title, description, modulePath, related] of [
 ]) {
   const items = related.map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
   const cards = items.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("");
-  writePage(`${slug}/index.html`, shell({ title: `${title} | DouNest`, description, canonicalPath: `${slug}/`, jsonLd: [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+slug+"/","inLanguage":"ar"},{"@context":"https://schema.org","@type":"ItemList","itemListElement":items.map((t,i)=>({"@type":"ListItem","position":i+1,"name":pick(t.name,"ar"),"url":SITE+"tools/"+t.slug+"/"}))}], bodyContent: `<section class="page-head"><h1>${esc(title)}</h1><p>${esc(description)}</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section"><h2 class="section-title">أدوات ${esc(title.split("—")[0])}</h2><div class="tools-grid">${cards}</div></section>` }));
+  writePage(`${slug}/index.html`, shell({ title: `${title} | DouNest`, description, canonicalPath: `${slug}/`, jsonLd: [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+slug+"/","inLanguage":"ar"},{"@context":"https://schema.org","@type":"ItemList","itemListElement":items.map((t,i)=>({"@type":"ListItem","position":i+1,"name":pick(t.name,"ar"),"url":SITE+"tools/"+t.slug+"/"}))}, centerFaqSchema(slug,"ar")], bodyContent: `<section class="page-head"><h1>${esc(title)}</h1><p>${esc(description)}</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section>${centerContentMarkup(slug,"ar")}<section class="section"><h2 class="section-title">أدوات ${esc(title.split("—")[0])}</h2><div class="tools-grid">${cards}</div></section>` }));
 }
 
 /* ---------- 3b) Tools hub page (was missing -> /tools/ returned HTTP 404) ---------- */

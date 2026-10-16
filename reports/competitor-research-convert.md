@@ -1,0 +1,43 @@
+# مركز التحويل: competitor evidence memo
+
+**Scope:** CloudConvert, Convertio, Zamzar and FreeConvert as direct file-conversion competitors. Checked against official product, pricing and help pages on 16 October 2026. “Observed” statements below summarize vendor-published claims, not independent performance tests.
+
+## Findings
+
+**Format coverage and workflow.** CloudConvert advertises 212 formats across 11 categories, including office, media, archives, CAD and fonts; browser drop/select flow and conversion-specific settings are documented. Its product copy says vendors/open-source engines are selected by file type and exposes codec, bitrate, resolution and quality controls. [1] Convertio claims 300+ formats and 25,600+ conversion pairs, emphasizes drag/drop, cloud processing and advanced options (e.g. video quality, aspect ratio, codec); browser support covers all platforms. [2] FreeConvert claims 1,500+ conversions in video, image, audio and e-book categories, with advanced options and input from device, Dropbox, Google Drive, OneDrive or URL. [3] Zamzar lists document, image, audio, video, ebook, archive, CAD and 3D conversion categories and extensive source-to-target mappings. [4] Counts use different definitions and are vendor claims, so they are not a like-for-like breadth ranking.
+
+**Batch and free/paid limits.** CloudConvert’s free tier is explicitly 10 conversion credits/day, max 1 GB/file, 5-minute processing cap and five concurrent tasks. Credits are resource/time-based, with conversion-specific base costs; for paid plans the page lists 1,000-credit package from $17 and subscription from $9/month (shown for a 1,000-credit selection). [5] Convertio’s current public pricing page lists paid tiers from USD $11.99 monthly (or $6.99/month billed annually) with 1 GB, 1,000 credits/month and 50 simultaneous conversions; larger paid tiers reach 20 GB. The homepage says max 1 GB or sign up, but the pricing page does not state a precise anonymous/free daily allowance or batch file count. [2] [6] Zamzar’s FAQ says free use permits two files per 24 hours; combined files must total under 50 MB, with exceptions on its size-limits page. Paid plan file caps are 200 MB, 400 MB or 2 GB, and paid simultaneous uploads are 25/50/100 depending on plan. [7] FreeConvert advertises free 20 conversion minutes/day, no signup for web use, and a five-minute cap per free file; homepage shows 1 GB max file size. Paid tiers show 1.5–5 GB max files and 100 conversions at a time, while Merge allows 100 files at once. [3] [8]
+
+**Local/cloud, privacy and retention.** All four are web-mediated upload services, not evidence of on-device conversion. Convertio explicitly says conversions occur in the cloud; its homepage says originals are deleted instantly and outputs after 24 hours. [2] FreeConvert accepts local/device and cloud/URL sources, advertises 256-bit SSL and automatic file deletion after eight hours; its security page describes isolated short-lived containers. [3] [9] CloudConvert says it has no permanent storage and deletes files immediately after processing; ISO 27001 and separate conversion containers are described on its security page. [10] Zamzar says originals are deleted after conversion and free outputs are retained up to 24 hours; paid files persist in account storage until 35 days after the paid account closes unless manually deleted. It describes TLS and GDPR/DPA practices. [7] “Secure” claims are vendor statements; retention windows and security assurances differ and should be presented with clear definitions of originals, outputs and backups.
+
+**Output quality.** No independent, controlled quality comparison was established in this pass. CloudConvert documents per-format quality/codec controls and claims “high-quality” output; Convertio documents custom settings and asks users to rate conversion quality; FreeConvert offers advanced options and support for quality problems. These claims are not evidence of universal fidelity. [1] [2] [8] A credible DouNest differentiator is preview/validation and explicit, task-specific options rather than an unsubstantiated quality superiority claim.
+
+**Mobile UX and discoverability.** CloudConvert, Convertio and FreeConvert describe browser access across devices/platforms; Zamzar’s FAQ references web use and separate desktop/email workflows, but these sources do not establish comparative mobile usability or measured task success. FreeConvert additionally links Android and iOS image-converter apps, although these are separate apps, not proof of feature parity with the web converter. [1] [2] [3] [7] Competitors’ many format-specific landing pages (especially Convertio and FreeConvert) expose a strong search-discovery pattern. [2] [3] That creates an opportunity for DouNest to publish genuinely useful, technically accurate conversion pages, while avoiding thin near-duplicate pages or unsupported “best quality” claims.
+
+## Practical read: what works and where friction remains
+
+- **CloudConvert** is strongest in explicit controls, broad technical format catalog, a transparent usage-credit model and unusually specific privacy/security documentation. Friction: paid credit consumption depends on time and operation type; the free tier’s processing cap can surprise on long jobs. [1] [5] [10]
+- **Convertio** reduces steps with a simple drop/select/convert workflow, boasts broad format/pair coverage and states deletion windows. Friction: pricing is credit-based, annual/monthly prices are prominent, but anonymous free daily quotas are not made clear on the reviewed pricing page; all processing is cloud-based. [2] [6]
+- **Zamzar** has broad legacy/specialist mappings and clearly states key free, batch and retention limits in its FAQ. Friction: two files/day and a combined 50 MB cap are restrictive; users must consult a separate size-limits page for exceptions. [4] [7]
+- **FreeConvert** offers unusually flexible source selection, visible advanced controls, explicit free daily minutes, broad tool/SEO surface and mobile app links. Friction: free minutes are server-time-based (and capped at five minutes per file), while 1 GB homepage size and paid size/tier ceilings can be mistaken for unlimited free processing; mobile apps are separate experiences. [3] [8]
+
+## Prioritized DouNest opportunities (recommendations, not observed competitor capabilities)
+
+1. **Make limits legible before upload:** show accepted input/output formats, file-size cap, remaining daily quota, per-file/task time limit, batch count and likely credit/minute cost in the same preflight step. State clearly whether limits are per file, combined batch, account or 24-hour window.
+2. **Build a low-friction conversion queue:** support multi-file add, one target format for a group, per-file overrides, visible progress/retry, and one-click download-all; ensure the mobile layout has large file-picker controls and reliable return-to-results behavior.
+3. **Offer privacy by design and plain-language retention:** explore local/browser processing for feasible lightweight formats; otherwise explain upload, processing region, encryption, original/output deletion timing and manual-delete route before consent. Never imply local processing where conversion uses a server.
+4. **Make fidelity controllable and checkable:** expose relevant output options by format; show previews or metadata checks and flag likely losses (e.g. rasterization, lossy recompression, fonts/layout changes). Provide examples and avoid blanket quality guarantees.
+5. **Earn organic search with task pages that help:** prioritize demand-led, distinct format-pair pages. Each should explain compatibility, exact steps, limits, quality trade-offs, privacy and mobile use; add crawlable links to related conversions and a format directory, and use accurate page titles/meta/schema. Do not mass-publish doorway pages or claim “all formats” without a maintained compatibility matrix.
+
+## References
+
+[1]: https://cloudconvert.com/formats "CloudConvert format catalog and product workflow"
+[2]: https://convertio.co/ "Convertio product homepage"
+[3]: https://www.freeconvert.com/ "FreeConvert homepage and upload options"
+[4]: https://www.zamzar.com/conversionTypes.php "Zamzar conversion types"
+[5]: https://cloudconvert.com/pricing "CloudConvert pricing"
+[6]: https://convertio.co/pricing/ "Convertio pricing"
+[7]: https://www.zamzar.com/faq/ "Zamzar FAQ"
+[8]: https://www.freeconvert.com/pricing "FreeConvert pricing and free usage FAQ"
+[9]: https://www.freeconvert.com/security-and-compliance "FreeConvert security and compliance"
+[10]: https://cloudconvert.com/security "CloudConvert security and compliance"

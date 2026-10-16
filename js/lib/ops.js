@@ -95,6 +95,105 @@ export async function pdfPageNumbers(file, { position = "bottom-center", startAt
   return new Blob([await doc.save()], { type: "application/pdf" });
 }
 
+/** Rasterize all pages to JPEG-backed PDF; searchable text and links are not preserved. */
+export async function pdfCompressRaster(file, { scale = 1.1, quality = 0.7, onProgress = () => {} } = {}) {
+  const renderer = await pdfjs();
+  const { PDFDocument } = await pdfLib();
+  const src = await renderer.getDocument({ data: await file.arrayBuffer() }).promise;
+  const out = await PDFDocument.create();
+  for (let i = 1; i <= src.numPages; i++) {
+    onProgress(i, src.numPages);
+    const page = await src.getPage(i), viewport = page.getViewport({ scale });
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
+    const ctx = canvas.getContext("2d");
+    ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    await page.render({ canvasContext: ctx, viewport }).promise;
+    const image = await out.embedJpg(canvas.toDataURL("image/jpeg", quality));
+    const target = out.addPage([image.width, image.height]);
+    target.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+  }
+  return new Blob([await out.save({ useObjectStreams: false })], { type: "application/pdf" });
+}
+
+export async function pdfMerge(files) {
+  const { PDFDocument } = await pdfLib(), out = await PDFDocument.create();
+  for (const file of files) {
+    const source = await loadPdf(file);
+    (await out.copyPages(source, source.getPageIndices())).forEach(page => out.addPage(page));
+  }
+  return new Blob([await out.save()], { type: "application/pdf" });
+}
+
+export async function pdfSplitZip(file, onProgress = () => {}) {
+  const source = await loadPdf(file), count = source.getPageCount(), Zip = await jszip(), zip = new Zip();
+  for (let i = 0; i < count; i++) {
+    onProgress(i + 1, count);
+    const single = await pdfLib().then(m => m.PDFDocument.create());
+    (await single.copyPages(source, [i])).forEach(page => single.addPage(page));
+    zip.file(`page-${String(i + 1).padStart(3, "0")}.pdf`, await single.save());
+  }
+  return zip.generateAsync({ type: "blob" });
+}
+
+export async function pdfRotate(file, angle = 90) {
+  const { degrees } = await pdfLib(), doc = await loadPdf(file);
+  doc.getPages().forEach(page => page.setRotation(degrees((page.getRotation().angle + angle) % 360)));
+  return new Blob([await doc.save()], { type: "application/pdf" });
+}
+
+export async function pdfToJpgZip(file, { scale = 2, quality = 0.85, onProgress = () => {} } = {}) {
+  const renderer = await pdfjs(), source = await renderer.getDocument({ data: await file.arrayBuffer() }).promise;
+  const Zip = await jszip(), zip = new Zip();
+  for (let i = 1; i <= source.numPages; i++) {
+    onProgress(i, source.numPages);
+    const page = await source.getPage(i), viewport = page.getViewport({ scale });
+    const canvas = document.createElement("canvas");
+    canvas.width = Math.ceil(viewport.width); canvas.height = Math.ceil(viewport.height);
+    const ctx = canvas.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+    await page.render({ canvasContext: ctx, viewport }).promise;
+    const data = canvas.toDataURL("image/jpeg", quality).split(",")[1];
+    zip.file(`page-${String(i).padStart(3, "0")}.jpg`, data, { base64: true });
+  }
+  return zip.generateAsync({ type: "blob" });
+}
+
+export async function pdfExtractText(file, onProgress = () => {}) {
+  const renderer = await pdfjs(), source = await renderer.getDocument({ data: await file.arrayBuffer() }).promise;
+  let text = "";
+  for (let i = 1; i <= source.numPages; i++) {
+    onProgress(i, source.numPages);
+    const page = await source.getPage(i), content = await page.getTextContent();
+    text += content.items.map(item => item.str).join(" ") + "\n\n";
+  }
+  text = text.trim();
+  if (!text) throw new Error("No text layer found. Scanned pages need OCR first.");
+  return text;
+}
+
+export async function pdfToWordDoc(file, onProgress) {
+  const text = await pdfExtractText(file, onProgress);
+  const safe = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word"><head><meta charset="utf-8"><title>Document</title></head><body dir="auto">${safe.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`).join("")}</body></html>`;
+  return new Blob(["\uFEFF" + html], { type: "application/msword" });
+}
+
+export async function imagesToPdf(files, quality = 0.92) {
+  const { PDFDocument } = await pdfLib(), out = await PDFDocument.create();
+  for (const file of files) {
+    const bmp = await bitmapOf(file), canvas = canvasOf(bmp.width || bmp.naturalWidth, bmp.height || bmp.naturalHeight);
+    const ctx = canvas.getContext("2d");
+    if (file.type !== "image/png") { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+    ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+    const blob = await canvasToBlob(canvas, file.type === "image/png" ? "image/png" : "image/jpeg", quality);
+    const bytes = await blob.arrayBuffer();
+    const image = blob.type === "image/png" ? await out.embedPng(bytes) : await out.embedJpg(bytes);
+    const page = out.addPage([image.width, image.height]);
+    page.drawImage(image, { x: 0, y: 0, width: image.width, height: image.height });
+  }
+  return new Blob([await out.save()], { type: "application/pdf" });
+}
+
 /* ================================================================
  * Image operations
  * ================================================================ */
@@ -120,6 +219,19 @@ function canvasOf(w, h) {
 export function canvasToBlob(canvas, type = "image/png", quality) {
   return new Promise((resolve, reject) =>
     canvas.toBlob(b => b ? resolve(b) : reject(new Error("Canvas export failed")), type, quality));
+}
+
+/** Re-encode or resize one raster image; JPEG receives an explicit background. */
+export async function imageEncode(file, { format = "image/webp", quality = 0.82, width = 0, background = "#fff" } = {}) {
+  const bmp = await bitmapOf(file);
+  const sw = bmp.width || bmp.naturalWidth, sh = bmp.height || bmp.naturalHeight;
+  const targetWidth = width > 0 ? Math.min(sw, Math.round(width)) : sw;
+  const canvas = canvasOf(targetWidth, targetWidth * sh / sw);
+  const ctx = canvas.getContext("2d");
+  if (format === "image/jpeg") { ctx.fillStyle = background; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+  ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(bmp, 0, 0, canvas.width, canvas.height);
+  return canvasToBlob(canvas, format, format === "image/png" ? undefined : quality);
 }
 
 /** Crop a rectangle given in pixels; returns a Blob in `format`. */
