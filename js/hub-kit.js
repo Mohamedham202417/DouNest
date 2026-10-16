@@ -50,9 +50,12 @@ export function workbench(root, cfg) {
   drop.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openPicker(); } };
   ["dragover", "dragenter"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add("drag"); }));
   ["dragleave", "drop"].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove("drag"); }));
-  drop.addEventListener("drop", e => add([...e.dataTransfer.files]));
-  input.onchange = () => { add([...input.files]); input.value = ""; };
-  root.querySelector("#wb-clear").onclick = () => { files = []; refresh(); };
+  let fileReadGeneration = 0;
+  let addQueue = Promise.resolve();
+  const queueFiles = more => { addQueue = addQueue.then(() => add(more)).catch(e => ui.error(e)); };
+  drop.addEventListener("drop", e => queueFiles([...e.dataTransfer.files]));
+  input.onchange = () => { queueFiles([...input.files]); input.value = ""; };
+  root.querySelector("#wb-clear").onclick = () => { fileReadGeneration++; files = []; refresh(); };
   root.querySelector("#wb-copy")?.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(resultText.value); statusEl.textContent = label("copied", AR ? "تم النسخ" : "Copied"); }
     catch { resultText.select(); document.execCommand("copy"); }
@@ -65,7 +68,7 @@ export function workbench(root, cfg) {
     const name = file.name.toLowerCase(), type = (file.type || "").toLowerCase();
     return rules.some(rule => rule.startsWith(".") ? name.endsWith(rule) : rule.endsWith("/*") ? type.startsWith(rule.slice(0, -1)) : type === rule);
   }
-  function add(more) {
+  async function add(more) {
     const accepted = more.filter(accepts);
     const rejected = more.length - accepted.length;
     let limited = false;
@@ -75,9 +78,21 @@ export function workbench(root, cfg) {
       if (accepted.length > available) { limited = true; statusEl.textContent = label("fileLimit", AR ? `الحد الأقصى ${cfg.maxFiles} ملفات.` : `Maximum ${cfg.maxFiles} files.`); }
       accepted.length = Math.min(accepted.length, available);
     }
-    files = cfg.multiple === false ? accepted.slice(-1) : [...files, ...accepted];
+    if (!accepted.length) { refresh(); return; }
+    const generation = fileReadGeneration;
+    statusEl.textContent = AR ? "جارٍ تثبيت نسخة محلية من الملفات…" : "Preparing local copies of the selected files…";
+    let snapshots;
+    try {
+      snapshots = await Promise.all(accepted.map(async file =>
+        new File([await file.arrayBuffer()], file.name, { type: file.type, lastModified: file.lastModified })
+      ));
+    } catch (error) {
+      throw new Error("FILE_READ_FAILED", { cause: error });
+    }
+    if (generation !== fileReadGeneration) return;
+    files = cfg.multiple === false ? snapshots.slice(-1) : [...files, ...snapshots];
     refresh();
-    if (accepted.length && !rejected && !limited) statusEl.textContent = label("queued", AR ? `تمت إضافة ${files.length} ملف — اختر العملية.` : `${files.length} file(s) ready — choose an action.`);
+    if (!rejected && !limited) statusEl.textContent = label("queued", AR ? `تمت إضافة ${files.length} ملف — اختر العملية.` : `${files.length} file(s) ready — choose an action.`);
   }
   const state = () => ({ files, pdfs: files.filter(isPdf), imgs: files.filter(isImg), text: files.filter(f => !isPdf(f) && !isImg(f)) });
 
@@ -139,7 +154,15 @@ export function workbench(root, cfg) {
     },
     save: (blob, name) => { downloadBlob(blob, name); if (typeof window.gtag === "function") window.gtag("event", "tool_download", { file_name: name }); },
     base: name => String(name).replace(/\.[^.]+$/, "") || "file",
-    error: e => { statusEl.textContent = "❌ " + (e?.message || e); }
+    error: e => {
+      const raw = String(e?.message || e || "");
+      const cause = String(e?.cause?.message || "");
+      const unreadable = raw === "FILE_READ_FAILED" || /NotReadableError|requested file could not be read|permission problems/i.test(`${raw} ${cause}`);
+      const message = unreadable
+        ? (AR ? "تعذرت قراءة أحد الملفات من مصدره. نزّله إلى الجهاز أولاً، ثم أعد اختياره من وحدة التخزين المحلية." : "A selected file could not be read from its source. Download it to this device, then select it again from local storage.")
+        : raw;
+      statusEl.textContent = "❌ " + message;
+    }
   };
 
   // Selecting an action exposes its settings and one clear, explicit run button.

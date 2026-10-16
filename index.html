@@ -44,7 +44,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbiqocj";
+  var B="v3-2026-10-16-mvbjqksu";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -74,7 +74,7 @@
         <img src="assets/dounest-logo.png" class="brand-logo" alt="DouNest" width="38" height="38" />
         <span class="brand-name">DouNest</span>
       </a>
-      <nav class="topnav" aria-label="Main">
+      <nav id="topnav" class="topnav" aria-label="Main">
         <a href="" data-i18n="nav.home">الرئيسية</a>
         <a href="tools/" data-i18n="nav.allTools">كل الأدوات</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
@@ -88,6 +88,7 @@
         <a href="rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
