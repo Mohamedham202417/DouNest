@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/unit-converter/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>محوّل الوحدات</h1>
           <p class="lead">حوّل بين وحدات الطول والوزن والحجم والحرارة.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>التحويل بين الوحدات عملية يومية عالمية: وصفة طبخ بالأوقية والرطل بينما ميزانك بالجرام، ورحلة طيران بالأميال بينما خرائطك بالكيلومتر، وتخزين سحابي بالجيجابايت بينما تقرير بستيعابك بالميغابايت — الفجوات النظامية بين المعايير دائمة.</p><p>فئة الحرارة خاصة وتستحق انتباهاً: التحويل بينها ليس ضرباً بمعامل بل معادلات إزاحة وضرب (فهرنهايت = سلسيوس × 1.8 + 32) — المولدات الساذجة تخطئها، والأداة تعالجها صحيحة.</p><p>وحدات البيانات لها فخها: الفرق بين 1024 (ثنائي - ميبي بايت) و1000 (عشري - ميغا بايت) يخلق فرق 10% في الأقراص الكبيرة يُساء فهمه باستمرار — الأداة توضح النظام المستخدم.</p><p>دقة الأرقام مقصودة: النتائج تعرض بتقريب منطقي بدل أرقام عشرية لا نهائية، مع الاحتفاظ بالدقة الكاملة داخلياً للحسابات التسلسلية.</p><p>المعاملات محدثة وفق المعايير الدولية الرسمية — للتحويلات القانونية أو الهندسية الحرجة تحقق دائماً من المرجع الرسمي في بلدك.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل التحويلات دقيقة 100%؟</summary><p>المعاملات قياسية رسمية؛ العرض مُقرّب منطقياً والدقة الكاملة داخلياً — كافية لأي استخدام عملي.</p></details><details class="faq-item"><summary>لماذا تختلف وحدات البيانات؟</summary><p>نظامان: ثنائي (1024) تقني وعشري (1000) تسويقي — الفرق يفسر لغز «قرص 1TB يظهر 931GB».</p></details><details class="faq-item"><summary>هل تدعم الوحدات الإمبراطورية القديمة؟</summary><p>الأشهر مدعومة (ميلاً، يارداً، رطلاً، أوقية) — إن احتجت وحدة نادرة اقترحها للإضافة.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

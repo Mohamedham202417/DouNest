@@ -6,11 +6,11 @@
  * Usage:  node build.mjs
  *
  * Generates:
- *   1. tools/<slug>/index.html   — 30 crawlable landing pages with
+ *   1. tools/<slug>/index.html   — crawlable landing pages with
  *      prerendered Arabic content (usage + explanation + FAQ) and full
  *      meta/JSON-LD. The SPA hydrates the interactive workspace.
  *   2. articles/<slug>/index.html
- *   3. about|privacy|terms/index.html
+ *   3. about|privacy|terms|contact/index.html
  *   4. 404.html — SPA fallback for GitHub Pages clean URLs
  *   5. sitemap.xml — valid, fragment-free URLs
  *   6. sw.js — service worker with a synced asset list (fixes the v2
@@ -29,6 +29,7 @@ import { RARE_CATS, RARE_TOOLS as RARE_TOOLS_DATA, rareByCat, getRareTool } from
 import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./js/rare-page.js";
 import { markdownToHtml } from "./js/lib/article-markdown.js";
 import { centerContentMarkup, centerFaqSchema } from "./js/center-content.js";
+import { INFO_PAGES, renderInfoPage, infoPageJsonLd } from "./js/info-pages.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -54,23 +55,23 @@ const SITE = (CFG.origin || "").replace(/\/$/, "") + BASE;
 const L = {
   ar: {
     allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
-    faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "يعمل محلياً في متصفحك",
+    faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك",
     home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور",
     pdf: "مركز PDF", convert: "مركز التحويل",
-    about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام",
+    about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "التواصل والدعم",
     back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
     faqNav: "الأسئلة الشائعة", faqTitle: "الأسئلة الشائعة",
-    faqSub: "إجابات مباشرة لأكثر الأسئلة بحثاً حول تحويل الصيغ وملفات PDF والصور والخصوصية — كل شيء يعمل داخل متصفحك."
+    faqSub: "إجابات واضحة عن أسئلة شائعة حول تحويل الصيغ وملفات PDF والصور والخصوصية؛ وتعالج الأدوات الملفات محلياً عندما تدعم ذلك."
   },
   en: {
     allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
-    faq: "FAQ", related: "Related tools", local: "Runs locally in your browser",
+    faq: "FAQ", related: "Related tools", local: "Files are processed locally when the tool supports it",
     home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory", images: "Image Hub",
     pdf: "PDF Hub", convert: "Convert Hub",
-    about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms",
+    about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms", contact: "Contact and Support",
     back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
     faqNav: "FAQ", faqTitle: "Frequently Asked Questions",
-    faqSub: "Straight answers to the most-searched questions about file conversion, PDF, images and privacy — everything runs inside your browser."
+    faqSub: "Clear answers to common questions about file conversion, PDF, images, and privacy; tools process files locally where supported."
   }
 };
 const pick = (obj, lang) => (obj && (obj[lang] || obj.en)) || "";
@@ -104,6 +105,9 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
     ...jsonLd
   ].filter(Boolean).map(g => `<script type="application/ld+json">${JSON.stringify(g).replace(/</g, "\\u003c")}</script>`).join("\n");
   const hreflangLinks = alternateLanguages.map(item => `<link rel="alternate" hreflang="${esc(item.lang)}" href="${esc(item.url)}" />`).join("\n");
+  const verificationMeta = String(CFG.googleSiteVerification || "").trim()
+    ? `<meta name="google-site-verification" content="${esc(String(CFG.googleSiteVerification).trim())}" />`
+    : "";
 
   return `<!DOCTYPE html>
 <html lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}">
@@ -115,6 +119,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <meta name="description" content="${esc(description)}" />
 <meta name="robots" content="${noindex ? "noindex,nofollow" : "index,follow"}" />
 <link rel="canonical" href="${url}" />
+${verificationMeta}
 ${hreflangLinks}
 <link rel="manifest" href="${R("manifest.json")}" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="${R("feed.xml")}" />
@@ -193,7 +198,7 @@ ${ld}
         <a href="${R("rare/")}" data-i18n="nav.rare">${V.rare}</a><a href="${R("ai/")}" data-i18n="nav.ai">${V.ai}</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="${lang === "ar" ? "فتح قائمة التنقل" : "Open navigation menu"}">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -205,9 +210,11 @@ ${content}
   <footer class="footer">
     <div class="container footer-inner">
       <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">${V.local}</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <nav class="footer-nav" aria-label="${lang === "ar" ? "روابط الموقع" : "Site links"}">
         <a href="${R("privacy/")}" data-i18n="nav.privacy">${V.privacy}</a>
         <a href="${R("terms/")}" data-i18n="nav.terms">${V.terms}</a>
+        <a href="${R("about/")}" data-i18n="nav.about">${V.about}</a>
+        <a href="${R("contact/")}" data-i18n="nav.contact">${V.contact}</a>
         <a href="${R("ai/")}">${V.ai}</a>
       </nav>
     </div>
@@ -221,7 +228,7 @@ ${content}
 function writePage(relPath, content) {
   const file = join(ROOT, relPath);
   mkdirSync(dirname(file), { recursive: true });
-  writeFileSync(file, content);
+  writeFileSync(file, String(content).replace(/^[\t ]+$/gm, ""));
   console.log("  ✓", relPath);
 }
 
@@ -370,6 +377,9 @@ console.log("→ article pages");
 const ARTICLE_LANGS = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
 const ARTICLE_LABELS = { ar: "المقالات", en: "Articles", fr: "Articles", es: "Artículos", de: "Artikel", tr: "Makaleler", ru: "Статьи", zh: "文章", hi: "लेख", pt: "Artigos" };
 const RELATED_LABELS = { ar: "دليل مرتبط", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
+const AUTHOR_LABELS = { ar: "إعداد", en: "By", fr: "Par", es: "Por", de: "Von", tr: "Yazan", ru: "Автор", zh: "作者", hi: "लेखक", pt: "Por" };
+const PUBLISHED_LABELS = { ar: "نُشر", en: "Published", fr: "Publié", es: "Publicado", de: "Veröffentlicht", tr: "Yayınlandı", ru: "Опубликовано", zh: "发布于", hi: "प्रकाशित", pt: "Publicado" };
+const UPDATED_LABELS = { ar: "آخر تحديث", en: "Updated", fr: "Mis à jour", es: "Actualizado", de: "Aktualisiert", tr: "Güncellendi", ru: "Обновлено", zh: "更新于", hi: "अपडेट किया गया", pt: "Atualizado" };
 const localizedTags = (article, lang) => Array.isArray(article.tags) ? article.tags : (article.tags?.[lang] || article.tags?.en || []);
 
 for (const a of getArticles()) {
@@ -400,7 +410,7 @@ for (const a of getArticles()) {
     </nav>
     <article class="section article-body" lang="${lang}">
       <h1>${esc(title)}</h1>
-      <p class="article-date">${a.date}${a.updated && a.updated !== a.date ? ` · ${lang === "ar" ? "آخر تحديث" : "Updated"}: ${a.updated}` : ""}</p>
+      <p class="article-byline"><span>${AUTHOR_LABELS[lang] || "By"} DouNest</span><span>· ${PUBLISHED_LABELS[lang] || "Published"}: <time datetime="${esc(a.date)}">${esc(a.date)}</time></span>${a.updated && a.updated !== a.date ? `<span>· ${UPDATED_LABELS[lang] || "Updated"}: <time datetime="${esc(a.updated)}">${esc(a.updated)}</time></span>` : ""}</p>
       <div class="explanation">${markdownToHtml(a.content[lang], BASE)}</div>${relatedHtml}${tagsHtml}
     </article>`;
     const pageTitle = pick(a.metaTitle, lang) || title;
@@ -428,20 +438,17 @@ for (const a of getArticles()) {
 
 /* ---------- 3) legal/info pages ---------- */
 console.log("→ static pages");
-const LEGAL = {
-  about: { title: "حول DouNest", desc: "DouNest مجموعة أدوات ويب مجانية تعمل بالكامل داخل متصفحك." },
-  privacy: { title: "سياسة الخصوصية — DouNest", desc: "كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة." },
-  terms: { title: "شروط الاستخدام — DouNest", desc: "شروط استخدام أدوات DouNest المجانية." }
-};
-for (const [slug, meta] of Object.entries(LEGAL)) {
+for (const slug of Object.keys(INFO_PAGES)) {
+  const page = INFO_PAGES[slug].ar;
+  const infoHref = path => path === "/" ? BASE : BASE + path.replace(/^\/+|\/+$/g, "") + "/";
   writePage(
     `${slug}/index.html`,
     shell({
-      title: meta.title,
-      description: meta.desc,
+      title: `${page.title} — DouNest`,
+      description: page.description,
       canonicalPath: `${slug}/`,
-      bodyContent: `<section class="page-head"><h1>${esc(meta.title)}</h1><p>${esc(meta.desc)}</p>
-        <p class="empty" style="max-width:560px;margin:0 auto">النسخة الكاملة لهذه الصفحة تُعرض داخل التطبيق عند فتحها في المتصفح.</p></section>`
+      jsonLd: infoPageJsonLd(slug, "ar", SITE),
+      bodyContent: renderInfoPage(slug, "ar", infoHref)
     })
   );
 }
@@ -825,6 +832,7 @@ const urls = [
   ...RARE_CATS.filter(c => c.id !== "security").map(c => ({ p: `rare/${c.id}/`, pr: "0.5" })),
   ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => ({ p: `rare/${t2.slug}/`, pr: "0.5" })),
   { p: "about/", pr: "0.4" },
+  { p: "contact/", pr: "0.4" },
   { p: "privacy/", pr: "0.3" },
   { p: "terms/", pr: "0.3" }
 ];

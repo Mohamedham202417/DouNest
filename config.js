@@ -20,6 +20,7 @@ var DouNestConfig = {
   repoPath: "DouNest",        // "" when using a custom domain at site root
   base: "auto",               // "auto" detects /DouNest/ automatically; or force "/" or "/DouNest/"
   twitter: "",                // e.g. "@yourhandle"
+  googleSiteVerification: "", // paste the HTML-tag token from Search Console; leave blank until verified
 
   /* ---- 1) Google AdSense ----
      Fill client + per-position slot ids after approval.

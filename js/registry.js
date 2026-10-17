@@ -646,6 +646,30 @@ export const TOOLS = [
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
   explanation: { ar: ["تعمل الأداة محلياً داخل متصفحك ولا ترفع ملفاتك إلى خادم."], en: ["This tool runs locally in your browser and does not upload files."] },
   faq: [], related: []
+},
+{
+  slug: 'image-to-base64', icon: '🧬', category: 'media',
+  name: { ar: 'تحويل صورة إلى Base64', en: 'Image to Base64 Converter' },
+  short: { ar: 'حوّل صورة إلى نص Base64 أو Data URL داخل المتصفح. حد الملف 8 ميغابايت.', en: 'Convert an image to Base64 text or a Data URL in your browser. 8 MiB file limit.' },
+  usage: { ar: ["اختر صورة من جهازك.", "حدد Base64 فقط أو Data URL مع نوع MIME.", "حوّل الناتج ثم انسخه."], en: ["Choose an image from your device.", "Select Base64 only or a Data URL with its MIME type.", "Convert and copy the output."] },
+  explanation: { ar: ["ترميز Base64 يحول بايتات الصورة إلى نص مناسب للتضمين في البيانات أو نقلها عبر واجهات تقبل هذا الترميز.", "لا يصغّر الترميز الصورة؛ يكون النص أكبر من الملف الأصلي، لذلك يفرض المحول حداً قدره 8 MiB لتقليل استهلاك الذاكرة.", "تُقرأ الصورة محلياً باستخدام واجهات المتصفح ولا تُرسل إلى DouNest."], en: ["Base64 represents image bytes as text for data fields or interfaces that accept this encoding.", "Encoding does not compress an image: the text is larger than the original file, so this converter limits input to 8 MiB to control memory use.", "The image is read with browser APIs and is not sent to DouNest."] },
+  faq: [], related: ['base64', 'favicon-generator']
+},
+{
+  slug: 'xml-formatter', icon: '🧾', category: 'dev',
+  name: { ar: 'منسّق XML', en: 'XML Formatter' },
+  short: { ar: 'تحقق من صياغة XML ورتّب تداخله محلياً، مع رفض DTD والكيانات الخارجية.', en: 'Validate and pretty-print XML locally while rejecting DTD and external entity declarations.' },
+  usage: { ar: ["الصق XML في الحقل.", "اضغط تنسيق XML لعرض التداخل المرتب أو رسالة خطأ واضحة.", "انسخ النتيجة بعد مراجعتها."], en: ["Paste XML into the input.", "Choose Format XML to view indented markup or a clear parse error.", "Review and copy the result."] },
+  explanation: { ar: ["يستخدم المنسق DOMParser وXMLSerializer المدمجين في المتصفح، ولا يحتاج إلى خادم أو مكتبة إضافية.", "يفحص الصياغة القياسية ويضيف المسافات البادئة للعناصر ذات المحتوى المتداخل. يحافظ على النص المختلط كما هو لتجنب تغيير المسافات ذات المعنى.", "يرفض تعريفات DTD والكيانات الخارجية، ويقبل إدخالاً حتى 1 MiB. قد تختلف طريقة تسلسل بعض المساحات الاسمية بين المتصفحات."], en: ["The formatter uses the browser's built-in DOMParser and XMLSerializer; no server or additional library is required.", "It checks well-formed XML and indents elements with nested content. Mixed text content is kept compact to avoid changing meaningful whitespace.", "DTD and external entity declarations are rejected, and input is limited to 1 MiB. Namespace serialization can vary slightly between browsers."] },
+  faq: [], related: ['json-formatter', 'json-yaml']
+},
+{
+  slug: 'html-to-markdown', icon: '↔️', category: 'dev',
+  name: { ar: 'تحويل HTML إلى Markdown', en: 'HTML to Markdown Converter' },
+  short: { ar: 'حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً.', en: 'Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.' },
+  usage: { ar: ["الصق مقتطف HTML في حقل الإدخال.", "حوّل المحتوى وراجع العناوين والقوائم والروابط والجداول الناتجة.", "انسخ Markdown أو عدّل النص قبل استخدامه."], en: ["Paste an HTML fragment into the input.", "Convert and review the resulting headings, lists, links, and tables.", "Copy the Markdown or edit it before use."] },
+  explanation: { ar: ["يقرأ المتصفح HTML في DOM غير نشط، ثم يحوله إلى Markdown كنص عادي؛ لا تُنفذ عناصر script أو style.", "يدعم التحويل الشائع للعناوين والفقرات والتأكيد والاقتباسات والقوائم والجداول والصور. قد تتطلب التخطيطات المعقدة أو مكونات HTML المخصصة تعديلاً يدوياً.", "تُستبعد الروابط ذات البروتوكولات غير المسموح بها، ويقتصر الإدخال على 1 MiB. لا يُرسل المحتوى إلى DouNest."], en: ["The browser parses HTML into an inert DOM and converts it to plain Markdown; script and style content is not executed or copied.", "Common headings, paragraphs, emphasis, quotes, lists, tables, and images are supported. Complex layouts or custom HTML components may need manual editing.", "Links using unsupported protocols are omitted, input is limited to 1 MiB, and content is not sent to DouNest."] },
+  faq: [], related: ['markdown-to-html', 'json-formatter']
 }
 ];
 

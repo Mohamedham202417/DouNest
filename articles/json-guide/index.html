@@ -8,6 +8,7 @@
 <meta name="description" content="كل ما تحتاج معرفته عن JSON في مكان واحد: البنية والقواعد الصارمة، الأخطاء التي تسقط المبتدئين والمحترفين، الفرق عن YAML وXML، والممارسات الاحترافية في التعامل مع واجهات API." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/json-guide/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/json-guide/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/json-guide/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/json-guide/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="ar">
       <h1>دليل JSON الشامل 2026: من الصفر إلى الاحتراف بلا أخطاء</h1>
-      <p class="article-date">2026-10-14</p>
+      <p class="article-byline"><span>إعداد DouNest</span><span>· نُشر: <time datetime="2026-10-14">2026-10-14</time></span></p>
       <div class="explanation"><p>JSON اختصار لـ JavaScript Object Notation، وهو اليوم أكثر تنسيق لتبادل البيانات استخداماً في العالم الرقمي بأكمله: كل رسالة بين تطبيقك وخادم أي خدمة حديثة تمر بصيغة JSON تقريباً، وكل ملفات إعدادات الأدوات الحديثة من VS Code إلى package.json مبنية عليه. رغم بساطته الظاهرية، تخبئ صيغة JSON تفاصيل صارمة تصطدم بها ملايين المطورين يومياً، وهذا الدليل يجمعها كلها في مكان واحد.</p>
 <h2>لماذا انتشر JSON بهذه السرعة؟</h2>
 <p>ثلاثة أسباب جوهرية صنعت هيمنته: أولاً البساطة — JSON ليس أكثر من نص منظم بأقواس يمكن لأي إنسان قراءته مباشرة دون أدوات. ثانياً التطابق الطبيعي مع طريقة تمثيل البيانات في معظم لغات البرمجة: قوائم وقواميس ونصوص وأرقام موجودة في كل لغة تقريباً. ثالثاً الدعم الجامع — كل لغة برمجة حديثة تمتلك مكتبة قياسية جاهزة لقراءته وكتابته، وكل مستعرض إنترنت يضم محلل JSON مدمجاً في محركه.</p>
@@ -129,10 +130,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

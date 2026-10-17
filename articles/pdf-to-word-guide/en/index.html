@@ -8,6 +8,7 @@
 <meta name="description" content="A practical guide to converting PDF to Word, including text PDFs versus scans, formatting limits, and privacy considerations." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/pdf-to-word-guide/en/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/pdf-to-word-guide/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/pdf-to-word-guide/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/pdf-to-word-guide/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="en">
       <h1>PDF to Word: What Works, What Fails, and How to Get Better Results</h1>
-      <p class="article-date">2026-10-15</p>
+      <p class="article-byline"><span>By DouNest</span><span>· Published: <time datetime="2026-10-15">2026-10-15</time></span></p>
       <div class="explanation"><p>PDF to Word is useful when you need to edit existing text or reuse a report. The result depends first on the PDF type: a text PDF can usually be extracted, while a scanned PDF needs OCR and may not preserve the original layout.</p>
 <h2>Identify the PDF type first</h2>
 <p>Try selecting and copying a word. If that works, the document is probably text-based and suitable for a quick conversion. If every page behaves like one image, use an <a href="/DouNest/tools/ocr-image-to-text/">image-to-text OCR tool</a> or another OCR workflow before rebuilding the Word document.</p>
@@ -122,10 +123,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
         <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
         <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../../about/" data-i18n="nav.about">About</a>
+        <a href="../../../contact/" data-i18n="nav.contact">Contact and Support</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>

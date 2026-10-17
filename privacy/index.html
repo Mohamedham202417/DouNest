@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
 <title>سياسة الخصوصية — DouNest</title>
-<meta name="description" content="كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة." />
+<meta name="description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/privacy/" />
+
 
 <link rel="manifest" href="../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
@@ -17,13 +18,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="سياسة الخصوصية — DouNest" />
-<meta property="og:description" content="كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة." />
+<meta property="og:description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
 <meta property="og:url" content="https://mohamedham202417.github.io/DouNest/privacy/" />
 <meta property="og:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="سياسة الخصوصية — DouNest" />
-<meta name="twitter:description" content="كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة." />
+<meta name="twitter:description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
 <meta name="twitter:image" content="https://mohamedham202417.github.io/DouNest/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,6 +62,8 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://mohamedham202417.github.io/DouNest/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://mohamedham202417.github.io/DouNest/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"سياسة الخصوصية","description":"تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest.","url":"https://mohamedham202417.github.io/DouNest/privacy/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://mohamedham202417.github.io/DouNest/"},{"@type":"ListItem","position":2,"name":"سياسة الخصوصية","item":"https://mohamedham202417.github.io/DouNest/privacy/"}]}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -86,22 +89,43 @@
         <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
     </div>
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
-<section class="page-head"><h1>سياسة الخصوصية — DouNest</h1><p>كيف نتعامل مع بياناتك في DouNest: معالجة محلية، تخزين محلي، شفافية كاملة.</p>
-        <p class="empty" style="max-width:560px;margin:0 auto">النسخة الكاملة لهذه الصفحة تُعرض داخل التطبيق عند فتحها في المتصفح.</p></section>
+<nav class="breadcrumb" aria-label="breadcrumb"><a href="/DouNest/">DouNest</a><span class="sep">›</span><span class="current">سياسة الخصوصية</span></nav><header class="page-head"><h1>سياسة الخصوصية</h1><p class="lead">تشرح هذه السياسة ما يحدث عند استخدام موقع DouNest. صُممت أدوات الملفات لمعالجة المحتوى المختار داخل المتصفح، لكن الموقع يعتمد أيضاً على استضافة وموارد ويب خارجية، لذلك نوضح الفرق بين ملفك وبين طلبات تحميل الموقع.</p></header><div class="info-page" lang="ar">
+    <section class="info-section">
+      <h2>الملفات التي تختارها</h2>
+      <p>تعمل عمليات الأدوات التي تتعامل مع الملفات في متصفحك. لا يرسل DouNest محتوى الملفات المختارة إلى خادم خاص لمعالجتها أو تخزينها. تبقى الملفات والنتائج في جهازك ما لم تختر أنت مشاركتها أو فتح رابط خارجي بنفسك. لا ترفع ملفاً حساساً إلى أي خدمة أخرى ما لم تكن قد راجعت سياسة تلك الخدمة.</p><p>قد يفشل فتح ملف من مزود تخزين سحابي أو تطبيق صور إذا لم يعد المتصفح قادراً على قراءته. في هذه الحالة نزّل نسخة إلى جهازك ثم اخترها من وحدة التخزين المحلية.</p>
+    </section>
+    <section class="info-section">
+      <h2>البيانات المخزنة في المتصفح</h2>
+      <p>قد يحفظ الموقع تفضيلات مثل اللغة والمظهر والأدوات المفضلة وآخر الأدوات المستخدمة، إضافة إلى التقييمات والتعليقات المحلية لبعض الأدوات. تُحفظ هذه البيانات في مساحة التخزين المحلية للمتصفح على جهازك ولا تُزامن مع حساب DouNest. حذف بيانات الموقع أو مساحة التخزين من إعدادات المتصفح يزيلها، وقد يؤدي استخدام نافذة خاصة إلى عدم بقائها بعد إغلاق النافذة.</p><p>لا تكتب في التعليقات المحلية معلومات لا تريد أن تظهر على الشاشة أمام مستخدم آخر لجهازك. هذه التعليقات مخصصة لجهازك وليست منشورات عامة ولا تُرسل إلى فريق الموقع.</p>
+    </section>
+    <section class="info-section">
+      <h2>الاستضافة والموارد الخارجية</h2>
+      <p>تُقدَّم صفحات الموقع من GitHub Pages، وقد تُحمَّل بعض المكتبات أو نماذج المعالجة والخطوط من شبكات توصيل محتوى خارجية. عند طلب هذه الموارد، قد يتلقى مزود الاستضافة أو الشبكة بيانات تقنية لازمة لتسليم الطلب، مثل عنوان الشبكة ومعلومات المتصفح. هذه الطلبات لا تتضمن تلقائياً محتوى ملفاتك التي تعالجها الأداة محلياً. تخضع هذه الجهات لسياساتها الخاصة.</p><p>إذا منعت اتصالات الشبكة الخارجية فقد لا تعمل ميزة تعتمد على مكتبة أو نموذج لم يُحمّل بعد. قد تعمل الأدوات الأخرى دون اتصال بعد تحميل ملفاتها، بحسب تخزين المتصفح المؤقت ودعم التطبيق لذلك.</p>
+    </section>
+    <section class="info-section">
+      <h2>التحليلات والإعلانات والروابط الخارجية</h2>
+      <p>في إعداد النشر الحالي لا يوجد معرّف Google Analytics أو سكربت تحليلات مفعّل، كما أن معرّفات Google AdSense فارغة؛ لذلك لا يحمّل الموقع حالياً Google Analytics أو إعلانات AdSense. توجد في الشيفرة نقاط اختيارية لإرسال أحداث إذا جرى إعداد مزود تحليلات مستقبلاً، لكنها لا ترسل شيئاً عند غياب ذلك المزود. سنحدّث هذه السياسة قبل تفعيل خدمة تجمع بيانات إضافية.</p><p>معرّف الإحالة غير مضبوط حالياً. قد تفتح بعض الروابط الخارجية مواقع أطراف أخرى، وتخضع بياناتك بعد مغادرة DouNest لسياسات تلك المواقع. لا تدخل بيانات خاصة في صفحة عامة أو خدمة خارجية دون مراجعة وجهتها وشروطها.</p>
+    </section>
+    <section class="info-section">
+      <h2>الاحتفاظ والاختيارات</h2>
+      <p>لا يحتفظ DouNest بنسخ من الملفات التي تعالجها الأدوات محلياً. تبقى تفضيلات الموقع المحلية حتى تحذفها من المتصفح أو تمسح بيانات الموقع. ويمكنك حظر الخطوط أو موارد CDN من إعدادات الشبكة، مع احتمال تعطّل الوظائف المرتبطة بها.</p><p>للاستفسارات غير الحساسة أو للإبلاغ عن خطأ، استخدم صفحة التواصل. البلاغات على GitHub Issues عامة؛ لا ترفق ملفات أو كلمات مرور أو بيانات شخصية أو أسراراً.</p>
+    </section></div>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../about/" data-i18n="nav.about">حول</a>
+        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../ai/">دليل AI</a>
       </nav>
     </div>

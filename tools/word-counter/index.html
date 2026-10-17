@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/word-counter/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>عدّاد الكلمات</h1>
           <p class="lead">احسب الكلمات والأحرف والأسطر.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">text</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>عدّاد الكلمات ليس ترفاً؛ الحدود الدنيا والعليا للكلمات قواعد صارمة في التقديمات الجامعية، ومواضيع SEO، وملخصات التنفيذية، ورسائل التقديم للوظائف — وتجاوز الحد أو نقصه يدوياً مستحيل عملياً على نص طويل.</p><p>مؤقت القراءة التقديري أداة تحريرية قوية: مقالة ويب مثالية تقع بين 900 و1300 كلمة أي 5-7 دقائق قراءة، وبيان صحفي يجب أن يقرأ في دقيقة — الأرقام توجهك فوراً.</p><p>عدّ الأحرف بأشكاله الثلاثة (مع الفراغات وبدونها) مهم لمواقع ذات حدود صارمة مثل تويتر/إكس والملخصات في نماذج التقديم الإلكترونية.</p><p>إحصاء الجمل والفقرات يكشف مشاكل البنية قبل أن يراها القارئ: فقرة واحدة بطول المقال كله، أو جمل بمتوسط 40 كلمة تقول إن النص يحتاج تنفساً.</p><p>الكل يحدث أثناء الكتابة نفسها دون أي زر تحديث — تجربة تسمح بتحرير مقالي حقيقي بدل نسخ ولصق متكرر.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>كيف يحسب العدّاد الكلمة العربية؟</summary><p>يعتمد الفصل على المسافات مع دعم كامل للتصريف العربي، فالنتيجة مطابقة لعدّ معالجات النصوص.</p></details><details class="faq-item"><summary>هل القراءة التقديرية دقيقة للنصوص التقنية؟</summary><p>النصوص الكثيفة تقرأ أبطأ (150 كلمة/دقيقة) — اعتبر الرقم حداً أدنى وأضف 20% للنصوص التقنية.</p></details><details class="faq-item"><summary>هل يُحفظ نصي في أي مكان؟</summary><p>لا — التحليل محلي في الذاكرة فقط، وأي تحديث للصفحة يمسح النص نهائياً.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/regex-tester/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>مختبر Regex</h1>
           <p class="lead">اختبر التعبيرات النمطية مباشرة.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>التعبيرات النمطية هي لغة صغيرة كاملة لوصف الأنماط النصية: بريد إلكتروني صالح، رقم هاتف بصيغة معينة، وسم HTML، تاريخ — كلها أنماط تُلتقط بسطر واحد بدل عشرات الأسطر من الشروط المتداخلة.</p><p>المختبر الفوري يغير طريقة التعلم كلياً: بدل كتابة نمط وتشغيل برنامج وقراءة خطأ، ترى التطابقات تتشكل لحظياً أثناء الكتابة — كل حرف تضيفه يكشف أثره فوراً، وهذا أسرع طريق لفهم العناصر.</p><p>الأخطاء الشائعة التي يكشفها المختبر فوراً: النمط الجشع (+ بدل +?) الذي يبتلع أكثر مما ينبغي، ونسيان الأعلام، ومجموعات الالتقاط التي لا تلتقط ما تظنه — كلها تظهر بصرياً بدل التخمين.</p><p>للمطورين المحترفين: المختبر مثالي لفهم أنماط الآخرين — الصق نمطاً معقداً من مكتبة مفتوحة المصدر مع نص تجريبي وشاهد أجزاءه تعمل أمامك جزءاً جزءاً.</p><p>تنبيه أداء مهم: الأنماط المركبة على نصوص ضخمة قد تتجمد المتصفحات الضعيفة — اختبر على عينات صغيرة أولاً ثم طبّق في كودك مع حدود الطول.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل يدعم الأداة نمط JavaScript تحديداً؟</summary><p>نعم — النمط يُنفذ بمحرك RegExp في متصفحك نفسه، فالنتيجة مطابقة تماماً لسلوك كودك.</p></details><details class="faq-item"><summary>كيف أجعل النمط غير جشع؟</summary><p>أضف علامة استفهام بعد المكرر: .*? بدل .* — جرّب الفرق مباشرة في المختبر.</p></details><details class="faq-item"><summary>ماذا يعني علم g؟</summary><p>يجعل البحث يجد كل التطابقات لا الأول فقط — بدون g تتوقف عند أول تطابق.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

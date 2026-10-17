@@ -8,6 +8,7 @@
 <meta name="description" content="A practical guide to what websites really know about you: digital fingerprinting, ad tracking, WebRTC leaks, and how to audit and close each gap with specific free steps." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/en/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/browser-privacy-tools/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="en">
       <h1>Browser Privacy Tools: Audit Your Digital Footprint in 10 Minutes</h1>
-      <p class="article-date">2026-10-12</p>
+      <p class="article-byline"><span>By DouNest</span><span>· Published: <time datetime="2026-10-12">2026-10-12</time></span></p>
       <div class="explanation"><p>Every time you open any website, a silent dialogue occurs between your browser and that site&#39;s servers, revealing far more about you than you expect: your device, OS, screen, installed fonts, even your mouse-movement behavior. This article explains exactly what leaks, how to audit it yourself, and how to close the biggest gaps in a single ten-minute session.</p>
 <h2>Digital fingerprinting: why companies no longer need cookies</h2>
 <p>Cookies are the old, well-known part of the tracking story — deletable with one click. The newer, more dangerous part is digital fingerprinting: a collection of your device&#39;s properties forming a nearly unique identity that survives cookie deletion and private browsing — the count and order of installed fonts, screen resolution, color depth, timezones, GPU version, and experimental drawings on the Canvas. EFF research proved this combination distinguishes a user among thousands with tiny error rates, without the site placing any file on your device at all.</p>
@@ -123,10 +124,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
         <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
         <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../../about/" data-i18n="nav.about">About</a>
+        <a href="../../../contact/" data-i18n="nav.contact">Contact and Support</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>

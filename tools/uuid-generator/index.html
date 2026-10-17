@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/uuid-generator/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>مولّد UUID</h1>
           <p class="lead">أنشئ UUID v4 عشوائيًا.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>UUID معرف قياسي عالمي بطول 128 بت يُكتب 36 حرفاً بصيغة 8-4-4-4-12. النسخة v4 الأشهر تعتمد على العشوائية: احتمال تكرار معرفين من هذا النوع ضئيل لدرجة أن توليد بليون UUID في الثانية لمئة عام لن يصطدم بالتكرار عملياً.</p><p>لماذا لا نكفي بالعد التسلسلي 1، 2، 3؟ لأن الأنظمة الموزعة لا تجتمع على عداد مشترك؛ المعرف العشوائي يولّد في أي خادم أو جهاز أو فرع دون تنسيق مع أحد، وسيظل فريداً — هذا أساس تصميم قواعد البيانات الموزعة الحديثة.</p><p>الاستخدامات اليومية شاسعة: مفاتيح أجنبية في الجداول، معرفات طلبات API، أسماء ملفات لا تتصادم، معرفات جلسات، ومفاتيح تجريبية في الاختبارات.</p><p>هناك نسخ أخرى أقدم مثل v1 المبنية على العنوان الفيزيائي للشبكة والوقت، لكنها انخفضت شعبيتها لأنها تسرب معلومات عن مصدر التوليد، بينما v4 محايدة تماماً.</p><p>الأداة تستخدم crypto.getRandomValues المعتمدة تشفيرياً في متصفحك — ليست Math.random التي قد تتكرر، بل مصدر عشوائي حقيقي موجهة للأنظمة الأمنية.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل يمكن أن يتكرر UUID v4؟</summary><p>احتمالياً نعم لكنه عملياً مستحيل: فرص الاصطدام أقل بكثير من فرص ضربك برصاصة نيزك اليوم.</p></details><details class="faq-item"><summary>ما الفرق بين v4 و v1؟</summary><p>v1 مبنية على الوقت وعنوان الشبكة (قد يكشف مصدرها)، وv4 عشوائية بالكامل وأكثر خصوصية.</p></details><details class="faq-item"><summary>هل UUID مناسب كمفتاح أساسي في قاعدة البيانات؟</summary><p>نعم وخاصة في الأنظمة الموزعة، مع الانتباه لأن حجمه أكبر من الأعداد التسلسلية فأداء الفهارس يتأثر قليلاً.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

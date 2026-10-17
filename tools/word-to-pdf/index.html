@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/word-to-pdf/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>Word إلى PDF</h1>
           <p class="lead">حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>إرسال مستند Word للجهات الرسمية عن عادة سيئة: الخطوط تتغير، والتنسيق ينكسر، والصفحات تنزاح على أجهزة أخرى — بينما PDF يثبت شكله على كل شاشة، ولهذا كل الجهات الرسمية تطلبه حصراً.</p><p>الأداة تعمل على مرحلتين محليتين: قراءة بنية DOCX (وهو ZIP يحوي XML) واستخراج الفقرات والعناوين والقوائم والجداول، ثم بناء PDF نظيف عبر pdf-lib بهيكل منطقي واضح.</p><p>حدود التحويل بصدق: التنسيق الأساسي (عناوين، فقرات، قوائم، جداول) ينتقل جيداً، بينما التخطيطات المعقدة (صور عائمة، أعمدة متعددة، ترويسات فنية) تُبسط — للمستندات البصرية الحرجة استخدم Word نفسه بخيار «حفظ كـ PDF».</p><p>القيمة الحقيقية هنا للمستندات النصية: سيرة ذاتية، خطاب رسمي، تقرير بسيط — تتحول في ثوانٍ دون فتح برنامج مكتب ودون رفع الملف لأي موقع تحويل مشهور يطلب مستنداتك.</p><p>للخصوصية أهمية مضاعفة هنا: السيرة الذاتية تحتوي بياناتك الشخصية الكاملة — لا ترسلها لأي خادم أونلاين أبداً حين يمكنك التحويل محلياً في ثوانٍ.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل التنسيق الكامل ينتقل؟</summary><p>الأساسي نعم (عناوين وقوائم وجداول)؛ التخطيطات المعقدة تُبسط — للحالات الحرجة استخدم «حفظ كـ PDF» من Word نفسه.</p></details><details class="faq-item"><summary>هل يدعم .doc القديم؟</summary><p>لا — حوّله أولاً إلى .docx من Word نفسه (حفظ باسم) ثم مرره هنا.</p></details><details class="faq-item"><summary>هل ملفي يُرفع لأي خادم؟</summary><p>لا — القراءة والبناء كلاهما محلي؛ ملفك لا يغادر جهازك إطلاقاً.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

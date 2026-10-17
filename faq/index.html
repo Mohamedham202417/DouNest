@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/faq/" />
 
+
 <link rel="manifest" href="../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -87,7 +88,7 @@
         <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -97,12 +98,12 @@
 
     <section class="page-head">
       <h1>الأسئلة الشائعة</h1>
-      <p>إجابات مباشرة لأكثر الأسئلة بحثاً حول تحويل الصيغ وملفات PDF والصور والخصوصية — كل شيء يعمل داخل متصفحك.</p>
+      <p>إجابات واضحة عن أسئلة شائعة حول تحويل الصيغ وملفات PDF والصور والخصوصية؛ وتعالج الأدوات الملفات محلياً عندما تدعم ذلك.</p>
     </section>
 
     <section class="section">
       <h2 class="section-title">التحويل بين الصيغ</h2>
-      
+
       <details class="faq-item">
         <summary>كيف أحوّل صورة إلى ملف PDF على الهاتف؟</summary>
         <p>افتح أداة «صورة إلى PDF» في DouNest من متصفح هاتفك، اختر الصور من معرض الصور (يمكن اختيار أكثر من صورة)، رتّبها بالترتيب الذي تريده، ثم اضغط «تحويل». سيُنشأ ملف PDF واحد يُنزَّل مباشرة إلى جهازك. العملية تتم داخل المتصفح بالكامل ولا تُرفع صورك إلى أي خادم، لذا فهي أسرع وأكثر خصوصية من المواقع التقليدية.</p>
@@ -134,7 +135,7 @@
     </section>
     <section class="section">
       <h2 class="section-title">معالجة الصور</h2>
-      
+
       <details class="faq-item">
         <summary>كيف أزيل خلفية الصورة مجاناً دون رفعها إلى الإنترنت؟</summary>
         <p>أداة «إزالة خلفية الصورة» في DouNest تشغّل نموذج ذكاء اصطناعي مفتوح المصدر داخل متصفحك مباشرة: اختر الصورة وانتظر ثوانٍ حتى تُعزل الخلفية تلقائياً، ثم نزّل الصورة بخلفية شفافة (PNG). لأول مرة فقط يُحمَّل النموذج (نحو 40 ميغابايت) ثم يُخزَّن مؤقتاً للاستخدام اللاحق. صورك الشخصية لا تُرسل إلى أي خادم على الإطلاق.</p>
@@ -154,7 +155,7 @@
     </section>
     <section class="section">
       <h2 class="section-title">ملفات PDF</h2>
-      
+
       <details class="faq-item">
         <summary>كيف أدمج عدة ملفات PDF في ملف واحد؟</summary>
         <p>استخدم أداة «دمج PDF» في DouNest: اختر الملفات (اثنان أو أكثر)، رتّبها بالترتيب المطلوب بزرَّي التقديم والتأخير، ثم اضغط دمج. يُنزَّل ملف واحد موحَّد بترتيب الصفحات الصحيح. تعتمد الأداة على مكتبة pdf-lib مفتوحة المصدر وتعمل محلياً بالكامل.</p>
@@ -178,7 +179,7 @@
     </section>
     <section class="section">
       <h2 class="section-title">الخصوصية والأمان</h2>
-      
+
       <details class="faq-item">
         <summary>هل مواقع تحويل الملفات أونلاين آمنة؟ ما خطر رفع الملفات؟</summary>
         <p>معظم مواقع التحويل التقليدية ترفع ملفاتك إلى خوادمها للمعالجة، ما يعني أن مستنداتك وصفورك الشخصية تمر عبر أجهزة غريبة وقد تُحفظ فيها لفترة، وتكون عرضة للاعتراض على الشبكات العامة. نهج DouNest مختلف: كل الأدوات تنفّذ داخل متصفحك بتقنية WebAssembly/JavaScript، فلا يخرج أي بايت من ملفاتك من جهازك أصلاً. يمكنك التحقق حتى من قطع الاتصال بالإنترنت بعد فتح الصفحة والأدوات ستعمل.</p>
@@ -199,7 +200,7 @@
 
     <section class="section">
       <h2 class="section-title">English</h2>
-      
+
       <details class="faq-item">
         <summary>How do I convert an image to a PDF on my phone?</summary>
         <p>Open the Image to PDF tool in DouNest from your mobile browser, pick images from your gallery (multiple allowed), arrange their order, then press Convert. A single PDF is generated and downloaded right on your device. Everything happens inside the browser — your photos are never uploaded to any server.</p>
@@ -228,10 +229,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../about/" data-i18n="nav.about">حول</a>
+        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../ai/">دليل AI</a>
       </nav>
     </div>
