@@ -11,6 +11,11 @@ import { PDF_ACTIONS, IMAGE_ACTIONS, CONVERT_ACTIONS } from "../js/lib/actions.j
 
 const ROOT = new URL("../", import.meta.url);
 const read = (p) => readFileSync(new URL(p, ROOT), "utf8");
+const configSource = read("config.js");
+const origin = configSource.match(/\borigin:\s*"([^"]+)"/)?.[1];
+const repoPath = configSource.match(/\brepoPath:\s*"([^"]*)"/)?.[1] ?? "";
+assert.ok(origin, "site origin missing from config.js");
+const siteRoot = `${origin.replace(/\/$/, "")}/${repoPath ? `${repoPath}/` : ""}`;
 let checks = 0;
 function ok(condition, message) { assert.ok(condition, message); checks++; }
 
@@ -22,7 +27,7 @@ for (const tool of TOOLS) {
   ok((html.match(/<h1\b/g) || []).length === 1, `${path}: expected exactly one h1`);
   ok(html.includes('rel="canonical"'), `${path}: canonical is missing`);
   const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
-  ok(canonical?.[1] === `https://mohamedham202417.github.io/DouNest/tools/${tool.slug}/`, `${path}: wrong canonical URL`);
+  ok(canonical?.[1] === `${siteRoot}tools/${tool.slug}/`, `${path}: wrong canonical URL`);
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
   checks++;
   if (tool.slug.startsWith("pdf-") || ["image-crop","image-rotate-flip","exif-viewer","favicon-generator","svg-to-png","json-yaml","markdown-to-html","slug-generator","list-cleaner","totp-generator","password-strength","image-to-base64","xml-formatter","html-to-markdown"].includes(tool.slug)) {
@@ -51,7 +56,7 @@ ok(!home.includes("most-searched") && !read("js/i18n.js").includes("most-searche
 ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
-for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`/DouNest/${p}`), `sitemap missing ${p}`);
+for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`${siteRoot}${p}`), `sitemap missing ${p}`);
 
 // Information pages are rendered in static HTML and use the same content in the SPA.
 for (const slug of Object.keys(INFO_PAGES)) {
@@ -116,7 +121,7 @@ for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
     ok((html.match(/<h1\b/g) || []).length === 1, `${page}: expected exactly one H1`);
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
     const path = lang === "ar" ? `articles/${slug}/` : `articles/${slug}/${lang}/`;
-    ok(canonical?.[1] === `https://mohamedham202417.github.io/DouNest/${path}`, `${page}: wrong canonical`);
+    ok(canonical?.[1] === `${siteRoot}${path}`, `${page}: wrong canonical`);
     ok(html.includes(`hreflang="${lang}"`), `${page}: self hreflang missing`);
     ok(html.includes(`hreflang="x-default"`), `${page}: x-default hreflang missing`);
     ok(html.includes(`<article class="section article-body" lang="${lang}">`), `${page}: document language missing`);
@@ -126,7 +131,7 @@ for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
     ok(html.includes("article-byline") && html.includes(`datetime="${article.date}"`) && html.includes("DouNest"), `${page}: visible author/date byline missing`);
     const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
     ok(schemas.some(schema => schema["@type"] === "Article" && schema.inLanguage === lang), `${page}: Article JSON-LD missing or wrong language`);
-    ok(sitemap.includes(`/DouNest/${path}`), `sitemap missing ${path}`);
+    ok(sitemap.includes(`${siteRoot}${path}`), `sitemap missing ${path}`);
   }
 }
 const markdownSafety = markdownToHtml("**safe**\n\n[x](javascript:alert(1))\n\n<img src=x onerror=alert(1)>");

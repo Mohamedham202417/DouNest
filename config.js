@@ -16,8 +16,8 @@
 var DouNestConfig = {
   /* ---- Site identity & hosting ---- */
   siteName: "DouNest",
-  origin: "https://mohamedham202417.github.io",
-  repoPath: "DouNest",        // "" when using a custom domain at site root
+  origin: "https://dounest.hmdevelop.me",
+  repoPath: "",                // empty because the custom subdomain serves this site at /
   base: "auto",               // "auto" detects /DouNest/ automatically; or force "/" or "/DouNest/"
   twitter: "",                // e.g. "@yourhandle"
   googleSiteVerification: "", // paste the HTML-tag token from Search Console; leave blank until verified
