@@ -6,6 +6,7 @@ import * as ops from "../js/lib/ops.js";
 import { getArticle } from "../js/articles.js";
 import { markdownToHtml } from "../js/lib/article-markdown.js";
 import { CENTER_CONTENT } from "../js/center-content.js";
+import { INFO_PAGES, renderInfoPage, infoPageJsonLd } from "../js/info-pages.js";
 import { PDF_ACTIONS, IMAGE_ACTIONS, CONVERT_ACTIONS } from "../js/lib/actions.js";
 
 const ROOT = new URL("../", import.meta.url);
@@ -24,7 +25,7 @@ for (const tool of TOOLS) {
   ok(canonical?.[1] === `https://mohamedham202417.github.io/DouNest/tools/${tool.slug}/`, `${path}: wrong canonical URL`);
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
   checks++;
-  if (tool.slug.startsWith("pdf-") || ["image-crop","image-rotate-flip","exif-viewer","favicon-generator","svg-to-png","json-yaml","markdown-to-html","slug-generator","list-cleaner","totp-generator","password-strength"].includes(tool.slug)) {
+  if (tool.slug.startsWith("pdf-") || ["image-crop","image-rotate-flip","exif-viewer","favicon-generator","svg-to-png","json-yaml","markdown-to-html","slug-generator","list-cleaner","totp-generator","password-strength","image-to-base64","xml-formatter","html-to-markdown"].includes(tool.slug)) {
     ok(existsSync(new URL(`js/tools/${tool.slug}.js`, ROOT)), `missing standalone module: ${tool.slug}`);
   }
 }
@@ -46,10 +47,44 @@ ok((home.match(/<h1\b/g) || []).length === 1, "home needs one H1");
 ok(/مراكز العمل/.test(home), "home center links missing");
 ok((home.match(/class="explore-card"/g) || []).length >= 7, "home work centers must render as separate cards");
 ok(home.includes("id=\"nav-toggle\"") && home.includes("id=\"topnav\""), "mobile navigation toggle/panel missing");
+ok(!home.includes("most-searched") && !read("js/i18n.js").includes("most-searched") && !read("js/i18n.js").includes("أكثر الأسئلة بحثاً"), "FAQ copy must not claim unsupported search-volume rankings");
 ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
-for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/"]) ok(sitemap.includes(`/DouNest/${p}`), `sitemap missing ${p}`);
+for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`/DouNest/${p}`), `sitemap missing ${p}`);
+
+// Information pages are rendered in static HTML and use the same content in the SPA.
+for (const slug of Object.keys(INFO_PAGES)) {
+  const path = `${slug}/index.html`;
+  ok(existsSync(new URL(path, ROOT)), `missing information page: ${path}`);
+  const html = read(path);
+  ok((html.match(/<h1\b/g) || []).length === 1, `${path}: expected exactly one H1`);
+  ok(!html.includes("النسخة الكاملة لهذه الصفحة تُعرض داخل التطبيق"), `${path}: placeholder content returned`);
+  ok(html.includes('class="breadcrumb"') && html.includes('"@type":"BreadcrumbList"'), `${path}: visible/schema breadcrumb missing`);
+  ok(html.includes('name="description"') && html.includes('rel="canonical"'), `${path}: metadata missing`);
+  ok((html.match(/<h2\b/g) || []).length >= 2, `${path}: substantive section content missing`);
+  for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
+  checks++;
+  ok(renderInfoPage(slug, "ar").includes(INFO_PAGES[slug].ar.title), `${slug}: Arabic SPA content missing`);
+  ok(renderInfoPage(slug, "en").includes(INFO_PAGES[slug].en.title), `${slug}: English SPA content missing`);
+  ok(infoPageJsonLd(slug, "ar", "https://example.test").some(item => item["@type"] === "BreadcrumbList"), `${slug}: breadcrumb schema helper missing`);
+}
+for (const [slug, minimum] of [["about", 300], ["privacy", 500], ["terms", 500]]) {
+  const page = INFO_PAGES[slug].en;
+  const visibleCopy = [page.title, page.intro, ...page.sections.flatMap(section => [section.title, ...section.paragraphs])].join(" ");
+  ok(visibleCopy.split(" ").filter(Boolean).length >= minimum, `${slug}: English page content is below the planned substantive minimum`);
+}
+const contactPage = read("contact/index.html");
+ok(contactPage.includes("github.com/Mohamedham202417/DouNest/issues/new") && /public|عامة/.test(contactPage), "contact page must use the public issue channel and warn about privacy");
+ok(!read("index.html").includes('name="google-site-verification" content=""'), "empty Search Console token must not produce an empty verification tag");
+for (const slug of ["image-to-base64", "xml-formatter", "html-to-markdown"]) {
+  const tool = TOOLS.find(item => item.slug === slug);
+  ok(tool?.faq?.length >= 2, `${slug}: detailed FAQs missing`);
+  const html = read(`tools/${slug}/index.html`);
+  ok((html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"')) && html.includes('class="faq-item"'), `${slug}: visible FAQ or FAQ schema missing`);
+  const source = read(`js/tools/${slug}.js`);
+  ok(!/\bfetch\s*\(|XMLHttpRequest|sendBeacon/.test(source), `${slug}: local-only utility must not transmit user content`);
+}
 
 // Core file centers must use one shared queue and a complete, reusable action catalogue.
 for (const slug of ["pdf", "images", "convert"]) {
@@ -88,6 +123,7 @@ for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
     ok(html.includes('<meta property="og:type" content="article" />'), `${page}: Open Graph article type missing`);
     ok(html.includes("<blockquote>") && /<ol>|<ul>/.test(html), `${page}: Markdown callout/list not rendered`);
     ok(html.includes("article-related"), `${page}: related internal article link missing`);
+    ok(html.includes("article-byline") && html.includes(`datetime="${article.date}"`) && html.includes("DouNest"), `${page}: visible author/date byline missing`);
     const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
     ok(schemas.some(schema => schema["@type"] === "Article" && schema.inLanguage === lang), `${page}: Article JSON-LD missing or wrong language`);
     ok(sitemap.includes(`/DouNest/${path}`), `sitemap missing ${path}`);

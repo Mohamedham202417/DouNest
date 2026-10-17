@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/color-converter/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>محوّل الألوان</h1>
           <p class="lead">تحويل بين HEX و RGB و HSL.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">color</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>الألوان في الويب تتحدث ثلاث لغات: HEX هو لهجة CSS وHTML الأشهر، RGB هو التمثيل الفيزيائي للأضواء الحمراء والخضراء والزرقاء، وHSL هو التمييز الإنساني بالتدرج والتشبع والإضاءة — وكل صيغة تناسب سياقاً مختلفاً من العمل.</p><p>قيمة HSL تحديداً مفتاح ذهبي للتصميم المنهجي: تثبت التدرج وتحرك الإضاءة لتوليد عائلة ألوان متناسقة تلقائياً — هويات بصرية كاملة تُبنى من لون واحد بهذه الطريقة.</p><p>قيمة الألفا (الشفافية) تُخزن بصيغ RGBA أو HSLA أو #RRGGBBAA، وهي أساس الطبقات والظلال والتوهجات الحديثة في الواجهات.</p><p>الأداة تحول في الاتجاهين فوراً مع التحقق من الصحة: لصق قيمة خاطئة لا يكسر شيئاً بل يطلب الصيغة الصحيحة بلطف.</p><p>مطورو الواجهات يستخدمونها عشرات المرات يومياً: لصق لون من Figma، تحويله إلى متغير CSS، توليد درجاته — كل الدورة تكتمل هنا في ثوانٍ.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>ما الفرق العملي بين HEX و RGB؟</summary><p>لا فرق في اللون الناتج — الصيغة فقط؛ HEX أقصر للكتابة وRGB أسهل للمعالجة البرمجية.</p></details><details class="faq-item"><summary>كيف أولّد درجات لون واحد؟</summary><p>حوّل إلى HSL وثبّت التدرج والتشبع، ثم حرّك الإضاءة — كل قيمة تعطيك درجة متناسقة.</p></details><details class="faq-item"><summary>هل تدعم الأداة الشفافية؟</summary><p>نعم، عبر شريط الألفا الذي يولّد صيغ RGBA و HEX ذي الثمانية خانات.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

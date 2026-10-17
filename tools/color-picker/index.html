@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/color-picker/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>منتقي الألوان</h1>
           <p class="lead">اختر لونًا واحصل على كل الصيغ.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">color</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>منتقي الألوان هو أداة الواجهة التي تُفتح عشرات المرات يومياً: لون زر، لون خلفية، درجة ظل، لون نص ثانوي — الدورة تتكرر في كل مشروع واجهات، وأي احتكاك في الأداة يتراكم ساعات شهرياً.</p><p>النموذج المستخدم هو HSV/HSL المألوف من برامج التصميم: التدرج على شريط عمودي، والتشبع والإضاءة في مربع التدرج — أسهل بكثير من تخيل الأرقام في RGB الخام.</p><p>المعاينة الحية للون على خلفيتين (فاتحة وداكنة) تمنع مفاجأة اللون الذي يبدو جميلاً في العزل ويختفي على خلفية الموقع الفعلية.</p><p>توليد كل الصيغ دفعة واحدة يلغي الحاجة إلى أداة تحويل منفصلة: خذ HEX لملف CSS، وRGB لجافاسكربت، وHSL لتوليد الدرجات — كلها بضغطة نسخ.</p><p>التكامل مع بقية أدوات DouNest يكمل الدورة: التقط اللون هنا، وحوله في محول الألوان، وولّد عائلته اللونية — كل شيء محلي وسريع.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل المنتقي يدعم شفافية؟</summary><p>استخدم شريط الألفا إن ظهر، أو احصل على RGBA من محول الألوان بعد إدخال القيمة.</p></details><details class="faq-item"><summary>لماذا يختلف اللون بين الشاشات؟</summary><p>اختلاف معايرة الشاشات طبيعي — اعتمد ألوان العلامة الرسمية بـ HEX لا بالعين.</p></details><details class="faq-item"><summary>أي صيغة أستخدم في CSS؟</summary><p>HEX للثوابت وRGB عند الحاجة للشفافية برمجياً وHSL عند توليد عائلات ألوان — الثلاثة مدعومة.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

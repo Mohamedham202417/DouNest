@@ -1,7 +1,7 @@
 {
   "name": "DouNest — Free Browser Tools",
   "short_name": "DouNest",
-  "description": "58+ free tools that run locally in your browser: PDF, images, text, data and developer tools.",
+  "description": "61+ free tools that run locally in your browser: PDF, images, text, data and developer tools.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

@@ -8,6 +8,7 @@
 <meta name="description" content="先判断问题来自设备、路由器还是运营商，再尝试 Windows、iPhone 和 Android 的安全免费方法；网络重置放在最后。" />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/wifi-connected-no-internet/zh/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/wifi-connected-no-internet/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/wifi-connected-no-internet/en/" />
 <link rel="alternate" hreflang="fr" href="https://mohamedham202417.github.io/DouNest/articles/wifi-connected-no-internet/fr/" />
@@ -54,7 +55,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -112,7 +113,7 @@
     </nav>
     <article class="section article-body" lang="zh">
       <h1>Wi-Fi 已连接却无法上网？Windows、iPhone 和 Android 免费排查指南</h1>
-      <p class="article-date">2026-10-15</p>
+      <p class="article-byline"><span>作者 DouNest</span><span>· 发布于: <time datetime="2026-10-15">2026-10-15</time></span></p>
       <div class="explanation"><p>Wi-Fi 旁显示“已连接”并不代表互联网一定可用。先换一个设备、打开另一个网站，再判断问题来自单个设备、路由器还是运营商。先尝试可撤销的步骤，因为网络重置可能清除已保存的设置。</p>
 <blockquote><p><strong>要点</strong></p><ul><li>如果所有设备都无法上网，先检查路由器、调制解调器和运营商，不要先改某一台手机或电脑。</li><li>如果只有一台设备出问题，重新连接网络并使用设备自带的诊断工具。</li><li>简单检查未完成前，不要按路由器的恢复出厂设置按钮，也不要重置网络。</li></ul></blockquote>
 <h2>先找出问题来自哪里</h2>
@@ -144,10 +145,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
         <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
         <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../../about/" data-i18n="nav.about">About</a>
+        <a href="../../../contact/" data-i18n="nav.contact">Contact and Support</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>

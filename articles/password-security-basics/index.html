@@ -8,6 +8,7 @@
 <meta name="description" content="كيف تُسرق كلمات المرور فعلاً، ولماذا الطول أهم من التعقيد، وكتبت مدير كلمات المرور المناسب وتفعّل المصادقة الثنائية بذكاء — دليل عملي بخطوات محددة." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="ar">
       <h1>أمان كلمات المرور 2026: الدليل العملي الكامل من التوليد إلى المصادقة الثنائية</h1>
-      <p class="article-date">2026-10-10</p>
+      <p class="article-byline"><span>إعداد DouNest</span><span>· نُشر: <time datetime="2026-10-10">2026-10-10</time></span></p>
       <div class="explanation"><p>تسريبات كلمات المرور لا تتوقف: مليارات الحسابات المسربة متاحة اليوم في قواعد بيانات المهاجمين، وكل تسرب جديد يغذي محاولات الدخول على خدمات أخرى لا علاقة لها بالتسرب الأصلي. الخبر الجيد أن حمايتك الفعلية ليست معقدة — إنها منظومة من أربع عادات ذكية نشرحها هنا بالتفصيل العملي.</p>
 <h2>كيف تُسرق كلمات المرور فعلاً</h2>
 <p>مناقشة الحماية بلا فهم أساليب الهجوم عملية أعمى. الهجوم الأول والأخطر هو إعادة استخدام كلمة المرور: يتسرب موقع صغير لا يهم، ويجرب المهاجمون نفس الإيميل وكلمة المرور على جيميل وبنكك تلقائياً — ما يسمى Credential Stuffing وهو المسؤول عن أغلب اختراقات الحسابات اليوم. الثاني هجمات القاموس: برامج تجرب ملايين الكلمات والتحويلات الشهيرة (P@ssw0rd، admin123، اسمك+تاريخ ميلادك) خلال دقائق على الأنظمة الضعيفة. الثالث التصيد: صفحة دخول مزيفة تُعطي كلمتك طواعية. الرابع: تسريب من الخادم نفسه — وهنا تعتمد حمايتك على ما خزنه الموقع، وهذا شيء لا تتحكم به، مما يجعل كلمة مختلفة لكل موقع ضرورة لا رفاهية.</p>
@@ -125,10 +126,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

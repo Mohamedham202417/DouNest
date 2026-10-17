@@ -8,6 +8,7 @@
 <meta name="description" content="How passwords actually get stolen, why length beats complexity, how to choose the right password manager and enable 2FA smartly — a practical guide with concrete steps." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/en/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/password-security-basics/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="en">
       <h1>Password Security 2026: The Complete Practical Guide from Generation to 2FA</h1>
-      <p class="article-date">2026-10-10</p>
+      <p class="article-byline"><span>By DouNest</span><span>· Published: <time datetime="2026-10-10">2026-10-10</time></span></p>
       <div class="explanation"><p>Password breaches never stop: billions of compromised accounts sit in attackers&#39; databases today, and every new breach feeds login attempts on unrelated services. The good news: your real protection is not complicated — it is a system of four smart habits we cover here in practical detail.</p>
 <h2>How passwords actually get stolen</h2>
 <p>Discussing defense without understanding attack methods is blind. Attack one, the most dangerous, is password reuse: an unimportant small site leaks, and attackers automatically try the same email and password on Gmail and your bank — Credential Stuffing, responsible for most account takeovers today. Two is dictionary attacks: programs testing millions of words and famous transformations (P@ssw0rd, admin123, your name + birthdate) within minutes on weak systems. Three is phishing: a fake login page where you hand over your password willingly. Four is a server-side leak — here your protection depends on what the site stored, something you cannot control, which makes a unique password per site a necessity, not a luxury.</p>
@@ -125,10 +126,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
         <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
         <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../../about/" data-i18n="nav.about">About</a>
+        <a href="../../../contact/" data-i18n="nav.contact">Contact and Support</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>

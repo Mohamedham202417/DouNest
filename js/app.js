@@ -25,6 +25,7 @@ import { getArticles, getArticle } from "./articles.js";
 import { markdownToHtml } from "./lib/article-markdown.js";
 import { getFAQ, FAQ_CATS } from "./faq.js";
 import { CENTER_CONTENT, centerContentMarkup, centerFaqSchema } from "./center-content.js";
+import { getInfoPage, renderInfoPage, infoPageJsonLd } from "./info-pages.js";
 
 /* ========= Config & base detection ========= */
 const CFG = window.DouNestConfig || {};
@@ -36,7 +37,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "privacy", "terms", "faq", "support", "text", "dev", "security", "calculators", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "contact", "privacy", "terms", "faq", "support", "text", "dev", "security", "calculators", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -929,6 +930,9 @@ function renderArticlesList() {
 }
 
 const RELATED_ARTICLE_LABELS = { ar: "دليل مرتبط", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
+const ARTICLE_AUTHOR_LABELS = { ar: "إعداد", en: "By", fr: "Par", es: "Por", de: "Von", tr: "Yazan", ru: "Автор", zh: "作者", hi: "लेखक", pt: "Por" };
+const ARTICLE_PUBLISHED_LABELS = { ar: "نُشر", en: "Published", fr: "Publié", es: "Publicado", de: "Veröffentlicht", tr: "Yayınlandı", ru: "Опубликовано", zh: "发布于", hi: "प्रकाशित", pt: "Publicado" };
+const ARTICLE_UPDATED_LABELS = { ar: "آخر تحديث", en: "Updated", fr: "Mis à jour", es: "Actualizado", de: "Aktualisiert", tr: "Güncellendi", ru: "Обновлено", zh: "更新于", hi: "अपडेट किया गया", pt: "Atualizado" };
 
 function renderArticlePage({ slug, lang: routeLang }) {
   const article = getArticle(slug);
@@ -962,7 +966,7 @@ function renderArticlePage({ slug, lang: routeLang }) {
     </nav>
     <article class="section article-body" lang="${lang}">
       <h1>${escapeHtml(title)}</h1>
-      <p class="article-date">${article.date}</p>
+      <p class="article-byline"><span>${ARTICLE_AUTHOR_LABELS[lang] || "By"} DouNest</span><span>· ${ARTICLE_PUBLISHED_LABELS[lang] || "Published"}: <time datetime="${escapeHtml(article.date)}">${escapeHtml(article.date)}</time></span>${article.updated && article.updated !== article.date ? `<span>· ${ARTICLE_UPDATED_LABELS[lang] || "Updated"}: <time datetime="${escapeHtml(article.updated)}">${escapeHtml(article.updated)}</time></span>` : ""}</p>
       <div class="explanation">${markdownToHtml(article.content[lang] || article.content.en, BASE)}</div>
       ${relatedHtml}
       ${tagsHtml}
@@ -990,10 +994,23 @@ function renderArticlePage({ slug, lang: routeLang }) {
 }
 
 /* ========= Static pages ========= */
-function staticPage({ title, html, path }) {
+function staticPage({ title, description, html, path, jsonLd = [] }) {
   const main = document.getElementById("main");
   main.innerHTML = `<article class="section article-body">${html}</article>`;
-  injectSEO({ title: `${title} — DouNest`, description: t("meta.description"), path });
+  injectSEO({ title: `${title} — DouNest`, description: description || t("meta.description"), path, jsonLd });
+}
+
+function renderInfoRoute(slug) {
+  const lang = getLang();
+  const page = getInfoPage(slug, lang);
+  if (!page) return notFoundHandler();
+  staticPage({
+    title: page.title,
+    description: page.description,
+    path: `/${slug}`,
+    html: renderInfoPage(slug, lang, link),
+    jsonLd: infoPageJsonLd(slug, lang, SITE_ROOT)
+  });
 }
 
 function renderFaq() {
@@ -1024,62 +1041,18 @@ function renderFaq() {
 }
 
 function renderAbout() {
-  staticPage({
-    title: t("about.title"),
-    path: "/about",
-    html: `
-      <h1>${t("about.title")}</h1>
-      <p>${t("about.body")}</p>
-      <p>${t("about.body2")}</p>
-      <ul class="nice-list">
-        <li>🔒 ${t("about.p1")}</li>
-        <li>⚡ ${t("about.p2")}</li>
-        <li>🌐 ${t("about.p3")}</li>
-        <li>🆓 ${t("about.p4")}</li>
-      </ul>
-      <p class="badge success">${t("about.privacy")}</p>`
-  });
+  renderInfoRoute("about");
 }
 
 function renderPrivacy() {
-  staticPage({
-    title: t("legal.privacy"),
-    path: "/privacy",
-    html: `
-      <h1>${t("legal.privacy")}</h1>
-      <p>${t("privacy.intro")}</p>
-      <h2>${t("privacy.localTitle")}</h2>
-      <p>${t("privacy.localBody")}</p>
-      <h2>${t("privacy.storageTitle")}</h2>
-      <p>${t("privacy.storageBody")}</p>
-      <h2>${t("privacy.adsTitle")}</h2>
-      <p>${t("privacy.adsBody")}</p>
-      <h2>${t("privacy.affiliateTitle")}</h2>
-      <p>${t("privacy.affiliateBody")}</p>
-      <h2>${t("privacy.analyticsTitle")}</h2>
-      <p>${t("privacy.analyticsBody")}</p>
-      <h2>${t("privacy.contactTitle")}</h2>
-      <p>${t("privacy.contactBody")}</p>`
-  });
+  renderInfoRoute("privacy");
 }
 
 function renderTerms() {
-  staticPage({
-    title: t("legal.terms"),
-    path: "/terms",
-    html: `
-      <h1>${t("legal.terms")}</h1>
-      <p>${t("terms.intro")}</p>
-      <h2>${t("terms.useTitle")}</h2>
-      <p>${t("terms.useBody")}</p>
-      <h2>${t("terms.warrantyTitle")}</h2>
-      <p>${t("terms.warrantyBody")}</p>
-      <h2>${t("terms.liabilityTitle")}</h2>
-      <p>${t("terms.liabilityBody")}</p>
-      <h2>${t("terms.ipTitle")}</h2>
-      <p>${t("terms.ipBody")}</p>`
-  });
+  renderInfoRoute("terms");
 }
+
+function renderContact() { renderInfoRoute("contact"); }
 
 function renderNotFound() {
   const main = document.getElementById("main");
@@ -1157,6 +1130,7 @@ route("/articles", renderArticlesList);
 route("/articles/:slug/:lang", renderArticlePage);
 route("/articles/:slug", renderArticlePage);
 route("/about", renderAbout);
+route("/contact", renderContact);
 route("/faq", renderFaq);
 route("/privacy", renderPrivacy);
 route("/terms", renderTerms);

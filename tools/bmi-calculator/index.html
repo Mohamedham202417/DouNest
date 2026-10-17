@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/bmi-calculator/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>حاسبة BMI</h1>
           <p class="lead">احسب مؤشر كتلة الجسم.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>مؤشر كتلة الجسم BMI هو أداة الفرز الصحية الأوسع استخداماً في العالم: وزنك بالكيلوغرام مقسوماً على مربع طولك بالمتر، والنتيجة تصنفك في نطاق: نحافة، طبيعي، زيادة، سمنة — أرقام بسيطة تحمل دلالة صحية واسعة.</p><p>النطاقات القياسية المعتمدة عالمياً: أقل من 18.5 نقص وزن، 18.5-24.9 طبيعي، 25-29.9 زيادة وزن، و30+ سمنة — الفجوات بينها صغيرة لكن دلالتها الصحية في الإحصاءات السكانية ضخمة.</p><p>حدود المؤشر يجب فهمها بصدق: هو فرز إحصائي للسكان لا تشخيص فردي؛ الرياضي العضلي الكثيف قد يظهر «سمنة» رغم لياقته، وكبار السن قد يظهرون «طبيعي» رغم نقص كتلة عضلية — استخدمه كبوصلة لا كحكم نهائي.</p><p>القيمة الحقيقية في الاتجاه لا الرقم: متابعة BMI شهرياً تكشف اتجاه وزنك قبل أن تلاحظه الميزان وحده — ارتفاع 2 نقطة خلال سنة إشارة أقوى من وزن ثابت رقمياً.</p><p>استخدمه مع مؤشرات أخرى لصورة كاملة: محيط الخصر، ونسبة الدهون، ومستوى النشاط — الصحة أرقام متعددة لا رقم واحد، وBMI بداية الحوار مع طبيبك لا نهايته.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل BMI مناسب للأطفال؟</summary><p>لا يستخدم النطاقات البالغة — للأطفال نطاقات عمرية وجنسية خاصة تُقيّمها جداول نمو طبية.</p></details><details class="faq-item"><summary>لماذا ظهر لي سمنة وأنا رياضي؟</summary><p>العضة أكثف من الدهون؛ المؤشر لا يفرق بينهما — القياسات الجسمية التفصيلية أدق للحالات الرياضية.</p></details><details class="faq-item"><summary>ما الوزن الصحي لطولي؟</summary><p>جرّب وزناً افتراضياً حتى يصل المؤشر ل نطاق 18.5-24.9 — الأداة تعرضه فوراً.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

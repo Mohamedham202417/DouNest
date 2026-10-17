@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/jwt-decoder/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>مفكّك JWT</h1>
           <p class="lead">اقرأ محتوى رموز JWT.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>رمز JWT هو معيار المصادقة الأشهر في واجهات API الحديثة: ثلاثة أجزاء — هيدر يصف الخوارزمية، حمولة تحمل الادعاءات (من المستخدم، أدواره، صلاحياته)، وتوقيع يضمن عدم العبث. الأجزاء الثلاثة تُرمز Base64 وليست مشفرة، ولهذا يقرؤها مفكك JWT بسهولة.</p><p>الأداة تكشف حقيقة يجهلها كثيرون: أي شخص يستطيع قراءة محتوى الرمز؛ الحماية الحقيقية في التوقيع فقط، الذي يمنع التزوير لا القراءة. لذلك لا تضع أبداً بيانات حساسة داخل الحمولة.</p><p>فحص تواريخ exp وiat يدوياً يتطلب حسابات Timestamp مزعجة، والأداة تحولها إلى تواريخ بشرية مباشرة وتخبرك إن كان الرمز ما زال صالحاً الآن.</p><p>يستخدم المطورون الأداة يومياً لتشخيص مشاكل المصادقة: لماذا رُفض الرمز؟ هل انتهت صلاحيته فعلاً أم أن الخادم يرفض التوقيع؟ هل الادعاءات التي أرسلها الخادم هي التي توقعتها؟</p><p>ملاحظة أمان صريحة: الأداة تعمل محلياً وتعرض المحتوى فقط، لكن تجنب لصق رموز الإنتاج الحية كعادة عام — حتى لو كانت قراءتها محلياً آمنة نظرياً، فالشفافية في الأدوات الأمنية أفضل.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل يمكن للأداة التحقق من التوقيع؟</summary><p>لا — التحقق يحتاج المفتاح السري المملوك للخادم، وهي مصممة للعرض والتحليل فقط.</p></details><details class="faq-item"><summary>لماذا أرى رموزاً غريبة في الحمولة؟</summary><p>غالباً الرمز ناقص أو مضاف إليه أقواس من النسخ — الصق الأجزاء الثلاثة كما هي مفصولة بنقطتين فقط.</p></details><details class="faq-item"><summary>هل رمز JWT آمن إذا أرسلته هنا؟</summary><p>المعالجة محلية 100%، لكن كقاعدة مهنية لا تلصق رموز إنتاج حية في أي أداة أونلاين.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -142,8 +143,8 @@
         </section>
       </div>
       <aside class="tool-sidecol">
-        
-        
+
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

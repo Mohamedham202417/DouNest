@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/rare/" />
 
+
 <link rel="manifest" href="../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -86,7 +87,7 @@
         <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -98,7 +99,7 @@
       <h1>الأدوات النادرة</h1>
       <p>32 أداة ومشروعاً مختاراً بعناية في 4 فئات: خرائط حية، أدوات أمن تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة بالشرح والخطوات والوسوم.</p>
     </section>
-    
+
     <section class="section" id="cat-maps">
       <div class="rare-cat-head">
         <span class="rare-cat-icon" aria-hidden="true">🗺️</span>
@@ -108,7 +109,7 @@
         </div>
       </div>
       <p class="rare-blurb">من الخرائط التاريخية المتداخلة إلى الكرة الأرضية الحية التي تعرض كل طائرة في السماء الآن، هذه الفئة مخصصة لمن يحب استكشاف الأرض من فوق. كل الأدوات مجانية وتعمل من المتصفح، وبعضها يوفر بيانات حية يستخدمها الصحفيون والباحثون فعلياً في عملهم اليومي.</p>
-      
+
       <div class="tools-grid">
         <a class="tool-card rare-card " href="/DouNest/rare/maplat/">
     <div class="icon" aria-hidden="true">🗺️</div>
@@ -235,7 +236,7 @@
         </div>
       </div>
       <p class="rare-blurb">اخترنا لك عشر جواهر حقيقية من GitHub: أدوات تحول سكربت إلى تطبيق، وقاعدة بيانات فورية من ملف CSV، وآلة رسم تصنعها بنفسك، ومساعد ذكاء اصطناعي يعمل بلا إنترنت. كلها مشاريع حية ومهتمة بها مجتمعاتها، وكلها قابلة للتجربة اليوم دون أي تكلفة.</p>
-      
+
       <div class="tools-grid">
         <a class="tool-card rare-card " href="/DouNest/rare/dsq/">
     <div class="icon" aria-hidden="true">🗃️</div>
@@ -329,7 +330,7 @@
         </div>
       </div>
       <p class="rare-blurb">هذه الكلاسيكيات كانت البذرة الأولى لقسم الأدوات النادرة في DouNest، وقررنا الإبقاء عليها موسعة ومطورة: من Can I Use التي يفتحها كل مطور واجهات يومياً، إلى Wayback Machine كنز التاريخ الرقمي، إلى Marginalia الباحث عن الويب العميق غير التجاري. إن كنت جديداً هنا فهذه أفضل نقطة بداية.</p>
-      
+
       <div class="tools-grid">
         <a class="tool-card rare-card " href="/DouNest/rare/caniuse/">
     <div class="icon" aria-hidden="true">🌐</div>
@@ -417,10 +418,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../about/" data-i18n="nav.about">حول</a>
+        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../ai/">دليل AI</a>
       </nav>
     </div>

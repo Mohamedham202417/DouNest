@@ -9,6 +9,7 @@
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/tools/pdf-to-word/" />
 
+
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -44,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -89,7 +90,7 @@
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,7 +110,7 @@
           <h1>PDF إلى Word</h1>
           <p class="lead">استخرج نص PDF إلى ملف DOC متوافق مع Word؛ قد يتغير تخطيط الصفحة.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 يعمل محلياً في متصفحك</span>
+            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -128,12 +129,12 @@
           <h2>شرح مفصّل</h2>
           <div class="explanation"><p>تستخرج الأداة النص بواسطة pdf.js ثم تنشئ مستند DOC متوافقاً مع Word بصيغة HTML. هذا ليس ملف DOCX أصلياً، ولا يضمن الاحتفاظ بتخطيط الصفحة أو الصور أو الأعمدة.</p><p>ملفات PDF الممسوحة التي لا تحتوي على طبقة نص لا تُحوّل بواسطة OCR في هذه الأداة؛ استخدم OCR أولاً. افحص النص والترتيب واتجاه الكتابة قبل اعتماد الملف.</p><p>تجري المعالجة الأساسية داخل المتصفح، ولا يُرسل الملف المختار إلى خادم DouNest. قد تُحمّل مكتبات المعالجة من شبكة توزيع محتوى عند الطلب.</p></div>
         </section>
-        
+
         <section class="section">
           <h2>أسئلة شائعة</h2>
           <details class="faq-item"><summary>هل يحافظ الناتج على تخطيط PDF؟</summary><p>لا. الأداة تستخرج النص فقط إلى ملف DOC متوافق مع Word؛ قد يتغير ترتيب النص والتخطيط ولا تُحفظ الصور بدقة.</p></details><details class="faq-item"><summary>هل يدعم PDF الممسوح ضوئياً؟</summary><p>لا تُجري هذه الأداة OCR؛ يلزم وجود طبقة نص في PDF أو استخدام OCR منفصل أولاً.</p></details><details class="faq-item"><summary>هل الناتج DOCX؟</summary><p>لا، الناتج ملف DOC متوافق مبني على HTML، وليس DOCX أصلياً.</p></details>
         </section>
-        
+
         <section class="section">
           <h2>وسوم البحث</h2>
           <div class="hash-chips" aria-label="الوسوم">
@@ -143,7 +144,7 @@
       </div>
       <aside class="tool-sidecol">
         <div class="side-box"><h3>دليل مرتبط</h3><a class="related-item" href="../../articles/pdf-to-word-guide/"><span class="icon sm">📖</span><span>اقرأ الدليل قبل استخدام الأداة</span></a></div>
-        
+
         <div class="side-box">
           <h3>أدوات ذات صلة</h3>
           <div class="related-list">
@@ -155,10 +156,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">يعمل محلياً في متصفحك</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
+      <nav class="footer-nav" aria-label="روابط الموقع">
         <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
         <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
+        <a href="../../about/" data-i18n="nav.about">حول</a>
+        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
         <a href="../../ai/">دليل AI</a>
       </nav>
     </div>

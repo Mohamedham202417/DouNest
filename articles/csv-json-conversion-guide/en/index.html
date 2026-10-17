@@ -8,6 +8,7 @@
 <meta name="description" content="Understand CSV versus JSON and handle delimiters, encoding, and empty fields before converting data between the two formats." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/en/" />
+
 <link rel="alternate" hreflang="ar" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/" />
 <link rel="alternate" hreflang="en" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/en/" />
 <link rel="alternate" hreflang="x-default" href="https://mohamedham202417.github.io/DouNest/articles/csv-json-conversion-guide/en/" />
@@ -46,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-16-mvbjqksu";
+  var B="v3-2026-10-17-mvc62xcd";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -104,7 +105,7 @@
     </nav>
     <article class="section article-body" lang="en">
       <h1>CSV to JSON and Back: How to Choose the Right Data Format</h1>
-      <p class="article-date">2026-10-15</p>
+      <p class="article-byline"><span>By DouNest</span><span>· Published: <time datetime="2026-10-15">2026-10-15</time></span></p>
       <div class="explanation"><p>CSV is excellent for tables, while JSON is better for nested data and APIs. Problems begin when one format is used in the wrong place: a simple list is easy to convert, but commas, line breaks, and empty fields need review before you trust the output.</p>
 <h2>When should you choose CSV?</h2>
 <p>Choose CSV for flat data with stable rows and columns that people may open in Excel or Google Sheets. It is lightweight and easy to exchange, but it does not represent nested relationships well. Confirm the delimiter because some files use commas while others use semicolons based on locale settings.</p>
@@ -121,10 +122,12 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Runs locally in your browser</span></span>
-      <nav class="footer-nav" aria-label="Legal">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
         <a href="../../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
         <a href="../../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../../about/" data-i18n="nav.about">About</a>
+        <a href="../../../contact/" data-i18n="nav.contact">Contact and Support</a>
         <a href="../../../ai/">AI Directory</a>
       </nav>
     </div>
