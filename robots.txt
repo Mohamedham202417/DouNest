@@ -13,4 +13,4 @@ Disallow: /rare/sherlock/
 Disallow: /rare/theharvester/
 Disallow: /v2/
 Disallow: /favorites/
-Sitemap: https://mohamedham202417.github.io/DouNest/sitemap.xml
+Sitemap: https://dounest.hmdevelop.me/sitemap.xml
