@@ -30,6 +30,7 @@ import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./
 import { markdownToHtml } from "./js/lib/article-markdown.js";
 import { centerContentMarkup, centerFaqSchema } from "./js/center-content.js";
 import { INFO_PAGES, renderInfoPage, infoPageJsonLd } from "./js/info-pages.js";
+import { getMailCopy, mailStructuredData } from "./js/mail-copy.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -56,7 +57,7 @@ const L = {
   ar: {
     allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
     faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك",
-    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور",
+    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور", mail: "بريد مؤقت",
     pdf: "مركز PDF", convert: "مركز التحويل",
     about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "التواصل والدعم",
     back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
@@ -66,7 +67,7 @@ const L = {
   en: {
     allTools: "All Tools", usage: "How to use", explanation: "Detailed explanation",
     faq: "FAQ", related: "Related tools", local: "Files are processed locally when the tool supports it",
-    home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory", images: "Image Hub",
+    home: "Home", articles: "Articles", rare: "Rare Tools", ai: "AI Directory", images: "Image Hub", mail: "Temporary Email",
     pdf: "PDF Hub", convert: "Convert Hub",
     about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms", contact: "Contact and Support",
     back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
@@ -187,6 +188,7 @@ ${ld}
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="${R("")}" data-i18n="nav.home">${V.home}</a>
         <a href="${R("tools/")}" data-i18n="nav.allTools">${V.allTools}</a>
+        <a href="${R("mail/")}" data-i18n="nav.tempMail">${V.mail}</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">${lang === "ar" ? "المراكز" : "Centers"}</summary><div>
           <a href="${R("pdf/")}" data-i18n="nav.pdf">${V.pdf}</a><a href="${R("images/")}" data-i18n="nav.images">${V.images}</a>
           <a href="${R("convert/")}" data-i18n="nav.convert">${V.convert}</a><a href="${R("text/")}" data-i18n="nav.text">${lang === "ar" ? "مركز النصوص" : "Text center"}</a>
@@ -242,7 +244,8 @@ console.log("→ pre-rendered home page");
     ["text/", "✍️", "مركز النصوص", "تنظيف وتحويل وتحليل النصوص"],
     ["dev/", "🧰", "مركز المطورين", "JSON وBase64 وJWT وأدوات البرمجة"],
     ["security/", "🔐", "مركز الأمان", "كلمات مرور وTOTP وأدوات أمان محلية"],
-    ["calculators/", "🧮", "مركز الحاسبات", "حاسبات يومية مجانية تعمل في المتصفح"]
+    ["calculators/", "🧮", "مركز الحاسبات", "حاسبات يومية مجانية تعمل في المتصفح"],
+    ["mail/", "✉️", "بريد إلكتروني مؤقت", "استقبل رسالة لمرة واحدة في صندوق ينتهي بعد ساعة؛ لا تستخدمه للبيانات الحساسة"]
   ];
   const popular = ["json-formatter", "image-compressor", "merge-pdf", "pdf-to-word", "csv-to-json", "password-generator", "qr-code", "remove-background", "image-to-pdf", "uuid-generator", "word-counter", "exif-viewer"]
     .map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
@@ -253,7 +256,7 @@ console.log("→ pre-rendered home page");
     <section class="section"><h2 class="section-title">مراكز العمل</h2><div class="explore-strip">${centers.map(([path,icon,name,desc]) => `<a class="explore-card" href="${BASE}${path}"><strong>${icon} ${name}</strong><span>${desc}</span></a>`).join("")}</div></section>
     <section class="section"><h2 class="section-title">أدوات شائعة</h2><div class="tools-grid">${popular.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("")}</div><p><a href="${BASE}tools/">عرض كل الأدوات ←</a></p></section>
     <section class="section"><h2 class="section-title">أدلة ونصائح</h2><div class="tools-grid">${articles.map(a => `<a class="tool-card article" href="${BASE}articles/${a.slug}/"><h3>${esc(pick(a.title,"ar"))}</h3><p>${esc(pick(a.excerpt,"ar"))}</p></a>`).join("")}</div></section>
-    <section class="section"><h2 class="section-title">خصوصيتك أولاً</h2><p>الأدوات تعالج الملفات في متصفحك. لا يتم رفعها إلى خادم DouNest. يمكنك قراءة <a href="${BASE}privacy/">سياسة الخصوصية</a> أو زيارة <a href="${BASE}faq/">الأسئلة الشائعة</a>.</p></section>`;
+    <section class="section"><h2 class="section-title">خصوصيتك أولاً</h2><p>تعالج أدوات الملفات المحتوى محلياً في المتصفح. خدمة البريد المؤقت استثناء خادمي وتخزن الرسائل لفترة قصيرة؛ اقرأ <a href="${BASE}privacy/">سياسة الخصوصية</a> قبل استخدامها.</p></section>`;
   writePage("index.html", shell({ title: "DouNest — أدوات مجانية لتحويل الملفات ومعالجتها", description: `${TOOLS.length}+ أداة مجانية لمعالجة PDF والصور والنصوص والبيانات محلياً في المتصفح دون رفع الملفات.`, canonicalPath: "", jsonLd: [{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":SITE,"inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":`${SITE}tools/?q={search_term_string}`,"query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"ItemList","name":"مراكز العمل والأدوات الشائعة","itemListElement":centers.map(([path,_icon,name],i)=>({"@type":"ListItem","position":i+1,"name":name,"url":SITE+path}))}], bodyContent: body }));
 }
 
@@ -703,7 +706,7 @@ console.log("→ tools hub page");
       <h1>كل الأدوات</h1>
       <p>${TOOLS.length}+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
     </section>
-    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip">${[["pdf/","📄","مركز PDF"],["images/","🖼️","مركز الصور"],["convert/","🔄","مركز التحويل"],["text/","✍️","مركز النصوص"],["dev/","🧰","مركز المطورين"],["security/","🔐","مركز الأمان"],["calculators/","🧮","الحاسبات"]].map(([p,i,n])=>`<a class="explore-card" href="${BASE}${p}"><strong>${i} ${n}</strong><span>أدوات متخصصة في مساحة واحدة</span></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip">${[["pdf/","📄","مركز PDF"],["images/","🖼️","مركز الصور"],["convert/","🔄","مركز التحويل"],["text/","✍️","مركز النصوص"],["dev/","🧰","مركز المطورين"],["security/","🔐","مركز الأمان"],["calculators/","🧮","الحاسبات"],["mail/","✉️","بريد إلكتروني مؤقت"]].map(([p,i,n])=>`<a class="explore-card" href="${BASE}${p}"><strong>${i} ${n}</strong><span>أدوات وخدمات متخصصة</span></a>`).join("")}</div></section>
 ${cards}`
     })
   );
@@ -801,6 +804,23 @@ ${enSection}`
   );
 }
 
+/* ---------- Temporary email landing page ---------- */
+{
+  const copy = getMailCopy("ar");
+  const steps = copy.steps.map(step => `<li>${esc(step)}</li>`).join("");
+  const faqs = copy.faqs.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("");
+  writePage("mail/index.html", shell({
+    title: `${copy.title} — DouNest`,
+    description: copy.description,
+    canonicalPath: "mail/",
+    jsonLd: mailStructuredData("ar", SITE),
+    bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${esc(copy.title)} — @mail.hmdevelop.me</h1><p class="lead">${esc(copy.intro)}</p></section>
+      <section class="workspace mail-workspace"><p class="empty">استخدم متصفحاً يدعم JavaScript لإنشاء العنوان ومتابعة الرسائل. لا تشارك رمز الوصول الخاص بصندوقك.</p></section>
+      <aside class="mail-warning"><h2>${esc(copy.warningTitle)}</h2><p>${esc(copy.warning)}</p></aside>
+      <article class="hub-guide mail-guide"><h2>${esc(copy.guideTitle)}</h2><ol class="hub-steps">${steps}</ol><section class="hub-faq mail-faq"><h2>${esc(copy.faqTitle)}</h2>${faqs}</section></article>`
+  }));
+}
+
 /* ---------- 4) 404.html (SPA fallback, absolute paths) ---------- */
 console.log("→ 404.html fallback");
 writePage("404.html", shell({
@@ -822,6 +842,7 @@ const urls = [
   { p: "images/", pr: "0.9" },
   { p: "convert/", pr: "0.9" },
   { p: "text/", pr: "0.9" }, { p: "dev/", pr: "0.9" }, { p: "security/", pr: "0.9" }, { p: "calculators/", pr: "0.9" },
+  { p: "mail/", pr: "0.8" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
   ...getArticles().flatMap(a => ARTICLE_LANGS.filter(code => a.title?.[code] && a.content?.[code]).map(code => ({
@@ -838,7 +859,7 @@ const urls = [
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u => `  <url><loc>${SITE}${u.p}</loc><lastmod>${NOW}</lastmod><changefreq>${u.p === "" || /^(pdf|images|convert|text|dev|security|calculators)\/$/.test(u.p) ? "weekly" : "monthly"}</changefreq><priority>${u.pr}</priority></url>`).join("\n")}
+${urls.map(u => `  <url><loc>${SITE}${u.p}</loc><lastmod>${NOW}</lastmod><changefreq>${u.p === "" || /^(pdf|images|convert|text|dev|security|calculators|mail)\/$/.test(u.p) ? "weekly" : "monthly"}</changefreq><priority>${u.pr}</priority></url>`).join("\n")}
 </urlset>
 `;
 writeFileSync(join(ROOT, "sitemap.xml"), sitemap);
@@ -881,7 +902,7 @@ const ASSETS = [
   "./faq/index.html",
   "./ai/index.html", "./rare/index.html",
   "./pdf/index.html", "./images/index.html", "./convert/index.html",
-  "./text/index.html", "./dev/index.html", "./security/index.html", "./calculators/index.html",
+  "./text/index.html", "./dev/index.html", "./security/index.html", "./calculators/index.html", "./mail/index.html",
   ...RARE_CATS.filter(c => c.id !== "security").map(c => "./rare/" + c.id + "/index.html"),
   ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => "./rare/" + t2.slug + "/index.html"),
   "./about/index.html", "./privacy/index.html", "./terms/index.html",

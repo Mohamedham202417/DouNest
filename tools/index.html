@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-17-mvcg4td7";
+  var B="v3-2026-10-18-mvedsljc";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -77,6 +77,7 @@
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="../" data-i18n="nav.home">الرئيسية</a>
         <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
           <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
@@ -100,7 +101,7 @@
       <h1>كل الأدوات</h1>
       <p>61+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
     </section>
-    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip"><a class="explore-card" href="/pdf/"><strong>📄 مركز PDF</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/images/"><strong>🖼️ مركز الصور</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/convert/"><strong>🔄 مركز التحويل</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/text/"><strong>✍️ مركز النصوص</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/dev/"><strong>🧰 مركز المطورين</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/security/"><strong>🔐 مركز الأمان</strong><span>أدوات متخصصة في مساحة واحدة</span></a><a class="explore-card" href="/calculators/"><strong>🧮 الحاسبات</strong><span>أدوات متخصصة في مساحة واحدة</span></a></div></section>
+    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip"><a class="explore-card" href="/pdf/"><strong>📄 مركز PDF</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/images/"><strong>🖼️ مركز الصور</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/convert/"><strong>🔄 مركز التحويل</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/text/"><strong>✍️ مركز النصوص</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/dev/"><strong>🧰 مركز المطورين</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/security/"><strong>🔐 مركز الأمان</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/calculators/"><strong>🧮 الحاسبات</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/mail/"><strong>✉️ بريد إلكتروني مؤقت</strong><span>أدوات وخدمات متخصصة</span></a></div></section>
 
     <section class="section">
       <h2 class="section-title">مطورين</h2>

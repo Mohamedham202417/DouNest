@@ -48,13 +48,17 @@ export const INFO_PAGES = {
   privacy: {
     ar: {
       title: "سياسة الخصوصية",
-      description: "تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest.",
+      description: "تفاصيل معالجة الملفات محلياً، وخدمة البريد المؤقت الخادمية، وبيانات المتصفح والاعتمادات الخارجية في DouNest.",
       schema: "WebPage",
       intro: "تشرح هذه السياسة ما يحدث عند استخدام موقع DouNest. صُممت أدوات الملفات لمعالجة المحتوى المختار داخل المتصفح، لكن الموقع يعتمد أيضاً على استضافة وموارد ويب خارجية، لذلك نوضح الفرق بين ملفك وبين طلبات تحميل الموقع.",
       sections: [
         { title: "الملفات التي تختارها", paragraphs: [
           "تعمل عمليات الأدوات التي تتعامل مع الملفات في متصفحك. لا يرسل DouNest محتوى الملفات المختارة إلى خادم خاص لمعالجتها أو تخزينها. تبقى الملفات والنتائج في جهازك ما لم تختر أنت مشاركتها أو فتح رابط خارجي بنفسك. لا ترفع ملفاً حساساً إلى أي خدمة أخرى ما لم تكن قد راجعت سياسة تلك الخدمة.",
           "قد يفشل فتح ملف من مزود تخزين سحابي أو تطبيق صور إذا لم يعد المتصفح قادراً على قراءته. في هذه الحالة نزّل نسخة إلى جهازك ثم اخترها من وحدة التخزين المحلية."
+        ]},
+        { title: "خدمة البريد المؤقت (استثناء خادمي)", paragraphs: [
+          "خدمة البريد المؤقت ليست معالجة محلية: تُستقبل الرسائل عبر Resend وتُخزَّن نسخة مؤقتة من العنوان والرسالة في قاعدة بيانات DouNest الأوروبية، وتنتهي صلاحيتها بعد نحو 60 دقيقة وتُزال بمهمة تنظيف دورية. لا تعرض الواجهة محتوى HTML أو المرفقات للتنزيل.",
+          "قد يحتفظ مزود استقبال البريد ببيانات وفق سياسته المنفصلة. تُستخدم بصمة مشفّرة مؤقتة لعنوان الشبكة لتطبيق حد الإنشاء، وتزال بعد نافذة الحد. لا تستخدم الخدمة للمعلومات الحساسة أو المالية أو الطبية أو استعادة كلمات المرور. يُحفظ رمز الوصول في مساحة الجلسة لهذا التبويب، ويمكن حذف الصندوق مبكراً من الواجهة."
         ]},
         { title: "البيانات المخزنة في المتصفح", paragraphs: [
           "قد يحفظ الموقع تفضيلات مثل اللغة والمظهر والأدوات المفضلة وآخر الأدوات المستخدمة، إضافة إلى التقييمات والتعليقات المحلية لبعض الأدوات. تُحفظ هذه البيانات في مساحة التخزين المحلية للمتصفح على جهازك ولا تُزامن مع حساب DouNest. حذف بيانات الموقع أو مساحة التخزين من إعدادات المتصفح يزيلها، وقد يؤدي استخدام نافذة خاصة إلى عدم بقائها بعد إغلاق النافذة.",
@@ -65,7 +69,7 @@ export const INFO_PAGES = {
           "إذا منعت اتصالات الشبكة الخارجية فقد لا تعمل ميزة تعتمد على مكتبة أو نموذج لم يُحمّل بعد. قد تعمل الأدوات الأخرى دون اتصال بعد تحميل ملفاتها، بحسب تخزين المتصفح المؤقت ودعم التطبيق لذلك."
         ]},
         { title: "التحليلات والإعلانات والروابط الخارجية", paragraphs: [
-          "في إعداد النشر الحالي لا يوجد معرّف Google Analytics أو سكربت تحليلات مفعّل، كما أن معرّفات Google AdSense فارغة؛ لذلك لا يحمّل الموقع حالياً Google Analytics أو إعلانات AdSense. توجد في الشيفرة نقاط اختيارية لإرسال أحداث إذا جرى إعداد مزود تحليلات مستقبلاً، لكنها لا ترسل شيئاً عند غياب ذلك المزود. سنحدّث هذه السياسة قبل تفعيل خدمة تجمع بيانات إضافية.",
+          "في إعداد النشر الحالي لا يوجد معرّف Google Analytics أو سكربت تحليلات مفعّل، كما أن معرّفات Google AdSense فارغة؛ لذلك لا يحمّل الموقع حالياً Google Analytics أو إعلانات AdSense. توجد في الشيفرة نقاط اختيارية لإرسال أحداث إذا جرى إعداد مزود تحليلات مستقبلاً، لكنها لا ترسل شيئاً عند غياب ذلك المزود. خدمة البريد المؤقت الخادمية موضحة في قسمها أعلاه.",
           "معرّف الإحالة غير مضبوط حالياً. قد تفتح بعض الروابط الخارجية مواقع أطراف أخرى، وتخضع بياناتك بعد مغادرة DouNest لسياسات تلك المواقع. لا تدخل بيانات خاصة في صفحة عامة أو خدمة خارجية دون مراجعة وجهتها وشروطها."
         ]},
         { title: "الاحتفاظ والاختيارات", paragraphs: [
@@ -76,13 +80,17 @@ export const INFO_PAGES = {
     },
     en: {
       title: "Privacy Policy",
-      description: "How DouNest handles local file processing, browser preferences, hosting requests, and external dependencies.",
+      description: "How DouNest handles local file processing, its server-side temporary email service, browser preferences, and external dependencies.",
       schema: "WebPage",
       intro: "This policy explains what happens when you use DouNest. File tools are designed to process selected content in your browser, but the site also relies on hosting and external web resources, so we distinguish your files from ordinary requests that load the site.",
       sections: [
         { title: "Files you select", paragraphs: [
           "File operations run in your browser. DouNest does not send selected file contents to a dedicated processing server or store copies for you. Files and results remain on your device unless you choose to share them or open an external link yourself. Do not send a sensitive file to another service unless you have reviewed that service's policy.",
           "A file from a cloud-storage provider or photo app may become unreadable if the browser can no longer access its source. If that happens, download a copy to this device and select it from local storage."
+        ]},
+        { title: "Temporary email (server-side exception)", paragraphs: [
+          "Temporary email is not local processing: messages are received through Resend and a temporary copy of the address and message is stored in DouNest's EU database. The inbox expires after about 60 minutes and is removed by a periodic cleanup job. The interface does not render email HTML or offer attachment downloads.",
+          "The inbound email provider may retain data under its separate policy. A temporary hashed network address is used to enforce the creation limit and is removed after the limit window. Do not use this service for sensitive, financial, medical, or password-recovery information. The access token is kept in this tab's session storage, and you can delete the inbox early from the interface."
         ]},
         { title: "Data stored in your browser", paragraphs: [
           "The site may save preferences such as language, theme, favorite tools, recently used tools, and local ratings or comments for some tools. This information is kept in browser storage on your device and is not synchronized to a DouNest account. Clearing the site's storage in browser settings removes it; private browsing may discard it when the window closes.",
@@ -93,7 +101,7 @@ export const INFO_PAGES = {
           "Blocking external network requests can prevent a feature from working if it needs a library or model that has not been downloaded. Other tools may work offline after their assets are available, depending on browser caching and application support."
         ]},
         { title: "Analytics, advertising, and external links", paragraphs: [
-          "The current deployment has no Google Analytics measurement ID or active analytics script, and its Google AdSense identifiers are blank; Google Analytics and AdSense are therefore not loaded by the site at this time. Optional event hooks in the source do not send data when no analytics provider is present. This policy will be updated before enabling a service that collects additional data.",
+          "The current deployment has no Google Analytics measurement ID or active analytics script, and its Google AdSense identifiers are blank; Google Analytics and AdSense are therefore not loaded by the site at this time. Optional event hooks in the source do not send data when no analytics provider is present. The server-side temporary email service is described in its own section above.",
           "No affiliate identifier is currently configured. Some links may lead to external websites, whose policies apply after you leave DouNest. Do not enter private information on a public page or external service without checking where it will go and how it will be handled."
         ]},
         { title: "Retention and your choices", paragraphs: [

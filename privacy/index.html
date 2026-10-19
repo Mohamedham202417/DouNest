@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
 <title>سياسة الخصوصية — DouNest</title>
-<meta name="description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
+<meta name="description" content="تفاصيل معالجة الملفات محلياً، وخدمة البريد المؤقت الخادمية، وبيانات المتصفح والاعتمادات الخارجية في DouNest." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/privacy/" />
 
@@ -18,13 +18,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="سياسة الخصوصية — DouNest" />
-<meta property="og:description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
+<meta property="og:description" content="تفاصيل معالجة الملفات محلياً، وخدمة البريد المؤقت الخادمية، وبيانات المتصفح والاعتمادات الخارجية في DouNest." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/privacy/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="سياسة الخصوصية — DouNest" />
-<meta name="twitter:description" content="تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest." />
+<meta name="twitter:description" content="تفاصيل معالجة الملفات محلياً، وخدمة البريد المؤقت الخادمية، وبيانات المتصفح والاعتمادات الخارجية في DouNest." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-17-mvcg4td7";
+  var B="v3-2026-10-18-mvedsljc";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,7 +62,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"سياسة الخصوصية","description":"تفاصيل معالجة الملفات محلياً، وبيانات التفضيلات المحفوظة في المتصفح، والاعتمادات الخارجية في DouNest.","url":"https://dounest.hmdevelop.me/privacy/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"سياسة الخصوصية","description":"تفاصيل معالجة الملفات محلياً، وخدمة البريد المؤقت الخادمية، وبيانات المتصفح والاعتمادات الخارجية في DouNest.","url":"https://dounest.hmdevelop.me/privacy/","inLanguage":"ar"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"سياسة الخصوصية","item":"https://dounest.hmdevelop.me/privacy/"}]}</script>
 </head>
 <body>
@@ -78,6 +78,7 @@
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="../" data-i18n="nav.home">الرئيسية</a>
         <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
           <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
@@ -102,6 +103,10 @@
       <p>تعمل عمليات الأدوات التي تتعامل مع الملفات في متصفحك. لا يرسل DouNest محتوى الملفات المختارة إلى خادم خاص لمعالجتها أو تخزينها. تبقى الملفات والنتائج في جهازك ما لم تختر أنت مشاركتها أو فتح رابط خارجي بنفسك. لا ترفع ملفاً حساساً إلى أي خدمة أخرى ما لم تكن قد راجعت سياسة تلك الخدمة.</p><p>قد يفشل فتح ملف من مزود تخزين سحابي أو تطبيق صور إذا لم يعد المتصفح قادراً على قراءته. في هذه الحالة نزّل نسخة إلى جهازك ثم اخترها من وحدة التخزين المحلية.</p>
     </section>
     <section class="info-section">
+      <h2>خدمة البريد المؤقت (استثناء خادمي)</h2>
+      <p>خدمة البريد المؤقت ليست معالجة محلية: تُستقبل الرسائل عبر Resend وتُخزَّن نسخة مؤقتة من العنوان والرسالة في قاعدة بيانات DouNest الأوروبية، وتنتهي صلاحيتها بعد نحو 60 دقيقة وتُزال بمهمة تنظيف دورية. لا تعرض الواجهة محتوى HTML أو المرفقات للتنزيل.</p><p>قد يحتفظ مزود استقبال البريد ببيانات وفق سياسته المنفصلة. تُستخدم بصمة مشفّرة مؤقتة لعنوان الشبكة لتطبيق حد الإنشاء، وتزال بعد نافذة الحد. لا تستخدم الخدمة للمعلومات الحساسة أو المالية أو الطبية أو استعادة كلمات المرور. يُحفظ رمز الوصول في مساحة الجلسة لهذا التبويب، ويمكن حذف الصندوق مبكراً من الواجهة.</p>
+    </section>
+    <section class="info-section">
       <h2>البيانات المخزنة في المتصفح</h2>
       <p>قد يحفظ الموقع تفضيلات مثل اللغة والمظهر والأدوات المفضلة وآخر الأدوات المستخدمة، إضافة إلى التقييمات والتعليقات المحلية لبعض الأدوات. تُحفظ هذه البيانات في مساحة التخزين المحلية للمتصفح على جهازك ولا تُزامن مع حساب DouNest. حذف بيانات الموقع أو مساحة التخزين من إعدادات المتصفح يزيلها، وقد يؤدي استخدام نافذة خاصة إلى عدم بقائها بعد إغلاق النافذة.</p><p>لا تكتب في التعليقات المحلية معلومات لا تريد أن تظهر على الشاشة أمام مستخدم آخر لجهازك. هذه التعليقات مخصصة لجهازك وليست منشورات عامة ولا تُرسل إلى فريق الموقع.</p>
     </section>
@@ -111,7 +116,7 @@
     </section>
     <section class="info-section">
       <h2>التحليلات والإعلانات والروابط الخارجية</h2>
-      <p>في إعداد النشر الحالي لا يوجد معرّف Google Analytics أو سكربت تحليلات مفعّل، كما أن معرّفات Google AdSense فارغة؛ لذلك لا يحمّل الموقع حالياً Google Analytics أو إعلانات AdSense. توجد في الشيفرة نقاط اختيارية لإرسال أحداث إذا جرى إعداد مزود تحليلات مستقبلاً، لكنها لا ترسل شيئاً عند غياب ذلك المزود. سنحدّث هذه السياسة قبل تفعيل خدمة تجمع بيانات إضافية.</p><p>معرّف الإحالة غير مضبوط حالياً. قد تفتح بعض الروابط الخارجية مواقع أطراف أخرى، وتخضع بياناتك بعد مغادرة DouNest لسياسات تلك المواقع. لا تدخل بيانات خاصة في صفحة عامة أو خدمة خارجية دون مراجعة وجهتها وشروطها.</p>
+      <p>في إعداد النشر الحالي لا يوجد معرّف Google Analytics أو سكربت تحليلات مفعّل، كما أن معرّفات Google AdSense فارغة؛ لذلك لا يحمّل الموقع حالياً Google Analytics أو إعلانات AdSense. توجد في الشيفرة نقاط اختيارية لإرسال أحداث إذا جرى إعداد مزود تحليلات مستقبلاً، لكنها لا ترسل شيئاً عند غياب ذلك المزود. خدمة البريد المؤقت الخادمية موضحة في قسمها أعلاه.</p><p>معرّف الإحالة غير مضبوط حالياً. قد تفتح بعض الروابط الخارجية مواقع أطراف أخرى، وتخضع بياناتك بعد مغادرة DouNest لسياسات تلك المواقع. لا تدخل بيانات خاصة في صفحة عامة أو خدمة خارجية دون مراجعة وجهتها وشروطها.</p>
     </section>
     <section class="info-section">
       <h2>الاحتفاظ والاختيارات</h2>

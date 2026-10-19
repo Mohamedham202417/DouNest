@@ -55,7 +55,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-17-mvcg4td7";
+  var B="v3-2026-10-18-mvedsljc";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -87,6 +87,7 @@
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="../../../" data-i18n="nav.home">Home</a>
         <a href="../../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../../images/" data-i18n="nav.images">Image Hub</a>
           <a href="../../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../../text/" data-i18n="nav.text">Text center</a>

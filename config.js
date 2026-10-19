@@ -19,6 +19,7 @@ var DouNestConfig = {
   origin: "https://dounest.hmdevelop.me",
   repoPath: "",                // empty because the custom subdomain serves this site at /
   base: "auto",               // "auto" detects /DouNest/ automatically; or force "/" or "/DouNest/"
+  tempMailApi: "https://dounest-temp-mail-api.mohamedhamadou202215.workers.dev",
   twitter: "",                // e.g. "@yourhandle"
   googleSiteVerification: "", // paste the HTML-tag token from Search Console; leave blank until verified
 

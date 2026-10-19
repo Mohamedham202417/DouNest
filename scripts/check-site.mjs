@@ -8,6 +8,7 @@ import { markdownToHtml } from "../js/lib/article-markdown.js";
 import { CENTER_CONTENT } from "../js/center-content.js";
 import { INFO_PAGES, renderInfoPage, infoPageJsonLd } from "../js/info-pages.js";
 import { PDF_ACTIONS, IMAGE_ACTIONS, CONVERT_ACTIONS } from "../js/lib/actions.js";
+import { getMailCopy, mailStructuredData } from "../js/mail-copy.js";
 
 const ROOT = new URL("../", import.meta.url);
 const read = (p) => readFileSync(new URL(p, ROOT), "utf8");
@@ -57,6 +58,28 @@ ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
 for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`${siteRoot}${p}`), `sitemap missing ${p}`);
+const mailPage = read("mail/index.html");
+ok((mailPage.match(/<h1\b/g) || []).length === 1, "mail page must have exactly one H1");
+ok(mailPage.includes(`<link rel="canonical" href="${siteRoot}mail/"`), "mail page canonical missing or incorrect");
+ok(mailPage.includes('name="description"') && mailPage.includes("@mail.hmdevelop.me"), "mail page metadata/domain missing");
+ok(mailPage.includes('class="mail-warning"') && mailPage.includes('class="hub-faq mail-faq"'), "mail service disclosure or visible FAQ missing");
+for (const [question] of getMailCopy("ar").faqs) ok(mailPage.includes(question), `mail page FAQ missing: ${question}`);
+const mailSchemas = [...mailPage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
+ok(mailSchemas.some(schema => schema["@type"] === "WebApplication" && schema.url === `${siteRoot}mail/`), "mail WebApplication schema missing");
+ok(mailSchemas.some(schema => schema["@type"] === "FAQPage" && schema.mainEntity.length >= 4), "mail FAQ schema missing");
+const mailLocales = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
+for (const lang of mailLocales) {
+  const copy = getMailCopy(lang);
+  ok(copy.nav && copy.title && copy.description && copy.faqs.length >= 4, `mail copy incomplete for ${lang}`);
+  ok(mailStructuredData(lang, siteRoot)[1].mainEntity.length === copy.faqs.length, `mail schema content mismatch for ${lang}`);
+}
+const mailUI = read("js/temp-mail.js");
+ok(mailUI.includes("sessionStorage") && mailUI.includes("/api/inboxes") && mailUI.includes("/api/inbox"), "mail API/session integration missing");
+ok(mailUI.includes('make("pre", "mail-message-body", plainText || copy.noPlainText)') && mailUI.includes("el.textContent = String(text)"), "mail messages must be inserted as text, not executable HTML");
+ok(!mailUI.includes("message?.html"), "mail UI must not render untrusted HTML bodies");
+ok(read("services/temp-mail/worker.js").includes("RETENTION_MS = 60 * 60 * 1000"), "mail backend retention is not bounded to one hour");
+ok(read("js/info-pages.js").includes("Temporary email (server-side exception)") && read("js/info-pages.js").includes("خدمة البريد المؤقت (استثناء خادمي)"), "mail privacy disclosure missing in Arabic or English");
+ok(read("sw.js").includes("./mail/index.html"), "mail page missing from the service-worker cache list");
 
 // Information pages are rendered in static HTML and use the same content in the SPA.
 for (const slug of Object.keys(INFO_PAGES)) {

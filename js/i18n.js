@@ -4,6 +4,7 @@ const T = {
   "ar": {
     "a11y.skip": "تخطَّ إلى المحتوى",
     "nav.allTools": "كل الأدوات",
+    "nav.tempMail": "بريد مؤقت",
     "nav.favorites": "المفضلة",
     "nav.about": "حول",
     "nav.rare": "أدوات نادرة",
@@ -276,6 +277,7 @@ const T = {
   "en": {
     "a11y.skip": "Skip to content",
     "nav.allTools": "All Tools",
+    "nav.tempMail": "Temporary Email",
     "nav.favorites": "Favorites",
     "nav.about": "About",
     "nav.rare": "Rare Tools",
@@ -548,6 +550,7 @@ const T = {
   "fr": {
     "a11y.skip": "Aller au contenu",
     "nav.allTools": "Tous les outils",
+    "nav.tempMail": "E-mail temporaire",
     "nav.favorites": "Favoris",
     "nav.about": "À propos",
     "footer.local": "Fonctionne dans votre navigateur",
@@ -597,6 +600,7 @@ const T = {
   "es": {
     "a11y.skip": "Saltar al contenido",
     "nav.allTools": "Todas las herramientas",
+    "nav.tempMail": "Correo temporal",
     "nav.favorites": "Favoritos",
     "nav.about": "Acerca de",
     "footer.local": "Funciona en tu navegador",
@@ -646,6 +650,7 @@ const T = {
   "de": {
     "a11y.skip": "Zum Inhalt springen",
     "nav.allTools": "Alle Tools",
+    "nav.tempMail": "Temporäre E-Mail",
     "nav.favorites": "Favoriten",
     "nav.about": "Über",
     "footer.local": "Läuft in Ihrem Browser",
@@ -695,6 +700,7 @@ const T = {
   "tr": {
     "a11y.skip": "İçeriğe geç",
     "nav.allTools": "Tüm Araçlar",
+    "nav.tempMail": "Geçici e-posta",
     "nav.favorites": "Favoriler",
     "nav.about": "Hakkında",
     "footer.local": "Tarayıcınızda çalışır",
@@ -744,6 +750,7 @@ const T = {
   "ru": {
     "a11y.skip": "К содержанию",
     "nav.allTools": "Все инструменты",
+    "nav.tempMail": "Временная почта",
     "nav.favorites": "Избранное",
     "nav.about": "О проекте",
     "footer.local": "Работает в вашем браузере",
@@ -793,6 +800,7 @@ const T = {
   "zh": {
     "a11y.skip": "跳到内容",
     "nav.allTools": "所有工具",
+    "nav.tempMail": "临时邮箱",
     "nav.favorites": "收藏",
     "nav.about": "关于",
     "footer.local": "在您的浏览器中运行",
@@ -842,6 +850,7 @@ const T = {
   "hi": {
     "a11y.skip": "सामग्री पर जाएं",
     "nav.allTools": "सभी उपकरण",
+    "nav.tempMail": "अस्थायी ईमेल",
     "nav.favorites": "पसंदीदा",
     "nav.about": "परिचय",
     "footer.local": "आपके ब्राउज़र में चलता है",
@@ -891,6 +900,7 @@ const T = {
   "pt": {
     "a11y.skip": "Ir para o conteúdo",
     "nav.allTools": "Todas as ferramentas",
+    "nav.tempMail": "E-mail temporário",
     "nav.favorites": "Favoritos",
     "nav.about": "Sobre",
     "footer.local": "Roda no seu navegador",
