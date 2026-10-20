@@ -62,21 +62,17 @@ const mailPage = read("mail/index.html");
 ok((mailPage.match(/<h1\b/g) || []).length === 1, "mail page must have exactly one H1");
 ok(mailPage.includes(`<link rel="canonical" href="${siteRoot}mail/"`), "mail page canonical missing or incorrect");
 ok(mailPage.includes('name="description"') && mailPage.includes("@mail.hmdevelop.me"), "mail page metadata/domain missing");
-ok(mailPage.includes('class="mail-warning"') && mailPage.includes('class="hub-faq mail-faq"'), "mail service disclosure or visible FAQ missing");
-for (const [question] of getMailCopy("ar").faqs) ok(mailPage.includes(question), `mail page FAQ missing: ${question}`);
+ok(mailPage.includes('class="mail-link-card"') && mailPage.includes('href="https://mail.hmdevelop.me/"'), "DouNest mail page must explain the service and link to its standalone site");
+ok(!mailPage.includes('id="create-inbox"') && !mailPage.includes('id="message-list"'), "DouNest must not host the interactive inbox");
 const mailSchemas = [...mailPage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
-ok(mailSchemas.some(schema => schema["@type"] === "WebApplication" && schema.url === `${siteRoot}mail/`), "mail WebApplication schema missing");
-ok(mailSchemas.some(schema => schema["@type"] === "FAQPage" && schema.mainEntity.length >= 4), "mail FAQ schema missing");
+ok(mailSchemas.some(schema => schema["@type"] === "WebPage" && schema.url === `${siteRoot}mail/`), "mail information-page schema missing");
 const mailLocales = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
 for (const lang of mailLocales) {
   const copy = getMailCopy(lang);
   ok(copy.nav && copy.title && copy.description && copy.faqs.length >= 4, `mail copy incomplete for ${lang}`);
   ok(mailStructuredData(lang, siteRoot)[1].mainEntity.length === copy.faqs.length, `mail schema content mismatch for ${lang}`);
 }
-const mailUI = read("js/temp-mail.js");
-ok(mailUI.includes("sessionStorage") && mailUI.includes("/api/inboxes") && mailUI.includes("/api/inbox"), "mail API/session integration missing");
-ok(mailUI.includes('make("pre", "mail-message-body", plainText || copy.noPlainText)') && mailUI.includes("el.textContent = String(text)"), "mail messages must be inserted as text, not executable HTML");
-ok(!mailUI.includes("message?.html"), "mail UI must not render untrusted HTML bodies");
+ok(!existsSync(new URL("js/temp-mail.js", ROOT)), "interactive temporary inbox should live on the separate mail site, not inside DouNest");
 ok(read("services/temp-mail/worker.js").includes("RETENTION_MS = 60 * 60 * 1000"), "mail backend retention is not bounded to one hour");
 ok(read("js/info-pages.js").includes("Temporary email (server-side exception)") && read("js/info-pages.js").includes("خدمة البريد المؤقت (استثناء خادمي)"), "mail privacy disclosure missing in Arabic or English");
 ok(read("sw.js").includes("./mail/index.html"), "mail page missing from the service-worker cache list");

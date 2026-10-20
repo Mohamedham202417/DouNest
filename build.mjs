@@ -30,7 +30,7 @@ import { rareIndexHTML, rareCatHTML, rareDetailHTML, hashtagChipsHTML } from "./
 import { markdownToHtml } from "./js/lib/article-markdown.js";
 import { centerContentMarkup, centerFaqSchema } from "./js/center-content.js";
 import { INFO_PAGES, renderInfoPage, infoPageJsonLd } from "./js/info-pages.js";
-import { getMailCopy, mailStructuredData } from "./js/mail-copy.js";
+import { getMailCopy } from "./js/mail-copy.js";
 
 /* category ordering + Arabic labels for build-time prerendering */
 const CATEGORIES_ORDER = CATEGORIES.map(c => c.id).filter(id => id !== "all");
@@ -807,17 +807,14 @@ ${enSection}`
 /* ---------- Temporary email landing page ---------- */
 {
   const copy = getMailCopy("ar");
-  const steps = copy.steps.map(step => `<li>${esc(step)}</li>`).join("");
-  const faqs = copy.faqs.map(([question, answer]) => `<details><summary>${esc(question)}</summary><p>${esc(answer)}</p></details>`).join("");
+  const pageTitle = "البريد الإلكتروني المؤقت";
   writePage("mail/index.html", shell({
-    title: `${copy.title} — DouNest`,
+    title: `${pageTitle} — DouNest`,
     description: copy.description,
     canonicalPath: "mail/",
-    jsonLd: mailStructuredData("ar", SITE),
-    bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${esc(copy.title)} — @mail.hmdevelop.me</h1><p class="lead">${esc(copy.intro)}</p></section>
-      <section class="workspace mail-workspace"><p class="empty">استخدم متصفحاً يدعم JavaScript لإنشاء العنوان ومتابعة الرسائل. لا تشارك رمز الوصول الخاص بصندوقك.</p></section>
-      <aside class="mail-warning"><h2>${esc(copy.warningTitle)}</h2><p>${esc(copy.warning)}</p></aside>
-      <article class="hub-guide mail-guide"><h2>${esc(copy.guideTitle)}</h2><ol class="hub-steps">${steps}</ol><section class="hub-faq mail-faq"><h2>${esc(copy.faqTitle)}</h2>${faqs}</section></article>`
+    jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": pageTitle, "description": copy.description, "url": `${SITE}mail/`, "inLanguage": "ar" }],
+    bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${pageTitle}</h1><p class="lead">خدمة بريد مؤقت مستقلة عن أدوات DouNest التي تعالج الملفات محلياً. أنشئ عنواناً عشوائياً لاستقبال الرسائل فقط؛ تنتهي صلاحية الصندوق بعد نحو ساعة. لا تستخدمه للحسابات المهمة أو الرسائل الحساسة.</p></section>
+      <section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">افتح واجهة البريد المؤقت ↗</a><p>${esc(copy.warning)}</p></section>`
   }));
 }
 

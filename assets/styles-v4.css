@@ -107,6 +107,8 @@
 .mail-warning p { margin: 0; color: var(--text-muted); line-height: 1.75; }
 .mail-guide { margin-top: 32px; }
 .mail-faq > h2 { margin: 28px 0 12px; }
+.mail-link-card { max-width: 920px; margin: 20px auto 32px; padding: clamp(18px, 3vw, 28px); border: 1px solid var(--border); border-radius: 18px; background: var(--surface, rgba(255,255,255,.72)); box-shadow: var(--shadow); }
+.mail-link-card > p { margin: 18px 0 0; color: var(--text-muted); line-height: 1.75; }
 @media (max-width: 620px) {
   .mail-address-line { grid-template-columns: 1fr; }
   .mail-toolbar { align-items: flex-start; }

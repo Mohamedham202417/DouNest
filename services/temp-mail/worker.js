@@ -17,7 +17,8 @@ const json = (body, status = 200, extra = {}) => new Response(JSON.stringify(bod
 
 function cors(request, env) {
   const origin = request.headers.get("origin") || "";
-  if (origin !== env.ALLOWED_ORIGIN) return null;
+  const allowedOrigins = new Set([env.ALLOWED_ORIGIN, "https://mail.hmdevelop.me"]);
+  if (!allowedOrigins.has(origin)) return null;
   return {
     "access-control-allow-origin": origin,
     "access-control-allow-methods": "GET, POST, DELETE, OPTIONS",

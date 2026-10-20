@@ -12,7 +12,7 @@
  *  - Monetization slots (ads / featured / support) integrated cleanly.
  */
 import { t, getLang, setLang, applyTranslations } from "./i18n.js";
-import { getMailCopy, mailStructuredData } from "./mail-copy.js";
+import { getMailCopy } from "./mail-copy.js";
 import { LANGS, getLangMeta } from "./langs.js";
 import { TOOLS, CATEGORIES, getTool, pick } from "./registry.js";
 import { favorites, recent, ratings, comments, storage } from "./storage.js";
@@ -812,20 +812,28 @@ async function renderAdditionalCenter({ center }) {
 
 async function renderTempMail() {
   const main = document.getElementById("main");
-  const copy = getMailCopy(getLang());
+  const lang = getLang();
+  const copy = getMailCopy(lang);
+  const summary = {
+    ar: ["البريد الإلكتروني المؤقت", "خدمة بريد مؤقت مستقلة عن أدوات DouNest التي تعالج الملفات محلياً. أنشئ عنواناً عشوائياً لاستقبال الرسائل فقط؛ تنتهي صلاحية صندوق البريد بعد نحو ساعة. لا تستخدمه للحسابات المهمة أو الرسائل الحساسة.", "افتح واجهة البريد المؤقت"],
+    en: ["Temporary email", "A separate temporary-email service, distinct from DouNest tools that process files locally. Create a random address for receiving messages only; inboxes expire after about one hour. Do not use it for important accounts or sensitive messages.", "Open the temporary email service"],
+    fr: ["E-mail temporaire", "Un service de messagerie temporaire distinct des outils DouNest qui traitent les fichiers localement. Créez une adresse aléatoire pour recevoir des messages uniquement ; les boîtes expirent après environ une heure. Ne l’utilisez pas pour des comptes importants ou des données sensibles.", "Ouvrir le service d’e-mail temporaire"],
+    es: ["Correo temporal", "Un servicio de correo temporal independiente de las herramientas de DouNest que procesan archivos localmente. Crea una dirección aleatoria solo para recibir mensajes; los buzones caducan al cabo de aproximadamente una hora. No lo uses para cuentas importantes ni datos sensibles.", "Abrir el servicio de correo temporal"],
+    de: ["Temporäre E-Mail", "Ein separater Dienst für temporäre E-Mails, unabhängig von DouNest-Tools zur lokalen Dateiverarbeitung. Erstelle eine zufällige Adresse nur zum Empfangen von Nachrichten; Postfächer laufen nach etwa einer Stunde ab. Nicht für wichtige Konten oder sensible Daten verwenden.", "Temporären E-Mail-Dienst öffnen"],
+    tr: ["Geçici e-posta", "Dosyaları yerel olarak işleyen DouNest araçlarından ayrı bir geçici e-posta hizmetidir. Yalnızca mesaj almak için rastgele bir adres oluşturun; gelen kutuları yaklaşık bir saat sonra sona erer. Önemli hesaplar veya hassas bilgiler için kullanmayın.", "Geçici e-posta hizmetini aç"],
+    ru: ["Временная почта", "Отдельный сервис временной почты, не связанный с локальной обработкой файлов в DouNest. Создайте случайный адрес только для получения писем; срок действия ящика истекает примерно через час. Не используйте его для важных аккаунтов и конфиденциальных данных.", "Открыть сервис временной почты"],
+    zh: ["临时邮箱", "这是独立的临时邮件服务，与 DouNest 的本地文件处理工具分开。创建随机地址仅用于收信；邮箱约一小时后失效。请勿用于重要账户或敏感信息。", "打开临时邮箱服务"],
+    hi: ["अस्थायी ईमेल", "यह DouNest के स्थानीय फ़ाइल-प्रोसेसिंग टूल से अलग अस्थायी ईमेल सेवा है। केवल संदेश प्राप्त करने के लिए यादृच्छिक पता बनाएँ; इनबॉक्स लगभग एक घंटे में समाप्त हो जाते हैं। महत्वपूर्ण खातों या संवेदनशील जानकारी के लिए इसका उपयोग न करें।", "अस्थायी ईमेल सेवा खोलें"],
+    pt: ["E-mail temporário", "Um serviço de e-mail temporário separado das ferramentas DouNest que processam arquivos localmente. Crie um endereço aleatório apenas para receber mensagens; as caixas expiram após cerca de uma hora. Não use para contas importantes ou dados sensíveis.", "Abrir o serviço de e-mail temporário"]
+  }[lang] || ["Temporary email", "A separate temporary-email service for receiving messages. Inboxes expire after about one hour; do not use it for sensitive information.", "Open the temporary email service"];
+  const [title, explanation, linkText] = summary;
   injectSEO({
-    title: `${copy.title} — DouNest`,
+    title: `${title} — DouNest`,
     description: copy.description,
     path: "/mail",
-    jsonLd: mailStructuredData(getLang(), SITE_ROOT)
+    jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": title, "description": copy.description, "url": `${SITE_ROOT}/mail/`, "inLanguage": getLang() }]
   });
-  try {
-    const module = await import("./temp-mail.js");
-    module.render(main);
-  } catch (error) {
-    console.error("temporary mail page failed to load:", error);
-    main.innerHTML = `<section class="page-head"><h1>${escapeHtml(copy.title)}</h1><p>${escapeHtml(copy.statusUnavailable)}</p></section>`;
-  }
+  main.innerHTML = `<section class="page-head mail-page-head"><p class="eyebrow">✉ ${escapeHtml(copy.nav)}</p><h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(explanation)}</p></section><section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">${escapeHtml(linkText)} ↗</a><p>${escapeHtml(copy.warning)}</p></section>`;
 }
 
 function hubToolLinks(slugs) {
