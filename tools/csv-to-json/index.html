@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>CSV إلى JSON — DouNest</title>
-<meta name="description" content="حوّل بيانات CSV إلى صيغة JSON." />
+<title>CSV to JSON — DouNest</title>
+<meta name="description" content="Convert CSV data to JSON." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/csv-to-json/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/csv-to-json/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/csv-to-json/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="CSV إلى JSON — DouNest" />
-<meta property="og:description" content="حوّل بيانات CSV إلى صيغة JSON." />
+<meta property="og:title" content="CSV to JSON — DouNest" />
+<meta property="og:description" content="Convert CSV data to JSON." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/csv-to-json/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="CSV إلى JSON — DouNest" />
-<meta name="twitter:description" content="حوّل بيانات CSV إلى صيغة JSON." />
+<meta name="twitter:title" content="CSV to JSON — DouNest" />
+<meta name="twitter:description" content="Convert CSV data to JSON." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV إلى JSON","description":"حوّل بيانات CSV إلى صيغة JSON.","keywords":"csv-to-json, csv, json, بيانات, excel, converter","url":"https://dounest.hmdevelop.me/tools/csv-to-json/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ماذا لو كانت خلاياني تحتوي فاصلة؟","acceptedAnswer":{"@type":"Answer","text":"الأداة تفهم الاقتباس القياسي: الخلايا المحاطة بعلامات اقتباس مزدوجة تُقرأ كخلية واحدة حتى مع فواصل داخلية."}},{"@type":"Question","name":"هل يدعم الملفات العربية؟","acceptedAnswer":{"@type":"Answer","text":"نعم — احفظ ملف CSV بترميز UTF-8 من Excel (خيار CSV UTF-8) لضمان ظهور العربية صحيحة."}},{"@type":"Question","name":"أين تتحول الخلية الفارغة؟","acceptedAnswer":{"@type":"Answer","text":"تصبح null في JSON — إن أردت سلسلة فارغة استخدم الخيار المناسب في الإعدادات."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"CSV إلى JSON","item":"https://dounest.hmdevelop.me/tools/csv-to-json/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"CSV to JSON","description":"Convert CSV data to JSON.","keywords":"csv-to-json, csv, json, بيانات, excel, converter","url":"https://dounest.hmdevelop.me/tools/csv-to-json/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if my cells contain commas?","acceptedAnswer":{"@type":"Answer","text":"The tool understands standard quoting: cells wrapped in double quotes are read as one cell even with internal commas."}},{"@type":"Question","name":"Does it support Arabic files?","acceptedAnswer":{"@type":"Answer","text":"Yes — save your CSV as UTF-8 from Excel (the CSV UTF-8 option) so Arabic displays correctly."}},{"@type":"Question","name":"What happens to empty cells?","acceptedAnswer":{"@type":"Answer","text":"They become null in JSON — use the settings option if you prefer empty strings."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"CSV to JSON","item":"https://dounest.hmdevelop.me/tools/csv-to-json/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">CSV إلى JSON</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">CSV to JSON</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">📊</div>
         <div>
-          <h1>CSV إلى JSON</h1>
-          <p class="lead">حوّل بيانات CSV إلى صيغة JSON.</p>
+          <h1>CSV to JSON</h1>
+          <p class="lead">Convert CSV data to JSON.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,36 +121,36 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">حوّل بيانات CSV إلى صيغة JSON.</p>
+          <p class="empty" style="margin:0">Convert CSV data to JSON.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق بيانات CSV في مربع الإدخال أو اسحب ملف .csv.</li><li>تأكد من تحديد الفاصل الصحيح: فاصلة عادية أو فاصلة منقوطة أو Tab.</li><li>فعّل خيار السطر الأول كعناوين لاستخدامها كمفاتيح.</li><li>اضغط تحويل لعرض JSON في الجهة الأخرى فوراً.</li><li>انسخ الناتج أو نزّله ملف .json جاهزاً للاستخدام.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste CSV data into the input or drag a .csv file.</li><li>Make sure the correct delimiter is selected: comma, semicolon or tab.</li><li>Enable the first-row-as-headers option to use them as keys.</li><li>Press Convert and JSON appears on the other side instantly.</li><li>Copy the output or download it as a .json file.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>CSV لغة جداول Excel والبيانات المسطحة، وJSON لغة واجهات API والتطبيقات الحديثة — والجسر بينهما عملية يومية حقيقية: بيانات عملاء من Excel تحتاج دخول تطبيق ويب، وتقرير API يحتاج تحليل في Excel، والتحويل في الوسط دائماً.</p><p>أخطر مشكلة في التحويل هي البيانات النصية المحتوية على الفاصل نفسه: خلية تحتوي فاصلة تكسر الأعمدة إن لم تكن مقتبسة — الأداة تفهم الاقتباسات القياسية CSV وتتعامل معها بشكل صحيح.</p><p>خيار عناوين الصف الأول هو الفرق بين JSON مقروء (مفاتيح وصفية) وJSON مجهول (مصفوفات أرقام بلا معنى) — فعّله دائماً إن كان ملفك يحتوي سطر عناوين.</p><p>التحويل محلي بالكامل: بيانات عملائك ورواتبهم لا تُرفع لأي خادم — وهذا وحده سبب حاسم لتفضيل الأدوات المحلية عند التعامل مع بيانات الشركات.</p><p>الناتج القياسي مصفوفة كائنات [{...}, {...}] — الصيغة التي تتوقعها كل لغات البرمجة ومكتبات المعالجة مباشرة دون خطوات إضافية.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ماذا لو كانت خلاياني تحتوي فاصلة؟</summary><p>الأداة تفهم الاقتباس القياسي: الخلايا المحاطة بعلامات اقتباس مزدوجة تُقرأ كخلية واحدة حتى مع فواصل داخلية.</p></details><details class="faq-item"><summary>هل يدعم الملفات العربية؟</summary><p>نعم — احفظ ملف CSV بترميز UTF-8 من Excel (خيار CSV UTF-8) لضمان ظهور العربية صحيحة.</p></details><details class="faq-item"><summary>أين تتحول الخلية الفارغة؟</summary><p>تصبح null في JSON — إن أردت سلسلة فارغة استخدم الخيار المناسب في الإعدادات.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>CSV is the language of Excel spreadsheets and flat data, JSON is the language of APIs and modern apps — bridging them is a genuine daily operation: customer data from Excel needs to enter a web app, an API report needs Excel analysis, conversion always sits in the middle.</p><p>The most dangerous conversion pitfall is text containing the delimiter itself: a cell with a comma breaks columns unless quoted — the tool understands standard CSV quoting and handles it correctly.</p><p>The first-row-headers option is the difference between readable JSON (descriptive keys) and anonymous JSON (meaningless number arrays) — always enable it when your file has a header row.</p><p>Conversion is fully local: your customers&#39; data and salaries never upload to any server — decisive reason to prefer local tools for company data.</p><p>The standard output is an array of objects [{...}, {...}] — the format every programming language and processing library expects directly, with no extra steps.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>What if my cells contain commas?</summary><p>The tool understands standard quoting: cells wrapped in double quotes are read as one cell even with internal commas.</p></details><details class="faq-item"><summary>Does it support Arabic files?</summary><p>Yes — save your CSV as UTF-8 from Excel (the CSV UTF-8 option) so Arabic displays correctly.</p></details><details class="faq-item"><summary>What happens to empty cells?</summary><p>They become null in JSON — use the settings option if you prefer empty strings.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=csv-to-json">#csv-to-json</a><a class="hash-chip" href="/tools/?q=csv">#csv</a><a class="hash-chip" href="/tools/?q=json">#json</a><a class="hash-chip" href="/tools/?q=%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA">#بيانات</a><a class="hash-chip" href="/tools/?q=excel">#excel</a><a class="hash-chip" href="/tools/?q=converter">#converter</a>
   </div>
         </section>
       </div>
       <aside class="tool-sidecol">
-        <div class="side-box"><h3>دليل مرتبط</h3><a class="related-item" href="../../articles/csv-json-conversion-guide/"><span class="icon sm">📖</span><span>اقرأ الدليل قبل استخدام الأداة</span></a></div>
+        <div class="side-box"><h3>Related guide</h3><a class="related-item" href="../../articles/csv-json-conversion-guide/en/"><span class="icon sm">📖</span><span>Read the guide before using this tool</span></a></div>
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/json-to-csv/"><span class="icon sm">📈</span><span>JSON إلى CSV</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a><a class="related-item" href="../../tools/excel-to-json/"><span class="icon sm">🧾</span><span>Excel إلى JSON</span></a>
+            <a class="related-item" href="../../tools/json-to-csv/"><span class="icon sm">📈</span><span>JSON to CSV</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a><a class="related-item" href="../../tools/excel-to-json/"><span class="icon sm">🧾</span><span>Excel to JSON</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

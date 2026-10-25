@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>حاسبة العمر — DouNest</title>
-<meta name="description" content="احسب عمرك بالسنوات والأيام." />
+<title>Age Calculator — DouNest</title>
+<meta name="description" content="Calculate your age in years and days." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/age-calculator/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/age-calculator/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/age-calculator/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="حاسبة العمر — DouNest" />
-<meta property="og:description" content="احسب عمرك بالسنوات والأيام." />
+<meta property="og:title" content="Age Calculator — DouNest" />
+<meta property="og:description" content="Calculate your age in years and days." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/age-calculator/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="حاسبة العمر — DouNest" />
-<meta name="twitter:description" content="احسب عمرك بالسنوات والأيام." />
+<meta name="twitter:title" content="Age Calculator — DouNest" />
+<meta name="twitter:description" content="Calculate your age in years and days." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة العمر","description":"احسب عمرك بالسنوات والأيام.","keywords":"age-calculator, age, عمر, dates, calculator, birthday","url":"https://dounest.hmdevelop.me/tools/age-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يحسب السنوات الكبيسة؟","acceptedAnswer":{"@type":"Answer","text":"نعم — التقويم الحقيقي كاملاً مع 29 فبراير، مطابق للسجلات الرسمية."}},{"@type":"Question","name":"هل التاريخ المستقبلي مدعوم؟","acceptedAnswer":{"@type":"Answer","text":"نعم — ضع تاريخاً مستقبلياً في خانة «إلى» لتحسب مدة وصولاً إليه."}},{"@type":"Question","name":"هل يُحفظ تاريخ ميلادي؟","acceptedAnswer":{"@type":"Answer","text":"لا — الحساب في الذاكرة فقط ولا يخزن ولا يرسل أي شيء إلى أي جهة."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"حاسبة العمر","item":"https://dounest.hmdevelop.me/tools/age-calculator/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Age Calculator","description":"Calculate your age in years and days.","keywords":"age-calculator, age, عمر, dates, calculator, birthday","url":"https://dounest.hmdevelop.me/tools/age-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it count leap years?","acceptedAnswer":{"@type":"Answer","text":"Yes — the real calendar including Feb 29, matching official records."}},{"@type":"Question","name":"Are future dates supported?","acceptedAnswer":{"@type":"Answer","text":"Yes — put a future date in the «to» field to count the duration up to it."}},{"@type":"Question","name":"Is my birth date saved?","acceptedAnswer":{"@type":"Answer","text":"No — calculation is memory-only; nothing is stored or sent anywhere."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Age Calculator","item":"https://dounest.hmdevelop.me/tools/age-calculator/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">حاسبة العمر</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Age Calculator</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">🎂</div>
         <div>
-          <h1>حاسبة العمر</h1>
-          <p class="lead">احسب عمرك بالسنوات والأيام.</p>
+          <h1>Age Calculator</h1>
+          <p class="lead">Calculate your age in years and days.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">احسب عمرك بالسنوات والأيام.</p>
+          <p class="empty" style="margin:0">Calculate your age in years and days.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر تاريخ الميلاد من المنتقي (اليوم، الشهر، السنة).</li><li>اختر تاريخ الحساب أو اتركه اليوم افتراضياً.</li><li>اقرأ العمر بالسنوات والأشهر والأيام بدقة كاملة.</li><li>شاهد إحصاءات إضافية: الأيام المعيشة، والساعات، وعمر الحيوان الأليف بالمقابل.</li><li>استخدم وضع المقارنة لمعرفة فارق العمر بين شخصين بدقة اليوم.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Pick the birth date from the picker (day, month, year).</li><li>Pick the reference date or leave it as today by default.</li><li>Read the age in years, months and days with full precision.</li><li>See extra stats: days lived, hours, and your pet&#39;s equivalent age.</li><li>Use comparison mode to find the exact age gap between two people.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>حساب العمر الدقيق يبدو بسيطاً ويلمس أخطاء خفية شهيرة: «أنا عمره 25» قد يعني 24 سنة و11 شهراً و30 يوماً — والفرق جوهري في المستندات الرسمية وطلبات التأشيرة والتسجيلات المدرسية والرياضية.</p><p>التعقيد الحقيقي في أشهر متفاوتة الأطوال: من 1 فبراير إلى 1 مارس شهر بالضبط في سنة عادية، لكن حساب نفس الفترة بأيام يختلف بين سنة كبيسة وعادية — الخوارزمية الصحيحة تعالج هذه الحالات كما تفعل السجلات الرسمية.</p><p>الاستخدامات الرسمية كثيرة: نماذج التأمين تتطلب العمر بالأيام في بعض الخطط، وحقوق التقاعد تحسب بالأشهر، ووثائق الهوية تحتاج تدقيقاً — الدقة باليوم ليست ترفاً هنا.</p><p>الإحصاءات الممتعة مفيدة أكثر مما تظن: عدد الأيام المعيشة يفسر إحساس «الزمن يمر أسرع»، ومقارنة عمر قطك البالغ 7 سنوات تعادل نحو 44 بشرية — أرقام تربطنا بزمننا.</p><p>وضع المقارنة الزوجية يخدم حالات عملية: فارق عمر الأشقاء، ومدة الزواج بالضبط، ومدة العمل في وظيفة — كلها «عمر» من تاريخ إلى تاريخ.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يحسب السنوات الكبيسة؟</summary><p>نعم — التقويم الحقيقي كاملاً مع 29 فبراير، مطابق للسجلات الرسمية.</p></details><details class="faq-item"><summary>هل التاريخ المستقبلي مدعوم؟</summary><p>نعم — ضع تاريخاً مستقبلياً في خانة «إلى» لتحسب مدة وصولاً إليه.</p></details><details class="faq-item"><summary>هل يُحفظ تاريخ ميلادي؟</summary><p>لا — الحساب في الذاكرة فقط ولا يخزن ولا يرسل أي شيء إلى أي جهة.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Precise age calculation looks simple and hides famous subtleties: «I&#39;m 25» may actually be 24 years, 11 months and 30 days — and the difference matters in official documents, visa applications, school and sports registrations.</p><p>The real complexity is variable month lengths: Feb 1 to Mar 1 is exactly one month in a common year, but counting the same span in days differs between leap and common years — correct algorithms handle these like official records do.</p><p>Official uses abound: insurance forms require age in days for some plans, retirement rights count in months, identity documents need auditing — day-level precision is not a luxury here.</p><p>Fun stats are more useful than they look: days lived explains the «time flies» feeling, and your 7-year-old cat equals roughly 44 human years — numbers connecting us to our time.</p><p>Pair-comparison mode serves practical cases: sibling age gaps, exact marriage duration, tenure at a job — all «age» from one date to another.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Does it count leap years?</summary><p>Yes — the real calendar including Feb 29, matching official records.</p></details><details class="faq-item"><summary>Are future dates supported?</summary><p>Yes — put a future date in the «to» field to count the duration up to it.</p></details><details class="faq-item"><summary>Is my birth date saved?</summary><p>No — calculation is memory-only; nothing is stored or sent anywhere.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=age-calculator">#age-calculator</a><a class="hash-chip" href="/tools/?q=age">#age</a><a class="hash-chip" href="/tools/?q=%D8%B9%D9%85%D8%B1">#عمر</a><a class="hash-chip" href="/tools/?q=dates">#dates</a><a class="hash-chip" href="/tools/?q=calculator">#calculator</a><a class="hash-chip" href="/tools/?q=birthday">#birthday</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>حاسبة النسبة المئوية</span></a><a class="related-item" href="../../tools/bmi-calculator/"><span class="icon sm">⚖️</span><span>حاسبة BMI</span></a><a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>محوّل Unix Timestamp</span></a>
+            <a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>Percentage Calculator</span></a><a class="related-item" href="../../tools/bmi-calculator/"><span class="icon sm">⚖️</span><span>BMI Calculator</span></a><a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>Timestamp Converter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

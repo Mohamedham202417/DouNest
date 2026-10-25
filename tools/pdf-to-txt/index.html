@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>PDF إلى نص — DouNest</title>
-<meta name="description" content="استخرج النص من ملفات PDF محليًا." />
+<title>PDF to Text — DouNest</title>
+<meta name="description" content="Extract text from PDFs locally." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/pdf-to-txt/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/pdf-to-txt/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/pdf-to-txt/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="PDF إلى نص — DouNest" />
-<meta property="og:description" content="استخرج النص من ملفات PDF محليًا." />
+<meta property="og:title" content="PDF to Text — DouNest" />
+<meta property="og:description" content="Extract text from PDFs locally." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/pdf-to-txt/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="PDF إلى نص — DouNest" />
-<meta name="twitter:description" content="استخرج النص من ملفات PDF محليًا." />
+<meta name="twitter:title" content="PDF to Text — DouNest" />
+<meta name="twitter:description" content="Extract text from PDFs locally." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF إلى نص","description":"استخرج النص من ملفات PDF محليًا.","keywords":"pdf-to-txt, pdf, extract, استخراج-النص, documents, ocr","url":"https://dounest.hmdevelop.me/tools/pdf-to-txt/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"لماذا خرج النص فارغاً من ملفي؟","acceptedAnswer":{"@type":"Answer","text":"غالباً الملف ممسوح ضوئياً (صور بلا طبقة نص) — استخدم أداة OCR المخصصة لهذه الحالة."}},{"@type":"Question","name":"هل الترتيب والتنسيق يُحفظان؟","acceptedAnswer":{"@type":"Answer","text":"الترتيب حسب الصفحات محفوظ؛ التنسيق البصري (أعمدة، خطوط) يُبسّط لأن TXT نص نقي بطبيعته."}},{"@type":"Question","name":"هل يُرسل ملفي إلى خادم؟","acceptedAnswer":{"@type":"Answer","text":"أبداً — الاستخراج محلي داخل المتصفح، والملف لا يغادر جهازك."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"PDF إلى نص","item":"https://dounest.hmdevelop.me/tools/pdf-to-txt/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"PDF to Text","description":"Extract text from PDFs locally.","keywords":"pdf-to-txt, pdf, extract, استخراج-النص, documents, ocr","url":"https://dounest.hmdevelop.me/tools/pdf-to-txt/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why did my file produce empty text?","acceptedAnswer":{"@type":"Answer","text":"Your file is likely scanned (images with no text layer) — use the dedicated OCR tool for that case."}},{"@type":"Question","name":"Are order and formatting preserved?","acceptedAnswer":{"@type":"Answer","text":"Page order is preserved; visual layout (columns, fonts) is simplified because TXT is plain text by nature."}},{"@type":"Question","name":"Is my file sent to a server?","acceptedAnswer":{"@type":"Answer","text":"Never — extraction is local inside the browser; your file never leaves your device."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"PDF to Text","item":"https://dounest.hmdevelop.me/tools/pdf-to-txt/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">PDF إلى نص</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">PDF to Text</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">📄</div>
         <div>
-          <h1>PDF إلى نص</h1>
-          <p class="lead">استخرج النص من ملفات PDF محليًا.</p>
+          <h1>PDF to Text</h1>
+          <p class="lead">Extract text from PDFs locally.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">استخرج النص من ملفات PDF محليًا.</p>
+          <p class="empty" style="margin:0">Extract text from PDFs locally.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب ملف PDF إلى منطقة الرفع أو اضغط لاختياره من جهازك.</li><li>انتظر لحظة استخراج النص من كل صفحات الملف.</li><li>راجع النص المستخرج في منطقة المعاينة.</li><li>انقر نسخ لأخذ النص مباشرة، أو نزّله كملف .txt جاهز.</li><li>كرر مع بقية الملفات — لا حد لعدد التحويلات.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag a PDF into the drop zone or click to pick one from your device.</li><li>Wait a moment while text is extracted from every page.</li><li>Review the extracted text in the preview area.</li><li>Click copy to take the text directly, or download it as a .txt file.</li><li>Repeat with more files — no limit on conversions.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>استخراج النص من PDF هو العملية الأكثر طلباً في عالم المستندات: من وثيقة قانونية تريد اقتباس فقرة منها، إلى ورقة بحثية تريد تحليلها، إلى فاتورة تريد أرقامها — كلها تبدأ بخطوة هذه الأداة بالضبط.</p><p>الأداة تستخدم مكتبة PDF.js من Mozilla — نفس المحرك المدمج في متصفح Firefox نفسه — لتحليل بنية الملف واستخراج طبقة النص الحقيقية، وليست صورة تمر بـ OCR تقريبي.</p><p>حدود التقنية يجب فهمها بصدق: الملفات الممسوحة ضوئياً (صور داخل غلاف PDF) لا تحتوي طبقة نص أصلاً، فخرجها فارغ أو شبه فارغ — لهذه الحالة استخدم أداة OCR المخصصة في DouNest.</p><p>الخصوصية هنا قصوى الأهمية: العقود والنتائج الطبية والمستندات المالية لا يجب أن ترفع لأي خادم؛ التحليل هنا يحدث في ذاكرة متصفحك وينتهي بمغادرتك الصفحة.</p><p>الناتج المثالي للمعالجة اللاحقة: عدّاد الكلمات، أو الترجمة الآلية، أو التلخيص بالذكاء الاصطناعي — النص النقي هو الوقود لكل ذلك.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>لماذا خرج النص فارغاً من ملفي؟</summary><p>غالباً الملف ممسوح ضوئياً (صور بلا طبقة نص) — استخدم أداة OCR المخصصة لهذه الحالة.</p></details><details class="faq-item"><summary>هل الترتيب والتنسيق يُحفظان؟</summary><p>الترتيب حسب الصفحات محفوظ؛ التنسيق البصري (أعمدة، خطوط) يُبسّط لأن TXT نص نقي بطبيعته.</p></details><details class="faq-item"><summary>هل يُرسل ملفي إلى خادم؟</summary><p>أبداً — الاستخراج محلي داخل المتصفح، والملف لا يغادر جهازك.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Extracting text from PDFs is the most requested document operation: quoting a clause from a legal contract, analyzing a research paper, or pulling numbers from an invoice — all start with exactly this tool&#39;s step.</p><p>The tool uses Mozilla&#39;s PDF.js — the same engine embedded in Firefox itself — to parse the file structure and extract the real text layer, not a blurry OCR approximation of an image.</p><p>Be honest about limits: scanned documents (pictures wrapped in a PDF) contain no text layer at all, so output is empty or near-empty — for those use DouNest&#39;s dedicated OCR tool.</p><p>Privacy matters most here: contracts, medical results and financial documents should never be uploaded to any server; parsing happens in your browser&#39;s memory and ends when you leave the page.</p><p>The output is perfect for downstream processing: word counting, machine translation, or AI summarization — clean text is the fuel for all of it.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Why did my file produce empty text?</summary><p>Your file is likely scanned (images with no text layer) — use the dedicated OCR tool for that case.</p></details><details class="faq-item"><summary>Are order and formatting preserved?</summary><p>Page order is preserved; visual layout (columns, fonts) is simplified because TXT is plain text by nature.</p></details><details class="faq-item"><summary>Is my file sent to a server?</summary><p>Never — extraction is local inside the browser; your file never leaves your device.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=pdf-to-txt">#pdf-to-txt</a><a class="hash-chip" href="/tools/?q=pdf">#pdf</a><a class="hash-chip" href="/tools/?q=extract">#extract</a><a class="hash-chip" href="/tools/?q=%D8%A7%D8%B3%D8%AA%D8%AE%D8%B1%D8%A7%D8%AC-%D8%A7%D9%84%D9%86%D8%B5">#استخراج-النص</a><a class="hash-chip" href="/tools/?q=documents">#documents</a><a class="hash-chip" href="/tools/?q=ocr">#ocr</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>عدّاد الكلمات</span></a><a class="related-item" href="../../tools/text-case/"><span class="icon sm">Aa</span><span>تحويل حالة النص</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a>
+            <a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>Word Counter</span></a><a class="related-item" href="../../tools/text-case/"><span class="icon sm">Aa</span><span>Text Case Converter</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

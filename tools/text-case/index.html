@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تحويل حالة النص — DouNest</title>
+<title>Text Case Converter — DouNest</title>
 <meta name="description" content="UPPER, lower, Title, Sentence." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/text-case/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/text-case/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/text-case/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,13 +18,13 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تحويل حالة النص — DouNest" />
+<meta property="og:title" content="Text Case Converter — DouNest" />
 <meta property="og:description" content="UPPER, lower, Title, Sentence." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/text-case/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تحويل حالة النص — DouNest" />
+<meta name="twitter:title" content="Text Case Converter — DouNest" />
 <meta name="twitter:description" content="UPPER, lower, Title, Sentence." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل حالة النص","description":"UPPER, lower, Title, Sentence.","keywords":"text-case, uppercase, نصوص, camelCase, formatting, productivity","url":"https://dounest.hmdevelop.me/tools/text-case/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل تُحترم الحروف العربية في التحويل؟","acceptedAnswer":{"@type":"Answer","text":"العربية بلا حالة كبيرة/صغيرة فتبقى كما هي، وتتأثر فقط الأحرف اللاتينية المختلطة معها."}},{"@type":"Question","name":"ما الفرق بين Title Case و Sentence case؟","acceptedAnswer":{"@type":"Answer","text":"Title يكبر كل كلمة مهمة في العنوان، وSentence يكبر أول حرف من الجملة فقط."}},{"@type":"Question","name":"هل يتعامل مع الرموز والأرقام؟","acceptedAnswer":{"@type":"Answer","text":"نعم، تُمرر كما هي دون مساس — التحويل يمس الحروف فقط."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"تحويل حالة النص","item":"https://dounest.hmdevelop.me/tools/text-case/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Text Case Converter","description":"UPPER, lower, Title, Sentence.","keywords":"text-case, uppercase, نصوص, camelCase, formatting, productivity","url":"https://dounest.hmdevelop.me/tools/text-case/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are Arabic letters respected in conversion?","acceptedAnswer":{"@type":"Answer","text":"Arabic has no upper/lower case so it stays untouched; only mixed-in Latin letters are affected."}},{"@type":"Question","name":"What is the difference between Title Case and Sentence case?","acceptedAnswer":{"@type":"Answer","text":"Title capitalizes every important word in a headline; Sentence capitalizes only each sentence's first letter."}},{"@type":"Question","name":"Does it handle symbols and numbers?","acceptedAnswer":{"@type":"Answer","text":"Yes — they pass through untouched; conversion affects letters only."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Text Case Converter","item":"https://dounest.hmdevelop.me/tools/text-case/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">تحويل حالة النص</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Text Case Converter</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-text" aria-hidden="true">Aa</div>
         <div>
-          <h1>تحويل حالة النص</h1>
+          <h1>Text Case Converter</h1>
           <p class="lead">UPPER, lower, Title, Sentence.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">text</span>
           </div>
         </div>
@@ -123,22 +124,22 @@
           <p class="empty" style="margin:0">UPPER, lower, Title, Sentence.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق النص الذي تريد تحويل حالته في مربع الإدخال.</li><li>اختر التحويل: UPPERCASE للعناوين القوية أو lowercase للتصغير الكامل.</li><li>أو استخدم Title Case لكتابة كل كلمة بحرف كبير مناسب للعناوين.</li><li>أو Sentence case لجعل أول حرف من كل جملة كبيراً فقط.</li><li>احرص على camelCase أو snake_case للمتغيرات البرمجية، ثم انسخ الناتج.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste the text whose casing you want to change into the input.</li><li>Pick UPPERCASE for strong headings or lowercase for full demotion.</li><li>Or use Title Case to capitalize every word — ideal for headlines.</li><li>Or Sentence case to capitalize only each sentence&#39;s first letter.</li><li>Grab camelCase or snake_case for code variables, then copy the output.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تحويل حالة النص يبدو بسيطاً حتى تصطدم بـ 500 سطر بيانات كُتبت كلها بأحرف كبيرة من نظام قديم، أو بعنوان أُرسل لك بحروف صغيرة كلها — الإصلاح اليدوي مستحيل عملياً، والأداة تنجزه بضغطة.</p><p>الصيغ البرمجية لها شروطها: camelCase للمتغيرات في جافاسكربت، snake_case في بايثون وSQL، kebab-case في أسماء الملفات وروابط URL — والخ بينها خطأً يكسر البناء أو يخلق أخطاء صامتة.</p><p>التحويلات الذكية تتجاوز تغيير الحرف: Sentence case يحتاج فهم حدود الجملة، وTitle Case يعرف الكلمات الصغيرة المستثناة (of, the, in...) وفق قواعد الأسلوب.</p><p>كتابة المحتوى تستفيد بنفس القدر: العناوين القياسية في المقالات والوثائق تتبع قواعد حالة محددة، وضبطها يدوياً في عنوان طويل خطأٌ بانتظار الحدوث.</p><p>للمعالجة الدفعية: الصق قائمة كاملة (أسماء مستخدمين، روابط، رموز SKU) وحولها دفعة واحدة بدل تحرير كل سطر على حدة.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل تُحترم الحروف العربية في التحويل؟</summary><p>العربية بلا حالة كبيرة/صغيرة فتبقى كما هي، وتتأثر فقط الأحرف اللاتينية المختلطة معها.</p></details><details class="faq-item"><summary>ما الفرق بين Title Case و Sentence case؟</summary><p>Title يكبر كل كلمة مهمة في العنوان، وSentence يكبر أول حرف من الجملة فقط.</p></details><details class="faq-item"><summary>هل يتعامل مع الرموز والأرقام؟</summary><p>نعم، تُمرر كما هي دون مساس — التحويل يمس الحروف فقط.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Changing text case looks trivial until you face 500 rows of data written in ALL CAPS by a legacy system, or a headline delivered in all lowercase — manual fixing is practically impossible, and the tool does it in one click.</p><p>Code formats carry their own rules: camelCase for JavaScript variables, snake_case in Python and SQL, kebab-case for filenames and URL slugs — picking the wrong one breaks builds or creates silent bugs.</p><p>Smart conversions go beyond letter flipping: Sentence case must understand sentence boundaries, and Title Case knows the excluded small words (of, the, in...) per style rules.</p><p>Content writing benefits equally: standard headline conventions in articles and docs follow specific casing rules, and hand-fixing a long title is an error waiting to happen.</p><p>For batch processing: paste a whole list (usernames, links, SKUs) and convert everything at once instead of editing line by line.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Are Arabic letters respected in conversion?</summary><p>Arabic has no upper/lower case so it stays untouched; only mixed-in Latin letters are affected.</p></details><details class="faq-item"><summary>What is the difference between Title Case and Sentence case?</summary><p>Title capitalizes every important word in a headline; Sentence capitalizes only each sentence&#39;s first letter.</p></details><details class="faq-item"><summary>Does it handle symbols and numbers?</summary><p>Yes — they pass through untouched; conversion affects letters only.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=text-case">#text-case</a><a class="hash-chip" href="/tools/?q=uppercase">#uppercase</a><a class="hash-chip" href="/tools/?q=%D9%86%D8%B5%D9%88%D8%B5">#نصوص</a><a class="hash-chip" href="/tools/?q=camelCase">#camelCase</a><a class="hash-chip" href="/tools/?q=formatting">#formatting</a><a class="hash-chip" href="/tools/?q=productivity">#productivity</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>عدّاد الكلمات</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a><a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>ترميز Base64</span></a>
+            <a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>Word Counter</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a><a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>Base64 Encoder</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مولّد QR — DouNest</title>
-<meta name="description" content="أنشئ رموز QR للنصوص والروابط." />
+<title>QR Code Generator — DouNest</title>
+<meta name="description" content="Generate QR codes for text and URLs." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/qr-code/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/qr-code/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/qr-code/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مولّد QR — DouNest" />
-<meta property="og:description" content="أنشئ رموز QR للنصوص والروابط." />
+<meta property="og:title" content="QR Code Generator — DouNest" />
+<meta property="og:description" content="Generate QR codes for text and URLs." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/qr-code/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مولّد QR — DouNest" />
-<meta name="twitter:description" content="أنشئ رموز QR للنصوص والروابط." />
+<meta name="twitter:title" content="QR Code Generator — DouNest" />
+<meta name="twitter:description" content="Generate QR codes for text and URLs." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد QR","description":"أنشئ رموز QR للنصوص والروابط.","keywords":"qr-code, qr, رمز, wifi, marketing, generator","url":"https://dounest.hmdevelop.me/tools/qr-code/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل الرمز الناتج يعمل للأبد؟","acceptedAnswer":{"@type":"Answer","text":"نعم — الرمز ثابت لا يعتمد على أي خدمة؛ يعمل ما دام المحتوى نفسه صالحاً (الرابط حياً مثلاً)."}},{"@type":"Question","name":"ما حجم البيانات الأقصى؟","acceptedAnswer":{"@type":"Answer","text":"نحو 3000 حرف نصي أو 700 رقم، لكن الرموز الصغيرة القصيرة تمسح أسرع وأدق."}},{"@type":"Question","name":"لماذا فشل مسح رمزي المطبوع؟","acceptedAnswer":{"@type":"Answer","text":"غالباً حجم صغير جداً أو تباين ضعيف أو تشويه بالطباعة — كبّر الرمز واطبع بخلفية بيضاء نقي."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"مولّد QR","item":"https://dounest.hmdevelop.me/tools/qr-code/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"QR Code Generator","description":"Generate QR codes for text and URLs.","keywords":"qr-code, qr, رمز, wifi, marketing, generator","url":"https://dounest.hmdevelop.me/tools/qr-code/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the generated code work forever?","acceptedAnswer":{"@type":"Answer","text":"Yes — the code is static and depends on no service; it works as long as its content stays valid (e.g. the link is alive)."}},{"@type":"Question","name":"What is the maximum data size?","acceptedAnswer":{"@type":"Answer","text":"About 3000 text characters or 700 digits — but short codes scan faster and more reliably."}},{"@type":"Question","name":"Why does my printed code fail to scan?","acceptedAnswer":{"@type":"Answer","text":"Usually too small, low contrast, or print distortion — enlarge and print on pure white."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"QR Code Generator","item":"https://dounest.hmdevelop.me/tools/qr-code/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">مولّد QR</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">QR Code Generator</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">▦</div>
         <div>
-          <h1>مولّد QR</h1>
-          <p class="lead">أنشئ رموز QR للنصوص والروابط.</p>
+          <h1>QR Code Generator</h1>
+          <p class="lead">Generate QR codes for text and URLs.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">أنشئ رموز QR للنصوص والروابط.</p>
+          <p class="empty" style="margin:0">Generate QR codes for text and URLs.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اكتب النص أو الرابط الذي تريد تحويله إلى رمز QR.</li><li>اضبط الحجم ومستوى تصحيح الأخطاء (L/M/Q/H) حسب الاستخدام.</li><li>اضغط توليد ليظهر الرمز فوراً بدقة عالية.</li><li>نزّل الرمز بصيغة PNG أو انسخه مباشرة.</li><li>اختبر الرمز الناتج بكاميرا هاتفك قبل الطباعة النهائية.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Type the text or URL you want to turn into a QR code.</li><li>Set size and error-correction level (L/M/Q/H) for your use case.</li><li>Press Generate and the code appears instantly in high resolution.</li><li>Download the code as PNG or copy it directly.</li><li>Test the final code with your phone camera before printing.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>رمز QR هو طريقة تخزين بيانات ثنائية في نمط مربعات قابل للمسح الضوئي فائق السرعة، صُمم أصلاً لتتبع قطع السيارات في اليابان قبل أن يغزو العالم كل-menu القوائم والدفع والتذاكر والشبكات.</p><p>مستوى تصحيح الأخطاء هو القرار التقني الأهم: المستوى H يسمح بمسح الرمز حتى لو طُمي 30% منه بختم أو شعار — ولهذا تُطبع الشعارات فوق رموز المطاعم بثقة، بينما L يوفر مساحة بيانات أكبر لكنه هش أمام التلف.</p><p>القاعدة الذهبية للطباعة: الرمز لا يقل عن 2×2 سم لمسافة مسح قريبة، ويكبر كلما ابتعدت الكاميرا — رمز على لوحة إعلانية يحتاج أمتاراً مربعة.</p><p>محتوى الرمز يحدد سلوك الهاتف بعد المسح: رابط يفتح المتصفح، وwifi: يتصل بالشبكة تلقائياً، وmailto: يفتح البريد — الأداة تدعم كل هذه الأنماط عبر النص الحر.</p><p>التوليد محلي بالكامل عبر مكتبة qrcode في متصفحك، فروابطك الخاصة وبيانات شبكاتك لا تُرسل لأي جهة — مهم عند توليد رموز تحتوي معلومات حساسة.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل الرمز الناتج يعمل للأبد؟</summary><p>نعم — الرمز ثابت لا يعتمد على أي خدمة؛ يعمل ما دام المحتوى نفسه صالحاً (الرابط حياً مثلاً).</p></details><details class="faq-item"><summary>ما حجم البيانات الأقصى؟</summary><p>نحو 3000 حرف نصي أو 700 رقم، لكن الرموز الصغيرة القصيرة تمسح أسرع وأدق.</p></details><details class="faq-item"><summary>لماذا فشل مسح رمزي المطبوع؟</summary><p>غالباً حجم صغير جداً أو تباين ضعيف أو تشويه بالطباعة — كبّر الرمز واطبع بخلفية بيضاء نقي.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>A QR code stores binary data in a scan pattern designed for extreme speed, originally created to track car parts in Japan before conquering the world&#39;s menus, payments, tickets and Wi-Fi sharing.</p><p>The error-correction level is the most important technical decision: level H keeps the code scannable even if 30% is covered by a stamp or logo — that is why restaurant logos sit confidently on codes, while level L fits more data but shreds easily.</p><p>The golden rule of printing: at least 2×2 cm for close-range scans, growing with camera distance — a billboard QR needs square meters.</p><p>Content determines phone behavior after scanning: a URL opens the browser, wifi: auto-connects to the network, mailto: opens email — the tool supports all these patterns through free text.</p><p>Generation is fully local via the qrcode library in your browser, so private links and network credentials never reach anyone — vital when codes carry sensitive info.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Does the generated code work forever?</summary><p>Yes — the code is static and depends on no service; it works as long as its content stays valid (e.g. the link is alive).</p></details><details class="faq-item"><summary>What is the maximum data size?</summary><p>About 3000 text characters or 700 digits — but short codes scan faster and more reliably.</p></details><details class="faq-item"><summary>Why does my printed code fail to scan?</summary><p>Usually too small, low contrast, or print distortion — enlarge and print on pure white.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=qr-code">#qr-code</a><a class="hash-chip" href="/tools/?q=qr">#qr</a><a class="hash-chip" href="/tools/?q=%D8%B1%D9%85%D8%B2">#رمز</a><a class="hash-chip" href="/tools/?q=wifi">#wifi</a><a class="hash-chip" href="/tools/?q=marketing">#marketing</a><a class="hash-chip" href="/tools/?q=generator">#generator</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>ترميز Base64</span></a><a class="related-item" href="../../tools/url-encoder/"><span class="icon sm">%</span><span>ترميز URL</span></a><a class="related-item" href="../../tools/image-compressor/"><span class="icon sm">🖼️</span><span>ضاغط الصور</span></a>
+            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>Base64 Encoder</span></a><a class="related-item" href="../../tools/url-encoder/"><span class="icon sm">%</span><span>URL Encoder</span></a><a class="related-item" href="../../tools/image-compressor/"><span class="icon sm">🖼️</span><span>Image Compressor</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

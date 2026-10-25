@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مولّد Cron — DouNest</title>
-<meta name="description" content="أنشئ وافهم تعبيرات Cron." />
+<title>Cron Generator — DouNest</title>
+<meta name="description" content="Build and understand cron expressions." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/cron-generator/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/cron-generator/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/cron-generator/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مولّد Cron — DouNest" />
-<meta property="og:description" content="أنشئ وافهم تعبيرات Cron." />
+<meta property="og:title" content="Cron Generator — DouNest" />
+<meta property="og:description" content="Build and understand cron expressions." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/cron-generator/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مولّد Cron — DouNest" />
-<meta name="twitter:description" content="أنشئ وافهم تعبيرات Cron." />
+<meta name="twitter:title" content="Cron Generator — DouNest" />
+<meta name="twitter:description" content="Build and understand cron expressions." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد Cron","description":"أنشئ وافهم تعبيرات Cron.","keywords":"cron, crontab, جدولة, linux, devops, مطورين","url":"https://dounest.hmdevelop.me/tools/cron-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ماذا تعني النجمة في حقل؟","acceptedAnswer":{"@type":"Answer","text":"تعني «كل» قيم هذا الحقل — نجمة في الساعات تعني كل ساعة ضمن قيم الحقول الأخرى."}},{"@type":"Question","name":"هل يتبع الخادم منطقتي الزمنية؟","acceptedAnswer":{"@type":"Answer","text":"cron يتبع منطقة الخادم الافتراضية — تحقق منها أو اضبط TZ في crontab لتجنب مفاجآت الفرق الزمني."}},{"@type":"Question","name":"ما الفرق بين cron و systemd timer؟","acceptedAnswer":{"@type":"Answer","text":"نفس الصيغة الزمنية غالباً؛ systemd يقدم سجلات أعقد وإعادة تشغيل ذكية، لكن cron أبسط وأوسع دعماً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"مولّد Cron","item":"https://dounest.hmdevelop.me/tools/cron-generator/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Cron Generator","description":"Build and understand cron expressions.","keywords":"cron, crontab, جدولة, linux, devops, مطورين","url":"https://dounest.hmdevelop.me/tools/cron-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What does a star in a field mean?","acceptedAnswer":{"@type":"Answer","text":"It means every value of that field — a star in hours means every hour within the other fields' values."}},{"@type":"Question","name":"Does the server follow my timezone?","acceptedAnswer":{"@type":"Answer","text":"cron follows the server's default timezone — check it or set TZ in crontab to avoid timezone surprises."}},{"@type":"Question","name":"What is the difference between cron and systemd timers?","acceptedAnswer":{"@type":"Answer","text":"Similar time syntax; systemd offers richer logs and smart retries, but cron is simpler and more universally supported."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Cron Generator","item":"https://dounest.hmdevelop.me/tools/cron-generator/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">مولّد Cron</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Cron Generator</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">⏰</div>
         <div>
-          <h1>مولّد Cron</h1>
-          <p class="lead">أنشئ وافهم تعبيرات Cron.</p>
+          <h1>Cron Generator</h1>
+          <p class="lead">Build and understand cron expressions.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">أنشئ وافهم تعبيرات Cron.</p>
+          <p class="empty" style="margin:0">Build and understand cron expressions.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اضبط الحقول الخمسة: الدقيقة، الساعة، اليوم من الشهر، الشهر، يوم الأسبوع.</li><li>أو استخدم الأزرار السريعة لجداول شائعة: كل ساعة، يومياً، أسبوعياً.</li><li>شاهد التعبير يتشكل في الحقل الناتج أثناء الضبط.</li><li>اقرأ الوصف البشري المولّد للتأكد أن النمط يعني ما تقصده فعلاً.</li><li>انسخ التعبير واستخدمه في crontab أو في إعدادات جدولة مشروعك.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Set the five fields: minute, hour, day of month, month, day of week.</li><li>Or use quick buttons for common schedules: hourly, daily, weekly.</li><li>Watch the expression form in the output field as you configure.</li><li>Read the generated human description to confirm the pattern means what you intend.</li><li>Copy the expression into crontab or your project&#39;s scheduler settings.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>صيغة cron قياس صناعي عمره نصف قرن لتشغيل المهام دورياً: من نسخ قواعد البيانات ليلاً إلى تحديث التقارير كل ساعة إلى تنظيف الملفات المؤقتة أسبوعياً — كل سيرفر لينكس يعيش على هذه الصيغة الخمسة حقول.</p><p>لماذا مولّد بدل الكتابة اليدوية؟ لأن صيغة cron تتعارض مع الحدس البشري: يوم الأسبوع 0 أم 7؟ النجمة في حقل اليوم من الشهر مع يوم الأسبوع تعني OR لا AND؟ هذه الفخاخ تصطدم بها حتى المحترفون، والمولّد يضبطها بدقة.</p><p>الوصف البشري المولّد هو ميزة الأمان الحقيقية: «كل يوم اثنين وثلاثاء الساعة 9:00» — اقرأه وصححه قبل النسخ، فخطأ جدولة يعني نسخاً احتياطياً لم يحدث أو تقريراً لم يصل.</p><p>الحقول الخاصة مثل */5 (كل خمس دقائق) و1-5 (نطاق) و1,15 (قائمة) مدعومة بالأزرار — لا حاجة لحفظ رموزها الغامضة.</p><p>أشهر استخدامات جاهزة: 0 3 * * * (نسخ احتياطي 3 فجراً)، */15 * * * * (فحص صحة كل ربع ساعة)، 0 0 1 * * (تقرير شهري أول الشهر).</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ماذا تعني النجمة في حقل؟</summary><p>تعني «كل» قيم هذا الحقل — نجمة في الساعات تعني كل ساعة ضمن قيم الحقول الأخرى.</p></details><details class="faq-item"><summary>هل يتبع الخادم منطقتي الزمنية؟</summary><p>cron يتبع منطقة الخادم الافتراضية — تحقق منها أو اضبط TZ في crontab لتجنب مفاجآت الفرق الزمني.</p></details><details class="faq-item"><summary>ما الفرق بين cron و systemd timer؟</summary><p>نفس الصيغة الزمنية غالباً؛ systemd يقدم سجلات أعقد وإعادة تشغيل ذكية، لكن cron أبسط وأوسع دعماً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>The cron format is a half-century industrial standard for running tasks periodically: nightly database backups, hourly report refreshes, weekly temp-file cleanup — every Linux server lives on this five-field syntax.</p><p>Why a generator instead of hand-writing? Because cron defies human intuition: is day of week 0 or 7? Does a star in day-of-month combined with day-of-week mean OR, not AND? Professionals trip on these traps, and the generator sets them precisely.</p><p>The generated human description is the real safety feature: «every Monday and Tuesday at 9:00» — read it and correct it before copying, because a scheduling error means a backup that never ran or a report that never arrived.</p><p>Special fields like */5 (every five minutes), ranges (1-5) and lists (1,15) are supported through buttons — no need to memorize cryptic symbols.</p><p>Popular ready recipes: 0 3 * * * (backup at 3 AM), */15 * * * * (health check every quarter hour), 0 0 1 * * (monthly report on the 1st).</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>What does a star in a field mean?</summary><p>It means every value of that field — a star in hours means every hour within the other fields&#39; values.</p></details><details class="faq-item"><summary>Does the server follow my timezone?</summary><p>cron follows the server&#39;s default timezone — check it or set TZ in crontab to avoid timezone surprises.</p></details><details class="faq-item"><summary>What is the difference between cron and systemd timers?</summary><p>Similar time syntax; systemd offers richer logs and smart retries, but cron is simpler and more universally supported.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=cron">#cron</a><a class="hash-chip" href="/tools/?q=crontab">#crontab</a><a class="hash-chip" href="/tools/?q=%D8%AC%D8%AF%D9%88%D9%84%D8%A9">#جدولة</a><a class="hash-chip" href="/tools/?q=linux">#linux</a><a class="hash-chip" href="/tools/?q=devops">#devops</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>محوّل Unix Timestamp</span></a><a class="related-item" href="../../tools/regex-tester/"><span class="icon sm">.*</span><span>مختبر Regex</span></a><a class="related-item" href="../../tools/diff-checker/"><span class="icon sm">🔍</span><span>مقارنة النصوص</span></a>
+            <a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>Timestamp Converter</span></a><a class="related-item" href="../../tools/regex-tester/"><span class="icon sm">.*</span><span>Regex Tester</span></a><a class="related-item" href="../../tools/diff-checker/"><span class="icon sm">🔍</span><span>Diff Checker</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

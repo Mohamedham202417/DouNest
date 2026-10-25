@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تحويل HTML إلى Markdown — DouNest</title>
-<meta name="description" content="حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً." />
+<title>HTML to Markdown Converter — DouNest</title>
+<meta name="description" content="Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/html-to-markdown/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/html-to-markdown/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/html-to-markdown/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تحويل HTML إلى Markdown — DouNest" />
-<meta property="og:description" content="حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً." />
+<meta property="og:title" content="HTML to Markdown Converter — DouNest" />
+<meta property="og:description" content="Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/html-to-markdown/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تحويل HTML إلى Markdown — DouNest" />
-<meta name="twitter:description" content="حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً." />
+<meta name="twitter:title" content="HTML to Markdown Converter — DouNest" />
+<meta name="twitter:description" content="Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحويل HTML إلى Markdown","description":"حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً.","keywords":"HTML to Markdown, تحويل HTML إلى Markdown, HTML converter, Markdown converter","url":"https://dounest.hmdevelop.me/tools/html-to-markdown/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يحول المحول تصميم CSS إلى Markdown؟","acceptedAnswer":{"@type":"Answer","text":"لا. Markdown يصف المحتوى والبنية الأساسية ولا يمثل معظم التخطيطات أو الأنماط. قد تحتاج إلى تحرير الناتج يدوياً."}},{"@type":"Question","name":"هل تُنفّذ الشيفرات الموجودة في HTML؟","acceptedAnswer":{"@type":"Answer","text":"لا. يُحلل المحتوى في DOM غير نشط، وتُتجاهل عناصر script وstyle ومحتوى التضمين النشط."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"تحويل HTML إلى Markdown","item":"https://dounest.hmdevelop.me/tools/html-to-markdown/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"HTML to Markdown Converter","description":"Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.","keywords":"HTML to Markdown, تحويل HTML إلى Markdown, HTML converter, Markdown converter","url":"https://dounest.hmdevelop.me/tools/html-to-markdown/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the converter turn CSS styling into Markdown?","acceptedAnswer":{"@type":"Answer","text":"No. Markdown represents content and basic structure, not most layouts or styling. You may need to edit the output manually."}},{"@type":"Question","name":"Is code embedded in the HTML executed?","acceptedAnswer":{"@type":"Answer","text":"No. Content is parsed in an inert DOM, and script, style, and active embedded content are ignored."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"HTML to Markdown Converter","item":"https://dounest.hmdevelop.me/tools/html-to-markdown/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">تحويل HTML إلى Markdown</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">HTML to Markdown Converter</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">↔️</div>
         <div>
-          <h1>تحويل HTML إلى Markdown</h1>
-          <p class="lead">حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً.</p>
+          <h1>HTML to Markdown Converter</h1>
+          <p class="lead">Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">حوّل العناوين والفقرات والروابط والقوائم والجداول من HTML إلى Markdown محلياً.</p>
+          <p class="empty" style="margin:0">Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق مقتطف HTML أو الشيفرة التي تريد نقلها إلى محرر Markdown.</li><li>حوّل النص وراجع بنية العناوين والقوائم والجداول والروابط.</li><li>انسخ الناتج وعدّل التنسيق أو الروابط يدوياً إذا كان HTML الأصلي يستخدم تخطيطاً معقداً.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste the HTML fragment or markup you want to move into a Markdown editor.</li><li>Convert it and review heading, list, table, and link structure.</li><li>Copy the result and adjust formatting or links manually if the source HTML uses a complex layout.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>يحوّل المحول العناصر الشائعة إلى صياغات Markdown: العناوين والفقرات والتأكيد والاقتباسات والقوائم والجداول وفواصل الأسطر. لا يستطيع Markdown تمثيل كل تفاصيل CSS أو التخطيطات المخصصة، لذلك قد تختلف النتيجة بصرياً عن الصفحة الأصلية.</p><p>تُحلل الشيفرة داخل DOM غير نشط في المتصفح ولا تُنفّذ عناصر script. لا تُعرض النتيجة كـ HTML؛ بل كنص داخل حقل، وتُستبعد روابط مثل javascript: ولا تتحول إلى روابط قابلة للنقر.</p><p>تقتصر المدخلات على 1 MiB. راجع الروابط المطلقة وبيانات الصور قبل نشر Markdown، خصوصاً إذا كان المحتوى سينتقل إلى مستودع أو نظام عام.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يحول المحول تصميم CSS إلى Markdown؟</summary><p>لا. Markdown يصف المحتوى والبنية الأساسية ولا يمثل معظم التخطيطات أو الأنماط. قد تحتاج إلى تحرير الناتج يدوياً.</p></details><details class="faq-item"><summary>هل تُنفّذ الشيفرات الموجودة في HTML؟</summary><p>لا. يُحلل المحتوى في DOM غير نشط، وتُتجاهل عناصر script وstyle ومحتوى التضمين النشط.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>The converter maps common elements to Markdown syntax: headings, paragraphs, emphasis, quotes, lists, tables, and line breaks. Markdown cannot represent every CSS detail or custom layout, so the visual result may differ from the source page.</p><p>Markup is parsed in an inert browser DOM and script elements are not executed. The result is never rendered as HTML; it is placed in a text field, and links such as javascript: are omitted rather than made clickable.</p><p>Input is limited to 1 MiB. Review absolute links and image references before publishing the Markdown, especially when moving content into a repository or public system.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Does the converter turn CSS styling into Markdown?</summary><p>No. Markdown represents content and basic structure, not most layouts or styling. You may need to edit the output manually.</p></details><details class="faq-item"><summary>Is code embedded in the HTML executed?</summary><p>No. Content is parsed in an inert DOM, and script, style, and active embedded content are ignored.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=HTML%20to%20Markdown">#HTML to Markdown</a><a class="hash-chip" href="/tools/?q=%D8%AA%D8%AD%D9%88%D9%8A%D9%84%20HTML%20%D8%A5%D9%84%D9%89%20Markdown">#تحويل HTML إلى Markdown</a><a class="hash-chip" href="/tools/?q=HTML%20converter">#HTML converter</a><a class="hash-chip" href="/tools/?q=Markdown%20converter">#Markdown converter</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/markdown-to-html/"><span class="icon sm">📝</span><span>تحويل Markdown إلى HTML</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a>
+            <a class="related-item" href="../../tools/markdown-to-html/"><span class="icon sm">📝</span><span>Markdown to HTML</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

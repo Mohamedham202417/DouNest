@@ -44,13 +44,13 @@ for (const slug of ["pdf", "images", "convert", "text", "dev", "security", "calc
   ok(html.includes("hub-guide") && html.includes('class="hub-steps"'), `${p}: detailed, crawlable guide missing`);
   ok(html.includes('"@type":"FAQPage"') || html.includes('"@type": "FAQPage"'), `${p}: FAQ structured data missing`);
   ok(html.includes('class="hub-faq"'), `${p}: visible FAQ section missing`);
-  for (const [question] of CENTER_CONTENT[slug].ar.faq) ok(html.includes(question), `${p}: FAQ is not visible in page content: ${question}`);
+  for (const [question] of CENTER_CONTENT[slug].en.faq) ok(html.includes(question), `${p}: English FAQ is not visible in page content: ${question}`);
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(m[1]);
   checks++;
 }
 const home = read("index.html");
 ok((home.match(/<h1\b/g) || []).length === 1, "home needs one H1");
-ok(/مراكز العمل/.test(home), "home center links missing");
+ok(/Work centers/.test(home), "home center links missing");
 ok((home.match(/class="explore-card"/g) || []).length >= 7, "home work centers must render as separate cards");
 ok(home.includes("id=\"nav-toggle\"") && home.includes("id=\"topnav\""), "mobile navigation toggle/panel missing");
 ok(!home.includes("most-searched") && !read("js/i18n.js").includes("most-searched") && !read("js/i18n.js").includes("أكثر الأسئلة بحثاً"), "FAQ copy must not claim unsupported search-volume rankings");

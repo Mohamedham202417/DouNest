@@ -47,7 +47,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -78,7 +78,7 @@
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
         <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
           <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
@@ -87,7 +87,7 @@
           <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
           <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">
@@ -101,7 +101,7 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../articles/">المقالات</a><span class="sep">›</span>
+      <a href="../../articles/">Articles</a><span class="sep">›</span>
       <span class="current">أفضل طرق الربح من الإنترنت 2026: دليل واقعي بلا أوهام</span>
     </nav>
     <article class="section article-body" lang="ar">

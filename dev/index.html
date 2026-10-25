@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مركز المطورين — أدوات JSON وBase64 وJWT | DouNest</title>
-<meta name="description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<title>Developer Tools — JSON, Base64 and JWT | DouNest</title>
+<meta name="description" content="Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/dev/" />
 
@@ -17,14 +17,14 @@
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مركز المطورين — أدوات JSON وBase64 وJWT | DouNest" />
-<meta property="og:description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<meta property="og:title" content="Developer Tools — JSON, Base64 and JWT | DouNest" />
+<meta property="og:description" content="Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/dev/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مركز المطورين — أدوات JSON وBase64 وJWT | DouNest" />
-<meta name="twitter:description" content="أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp." />
+<meta name="twitter:title" content="Developer Tools — JSON, Base64 and JWT | DouNest" />
+<meta name="twitter:description" content="Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +61,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"مركز المطورين — أدوات JSON وBase64 وJWT","url":"https://dounest.hmdevelop.me/dev/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Developer Tools — JSON, Base64 and JWT","url":"https://dounest.hmdevelop.me/dev/","inLanguage":"ar"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"منسّق JSON","url":"https://dounest.hmdevelop.me/tools/json-formatter/"},{"@type":"ListItem","position":2,"name":"ترميز Base64","url":"https://dounest.hmdevelop.me/tools/base64/"},{"@type":"ListItem","position":3,"name":"ترميز URL","url":"https://dounest.hmdevelop.me/tools/url-encoder/"},{"@type":"ListItem","position":4,"name":"مفكّك JWT","url":"https://dounest.hmdevelop.me/tools/jwt-decoder/"},{"@type":"ListItem","position":5,"name":"مولّد Hash","url":"https://dounest.hmdevelop.me/tools/hash-generator/"},{"@type":"ListItem","position":6,"name":"مولّد UUID","url":"https://dounest.hmdevelop.me/tools/uuid-generator/"},{"@type":"ListItem","position":7,"name":"مختبر Regex","url":"https://dounest.hmdevelop.me/tools/regex-tester/"},{"@type":"ListItem","position":8,"name":"مولّد Cron","url":"https://dounest.hmdevelop.me/tools/cron-generator/"},{"@type":"ListItem","position":9,"name":"منسّق SQL","url":"https://dounest.hmdevelop.me/tools/sql-formatter/"},{"@type":"ListItem","position":10,"name":"محوّل Unix Timestamp","url":"https://dounest.hmdevelop.me/tools/timestamp-converter/"},{"@type":"ListItem","position":11,"name":"تحويل JSON وYAML","url":"https://dounest.hmdevelop.me/tools/json-yaml/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل فك JWT يتحقق من صحة التوقيع؟","acceptedAnswer":{"@type":"Answer","text":"لا. يعرض المركز الرأس والحمولة فقط؛ لا يتحقق من التوقيع أو جهة الإصدار أو تاريخ الانتهاء."}},{"@type":"Question","name":"هل SHA-256 مناسب لتخزين كلمات المرور؟","acceptedAnswer":{"@type":"Answer","text":"لا. تخزين كلمات المرور يحتاج خوارزمية مخصصة وبطيئة مثل Argon2id أو bcrypt مع إعداد سليم، وليس hash سريعاً عاماً."}},{"@type":"Question","name":"هل تغادر شيفرتي أو مدخلاتي المتصفح؟","acceptedAnswer":{"@type":"Answer","text":"لا تُرسل إلى خادم DouNest؛ تجنب مع ذلك لصق أسرار حساسة على أجهزة مشتركة."}},{"@type":"Question","name":"لماذا يفشل فك Base64؟","acceptedAnswer":{"@type":"Answer","text":"تحقق من أن النص Base64 صالح وأن بيانات UTF-8 مناسبة؛ Base64 ترميز وليس تشفيراً أو حماية للسرية."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does JWT decoding verify the signature?","acceptedAnswer":{"@type":"Answer","text":"No. It displays the header and payload only; it does not verify the signature, issuer, or expiration."}},{"@type":"Question","name":"Is SHA-256 suitable for password storage?","acceptedAnswer":{"@type":"Answer","text":"No. Password storage needs a purpose-built slow password-hashing scheme such as Argon2id or bcrypt with sound parameters, not a fast general-purpose hash."}},{"@type":"Question","name":"Does my input leave the browser?","acceptedAnswer":{"@type":"Answer","text":"It is not sent to a DouNest server; still avoid pasting sensitive secrets on shared devices."}},{"@type":"Question","name":"Why did Base64 decoding fail?","acceptedAnswer":{"@type":"Answer","text":"Check that the input is valid Base64 and represents decodable UTF-8. Base64 is an encoding, not encryption or confidentiality."}}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,38 +77,38 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../" data-i18n="nav.home">Home</a>
+        <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
+          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a>
+          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../articles/" data-i18n="nav.articles">المقالات</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
     </div>
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
-<section class="page-head"><h1>مركز المطورين — أدوات JSON وBase64 وJWT</h1><p>أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp.</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">أدوات يومية للمطورين لاختبار JSON، ترميز Base64 وURL، قراءة حمولة JWT، إنشاء Hash وUUID، وتحويل الطوابع الزمنية أو JSON/YAML. اختر الإجراء الصحيح ولا تلصق أسرار الإنتاج في أجهزة لا تثق بها.</p><h2>كيف تستخدم مركز المطورين</h2><ol class="hub-steps"><li>الصق المدخل أو أضف ملف JSON أو YAML مدعوماً.</li><li>اختر العملية واضبط الوضع أو الخوارزمية أو عدد النتائج.</li><li>انسخ المخرجات، ثم تحقّق من الصيغ والقيم داخل بيئة التطوير قبل استخدامها.</li></ol><section class="hub-guide-section"><h2>تحقق من الصيغة قبل استخدامها</h2><p>منسق JSON يتحقق من البنية ثم ينسقها أو يصغرها. أدوات Base64 وURL تعكس الترميز وفكّه، وتحويل JSON/YAML مفيد لتبادل البيانات؛ لا يعني نجاح التحليل أن القيم مناسبة لتطبيقك.</p></section><section class="hub-guide-section"><h2>JWT وHash: حدود مهمة</h2><p>فك JWT يعرض الرأس والحمولة فقط ولا يتحقق من التوقيع أو المصدر أو الصلاحية. لا تستخدم هذه النتيجة لاتخاذ قرار مصادقة. Hash هنا يستخدم SHA-1 أو SHA-256 أو SHA-512 للنص؛ لا تستخدم SHA-1 أو هذه الأداة لتخزين كلمات المرور.</p></section><section class="hub-guide-section"><h2>بياناتك محلية</h2><p>تُعالج المدخلات داخل المتصفح ولا تُرسل إلى خادم DouNest. مع ذلك، لا تلصق مفاتيح إنتاج أو رموز وصول في أجهزة عامة أو جلسات متصفح مشتركة.</p></section><section class="hub-faq"><h2>أسئلة شائعة</h2><details><summary>هل فك JWT يتحقق من صحة التوقيع؟</summary><p>لا. يعرض المركز الرأس والحمولة فقط؛ لا يتحقق من التوقيع أو جهة الإصدار أو تاريخ الانتهاء.</p></details><details><summary>هل SHA-256 مناسب لتخزين كلمات المرور؟</summary><p>لا. تخزين كلمات المرور يحتاج خوارزمية مخصصة وبطيئة مثل Argon2id أو bcrypt مع إعداد سليم، وليس hash سريعاً عاماً.</p></details><details><summary>هل تغادر شيفرتي أو مدخلاتي المتصفح؟</summary><p>لا تُرسل إلى خادم DouNest؛ تجنب مع ذلك لصق أسرار حساسة على أجهزة مشتركة.</p></details><details><summary>لماذا يفشل فك Base64؟</summary><p>تحقق من أن النص Base64 صالح وأن بيانات UTF-8 مناسبة؛ Base64 ترميز وليس تشفيراً أو حماية للسرية.</p></details></section></section><section class="section"><h2 class="section-title">أدوات مركز المطورين </h2><div class="tools-grid"><a class="tool-card" href="/tools/json-formatter/"><div class="icon cat-dev" aria-hidden="true">{}</div><h3>منسّق JSON</h3><p>تنسيق، تصغير، والتحقق من صحة JSON.</p></a><a class="tool-card" href="/tools/base64/"><div class="icon cat-encode" aria-hidden="true">64</div><h3>ترميز Base64</h3><p>ترميز وفك ترميز نصوص Base64.</p></a><a class="tool-card" href="/tools/url-encoder/"><div class="icon cat-encode" aria-hidden="true">%</div><h3>ترميز URL</h3><p>ترميز وفك ترميز الروابط.</p></a><a class="tool-card" href="/tools/jwt-decoder/"><div class="icon cat-dev" aria-hidden="true">🔑</div><h3>مفكّك JWT</h3><p>اقرأ محتوى رموز JWT.</p></a><a class="tool-card" href="/tools/hash-generator/"><div class="icon cat-security" aria-hidden="true">#</div><h3>مولّد Hash</h3><p>أنشئ SHA-1/256/512.</p></a><a class="tool-card" href="/tools/uuid-generator/"><div class="icon cat-dev" aria-hidden="true">🆔</div><h3>مولّد UUID</h3><p>أنشئ UUID v4 عشوائيًا.</p></a><a class="tool-card" href="/tools/regex-tester/"><div class="icon cat-dev" aria-hidden="true">.*</div><h3>مختبر Regex</h3><p>اختبر التعبيرات النمطية مباشرة.</p></a><a class="tool-card" href="/tools/cron-generator/"><div class="icon cat-dev" aria-hidden="true">⏰</div><h3>مولّد Cron</h3><p>أنشئ وافهم تعبيرات Cron.</p></a><a class="tool-card" href="/tools/sql-formatter/"><div class="icon cat-dev" aria-hidden="true">🗃️</div><h3>منسّق SQL</h3><p>نسّق استعلامات SQL للقراءة.</p></a><a class="tool-card" href="/tools/timestamp-converter/"><div class="icon cat-dev" aria-hidden="true">🕐</div><h3>محوّل Unix Timestamp</h3><p>حوّل بين Unix timestamp والتاريخ.</p></a><a class="tool-card" href="/tools/json-yaml/"><div class="icon cat-dev" aria-hidden="true">🔁</div><h3>تحويل JSON وYAML</h3><p>حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.</p></a></div></section>
+<section class="page-head"><h1>Developer Tools — JSON, Base64 and JWT</h1><p>Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">Everyday developer utilities for JSON, Base64 and URL encoding, JWT payload inspection, hashes, UUIDs, timestamps, and JSON/YAML conversion. Choose the right operation and do not paste production secrets into untrusted devices.</p><h2>How to use the developer center</h2><ol class="hub-steps"><li>Paste input or add a supported JSON or YAML file.</li><li>Select an operation and adjust its mode, algorithm, or output count.</li><li>Copy the result and validate it in your development environment before use.</li></ol><section class="hub-guide-section"><h2>Validate syntax before use</h2><p>The JSON formatter parses data before formatting or minifying it. Base64 and URL utilities encode or decode text; JSON/YAML conversion helps exchange data, but successful parsing does not mean values are valid for your application.</p></section><section class="hub-guide-section"><h2>JWT and hashes have limits</h2><p>JWT decoding displays only the header and payload; it does not verify the signature, issuer, or expiration. Do not use it to make authentication decisions. Hashing here uses SHA-1, SHA-256, or SHA-512 on text; do not use SHA-1 or this tool for password storage.</p></section><section class="hub-guide-section"><h2>Your input stays local</h2><p>Input is processed in the browser and is not sent to a DouNest server. Still avoid pasting production keys or access tokens on public devices or shared browser sessions.</p></section><section class="hub-faq"><h2>Frequently asked questions</h2><details><summary>Does JWT decoding verify the signature?</summary><p>No. It displays the header and payload only; it does not verify the signature, issuer, or expiration.</p></details><details><summary>Is SHA-256 suitable for password storage?</summary><p>No. Password storage needs a purpose-built slow password-hashing scheme such as Argon2id or bcrypt with sound parameters, not a fast general-purpose hash.</p></details><details><summary>Does my input leave the browser?</summary><p>It is not sent to a DouNest server; still avoid pasting sensitive secrets on shared devices.</p></details><details><summary>Why did Base64 decoding fail?</summary><p>Check that the input is valid Base64 and represents decodable UTF-8. Base64 is an encoding, not encryption or confidentiality.</p></details></section></section><section class="section"><h2 class="section-title">أدوات Developer Tools </h2><div class="tools-grid"><a class="tool-card" href="/tools/json-formatter/"><div class="icon cat-dev" aria-hidden="true">{}</div><h3>منسّق JSON</h3><p>تنسيق، تصغير، والتحقق من صحة JSON.</p></a><a class="tool-card" href="/tools/base64/"><div class="icon cat-encode" aria-hidden="true">64</div><h3>ترميز Base64</h3><p>ترميز وفك ترميز نصوص Base64.</p></a><a class="tool-card" href="/tools/url-encoder/"><div class="icon cat-encode" aria-hidden="true">%</div><h3>ترميز URL</h3><p>ترميز وفك ترميز الروابط.</p></a><a class="tool-card" href="/tools/jwt-decoder/"><div class="icon cat-dev" aria-hidden="true">🔑</div><h3>مفكّك JWT</h3><p>اقرأ محتوى رموز JWT.</p></a><a class="tool-card" href="/tools/hash-generator/"><div class="icon cat-security" aria-hidden="true">#</div><h3>مولّد Hash</h3><p>أنشئ SHA-1/256/512.</p></a><a class="tool-card" href="/tools/uuid-generator/"><div class="icon cat-dev" aria-hidden="true">🆔</div><h3>مولّد UUID</h3><p>أنشئ UUID v4 عشوائيًا.</p></a><a class="tool-card" href="/tools/regex-tester/"><div class="icon cat-dev" aria-hidden="true">.*</div><h3>مختبر Regex</h3><p>اختبر التعبيرات النمطية مباشرة.</p></a><a class="tool-card" href="/tools/cron-generator/"><div class="icon cat-dev" aria-hidden="true">⏰</div><h3>مولّد Cron</h3><p>أنشئ وافهم تعبيرات Cron.</p></a><a class="tool-card" href="/tools/sql-formatter/"><div class="icon cat-dev" aria-hidden="true">🗃️</div><h3>منسّق SQL</h3><p>نسّق استعلامات SQL للقراءة.</p></a><a class="tool-card" href="/tools/timestamp-converter/"><div class="icon cat-dev" aria-hidden="true">🕐</div><h3>محوّل Unix Timestamp</h3><p>حوّل بين Unix timestamp والتاريخ.</p></a><a class="tool-card" href="/tools/json-yaml/"><div class="icon cat-dev" aria-hidden="true">🔁</div><h3>تحويل JSON وYAML</h3><p>حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.</p></a></div></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../about/" data-i18n="nav.about">حول</a>
-        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

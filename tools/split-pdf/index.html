@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تقسيم PDF — DouNest</title>
-<meta name="description" content="استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة." />
+<title>Split PDF — DouNest</title>
+<meta name="description" content="Extract pages or ranges from a PDF into separate files." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/split-pdf/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/split-pdf/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/split-pdf/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تقسيم PDF — DouNest" />
-<meta property="og:description" content="استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة." />
+<meta property="og:title" content="Split PDF — DouNest" />
+<meta property="og:description" content="Extract pages or ranges from a PDF into separate files." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/split-pdf/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تقسيم PDF — DouNest" />
-<meta name="twitter:description" content="استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة." />
+<meta name="twitter:title" content="Split PDF — DouNest" />
+<meta name="twitter:description" content="Extract pages or ranges from a PDF into separate files." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تقسيم PDF","description":"استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.","keywords":"split-pdf, pdf, documents, تقسيم, files, pages","url":"https://dounest.hmdevelop.me/tools/split-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كيف أكتب النطاقات؟","acceptedAnswer":{"@type":"Answer","text":"مفصولة بفواصل: 1-3, 5, 8-10 — النطاقات شاملة الطرفين والأرقام ترقيم الصفحات الفعلي."}},{"@type":"Question","name":"هل يبقى الملف الأصلي سليماً؟","acceptedAnswer":{"@type":"Answer","text":"نعم — الأصل لا يُمس إطلاقاً؛ التقسيم يولّد نسخاً جديدة فقط."}},{"@type":"Question","name":"هل يمكنني تقسيم ملف محمي بكلمة مرور؟","acceptedAnswer":{"@type":"Answer","text":"الملفات ذات كلمة فتح فقط قد تعمل؛ المشفرة كاملة تحتاج إزالة الحماية أولاً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"تقسيم PDF","item":"https://dounest.hmdevelop.me/tools/split-pdf/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Split PDF","description":"Extract pages or ranges from a PDF into separate files.","keywords":"split-pdf, pdf, documents, تقسيم, files, pages","url":"https://dounest.hmdevelop.me/tools/split-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I write ranges?","acceptedAnswer":{"@type":"Answer","text":"Comma-separated: 1-3, 5, 8-10 — ranges are inclusive and numbers follow actual page numbering."}},{"@type":"Question","name":"Is the original file kept intact?","acceptedAnswer":{"@type":"Answer","text":"Yes — the original is never touched; splitting only generates new copies."}},{"@type":"Question","name":"Can I split a password-protected file?","acceptedAnswer":{"@type":"Answer","text":"Open-password-only files may work; fully encrypted ones need unlocking first."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Split PDF","item":"https://dounest.hmdevelop.me/tools/split-pdf/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">تقسيم PDF</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Split PDF</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">✂️</div>
         <div>
-          <h1>تقسيم PDF</h1>
-          <p class="lead">استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.</p>
+          <h1>Split PDF</h1>
+          <p class="lead">Extract pages or ranges from a PDF into separate files.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.</p>
+          <p class="empty" style="margin:0">Extract pages or ranges from a PDF into separate files.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب ملف PDF إلى منطقة الرفع.</li><li>اختر وضع التقسيم: كل صفحة ملفاً أو نطاقات محددة (1-3, 5, 8-10).</li><li>راجع معاينة الصفحات للتأكد من نقاط القطع.</li><li>اضغط تقسيم وانتظر توليد الملفات محلياً.</li><li>نزّل النتائج — كملفات منفصلة أو ZIP واحد يشمل الكل.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag a PDF into the drop zone.</li><li>Choose split mode: each page as a file, or custom ranges (1-3, 5, 8-10).</li><li>Review the page preview to confirm cut points.</li><li>Press Split and wait for local file generation.</li><li>Download results — as separate files or one ZIP containing everything.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تقسيم PDF هو الوجه المكمّل للدمج: عقد ضخم تريد استخراج ملحقاته فقط، وكتاب تريد فصله فصولاً، وتقرير توزعه على أقسام فريق مختلفة — كلها تنتهي عند «أعطني الصفحات 5-12 وحدها».</p><p>وضع «كل صفحة ملفاً» مثالي للأنظمة التي تطلب رفع صفحة واحدة (وثيقة هوية لكل خانة)، بينما النطاقات المخصصة تخدم الاستخراج الانتقائي الذكي — الأداة تدعم كليهما بصيغة نطاقات مرنة.</p><p>pdf-lib ينسخ الصفحات المطلوبة إلى مستندات جديدة بنقاوة بيت-أسر: النص والصور والروابط والجودة تُحفظ حرفياً — لا إعادة توليد ولا تدهور، والعلامات المائية والحقوق تبقى كما هي.</p><p>حالة الاستخدام الأذكى: استخراج صفحات محددة ثم دمجها مع صفحات ملف آخر — سير عمل مركب يكمل عبر دمج PDF بعد التقسيم في نفس الموقع.</p><p>الخصوصية كالعادة مطلقة: المستندات القانونية والطبية تقسم في ذاكرة متصفحك — لا خادم يرى صفحة واحدة منها.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>كيف أكتب النطاقات؟</summary><p>مفصولة بفواصل: 1-3, 5, 8-10 — النطاقات شاملة الطرفين والأرقام ترقيم الصفحات الفعلي.</p></details><details class="faq-item"><summary>هل يبقى الملف الأصلي سليماً؟</summary><p>نعم — الأصل لا يُمس إطلاقاً؛ التقسيم يولّد نسخاً جديدة فقط.</p></details><details class="faq-item"><summary>هل يمكنني تقسيم ملف محمي بكلمة مرور؟</summary><p>الملفات ذات كلمة فتح فقط قد تعمل؛ المشفرة كاملة تحتاج إزالة الحماية أولاً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Splitting is the complement of merging: a huge contract where you need only its appendices, a book to separate into chapters, a report to distribute among different team sections — all end as «give me pages 5-12 alone».</p><p>«Each page as a file» mode is perfect for systems requiring single-page uploads (one ID document per field), while custom ranges serve smart selective extraction — the tool supports both with flexible range syntax.</p><p>pdf-lib copies requested pages into new documents with bit-perfect fidelity: text, images, links and quality are preserved literally — no regeneration, no degradation, watermarks and rights stay intact.</p><p>The smartest use case: extract specific pages then merge them with another file&#39;s pages — a compound workflow completed via merge-PDF right after splitting, on the same site.</p><p>Privacy is absolute as always: legal and medical documents split in your browser&#39;s memory — no server sees a single page.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>How do I write ranges?</summary><p>Comma-separated: 1-3, 5, 8-10 — ranges are inclusive and numbers follow actual page numbering.</p></details><details class="faq-item"><summary>Is the original file kept intact?</summary><p>Yes — the original is never touched; splitting only generates new copies.</p></details><details class="faq-item"><summary>Can I split a password-protected file?</summary><p>Open-password-only files may work; fully encrypted ones need unlocking first.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=split-pdf">#split-pdf</a><a class="hash-chip" href="/tools/?q=pdf">#pdf</a><a class="hash-chip" href="/tools/?q=documents">#documents</a><a class="hash-chip" href="/tools/?q=%D8%AA%D9%82%D8%B3%D9%8A%D9%85">#تقسيم</a><a class="hash-chip" href="/tools/?q=files">#files</a><a class="hash-chip" href="/tools/?q=pages">#pages</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/merge-pdf/"><span class="icon sm">📚</span><span>دمج PDF</span></a><a class="related-item" href="../../tools/rotate-pdf/"><span class="icon sm">🔄</span><span>تدوير صفحات PDF</span></a><a class="related-item" href="../../tools/compress-pdf/"><span class="icon sm">🗜️</span><span>ضغط PDF</span></a>
+            <a class="related-item" href="../../tools/merge-pdf/"><span class="icon sm">📚</span><span>Merge PDF</span></a><a class="related-item" href="../../tools/rotate-pdf/"><span class="icon sm">🔄</span><span>Rotate PDF</span></a><a class="related-item" href="../../tools/compress-pdf/"><span class="icon sm">🗜️</span><span>Compress PDF</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

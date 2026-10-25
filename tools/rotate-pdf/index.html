@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تدوير صفحات PDF — DouNest</title>
-<meta name="description" content="صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة." />
+<title>Rotate PDF — DouNest</title>
+<meta name="description" content="Fix sideways PDF pages by rotating 90/180/270 degrees." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/rotate-pdf/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/rotate-pdf/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/rotate-pdf/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تدوير صفحات PDF — DouNest" />
-<meta property="og:description" content="صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة." />
+<meta property="og:title" content="Rotate PDF — DouNest" />
+<meta property="og:description" content="Fix sideways PDF pages by rotating 90/180/270 degrees." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/rotate-pdf/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تدوير صفحات PDF — DouNest" />
-<meta name="twitter:description" content="صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة." />
+<meta name="twitter:title" content="Rotate PDF — DouNest" />
+<meta name="twitter:description" content="Fix sideways PDF pages by rotating 90/180/270 degrees." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تدوير صفحات PDF","description":"صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.","keywords":"rotate-pdf, pdf, documents, تدوير, scan, fix","url":"https://dounest.hmdevelop.me/tools/rotate-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يبقى النص قابلاً للتحديد بعد التدوير؟","acceptedAnswer":{"@type":"Answer","text":"نعم — الدوران على مستوى بنية الصفحة ولا يعيد رسم المحتوى، فالنص محفوظ كاملاً."}},{"@type":"Question","name":"هل يمكنني تدوير صفحات مختارة فقط؟","acceptedAnswer":{"@type":"Answer","text":"نعم — أدخل أرقام الصفحات في حقل التحديد وسيطبق عليها وحدها."}},{"@type":"Question","name":"ماذا لو تدورت الصفحة بالخطأ؟","acceptedAnswer":{"@type":"Answer","text":"دوّرها بالاتجاه المعاكس على نفس الملف الجديد أو أعد من الأصل — الأداة غير تدميرية."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"تدوير صفحات PDF","item":"https://dounest.hmdevelop.me/tools/rotate-pdf/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Rotate PDF","description":"Fix sideways PDF pages by rotating 90/180/270 degrees.","keywords":"rotate-pdf, pdf, documents, تدوير, scan, fix","url":"https://dounest.hmdevelop.me/tools/rotate-pdf/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does text stay selectable after rotation?","acceptedAnswer":{"@type":"Answer","text":"Yes — rotation happens at page-structure level without redrawing; text is fully preserved."}},{"@type":"Question","name":"Can I rotate only selected pages?","acceptedAnswer":{"@type":"Answer","text":"Yes — enter page numbers in the selection field and it applies to them alone."}},{"@type":"Question","name":"What if I rotate the wrong way?","acceptedAnswer":{"@type":"Answer","text":"Rotate it the opposite way on the same new file or redo from the original — the tool is non-destructive."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Rotate PDF","item":"https://dounest.hmdevelop.me/tools/rotate-pdf/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">تدوير صفحات PDF</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Rotate PDF</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">🔄</div>
         <div>
-          <h1>تدوير صفحات PDF</h1>
-          <p class="lead">صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.</p>
+          <h1>Rotate PDF</h1>
+          <p class="lead">Fix sideways PDF pages by rotating 90/180/270 degrees.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.</p>
+          <p class="empty" style="margin:0">Fix sideways PDF pages by rotating 90/180/270 degrees.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب ملف PDF إلى منطقة الرفع.</li><li>اختر زاوية الدوران: 90° أو 180° أو 270°.</li><li>حدد الصفحات المستهدفة أو طبق الدوران على الكل.</li><li>اضغط تدوير وشاهد المعاينة المصححة.</li><li>نزّل الملف المُدوّر — الصفحات الأصلية لم تُمس.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag a PDF into the drop zone.</li><li>Choose rotation angle: 90°, 180° or 270°.</li><li>Target specific pages or apply to all.</li><li>Press Rotate and watch the corrected preview.</li><li>Download the rotated file — original pages untouched.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>الصفحات المدوّرة غشية قارئ الماسح الضوئي الكلاسيكية: ورقة وضعت بشكل خاطئ فخرجت مستلقية في وسط مستند مستقيم — والقراءة برأسك مائلاً تعذب، والطباعة تخرج أسوأ.</p><p>هناك حالتان تقنيتان: الصفحة مدورة فعلاً في بنية الملف (علامة دوران) — إصلاحها بسيط بتحديث العلامة؛ والأخرى مدورة في محتواها الرسومي — تحتاج إعادة بناء صفحة، والأداة تعالج الحالتين.</p><p>pdf-lib يطبق الدوران على مستوى بنية الصفحة: تعديل قيم الدوران (90/180/270) دون إعادة رسم المحتوى — فالنص يبقى نصاً قابلاً للتحديد والبحث بعد التدوير، وميزة تحفظ جوهر المستند.</p><p>التحديد الجزئي مهم: صفحات 3 و7 فقط معوجة؟ طبق الدوران عليهما دون المساس بالباقي — دقة جراحية توفر إعادة مسح كامل.</p><p>الملف الناتج جاهز للطباعة الصحيحة من أول مرة — ودمجه بعدها مع الدمج أو الضغط يكمل معالجة المستند في نفس الجلسة.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يبقى النص قابلاً للتحديد بعد التدوير؟</summary><p>نعم — الدوران على مستوى بنية الصفحة ولا يعيد رسم المحتوى، فالنص محفوظ كاملاً.</p></details><details class="faq-item"><summary>هل يمكنني تدوير صفحات مختارة فقط؟</summary><p>نعم — أدخل أرقام الصفحات في حقل التحديد وسيطبق عليها وحدها.</p></details><details class="faq-item"><summary>ماذا لو تدورت الصفحة بالخطأ؟</summary><p>دوّرها بالاتجاه المعاكس على نفس الملف الجديد أو أعد من الأصل — الأداة غير تدميرية.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Rotated pages are the classic scanner-feed mishap: a sheet fed wrong comes out lying sideways in the middle of an upright document — reading with your head tilted is torture, printing is worse.</p><p>Two technical cases exist: the page carries a rotation flag in the file structure — fixed by simply updating the flag; or the content itself is drawn rotated — requiring page rebuild; the tool handles both.</p><p>pdf-lib applies rotation at the page-structure level: adjusting the rotation values (90/180/270) without redrawing content — text stays selectable, searchable text after rotation, preserving the document&#39;s essence.</p><p>Partial targeting matters: only pages 3 and 7 are crooked? Rotate just them, untouched rest — surgical precision saving a full rescan.</p><p>The output prints correctly the first time — and chaining into merge or compression afterward completes document processing in the same session.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Does text stay selectable after rotation?</summary><p>Yes — rotation happens at page-structure level without redrawing; text is fully preserved.</p></details><details class="faq-item"><summary>Can I rotate only selected pages?</summary><p>Yes — enter page numbers in the selection field and it applies to them alone.</p></details><details class="faq-item"><summary>What if I rotate the wrong way?</summary><p>Rotate it the opposite way on the same new file or redo from the original — the tool is non-destructive.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=rotate-pdf">#rotate-pdf</a><a class="hash-chip" href="/tools/?q=pdf">#pdf</a><a class="hash-chip" href="/tools/?q=documents">#documents</a><a class="hash-chip" href="/tools/?q=%D8%AA%D8%AF%D9%88%D9%8A%D8%B1">#تدوير</a><a class="hash-chip" href="/tools/?q=scan">#scan</a><a class="hash-chip" href="/tools/?q=fix">#fix</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/split-pdf/"><span class="icon sm">✂️</span><span>تقسيم PDF</span></a><a class="related-item" href="../../tools/merge-pdf/"><span class="icon sm">📚</span><span>دمج PDF</span></a><a class="related-item" href="../../tools/compress-pdf/"><span class="icon sm">🗜️</span><span>ضغط PDF</span></a>
+            <a class="related-item" href="../../tools/split-pdf/"><span class="icon sm">✂️</span><span>Split PDF</span></a><a class="related-item" href="../../tools/merge-pdf/"><span class="icon sm">📚</span><span>Merge PDF</span></a><a class="related-item" href="../../tools/compress-pdf/"><span class="icon sm">🗜️</span><span>Compress PDF</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

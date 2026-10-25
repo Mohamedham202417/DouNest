@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>محوّل الوحدات — DouNest</title>
-<meta name="description" content="حوّل بين وحدات الطول والوزن والحجم والحرارة." />
+<title>Unit Converter — DouNest</title>
+<meta name="description" content="Convert length, weight, volume, temperature." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/unit-converter/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/unit-converter/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/unit-converter/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="محوّل الوحدات — DouNest" />
-<meta property="og:description" content="حوّل بين وحدات الطول والوزن والحجم والحرارة." />
+<meta property="og:title" content="Unit Converter — DouNest" />
+<meta property="og:description" content="Convert length, weight, volume, temperature." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/unit-converter/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="محوّل الوحدات — DouNest" />
-<meta name="twitter:description" content="حوّل بين وحدات الطول والوزن والحجم والحرارة." />
+<meta name="twitter:title" content="Unit Converter — DouNest" />
+<meta name="twitter:description" content="Convert length, weight, volume, temperature." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"محوّل الوحدات","description":"حوّل بين وحدات الطول والوزن والحجم والحرارة.","keywords":"unit-converter, units, وحدات, measurement, conversion, calculator","url":"https://dounest.hmdevelop.me/tools/unit-converter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل التحويلات دقيقة 100%؟","acceptedAnswer":{"@type":"Answer","text":"المعاملات قياسية رسمية؛ العرض مُقرّب منطقياً والدقة الكاملة داخلياً — كافية لأي استخدام عملي."}},{"@type":"Question","name":"لماذا تختلف وحدات البيانات؟","acceptedAnswer":{"@type":"Answer","text":"نظامان: ثنائي (1024) تقني وعشري (1000) تسويقي — الفرق يفسر لغز «قرص 1TB يظهر 931GB»."}},{"@type":"Question","name":"هل تدعم الوحدات الإمبراطورية القديمة؟","acceptedAnswer":{"@type":"Answer","text":"الأشهر مدعومة (ميلاً، يارداً، رطلاً، أوقية) — إن احتجت وحدة نادرة اقترحها للإضافة."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"محوّل الوحدات","item":"https://dounest.hmdevelop.me/tools/unit-converter/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Unit Converter","description":"Convert length, weight, volume, temperature.","keywords":"unit-converter, units, وحدات, measurement, conversion, calculator","url":"https://dounest.hmdevelop.me/tools/unit-converter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are conversions 100% accurate?","acceptedAnswer":{"@type":"Answer","text":"Factors are official standards; display is sensibly rounded with full precision internally — plenty for any practical use."}},{"@type":"Question","name":"Why do data units differ?","acceptedAnswer":{"@type":"Answer","text":"Two systems: binary (1024) technical, decimal (1000) marketing — the gap explains the mystery of a «1TB drive showing 931GB»."}},{"@type":"Question","name":"Are old imperial units supported?","acceptedAnswer":{"@type":"Answer","text":"The common ones are supported (mile, yard, pound, ounce) — suggest rare units for addition."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Unit Converter","item":"https://dounest.hmdevelop.me/tools/unit-converter/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">محوّل الوحدات</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Unit Converter</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">📏</div>
         <div>
-          <h1>محوّل الوحدات</h1>
-          <p class="lead">حوّل بين وحدات الطول والوزن والحجم والحرارة.</p>
+          <h1>Unit Converter</h1>
+          <p class="lead">Convert length, weight, volume, temperature.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">حوّل بين وحدات الطول والوزن والحجم والحرارة.</p>
+          <p class="empty" style="margin:0">Convert length, weight, volume, temperature.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر فئة القياس: طول أو وزن أو حرارة أو مساحة أو سرعة أو بيانات.</li><li>حدد الوحدة الأصلية والوحدة الهدف من القائمتين.</li><li>أدخل القيمة المراد تحويلها.</li><li>اقرأ النتيجة الفورية مع التقريب المناسب.</li><li>بدّل الاتجاه بزر التبديل لمقارنة سريعة عكسية.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Pick a measurement category: length, weight, temperature, area, speed or data.</li><li>Select the source unit and target unit from the two lists.</li><li>Enter the value to convert.</li><li>Read the instant result with sensible rounding.</li><li>Flip direction with the toggle for a quick reverse check.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>التحويل بين الوحدات عملية يومية عالمية: وصفة طبخ بالأوقية والرطل بينما ميزانك بالجرام، ورحلة طيران بالأميال بينما خرائطك بالكيلومتر، وتخزين سحابي بالجيجابايت بينما تقرير بستيعابك بالميغابايت — الفجوات النظامية بين المعايير دائمة.</p><p>فئة الحرارة خاصة وتستحق انتباهاً: التحويل بينها ليس ضرباً بمعامل بل معادلات إزاحة وضرب (فهرنهايت = سلسيوس × 1.8 + 32) — المولدات الساذجة تخطئها، والأداة تعالجها صحيحة.</p><p>وحدات البيانات لها فخها: الفرق بين 1024 (ثنائي - ميبي بايت) و1000 (عشري - ميغا بايت) يخلق فرق 10% في الأقراص الكبيرة يُساء فهمه باستمرار — الأداة توضح النظام المستخدم.</p><p>دقة الأرقام مقصودة: النتائج تعرض بتقريب منطقي بدل أرقام عشرية لا نهائية، مع الاحتفاظ بالدقة الكاملة داخلياً للحسابات التسلسلية.</p><p>المعاملات محدثة وفق المعايير الدولية الرسمية — للتحويلات القانونية أو الهندسية الحرجة تحقق دائماً من المرجع الرسمي في بلدك.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل التحويلات دقيقة 100%؟</summary><p>المعاملات قياسية رسمية؛ العرض مُقرّب منطقياً والدقة الكاملة داخلياً — كافية لأي استخدام عملي.</p></details><details class="faq-item"><summary>لماذا تختلف وحدات البيانات؟</summary><p>نظامان: ثنائي (1024) تقني وعشري (1000) تسويقي — الفرق يفسر لغز «قرص 1TB يظهر 931GB».</p></details><details class="faq-item"><summary>هل تدعم الوحدات الإمبراطورية القديمة؟</summary><p>الأشهر مدعومة (ميلاً، يارداً، رطلاً، أوقية) — إن احتجت وحدة نادرة اقترحها للإضافة.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Unit conversion is a global daily operation: recipes in ounces and pounds while your scale reads grams, flights in miles while maps show kilometers, cloud storage in gigabytes while your report speaks megabytes — systemic gaps between standards never end.</p><p>Temperature is special and deserves attention: converting is not multiplying by a factor but shift-and-scale equations (F = C × 1.8 + 32) — naive generators get it wrong, the tool handles it correctly.</p><p>Data units carry their own trap: the difference between 1024 (binary — mebibytes) and 1000 (decimal — megabytes) creates a 10% gap on large drives that is constantly misunderstood — the tool clarifies which system is used.</p><p>Number precision is intentional: results display with sensible rounding instead of endless decimals, while full precision stays internal for chained calculations.</p><p>Factors follow official international standards — for legal or critical engineering conversions always verify against your country&#39;s official reference.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Are conversions 100% accurate?</summary><p>Factors are official standards; display is sensibly rounded with full precision internally — plenty for any practical use.</p></details><details class="faq-item"><summary>Why do data units differ?</summary><p>Two systems: binary (1024) technical, decimal (1000) marketing — the gap explains the mystery of a «1TB drive showing 931GB».</p></details><details class="faq-item"><summary>Are old imperial units supported?</summary><p>The common ones are supported (mile, yard, pound, ounce) — suggest rare units for addition.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=unit-converter">#unit-converter</a><a class="hash-chip" href="/tools/?q=units">#units</a><a class="hash-chip" href="/tools/?q=%D9%88%D8%AD%D8%AF%D8%A7%D8%AA">#وحدات</a><a class="hash-chip" href="/tools/?q=measurement">#measurement</a><a class="hash-chip" href="/tools/?q=conversion">#conversion</a><a class="hash-chip" href="/tools/?q=calculator">#calculator</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>حاسبة النسبة المئوية</span></a><a class="related-item" href="../../tools/bmi-calculator/"><span class="icon sm">⚖️</span><span>حاسبة BMI</span></a><a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>محوّل Unix Timestamp</span></a>
+            <a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>Percentage Calculator</span></a><a class="related-item" href="../../tools/bmi-calculator/"><span class="icon sm">⚖️</span><span>BMI Calculator</span></a><a class="related-item" href="../../tools/timestamp-converter/"><span class="icon sm">🕐</span><span>Timestamp Converter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

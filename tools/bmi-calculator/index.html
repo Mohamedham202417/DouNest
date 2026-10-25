@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>حاسبة BMI — DouNest</title>
-<meta name="description" content="احسب مؤشر كتلة الجسم." />
+<title>BMI Calculator — DouNest</title>
+<meta name="description" content="Calculate body mass index." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/bmi-calculator/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/bmi-calculator/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/bmi-calculator/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="حاسبة BMI — DouNest" />
-<meta property="og:description" content="احسب مؤشر كتلة الجسم." />
+<meta property="og:title" content="BMI Calculator — DouNest" />
+<meta property="og:description" content="Calculate body mass index." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/bmi-calculator/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="حاسبة BMI — DouNest" />
-<meta name="twitter:description" content="احسب مؤشر كتلة الجسم." />
+<meta name="twitter:title" content="BMI Calculator — DouNest" />
+<meta name="twitter:description" content="Calculate body mass index." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"حاسبة BMI","description":"احسب مؤشر كتلة الجسم.","keywords":"bmi, health, صحة, calculator, weight, fitness","url":"https://dounest.hmdevelop.me/tools/bmi-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل BMI مناسب للأطفال؟","acceptedAnswer":{"@type":"Answer","text":"لا يستخدم النطاقات البالغة — للأطفال نطاقات عمرية وجنسية خاصة تُقيّمها جداول نمو طبية."}},{"@type":"Question","name":"لماذا ظهر لي سمنة وأنا رياضي؟","acceptedAnswer":{"@type":"Answer","text":"العضة أكثف من الدهون؛ المؤشر لا يفرق بينهما — القياسات الجسمية التفصيلية أدق للحالات الرياضية."}},{"@type":"Question","name":"ما الوزن الصحي لطولي؟","acceptedAnswer":{"@type":"Answer","text":"جرّب وزناً افتراضياً حتى يصل المؤشر ل نطاق 18.5-24.9 — الأداة تعرضه فوراً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"حاسبة BMI","item":"https://dounest.hmdevelop.me/tools/bmi-calculator/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"BMI Calculator","description":"Calculate body mass index.","keywords":"bmi, health, صحة, calculator, weight, fitness","url":"https://dounest.hmdevelop.me/tools/bmi-calculator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is BMI suitable for children?","acceptedAnswer":{"@type":"Answer","text":"Not with adult ranges — children need age and sex specific percentiles evaluated with medical growth charts."}},{"@type":"Question","name":"Why do I show obese as an athlete?","acceptedAnswer":{"@type":"Answer","text":"Muscle is denser than fat; the index cannot tell them apart — body composition measurements suit athletic cases better."}},{"@type":"Question","name":"What is the healthy weight for my height?","acceptedAnswer":{"@type":"Answer","text":"Try hypothetical weights until the index lands in 18.5-24.9 — the tool shows it instantly."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"BMI Calculator","item":"https://dounest.hmdevelop.me/tools/bmi-calculator/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">حاسبة BMI</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">BMI Calculator</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">⚖️</div>
         <div>
-          <h1>حاسبة BMI</h1>
-          <p class="lead">احسب مؤشر كتلة الجسم.</p>
+          <h1>BMI Calculator</h1>
+          <p class="lead">Calculate body mass index.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">احسب مؤشر كتلة الجسم.</p>
+          <p class="empty" style="margin:0">Calculate body mass index.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر نظام الوحدات: متري (سم/كجم) أو إمبراطوري (قدم/رطل).</li><li>أدخل طولك ووزنك الحاليين.</li><li>اقرأ مؤشر BMI الفوري مع تصنيفه الملوّن.</li><li>راجع مقياس التصنيف لترى موقعك بين النطاقات.</li><li>جرّب وزناً افتراضياً لترى ماذا يعني بلوغ النطاق الصحي.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Pick the unit system: metric (cm/kg) or imperial (ft/lb).</li><li>Enter your current height and weight.</li><li>Read the instant BMI index with its color classification.</li><li>Review the classification scale to see your position between ranges.</li><li>Try a hypothetical weight to see what reaching the healthy range means.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>مؤشر كتلة الجسم BMI هو أداة الفرز الصحية الأوسع استخداماً في العالم: وزنك بالكيلوغرام مقسوماً على مربع طولك بالمتر، والنتيجة تصنفك في نطاق: نحافة، طبيعي، زيادة، سمنة — أرقام بسيطة تحمل دلالة صحية واسعة.</p><p>النطاقات القياسية المعتمدة عالمياً: أقل من 18.5 نقص وزن، 18.5-24.9 طبيعي، 25-29.9 زيادة وزن، و30+ سمنة — الفجوات بينها صغيرة لكن دلالتها الصحية في الإحصاءات السكانية ضخمة.</p><p>حدود المؤشر يجب فهمها بصدق: هو فرز إحصائي للسكان لا تشخيص فردي؛ الرياضي العضلي الكثيف قد يظهر «سمنة» رغم لياقته، وكبار السن قد يظهرون «طبيعي» رغم نقص كتلة عضلية — استخدمه كبوصلة لا كحكم نهائي.</p><p>القيمة الحقيقية في الاتجاه لا الرقم: متابعة BMI شهرياً تكشف اتجاه وزنك قبل أن تلاحظه الميزان وحده — ارتفاع 2 نقطة خلال سنة إشارة أقوى من وزن ثابت رقمياً.</p><p>استخدمه مع مؤشرات أخرى لصورة كاملة: محيط الخصر، ونسبة الدهون، ومستوى النشاط — الصحة أرقام متعددة لا رقم واحد، وBMI بداية الحوار مع طبيبك لا نهايته.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل BMI مناسب للأطفال؟</summary><p>لا يستخدم النطاقات البالغة — للأطفال نطاقات عمرية وجنسية خاصة تُقيّمها جداول نمو طبية.</p></details><details class="faq-item"><summary>لماذا ظهر لي سمنة وأنا رياضي؟</summary><p>العضة أكثف من الدهون؛ المؤشر لا يفرق بينهما — القياسات الجسمية التفصيلية أدق للحالات الرياضية.</p></details><details class="faq-item"><summary>ما الوزن الصحي لطولي؟</summary><p>جرّب وزناً افتراضياً حتى يصل المؤشر ل نطاق 18.5-24.9 — الأداة تعرضه فوراً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Body Mass Index is the world&#39;s most widely used health triage tool: your weight in kilograms divided by your height in meters squared, classifying you into ranges: underweight, normal, overweight, obese — simple numbers with broad health meaning.</p><p>The globally adopted standard ranges: below 18.5 underweight, 18.5-24.9 normal, 25-29.9 overweight, 30+ obese — the gaps between them are small but their population-level health significance is huge.</p><p>Honest limits: it is statistical sorting for populations, not individual diagnosis; a dense-muscle athlete may show «obese» despite peak fitness, and seniors may show «normal» despite muscle loss — use it as a compass, not a verdict.</p><p>The real value is the trend, not the number: tracking BMI monthly reveals your weight&#39;s direction before the scale alone shows it — a 2-point rise over a year is a stronger signal than a static figure.</p><p>Pair it with other indicators for the full picture: waist circumference, body fat percentage, activity level — health is multiple numbers, not one; BMI starts the conversation with your doctor, it does not end it.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Is BMI suitable for children?</summary><p>Not with adult ranges — children need age and sex specific percentiles evaluated with medical growth charts.</p></details><details class="faq-item"><summary>Why do I show obese as an athlete?</summary><p>Muscle is denser than fat; the index cannot tell them apart — body composition measurements suit athletic cases better.</p></details><details class="faq-item"><summary>What is the healthy weight for my height?</summary><p>Try hypothetical weights until the index lands in 18.5-24.9 — the tool shows it instantly.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=bmi">#bmi</a><a class="hash-chip" href="/tools/?q=health">#health</a><a class="hash-chip" href="/tools/?q=%D8%B5%D8%AD%D8%A9">#صحة</a><a class="hash-chip" href="/tools/?q=calculator">#calculator</a><a class="hash-chip" href="/tools/?q=weight">#weight</a><a class="hash-chip" href="/tools/?q=fitness">#fitness</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/age-calculator/"><span class="icon sm">🎂</span><span>حاسبة العمر</span></a><a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>حاسبة النسبة المئوية</span></a><a class="related-item" href="../../tools/unit-converter/"><span class="icon sm">📏</span><span>محوّل الوحدات</span></a>
+            <a class="related-item" href="../../tools/age-calculator/"><span class="icon sm">🎂</span><span>Age Calculator</span></a><a class="related-item" href="../../tools/percentage-calculator/"><span class="icon sm">％</span><span>Percentage Calculator</span></a><a class="related-item" href="../../tools/unit-converter/"><span class="icon sm">📏</span><span>Unit Converter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

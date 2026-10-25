@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مركز الأمان — كلمات مرور وTOTP محلياً | DouNest</title>
-<meta name="description" content="أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم." />
+<title>Security Tools — Passwords and TOTP Locally | DouNest</title>
+<meta name="description" content="Generate passwords, check strength, and use TOTP without sending secrets to a server." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/security/" />
 
@@ -17,14 +17,14 @@
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مركز الأمان — كلمات مرور وTOTP محلياً | DouNest" />
-<meta property="og:description" content="أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم." />
+<meta property="og:title" content="Security Tools — Passwords and TOTP Locally | DouNest" />
+<meta property="og:description" content="Generate passwords, check strength, and use TOTP without sending secrets to a server." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/security/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مركز الأمان — كلمات مرور وTOTP محلياً | DouNest" />
-<meta name="twitter:description" content="أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم." />
+<meta name="twitter:title" content="Security Tools — Passwords and TOTP Locally | DouNest" />
+<meta name="twitter:description" content="Generate passwords, check strength, and use TOTP without sending secrets to a server." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +61,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"مركز الأمان — كلمات مرور وTOTP محلياً","url":"https://dounest.hmdevelop.me/security/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Security Tools — Passwords and TOTP Locally","url":"https://dounest.hmdevelop.me/security/","inLanguage":"ar"}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"مولّد كلمات المرور","url":"https://dounest.hmdevelop.me/tools/password-generator/"},{"@type":"ListItem","position":2,"name":"فاحص قوة كلمة المرور","url":"https://dounest.hmdevelop.me/tools/password-strength/"},{"@type":"ListItem","position":3,"name":"مولّد رمز TOTP","url":"https://dounest.hmdevelop.me/tools/totp-generator/"},{"@type":"ListItem","position":4,"name":"مولّد Hash","url":"https://dounest.hmdevelop.me/tools/hash-generator/"}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل مولّد كلمة المرور آمن؟","acceptedAnswer":{"@type":"Answer","text":"يستخدم عشوائية المتصفح التشفيرية، لكن أمان النتيجة يعتمد أيضاً على طولها، وحفظها في مدير موثوق، وأمن الجهاز والمتصفح."}},{"@type":"Question","name":"هل تقدير قوة كلمة المرور دقيق؟","acceptedAnswer":{"@type":"Answer","text":"هو تقدير تعليمي مبسط وليس ضماناً لمقاومة الهجمات؛ استخدم كلمة فريدة وطويلة ومديراً موثوقاً للمصادقة متعددة العوامل."}},{"@type":"Question","name":"هل يُرفع سر TOTP؟","acceptedAnswer":{"@type":"Answer","text":"لا يُرسل إلى خادم DouNest؛ لا تدخله على جهاز أو جلسة لا تثق بها، وتأكد من تطابق إعدادات الوقت والمدة."}},{"@type":"Question","name":"هل SHA-256 يشفر البيانات؟","acceptedAnswer":{"@type":"Answer","text":"لا. Hash دالة أحادية الاتجاه وليست تشفيراً قابلاً للفك، ولا يصلح hash سريع منفرد لتخزين كلمات المرور."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the password generator secure?","acceptedAnswer":{"@type":"Answer","text":"It uses the browser's cryptographic random source, but security also depends on length, saving it in a trusted manager, and device security."}},{"@type":"Question","name":"Is the password-strength score exact?","acceptedAnswer":{"@type":"Answer","text":"It is a rough educational estimate, not a guarantee against attacks. Use a unique long password, a trusted manager, and multifactor authentication."}},{"@type":"Question","name":"Is my TOTP secret uploaded?","acceptedAnswer":{"@type":"Answer","text":"It is not sent to a DouNest server. Do not enter it on an untrusted device or session, and match the issuer's period and digit settings."}},{"@type":"Question","name":"Does SHA-256 encrypt data?","acceptedAnswer":{"@type":"Answer","text":"No. A hash is one-way, not reversible encryption, and a fast hash alone is not suitable for password storage."}}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,38 +77,38 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../" data-i18n="nav.home">Home</a>
+        <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
+          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a>
+          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../articles/" data-i18n="nav.articles">المقالات</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
     </div>
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
-<section class="page-head"><h1>مركز الأمان — كلمات مرور وTOTP محلياً</h1><p>أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم.</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">أنشئ كلمة مرور عشوائية باستخدام مولّد المتصفح، وافحص تقديراً أولياً للقوة، أو أنشئ رمز TOTP من سرّك. تعامل مع كلمة المرور أو سر المصادقة بوصفهما بيانات حساسة رغم أن المعالجة محلية.</p><h2>استخدم أدوات الأمان بحذر</h2><ol class="hub-steps"><li>لتوليد كلمة مرور، اختر طولاً ومجموعات المحارف ثم انسخ النتيجة إلى مدير كلمات مرور موثوق.</li><li>لفحص القوة، أدخل كلمة مرور اختبار لا تستخدم كلمة مرورك الفعلية إذا كنت على جهاز غير خاص.</li><li>لـTOTP، أدخل السر من تطبيقك المصدري، طابق مدة الرمز مع إعداد الحساب، ولا تشارك الرمز أو السر.</li></ol><section class="hub-guide-section"><h2>ما الذي تفعله الأدوات؟</h2><p>يستخدم مولّد كلمات المرور مولداً عشوائياً تشفيرياً في المتصفح. فاحص القوة تقديري وتعليمي، وليس اختبار اختراق أو ضماناً لعدم التخمين. أداة TOTP تنشئ رمزاً متغيراً اعتماداً على السر والوقت؛ يجب أن تتطابق إعداداتها مع الجهة التي أصدرت السر.</p></section><section class="hub-guide-section"><h2>لا تكشف أسرار المصادقة</h2><p>لا تُرسل القيم إلى خادم DouNest، لكن ابتعد عن أجهزة الآخرين أو تسجيل الشاشة عند إدخال أسرار. لا تستخدم رمزاً مولّداً هنا بديلاً عن تطبيق المصادقة الأساسي لحسابك ما لم تفهم كيفية إدارة السر الاحتياطي.</p></section><section class="hub-guide-section"><h2>الخصوصية</h2><p>المعالجة تتم في المتصفح، وقد تُحمّل مكتبات عامة عند الحاجة في بعض الأدوات. لا يُخزّن المركز كلمة مرورك أو سر TOTP على خادم؛ أزل الإدخال من الصفحة وأغلق التبويب بعد الانتهاء على جهاز مشترك.</p></section><section class="hub-faq"><h2>أسئلة شائعة</h2><details><summary>هل مولّد كلمة المرور آمن؟</summary><p>يستخدم عشوائية المتصفح التشفيرية، لكن أمان النتيجة يعتمد أيضاً على طولها، وحفظها في مدير موثوق، وأمن الجهاز والمتصفح.</p></details><details><summary>هل تقدير قوة كلمة المرور دقيق؟</summary><p>هو تقدير تعليمي مبسط وليس ضماناً لمقاومة الهجمات؛ استخدم كلمة فريدة وطويلة ومديراً موثوقاً للمصادقة متعددة العوامل.</p></details><details><summary>هل يُرفع سر TOTP؟</summary><p>لا يُرسل إلى خادم DouNest؛ لا تدخله على جهاز أو جلسة لا تثق بها، وتأكد من تطابق إعدادات الوقت والمدة.</p></details><details><summary>هل SHA-256 يشفر البيانات؟</summary><p>لا. Hash دالة أحادية الاتجاه وليست تشفيراً قابلاً للفك، ولا يصلح hash سريع منفرد لتخزين كلمات المرور.</p></details></section></section><section class="section"><h2 class="section-title">أدوات مركز الأمان </h2><div class="tools-grid"><a class="tool-card" href="/tools/password-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد كلمات المرور</h3><p>كلمات مرور قوية عشوائية.</p></a><a class="tool-card" href="/tools/password-strength/"><div class="icon cat-security" aria-hidden="true">📊</div><h3>فاحص قوة كلمة المرور</h3><p>اختبر تقدير قوة كلمة المرور محلياً، واطلع على ملاحظات التحسين دون حفظها أو إرسالها.</p></a><a class="tool-card" href="/tools/totp-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد رمز TOTP</h3><p>أنشئ رمز TOTP للمصادقة الثنائية من سر Base32 داخل المتصفح دون إرسال السر إلى أي خادم.</p></a><a class="tool-card" href="/tools/hash-generator/"><div class="icon cat-security" aria-hidden="true">#</div><h3>مولّد Hash</h3><p>أنشئ SHA-1/256/512.</p></a></div></section>
+<section class="page-head"><h1>Security Tools — Passwords and TOTP Locally</h1><p>Generate passwords, check strength, and use TOTP without sending secrets to a server.</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section><section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">Generate a random password in the browser, get a rough strength estimate, or calculate a TOTP code from a secret. Treat passwords and authenticator seeds as sensitive even when processing is local.</p><h2>Use security tools carefully</h2><ol class="hub-steps"><li>For a password, choose a length and character sets, then save it in a trusted password manager.</li><li>For a strength estimate, use a test password if you are on a device you do not control.</li><li>For TOTP, enter the seed from its issuer, match the account&#39;s period and digits, and never share the code or seed.</li></ol><section class="hub-guide-section"><h2>What these tools do</h2><p>The password generator uses the browser&#39;s cryptographic random source. The strength checker is a rough educational estimate, not a penetration test or guarantee. TOTP derives a changing code from a secret and time; its settings must match the issuer.</p></section><section class="hub-guide-section"><h2>Protect authentication secrets</h2><p>Values are not sent to a DouNest server, but avoid shared devices and screen recording when entering secrets. Do not replace your primary authenticator workflow unless you understand how the seed and recovery process are managed.</p></section><section class="hub-guide-section"><h2>Privacy</h2><p>Processing happens in the browser; some tools may load public libraries when needed. The hub does not store your password or TOTP secret on a server. Clear the input and close the tab on shared devices.</p></section><section class="hub-faq"><h2>Frequently asked questions</h2><details><summary>Is the password generator secure?</summary><p>It uses the browser&#39;s cryptographic random source, but security also depends on length, saving it in a trusted manager, and device security.</p></details><details><summary>Is the password-strength score exact?</summary><p>It is a rough educational estimate, not a guarantee against attacks. Use a unique long password, a trusted manager, and multifactor authentication.</p></details><details><summary>Is my TOTP secret uploaded?</summary><p>It is not sent to a DouNest server. Do not enter it on an untrusted device or session, and match the issuer&#39;s period and digit settings.</p></details><details><summary>Does SHA-256 encrypt data?</summary><p>No. A hash is one-way, not reversible encryption, and a fast hash alone is not suitable for password storage.</p></details></section></section><section class="section"><h2 class="section-title">أدوات Security Tools </h2><div class="tools-grid"><a class="tool-card" href="/tools/password-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد كلمات المرور</h3><p>كلمات مرور قوية عشوائية.</p></a><a class="tool-card" href="/tools/password-strength/"><div class="icon cat-security" aria-hidden="true">📊</div><h3>فاحص قوة كلمة المرور</h3><p>اختبر تقدير قوة كلمة المرور محلياً، واطلع على ملاحظات التحسين دون حفظها أو إرسالها.</p></a><a class="tool-card" href="/tools/totp-generator/"><div class="icon cat-security" aria-hidden="true">🔐</div><h3>مولّد رمز TOTP</h3><p>أنشئ رمز TOTP للمصادقة الثنائية من سر Base32 داخل المتصفح دون إرسال السر إلى أي خادم.</p></a><a class="tool-card" href="/tools/hash-generator/"><div class="icon cat-security" aria-hidden="true">#</div><h3>مولّد Hash</h3><p>أنشئ SHA-1/256/512.</p></a></div></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../about/" data-i18n="nav.about">حول</a>
-        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>استخراج نص من صورة OCR — DouNest</title>
-<meta name="description" content="استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي." />
+<title>Image to Text (OCR) — DouNest</title>
+<meta name="description" content="Extract text from images and scans — Arabic &amp; English." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/ocr-image-to-text/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/ocr-image-to-text/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/ocr-image-to-text/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="استخراج نص من صورة OCR — DouNest" />
-<meta property="og:description" content="استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي." />
+<meta property="og:title" content="Image to Text (OCR) — DouNest" />
+<meta property="og:description" content="Extract text from images and scans — Arabic &amp; English." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/ocr-image-to-text/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="استخراج نص من صورة OCR — DouNest" />
-<meta name="twitter:description" content="استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي." />
+<meta name="twitter:title" content="Image to Text (OCR) — DouNest" />
+<meta name="twitter:description" content="Extract text from images and scans — Arabic &amp; English." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"استخراج نص من صورة OCR","description":"استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.","keywords":"ocr, tesseract, تعرف-ضوئي, scan, documents, ai","url":"https://dounest.hmdevelop.me/tools/ocr-image-to-text/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يدعم اللغة العربية؟","acceptedAnswer":{"@type":"Answer","text":"نعم — اختر العربية من قائمة اللغات؛ النص المطبوع يعطي نتائج جيدة والمخطوط أضعف."}},{"@type":"Question","name":"لماذا أول عملية بطيئة؟","acceptedAnswer":{"@type":"Answer","text":"ينزّل محرك التعرف وملفات اللغة مرة واحدة ثم تخزن محلياً — التالي أسرع بكثير."}},{"@type":"Question","name":"هل صوري ترفع لأي مكان؟","acceptedAnswer":{"@type":"Answer","text":"لا — كل المعالجة داخل متصفحك، والصورة لا تغادر جهازك أبداً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"استخراج نص من صورة OCR","item":"https://dounest.hmdevelop.me/tools/ocr-image-to-text/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image to Text (OCR)","description":"Extract text from images and scans — Arabic & English.","keywords":"ocr, tesseract, تعرف-ضوئي, scan, documents, ai","url":"https://dounest.hmdevelop.me/tools/ocr-image-to-text/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does it support Arabic?","acceptedAnswer":{"@type":"Answer","text":"Yes — pick Arabic from the language list; printed text yields good results, handwriting is weaker."}},{"@type":"Question","name":"Why is the first run slow?","acceptedAnswer":{"@type":"Answer","text":"It downloads the engine and language files once, then caches locally — later runs are much faster."}},{"@type":"Question","name":"Are my images uploaded anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — all processing happens inside your browser; the image never leaves your device."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Image to Text (OCR)","item":"https://dounest.hmdevelop.me/tools/ocr-image-to-text/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">استخراج نص من صورة OCR</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Image to Text (OCR)</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">🔍</div>
         <div>
-          <h1>استخراج نص من صورة OCR</h1>
-          <p class="lead">استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.</p>
+          <h1>Image to Text (OCR)</h1>
+          <p class="lead">Extract text from images and scans — Arabic &amp; English.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.</p>
+          <p class="empty" style="margin:0">Extract text from images and scans — Arabic &amp; English.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب صورة تحتوي نصاً (ممسوحة أو فوتوغرافية) إلى منطقة الرفع.</li><li>انتظر تحميل محرك التعرف ولحظات التحليل الأول.</li><li>شاهد النص المستخرج يظهر تدريجياً في لوحة النتيجة.</li><li>راجع النص وصحح الأخطاء البسيطة إن وُجدت.</li><li>انسخ النص أو نزّله ملف TXT جاهزاً.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag an image containing text (scanned or photographed) into the drop zone.</li><li>Wait for the recognition engine to load and the first analysis pass.</li><li>Watch extracted text appear progressively in the result panel.</li><li>Review the text and correct minor errors if any.</li><li>Copy the text or download it as a ready TXT file.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>التعرف الضوئي على الحروف OCR هو جسر بين عالم الورق والصور وعالم النص القابل للمعالجة: فاتورة مطبوعة، لقطة شاشة قديمة، صفحة كتاب ممسوحة — كلها نص ميت بلا OCR، وحية قابلة للبحث والتحرير بعده.</p><p>الأداة تعمل بمحرك Tesseract.js مفتوح المصدر — سليل مشروع Tesseract الذي طورته HP ثم كرّسته Google وأصبح المعيار المفتوح عالمياً — يعمل داخل متصفحك بالكامل دون رفع أي صورة.</p><p>أول تشغيل ينزّل ملفات اللغة (بضع ميغابايتات) ويخزنها محلياً — التشغيلات التالية أسرع بكثير، وهذا سلوك تقنية ويب حديث طبيعي.</p><p>دقة النتيجة تتبع جودة الصورة بقوة: 300 DPI للمسوح، إضاءة متساوية للفوتوغرافات، وزاوية مستقيمة — النص العربي مطبعي يعطي نتائج جيدة، أما المخطوط فما زال تحدياً لكل محركات OCR العالمية.</p><p>الدمج الذكي: صورة فاتورة → OCR → بيانات إلى JSON عبر محول CSV — سلسلة أدوات DouNest تحول الورق إلى بيانات منظمة كاملة دون أن يغادر أي ملف جهازك.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يدعم اللغة العربية؟</summary><p>نعم — اختر العربية من قائمة اللغات؛ النص المطبوع يعطي نتائج جيدة والمخطوط أضعف.</p></details><details class="faq-item"><summary>لماذا أول عملية بطيئة؟</summary><p>ينزّل محرك التعرف وملفات اللغة مرة واحدة ثم تخزن محلياً — التالي أسرع بكثير.</p></details><details class="faq-item"><summary>هل صوري ترفع لأي مكان؟</summary><p>لا — كل المعالجة داخل متصفحك، والصورة لا تغادر جهازك أبداً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>OCR is the bridge between paper/images and processable text: a printed invoice, an old screenshot, a scanned book page — dead text before OCR, alive and searchable after.</p><p>The tool runs the open-source Tesseract.js engine — descendant of Tesseract, developed by HP, later sponsored by Google, and now the world&#39;s open standard — entirely inside your browser without uploading any image.</p><p>First run downloads language files (a few megabytes) and caches them locally — subsequent runs are much faster, normal behavior for modern web technology.</p><p>Accuracy tracks image quality strongly: 300 DPI for scans, even lighting for photos, straight angles — printed Arabic gives good results, while handwriting remains a challenge for every OCR engine worldwide.</p><p>Smart chaining: invoice image → OCR → data to JSON via the CSV converter — the DouNest tool chain turns paper into structured data with zero files leaving your device.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Does it support Arabic?</summary><p>Yes — pick Arabic from the language list; printed text yields good results, handwriting is weaker.</p></details><details class="faq-item"><summary>Why is the first run slow?</summary><p>It downloads the engine and language files once, then caches locally — later runs are much faster.</p></details><details class="faq-item"><summary>Are my images uploaded anywhere?</summary><p>No — all processing happens inside your browser; the image never leaves your device.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=ocr">#ocr</a><a class="hash-chip" href="/tools/?q=tesseract">#tesseract</a><a class="hash-chip" href="/tools/?q=%D8%AA%D8%B9%D8%B1%D9%81-%D8%B6%D9%88%D8%A6%D9%8A">#تعرف-ضوئي</a><a class="hash-chip" href="/tools/?q=scan">#scan</a><a class="hash-chip" href="/tools/?q=documents">#documents</a><a class="hash-chip" href="/tools/?q=ai">#ai</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/pdf-to-txt/"><span class="icon sm">📄</span><span>PDF إلى نص</span></a><a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>عدّاد الكلمات</span></a><a class="related-item" href="../../tools/csv-to-excel/"><span class="icon sm">📗</span><span>CSV إلى Excel</span></a>
+            <a class="related-item" href="../../tools/pdf-to-txt/"><span class="icon sm">📄</span><span>PDF to Text</span></a><a class="related-item" href="../../tools/word-counter/"><span class="icon sm">🔢</span><span>Word Counter</span></a><a class="related-item" href="../../tools/csv-to-excel/"><span class="icon sm">📗</span><span>CSV to Excel</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>ترميز URL — DouNest</title>
-<meta name="description" content="ترميز وفك ترميز الروابط." />
+<title>URL Encoder — DouNest</title>
+<meta name="description" content="Encode and decode URLs." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/url-encoder/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/url-encoder/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/url-encoder/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="ترميز URL — DouNest" />
-<meta property="og:description" content="ترميز وفك ترميز الروابط." />
+<meta property="og:title" content="URL Encoder — DouNest" />
+<meta property="og:description" content="Encode and decode URLs." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/url-encoder/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ترميز URL — DouNest" />
-<meta name="twitter:description" content="ترميز وفك ترميز الروابط." />
+<meta name="twitter:title" content="URL Encoder — DouNest" />
+<meta name="twitter:description" content="Encode and decode URLs." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ترميز URL","description":"ترميز وفك ترميز الروابط.","keywords":"url, encode, ترميز, percent-encoding, مطورين, seo","url":"https://dounest.hmdevelop.me/tools/url-encoder/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما الفرق بين الوضعين encodeURI و encodeURIComponent؟","acceptedAnswer":{"@type":"Answer","text":"الأول يحافظ على بنية الرابط كاملة (/&:?..) والثاني يرمز كل شيء بما فيها الفواصل — استخدمه لقيم المعاملات نفسها."}},{"@type":"Question","name":"لماذا يظهر النص العربي كرموز غريبة في الروابط؟","acceptedAnswer":{"@type":"Answer","text":"لأن الروابط تُنقل UTF-8 ثم تُرمز بالنسبة المئوية؛ فك الترميز يكشف النص الأصلي."}},{"@type":"Question","name":"هل الترميز يغير الرابط نفسه؟","acceptedAnswer":{"@type":"Answer","text":"لا، الخادم يفك الترميز تلقائياً ويصل إلى نفس القيمة — الترميز للنقل فقط."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"ترميز URL","item":"https://dounest.hmdevelop.me/tools/url-encoder/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"URL Encoder","description":"Encode and decode URLs.","keywords":"url, encode, ترميز, percent-encoding, مطورين, seo","url":"https://dounest.hmdevelop.me/tools/url-encoder/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between encodeURI and encodeURIComponent?","acceptedAnswer":{"@type":"Answer","text":"The first preserves full URL structure (/, &, ?, :), while the second encodes everything including separators — use it for parameter values themselves."}},{"@type":"Question","name":"Why does Arabic appear as strange codes in URLs?","acceptedAnswer":{"@type":"Answer","text":"Because URLs travel as UTF-8 then percent-encoding; decoding reveals the original text."}},{"@type":"Question","name":"Does encoding change the actual link?","acceptedAnswer":{"@type":"Answer","text":"No — the server decodes automatically and reaches the same value; encoding is purely for transport."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"URL Encoder","item":"https://dounest.hmdevelop.me/tools/url-encoder/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">ترميز URL</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">URL Encoder</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-encode" aria-hidden="true">%</div>
         <div>
-          <h1>ترميز URL</h1>
-          <p class="lead">ترميز وفك ترميز الروابط.</p>
+          <h1>URL Encoder</h1>
+          <p class="lead">Encode and decode URLs.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">encode</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">ترميز وفك ترميز الروابط.</p>
+          <p class="empty" style="margin:0">Encode and decode URLs.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق الرابط أو النص الذي يحتاج ترميزاً في مربع المدخل.</li><li>اختر ترميز لتحويل الأحرف الخاصة إلى صيغة %XX آمنة للروابط.</li><li>أو اختر فك الترميز لقراءة رابط مشوب بالرموز المئوية.</li><li>اضغط التنفيذ ثم انسخ النتيجة مباشرة.</li><li>استخدم زر التبديل للتنقل بين الوضعين بسرعة أثناء العمل.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste the URL or text that needs encoding into the input.</li><li>Choose Encode to convert special characters into safe %XX form.</li><li>Or choose Decode to read a URL cluttered with percent signs.</li><li>Press Run and copy the result directly.</li><li>Use the toggle button to flip between modes quickly while working.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>عناوين URL مصممة لقاموس محدود جداً من الأحرف المسموحة؛ أي حرف خارج هذا القاموس — مسافة، علامة &amp;، نص عربي — يجب تمثيله بترميز النسبة المئوية %XX كي لا يكسر بنية الرابط أو يفسّر خطأً كجزء من البنية.</p><p>أخطر حالات الخلط هي رمز &amp; و = داخل قيم المعاملات: إن أرسلت قيمة تحتوي &amp; دون ترميز فسيقرأها الخادم فاصلاً بين معاملات جديدة، فتضيع بياناتك أو أسوأ. لهذا يوجد فرق جوهري بين encodeURIComponent و encodeURI، والأداة توفر الوضعين.</p><p>فك الترميز يساوي في الأهمية: كثير من الروابط المشتركة عبر الشبكات تصل مشوبة بـ %D8%AF وأخواتها، وفكها يكشف النص العربي الأصلي المقروء.</p><p>روابط البحث وتتبع الحملات وأعلام API كلها تمر بهذا المسار؛ فهم الترميز يوفر عليك ساعات من تصحيح أخطاء 400 Bad Request الغامضة.</p><p>وكالعادة في DouNest، كل المعالجة محلية: روابطك الخاصة أو روابط أنظمتك الداخلية لا تغادر متصفحك.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ما الفرق بين الوضعين encodeURI و encodeURIComponent؟</summary><p>الأول يحافظ على بنية الرابط كاملة (/&amp;:?..) والثاني يرمز كل شيء بما فيها الفواصل — استخدمه لقيم المعاملات نفسها.</p></details><details class="faq-item"><summary>لماذا يظهر النص العربي كرموز غريبة في الروابط؟</summary><p>لأن الروابط تُنقل UTF-8 ثم تُرمز بالنسبة المئوية؛ فك الترميز يكشف النص الأصلي.</p></details><details class="faq-item"><summary>هل الترميز يغير الرابط نفسه؟</summary><p>لا، الخادم يفك الترميز تلقائياً ويصل إلى نفس القيمة — الترميز للنقل فقط.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>URLs are designed around a very small whitelist of allowed characters; anything outside it — a space, an ampersand, Arabic text — must be represented as percent-encoding %XX so it does not break the URL structure or get misread as part of it.</p><p>The most dangerous confusion involves &amp; and = inside parameter values: sending a value containing &amp; unencoded makes the server read it as a new parameter separator, losing your data or worse. That is why encodeURIComponent and encodeURI differ fundamentally, and the tool offers both modes.</p><p>Decoding matters just as much: many links shared across networks arrive cluttered with %D8%AF and friends, and decoding reveals the readable original text.</p><p>Search links, campaign tracking and API endpoints all travel this path; understanding encoding saves you hours of debugging vague 400 Bad Request errors.</p><p>As always at DouNest, all processing is local: your private or internal-system URLs never leave your browser.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>What is the difference between encodeURI and encodeURIComponent?</summary><p>The first preserves full URL structure (/, &amp;, ?, :), while the second encodes everything including separators — use it for parameter values themselves.</p></details><details class="faq-item"><summary>Why does Arabic appear as strange codes in URLs?</summary><p>Because URLs travel as UTF-8 then percent-encoding; decoding reveals the original text.</p></details><details class="faq-item"><summary>Does encoding change the actual link?</summary><p>No — the server decodes automatically and reaches the same value; encoding is purely for transport.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=url">#url</a><a class="hash-chip" href="/tools/?q=encode">#encode</a><a class="hash-chip" href="/tools/?q=%D8%AA%D8%B1%D9%85%D9%8A%D8%B2">#ترميز</a><a class="hash-chip" href="/tools/?q=percent-encoding">#percent-encoding</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/tools/?q=seo">#seo</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>ترميز Base64</span></a><a class="related-item" href="../../tools/jwt-decoder/"><span class="icon sm">🔑</span><span>مفكّك JWT</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>مولّد Hash</span></a>
+            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>Base64 Encoder</span></a><a class="related-item" href="../../tools/jwt-decoder/"><span class="icon sm">🔑</span><span>JWT Decoder</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>Hash Generator</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

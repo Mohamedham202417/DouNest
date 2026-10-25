@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>حول DouNest — DouNest</title>
-<meta name="description" content="تعرف على أدوات DouNest التي تعمل في المتصفح، ومبادئ الخصوصية والحدود التي نوضحها للمستخدمين." />
+<title>About DouNest — DouNest</title>
+<meta name="description" content="Learn about DouNest browser tools, the project&#39;s privacy approach, and the limitations we disclose to users." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/about/" />
 
@@ -17,14 +17,14 @@
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="حول DouNest — DouNest" />
-<meta property="og:description" content="تعرف على أدوات DouNest التي تعمل في المتصفح، ومبادئ الخصوصية والحدود التي نوضحها للمستخدمين." />
+<meta property="og:title" content="About DouNest — DouNest" />
+<meta property="og:description" content="Learn about DouNest browser tools, the project&#39;s privacy approach, and the limitations we disclose to users." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/about/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="حول DouNest — DouNest" />
-<meta name="twitter:description" content="تعرف على أدوات DouNest التي تعمل في المتصفح، ومبادئ الخصوصية والحدود التي نوضحها للمستخدمين." />
+<meta name="twitter:title" content="About DouNest — DouNest" />
+<meta name="twitter:description" content="Learn about DouNest browser tools, the project&#39;s privacy approach, and the limitations we disclose to users." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,12 +61,12 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"حول DouNest","description":"تعرف على أدوات DouNest التي تعمل في المتصفح، ومبادئ الخصوصية والحدود التي نوضحها للمستخدمين.","url":"https://dounest.hmdevelop.me/about/","inLanguage":"ar"}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"حول DouNest","item":"https://dounest.hmdevelop.me/about/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","name":"About DouNest","description":"Learn about DouNest browser tools, the project's privacy approach, and the limitations we disclose to users.","url":"https://dounest.hmdevelop.me/about/","inLanguage":"en"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"About DouNest","item":"https://dounest.hmdevelop.me/about/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -76,50 +76,50 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../" data-i18n="nav.home">Home</a>
+        <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
+          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a>
+          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../articles/" data-i18n="nav.articles">المقالات</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
     </div>
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
-<nav class="breadcrumb" aria-label="breadcrumb"><a href="/">DouNest</a><span class="sep">›</span><span class="current">حول DouNest</span></nav><header class="page-head"><h1>حول DouNest</h1><p class="lead">DouNest مجموعة من أدوات الويب اليومية التي تساعدك على إنجاز مهام الملفات والنصوص والتطوير والحسابات من صفحة واحدة. يهدف المشروع إلى تقديم واجهات بسيطة، وشرح واضح لما تفعله كل أداة، وإبقاء معالجة الملفات المختارة داخل متصفحك قدر الإمكان.</p></header><div class="info-page" lang="ar">
+<nav class="breadcrumb" aria-label="breadcrumb"><a href="/">DouNest</a><span class="sep">›</span><span class="current">About DouNest</span></nav><header class="page-head"><h1>About DouNest</h1><p class="lead">DouNest is a collection of everyday web tools for file, text, developer, security, and calculation tasks. The project aims to keep interfaces straightforward, explain what each tool does, and process selected files in your browser whenever the tool supports it.</p></header><div class="info-page" lang="en">
     <section class="info-section">
-      <h2>ما الذي يقدمه الموقع؟</h2>
-      <p>يضم الموقع مراكز للعمل مع ملفات PDF والصور والتحويلات، إلى جانب أدوات النصوص والمطورين والأمان والحاسبات. وتعرض صفحات الأدوات طريقة الاستخدام والقيود المعروفة والأسئلة الشائعة والبدائل ذات الصلة، حتى تستطيع اختيار الأداة المناسبة قبل تشغيلها.</p><p>يُبنى الموقع كمشروع ويب ثابت، وتُنشأ صفحات الأدوات والمقالات من سجل موحد. وهذا يساعد على توفير روابط مباشرة قابلة للمشاركة والفهرسة، مع تحديث الواجهة والمحتوى من مستودع المشروع.</p>
+      <h2>What the site offers</h2>
+      <p>The site brings together PDF, image, and conversion work centers alongside text, developer, security, and calculator tools. Tool pages explain the workflow, known limitations, frequently asked questions, and related utilities so visitors can choose an appropriate tool before running it.</p><p>DouNest is built as a static website. Tool and article pages are generated from shared project data, giving each page a direct, shareable URL while keeping the site content maintainable in its public source repository.</p>
     </section>
     <section class="info-section">
-      <h2>كيف نتعامل مع الملفات؟</h2>
-      <p>تعالج الأدوات الملفات داخل المتصفح ولا ترسل محتوى الملفات إلى خادم DouNest. قد يحتاج المتصفح إلى تنزيل مكتبة أو نموذج معالجة من شبكة توصيل محتوى خارجية عند فتح بعض الأدوات أو استخدامها؛ تنزيل البرنامج لا يعني رفع ملفك. وتوضح صفحات المراكز عند وجود اعتماد خارجي أو قيد على الصيغ.</p><p>تختلف النتائج حسب المتصفح ونوع الملف وحجمه. راجع الناتج قبل استخدامه في عمل مهم، واحتفظ بنسخة من الملف الأصلي. لا تدّعي DouNest أن كل صيغة أو كل ملف تالف مدعوم.</p>
+      <h2>How files are handled</h2>
+      <p>Tools process selected files in the browser and do not send their contents to a DouNest file-processing server. Some features may download a processing library or model from an external content-delivery network when needed; downloading code does not mean uploading your file. Center pages identify relevant external dependencies and format limitations.</p><p>Results vary with browser support, file type, and file size. Review output before relying on it for important work and keep an original copy. DouNest does not claim to support every format or repair every damaged file.</p>
     </section>
     <section class="info-section">
-      <h2>اللغات وإمكانية الاستخدام</h2>
-      <p>تتيح الواجهة اختيار عشر لغات. تتوفر أجزاء من الشروحات باللغتين العربية والإنجليزية، وقد تستخدم بعض النصوص الأخرى الإنجليزية عند عدم توفر ترجمة كاملة. نعمل على تحسين وضوح الخطوات ورسائل الخطأ والتخطيط على الشاشات الصغيرة.</p><p>DouNest مشروع ويب متطور باستمرار، وليس بديلاً عن البرامج المتخصصة أو المراجعة البشرية. لا ننشر قصصاً أو اعتمادات مهنية أو أرقام استخدام لا نستطيع التحقق منها.</p><p>تتمثل أولوية المشروع في جعل الأدوات واضحة وسهلة الوصول، مع إظهار حدود الصيغ والخصوصية قبل الاستخدام بدلاً من الادعاء بأن أداة واحدة تناسب كل الملفات أو الحالات.</p>
+      <h2>Languages and accessibility</h2>
+      <p>The interface offers ten language choices. Some long-form explanations are available in Arabic and English, while other text may fall back to English when a full translation is not available. We continue to improve instructions, error messages, and small-screen layouts.</p><p>DouNest is an evolving web project, not a substitute for specialist software or human review. We do not publish personal biographies, professional endorsements, or usage figures that we cannot substantiate.</p><p>The project&#39;s priority is to make tools understandable and accessible, and to explain format and privacy limitations before use rather than claim that one tool fits every file or situation.</p>
     </section></div>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../about/" data-i18n="nav.about">حول</a>
-        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

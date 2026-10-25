@@ -55,9 +55,9 @@ const SITE = (CFG.origin || "").replace(/\/$/, "") + BASE;
 /* ---------- i18n mini-pack (build-time strings) ---------- */
 const L = {
   ar: {
-    allTools: "كل الأدوات", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
+    allTools: "All Tools", usage: "طريقة الاستخدام", explanation: "شرح مفصّل",
     faq: "أسئلة شائعة", related: "أدوات ذات صلة", local: "تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك",
-    home: "الرئيسية", articles: "المقالات", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور", mail: "بريد مؤقت",
+    home: "الرئيسية", articles: "Articles", rare: "أدوات نادرة", ai: "دليل AI", images: "مركز الصور", mail: "بريد مؤقت",
     pdf: "مركز PDF", convert: "مركز التحويل",
     about: "حول", fav: "المفضلة", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", contact: "التواصل والدعم",
     back: "العودة إلى كل الأدوات", read: "اقرأ المقال", runIn: "شغّل الأداة الآن",
@@ -72,7 +72,8 @@ const L = {
     about: "About", fav: "Favorites", privacy: "Privacy Policy", terms: "Terms", contact: "Contact and Support",
     back: "Back to all tools", read: "Read the article", runIn: "Open the tool",
     faqNav: "FAQ", faqTitle: "Frequently Asked Questions",
-    faqSub: "Clear answers to common questions about file conversion, PDF, images, and privacy; tools process files locally where supported."
+    faqSub: "Clear answers to common questions about file conversion, PDF, images, and privacy; tools process files locally where supported.",
+    text: "Text Center", developers: "Developer Center", security: "Security Center", calculators: "Calculators", centers: "Centers"
   }
 };
 const pick = (obj, lang) => (obj && (obj[lang] || obj.en)) || "";
@@ -238,36 +239,36 @@ function writePage(relPath, content) {
 console.log("→ pre-rendered home page");
 {
   const centers = [
-    ["pdf/", "📄", "مركز PDF", "ضغط ودمج وتقسيم وتحويل الملفات"],
-    ["images/", "🖼️", "مركز الصور", "ضغط وتحويل وقص وإزالة بيانات الصور"],
-    ["convert/", "🔄", "مركز التحويل", "حوّل بين صيغ الملفات الشائعة"],
-    ["text/", "✍️", "مركز النصوص", "تنظيف وتحويل وتحليل النصوص"],
-    ["dev/", "🧰", "مركز المطورين", "JSON وBase64 وJWT وأدوات البرمجة"],
-    ["security/", "🔐", "مركز الأمان", "كلمات مرور وTOTP وأدوات أمان محلية"],
-    ["calculators/", "🧮", "مركز الحاسبات", "حاسبات يومية مجانية تعمل في المتصفح"],
-    ["mail/", "✉️", "بريد إلكتروني مؤقت", "استقبل رسالة لمرة واحدة في صندوق ينتهي بعد ساعة؛ لا تستخدمه للبيانات الحساسة"]
+    ["pdf/", "📄", "PDF Tools", "Compress, merge, split, and convert PDFs in your browser"],
+    ["images/", "🖼️", "Image Tools", "Convert, compress, resize, and edit images locally"],
+    ["convert/", "🔄", "File Conversion", "Convert common file formats without uploads"],
+    ["text/", "✍️", "Text Tools", "Clean, transform, and analyze text"],
+    ["dev/", "🧰", "Developer Tools", "JSON, Base64, JWT, and coding utilities"],
+    ["security/", "🔐", "Security Tools", "Passwords, TOTP, and local security utilities"],
+    ["calculators/", "🧮", "Calculators", "Free everyday calculators that run in your browser"],
+    ["mail/", "✉️", "Temporary Email", "Receive a disposable email address for one hour"]
   ];
   const popular = ["json-formatter", "image-compressor", "merge-pdf", "pdf-to-word", "csv-to-json", "password-generator", "qr-code", "remove-background", "image-to-pdf", "uuid-generator", "word-counter", "exif-viewer"]
     .map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
   const articles = getArticles().slice(0, 3);
-  const body = `<section class="page-head home-prerender"><h1>أدوات مجانية لتحويل الملفات ومعالجتها — DouNest</h1>
-    <p>استخدم ${TOOLS.length}+ أداة مجانية تعمل محلياً داخل متصفحك: PDF، صور، نصوص، Excel، JSON وأمان. لا تسجيل، ولا رفع للملفات.</p>
-    <form class="home-search" action="${BASE}tools/" method="get"><label for="home-q">ابحث عن أداة</label><input id="home-q" name="q" type="search" placeholder="مثال: ضغط PDF أو تحويل JSON"><button class="btn btn-primary">بحث</button></form></section>
-    <section class="section"><h2 class="section-title">مراكز العمل</h2><div class="explore-strip">${centers.map(([path,icon,name,desc]) => `<a class="explore-card" href="${BASE}${path}"><strong>${icon} ${name}</strong><span>${desc}</span></a>`).join("")}</div></section>
-    <section class="section"><h2 class="section-title">أدوات شائعة</h2><div class="tools-grid">${popular.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("")}</div><p><a href="${BASE}tools/">عرض كل الأدوات ←</a></p></section>
-    <section class="section"><h2 class="section-title">أدلة ونصائح</h2><div class="tools-grid">${articles.map(a => `<a class="tool-card article" href="${BASE}articles/${a.slug}/"><h3>${esc(pick(a.title,"ar"))}</h3><p>${esc(pick(a.excerpt,"ar"))}</p></a>`).join("")}</div></section>
-    <section class="section"><h2 class="section-title">خصوصيتك أولاً</h2><p>تعالج أدوات الملفات المحتوى محلياً في المتصفح. خدمة البريد المؤقت استثناء خادمي وتخزن الرسائل لفترة قصيرة؛ اقرأ <a href="${BASE}privacy/">سياسة الخصوصية</a> قبل استخدامها.</p></section>`;
-  writePage("index.html", shell({ title: "DouNest — أدوات مجانية لتحويل الملفات ومعالجتها", description: `${TOOLS.length}+ أداة مجانية لمعالجة PDF والصور والنصوص والبيانات محلياً في المتصفح دون رفع الملفات.`, canonicalPath: "", jsonLd: [{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":SITE,"inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":`${SITE}tools/?q={search_term_string}`,"query-input":"required name=search_term_string"}},{"@context":"https://schema.org","@type":"ItemList","name":"مراكز العمل والأدوات الشائعة","itemListElement":centers.map(([path,_icon,name],i)=>({"@type":"ListItem","position":i+1,"name":name,"url":SITE+path}))}], bodyContent: body }));
+  const body = `<section class="page-head home-prerender"><h1>Free Browser Tools and File Converters — DouNest</h1>
+    <p>Use ${TOOLS.length}+ free browser tools for PDF, images, text, Excel, JSON, and developer workflows. No signup and no file uploads.</p>
+    <form class="home-search" action="${BASE}tools/" method="get"><label for="home-q">Search for a tool</label><input id="home-q" name="q" type="search" placeholder="Try: Excel to JSON or compress PDF"><button class="btn btn-primary">Search</button></form></section>
+    <section class="section"><h2 class="section-title">Work centers</h2><div class="explore-strip">${centers.map(([path,icon,name,desc]) => `<a class="explore-card" href="${BASE}${path}"><strong>${icon} ${name}</strong><span>${desc}</span></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">Popular tools</h2><div class="tools-grid">${popular.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"en"))}</h3><p>${esc(pick(t.short,"en"))}</p></a>`).join("")}</div><p><a href="${BASE}tools/">Browse all tools →</a></p></section>
+    <section class="section"><h2 class="section-title">Guides and troubleshooting</h2><div class="tools-grid">${articles.map(a => `<a class="tool-card article" href="${BASE}articles/${a.slug}/en/"><h3>${esc(pick(a.title,"en"))}</h3><p>${esc(pick(a.excerpt,"en"))}</p></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">Privacy by design</h2><p>Supported file tools process content locally in your browser. Temporary email is a server-side exception; read the <a href="${BASE}privacy/">Privacy Policy</a> before using it.</p></section>`;
+  writePage("index.html", shell({ lang: "en", title: "DouNest – Free Browser Tools & File Converters", description: "Convert files, format JSON, and use developer tools in your browser. No signup, no uploads—your files stay on your device.", canonicalPath: "", alternateLanguages: [{ lang: "en", url: SITE }, { lang: "x-default", url: SITE }], jsonLd: [{"@context":"https://schema.org","@type":"ItemList","name":"Popular browser tools","itemListElement":centers.map(([path,_icon,name],i)=>({"@type":"ListItem","position":i+1,"name":name,"url":SITE+path}))}], bodyContent: body }));
 }
 
-/* ---------- 1) tool landing pages (Arabic prerendered) ---------- */
-const AR = L.ar;
+/* ---------- 1) tool landing pages (English-first prerendered) ---------- */
+const AR = L.en;
 console.log("→ tool pages");
 for (const tool of TOOLS) {
-  const name = pick(tool.name, "ar");
-  const short = pick(tool.short, "ar");
-  const usage = tool.usage.ar || tool.usage.en || [];
-  const expl = tool.explanation.ar || tool.explanation.en || [];
+  const name = pick(tool.name, "en");
+  const short = pick(tool.short, "en");
+  const usage = tool.usage.en || tool.usage.ar || [];
+  const expl = tool.explanation.en || tool.explanation.ar || [];
   const faq = tool.faq || [];
   const related = (tool.related || []).map(getToolB).filter(Boolean);
   const up = relPrefix(`tools/${tool.slug}/`);
@@ -314,21 +315,21 @@ for (const tool of TOOLS) {
         ${faq.length ? `
         <section class="section">
           <h2>${AR.faq}</h2>
-          ${faq.map(f => `<details class="faq-item"><summary>${esc(pick(f.q, "ar"))}</summary><p>${esc(pick(f.a, "ar"))}</p></details>`).join("")}
+          ${faq.map(f => `<details class="faq-item"><summary>${esc(pick(f.q, "en"))}</summary><p>${esc(pick(f.a, "en"))}</p></details>`).join("")}
         </section>` : ""}
         ${(tool.tags && tool.tags.length) ? `
         <section class="section">
-          <h2>وسوم البحث</h2>
-          ${hashtagChipsHTML(tool.tags, "ar", `${BASE}tools/?q=`)}
+          <h2>Search topics</h2>
+          ${hashtagChipsHTML(tool.tags, "en", `${BASE}tools/?q=`)}
         </section>` : ""}
       </div>
       <aside class="tool-sidecol">
-        ${guideForTool ? `<div class="side-box"><h3>دليل مرتبط</h3><a class="related-item" href="${up}articles/${guideForTool}/"><span class="icon sm">📖</span><span>اقرأ الدليل قبل استخدام الأداة</span></a></div>` : ""}
+        ${guideForTool ? `<div class="side-box"><h3>Related guide</h3><a class="related-item" href="${up}articles/${guideForTool}/en/"><span class="icon sm">📖</span><span>Read the guide before using this tool</span></a></div>` : ""}
         ${related.length ? `
         <div class="side-box">
           <h3>${AR.related}</h3>
           <div class="related-list">
-            ${related.map(rt => `<a class="related-item" href="${up}tools/${rt.slug}/"><span class="icon sm">${rt.icon}</span><span>${esc(pick(rt.name, "ar"))}</span></a>`).join("")}
+            ${related.map(rt => `<a class="related-item" href="${up}tools/${rt.slug}/"><span class="icon sm">${rt.icon}</span><span>${esc(pick(rt.name, "en"))}</span></a>`).join("")}
           </div>
         </div>` : ""}
       </aside>
@@ -341,15 +342,15 @@ for (const tool of TOOLS) {
       "keywords": (tool.tags || []).join(", "),
       "url": `${SITE}tools/${tool.slug}/`,
       "applicationCategory": "UtilityApplication", "operatingSystem": "Any",
-      "inLanguage": "ar",
+      "inLanguage": "en",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     },
     faq.length ? {
       "@context": "https://schema.org", "@type": "FAQPage",
       "mainEntity": faq.map(f => ({
         "@type": "Question",
-        "name": pick(f.q, "ar"),
-        "acceptedAnswer": { "@type": "Answer", "text": pick(f.a, "ar") }
+        "name": pick(f.q, "en"),
+        "acceptedAnswer": { "@type": "Answer", "text": pick(f.a, "en") }
       }))
     } : null,
     {
@@ -365,9 +366,11 @@ for (const tool of TOOLS) {
   writePage(
     `tools/${tool.slug}/index.html`,
     shell({
+      lang: "en",
       title: `${name} — DouNest`,
       description: short,
       canonicalPath: `tools/${tool.slug}/`,
+      alternateLanguages: [{ lang: "en", url: SITE + `tools/${tool.slug}/` }, { lang: "x-default", url: SITE + `tools/${tool.slug}/` }],
       jsonLd,
       bodyContent: body
     })
@@ -378,8 +381,8 @@ function getToolB(slug) { return TOOLS.find(t2 => t2.slug === slug); }
 /* ---------- 2) article pages ---------- */
 console.log("→ article pages");
 const ARTICLE_LANGS = ["ar", "en", "fr", "es", "de", "tr", "ru", "zh", "hi", "pt"];
-const ARTICLE_LABELS = { ar: "المقالات", en: "Articles", fr: "Articles", es: "Artículos", de: "Artikel", tr: "Makaleler", ru: "Статьи", zh: "文章", hi: "लेख", pt: "Artigos" };
-const RELATED_LABELS = { ar: "دليل مرتبط", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
+const ARTICLE_LABELS = { ar: "Articles", en: "Articles", fr: "Articles", es: "Artículos", de: "Artikel", tr: "Makaleler", ru: "Статьи", zh: "文章", hi: "लेख", pt: "Artigos" };
+const RELATED_LABELS = { ar: "Related guide", en: "Related troubleshooting guide", fr: "Guide de dépannage associé", es: "Guía de solución relacionada", de: "Passender Ratgeber zur Fehlerbehebung", tr: "İlgili sorun giderme rehberi", ru: "Связанное руководство", zh: "相关故障排查指南", hi: "संबंधित समस्या-समाधान गाइड", pt: "Guia de solução relacionado" };
 const AUTHOR_LABELS = { ar: "إعداد", en: "By", fr: "Par", es: "Por", de: "Von", tr: "Yazan", ru: "Автор", zh: "作者", hi: "लेखक", pt: "Por" };
 const PUBLISHED_LABELS = { ar: "نُشر", en: "Published", fr: "Publié", es: "Publicado", de: "Veröffentlicht", tr: "Yayınlandı", ru: "Опубликовано", zh: "发布于", hi: "प्रकाशित", pt: "Publicado" };
 const UPDATED_LABELS = { ar: "آخر تحديث", en: "Updated", fr: "Mis à jour", es: "Actualizado", de: "Aktualisiert", tr: "Güncellendi", ru: "Обновлено", zh: "更新于", hi: "अपडेट किया गया", pt: "Atualizado" };
@@ -442,16 +445,17 @@ for (const a of getArticles()) {
 /* ---------- 3) legal/info pages ---------- */
 console.log("→ static pages");
 for (const slug of Object.keys(INFO_PAGES)) {
-  const page = INFO_PAGES[slug].ar;
+  const page = INFO_PAGES[slug].en || INFO_PAGES[slug].ar;
   const infoHref = path => path === "/" ? BASE : BASE + path.replace(/^\/+|\/+$/g, "") + "/";
   writePage(
     `${slug}/index.html`,
     shell({
+      lang: "en",
       title: `${page.title} — DouNest`,
       description: page.description,
       canonicalPath: `${slug}/`,
-      jsonLd: infoPageJsonLd(slug, "ar", SITE),
-      bodyContent: renderInfoPage(slug, "ar", infoHref)
+      jsonLd: infoPageJsonLd(slug, "en", SITE),
+      bodyContent: renderInfoPage(slug, "en", infoHref)
     })
   );
 }
@@ -513,6 +517,7 @@ ${cards}`
       title: "الأدوات النادرة — خرائط وأمن وجواهر GitHub — DouNest",
       description: "32 أداة ومشروعاً نادراً في 4 فئات: خرائط حية، أدوات اختراق أخلاقي تعريفية، جواهر GitHub، وكلاسيكيات لا يعرفها الجميع — لكل أداة صفحة تفصيلية كاملة.",
       canonicalPath: "rare/",
+      noindex: true,
       bodyContent: rareIndexHTML("ar", RBASE)
     })
   );
@@ -525,7 +530,7 @@ ${cards}`
         title: `${pick(cat.name, "ar")} — أدوات نادرة — DouNest`,
         description: pick(cat.blurb, "ar").slice(0, 158),
         canonicalPath: `rare/${cat.id}/`,
-        noindex: isSec,
+        noindex: true,
         bodyContent: rareCatHTML(cat.id, "ar", RBASE)
       })
     );
@@ -536,10 +541,10 @@ ${cards}`
     writePage(
       `rare/${tool.slug}/index.html`,
       shell({
-        title: `${pick(tool.name, "ar")} — أدوات نادرة — DouNest`,
+        title: `${pick(tool.name, "en")} — أدوات نادرة — DouNest`,
         description: pick(tool.desc, "ar").slice(0, 158),
         canonicalPath: `rare/${tool.slug}/`,
-        noindex: isSec,
+        noindex: true,
         bodyContent: rareDetailHTML(tool.slug, "ar", RBASE, `${BASE}tools/?q=`)
       })
     );
@@ -553,16 +558,16 @@ console.log("→ pdf/convert hub pages");
   const pdfTools = pdfSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "pdf/index.html",
-    shell({
-      title: "مركز PDF — ضغط ودمج وتقسيم وتحويل بضغطة زر | DouNest",
-      description: "ارفع ملف PDF مرة واحدة ثم نفّذ كل العمليات: ضغط، دمج، تقسيم، تدوير، إلى JPG، إلى TXT، إلى Word، وصور إلى PDF — كل شيء محلي داخل متصفحك بدون رفع ملفات.",
+    shell({ lang: "en",
+      title: "PDF Tools — Compress, Merge, Split and Convert | DouNest",
+      description: "Compress, merge, split, rotate, and convert PDFs in your browser. No signup and no uploads—your files stay on your device.",
       canonicalPath: "pdf/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "WebApplication",
         "name": "مركز PDF — DouNest", "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }, centerFaqSchema("pdf", "ar")],
+      }, centerFaqSchema("pdf", "en")],
       bodyContent: `
     <section class="page-head">
       <h1>مركز PDF — أدوات شائعة للدمج والتقسيم والتحويل</h1>
@@ -575,13 +580,13 @@ console.log("→ pdf/convert hub pages");
         ${pdfTools.map(t2 => `
         <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
-          <h3>${esc(pick(t2.name, "ar"))}</h3>
-          <p>${esc(pick(t2.short, "ar"))}</p>
+          <h3>${esc(pick(t2.name, "en"))}</h3>
+          <p>${esc(pick(t2.short, "en"))}</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>`).join("")}
       </div>
     </section>
-    ${centerContentMarkup("pdf", "ar")}`
+    ${centerContentMarkup("pdf", "en")}`
     })
   );
 
@@ -589,16 +594,16 @@ console.log("→ pdf/convert hub pages");
   const imageTools = imageSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "images/index.html",
-    shell({
-      title: "مركز الصور — تحويل وضغط وتغيير حجم وإزالة خلفية | DouNest",
-      description: "حوّل الصور واضغطها وغيّر أبعادها أو أنشئ PDF. تتوفر أدوات متخصصة لإزالة الخلفية وOCR وHEIC وQR؛ تُعالج الصور المختارة في المتصفح.",
+    shell({ lang: "en",
+      title: "Image Tools — Convert, Compress, Resize and Edit | DouNest",
+      description: "Convert, compress, resize, and edit images in your browser, including HEIC, OCR, QR, background removal, and image-to-PDF tools.",
       canonicalPath: "images/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "WebApplication",
         "name": "مركز الصور — DouNest", "applicationCategory": "MultimediaApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }, centerFaqSchema("images", "ar")],
+      }, centerFaqSchema("images", "en")],
       bodyContent: `
     <section class="page-head">
       <h1>مركز الصور — التحويل والضغط وتغيير الأبعاد</h1>
@@ -611,13 +616,13 @@ console.log("→ pdf/convert hub pages");
         ${imageTools.map(t2 => `
         <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
-          <h3>${esc(pick(t2.name, "ar"))}</h3>
-          <p>${esc(pick(t2.short, "ar"))}</p>
+          <h3>${esc(pick(t2.name, "en"))}</h3>
+          <p>${esc(pick(t2.short, "en"))}</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>`).join("")}
       </div>
     </section>
-    ${centerContentMarkup("images", "ar")}`
+    ${centerContentMarkup("images", "en")}`
     })
   );
 
@@ -625,16 +630,16 @@ console.log("→ pdf/convert hub pages");
   const convTools = [...new Set(convSlugs)].map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "convert/index.html",
-    shell({
-      title: "مركز تحويل الملفات — صيغ شائعة مدعومة | DouNest",
-      description: "حوّل الصور وملفات PDF وCSV وJSON وXLSX وDOCX عبر مسارات محددة. تُعالج الملفات المختارة في المتصفح ولا تُرسل إلى خادم DouNest.",
+    shell({ lang: "en",
+      title: "File Conversion — Excel, CSV, JSON, PDF and Image Tools | DouNest",
+      description: "Convert images, PDF, CSV, JSON, XLSX, and DOCX through focused browser tools. Your selected files are processed locally and are not uploaded.",
       canonicalPath: "convert/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "WebApplication",
         "name": "مركز التحويل — DouNest", "applicationCategory": "UtilityApplication",
         "operatingSystem": "Any", "inLanguage": "ar",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-      }, centerFaqSchema("convert", "ar")],
+      }, centerFaqSchema("convert", "en")],
       bodyContent: `
     <section class="page-head">
       <h1>مركز تحويل الملفات — صيغ شائعة ومسارات واضحة</h1>
@@ -647,13 +652,13 @@ console.log("→ pdf/convert hub pages");
         ${convTools.map(t2 => `
         <a class="tool-card" href="${BASE}tools/${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
-          <h3>${esc(pick(t2.name, "ar"))}</h3>
-          <p>${esc(pick(t2.short, "ar"))}</p>
+          <h3>${esc(pick(t2.name, "en"))}</h3>
+          <p>${esc(pick(t2.short, "en"))}</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>`).join("")}
       </div>
     </section>
-    ${centerContentMarkup("convert", "ar")}`
+    ${centerContentMarkup("convert", "en")}`
     })
   );
 }
@@ -661,14 +666,14 @@ console.log("→ pdf/convert hub pages");
 /* ---------- 3c) Work centers: text, dev, security and calculators ---------- */
 console.log("→ additional work centers");
 for (const [slug, title, description, modulePath, related] of [
-  ["text", "مركز النصوص — تنظيف وتحويل وتحليل", "نظّم النصوص وحوّل Markdown إلى HTML وأنشئ Slug واحسب الكلمات — محلياً.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"]],
-  ["dev", "مركز المطورين — أدوات JSON وBase64 وJWT", "أدوات المطورين اليومية في مساحة واحدة: JSON، Base64، URL، JWT، Hash، UUID وTimestamp.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"]],
-  ["security", "مركز الأمان — كلمات مرور وTOTP محلياً", "أنشئ كلمات مرور واختبر قوتها واستخدم TOTP. لا تُرسل الأسرار أو كلمات المرور إلى أي خادم.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator"]],
-  ["calculators", "مركز الحاسبات — حسابات مجانية في المتصفح", "حاسبات العمر ومؤشر كتلة الجسم والنسب والوحدات — سريعة ومجانية.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]]
+  ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"]],
+  ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"]],
+  ["security", "Security Tools — Passwords and TOTP Locally", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator"]],
+  ["calculators", "Free Browser Calculators", "Calculate age, BMI, percentages, and unit conversions quickly in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]]
 ]) {
   const items = related.map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
   const cards = items.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"ar"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("");
-  writePage(`${slug}/index.html`, shell({ title: `${title} | DouNest`, description, canonicalPath: `${slug}/`, jsonLd: [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+slug+"/","inLanguage":"ar"},{"@context":"https://schema.org","@type":"ItemList","itemListElement":items.map((t,i)=>({"@type":"ListItem","position":i+1,"name":pick(t.name,"ar"),"url":SITE+"tools/"+t.slug+"/"}))}, centerFaqSchema(slug,"ar")], bodyContent: `<section class="page-head"><h1>${esc(title)}</h1><p>${esc(description)}</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section>${centerContentMarkup(slug,"ar")}<section class="section"><h2 class="section-title">أدوات ${esc(title.split("—")[0])}</h2><div class="tools-grid">${cards}</div></section>` }));
+  writePage(`${slug}/index.html`, shell({ lang: "en", title: `${title} | DouNest`, description, canonicalPath: `${slug}/`, jsonLd: [{"@context":"https://schema.org","@type":"CollectionPage","name":title,"url":SITE+slug+"/","inLanguage":"ar"},{"@context":"https://schema.org","@type":"ItemList","itemListElement":items.map((t,i)=>({"@type":"ListItem","position":i+1,"name":pick(t.name,"ar"),"url":SITE+"tools/"+t.slug+"/"}))}, centerFaqSchema(slug,"en")], bodyContent: `<section class="page-head"><h1>${esc(title)}</h1><p>${esc(description)}</p></section><section class="workspace" id="center-workspace"><p class="empty">افتح الصفحة في متصفحك لاستخدام مساحة العمل التفاعلية.</p></section>${centerContentMarkup(slug,"en")}<section class="section"><h2 class="section-title">أدوات ${esc(title.split("—")[0])}</h2><div class="tools-grid">${cards}</div></section>` }));
 }
 
 /* ---------- 3b) Tools hub page (was missing -> /tools/ returned HTTP 404) ---------- */
@@ -684,8 +689,8 @@ console.log("→ tools hub page");
         ${items.map(t2 => `
         <a class="tool-card" href="${t2.slug}/">
           <div class="icon cat-${t2.category}" aria-hidden="true">${t2.icon}</div>
-          <h3>${esc(pick(t2.name, "ar"))}</h3>
-          <p>${esc(pick(t2.short, "ar"))}</p>
+          <h3>${esc(pick(t2.name, "en"))}</h3>
+          <p>${esc(pick(t2.short, "en"))}</p>
           <div class="card-foot"><span class="badge tiny">${esc(CAT_LABEL_AR[t2.category] || t2.category)}</span></div>
         </a>`).join("")}
       </div>
@@ -694,12 +699,12 @@ console.log("→ tools hub page");
   writePage(
     "tools/index.html",
     shell({
-      title: "كل الأدوات — DouNest",
+      title: "All Tools — DouNest",
       description: TOOLS.length + " أداة مجانية تعمل محلياً في متصفحك: JSON، Base64، JWT، PDF، QR، ألوان، نصوص، Excel، إزالة خلفية الصور، OCR، وأكثر — مصنّفة حسب الاستخدام.",
       canonicalPath: "tools/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "CollectionPage",
-        "name": "كل الأدوات — DouNest", "url": `${SITE}tools/`, "inLanguage": "ar"
+        "name": "All Tools — DouNest", "url": `${SITE}tools/`, "inLanguage": "ar"
       }],
       bodyContent: `
     <section class="page-head">
@@ -725,7 +730,7 @@ console.log("→ articles hub page");
   writePage(
     "articles/index.html",
     shell({
-      title: "المقالات — DouNest",
+      title: "Articles — DouNest",
       description: "دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest.",
       canonicalPath: "articles/",
       bodyContent: `
@@ -761,11 +766,11 @@ console.log("→ faq page");
     if (!items.length) return "";
     return `
     <section class="section">
-      <h2 class="section-title">${esc(pick(label, "ar"))}</h2>
+      <h2 class="section-title">${esc(pick(label, "en"))}</h2>
       ${items.map(f => `
       <details class="faq-item">
-        <summary>${esc(f.q.ar)}</summary>
-        <p>${esc(f.a.ar)}</p>
+        <summary>${esc(pick(f.q, "en"))}</summary>
+        <p>${esc(pick(f.a, "en"))}</p>
       </details>`).join("")}
     </section>`;
   }).join("");
@@ -780,23 +785,23 @@ console.log("→ faq page");
     </section>`;
   writePage(
     "faq/index.html",
-    shell({
-      title: "الأسئلة الشائعة — تحويل الصيغ وPDF والصور | DouNest",
-      description: "إجابات لأكثر أسئلة البحث شيوعاً: تحويل صورة إلى PDF، إزالة الخلفية، ضغط PDF، استخراج نص OCR، HEIC إلى JPG، Excel إلى CSV — وكل ذلك بدون رفع ملفاتك.",
+    shell({ lang: "en",
+      title: "FAQ — File Conversion, PDF and Image Tools | DouNest",
+      description: "Answers about image-to-PDF, background removal, PDF compression, OCR, HEIC to JPG, and Excel conversion—with no file uploads.",
       canonicalPath: "faq/",
       jsonLd: [{
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": faqItems.map(f => ({
           "@type": "Question",
-          "name": f.q.ar,
-          "acceptedAnswer": { "@type": "Answer", "text": f.a.ar }
+          "name": pick(f.q, "en"),
+          "acceptedAnswer": { "@type": "Answer", "text": pick(f.a, "en") }
         }))
       }],
       bodyContent: `
     <section class="page-head">
-      <h1>${esc(L.ar.faqTitle)}</h1>
-      <p>${esc(L.ar.faqSub)}</p>
+      <h1>${esc(L.en.faqTitle)}</h1>
+      <p>${esc(L.en.faqSub)}</p>
     </section>
 ${sections}
 ${enSection}`
@@ -806,15 +811,16 @@ ${enSection}`
 
 /* ---------- Temporary email landing page ---------- */
 {
-  const copy = getMailCopy("ar");
-  const pageTitle = "البريد الإلكتروني المؤقت";
+  const copy = getMailCopy("en");
+  const pageTitle = "Temporary Email";
   writePage("mail/index.html", shell({
+    lang: "en",
     title: `${pageTitle} — DouNest`,
     description: copy.description,
     canonicalPath: "mail/",
-    jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": pageTitle, "description": copy.description, "url": `${SITE}mail/`, "inLanguage": "ar" }],
-    bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${pageTitle}</h1><p class="lead">خدمة بريد مؤقت مستقلة عن أدوات DouNest التي تعالج الملفات محلياً. أنشئ عنواناً عشوائياً لاستقبال الرسائل فقط؛ تنتهي صلاحية الصندوق بعد نحو ساعة. لا تستخدمه للحسابات المهمة أو الرسائل الحساسة.</p></section>
-      <section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">افتح واجهة البريد المؤقت ↗</a><p>${esc(copy.warning)}</p></section>`
+    jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": pageTitle, "description": copy.description, "url": `${SITE}mail/`, "inLanguage": "en" }],
+    bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${pageTitle}</h1><p class="lead">A disposable email service separate from DouNest browser tools. Create a random address for short-lived messages; inboxes expire after about one hour. Do not use it for important accounts or sensitive messages.</p></section>
+      <section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">Open temporary email ↗</a><p>${esc(copy.warning)}</p></section>`
   }));
 }
 
@@ -846,9 +852,6 @@ const urls = [
     p: code === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${code}/`, pr: "0.7"
   }))),
   { p: "ai/", pr: "0.6" },
-  { p: "rare/", pr: "0.6" },
-  ...RARE_CATS.filter(c => c.id !== "security").map(c => ({ p: `rare/${c.id}/`, pr: "0.5" })),
-  ...RARE_TOOLS_DATA.filter(t2 => t2.cat !== "security").map(t2 => ({ p: `rare/${t2.slug}/`, pr: "0.5" })),
   { p: "about/", pr: "0.4" },
   { p: "contact/", pr: "0.4" },
   { p: "privacy/", pr: "0.3" },

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مفكّك JWT — DouNest</title>
-<meta name="description" content="اقرأ محتوى رموز JWT." />
+<title>JWT Decoder — DouNest</title>
+<meta name="description" content="Inspect JWT payload." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/jwt-decoder/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/jwt-decoder/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/jwt-decoder/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مفكّك JWT — DouNest" />
-<meta property="og:description" content="اقرأ محتوى رموز JWT." />
+<meta property="og:title" content="JWT Decoder — DouNest" />
+<meta property="og:description" content="Inspect JWT payload." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/jwt-decoder/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مفكّك JWT — DouNest" />
-<meta name="twitter:description" content="اقرأ محتوى رموز JWT." />
+<meta name="twitter:title" content="JWT Decoder — DouNest" />
+<meta name="twitter:description" content="Inspect JWT payload." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مفكّك JWT","description":"اقرأ محتوى رموز JWT.","keywords":"jwt, auth, مصادقة, tokens, مطورين, security","url":"https://dounest.hmdevelop.me/tools/jwt-decoder/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يمكن للأداة التحقق من التوقيع؟","acceptedAnswer":{"@type":"Answer","text":"لا — التحقق يحتاج المفتاح السري المملوك للخادم، وهي مصممة للعرض والتحليل فقط."}},{"@type":"Question","name":"لماذا أرى رموزاً غريبة في الحمولة؟","acceptedAnswer":{"@type":"Answer","text":"غالباً الرمز ناقص أو مضاف إليه أقواس من النسخ — الصق الأجزاء الثلاثة كما هي مفصولة بنقطتين فقط."}},{"@type":"Question","name":"هل رمز JWT آمن إذا أرسلته هنا؟","acceptedAnswer":{"@type":"Answer","text":"المعالجة محلية 100%، لكن كقاعدة مهنية لا تلصق رموز إنتاج حية في أي أداة أونلاين."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"مفكّك JWT","item":"https://dounest.hmdevelop.me/tools/jwt-decoder/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"JWT Decoder","description":"Inspect JWT payload.","keywords":"jwt, auth, مصادقة, tokens, مطورين, security","url":"https://dounest.hmdevelop.me/tools/jwt-decoder/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can the tool verify the signature?","acceptedAnswer":{"@type":"Answer","text":"No — verification needs the secret key owned by the server; the tool is for inspection and analysis only."}},{"@type":"Question","name":"Why do I see strange characters in the payload?","acceptedAnswer":{"@type":"Answer","text":"Usually the token is truncated or has quotes from copying — paste the three parts exactly, separated by two dots."}},{"@type":"Question","name":"Is a JWT safe if I paste it here?","acceptedAnswer":{"@type":"Answer","text":"Processing is 100% local, but as professional hygiene never paste live production tokens into any online tool."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"JWT Decoder","item":"https://dounest.hmdevelop.me/tools/jwt-decoder/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">مفكّك JWT</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">JWT Decoder</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">🔑</div>
         <div>
-          <h1>مفكّك JWT</h1>
-          <p class="lead">اقرأ محتوى رموز JWT.</p>
+          <h1>JWT Decoder</h1>
+          <p class="lead">Inspect JWT payload.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">اقرأ محتوى رموز JWT.</p>
+          <p class="empty" style="margin:0">Inspect JWT payload.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق رمز JWT الكامل (ال ثلاثي الأجزاء مفصولة بنقاط) في مربع المدخل.</li><li>اضغط فك الترميز لعرض الهيدر والحمولة في جدولين منفصلين.</li><li>راجع حقول exp و iat لمعرفة أوقات الصلاحية والإصدار.</li><li>افحص الخوارزمية المعلنة في الهيدر (HS256 أو RS256 أو غيرها).</li><li>انتبه لرسالة انتهاء الصلاحية الحمراء إن كان الرمز منتهياً.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste the full JWT (three dot-separated parts) into the input.</li><li>Press Decode to display the header and payload as two separate tables.</li><li>Check the exp and iat fields for expiry and issue times.</li><li>Inspect the algorithm declared in the header (HS256, RS256, etc.).</li><li>Watch for the red expiry notice if the token has already expired.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>رمز JWT هو معيار المصادقة الأشهر في واجهات API الحديثة: ثلاثة أجزاء — هيدر يصف الخوارزمية، حمولة تحمل الادعاءات (من المستخدم، أدواره، صلاحياته)، وتوقيع يضمن عدم العبث. الأجزاء الثلاثة تُرمز Base64 وليست مشفرة، ولهذا يقرؤها مفكك JWT بسهولة.</p><p>الأداة تكشف حقيقة يجهلها كثيرون: أي شخص يستطيع قراءة محتوى الرمز؛ الحماية الحقيقية في التوقيع فقط، الذي يمنع التزوير لا القراءة. لذلك لا تضع أبداً بيانات حساسة داخل الحمولة.</p><p>فحص تواريخ exp وiat يدوياً يتطلب حسابات Timestamp مزعجة، والأداة تحولها إلى تواريخ بشرية مباشرة وتخبرك إن كان الرمز ما زال صالحاً الآن.</p><p>يستخدم المطورون الأداة يومياً لتشخيص مشاكل المصادقة: لماذا رُفض الرمز؟ هل انتهت صلاحيته فعلاً أم أن الخادم يرفض التوقيع؟ هل الادعاءات التي أرسلها الخادم هي التي توقعتها؟</p><p>ملاحظة أمان صريحة: الأداة تعمل محلياً وتعرض المحتوى فقط، لكن تجنب لصق رموز الإنتاج الحية كعادة عام — حتى لو كانت قراءتها محلياً آمنة نظرياً، فالشفافية في الأدوات الأمنية أفضل.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يمكن للأداة التحقق من التوقيع؟</summary><p>لا — التحقق يحتاج المفتاح السري المملوك للخادم، وهي مصممة للعرض والتحليل فقط.</p></details><details class="faq-item"><summary>لماذا أرى رموزاً غريبة في الحمولة؟</summary><p>غالباً الرمز ناقص أو مضاف إليه أقواس من النسخ — الصق الأجزاء الثلاثة كما هي مفصولة بنقطتين فقط.</p></details><details class="faq-item"><summary>هل رمز JWT آمن إذا أرسلته هنا؟</summary><p>المعالجة محلية 100%، لكن كقاعدة مهنية لا تلصق رموز إنتاج حية في أي أداة أونلاين.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>A JWT is the most popular authentication standard in modern APIs: three parts — a header describing the algorithm, a payload carrying claims (who the user is, roles, permissions), and a signature guaranteeing tamper-proofing. All three are Base64-encoded, not encrypted, which is why a decoder reads them so easily.</p><p>The tool reveals a truth many miss: anyone can read the token&#39;s contents; the real protection is the signature alone, which prevents forgery, not reading. So never place sensitive data inside the payload.</p><p>Checking exp and iat manually requires annoying timestamp math — the tool converts them into human dates and tells you whether the token is still valid right now.</p><p>Developers use it daily to debug authentication: why was the token rejected? Did it really expire, or is the server rejecting the signature? Are the claims the server sent the ones you expected?</p><p>An honest security note: the tool works locally and only displays content, but as a general habit avoid pasting live production tokens — even though local-only reading is theoretically safe, transparency is best practice for security tooling.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Can the tool verify the signature?</summary><p>No — verification needs the secret key owned by the server; the tool is for inspection and analysis only.</p></details><details class="faq-item"><summary>Why do I see strange characters in the payload?</summary><p>Usually the token is truncated or has quotes from copying — paste the three parts exactly, separated by two dots.</p></details><details class="faq-item"><summary>Is a JWT safe if I paste it here?</summary><p>Processing is 100% local, but as professional hygiene never paste live production tokens into any online tool.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=jwt">#jwt</a><a class="hash-chip" href="/tools/?q=auth">#auth</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B5%D8%A7%D8%AF%D9%82%D8%A9">#مصادقة</a><a class="hash-chip" href="/tools/?q=tokens">#tokens</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/tools/?q=security">#security</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>ترميز Base64</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>مولّد Hash</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a>
+            <a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>Base64 Encoder</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>Hash Generator</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

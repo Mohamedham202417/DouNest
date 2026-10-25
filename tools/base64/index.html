@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>ترميز Base64 — DouNest</title>
-<meta name="description" content="ترميز وفك ترميز نصوص Base64." />
+<title>Base64 Encoder — DouNest</title>
+<meta name="description" content="Encode and decode Base64." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/base64/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/base64/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/base64/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="ترميز Base64 — DouNest" />
-<meta property="og:description" content="ترميز وفك ترميز نصوص Base64." />
+<meta property="og:title" content="Base64 Encoder — DouNest" />
+<meta property="og:description" content="Encode and decode Base64." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/base64/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ترميز Base64 — DouNest" />
-<meta name="twitter:description" content="ترميز وفك ترميز نصوص Base64." />
+<meta name="twitter:title" content="Base64 Encoder — DouNest" />
+<meta name="twitter:description" content="Encode and decode Base64." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ترميز Base64","description":"ترميز وفك ترميز نصوص Base64.","keywords":"base64, encoding, ترميز, data-uri, مطورين, unicode","url":"https://dounest.hmdevelop.me/tools/base64/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل Base64 تشفير آمن؟","acceptedAnswer":{"@type":"Answer","text":"إطلاقاً — إنها ترميز قابل للفك عكسياً بأي أداة. استخدم مكتبات تشفير حقيقية مثل AES لما يحتاج حماية."}},{"@type":"Question","name":"لماذا تزداد قيمة النص حجمًا؟","acceptedAnswer":{"@type":"Answer","text":"لأن كل 3 بايت تصبح 4 أحرف، فالزيادة نحو 33% طبيعية ومقصودة في التصميم."}},{"@type":"Question","name":"هل يدعم الترميز العربية والإيموجي؟","acceptedAnswer":{"@type":"Answer","text":"نعم، الأداة تعامل UTF-8 بشكل صحيح فلا تُتلف الحروف غير اللاتينية عند الترميز أو الفك."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"ترميز Base64","item":"https://dounest.hmdevelop.me/tools/base64/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Base64 Encoder","description":"Encode and decode Base64.","keywords":"base64, encoding, ترميز, data-uri, مطورين, unicode","url":"https://dounest.hmdevelop.me/tools/base64/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Base64 secure encryption?","acceptedAnswer":{"@type":"Answer","text":"Not at all — it is reversible encoding any tool can decode. Use real encryption libraries like AES for anything that needs protection."}},{"@type":"Question","name":"Why does the encoded text get bigger?","acceptedAnswer":{"@type":"Answer","text":"Because every 3 bytes become 4 characters; the ~33% growth is natural and by design."}},{"@type":"Question","name":"Does it support Arabic and emoji?","acceptedAnswer":{"@type":"Answer","text":"Yes — the tool handles UTF-8 correctly, so non-Latin characters survive both encode and decode."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Base64 Encoder","item":"https://dounest.hmdevelop.me/tools/base64/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">ترميز Base64</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Base64 Encoder</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-encode" aria-hidden="true">64</div>
         <div>
-          <h1>ترميز Base64</h1>
-          <p class="lead">ترميز وفك ترميز نصوص Base64.</p>
+          <h1>Base64 Encoder</h1>
+          <p class="lead">Encode and decode Base64.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">encode</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">ترميز وفك ترميز نصوص Base64.</p>
+          <p class="empty" style="margin:0">Encode and decode Base64.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اختر الوضع: ترميز نص إلى Base64 أو فك ترميز Base64 إلى نص.</li><li>الصق النص أو الـ Base64 في مربع المدخل المناسب.</li><li>اضغط زر التنفيذ لتحصل على النتيجة فوراً.</li><li>انسخ الناتج بنقرة واحدة أو نزّله ملفاً.</li><li>للبيانات الثنائية الصغيرة، استخدم وضع رفع الملف لتشفيره مباشرة.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Choose the mode: encode text to Base64 or decode Base64 to text.</li><li>Paste your text or Base64 into the matching input box.</li><li>Press Run to get the result instantly.</li><li>Copy the output with one click or download it as a file.</li><li>For small binary data, use the file-upload mode to encode it directly.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>Base64 طريقة لتمثيل بيانات ثنائية بأحرف نصية آمنة، وُلدت لحاجة عملية: قنوات مثل البريد الإلكتروني وبعض بروتوكولات الويب مصممة للنص، فتحتاج الصور والتوقيعات والملفات إلى تمثيل نصي يمر عبرها دون أن تتلف.</p><p>الترميز يأخذ كل ثلاث بايتات ويحولها إلى أربعة أحرف من مجموعة آمنة من 64 رمزاً، لذلك يتضخم الحجم بنحو الثلث — وهذا طبيعي وليس خللاً، وهو ثمن التوافق الشامل الذي يقدمه.</p><p>أهم استخدام عملي اليوم هو Data URLs: تضمين صورة صغيرة مباشرة في CSS أو HTML كسلسلة base64 توفير طلب شبكة إضافياً، وهو ما تفعله الأداة لك من وضع رفع الملف مباشرة.</p><p>تنبيه أمني مهم: Base64 ترميز وليس تشفيراً؛ أي شخص يستطيع فكها في ثوانٍ، فلا تستخدمها أبداً لإخفاء كلمات مرور أو بيانات حساسة، وإنما لنقل البيانات عبر قنوات نصية فقط.</p><p>الأداة تتعامل مع Unicode بشكل صحيح — النصوص العربية والرموز التعبيرية تُرمز وتُفك دون تلف، وهي مشكلة كلاسيكية في تطبيقات base64 السريعة المكتوبة بشكل خاطئ.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل Base64 تشفير آمن؟</summary><p>إطلاقاً — إنها ترميز قابل للفك عكسياً بأي أداة. استخدم مكتبات تشفير حقيقية مثل AES لما يحتاج حماية.</p></details><details class="faq-item"><summary>لماذا تزداد قيمة النص حجمًا؟</summary><p>لأن كل 3 بايت تصبح 4 أحرف، فالزيادة نحو 33% طبيعية ومقصودة في التصميم.</p></details><details class="faq-item"><summary>هل يدعم الترميز العربية والإيموجي؟</summary><p>نعم، الأداة تعامل UTF-8 بشكل صحيح فلا تُتلف الحروف غير اللاتينية عند الترميز أو الفك.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Base64 represents binary data using safe text characters, born from a practical need: channels like email and some web protocols are text-oriented, so images, signatures and files need a text representation that survives the trip undamaged.</p><p>Encoding takes every three bytes and converts them into four characters from a 64-symbol alphabet, so size grows by about a third — normal, not a bug, and the price of universal compatibility.</p><p>The most practical modern use is Data URLs: embedding a small image directly into CSS or HTML as a base64 string saves an extra network request, which the file-upload mode does for you instantly.</p><p>A critical security note: Base64 is encoding, not encryption; anyone can decode it in seconds. Never use it to hide passwords or sensitive data — only to move binary payloads through text channels.</p><p>The tool handles Unicode correctly — Arabic text and emoji encode and decode without corruption, a classic failure in hastily written base64 implementations.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Is Base64 secure encryption?</summary><p>Not at all — it is reversible encoding any tool can decode. Use real encryption libraries like AES for anything that needs protection.</p></details><details class="faq-item"><summary>Why does the encoded text get bigger?</summary><p>Because every 3 bytes become 4 characters; the ~33% growth is natural and by design.</p></details><details class="faq-item"><summary>Does it support Arabic and emoji?</summary><p>Yes — the tool handles UTF-8 correctly, so non-Latin characters survive both encode and decode.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=base64">#base64</a><a class="hash-chip" href="/tools/?q=encoding">#encoding</a><a class="hash-chip" href="/tools/?q=%D8%AA%D8%B1%D9%85%D9%8A%D8%B2">#ترميز</a><a class="hash-chip" href="/tools/?q=data-uri">#data-uri</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/tools/?q=unicode">#unicode</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/url-encoder/"><span class="icon sm">%</span><span>ترميز URL</span></a><a class="related-item" href="../../tools/jwt-decoder/"><span class="icon sm">🔑</span><span>مفكّك JWT</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>مولّد Hash</span></a>
+            <a class="related-item" href="../../tools/url-encoder/"><span class="icon sm">%</span><span>URL Encoder</span></a><a class="related-item" href="../../tools/jwt-decoder/"><span class="icon sm">🔑</span><span>JWT Decoder</span></a><a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>Hash Generator</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

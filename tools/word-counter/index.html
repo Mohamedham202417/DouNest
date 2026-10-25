@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>عدّاد الكلمات — DouNest</title>
-<meta name="description" content="احسب الكلمات والأحرف والأسطر." />
+<title>Word Counter — DouNest</title>
+<meta name="description" content="Count words, chars, lines." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/word-counter/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/word-counter/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/word-counter/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="عدّاد الكلمات — DouNest" />
-<meta property="og:description" content="احسب الكلمات والأحرف والأسطر." />
+<meta property="og:title" content="Word Counter — DouNest" />
+<meta property="og:description" content="Count words, chars, lines." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/word-counter/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="عدّاد الكلمات — DouNest" />
-<meta name="twitter:description" content="احسب الكلمات والأحرف والأسطر." />
+<meta name="twitter:title" content="Word Counter — DouNest" />
+<meta name="twitter:description" content="Count words, chars, lines." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"عدّاد الكلمات","description":"احسب الكلمات والأحرف والأسطر.","keywords":"word-counter, writing, كتابة, seo, editorial, text","url":"https://dounest.hmdevelop.me/tools/word-counter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"كيف يحسب العدّاد الكلمة العربية؟","acceptedAnswer":{"@type":"Answer","text":"يعتمد الفصل على المسافات مع دعم كامل للتصريف العربي، فالنتيجة مطابقة لعدّ معالجات النصوص."}},{"@type":"Question","name":"هل القراءة التقديرية دقيقة للنصوص التقنية؟","acceptedAnswer":{"@type":"Answer","text":"النصوص الكثيفة تقرأ أبطأ (150 كلمة/دقيقة) — اعتبر الرقم حداً أدنى وأضف 20% للنصوص التقنية."}},{"@type":"Question","name":"هل يُحفظ نصي في أي مكان؟","acceptedAnswer":{"@type":"Answer","text":"لا — التحليل محلي في الذاكرة فقط، وأي تحديث للصفحة يمسح النص نهائياً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"عدّاد الكلمات","item":"https://dounest.hmdevelop.me/tools/word-counter/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Word Counter","description":"Count words, chars, lines.","keywords":"word-counter, writing, كتابة, seo, editorial, text","url":"https://dounest.hmdevelop.me/tools/word-counter/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does it count Arabic words?","acceptedAnswer":{"@type":"Answer","text":"It splits on spaces with full Arabic morphology support, matching word-processor counts."}},{"@type":"Question","name":"Is the reading estimate accurate for technical text?","acceptedAnswer":{"@type":"Answer","text":"Dense text reads slower (~150 wpm) — treat the figure as a floor and add 20% for technical content."}},{"@type":"Question","name":"Is my text saved anywhere?","acceptedAnswer":{"@type":"Answer","text":"No — analysis stays in local memory only; refreshing the page clears the text for good."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Word Counter","item":"https://dounest.hmdevelop.me/tools/word-counter/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">عدّاد الكلمات</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Word Counter</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-text" aria-hidden="true">🔢</div>
         <div>
-          <h1>عدّاد الكلمات</h1>
-          <p class="lead">احسب الكلمات والأحرف والأسطر.</p>
+          <h1>Word Counter</h1>
+          <p class="lead">Count words, chars, lines.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">text</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">احسب الكلمات والأحرف والأسطر.</p>
+          <p class="empty" style="margin:0">Count words, chars, lines.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>الصق النص أو المقال في مربع الإدخال الكبير.</li><li>اقرأ الإحصاءات الفورية: الكلمات، الأحرف، الجمل، والفقرات.</li><li>تابع مؤقت قراءة التقديري (بالدقائق) بناءً على سرعة 200 كلمة بالدقيقة.</li><li>استخدم معلومات الكثافة لمعرفة أكثر كلماتك تكراراً.</li><li>حرر النص مباشرة إن أردت — الإحصاءات تتحدث مع كل ضغطة.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Paste your text or article into the large input box.</li><li>Read the live stats: words, characters, sentences and paragraphs.</li><li>Follow the estimated reading time (in minutes) based on 200 words per minute.</li><li>Use the density info to see your most repeated words.</li><li>Edit the text directly if you like — stats update with every keystroke.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>عدّاد الكلمات ليس ترفاً؛ الحدود الدنيا والعليا للكلمات قواعد صارمة في التقديمات الجامعية، ومواضيع SEO، وملخصات التنفيذية، ورسائل التقديم للوظائف — وتجاوز الحد أو نقصه يدوياً مستحيل عملياً على نص طويل.</p><p>مؤقت القراءة التقديري أداة تحريرية قوية: مقالة ويب مثالية تقع بين 900 و1300 كلمة أي 5-7 دقائق قراءة، وبيان صحفي يجب أن يقرأ في دقيقة — الأرقام توجهك فوراً.</p><p>عدّ الأحرف بأشكاله الثلاثة (مع الفراغات وبدونها) مهم لمواقع ذات حدود صارمة مثل تويتر/إكس والملخصات في نماذج التقديم الإلكترونية.</p><p>إحصاء الجمل والفقرات يكشف مشاكل البنية قبل أن يراها القارئ: فقرة واحدة بطول المقال كله، أو جمل بمتوسط 40 كلمة تقول إن النص يحتاج تنفساً.</p><p>الكل يحدث أثناء الكتابة نفسها دون أي زر تحديث — تجربة تسمح بتحرير مقالي حقيقي بدل نسخ ولصق متكرر.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>كيف يحسب العدّاد الكلمة العربية؟</summary><p>يعتمد الفصل على المسافات مع دعم كامل للتصريف العربي، فالنتيجة مطابقة لعدّ معالجات النصوص.</p></details><details class="faq-item"><summary>هل القراءة التقديرية دقيقة للنصوص التقنية؟</summary><p>النصوص الكثيفة تقرأ أبطأ (150 كلمة/دقيقة) — اعتبر الرقم حداً أدنى وأضف 20% للنصوص التقنية.</p></details><details class="faq-item"><summary>هل يُحفظ نصي في أي مكان؟</summary><p>لا — التحليل محلي في الذاكرة فقط، وأي تحديث للصفحة يمسح النص نهائياً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>A word counter is not a luxury; word limits are hard rules in university submissions, SEO briefs, executive summaries and job application letters — and manually tracking them on long text is practically impossible.</p><p>The estimated reading timer is a powerful editorial tool: a good web article sits between 900 and 1300 words (5-7 minutes), while a press release should read in one minute — the numbers steer you immediately.</p><p>Character counts in all three forms (with and without spaces) matter on strict platforms like X/Twitter and abstract fields in submission forms.</p><p>Sentence and paragraph counts expose structural problems before readers see them: one paragraph the length of the whole piece, or 40-word average sentences telling you the text needs breathing room.</p><p>Everything updates as you type with no refresh button — an experience enabling real editing rather than repeated paste-check cycles.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>How does it count Arabic words?</summary><p>It splits on spaces with full Arabic morphology support, matching word-processor counts.</p></details><details class="faq-item"><summary>Is the reading estimate accurate for technical text?</summary><p>Dense text reads slower (~150 wpm) — treat the figure as a floor and add 20% for technical content.</p></details><details class="faq-item"><summary>Is my text saved anywhere?</summary><p>No — analysis stays in local memory only; refreshing the page clears the text for good.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=word-counter">#word-counter</a><a class="hash-chip" href="/tools/?q=writing">#writing</a><a class="hash-chip" href="/tools/?q=%D9%83%D8%AA%D8%A7%D8%A8%D8%A9">#كتابة</a><a class="hash-chip" href="/tools/?q=seo">#seo</a><a class="hash-chip" href="/tools/?q=editorial">#editorial</a><a class="hash-chip" href="/tools/?q=text">#text</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/text-case/"><span class="icon sm">Aa</span><span>تحويل حالة النص</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a><a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>ترميز Base64</span></a>
+            <a class="related-item" href="../../tools/text-case/"><span class="icon sm">Aa</span><span>Text Case Converter</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a><a class="related-item" href="../../tools/base64/"><span class="icon sm">64</span><span>Base64 Encoder</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

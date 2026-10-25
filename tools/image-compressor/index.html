@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>ضاغط الصور — DouNest</title>
-<meta name="description" content="اضغط JPG/PNG/WebP محليًا." />
+<title>Image Compressor — DouNest</title>
+<meta name="description" content="Compress JPG/PNG/WebP locally." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/image-compressor/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/image-compressor/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/image-compressor/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="ضاغط الصور — DouNest" />
-<meta property="og:description" content="اضغط JPG/PNG/WebP محليًا." />
+<meta property="og:title" content="Image Compressor — DouNest" />
+<meta property="og:description" content="Compress JPG/PNG/WebP locally." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/image-compressor/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="ضاغط الصور — DouNest" />
-<meta name="twitter:description" content="اضغط JPG/PNG/WebP محليًا." />
+<meta name="twitter:title" content="Image Compressor — DouNest" />
+<meta name="twitter:description" content="Compress JPG/PNG/WebP locally." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"ضاغط الصور","description":"اضغط JPG/PNG/WebP محليًا.","keywords":"image-compressor, compression, ضغط-الصور, seo, performance, images","url":"https://dounest.hmdevelop.me/tools/image-compressor/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما أفضل قيمة جودة؟","acceptedAnswer":{"@type":"Answer","text":"0.7 للصور العادية و0.85 لصور المنتجات والمحافظ — القيم فوق 0.9 تضاعف الحجم بلا فرق يذكر."}},{"@type":"Question","name":"هل يُفقد أي بيانات نهائياً؟","acceptedAnswer":{"@type":"Answer","text":"نعم، ضغط JPEG تدميري بطبيعته — احفظ الأصل دائماً واضغط نسخة للنشر."}},{"@type":"Question","name":"هل تدعم PNG بالشفافية؟","acceptedAnswer":{"@type":"Answer","text":"الشفافية تُحفظ عند إخراج PNG، لكن التحويل إلى JPEG يمحوها لأن الصيغة لا تدعمها."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"ضاغط الصور","item":"https://dounest.hmdevelop.me/tools/image-compressor/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Compressor","description":"Compress JPG/PNG/WebP locally.","keywords":"image-compressor, compression, ضغط-الصور, seo, performance, images","url":"https://dounest.hmdevelop.me/tools/image-compressor/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the best quality value?","acceptedAnswer":{"@type":"Answer","text":"0.7 for general photos, 0.85 for product and portfolio images — above 0.9 doubles size for negligible gain."}},{"@type":"Question","name":"Is any data permanently lost?","acceptedAnswer":{"@type":"Answer","text":"Yes, JPEG compression is destructive by nature — always keep the original and compress a copy for publishing."}},{"@type":"Question","name":"Does it support PNG with transparency?","acceptedAnswer":{"@type":"Answer","text":"Transparency survives PNG output; converting to JPEG erases it since the format lacks alpha."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Image Compressor","item":"https://dounest.hmdevelop.me/tools/image-compressor/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">ضاغط الصور</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Image Compressor</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">🖼️</div>
         <div>
-          <h1>ضاغط الصور</h1>
-          <p class="lead">اضغط JPG/PNG/WebP محليًا.</p>
+          <h1>Image Compressor</h1>
+          <p class="lead">Compress JPG/PNG/WebP locally.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">اضغط JPG/PNG/WebP محليًا.</p>
+          <p class="empty" style="margin:0">Compress JPG/PNG/WebP locally.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب صورة JPG أو PNG أو WebP إلى منطقة الرفع.</li><li>اضبط جودة الضغط على الشريط — 0.7 نقطة البداية المثالية.</li><li>فعّل تغيير الأبعاد إن أردت تصغير الأبعاد مع الضغط.</li><li>قارن الحجم قبل وبعد المعاينة الفورية.</li><li>نزّل الصورة المضغوطة، أو اضغط كل الصور دفعة واحدة في الوضع الجماعي.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag a JPG, PNG or WebP image into the drop zone.</li><li>Set compression quality on the slider — 0.7 is the ideal starting point.</li><li>Enable resizing if you want smaller dimensions along with compression.</li><li>Compare before/after sizes in the instant preview.</li><li>Download the compressed image, or batch-compress everything at once.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>ضغط الصور ليس خياراً في الويب الحديث بل واجب: صورة من الهاتف الحديث تزن 4-8 ميجابايت، وصفحة بثلاث صور كهذه تحمل زائراً 20 ميجابايت بلا سبب — بينما الجودة 0.7 تخفض الحجم إلى 10% تقريباً بفرق بصري لا يُلاحظ.</p><p>السر التقني في مفاضلة JPEG: الصيغة تضحّي بمعلومات لا تميزها العين البشرية، وكلما خفضت الجودة ضحّيت بأكثر — المنطقة 0.6-0.8 هي المياه المثالية حيث يكون التوفير هائلاً والتدهور غير مرئي.</p><p>الضغط المحلي عبر canvas المتصفح يعني لا رفع ولا انتظار سيرفر ولا حد للعدد — المئات من الصور تمر بسلاسة على جهازك مباشرة، وهي ميزة لا تقدمها معظم المواقع المجانية التي ترفع صورك إليها.</p><p>لمواقع SEO ضغط الصور إشارة ترتيب غير مباشرة قوية: سرعة الصفحة metric من مقاييس Core Web Vitals الرسمية، والصور الثقيلة هي عدوها الأول.</p><p>نصيحة أخيرة: للصور المعروضة بعرض 800 بكسل لا معنى لرفعها بـ 4000 بكسل — فعّل تغيير الأبعاد مع الضغط معاً للنتيجة المثلى.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ما أفضل قيمة جودة؟</summary><p>0.7 للصور العادية و0.85 لصور المنتجات والمحافظ — القيم فوق 0.9 تضاعف الحجم بلا فرق يذكر.</p></details><details class="faq-item"><summary>هل يُفقد أي بيانات نهائياً؟</summary><p>نعم، ضغط JPEG تدميري بطبيعته — احفظ الأصل دائماً واضغط نسخة للنشر.</p></details><details class="faq-item"><summary>هل تدعم PNG بالشفافية؟</summary><p>الشفافية تُحفظ عند إخراج PNG، لكن التحويل إلى JPEG يمحوها لأن الصيغة لا تدعمها.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Image compression is not optional in the modern web, it is mandatory: a modern phone photo weighs 4-8 MB, and a page with three of those forces 20 MB on visitors for nothing — while quality 0.7 cuts size to roughly 10% with visually invisible loss.</p><p>The technical secret is JPEG&#39;s trade-off: the format discards information human eyes cannot distinguish, and lower quality discards more — the 0.6-0.8 zone is the sweet spot where savings are huge and degradation invisible.</p><p>Local compression through the browser canvas means no upload, no server wait, no count limit — hundreds of images flow smoothly on your own machine, an advantage most free sites (which upload your photos) do not offer.</p><p>For SEO, image compression is a strong indirect ranking signal: page speed is an official Core Web Vitals metric, and heavy images are its number-one enemy.</p><p>Final tip: an image displayed at 800px has no business being 4000px — enable resizing together with compression for the optimal result.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>What is the best quality value?</summary><p>0.7 for general photos, 0.85 for product and portfolio images — above 0.9 doubles size for negligible gain.</p></details><details class="faq-item"><summary>Is any data permanently lost?</summary><p>Yes, JPEG compression is destructive by nature — always keep the original and compress a copy for publishing.</p></details><details class="faq-item"><summary>Does it support PNG with transparency?</summary><p>Transparency survives PNG output; converting to JPEG erases it since the format lacks alpha.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=image-compressor">#image-compressor</a><a class="hash-chip" href="/tools/?q=compression">#compression</a><a class="hash-chip" href="/tools/?q=%D8%B6%D8%BA%D8%B7-%D8%A7%D9%84%D8%B5%D9%88%D8%B1">#ضغط-الصور</a><a class="hash-chip" href="/tools/?q=seo">#seo</a><a class="hash-chip" href="/tools/?q=performance">#performance</a><a class="hash-chip" href="/tools/?q=images">#images</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/resize-image/"><span class="icon sm">📐</span><span>تحجيم الصور</span></a><a class="related-item" href="../../tools/pdf-to-txt/"><span class="icon sm">📄</span><span>PDF إلى نص</span></a><a class="related-item" href="../../tools/color-picker/"><span class="icon sm">🖌️</span><span>منتقي الألوان</span></a>
+            <a class="related-item" href="../../tools/resize-image/"><span class="icon sm">📐</span><span>Image Resizer</span></a><a class="related-item" href="../../tools/pdf-to-txt/"><span class="icon sm">📄</span><span>PDF to Text</span></a><a class="related-item" href="../../tools/color-picker/"><span class="icon sm">🖌️</span><span>Color Picker</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

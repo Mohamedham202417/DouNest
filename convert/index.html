@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مركز تحويل الملفات — صيغ شائعة مدعومة | DouNest</title>
-<meta name="description" content="حوّل الصور وملفات PDF وCSV وJSON وXLSX وDOCX عبر مسارات محددة. تُعالج الملفات المختارة في المتصفح ولا تُرسل إلى خادم DouNest." />
+<title>File Conversion — Excel, CSV, JSON, PDF and Image Tools | DouNest</title>
+<meta name="description" content="Convert images, PDF, CSV, JSON, XLSX, and DOCX through focused browser tools. Your selected files are processed locally and are not uploaded." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/convert/" />
 
@@ -17,14 +17,14 @@
 <link rel="apple-touch-icon" href="../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مركز تحويل الملفات — صيغ شائعة مدعومة | DouNest" />
-<meta property="og:description" content="حوّل الصور وملفات PDF وCSV وJSON وXLSX وDOCX عبر مسارات محددة. تُعالج الملفات المختارة في المتصفح ولا تُرسل إلى خادم DouNest." />
+<meta property="og:title" content="File Conversion — Excel, CSV, JSON, PDF and Image Tools | DouNest" />
+<meta property="og:description" content="Convert images, PDF, CSV, JSON, XLSX, and DOCX through focused browser tools. Your selected files are processed locally and are not uploaded." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/convert/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مركز تحويل الملفات — صيغ شائعة مدعومة | DouNest" />
-<meta name="twitter:description" content="حوّل الصور وملفات PDF وCSV وJSON وXLSX وDOCX عبر مسارات محددة. تُعالج الملفات المختارة في المتصفح ولا تُرسل إلى خادم DouNest." />
+<meta name="twitter:title" content="File Conversion — Excel, CSV, JSON, PDF and Image Tools | DouNest" />
+<meta name="twitter:description" content="Convert images, PDF, CSV, JSON, XLSX, and DOCX through focused browser tools. Your selected files are processed locally and are not uploaded." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,12 +61,12 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز التحويل — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يحافظ تحويل PDF إلى Word على تنسيق الصفحة؟","acceptedAnswer":{"@type":"Answer","text":"لا. المسار الحالي يستخرج النص وينشئ ملف DOC مبنياً على HTML؛ قد لا يحافظ على الأعمدة أو الصور أو التخطيط. راجع المستند وعدّله قبل الاعتماد عليه."}},{"@type":"Question","name":"هل يحوّل PDF الممسوح إلى نص؟","acceptedAnswer":{"@type":"Answer","text":"لا يتضمن مسار PDF إلى TXT OCR؛ يعمل مع طبقة النص الموجودة في PDF. تحتاج الصفحات المصورة إلى أداة OCR منفصلة."}},{"@type":"Question","name":"هل يحافظ تحويل Excel على الصيغ؟","acceptedAnswer":{"@type":"Answer","text":"المسارات الحالية تنقل بيانات الخلايا إلى CSV أو JSON بصورة مبسطة ولا تضمن حفظ الصيغ أو التنسيق أو جميع أوراق المصنف."}},{"@type":"Question","name":"هل تُرفع الملفات إلى الخادم؟","acceptedAnswer":{"@type":"Answer","text":"الملفات المختارة تعالج في المتصفح ولا تُرسل إلى خادم DouNest؛ بعض مكتبات المعالجة تُحمّل من شبكة توصيل محتوى عند الحاجة."}},{"@type":"Question","name":"لماذا لا تظهر صيغة الإخراج التي أريدها؟","acceptedAnswer":{"@type":"Answer","text":"تُعرض فقط التحويلات التي يدعمها المركز لنوع الملف المكتشف. افتح أداة الصيغة المرتبطة أو اختر صيغة مصدر مدعومة."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does PDF-to-Word preserve the original layout?","acceptedAnswer":{"@type":"Answer","text":"No. The current path extracts text into an HTML-based .doc file; columns, images, and layout may not be preserved. Review and edit the document before relying on it."}},{"@type":"Question","name":"Can it OCR a scanned PDF?","acceptedAnswer":{"@type":"Answer","text":"No. PDF-to-TXT reads an existing text layer. Image-only pages need a separate OCR tool."}},{"@type":"Question","name":"Does Excel conversion preserve formulas?","acceptedAnswer":{"@type":"Answer","text":"The current paths move cell data into CSV or JSON in a simplified way and do not guarantee formulas, formatting, or every worksheet."}},{"@type":"Question","name":"Are files uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"Selected files are processed in your browser and are not sent to a DouNest server; some processing libraries are loaded from a content-delivery network when needed."}},{"@type":"Question","name":"Why is my desired output format missing?","acceptedAnswer":{"@type":"Answer","text":"The hub lists only conversions supported for the detected source type. Open a related format-specific tool or choose a supported source file."}}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -76,21 +76,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../" data-i18n="nav.home">Home</a>
+        <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
+          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a>
+          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../articles/" data-i18n="nav.articles">المقالات</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -109,101 +109,101 @@
 
         <a class="tool-card" href="/tools/image-converter/">
           <div class="icon cat-media" aria-hidden="true">🔄</div>
-          <h3>محوّل الصور</h3>
-          <p>حوّل بين JPG, PNG, WebP, AVIF, GIF.</p>
+          <h3>Image Converter</h3>
+          <p>Convert between JPG, PNG, WebP, AVIF, GIF.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/heic-to-jpg/">
           <div class="icon cat-media" aria-hidden="true">📱</div>
-          <h3>تحويل HEIC إلى JPG</h3>
-          <p>افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.</p>
+          <h3>HEIC to JPG</h3>
+          <p>Open iPhone HEIC photos and convert them to JPG.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/csv-to-json/">
           <div class="icon cat-dev" aria-hidden="true">📊</div>
-          <h3>CSV إلى JSON</h3>
-          <p>حوّل بيانات CSV إلى صيغة JSON.</p>
+          <h3>CSV to JSON</h3>
+          <p>Convert CSV data to JSON.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/json-to-csv/">
           <div class="icon cat-dev" aria-hidden="true">📈</div>
-          <h3>JSON إلى CSV</h3>
-          <p>حوّل مصفوفات JSON إلى CSV.</p>
+          <h3>JSON to CSV</h3>
+          <p>Convert JSON arrays to CSV.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/excel-to-csv/">
           <div class="icon cat-dev" aria-hidden="true">📊</div>
-          <h3>Excel إلى CSV</h3>
-          <p>حوّل جداول XLSX/XLS إلى CSV مع اختيار الورقة والفاصل.</p>
+          <h3>Excel to CSV</h3>
+          <p>Convert XLSX/XLS sheets to CSV with sheet &amp; delimiter choice.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/csv-to-excel/">
           <div class="icon cat-dev" aria-hidden="true">📗</div>
-          <h3>CSV إلى Excel</h3>
-          <p>حوّل ملفات CSV إلى جدول XLSX حقيقي يفتح في Excel.</p>
+          <h3>CSV to Excel</h3>
+          <p>Turn CSV files into real XLSX spreadsheets that open in Excel.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/excel-to-json/">
           <div class="icon cat-dev" aria-hidden="true">🧾</div>
-          <h3>Excel إلى JSON</h3>
-          <p>حوّل أوراق Excel إلى JSON جاهز للمبرمجين وواجهات API.</p>
+          <h3>Excel to JSON</h3>
+          <p>Convert Excel sheets to JSON ready for developers and APIs.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-txt/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>PDF إلى نص</h3>
-          <p>استخرج النص من ملفات PDF محليًا.</p>
+          <h3>PDF to Text</h3>
+          <p>Extract text from PDFs locally.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-jpg/">
           <div class="icon cat-media" aria-hidden="true">🖼️</div>
-          <h3>PDF إلى صور</h3>
-          <p>حوّل صفحات PDF إلى صور JPG بجودة قابلة للضبط.</p>
+          <h3>PDF to Images</h3>
+          <p>Render PDF pages to JPG images with adjustable quality.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-word/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>PDF إلى Word</h3>
-          <p>استخرج نص PDF إلى ملف DOC متوافق مع Word؛ قد يتغير تخطيط الصفحة.</p>
+          <h3>PDF to Word</h3>
+          <p>Extract PDF text to a Word-compatible DOC file; page layout may change.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/word-to-pdf/">
           <div class="icon cat-media" aria-hidden="true">📝</div>
-          <h3>Word إلى PDF</h3>
-          <p>حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.</p>
+          <h3>Word to PDF</h3>
+          <p>Convert DOCX documents to PDF via the print dialog.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/image-to-pdf/">
           <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>صورة إلى PDF</h3>
-          <p>حوّل صور JPG أو PNG إلى ملف PDF واحد.</p>
+          <h3>Image to PDF</h3>
+          <p>Convert JPG/PNG images into one PDF file.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/svg-to-png/">
           <div class="icon cat-media" aria-hidden="true">🖼️</div>
-          <h3>تحويل SVG إلى PNG</h3>
-          <p>حوّل رسومات SVG المتجهة إلى PNG شفاف وحدد العرض بالبكسل ولون الخلفية الاختياري.</p>
+          <h3>SVG to PNG</h3>
+          <p>Convert vector graphics into PNG images.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/json-yaml/">
           <div class="icon cat-dev" aria-hidden="true">🔁</div>
-          <h3>تحويل JSON وYAML</h3>
-          <p>حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.</p>
+          <h3>JSON to YAML Converter</h3>
+          <p>Convert JSON to YAML or back.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
       </div>
     </section>
-    <section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">اكتشف نوع الملف ثم حوّله إلى صيغة شائعة للعمل أو المشاركة. تختلف التحويلات المدعومة بحسب صيغة المصدر، وقد لا تحتفظ النسخة المحوّلة بالتنسيق أو الخطوط أو الصيغ الحسابية الأصلية.</p><h2>كيف تستخدم مركز التحويل</h2><ol class="hub-steps"><li>أضف ملفاً واحداً؛ تظهر الصيغ التي يدعمها المركز لهذا الامتداد.</li><li>اختر اتجاه التحويل، واضبط الجودة أو الخيارات المتاحة عند ظهورها.</li><li>نزّل الناتج وافتحه في التطبيق المستهدف للتأكد من النصوص والتنسيق والقيم قبل حذف المصدر.</li></ol><section class="hub-guide-section"><h2>التحويلات المدعومة</h2><p>تشمل المسارات المتاحة تحويل الصور بين PNG وJPG وWebP، واستخراج النص من PDF أو تصدير صفحاته كصور، وCSV إلى JSON والعكس، وجداول XLSX إلى CSV أو JSON، وDOCX إلى نص، وTXT إلى PDF، إضافةً إلى SVG إلى PNG وJSON ↔ YAML.</p></section><section class="hub-guide-section"><h2>ما الذي قد يتغير؟</h2><p>تحويل PDF إلى Word هنا يستخرج النص وينشئ ملف DOC متوافقاً بصيغة HTML، ولا يحافظ على تخطيط الصفحة الأصلي. كما أن قراءة جداول XLSX مبسطة وقد لا تشمل كل أوراق العمل أو الصيغ والتنسيقات؛ وPDF النصي يدعم الحروف اللاتينية بأفضل شكل. استخدم معاينة للتحقق من النتيجة.</p></section><section class="hub-guide-section"><h2>المعالجة والخصوصية</h2><p>التحويلات الأساسية تتم في المتصفح، ولا تُرسل الملفات المختارة إلى خادم DouNest. قد تُحمّل مكتبات التحويل عند الطلب من شبكة خارجية؛ إذا كانت الشبكة غير متاحة فلن تعمل بعض الصيغ.</p></section><section class="hub-faq"><h2>أسئلة شائعة</h2><details><summary>هل يحافظ تحويل PDF إلى Word على تنسيق الصفحة؟</summary><p>لا. المسار الحالي يستخرج النص وينشئ ملف DOC مبنياً على HTML؛ قد لا يحافظ على الأعمدة أو الصور أو التخطيط. راجع المستند وعدّله قبل الاعتماد عليه.</p></details><details><summary>هل يحوّل PDF الممسوح إلى نص؟</summary><p>لا يتضمن مسار PDF إلى TXT OCR؛ يعمل مع طبقة النص الموجودة في PDF. تحتاج الصفحات المصورة إلى أداة OCR منفصلة.</p></details><details><summary>هل يحافظ تحويل Excel على الصيغ؟</summary><p>المسارات الحالية تنقل بيانات الخلايا إلى CSV أو JSON بصورة مبسطة ولا تضمن حفظ الصيغ أو التنسيق أو جميع أوراق المصنف.</p></details><details><summary>هل تُرفع الملفات إلى الخادم؟</summary><p>الملفات المختارة تعالج في المتصفح ولا تُرسل إلى خادم DouNest؛ بعض مكتبات المعالجة تُحمّل من شبكة توصيل محتوى عند الحاجة.</p></details><details><summary>لماذا لا تظهر صيغة الإخراج التي أريدها؟</summary><p>تُعرض فقط التحويلات التي يدعمها المركز لنوع الملف المكتشف. افتح أداة الصيغة المرتبطة أو اختر صيغة مصدر مدعومة.</p></details></section></section>
+    <section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">Detect a file type and convert it to a practical format. Available paths depend on the source format; converted output may not retain original layout, fonts, or formulas.</p><h2>How to use the conversion hub</h2><ol class="hub-steps"><li>Add one file; the hub lists conversions supported for its detected extension.</li><li>Choose a direction and adjust quality or other settings when available.</li><li>Download the output and open it in the target app to verify text, layout, and values before replacing the source.</li></ol><section class="hub-guide-section"><h2>Supported conversion paths</h2><p>Available paths include PNG/JPG/WebP image conversion, PDF text extraction or page-image export, CSV ↔ JSON, XLSX to CSV or JSON, DOCX to text, TXT to PDF, SVG to PNG, and JSON ↔ YAML.</p></section><section class="hub-guide-section"><h2>What may change?</h2><p>PDF to Word extracts text into an HTML-based .doc file and does not preserve page layout. XLSX reading is simplified and may omit worksheets, formulas, or formatting; generated text PDFs render Latin characters best. Review converted output before relying on it.</p></section><section class="hub-guide-section"><h2>Processing and privacy</h2><p>Core conversions run in your browser; selected files are not sent to a DouNest server. Some conversion libraries load on demand from a content-delivery network, so those paths need network access.</p></section><section class="hub-faq"><h2>Frequently asked questions</h2><details><summary>Does PDF-to-Word preserve the original layout?</summary><p>No. The current path extracts text into an HTML-based .doc file; columns, images, and layout may not be preserved. Review and edit the document before relying on it.</p></details><details><summary>Can it OCR a scanned PDF?</summary><p>No. PDF-to-TXT reads an existing text layer. Image-only pages need a separate OCR tool.</p></details><details><summary>Does Excel conversion preserve formulas?</summary><p>The current paths move cell data into CSV or JSON in a simplified way and do not guarantee formulas, formatting, or every worksheet.</p></details><details><summary>Are files uploaded to a server?</summary><p>Selected files are processed in your browser and are not sent to a DouNest server; some processing libraries are loaded from a content-delivery network when needed.</p></details><details><summary>Why is my desired output format missing?</summary><p>The hub lists only conversions supported for the detected source type. Open a related format-specific tool or choose a supported source file.</p></details></section></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../about/" data-i18n="nav.about">حول</a>
-        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

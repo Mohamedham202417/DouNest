@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>مولّد UUID — DouNest</title>
-<meta name="description" content="أنشئ UUID v4 عشوائيًا." />
+<title>UUID Generator — DouNest</title>
+<meta name="description" content="Generate random UUID v4." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/uuid-generator/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/uuid-generator/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/uuid-generator/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="مولّد UUID — DouNest" />
-<meta property="og:description" content="أنشئ UUID v4 عشوائيًا." />
+<meta property="og:title" content="UUID Generator — DouNest" />
+<meta property="og:description" content="Generate random UUID v4." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/uuid-generator/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="مولّد UUID — DouNest" />
-<meta name="twitter:description" content="أنشئ UUID v4 عشوائيًا." />
+<meta name="twitter:title" content="UUID Generator — DouNest" />
+<meta name="twitter:description" content="Generate random UUID v4." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مولّد UUID","description":"أنشئ UUID v4 عشوائيًا.","keywords":"uuid, identifier, مطورين, random, database, uuid-generator","url":"https://dounest.hmdevelop.me/tools/uuid-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"هل يمكن أن يتكرر UUID v4؟","acceptedAnswer":{"@type":"Answer","text":"احتمالياً نعم لكنه عملياً مستحيل: فرص الاصطدام أقل بكثير من فرص ضربك برصاصة نيزك اليوم."}},{"@type":"Question","name":"ما الفرق بين v4 و v1؟","acceptedAnswer":{"@type":"Answer","text":"v1 مبنية على الوقت وعنوان الشبكة (قد يكشف مصدرها)، وv4 عشوائية بالكامل وأكثر خصوصية."}},{"@type":"Question","name":"هل UUID مناسب كمفتاح أساسي في قاعدة البيانات؟","acceptedAnswer":{"@type":"Answer","text":"نعم وخاصة في الأنظمة الموزعة، مع الانتباه لأن حجمه أكبر من الأعداد التسلسلية فأداء الفهارس يتأثر قليلاً."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"مولّد UUID","item":"https://dounest.hmdevelop.me/tools/uuid-generator/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"UUID Generator","description":"Generate random UUID v4.","keywords":"uuid, identifier, مطورين, random, database, uuid-generator","url":"https://dounest.hmdevelop.me/tools/uuid-generator/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can UUID v4 repeat?","acceptedAnswer":{"@type":"Answer","text":"Statistically yes, but practically impossible: collision odds are far below your odds of being hit by a meteorite today."}},{"@type":"Question","name":"What is the difference between v4 and v1?","acceptedAnswer":{"@type":"Answer","text":"v1 is time and network-address based (it can reveal its source); v4 is fully random and more privacy-friendly."}},{"@type":"Question","name":"Is UUID suitable as a database primary key?","acceptedAnswer":{"@type":"Answer","text":"Yes, especially in distributed systems — just note it is larger than sequential integers, slightly affecting index performance."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"UUID Generator","item":"https://dounest.hmdevelop.me/tools/uuid-generator/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">مولّد UUID</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">UUID Generator</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-dev" aria-hidden="true">🆔</div>
         <div>
-          <h1>مولّد UUID</h1>
-          <p class="lead">أنشئ UUID v4 عشوائيًا.</p>
+          <h1>UUID Generator</h1>
+          <p class="lead">Generate random UUID v4.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">dev</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">أنشئ UUID v4 عشوائيًا.</p>
+          <p class="empty" style="margin:0">Generate random UUID v4.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>حدد عدد المعرّفات التي تريدها (من 1 إلى 100).</li><li>اختر النسخة: v4 العشوائية هي الافتراضية لمعظم الاستخدامات.</li><li>اضغط توليد لتظهر المعرفات في القائمة.</li><li>انسخها جميعاً بنقرة أو انسخ معرفاً واحداً بالضغط عليه.</li><li>أعد التوليد بحرية — كل معرف فريد احتمالياً لا يتكرر عملياً أبداً.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Set how many identifiers you need (1 to 100).</li><li>Choose the version: random v4 is the default for most uses.</li><li>Press Generate and the IDs appear in the list.</li><li>Copy them all at once, or click one to copy it alone.</li><li>Regenerate freely — each ID is probabilistically unique and effectively never repeats.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>UUID معرف قياسي عالمي بطول 128 بت يُكتب 36 حرفاً بصيغة 8-4-4-4-12. النسخة v4 الأشهر تعتمد على العشوائية: احتمال تكرار معرفين من هذا النوع ضئيل لدرجة أن توليد بليون UUID في الثانية لمئة عام لن يصطدم بالتكرار عملياً.</p><p>لماذا لا نكفي بالعد التسلسلي 1، 2، 3؟ لأن الأنظمة الموزعة لا تجتمع على عداد مشترك؛ المعرف العشوائي يولّد في أي خادم أو جهاز أو فرع دون تنسيق مع أحد، وسيظل فريداً — هذا أساس تصميم قواعد البيانات الموزعة الحديثة.</p><p>الاستخدامات اليومية شاسعة: مفاتيح أجنبية في الجداول، معرفات طلبات API، أسماء ملفات لا تتصادم، معرفات جلسات، ومفاتيح تجريبية في الاختبارات.</p><p>هناك نسخ أخرى أقدم مثل v1 المبنية على العنوان الفيزيائي للشبكة والوقت، لكنها انخفضت شعبيتها لأنها تسرب معلومات عن مصدر التوليد، بينما v4 محايدة تماماً.</p><p>الأداة تستخدم crypto.getRandomValues المعتمدة تشفيرياً في متصفحك — ليست Math.random التي قد تتكرر، بل مصدر عشوائي حقيقي موجهة للأنظمة الأمنية.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>هل يمكن أن يتكرر UUID v4؟</summary><p>احتمالياً نعم لكنه عملياً مستحيل: فرص الاصطدام أقل بكثير من فرص ضربك برصاصة نيزك اليوم.</p></details><details class="faq-item"><summary>ما الفرق بين v4 و v1؟</summary><p>v1 مبنية على الوقت وعنوان الشبكة (قد يكشف مصدرها)، وv4 عشوائية بالكامل وأكثر خصوصية.</p></details><details class="faq-item"><summary>هل UUID مناسب كمفتاح أساسي في قاعدة البيانات؟</summary><p>نعم وخاصة في الأنظمة الموزعة، مع الانتباه لأن حجمه أكبر من الأعداد التسلسلية فأداء الفهارس يتأثر قليلاً.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>A UUID is a universal 128-bit identifier written as 36 characters in the 8-4-4-4-12 pattern. The popular v4 version is random: the chance of two v4 IDs colliding is so tiny that generating a billion per second for a hundred years would practically never collide.</p><p>Why not settle for sequential 1, 2, 3? Because distributed systems cannot agree on a shared counter; a random ID can be generated on any server, device or branch without coordinating with anyone and still stay unique — the foundation of modern distributed database design.</p><p>Daily uses are vast: foreign keys in tables, API request IDs, collision-free filenames, session identifiers and test fixtures.</p><p>Older versions exist, like v1 built from the network&#39;s physical address and time, but they lost popularity for leaking information about the generating source, while v4 is fully neutral.</p><p>The tool uses the cryptographically approved crypto.getRandomValues in your browser — not Math.random, which can repeat — a true entropy source designed for security systems.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>Can UUID v4 repeat?</summary><p>Statistically yes, but practically impossible: collision odds are far below your odds of being hit by a meteorite today.</p></details><details class="faq-item"><summary>What is the difference between v4 and v1?</summary><p>v1 is time and network-address based (it can reveal its source); v4 is fully random and more privacy-friendly.</p></details><details class="faq-item"><summary>Is UUID suitable as a database primary key?</summary><p>Yes, especially in distributed systems — just note it is larger than sequential integers, slightly affecting index performance.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=uuid">#uuid</a><a class="hash-chip" href="/tools/?q=identifier">#identifier</a><a class="hash-chip" href="/tools/?q=%D9%85%D8%B7%D9%88%D8%B1%D9%8A%D9%86">#مطورين</a><a class="hash-chip" href="/tools/?q=random">#random</a><a class="hash-chip" href="/tools/?q=database">#database</a><a class="hash-chip" href="/tools/?q=uuid-generator">#uuid-generator</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>مولّد Hash</span></a><a class="related-item" href="../../tools/password-generator/"><span class="icon sm">🔐</span><span>مولّد كلمات المرور</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>منسّق JSON</span></a>
+            <a class="related-item" href="../../tools/hash-generator/"><span class="icon sm">#</span><span>Hash Generator</span></a><a class="related-item" href="../../tools/password-generator/"><span class="icon sm">🔐</span><span>Password Generator</span></a><a class="related-item" href="../../tools/json-formatter/"><span class="icon sm">{}</span><span>JSON Formatter</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

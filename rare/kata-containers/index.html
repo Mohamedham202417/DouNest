@@ -4,9 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>Kata Containers — حاويات بعزل الأجهزة الافتراضية — أدوات نادرة — DouNest</title>
+<title>Kata Containers — Containers with VM-Grade Isolation — أدوات نادرة — DouNest</title>
 <meta name="description" content="Kata Containers مشروع يوحد أفضل عالمين: يشغّل الحاويات بنفس الخفة والسرعة المعتادة، لكن كل حاوية تعمل داخل جهاز افتراضي خفي خاص بها، فتحصل على عزل على مستوى ا" />
-<meta name="robots" content="index,follow" />
+<meta name="robots" content="noindex,nofollow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/rare/kata-containers/" />
 
 
@@ -17,13 +17,13 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="Kata Containers — حاويات بعزل الأجهزة الافتراضية — أدوات نادرة — DouNest" />
+<meta property="og:title" content="Kata Containers — Containers with VM-Grade Isolation — أدوات نادرة — DouNest" />
 <meta property="og:description" content="Kata Containers مشروع يوحد أفضل عالمين: يشغّل الحاويات بنفس الخفة والسرعة المعتادة، لكن كل حاوية تعمل داخل جهاز افتراضي خفي خاص بها، فتحصل على عزل على مستوى ا" />
 <meta property="og:url" content="https://dounest.hmdevelop.me/rare/kata-containers/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <meta property="og:locale" content="ar_AR" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Kata Containers — حاويات بعزل الأجهزة الافتراضية — أدوات نادرة — DouNest" />
+<meta name="twitter:title" content="Kata Containers — Containers with VM-Grade Isolation — أدوات نادرة — DouNest" />
 <meta name="twitter:description" content="Kata Containers مشروع يوحد أفضل عالمين: يشغّل الحاويات بنفس الخفة والسرعة المعتادة، لكن كل حاوية تعمل داخل جهاز افتراضي خفي خاص بها، فتحصل على عزل على مستوى ا" />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,7 +61,7 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+
 </head>
 <body>
   <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
@@ -75,7 +75,7 @@
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
         <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
         <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
           <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
@@ -84,7 +84,7 @@
           <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
           <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
         <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
       </nav>
       <div class="topbar-actions">

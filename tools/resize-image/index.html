@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>تحجيم الصور — DouNest</title>
-<meta name="description" content="غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة." />
+<title>Image Resizer — DouNest</title>
+<meta name="description" content="Resize images by width or percentage with format conversion." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/tools/resize-image/" />
 
-
+<link rel="alternate" hreflang="en" href="https://dounest.hmdevelop.me/tools/resize-image/" />
+<link rel="alternate" hreflang="x-default" href="https://dounest.hmdevelop.me/tools/resize-image/" />
 <link rel="manifest" href="../../manifest.json" />
 <link rel="alternate" type="application/rss+xml" title="DouNest" href="../../feed.xml" />
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png" />
@@ -17,14 +18,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="تحجيم الصور — DouNest" />
-<meta property="og:description" content="غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة." />
+<meta property="og:title" content="Image Resizer — DouNest" />
+<meta property="og:description" content="Resize images by width or percentage with format conversion." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/tools/resize-image/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="تحجيم الصور — DouNest" />
-<meta name="twitter:description" content="غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة." />
+<meta name="twitter:title" content="Image Resizer — DouNest" />
+<meta name="twitter:description" content="Resize images by width or percentage with format conversion." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-20-mvgfgqbb";
+  var B="v3-2026-10-25-mvo18c2h";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,13 +62,13 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"تحجيم الصور","description":"غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.","keywords":"resize-image, resize, أبعاد, images, seo, social-media","url":"https://dounest.hmdevelop.me/tools/resize-image/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"ما الفرق بين هذا والضغط؟","acceptedAnswer":{"@type":"Answer","text":"التغيير يعدل الأبعاد والبكسلات، والضغط يقلل جودة التخزين بنفس الأبعاد — استخدمهما معاً للأفضل."}},{"@type":"Question","name":"لماذا تشوهت صورتي؟","acceptedAnswer":{"@type":"Answer","text":"أدخلتي بعدين غير متطابقين النسبة — فعّل «الحفاظ على النسبة» أو أدخلي بُعداً واحداً فقط."}},{"@type":"Question","name":"هل التكبير يجيب جودة؟","acceptedAnswer":{"@type":"Answer","text":"لا — التكبير يضيف بكسلات مخترعة؛ الأدوات المدفوعة بالذكاء الاصطناعي أفضل لهذا الغرض."}}]}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"كل الأدوات","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"تحجيم الصور","item":"https://dounest.hmdevelop.me/tools/resize-image/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Image Resizer","description":"Resize images by width or percentage with format conversion.","keywords":"resize-image, resize, أبعاد, images, seo, social-media","url":"https://dounest.hmdevelop.me/tools/resize-image/","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is the difference between this and compression?","acceptedAnswer":{"@type":"Answer","text":"Resizing changes dimensions/pixels; compression reduces storage quality at same dimensions — use both together for best results."}},{"@type":"Question","name":"Why did my image distort?","acceptedAnswer":{"@type":"Answer","text":"You entered two non-proportional dimensions — enable «keep aspect ratio» or enter one dimension only."}},{"@type":"Question","name":"Does upscaling restore quality?","acceptedAnswer":{"@type":"Answer","text":"No — upscaling adds invented pixels; AI-powered paid tools suit that purpose better."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"DouNest","item":"https://dounest.hmdevelop.me/"},{"@type":"ListItem","position":2,"name":"All Tools","item":"https://dounest.hmdevelop.me/tools/"},{"@type":"ListItem","position":3,"name":"Image Resizer","item":"https://dounest.hmdevelop.me/tools/resize-image/"}]}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -77,21 +78,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
-        <a href="../../tools/" data-i18n="nav.allTools">كل الأدوات</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
+        <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
+          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a>
+          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">المقالات</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -101,17 +102,17 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="../../">DouNest</a><span class="sep">›</span>
-      <a href="../../tools/">كل الأدوات</a><span class="sep">›</span>
-      <span class="current">تحجيم الصور</span>
+      <a href="../../tools/">All Tools</a><span class="sep">›</span>
+      <span class="current">Image Resizer</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big cat-media" aria-hidden="true">📐</div>
         <div>
-          <h1>تحجيم الصور</h1>
-          <p class="lead">غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.</p>
+          <h1>Image Resizer</h1>
+          <p class="lead">Resize images by width or percentage with format conversion.</p>
           <div class="tool-meta">
-            <span class="badge success">🔒 تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span>
+            <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
             <span class="badge ghost">media</span>
           </div>
         </div>
@@ -120,25 +121,25 @@
     <div class="tool-layout">
       <div class="tool-maincol">
         <section class="workspace" id="tool-workspace">
-          <p class="empty" style="margin:0">غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.</p>
+          <p class="empty" style="margin:0">Resize images by width or percentage with format conversion.</p>
         </section>
         <section class="section">
-          <h2>طريقة الاستخدام</h2>
-          <ol class="steps"><li>اسحب صورة أو عدة صور إلى منطقة الرفع.</li><li>أدخل العرض أو الارتفاع الجديد — البعد الآخر يضبط تلقائياً بنفس النسبة.</li><li>أو اختر نسبة مئوية: 50% لتصغير سريع.</li><li>فعّل الحفاظ على النسبة لمنع تشويه الصورة.</li><li>نزّل النتائج فرادى أو في ZIP واحد للمجموعات.</li></ol>
+          <h2>How to use</h2>
+          <ol class="steps"><li>Drag one or more images into the drop zone.</li><li>Enter the new width or height — the other dimension adjusts automatically at the same ratio.</li><li>Or pick a percentage: 50% for a quick shrink.</li><li>Enable keep-aspect-ratio to prevent distortion.</li><li>Download results individually or as one ZIP for batches.</li></ol>
         </section>
         <section class="section">
-          <h2>شرح مفصّل</h2>
-          <div class="explanation"><p>تغيير أبعاد الصور حاجة خفية تتكرر في كل مكان: الموقع يطلب صورة غلاف 1200×630، ونموذج التأشيرة يريد صورة شخصية 600×600، ومتجر إلكتروني يفرض أبعاد منتجات محددة — كلها نفس العملية المتكررة.</p><p>الفرق الجوهري بين تغيير الأبعاد والضغط: الأول يعدل عدد البكسلات (800×600 بدل 4000×3000)، والثاني يحافظ على الأبعاد ويقلل جودة التخزين — غالباً تحتاج كليهما معاً لكنهما عمليتان منفصلتان.</p><p>الحفاظ على النسبة قاعدة لا تُكسر: تغيير عرض فقط دون ضبط الارتفاع يمط الصورة ويشوه الوجوه — الأداة تحسب البعد الثاني تلقائياً فلا تلحق الضرر.</p><p>التصغير آمن دائماً (تبديد بكسلات لا يضر)، أما التكبير الكبير فيفقد وضوحاً لأن البرنامج «يخترع» بكسلات جديدة — تجنب تكبير الصور الصغيرة إلى ملصقات.</p><p>الوضع الجماعي مخصص لحالات حقيقية: 200 صورة منتج يجب أن تصبح 800 بكسل عرضاً — مهمة دقائق هنا بدل ساعات في محرر صور.</p></div>
-        </section>
-
-        <section class="section">
-          <h2>أسئلة شائعة</h2>
-          <details class="faq-item"><summary>ما الفرق بين هذا والضغط؟</summary><p>التغيير يعدل الأبعاد والبكسلات، والضغط يقلل جودة التخزين بنفس الأبعاد — استخدمهما معاً للأفضل.</p></details><details class="faq-item"><summary>لماذا تشوهت صورتي؟</summary><p>أدخلتي بعدين غير متطابقين النسبة — فعّل «الحفاظ على النسبة» أو أدخلي بُعداً واحداً فقط.</p></details><details class="faq-item"><summary>هل التكبير يجيب جودة؟</summary><p>لا — التكبير يضيف بكسلات مخترعة؛ الأدوات المدفوعة بالذكاء الاصطناعي أفضل لهذا الغرض.</p></details>
+          <h2>Detailed explanation</h2>
+          <div class="explanation"><p>Resizing is a hidden need repeating everywhere: a site wants a 1200×630 cover, a visa form requires a 600×600 portrait, an e-commerce store enforces product dimensions — all the same repeating operation.</p><p>The fundamental difference from compression: resizing changes pixel count (800×600 instead of 4000×3000), while compression keeps dimensions and reduces storage quality — you often need both, but they are separate operations.</p><p>Keep-aspect-ratio is a rule never to break: changing width without adjusting height stretches the image and distorts faces — the tool computes the second dimension automatically so no harm lands.</p><p>Downscaling is always safe (discarding pixels harms nothing), while large upscaling loses sharpness because the software «invents» new pixels — avoid blowing small images into posters.</p><p>Batch mode serves real cases: 200 product photos that must become 800px wide — a minutes-long task here instead of hours in an image editor.</p></div>
         </section>
 
         <section class="section">
-          <h2>وسوم البحث</h2>
-          <div class="hash-chips" aria-label="الوسوم">
+          <h2>FAQ</h2>
+          <details class="faq-item"><summary>What is the difference between this and compression?</summary><p>Resizing changes dimensions/pixels; compression reduces storage quality at same dimensions — use both together for best results.</p></details><details class="faq-item"><summary>Why did my image distort?</summary><p>You entered two non-proportional dimensions — enable «keep aspect ratio» or enter one dimension only.</p></details><details class="faq-item"><summary>Does upscaling restore quality?</summary><p>No — upscaling adds invented pixels; AI-powered paid tools suit that purpose better.</p></details>
+        </section>
+
+        <section class="section">
+          <h2>Search topics</h2>
+          <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=resize-image">#resize-image</a><a class="hash-chip" href="/tools/?q=resize">#resize</a><a class="hash-chip" href="/tools/?q=%D8%A3%D8%A8%D8%B9%D8%A7%D8%AF">#أبعاد</a><a class="hash-chip" href="/tools/?q=images">#images</a><a class="hash-chip" href="/tools/?q=seo">#seo</a><a class="hash-chip" href="/tools/?q=social-media">#social-media</a>
   </div>
         </section>
@@ -147,9 +148,9 @@
 
 
         <div class="side-box">
-          <h3>أدوات ذات صلة</h3>
+          <h3>Related tools</h3>
           <div class="related-list">
-            <a class="related-item" href="../../tools/image-compressor/"><span class="icon sm">🖼️</span><span>ضاغط الصور</span></a><a class="related-item" href="../../tools/image-converter/"><span class="icon sm">🔄</span><span>محوّل الصور</span></a><a class="related-item" href="../../tools/heic-to-jpg/"><span class="icon sm">📱</span><span>تحويل HEIC إلى JPG</span></a>
+            <a class="related-item" href="../../tools/image-compressor/"><span class="icon sm">🖼️</span><span>Image Compressor</span></a><a class="related-item" href="../../tools/image-converter/"><span class="icon sm">🔄</span><span>Image Converter</span></a><a class="related-item" href="../../tools/heic-to-jpg/"><span class="icon sm">📱</span><span>HEIC to JPG</span></a>
           </div>
         </div>
       </aside>
@@ -157,13 +158,13 @@
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>
