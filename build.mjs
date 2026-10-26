@@ -81,8 +81,9 @@ const relPrefix = (p) => "../".repeat(p.split("/").filter(Boolean).length); // f
 const esc = (s) => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /* ---------- shared page template (absolute asset paths) ---------- */
-function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bodyContent, bodyClass = "", absolute = false, noindex = false, alternateLanguages = [], ogType = "website" }) {
+function shell({ lang = "ar", title, description, canonicalPath, canonicalUrl = null, jsonLd = [], bodyContent, bodyClass = "", absolute = false, noindex = false, alternateLanguages = [], ogType = "website" }) {
   const url = SITE + canonicalPath;
+  const seoUrl = canonicalUrl || url;
   const V = L[lang] || L.en;
   const ogLocale = ({ ar: "ar_AR", en: "en_US", fr: "fr_FR", es: "es_ES", de: "de_DE", tr: "tr_TR", ru: "ru_RU", zh: "zh_CN", hi: "hi_IN", pt: "pt_BR" })[lang] || "en_US";
   const content = String(bodyContent ?? "").trimEnd();
@@ -120,7 +121,7 @@ function shell({ lang = "ar", title, description, canonicalPath, jsonLd = [], bo
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}" />
 <meta name="robots" content="${noindex ? "noindex,nofollow" : "index,follow"}" />
-<link rel="canonical" href="${url}" />
+<link rel="canonical" href="${seoUrl}" />
 ${verificationMeta}
 ${hreflangLinks}
 <link rel="manifest" href="${R("manifest.json")}" />
@@ -132,7 +133,7 @@ ${hreflangLinks}
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="${esc(title)}" />
 <meta property="og:description" content="${esc(description)}" />
-<meta property="og:url" content="${url}" />
+<meta property="og:url" content="${seoUrl}" />
 <meta property="og:image" content="${SITE}assets/og-cover.png" />
 <meta property="og:locale" content="${ogLocale}" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -400,8 +401,12 @@ for (const a of getArticles()) {
       lang: code,
       url: SITE + (code === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${code}/`)
     }));
-    const englishPath = languages.includes("en") ? `articles/${a.slug}/en/` : `articles/${a.slug}/`;
-    alternates.push({ lang: "x-default", url: SITE + englishPath });
+    const englishPath = languages.includes("en") ? `articles/${a.slug}/en/` : canonicalPath;
+    const seoCanonicalUrl = SITE + englishPath;
+    const seoAlternates = lang === "en" ? [
+      { lang: "en", url: seoCanonicalUrl },
+      { lang: "x-default", url: seoCanonicalUrl }
+    ] : [];
     const tagsHtml = tags.length ? `<div class="article-tags"><div class="hash-chips" aria-label="${lang === "ar" ? "موضوعات المقال" : "Article topics"}">${tags.map(tag => `<span class="hash-chip">#${esc(tag)}</span>`).join("")}</div></div>` : "";
     const up = relPrefix(canonicalPath);
     const relatedSlug = a.slug === "speed-up-slow-windows-pc" ? "wifi-connected-no-internet" : a.slug === "wifi-connected-no-internet" ? "speed-up-slow-windows-pc" : null;
@@ -425,12 +430,14 @@ for (const a of getArticles()) {
       title: `${pageTitle} | DouNest`,
       description: excerpt,
       canonicalPath,
-      alternateLanguages: alternates,
+      canonicalUrl: seoCanonicalUrl,
+      noindex: lang !== "en",
+      alternateLanguages: seoAlternates,
       ogType: "article",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "Article",
         "headline": title, "description": excerpt,
-        "mainEntityOfPage": { "@type": "WebPage", "@id": SITE + canonicalPath },
+        "mainEntityOfPage": { "@type": "WebPage", "@id": seoCanonicalUrl },
         "image": `${SITE}assets/og-cover.png`,
         "datePublished": a.date, "dateModified": a.updated || a.date,
         "keywords": tags.join(", "), "inLanguage": lang,
@@ -699,8 +706,9 @@ console.log("→ tools hub page");
   writePage(
     "tools/index.html",
     shell({
+      lang: "en",
       title: "All Tools — DouNest",
-      description: TOOLS.length + " أداة مجانية تعمل محلياً في متصفحك: JSON، Base64، JWT، PDF، QR، ألوان، نصوص، Excel، إزالة خلفية الصور، OCR، وأكثر — مصنّفة حسب الاستخدام.",
+      description: TOOLS.length + " free browser tools for JSON, Base64, JWT, PDF, images, text, Excel, OCR, and more.",
       canonicalPath: "tools/",
       jsonLd: [{
         "@context": "https://schema.org", "@type": "CollectionPage",
@@ -708,8 +716,8 @@ console.log("→ tools hub page");
       }],
       bodyContent: `
     <section class="page-head">
-      <h1>كل الأدوات</h1>
-      <p>${TOOLS.length}+ أداة مجانية تعمل مباشرة في متصفحك — بدون تسجيل وبدون رفع ملفاتك إلى أي خادم، مصنّفة حسب الاستخدام.</p>
+      <h1>All Tools</h1>
+      <p>${TOOLS.length}+ free tools run directly in your browser—no signup and no file uploads.</p>
     </section>
     <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip">${[["pdf/","📄","مركز PDF"],["images/","🖼️","مركز الصور"],["convert/","🔄","مركز التحويل"],["text/","✍️","مركز النصوص"],["dev/","🧰","مركز المطورين"],["security/","🔐","مركز الأمان"],["calculators/","🧮","الحاسبات"],["mail/","✉️","بريد إلكتروني مؤقت"]].map(([p,i,n])=>`<a class="explore-card" href="${BASE}${p}"><strong>${i} ${n}</strong><span>أدوات وخدمات متخصصة</span></a>`).join("")}</div></section>
 ${cards}`
@@ -721,20 +729,21 @@ ${cards}`
 console.log("→ articles hub page");
 {
   const cards = getArticles().map(a => `
-      <a class="tool-card article" href="${a.slug}/">
+      <a class="tool-card article" href="${a.slug}/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>${esc(pick(a.title, "ar"))}</h3>
-        <p>${esc(pick(a.excerpt, "ar"))}</p>
+        <h3>${esc(pick(a.title, "en"))}</h3>
+        <p>${esc(pick(a.excerpt, "en"))}</p>
         <div class="card-foot"><span class="badge tiny">${esc(a.date)}</span></div>
       </a>`).join("");
   writePage(
     "articles/index.html",
     shell({
+      lang: "en",
       title: "Articles — DouNest",
-      description: "دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest.",
+      description: "Practical guides about privacy, file formats, browser tools, and password security from DouNest.",
       canonicalPath: "articles/",
       bodyContent: `
-    <section class="page-head"><h1>المقالات</h1></section>
+    <section class="page-head"><h1>Articles</h1></section>
     <div class="tools-grid">
 ${cards}
     </div>`
@@ -848,9 +857,9 @@ const urls = [
   { p: "mail/", pr: "0.8" },
   { p: "faq/", pr: "0.8" },
   { p: "articles/", pr: "0.7" },
-  ...getArticles().flatMap(a => ARTICLE_LANGS.filter(code => a.title?.[code] && a.content?.[code]).map(code => ({
-    p: code === "ar" ? `articles/${a.slug}/` : `articles/${a.slug}/${code}/`, pr: "0.7"
-  }))),
+  ...getArticles().flatMap(a => a.title?.en && a.content?.en ? [{
+    p: `articles/${a.slug}/en/`, pr: "0.7"
+  }] : []),
   { p: "ai/", pr: "0.6" },
   { p: "about/", pr: "0.4" },
   { p: "contact/", pr: "0.4" },
@@ -869,7 +878,7 @@ console.log("  ✓ sitemap.xml (" + urls.length + " URLs)");
 const xmlEsc = (v) => String(v || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
 const feedItems = getArticles().map(a => `<item><title>${xmlEsc(pick(a.title,"ar"))}</title><link>${SITE}articles/${a.slug}/</link><guid>${SITE}articles/${a.slug}/</guid><pubDate>${new Date(a.date || NOW).toUTCString()}</pubDate><description>${xmlEsc(pick(a.excerpt,"ar"))}</description></item>`).join("\n");
 writeFileSync(join(ROOT, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>DouNest — أدوات وأدلة</title><link>${SITE}</link><description>مقالات وأدلة عن أدوات المتصفح والتحويل والخصوصية</description><language>ar</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>${feedItems}</channel></rss>\n`);
-writeFileSync(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /rare/security/\nDisallow: /rare/nmap/\nDisallow: /rare/wireshark/\nDisallow: /rare/burp-suite/\nDisallow: /rare/nuclei/\nDisallow: /rare/sqlmap/\nDisallow: /rare/metasploit/\nDisallow: /rare/hashcat/\nDisallow: /rare/john-the-ripper/\nDisallow: /rare/sherlock/\nDisallow: /rare/theharvester/\nDisallow: /v2/\nDisallow: /favorites/\nSitemap: ${SITE}sitemap.xml\n`);
+writeFileSync(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /v2/\nDisallow: /favorites/\nSitemap: ${SITE}sitemap.xml\n`);
 console.log("  ✓ feed.xml + robots.txt");
 
 /* ---------- 6) sw.js (synced asset list, query-tolerant) ---------- */

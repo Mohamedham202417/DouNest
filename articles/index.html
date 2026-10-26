@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
 <title>Articles — DouNest</title>
-<meta name="description" content="دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest." />
+<meta name="description" content="Practical guides about privacy, file formats, browser tools, and password security from DouNest." />
 <meta name="robots" content="index,follow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/articles/" />
 
@@ -18,13 +18,13 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
 <meta property="og:title" content="Articles — DouNest" />
-<meta property="og:description" content="دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest." />
+<meta property="og:description" content="Practical guides about privacy, file formats, browser tools, and password security from DouNest." />
 <meta property="og:url" content="https://dounest.hmdevelop.me/articles/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Articles — DouNest" />
-<meta name="twitter:description" content="دروس عملية عن الخصوصية، صيغ الملفات، وأمان كلمات المرور — من مدونة DouNest." />
+<meta name="twitter:description" content="Practical guides about privacy, file formats, browser tools, and password security from DouNest." />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-25-mvo18c2h";
+  var B="v3-2026-10-26-mvp0suvz";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -61,10 +61,10 @@
   }catch(e){}
 })();
 </script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"ar","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -74,21 +74,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../" data-i18n="nav.home">الرئيسية</a>
+        <a href="../" data-i18n="nav.home">Home</a>
         <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
-        <a href="../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
+          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a>
+          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
         </div></details>
-        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -96,104 +96,104 @@
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
 
-    <section class="page-head"><h1>المقالات</h1></section>
+    <section class="page-head"><h1>Articles</h1></section>
     <div class="tools-grid">
 
-      <a class="tool-card article" href="wifi-connected-no-internet/">
+      <a class="tool-card article" href="wifi-connected-no-internet/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>Wi-Fi متصل لكن بلا إنترنت؟ حلول مجانية لـ Windows وiPhone وAndroid</h3>
-        <p>اكتشف هل الخلل من الجهاز أم الراوتر أم مزود الخدمة، ثم جرّب حلولاً مجانية آمنة لـWindows وiPhone وAndroid، مع جعل إعادة ضبط الشبكة آخر خطوة.</p>
+        <h3>Wi-Fi Connected but No Internet? Free Fixes for Windows, iPhone, and Android</h3>
+        <p>Find out whether the fault is your device, router, or ISP, then try safe, free fixes for Windows, iPhone, and Android. Network resets come last.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
-      <a class="tool-card article" href="speed-up-slow-windows-pc/">
+      <a class="tool-card article" href="speed-up-slow-windows-pc/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>هل أصبح حاسوب Windows 11 بطيئاً؟ 10 حلول مجانية لتحسين الأداء</h3>
-        <p>دليل آمن خطوة بخطوة لتشخيص بطء Windows 11 وتحسينه بأدوات النظام المجانية، من دون منظفات سجل مجهولة أو وعود زائفة بالسرعة.</p>
+        <h3>Slow Windows 11 PC? 10 Free Fixes to Improve Performance</h3>
+        <p>A safe, step-by-step guide to diagnose and speed up a slow Windows 11 PC with built-in free tools—without registry cleaners or guaranteed-boost claims.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
-      <a class="tool-card article" href="json-guide/">
+      <a class="tool-card article" href="json-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>دليل JSON الشامل 2026: من الصفر إلى الاحتراف بلا أخطاء</h3>
-        <p>كل ما تحتاج معرفته عن JSON في مكان واحد: البنية والقواعد الصارمة، الأخطاء التي تسقط المبتدئين والمحترفين، الفرق عن YAML وXML، والممارسات الاحترافية في التعامل مع واجهات API.</p>
+        <h3>The Complete JSON Guide 2026: From Zero to Pro Without Mistakes</h3>
+        <p>Everything about JSON in one place: structure and strict rules, the mistakes that trip beginners and pros, how it compares to YAML and XML, and professional practices for working with APIs.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-14</span></div>
       </a>
-      <a class="tool-card article" href="browser-privacy-tools/">
+      <a class="tool-card article" href="browser-privacy-tools/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>أدوات خصوصية المتصفح: افحص بصمتك الرقمية في 10 دقائق</h3>
-        <p>دليل عملي يشرح ما يعرفه أي موقع عنك فعلاً: البصمة الرقمية، تتبع الإعلانات، تسريبات WebRTC، وكيف تفحص كل ذلك وتغلقه بخطوات مجانية محددة.</p>
+        <h3>Browser Privacy Tools: Audit Your Digital Footprint in 10 Minutes</h3>
+        <p>A practical guide to what websites really know about you: digital fingerprinting, ad tracking, WebRTC leaks, and how to audit and close each gap with specific free steps.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-12</span></div>
       </a>
-      <a class="tool-card article" href="password-security-basics/">
+      <a class="tool-card article" href="password-security-basics/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>أمان كلمات المرور 2026: الدليل العملي الكامل من التوليد إلى المصادقة الثنائية</h3>
-        <p>كيف تُسرق كلمات المرور فعلاً، ولماذا الطول أهم من التعقيد، وكتبت مدير كلمات المرور المناسب وتفعّل المصادقة الثنائية بذكاء — دليل عملي بخطوات محددة.</p>
+        <h3>Password Security 2026: The Complete Practical Guide from Generation to 2FA</h3>
+        <p>How passwords actually get stolen, why length beats complexity, how to choose the right password manager and enable 2FA smartly — a practical guide with concrete steps.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-10</span></div>
       </a>
-      <a class="tool-card article" href="image-compression-web/">
+      <a class="tool-card article" href="image-compression-web/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>ضغط الصور للويب: كيف تسرّع موقعك 3 أضعاف وتفوز في SEO</h3>
-        <p>الصور مسؤولة عن أغلب وزن صفحات الويب. تعلّم أنواع الضغط، واختيار الصيغة المناسبة، وأحجام العرض الصحيحة، وخطوات تطبيق كل ذلك على موقعك اليوم.</p>
+        <h3>Image Compression for the Web: Speed Up Your Site 3x and Win at SEO</h3>
+        <p>Images dominate web page weight. Learn compression types, choosing the right format, correct display sizes, and concrete steps to apply it all to your site today.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-08</span></div>
       </a>
-      <a class="tool-card article" href="money-online/">
+      <a class="tool-card article" href="money-online/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>أفضل طرق الربح من الإنترنت 2026: دليل واقعي بلا أوهام</h3>
-        <p>دليل صادق ومفصل لأفضل طرق الربح من الإنترنت في 2026: العمل الحر، بيع المنتجات الرقمية، إنشاء المواقع، التسويق بالعمولة — مع توقعات دخل واقعية وأخطاء يجب تجنبها.</p>
+        <h3>Best Ways to Make Money Online 2026: A Realistic Guide Without Illusions</h3>
+        <p>An honest, detailed guide to the best online income methods in 2026: freelancing, digital products, building websites, affiliate marketing — with realistic income expectations and mistakes to avoid.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-13</span></div>
       </a>
-      <a class="tool-card article" href="free-ai-tools/">
+      <a class="tool-card article" href="free-ai-tools/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>أفضل أدوات الذكاء الاصطناعي المجانية 2026: دليل الاستخدام العملي</h3>
-        <p>دليل عملي لأقوى أدوات الذكاء الاصطناعي المجانية في 2026: نماذج المحادثة، توليد الصور، البرمجة، ومعالجة المستندات — مع حالات استخدام حقيقية ونصائح إتقان.</p>
+        <h3>Best Free AI Tools 2026: The Practical Usage Guide</h3>
+        <p>A practical guide to the strongest free AI tools in 2026: chat models, image generation, coding and document processing — with real use cases and mastery tips.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-11</span></div>
       </a>
-      <a class="tool-card article" href="file-formats/">
+      <a class="tool-card article" href="file-formats/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>دليل صيغ الملفات الشامل: افهم الفرق بين كل الصيغ واختر الأنسب</h3>
-        <p>لماذا فشل ملفك في الفتح؟ دليل شامل يشرح صيغ الصور والمستندات والصوت والفيديو والبيانات، ومتى تختار كل واحدة، وكيف تحوّل بينها بأمان وبدون فقد جودة.</p>
+        <h3>The Complete File Formats Guide: Understand Every Format and Choose Right</h3>
+        <p>Why did your file fail to open? A comprehensive guide to image, document, audio, video and data formats — when to choose each and how to convert safely without quality loss.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-09</span></div>
       </a>
-      <a class="tool-card article" href="remove-background-guide/">
+      <a class="tool-card article" href="remove-background-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>إزالة خلفية الصور: الدليل الكامل من الفكرة إلى نتيجة احترافية</h3>
-        <p>كيف تزيل خلفية أي صورة مجاناً وبجودة احترافية: متى تعمل الأدوات الآلية بامتياز، وكيف تجهّز الصورة المثالية، وكيف تستخدم النتيجة في متجرك وسيرتك وتصاميمك.</p>
+        <h3>Background Removal: The Complete Guide from Idea to Professional Result</h3>
+        <p>How to remove any photo&#39;s background for free at professional quality: when automated tools excel, how to prepare the perfect photo, and how to use results in your store, resume and designs.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-07</span></div>
       </a>
-      <a class="tool-card article" href="excel-to-json-guide/">
+      <a class="tool-card article" href="excel-to-json-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>تحويل Excel إلى JSON: دليل عملي للمطورين وواجهات API</h3>
-        <p>تعلّم تحويل ملفات Excel إلى JSON بطريقة صحيحة، اختيار الصف الأول كمفاتيح، التعامل مع الأوراق المتعددة، وتجنب أخطاء الترميز والبيانات الفارغة.</p>
+        <h3>Excel to JSON: A Practical Guide for Developers and APIs</h3>
+        <p>Learn how to convert Excel files to JSON correctly, use the first row as keys, handle multiple sheets, and avoid encoding and empty-data problems.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
-      <a class="tool-card article" href="pdf-to-word-guide/">
+      <a class="tool-card article" href="pdf-to-word-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>تحويل PDF إلى Word: ما الذي ينجح وما الذي لا ينجح؟</h3>
-        <p>دليل عملي لتحويل PDF إلى Word، مع الفرق بين ملفات PDF النصية والممسوحة ضوئياً، والحفاظ على التنسيق والخصوصية.</p>
+        <h3>PDF to Word: What Works, What Fails, and How to Get Better Results</h3>
+        <p>A practical guide to converting PDF to Word, including text PDFs versus scans, formatting limits, and privacy considerations.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
-      <a class="tool-card article" href="image-to-pdf-guide/">
+      <a class="tool-card article" href="image-to-pdf-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>تحويل الصور إلى PDF: أفضل الإعدادات للجودة والحجم</h3>
-        <p>حوّل صور الهاتف والمستندات إلى PDF مرتب مع اختيار المقاس والاتجاه والجودة، وتجنب الملفات الضخمة أو المشوشة.</p>
+        <h3>Convert Images to PDF: The Best Settings for Quality and File Size</h3>
+        <p>Turn phone photos and scans into an organized PDF by choosing the right page size, orientation, and quality without huge or blurry files.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
-      <a class="tool-card article" href="csv-json-conversion-guide/">
+      <a class="tool-card article" href="csv-json-conversion-guide/en/">
         <div class="icon" aria-hidden="true">📝</div>
-        <h3>CSV إلى JSON والعكس: دليل اختيار الصيغة الصحيحة</h3>
-        <p>افهم الفرق بين CSV وJSON، وتعامل مع الفواصل والترميز والحقول الفارغة قبل تحويل بياناتك بين الصيغتين.</p>
+        <h3>CSV to JSON and Back: How to Choose the Right Data Format</h3>
+        <p>Understand CSV versus JSON and handle delimiters, encoding, and empty fields before converting data between the two formats.</p>
         <div class="card-foot"><span class="badge tiny">2026-10-15</span></div>
       </a>
     </div>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../about/" data-i18n="nav.about">حول</a>
-        <a href="../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

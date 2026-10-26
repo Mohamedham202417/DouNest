@@ -140,9 +140,15 @@ for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
     ok((html.match(/<h1\b/g) || []).length === 1, `${page}: expected exactly one H1`);
     const canonical = html.match(/<link rel="canonical" href="([^"]+)"/);
     const path = lang === "ar" ? `articles/${slug}/` : `articles/${slug}/${lang}/`;
-    ok(canonical?.[1] === `${siteRoot}${path}`, `${page}: wrong canonical`);
-    ok(html.includes(`hreflang="${lang}"`), `${page}: self hreflang missing`);
-    ok(html.includes(`hreflang="x-default"`), `${page}: x-default hreflang missing`);
+    const expectedCanonical = `${siteRoot}articles/${slug}/en/`;
+    ok(canonical?.[1] === expectedCanonical, `${page}: wrong canonical`);
+    if (lang === "en") {
+      ok(html.includes(`hreflang="en"`), `${page}: English hreflang missing`);
+      ok(html.includes(`hreflang="x-default"`), `${page}: x-default hreflang missing`);
+      ok(html.includes('name="robots" content="index,follow"'), `${page}: English page should be indexable`);
+    } else {
+      ok(html.includes('name="robots" content="noindex,nofollow"'), `${page}: alternate page should be noindex`);
+    }
     ok(html.includes(`<article class="section article-body" lang="${lang}">`), `${page}: document language missing`);
     ok(html.includes('<meta property="og:type" content="article" />'), `${page}: Open Graph article type missing`);
     ok(html.includes("<blockquote>") && /<ol>|<ul>/.test(html), `${page}: Markdown callout/list not rendered`);
@@ -150,7 +156,7 @@ for (const slug of ["speed-up-slow-windows-pc", "wifi-connected-no-internet"]) {
     ok(html.includes("article-byline") && html.includes(`datetime="${article.date}"`) && html.includes("DouNest"), `${page}: visible author/date byline missing`);
     const schemas = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
     ok(schemas.some(schema => schema["@type"] === "Article" && schema.inLanguage === lang), `${page}: Article JSON-LD missing or wrong language`);
-    ok(sitemap.includes(`${siteRoot}${path}`), `sitemap missing ${path}`);
+    if (lang === "en") ok(sitemap.includes(expectedCanonical), `sitemap missing ${expectedCanonical}`);
   }
 }
 const markdownSafety = markdownToHtml("**safe**\n\n[x](javascript:alert(1))\n\n<img src=x onerror=alert(1)>");
