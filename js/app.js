@@ -833,7 +833,7 @@ async function renderTempMail() {
     path: "/mail",
     jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": title, "description": copy.description, "url": `${SITE_ROOT}/mail/`, "inLanguage": getLang() }]
   });
-  main.innerHTML = `<section class="page-head mail-page-head"><p class="eyebrow">✉ ${escapeHtml(copy.nav)}</p><h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(explanation)}</p></section><section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">${escapeHtml(linkText)} ↗</a><p>${escapeHtml(copy.warning)}</p></section>`;
+  main.innerHTML = `<section class="page-head mail-page-head"><p class="eyebrow">✉ ${escapeHtml(copy.nav)}</p><h1>${escapeHtml(title)}</h1><p class="lead">${escapeHtml(explanation)}</p></section><section class="mail-link-card"><a class="btn btn-primary" href="https://temp.hmdevelop.me/">${escapeHtml(linkText)} ↗</a><p>${escapeHtml(copy.warning)}</p></section>`;
 }
 
 function hubToolLinks(slugs) {

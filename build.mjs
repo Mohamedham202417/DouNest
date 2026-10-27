@@ -829,19 +829,20 @@ ${enSection}`
     canonicalPath: "mail/",
     jsonLd: [{ "@context": "https://schema.org", "@type": "WebPage", "name": pageTitle, "description": copy.description, "url": `${SITE}mail/`, "inLanguage": "en" }],
     bodyContent: `<section class="page-head"><p class="eyebrow">✉ ${esc(copy.nav)}</p><h1>${pageTitle}</h1><p class="lead">A disposable email service separate from DouNest browser tools. Create a random address for short-lived messages; inboxes expire after about one hour. Do not use it for important accounts or sensitive messages.</p></section>
-      <section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">Open temporary email ↗</a><p>${esc(copy.warning)}</p></section>`
+      <section class="mail-link-card"><a class="btn btn-primary" href="https://temp.hmdevelop.me/">Open temporary email ↗</a><p>${esc(copy.warning)}</p></section>`
   }));
 }
 
 /* ---------- 4) 404.html (SPA fallback, absolute paths) ---------- */
 console.log("→ 404.html fallback");
 writePage("404.html", shell({
-  title: "DouNest — أدوات تقنية مجانية",
-  description: `${TOOLS.length}+ أداة ويب مجانية تعمل محلياً داخل متصفحك.`,
+  lang: "en",
+  title: "Page Not Found — DouNest",
+  description: "The DouNest page you requested could not be found. Browse free browser tools and file converters.",
   canonicalPath: "",
   absolute: true,
   noindex: true,
-  bodyContent: `<div class="empty notfound"><h1>⏳</h1><p>جارٍ التحميل… / Loading…</p></div>`
+  bodyContent: `<section class="page-head notfound"><h1>Page not found</h1><p>The page you requested may have moved or no longer exists.</p><p><a class="btn btn-primary" href="${BASE}">Go to DouNest home</a> <a class="btn btn-secondary" href="${BASE}tools/">Browse all tools</a></p></section>`
 }));
 
 /* ---------- 5) sitemap.xml ---------- */
@@ -878,7 +879,7 @@ console.log("  ✓ sitemap.xml (" + urls.length + " URLs)");
 const xmlEsc = (v) => String(v || "").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&apos;");
 const feedItems = getArticles().map(a => `<item><title>${xmlEsc(pick(a.title,"ar"))}</title><link>${SITE}articles/${a.slug}/</link><guid>${SITE}articles/${a.slug}/</guid><pubDate>${new Date(a.date || NOW).toUTCString()}</pubDate><description>${xmlEsc(pick(a.excerpt,"ar"))}</description></item>`).join("\n");
 writeFileSync(join(ROOT, "feed.xml"), `<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>DouNest — أدوات وأدلة</title><link>${SITE}</link><description>مقالات وأدلة عن أدوات المتصفح والتحويل والخصوصية</description><language>ar</language><lastBuildDate>${new Date().toUTCString()}</lastBuildDate>${feedItems}</channel></rss>\n`);
-writeFileSync(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /v2/\nDisallow: /favorites/\nSitemap: ${SITE}sitemap.xml\n`);
+writeFileSync(join(ROOT, "robots.txt"), `User-agent: *\nAllow: /\nDisallow: /favorites/\nSitemap: ${SITE}sitemap.xml\n`);
 console.log("  ✓ feed.xml + robots.txt");
 
 /* ---------- 6) sw.js (synced asset list, query-tolerant) ---------- */

@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-26-mvp0suvz";
+  var B="v3-2026-10-27-mvpyczw6";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -97,7 +97,7 @@
   </header>
   <main id="main" class="container" role="main" tabindex="-1">
 <section class="page-head"><p class="eyebrow">✉ Temporary Email</p><h1>Temporary Email</h1><p class="lead">A disposable email service separate from DouNest browser tools. Create a random address for short-lived messages; inboxes expire after about one hour. Do not use it for important accounts or sensitive messages.</p></section>
-      <section class="mail-link-card"><a class="btn btn-primary" href="https://mail.hmdevelop.me/">Open temporary email ↗</a><p>Incoming messages pass through Resend and a temporary copy is stored in DouNest&#39;s EU database for up to one hour, then removed by periodic cleanup. The email provider may retain data under its separate policy. Do not use this service for sensitive messages, account recovery, or financial information. Outbound email is disabled, and attachments are not available for download.</p></section>
+      <section class="mail-link-card"><a class="btn btn-primary" href="https://temp.hmdevelop.me/">Open temporary email ↗</a><p>Incoming messages pass through Resend and a temporary copy is stored in DouNest&#39;s EU database for up to one hour, then removed by periodic cleanup. The email provider may retain data under its separate policy. Do not use this service for sensitive messages, account recovery, or financial information. Outbound email is disabled, and attachments are not available for download.</p></section>
   </main>
   <footer class="footer">
     <div class="container footer-inner">

@@ -62,7 +62,7 @@ const mailPage = read("mail/index.html");
 ok((mailPage.match(/<h1\b/g) || []).length === 1, "mail page must have exactly one H1");
 ok(mailPage.includes(`<link rel="canonical" href="${siteRoot}mail/"`), "mail page canonical missing or incorrect");
 ok(mailPage.includes('name="description"') && mailPage.includes("@mail.hmdevelop.me"), "mail page metadata/domain missing");
-ok(mailPage.includes('class="mail-link-card"') && mailPage.includes('href="https://mail.hmdevelop.me/"'), "DouNest mail page must explain the service and link to its standalone site");
+ok(mailPage.includes('class="mail-link-card"') && mailPage.includes('href="https://temp.hmdevelop.me/"'), "DouNest mail page must explain the service and link to its standalone site");
 ok(!mailPage.includes('id="create-inbox"') && !mailPage.includes('id="message-list"'), "DouNest must not host the interactive inbox");
 const mailSchemas = [...mailPage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m => JSON.parse(m[1]));
 ok(mailSchemas.some(schema => schema["@type"] === "WebPage" && schema.url === `${siteRoot}mail/`), "mail information-page schema missing");
