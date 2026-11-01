@@ -9,6 +9,7 @@
 
 
 import { TOOL_CONTENT } from "./tool-content.js";
+import { TOOL_TRANSLATIONS } from "./tool-translations.js";
 
 // Pure helper: returns translation for lang, or English fallback.
 // lang is passed explicitly so this module stays dependency-free (works in Node for the build script).
@@ -830,6 +831,7 @@ export const CATEGORIES = [
   { id: "business", label: "cat.business" }
 ];
 
+
 export function getTool(slug) { return TOOLS.find(t => t.slug === slug); }
 
 /* ============================================================
@@ -844,4 +846,16 @@ for (const tool of TOOLS) {
   if (extra.explanation) tool.explanation = extra.explanation;
   if (extra.faq && extra.faq.length) tool.faq = extra.faq;
   tool.tags = extra.tags || [];
+}
+
+// Re-apply generated translations after long-form content enrichment.
+for (const tool of TOOLS) {
+  const translations = TOOL_TRANSLATIONS[tool.slug];
+  if (!translations) continue;
+  for (const [lang, value] of Object.entries(translations)) {
+    if (value.name) tool.name[lang] = value.name;
+    if (value.short) tool.short[lang] = value.short;
+    if (value.usage) tool.usage[lang] = value.usage;
+    if (value.explanation) tool.explanation[lang] = value.explanation;
+  }
 }
