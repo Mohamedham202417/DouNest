@@ -949,11 +949,24 @@ const T = {
   }
 };
 
-let current = localStorage.getItem("dounest.lang");
-if (!current) {
-  const nav = (navigator.language || "en").slice(0, 2);
-  current = T[nav] ? nav : "en";
-}
+// Center labels are injected separately so the ten-center taxonomy remains consistent
+// even for older locale packs that do not yet contain every new key.
+const CENTER_LABELS = {
+  en: { "cat.pdf": "PDF", "cat.images": "Images & Design", "cat.media": "Video & Audio", "cat.convert": "File Conversion", "cat.text": "Text", "cat.dev": "Developers", "cat.security": "Security & Privacy", "cat.calculators": "Calculators", "cat.business": "Productivity & Business", "nav.media": "Video & Audio", "nav.business": "Productivity & Business" },
+  ar: { "cat.pdf": "PDF", "cat.images": "الصور والتصميم", "cat.media": "الفيديو والصوت", "cat.convert": "تحويل الملفات", "cat.text": "النصوص", "cat.dev": "المطورين", "cat.security": "الأمان والخصوصية", "cat.calculators": "الحاسبات", "cat.business": "الإنتاجية والأعمال", "nav.media": "الفيديو والصوت", "nav.business": "الإنتاجية والأعمال" },
+  fr: { "cat.pdf": "PDF", "cat.images": "Images et design", "cat.media": "Vidéo et audio", "cat.convert": "Conversion de fichiers", "cat.text": "Texte", "cat.dev": "Développement", "cat.security": "Sécurité et confidentialité", "cat.calculators": "Calculateurs", "cat.business": "Productivité et affaires", "nav.media": "Vidéo et audio", "nav.business": "Productivité et affaires" },
+  es: { "cat.pdf": "PDF", "cat.images": "Imágenes y diseño", "cat.media": "Vídeo y audio", "cat.convert": "Conversión de archivos", "cat.text": "Texto", "cat.dev": "Desarrollo", "cat.security": "Seguridad y privacidad", "cat.calculators": "Calculadoras", "cat.business": "Productividad y negocios", "nav.media": "Vídeo y audio", "nav.business": "Productividad y negocios" },
+  de: { "cat.pdf": "PDF", "cat.images": "Bilder & Design", "cat.media": "Video & Audio", "cat.convert": "Dateikonvertierung", "cat.text": "Text", "cat.dev": "Entwicklung", "cat.security": "Sicherheit & Datenschutz", "cat.calculators": "Rechner", "cat.business": "Produktivität & Business", "nav.media": "Video & Audio", "nav.business": "Produktivität & Business" },
+  tr: { "cat.pdf": "PDF", "cat.images": "Görsel ve Tasarım", "cat.media": "Video ve Ses", "cat.convert": "Dosya Dönüştürme", "cat.text": "Metin", "cat.dev": "Geliştiriciler", "cat.security": "Güvenlik ve Gizlilik", "cat.calculators": "Hesaplayıcılar", "cat.business": "Verimlilik ve İş", "nav.media": "Video ve Ses", "nav.business": "Verimlilik ve İş" },
+  ru: { "cat.pdf": "PDF", "cat.images": "Изображения и дизайн", "cat.media": "Видео и аудио", "cat.convert": "Конвертация файлов", "cat.text": "Текст", "cat.dev": "Разработка", "cat.security": "Безопасность и приватность", "cat.calculators": "Калькуляторы", "cat.business": "Продуктивность и бизнес", "nav.media": "Видео и аудио", "nav.business": "Продуктивность и бизнес" },
+  zh: { "cat.pdf": "PDF", "cat.images": "图像与设计", "cat.media": "视频与音频", "cat.convert": "文件转换", "cat.text": "文本", "cat.dev": "开发者", "cat.security": "安全与隐私", "cat.calculators": "计算器", "cat.business": "效率与商务", "nav.media": "视频与音频", "nav.business": "效率与商务" },
+  hi: { "cat.pdf": "PDF", "cat.images": "इमेज और डिज़ाइन", "cat.media": "वीडियो और ऑडियो", "cat.convert": "फ़ाइल कन्वर्ज़न", "cat.text": "टेक्स्ट", "cat.dev": "डेवलपर", "cat.security": "सुरक्षा और गोपनीयता", "cat.calculators": "कैलकुलेटर", "cat.business": "प्रोडक्टिविटी और बिज़नेस", "nav.media": "वीडियो और ऑडियो", "nav.business": "प्रोडक्टिविटी और बिज़नेस" },
+  pt: { "cat.pdf": "PDF", "cat.images": "Imagens e design", "cat.media": "Vídeo e áudio", "cat.convert": "Conversão de arquivos", "cat.text": "Texto", "cat.dev": "Desenvolvedores", "cat.security": "Segurança e privacidade", "cat.calculators": "Calculadoras", "cat.business": "Produtividade e negócios", "nav.media": "Vídeo e áudio", "nav.business": "Produtividade e negócios" }
+};
+for (const [lang, copy] of Object.entries(CENTER_LABELS)) Object.assign(T[lang], copy);
+
+let current = localStorage.getItem("dounest.lang") || "en";
+if (!T[current]) current = "en";
 
 export function t(key) {
   return T[current]?.[key] ?? T.en[key] ?? key;

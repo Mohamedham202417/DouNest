@@ -46,7 +46,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -83,10 +83,10 @@
         <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
-          <a href="../../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../../text/" data-i18n="nav.text">Text center</a>
-          <a href="../../dev/" data-i18n="nav.developers">Developer center</a>
-          <a href="../../security/" data-i18n="nav.security">Security center</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../../media/" data-i18n="nav.media">Video & Audio</a><a href="../../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../../text/" data-i18n="nav.text">Text center</a><a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a><a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
         <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
         <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
@@ -107,13 +107,13 @@
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
-        <div class="icon big cat-media" aria-hidden="true">🗜️</div>
+        <div class="icon big cat-pdf" aria-hidden="true">🗜️</div>
         <div>
           <h1>Compress PDF</h1>
           <p class="lead">Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.</p>
           <div class="tool-meta">
             <span class="badge success">🔒 Files are processed locally when the tool supports it</span>
-            <span class="badge ghost">media</span>
+            <span class="badge ghost">pdf</span>
           </div>
         </div>
       </div>

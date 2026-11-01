@@ -1,0 +1,332 @@
+{
+  "routes": [
+    {
+      "path": "/",
+      "title": "DouNest"
+    },
+    {
+      "path": "/tools",
+      "title": "tools"
+    },
+    {
+      "path": "/pdf",
+      "title": "pdf"
+    },
+    {
+      "path": "/images",
+      "title": "images"
+    },
+    {
+      "path": "/media",
+      "title": "media"
+    },
+    {
+      "path": "/convert",
+      "title": "convert"
+    },
+    {
+      "path": "/text",
+      "title": "text"
+    },
+    {
+      "path": "/dev",
+      "title": "dev"
+    },
+    {
+      "path": "/security",
+      "title": "security"
+    },
+    {
+      "path": "/calculators",
+      "title": "calculators"
+    },
+    {
+      "path": "/business",
+      "title": "business"
+    },
+    {
+      "path": "/mail",
+      "title": "mail"
+    },
+    {
+      "path": "/favorites",
+      "title": "favorites"
+    },
+    {
+      "path": "/faq",
+      "title": "faq"
+    },
+    {
+      "path": "/articles",
+      "title": "articles"
+    },
+    {
+      "path": "/ai",
+      "title": "ai"
+    },
+    {
+      "path": "/rare",
+      "title": "rare"
+    },
+    {
+      "path": "/about",
+      "title": "about"
+    },
+    {
+      "path": "/contact",
+      "title": "contact"
+    },
+    {
+      "path": "/privacy",
+      "title": "privacy"
+    },
+    {
+      "path": "/terms",
+      "title": "terms"
+    },
+    {
+      "path": "/tools/json-formatter",
+      "title": "json-formatter"
+    },
+    {
+      "path": "/tools/base64",
+      "title": "base64"
+    },
+    {
+      "path": "/tools/url-encoder",
+      "title": "url-encoder"
+    },
+    {
+      "path": "/tools/jwt-decoder",
+      "title": "jwt-decoder"
+    },
+    {
+      "path": "/tools/hash-generator",
+      "title": "hash-generator"
+    },
+    {
+      "path": "/tools/uuid-generator",
+      "title": "uuid-generator"
+    },
+    {
+      "path": "/tools/password-generator",
+      "title": "password-generator"
+    },
+    {
+      "path": "/tools/color-converter",
+      "title": "color-converter"
+    },
+    {
+      "path": "/tools/word-counter",
+      "title": "word-counter"
+    },
+    {
+      "path": "/tools/text-case",
+      "title": "text-case"
+    },
+    {
+      "path": "/tools/pdf-to-txt",
+      "title": "pdf-to-txt"
+    },
+    {
+      "path": "/tools/qr-code",
+      "title": "qr-code"
+    },
+    {
+      "path": "/tools/image-compressor",
+      "title": "image-compressor"
+    },
+    {
+      "path": "/tools/color-picker",
+      "title": "color-picker"
+    },
+    {
+      "path": "/tools/lorem-ipsum",
+      "title": "lorem-ipsum"
+    },
+    {
+      "path": "/tools/pdf-to-word",
+      "title": "pdf-to-word"
+    },
+    {
+      "path": "/tools/merge-pdf",
+      "title": "merge-pdf"
+    },
+    {
+      "path": "/tools/compress-pdf",
+      "title": "compress-pdf"
+    },
+    {
+      "path": "/tools/image-converter",
+      "title": "image-converter"
+    },
+    {
+      "path": "/tools/csv-to-json",
+      "title": "csv-to-json"
+    },
+    {
+      "path": "/tools/json-to-csv",
+      "title": "json-to-csv"
+    },
+    {
+      "path": "/tools/regex-tester",
+      "title": "regex-tester"
+    },
+    {
+      "path": "/tools/cron-generator",
+      "title": "cron-generator"
+    },
+    {
+      "path": "/tools/diff-checker",
+      "title": "diff-checker"
+    },
+    {
+      "path": "/tools/sql-formatter",
+      "title": "sql-formatter"
+    },
+    {
+      "path": "/tools/timestamp-converter",
+      "title": "timestamp-converter"
+    },
+    {
+      "path": "/tools/unit-converter",
+      "title": "unit-converter"
+    },
+    {
+      "path": "/tools/percentage-calculator",
+      "title": "percentage-calculator"
+    },
+    {
+      "path": "/tools/age-calculator",
+      "title": "age-calculator"
+    },
+    {
+      "path": "/tools/bmi-calculator",
+      "title": "bmi-calculator"
+    },
+    {
+      "path": "/tools/image-to-pdf",
+      "title": "image-to-pdf"
+    },
+    {
+      "path": "/tools/remove-background",
+      "title": "remove-background"
+    },
+    {
+      "path": "/tools/ocr-image-to-text",
+      "title": "ocr-image-to-text"
+    },
+    {
+      "path": "/tools/heic-to-jpg",
+      "title": "heic-to-jpg"
+    },
+    {
+      "path": "/tools/split-pdf",
+      "title": "split-pdf"
+    },
+    {
+      "path": "/tools/pdf-to-jpg",
+      "title": "pdf-to-jpg"
+    },
+    {
+      "path": "/tools/rotate-pdf",
+      "title": "rotate-pdf"
+    },
+    {
+      "path": "/tools/word-to-pdf",
+      "title": "word-to-pdf"
+    },
+    {
+      "path": "/tools/resize-image",
+      "title": "resize-image"
+    },
+    {
+      "path": "/tools/excel-to-csv",
+      "title": "excel-to-csv"
+    },
+    {
+      "path": "/tools/csv-to-excel",
+      "title": "csv-to-excel"
+    },
+    {
+      "path": "/tools/excel-to-json",
+      "title": "excel-to-json"
+    },
+    {
+      "path": "/tools/zip-files",
+      "title": "zip-files"
+    },
+    {
+      "path": "/tools/qr-scanner",
+      "title": "qr-scanner"
+    },
+    {
+      "path": "/tools/pdf-organize",
+      "title": "pdf-organize"
+    },
+    {
+      "path": "/tools/pdf-watermark",
+      "title": "pdf-watermark"
+    },
+    {
+      "path": "/tools/pdf-page-numbers",
+      "title": "pdf-page-numbers"
+    },
+    {
+      "path": "/tools/image-crop",
+      "title": "image-crop"
+    },
+    {
+      "path": "/tools/image-rotate-flip",
+      "title": "image-rotate-flip"
+    },
+    {
+      "path": "/tools/exif-viewer",
+      "title": "exif-viewer"
+    },
+    {
+      "path": "/tools/favicon-generator",
+      "title": "favicon-generator"
+    },
+    {
+      "path": "/tools/svg-to-png",
+      "title": "svg-to-png"
+    },
+    {
+      "path": "/tools/json-yaml",
+      "title": "json-yaml"
+    },
+    {
+      "path": "/tools/markdown-to-html",
+      "title": "markdown-to-html"
+    },
+    {
+      "path": "/tools/slug-generator",
+      "title": "slug-generator"
+    },
+    {
+      "path": "/tools/list-cleaner",
+      "title": "list-cleaner"
+    },
+    {
+      "path": "/tools/totp-generator",
+      "title": "totp-generator"
+    },
+    {
+      "path": "/tools/password-strength",
+      "title": "password-strength"
+    },
+    {
+      "path": "/tools/image-to-base64",
+      "title": "image-to-base64"
+    },
+    {
+      "path": "/tools/xml-formatter",
+      "title": "xml-formatter"
+    },
+    {
+      "path": "/tools/html-to-markdown",
+      "title": "html-to-markdown"
+    }
+  ]
+}

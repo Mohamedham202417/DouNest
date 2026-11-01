@@ -51,7 +51,7 @@ export const TOOLS = [
     related: ["base64", "url-encoder", "jwt-decoder"]
   },
   {
-    slug: "base64", icon: "64", category: "encode",
+    slug: "base64", icon: "64", category: "dev",
     name: { ar: "ترميز Base64", en: "Base64 Encoder", fr: "Encodeur Base64", es: "Codificador Base64", de: "Base64-Encoder", tr: "Base64 Kodlayıcı", ru: "Кодировщик Base64", zh: "Base64 编码", hi: "Base64 एन्कोडर", pt: "Codificador Base64" },
     short: { ar: "ترميز وفك ترميز نصوص Base64.", en: "Encode and decode Base64.", fr: "Encoder et décoder Base64.", es: "Codifica y decodifica Base64.", de: "Base64 kodieren und dekodieren.", tr: "Base64 kodla ve çöz.", ru: "Кодирование и декодирование Base64.", zh: "Base64 编码与解码。", hi: "Base64 एन्कोड और डिकोड करें।", pt: "Codifique e decodifique Base64." },
     usage: { ar: ["اكتب النص.", "اختر ترميز أو فك ترميز.", "اضغط تنفيذ.", "انسخ النتيجة."], en: ["Type your text.", "Pick Encode or Decode.", "Click Run.", "Copy the result."] },
@@ -59,7 +59,7 @@ export const TOOLS = [
     faq: [], related: ["url-encoder", "jwt-decoder", "hash-generator"]
   },
   {
-    slug: "url-encoder", icon: "%", category: "encode",
+    slug: "url-encoder", icon: "%", category: "dev",
     name: { ar: "ترميز URL", en: "URL Encoder", fr: "Encodeur URL", es: "Codificador URL", de: "URL-Encoder", tr: "URL Kodlayıcı", ru: "Кодировщик URL", zh: "URL 编码", hi: "URL एन्कोडर", pt: "Codificador URL" },
     short: { ar: "ترميز وفك ترميز الروابط.", en: "Encode and decode URLs.", fr: "Encoder et décoder les URL.", es: "Codifica y decodifica URLs.", de: "URLs kodieren und dekodieren.", tr: "URL'leri kodla ve çöz.", ru: "Кодирование и декодирование URL.", zh: "URL 编码与解码。", hi: "URL एन्कोड और डिकोड करें।", pt: "Codifique e decodifique URLs." },
     usage: { ar: ["الصق الرابط.", "اختر ترميز أو فك ترميز.", "اضغط تنفيذ."], en: ["Paste a URL.", "Choose encode/decode.", "Click Run."] },
@@ -99,7 +99,7 @@ export const TOOLS = [
     faq: [], related: ["hash-generator", "uuid-generator", "base64"]
   },
   {
-    slug: "color-converter", icon: "🎨", category: "color",
+    slug: "color-converter", icon: "🎨", category: "images",
     name: { ar: "محوّل الألوان", en: "Color Converter", fr: "Convertisseur de couleurs", es: "Convertidor de colores", de: "Farbkonverter", tr: "Renk Dönüştürücü", ru: "Конвертер цветов", zh: "颜色转换器", hi: "रंग कन्वर्टर", pt: "Conversor de cores" },
     short: { ar: "تحويل بين HEX و RGB و HSL.", en: "Convert HEX, RGB, HSL.", fr: "Convertir HEX, RGB, HSL.", es: "Convierte HEX, RGB, HSL.", de: "HEX, RGB, HSL konvertieren.", tr: "HEX, RGB, HSL dönüştür.", ru: "Преобразование HEX, RGB, HSL.", zh: "转换 HEX、RGB、HSL。", hi: "HEX, RGB, HSL कन्वर्ट करें।", pt: "Converta HEX, RGB, HSL." },
     usage: { ar: ["أدخل اللون.", "اقرأ القيم.", "انسخ ما تحتاجه."], en: ["Enter a color.", "Read all formats.", "Copy what you need."] },
@@ -124,7 +124,7 @@ export const TOOLS = [
   },
   /* ====== أدوات جديدة ====== */
   {
-    slug: "pdf-to-txt", icon: "📄", category: "media",
+    slug: "pdf-to-txt", icon: "📄", category: "pdf",
     name: { ar: "PDF إلى نص", en: "PDF to Text", fr: "PDF en texte", es: "PDF a texto", de: "PDF zu Text", tr: "PDF'ten Metin", ru: "PDF в текст", zh: "PDF 转文本", hi: "PDF से टेक्स्ट", pt: "PDF para texto" },
     short: { ar: "استخرج النص من ملفات PDF محليًا.", en: "Extract text from PDFs locally.", fr: "Extraire le texte des PDF localement.", es: "Extrae texto de PDFs localmente.", de: "Text aus PDFs lokal extrahieren.", tr: "PDF'lerden metni yerel olarak çıkar.", ru: "Извлечение текста из PDF локально.", zh: "本地从 PDF 提取文本。", hi: "PDF से स्थानीय रूप से टेक्स्ट निकालें।", pt: "Extraia texto de PDFs localmente." },
     usage: { ar: ["اختر ملف PDF أو اسحبه.", "انتظر المعالجة.", "انسخ النص أو نزّله."], en: ["Choose or drop a PDF.", "Wait for processing.", "Copy or download the text."] },
@@ -132,7 +132,7 @@ export const TOOLS = [
     faq: [], related: ["word-counter", "text-case", "json-formatter"]
   },
   {
-    slug: "qr-code", icon: "▦", category: "media",
+    slug: "qr-code", icon: "▦", category: "business",
     name: { ar: "مولّد QR", en: "QR Code Generator", fr: "Générateur QR", es: "Generador QR", de: "QR-Code-Generator", tr: "QR Kod Üretici", ru: "Генератор QR", zh: "QR 码生成器", hi: "QR कोड जनरेटर", pt: "Gerador de QR" },
     short: { ar: "أنشئ رموز QR للنصوص والروابط.", en: "Generate QR codes for text and URLs.", fr: "Générer des QR codes.", es: "Genera códigos QR.", de: "QR-Codes erstellen.", tr: "QR kodları oluştur.", ru: "Генерация QR-кодов.", zh: "为文本和 URL 生成 QR 码。", hi: "टेक्स्ट और URL के लिए QR कोड बनाएं।", pt: "Gere códigos QR para texto e URLs." },
     usage: { ar: ["اكتب النص أو الرابط.", "اضغط تنفيذ.", "نزّل الصورة."], en: ["Enter text or URL.", "Click Run.", "Download the image."] },
@@ -140,7 +140,7 @@ export const TOOLS = [
     faq: [], related: ["base64", "url-encoder", "image-compressor"]
   },
   {
-    slug: "image-compressor", icon: "🖼️", category: "media",
+    slug: "image-compressor", icon: "🖼️", category: "images",
     name: { ar: "ضاغط الصور", en: "Image Compressor", fr: "Compresseur d'images", es: "Compresor de imágenes", de: "Bild-Kompressor", tr: "Görsel Sıkıştırıcı", ru: "Сжатие изображений", zh: "图片压缩", hi: "छवि कंप्रेसर", pt: "Compressor de imagens" },
     short: { ar: "اضغط JPG/PNG/WebP محليًا.", en: "Compress JPG/PNG/WebP locally.", fr: "Compresser JPG/PNG/WebP localement.", es: "Comprime JPG/PNG/WebP localmente.", de: "JPG/PNG/WebP lokal komprimieren.", tr: "JPG/PNG/WebP'yi yerel sıkıştır.", ru: "Сжатие JPG/PNG/WebP локально.", zh: "本地压缩 JPG/PNG/WebP。", hi: "JPG/PNG/WebP स्थानीय रूप से कंप्रेस करें।", pt: "Comprima JPG/PNG/WebP localmente." },
     usage: { ar: ["اختر صورة.", "اضبط الجودة.", "نزّل النسخة المضغوطة."], en: ["Choose an image.", "Set quality.", "Download the compressed version."] },
@@ -148,7 +148,7 @@ export const TOOLS = [
     faq: [], related: ["resize-image", "pdf-to-txt", "color-picker"]
   },
   {
-    slug: "color-picker", icon: "🖌️", category: "color",
+    slug: "color-picker", icon: "🖌️", category: "images",
     name: { ar: "منتقي الألوان", en: "Color Picker", fr: "Sélecteur de couleur", es: "Selector de color", de: "Farbwähler", tr: "Renk Seçici", ru: "Выбор цвета", zh: "颜色选择器", hi: "रंग चयनकर्ता", pt: "Seletor de cores" },
     short: { ar: "اختر لونًا واحصل على كل الصيغ.", en: "Pick a color and get all formats.", fr: "Choisir une couleur et toutes ses valeurs.", es: "Elige un color y todas sus valores.", de: "Farbe wählen und alle Werte erhalten.", tr: "Renk seç ve tüm formatları al.", ru: "Выбор цвета и всех форматов.", zh: "选取颜色并获取所有格式。", hi: "रंग चुनें और सभी फ़ॉर्मैट पाएं।", pt: "Escolha uma cor e veja todos os formatos." },
     usage: { ar: ["اختر لونًا.", "انسخ HEX/RGB/HSL."], en: ["Pick a color.", "Copy HEX/RGB/HSL."] },
@@ -167,7 +167,7 @@ export const TOOLS = [
 {
   slug: "pdf-to-word",
   icon: "📄",
-  category: "media",
+  category: "pdf",
   name: {
     ar: "PDF إلى Word", en: "PDF to Word", fr: "PDF en Word",
     es: "PDF a Word", de: "PDF zu Word", tr: "PDF'ten Word",
@@ -188,7 +188,7 @@ export const TOOLS = [
 {
   slug: "merge-pdf",
   icon: "📚",
-  category: "media",
+  category: "pdf",
   name: { ar: "دمج PDF", en: "Merge PDF", fr: "Fusionner PDF", es: "Unir PDF", de: "PDF zusammenfügen", tr: "PDF Birleştir", ru: "Объединить PDF", zh: "合并 PDF", hi: "PDF मर्ज करें", pt: "Mesclar PDF" },
   short: { ar: "اجمع عدة ملفات PDF في ملف واحد.", en: "Combine multiple PDFs into one.", fr: "Combiner plusieurs PDF en un seul.", es: "Combina varios PDF en uno.", de: "Mehrere PDFs zu einer Datei zusammenfügen.", tr: "Birden fazla PDF'yi tek dosyada birleştir.", ru: "Объединение нескольких PDF в один.", zh: "将多个 PDF 合并为一个。", hi: "कई PDF को एक में संयोजित करें।", pt: "Combine vários PDFs em um só." },
   usage: { ar: ["ارفع ملفات PDF.", "رتّبها.", "اضغط دمج."], en: ["Upload PDFs.", "Reorder them.", "Click Merge."] },
@@ -198,7 +198,7 @@ export const TOOLS = [
 {
   slug: "compress-pdf",
   icon: "🗜️",
-  category: "media",
+  category: "pdf",
   name: { ar: "ضغط PDF", en: "Compress PDF", fr: "Compresser PDF", es: "Comprimir PDF", de: "PDF komprimieren", tr: "PDF Sıkıştır", ru: "Сжать PDF", zh: "压缩 PDF", hi: "PDF कंप्रेस करें", pt: "Comprimir PDF" },
   short: { ar: "قلّل حجم PDF بإعادة رسم الصفحات كصور؛ قد يفقد النص قابليته للبحث والنسخ.", en: "Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.", fr: "Réduisez un PDF en pixellisant ses pages ; le texte sélectionnable peut être perdu.", es: "Reduce el PDF rasterizando las páginas; el texto seleccionable puede perderse.", de: "PDF-Seiten werden gerastert; durchsuchbarer oder auswählbarer Text kann verloren gehen.", tr: "Sayfalar görsele dönüştürülür; aranabilir veya seçilebilir metin kaybolabilir.", ru: "Страницы растрируются; поиск и выделение текста могут быть утрачены.", zh: "通过将页面栅格化来缩小 PDF；可搜索或可选中的文本可能丢失。", hi: "पृष्ठों को रास्टराइज़ करके PDF छोटा करें; खोजने योग्य या चुनने योग्य पाठ खो सकता है।", pt: "Reduza o PDF rasterizando as páginas; o texto selecionável pode ser perdido." },
   usage: { ar: ["ارفع ملف PDF.", "اضغط ضغط.", "حمّل الملف المضغوط."], en: ["Upload a PDF.", "Click Compress.", "Download the compressed file."] },
@@ -208,7 +208,7 @@ export const TOOLS = [
 {
   slug: "image-converter",
   icon: "🔄",
-  category: "media",
+  category: "images",
   name: { ar: "محوّل الصور", en: "Image Converter", fr: "Convertisseur d'images", es: "Convertidor de imágenes", de: "Bildkonverter", tr: "Görsel Dönüştürücü", ru: "Конвертер изображений", zh: "图片转换器", hi: "छवि कन्वर्टर", pt: "Conversor de imagens" },
   short: { ar: "حوّل بين JPG, PNG, WebP, AVIF, GIF.", en: "Convert between JPG, PNG, WebP, AVIF, GIF.", fr: "Convertir entre JPG, PNG, WebP, AVIF, GIF.", es: "Convierte entre JPG, PNG, WebP, AVIF, GIF.", de: "Zwischen JPG, PNG, WebP, AVIF, GIF konvertieren.", tr: "JPG, PNG, WebP, AVIF, GIF arasında dönüştür.", ru: "Конвертация между JPG, PNG, WebP, AVIF, GIF.", zh: "在 JPG、PNG、WebP、AVIF、GIF 之间转换。", hi: "JPG, PNG, WebP, AVIF, GIF के बीच कन्वर्ट करें।", pt: "Converta entre JPG, PNG, WebP, AVIF, GIF." },
   usage: { ar: ["ارفع صورة.", "اختر الصيغة الهدف.", "حمّل الناتج."], en: ["Upload an image.", "Choose target format.", "Download result."] },
@@ -218,7 +218,7 @@ export const TOOLS = [
 {
   slug: "csv-to-json",
   icon: "📊",
-  category: "dev",
+  category: "convert",
   name: { ar: "CSV إلى JSON", en: "CSV to JSON", fr: "CSV en JSON", es: "CSV a JSON", de: "CSV zu JSON", tr: "CSV'den JSON", ru: "CSV в JSON", zh: "CSV 转 JSON", hi: "CSV से JSON", pt: "CSV para JSON" },
   short: { ar: "حوّل بيانات CSV إلى صيغة JSON.", en: "Convert CSV data to JSON.", fr: "Convertir des données CSV en JSON.", es: "Convierte datos CSV a JSON.", de: "CSV-Daten in JSON konvertieren.", tr: "CSV verilerini JSON'a dönüştür.", ru: "Преобразование CSV в JSON.", zh: "将 CSV 数据转换为 JSON。", hi: "CSV डेटा को JSON में बदलें।", pt: "Converta dados CSV para JSON." },
   usage: { ar: ["الصق CSV.", "اضغط تحويل.", "انسخ JSON."], en: ["Paste CSV.", "Click Convert.", "Copy JSON."] },
@@ -228,7 +228,7 @@ export const TOOLS = [
 {
   slug: "json-to-csv",
   icon: "📈",
-  category: "dev",
+  category: "convert",
   name: { ar: "JSON إلى CSV", en: "JSON to CSV", fr: "JSON en CSV", es: "JSON a CSV", de: "JSON zu CSV", tr: "JSON'dan CSV", ru: "JSON в CSV", zh: "JSON 转 CSV", hi: "JSON से CSV", pt: "JSON para CSV" },
   short: { ar: "حوّل مصفوفات JSON إلى CSV.", en: "Convert JSON arrays to CSV.", fr: "Convertir des tableaux JSON en CSV.", es: "Convierte arrays JSON a CSV.", de: "JSON-Arrays in CSV konvertieren.", tr: "JSON dizilerini CSV'ye dönüştür.", ru: "Преобразование массивов JSON в CSV.", zh: "将 JSON 数组转换为 CSV。", hi: "JSON सरणियों को CSV में बदलें।", pt: "Converta arrays JSON para CSV." },
   usage: { ar: ["الصق JSON.", "اضغط تحويل.", "نزّل CSV."], en: ["Paste JSON.", "Click Convert.", "Download CSV."] },
@@ -260,7 +260,7 @@ export const TOOLS = [
 {
   slug: "diff-checker",
   icon: "🔍",
-  category: "dev",
+  category: "text",
   name: { ar: "مقارنة النصوص", en: "Diff Checker", fr: "Comparateur de texte", es: "Comparador de texto", de: "Text-Vergleich", tr: "Metin Karşılaştırma", ru: "Сравнение текста", zh: "文本对比", hi: "टेक्स्ट तुलना", pt: "Comparador de texto" },
   short: { ar: "قارن نصين وأظهر الفروقات.", en: "Compare two texts and show differences.", fr: "Comparer deux textes et montrer les différences.", es: "Compara dos textos y muestra diferencias.", de: "Zwei Texte vergleichen und Unterschiede anzeigen.", tr: "İki metni karşılaştır ve farkları göster.", ru: "Сравнение двух текстов и вывод различий.", zh: "比较两段文本并显示差异。", hi: "दो टेक्स्ट की तुलना करें और अंतर दिखाएं।", pt: "Compare dois textos e mostre diferenças." },
   usage: { ar: ["الصق النص الأصلي.", "الصق النص المعدل.", "اضغط مقارنة."], en: ["Paste original.", "Paste modified.", "Click Compare."] },
@@ -292,7 +292,7 @@ export const TOOLS = [
 {
   slug: "unit-converter",
   icon: "📏",
-  category: "dev",
+  category: "calculators",
   name: { ar: "محوّل الوحدات", en: "Unit Converter", fr: "Convertisseur d'unités", es: "Convertidor de unidades", de: "Einheitenrechner", tr: "Birim Dönüştürücü", ru: "Конвертер единиц", zh: "单位转换器", hi: "इकाई कन्वर्टर", pt: "Conversor de unidades" },
   short: { ar: "حوّل بين وحدات الطول والوزن والحجم والحرارة.", en: "Convert length, weight, volume, temperature.", fr: "Convertir longueur, poids, volume, température.", es: "Convierte longitud, peso, volumen, temperatura.", de: "Länge, Gewicht, Volumen, Temperatur umrechnen.", tr: "Uzunluk, ağırlık, hacim, sıcaklık dönüştür.", ru: "Конвертация длины, веса, объёма, температуры.", zh: "转换长度、重量、体积、温度。", hi: "लंबाई, वजन, आयतन, तापमान कन्वर्ट करें।", pt: "Converta comprimento, peso, volume, temperatura." },
   usage: { ar: ["اختر الفئة.", "أدخل القيمة.", "اقرأ النتائج."], en: ["Choose category.", "Enter value.", "Read results."] },
@@ -302,7 +302,7 @@ export const TOOLS = [
 {
   slug: "percentage-calculator",
   icon: "％",
-  category: "dev",
+  category: "calculators",
   name: { ar: "حاسبة النسبة المئوية", en: "Percentage Calculator", fr: "Calculatrice de pourcentage", es: "Calculadora de porcentaje", de: "Prozentrechner", tr: "Yüzde Hesaplayıcı", ru: "Калькулятор процентов", zh: "百分比计算器", hi: "प्रतिशत कैलकुलेटर", pt: "Calculadora de porcentagem" },
   short: { ar: "احسب النسب والزيادة والنقصان.", en: "Calculate percentages, increase, decrease.", fr: "Calculer pourcentages, augmentation, diminution.", es: "Calcula porcentajes, aumento, disminución.", de: "Prozente, Zunahme, Abnahme berechnen.", tr: "Yüzde, artış, azalış hesapla.", ru: "Расчёт процентов, увеличения, уменьшения.", zh: "计算百分比、增加、减少。", hi: "प्रतिशत, वृद्धि, कमी की गणना करें।", pt: "Calcule porcentagens, aumento, diminuição." },
   usage: { ar: ["اختر النوع.", "أدخل الأرقام.", "اقرأ النتيجة."], en: ["Choose type.", "Enter numbers.", "Read result."] },
@@ -312,7 +312,7 @@ export const TOOLS = [
 {
   slug: "age-calculator",
   icon: "🎂",
-  category: "dev",
+  category: "calculators",
   name: { ar: "حاسبة العمر", en: "Age Calculator", fr: "Calculatrice d'âge", es: "Calculadora de edad", de: "Altersrechner", tr: "Yaş Hesaplayıcı", ru: "Калькулятор возраста", zh: "年龄计算器", hi: "आयु कैलकुलेटर", pt: "Calculadora de idade" },
   short: { ar: "احسب عمرك بالسنوات والأيام.", en: "Calculate your age in years and days.", fr: "Calculer votre âge en années et jours.", es: "Calcula tu edad en años y días.", de: "Alter in Jahren und Tagen berechnen.", tr: "Yaşını yıl ve gün olarak hesapla.", ru: "Расчёт возраста в годах и днях.", zh: "计算您的年龄（年、天）。", hi: "अपनी आयु वर्ष और दिनों में जानें।", pt: "Calcule sua idade em anos e dias." },
   usage: { ar: ["أدخل تاريخ الميلاد.", "اقرأ النتيجة."], en: ["Enter birth date.", "Read result."] },
@@ -322,7 +322,7 @@ export const TOOLS = [
 {
   slug: "bmi-calculator",
   icon: "⚖️",
-  category: "dev",
+  category: "calculators",
   name: { ar: "حاسبة BMI", en: "BMI Calculator", fr: "Calculatrice IMC", es: "Calculadora IMC", de: "BMI-Rechner", tr: "BMI Hesaplayıcı", ru: "Калькулятор ИМТ", zh: "BMI 计算器", hi: "BMI कैलकुलेटर", pt: "Calculadora de IMC" },
   short: { ar: "احسب مؤشر كتلة الجسم.", en: "Calculate body mass index.", fr: "Calculer l'indice de masse corporelle.", es: "Calcula el índice de masa corporal.", de: "Body-Mass-Index berechnen.", tr: "Vücut kitle indeksini hesapla.", ru: "Расчёт индекса массы тела.", zh: "计算身体质量指数。", hi: "बॉडी मास इंडेक्स की गणना करें।", pt: "Calcule o índice de massa corporal." },
   usage: { ar: ["أدخل الطول والوزن.", "اقرأ النتيجة."], en: ["Enter height and weight.", "Read result."] },
@@ -332,7 +332,7 @@ export const TOOLS = [
 {
   slug: "image-to-pdf",
   icon: "📄",
-  category: "media",
+  category: "pdf",
   name: { ar: "صورة إلى PDF", en: "Image to PDF", fr: "Image vers PDF", es: "Imagen a PDF", de: "Bild zu PDF", tr: "Görselden PDF'ye", ru: "Изображение в PDF", zh: "图片转 PDF", hi: "इमेज से PDF", pt: "Imagem para PDF" },
   short: { ar: "حوّل صور JPG أو PNG إلى ملف PDF واحد.", en: "Convert JPG/PNG images into one PDF file.", fr: "Convertissez des images JPG/PNG en un seul PDF.", es: "Convierte imágenes JPG/PNG en un solo PDF.", de: "JPG-/PNG-Bilder in eine PDF-Datei umwandeln.", tr: "JPG/PNG görsellerini tek PDF'ye dönüştür.", ru: "Конвертируйте JPG/PNG в один PDF.", zh: "将 JPG/PNG 图片转换为一个 PDF 文件。", hi: "JPG/PNG इमेज को एक PDF में बदलें।", pt: "Converta imagens JPG/PNG em um único PDF." },
   usage: { ar: ["اختر صورة أو أكثر (JPG/PNG/WebP).", "رتّب الصور واختر حجم الصفحة والاتجاه والهامش.", "اضغط «إنشاء PDF».", "نزّل الملف الناتج."], en: ["Pick one or more images (JPG/PNG/WebP).", "Arrange order, choose page size, orientation and margin.", "Press Create PDF.", "Download the result."] },
@@ -348,7 +348,7 @@ export const TOOLS = [
 {
   slug: "remove-background",
   icon: "✂️",
-  category: "media",
+  category: "images",
   name: { ar: "إزالة خلفية الصورة", en: "Remove Background", fr: "Supprimer l'arrière-plan", es: "Quitar fondo", de: "Hintergrund entfernen", tr: "Arka Planı Kaldır", ru: "Удалить фон", zh: "移除图片背景", hi: "बैकग्राउंड हटाएं", pt: "Remover fundo" },
   short: { ar: "عزل الشخص أو العنصر بخلفية شفافة عبر AI داخل المتصفح.", en: "Isolate subjects with transparent background via in-browser AI.", fr: "Isolez le sujet avec un fond transparent via l'IA du navigateur.", es: "Aísla el sujeto con fondo transparente con IA en el navegador.", de: "Freistellung mit transparentem Hintergrund per KI im Browser.", tr: "Tarayıcıda AI ile şeffaf arka planlı kırpma.", ru: "Отделите объект с прозрачным фоном через ИИ в браузере.", zh: "在浏览器内用 AI 抠图，输出透明背景。", hi: "ब्राउज़र AI से पारदर्शी बैकग्राउंड के साथ सब्जेक्ट अलग करें।", pt: "Isole o objeto com fundo transparente via IA no navegador." },
   usage: { ar: ["اختر صورة (يفضّل أن يكون العنصر الرئيسي واضحاً).", "انتظر تحميل النموذج لأول مرة (نحو 40MB ثم يُخزَّن).", "اضغط «إزالة الخلفية» وانتظر ثوانٍ.", "نزّل النتيجة بصيغة PNG شفافة أو أضف خلفية بلون."], en: ["Pick an image (clear main subject works best).", "Wait for first-time model download (~40MB, cached after).", "Press Remove Background and wait seconds.", "Download the transparent PNG or add a solid color background."] },
@@ -364,7 +364,7 @@ export const TOOLS = [
 {
   slug: "ocr-image-to-text",
   icon: "🔍",
-  category: "media",
+  category: "images",
   name: { ar: "استخراج نص من صورة OCR", en: "Image to Text (OCR)", fr: "Image vers texte (OCR)", es: "Imagen a texto (OCR)", de: "Bild zu Text (OCR)", tr: "Görselden Metne (OCR)", ru: "Изображение в текст (OCR)", zh: "图片转文字 (OCR)", hi: "इमेज से टेक्स्ट (OCR)", pt: "Imagem para texto (OCR)" },
   short: { ar: "استخرج النص من الصور والمستندات الممسوحة — عربي وإنجليزي.", en: "Extract text from images and scans — Arabic & English.", fr: "Extrayez le texte des images — arabe et anglais.", es: "Extrae texto de imágenes — árabe e inglés.", de: "Text aus Bildern extrahieren — Arabisch & Englisch.", tr: "Görsellerden metin çıkar — Arapça ve İngilizce.", ru: "Извлеките текст из изображений — арабский и английский.", zh: "从图片提取文字 — 支持阿拉伯语和英语。", hi: "इमेज से टेक्स्ट निकालें — अरबी और अंग्रेज़ी।", pt: "Extraia texto de imagens — árabe e inglês." },
   usage: { ar: ["اختر صورة تحتوي نصاً (لقطة شاشة أو صورة مستند).", "حدد اللغة: العربية أو الإنجليزية أو معاً.", "اضغط «استخراج النص» وانتظر شريط التقدم.", "انسخ النص أو نزّله كملف txt."], en: ["Pick an image containing text (screenshot or document photo).", "Choose language: Arabic, English, or both.", "Press Extract Text and watch the progress bar.", "Copy the text or download it as a .txt file."] },
@@ -380,7 +380,7 @@ export const TOOLS = [
 {
   slug: "heic-to-jpg",
   icon: "📱",
-  category: "media",
+  category: "images",
   name: { ar: "تحويل HEIC إلى JPG", en: "HEIC to JPG", fr: "HEIC vers JPG", es: "HEIC a JPG", de: "HEIC zu JPG", tr: "HEIC'den JPG'ye", ru: "HEIC в JPG", zh: "HEIC 转 JPG", hi: "HEIC से JPG", pt: "HEIC para JPG" },
   short: { ar: "افتح صور الآيفون HEIC وحوّلها إلى JPG متوافق.", en: "Open iPhone HEIC photos and convert them to JPG.", fr: "Ouvrez les photos HEIC d'iPhone et convertissez-les en JPG.", es: "Abre fotos HEIC de iPhone y conviértelas a JPG.", de: "iPhone-HEIC-Fotos öffnen und zu JPG konvertieren.", tr: "iPhone HEIC fotoğraflarını JPG'ye çevir.", ru: "Откройте фото HEIC с iPhone и конвертируйте в JPG.", zh: "打开 iPhone 的 HEIC 照片并转换为 JPG。", hi: "iPhone की HEIC फोटो खोलें और JPG में बदलें।", pt: "Abra fotos HEIC do iPhone e converta para JPG." },
   usage: { ar: ["اختر صورة أو أكثر بصيغة HEIC/HEIF.", "اضغط «تحويل».", "نزّل صور JPG الناتجة (دفعة كاملة تُنزَّل كأرشيف ZIP)."], en: ["Pick one or more HEIC/HEIF photos.", "Press Convert.", "Download the JPG results (batches arrive as a ZIP)."] },
@@ -396,7 +396,7 @@ export const TOOLS = [
 {
   slug: "split-pdf",
   icon: "✂️",
-  category: "media",
+  category: "pdf",
   name: { ar: "تقسيم PDF", en: "Split PDF", fr: "Diviser PDF", es: "Dividir PDF", de: "PDF teilen", tr: "PDF Böl", ru: "Разделить PDF", zh: "拆分 PDF", hi: "PDF विभाजित करें", pt: "Dividir PDF" },
   short: { ar: "استخرج صفحات أو نطاقات من PDF إلى ملفات منفصلة.", en: "Extract pages or ranges from a PDF into separate files.", fr: "Extrayez des pages ou plages d'un PDF.", es: "Extrae páginas o rangos de un PDF.", de: "Seiten oder Bereiche aus einem PDF extrahieren.", tr: "PDF'den sayfa veya aralık çıkar.", ru: "Извлеките страницы или диапазоны из PDF.", zh: "从 PDF 提取页面或页码范围。", hi: "PDF से पेज या रेंज निकालें।", pt: "Extraia páginas ou intervalos de um PDF." },
   usage: { ar: ["اختر ملف PDF.", "اكتب نطاقات الصفحات مثل: 1-3,5,8-10.", "اختر المخرج: ملف واحد بالصفحات المحددة أو كل صفحة ملفاً مستقلاً.", "اضغط «تقسيم» ونزّل النتيجة (الملفات المتعددة تصل كـ ZIP)."], en: ["Pick a PDF file.", "Type page ranges like 1-3,5,8-10.", "Choose output: one merged file of selected pages, or each page as its own file.", "Press Split and download (multi-file results come as ZIP)."] },
@@ -410,7 +410,7 @@ export const TOOLS = [
 {
   slug: "pdf-to-jpg",
   icon: "🖼️",
-  category: "media",
+  category: "pdf",
   name: { ar: "PDF إلى صور", en: "PDF to Images", fr: "PDF vers images", es: "PDF a imágenes", de: "PDF zu Bilder", tr: "PDF'den görsellere", ru: "PDF в изображения", zh: "PDF 转图片", hi: "PDF से इमेज", pt: "PDF para imagens" },
   short: { ar: "حوّل صفحات PDF إلى صور JPG بجودة قابلة للضبط.", en: "Render PDF pages to JPG images with adjustable quality.", fr: "Convertissez les pages PDF en images JPG.", es: "Convierte páginas PDF a imágenes JPG.", de: "PDF-Seiten in JPG-Bilder umwandeln.", tr: "PDF sayfalarını JPG'ye çevir.", ru: "Конвертируйте страницы PDF в JPG.", zh: "将 PDF 页面渲染为 JPG 图片。", hi: "PDF पेज को JPG इमेज में बदलें।", pt: "Renderize páginas PDF em imagens JPG." },
   usage: { ar: ["اختر ملف PDF.", "حدد جودة JPG (افتراضي 90%).", "اضغط «تحويل» وانتظر معالجة الصفحات.", "صفحة واحدة تُنزَّل مباشرة، ومتعددة الصفحات تصل كأرشيف ZIP."], en: ["Pick a PDF file.", "Set JPG quality (default 90%).", "Press Convert and wait for pages to render.", "Single page downloads directly; multi-page results arrive as ZIP."] },
@@ -424,7 +424,7 @@ export const TOOLS = [
 {
   slug: "rotate-pdf",
   icon: "🔄",
-  category: "media",
+  category: "pdf",
   name: { ar: "تدوير صفحات PDF", en: "Rotate PDF", fr: "Pivoter PDF", es: "Rotar PDF", de: "PDF drehen", tr: "PDF Döndür", ru: "Повернуть PDF", zh: "旋转 PDF 页面", hi: "PDF घुमाएं", pt: "Girar PDF" },
   short: { ar: "صحّح اتجاه صفحات PDF بتدوير 90 أو 180 أو 270 درجة.", en: "Fix sideways PDF pages by rotating 90/180/270 degrees.", fr: "Redressez les pages PDF par rotation 90/180/270°.", es: "Corrige páginas PDF rotando 90/180/270°.", de: "PDF-Seiten um 90/180/270° drehen.", tr: "PDF sayfalarını 90/180/270° döndür.", ru: "Поверните страницы PDF на 90/180/270°.", zh: "将 PDF 页面旋转 90/180/270 度。", hi: "PDF पेज 90/180/270 डिग्री घुमाएं।", pt: "Gire páginas PDF em 90/180/270 graus." },
   usage: { ar: ["اختر ملف PDF.", "حدد زاوية التدوير: 90 أو 180 أو 270 درجة.", "اختياري: حدد نطاق صفحات معين (اتركه فارغاً لكل الصفحات).", "اضغط «تدوير» ونزّل النسخة المصححة."], en: ["Pick a PDF file.", "Choose rotation: 90, 180 or 270 degrees.", "Optional: limit to specific page ranges (leave empty for all pages).", "Press Rotate and download the fixed copy."] },
@@ -438,7 +438,7 @@ export const TOOLS = [
 {
   slug: "word-to-pdf",
   icon: "📝",
-  category: "media",
+  category: "pdf",
   name: { ar: "Word إلى PDF", en: "Word to PDF", fr: "Word vers PDF", es: "Word a PDF", de: "Word zu PDF", tr: "Word'den PDF'ye", ru: "Word в PDF", zh: "Word 转 PDF", hi: "Word से PDF", pt: "Word para PDF" },
   short: { ar: "حوّل مستندات DOCX إلى PDF عبر نافذة الطباعة.", en: "Convert DOCX documents to PDF via the print dialog.", fr: "Convertissez des DOCX en PDF via l'impression.", es: "Convierte DOCX a PDF mediante impresión.", de: "DOCX über den Druckdialog zu PDF konvertieren.", tr: "DOCX belgeleri yazdırma ile PDF'ye çevir.", ru: "Конвертируйте DOCX в PDF через печать.", zh: "通过打印对话框将 DOCX 转为 PDF。", hi: "प्रिंट डायलॉग से DOCX को PDF में बदलें।", pt: "Converta DOCX em PDF via diálogo de impressão." },
   usage: { ar: ["اختر ملف .docx.", "ستُعرض معاينة منسّقة لمحتوى المستند.", "اضغط «حفظ كـ PDF» فتفتح نافذة الطباعة.", "اختر «حفظ كـ PDF» من قائمة الطابعة، أو نزّل HTML/نصاً صريحاً."], en: ["Pick a .docx file.", "A formatted preview of the content is rendered.", "Press Save as PDF to open the print dialog.", "Choose Save as PDF in the printer list, or download clean HTML/text instead."] },
@@ -454,7 +454,7 @@ export const TOOLS = [
 {
   slug: "resize-image",
   icon: "📐",
-  category: "media",
+  category: "images",
   name: { ar: "تحجيم الصور", en: "Image Resizer", fr: "Redimensionner images", es: "Redimensionar imágenes", de: "Bilder skalieren", tr: "Görsel Boyutlandırıcı", ru: "Изменить размер изображений", zh: "调整图片尺寸", hi: "इमेज रीसाइज़र", pt: "Redimensionar imagens" },
   short: { ar: "غيّر أبعاد الصور بالعرض أو بالنسبة مع تحويل الصيغة.", en: "Resize images by width or percentage with format conversion.", fr: "Redimensionnez par largeur ou pourcentage.", es: "Redimensiona por ancho o porcentaje.", de: "Größe nach Breite oder Prozent ändern.", tr: "Genişlik veya yüzdeye göre boyutlandır.", ru: "Измените размер по ширине или проценту.", zh: "按宽度或百分比调整图片尺寸。", hi: "चौड़ाई या प्रतिशत से इमेज रीसाइज़ करें।", pt: "Redimensione por largura ou porcentagem." },
   usage: { ar: ["اختر صورة أو أكثر.", "حدد العرض الجديد بالبكسل أو نسبة مئوية من الأصل.", "اختر صيغة الإخراج والجودة.", "اضغط «تحجيم» ونزّل النتائج (دفعة كاملة = ZIP)."], en: ["Pick one or more images.", "Set the new width in pixels or a percentage of original.", "Choose output format and quality.", "Press Resize and download (batches arrive as ZIP)."] },
@@ -468,7 +468,7 @@ export const TOOLS = [
 {
   slug: "excel-to-csv",
   icon: "📊",
-  category: "dev",
+  category: "convert",
   name: { ar: "Excel إلى CSV", en: "Excel to CSV", fr: "Excel vers CSV", es: "Excel a CSV", de: "Excel zu CSV", tr: "Excel'den CSV'ye", ru: "Excel в CSV", zh: "Excel 转 CSV", hi: "Excel से CSV", pt: "Excel para CSV" },
   short: { ar: "حوّل جداول XLSX/XLS إلى CSV مع اختيار الورقة والفاصل.", en: "Convert XLSX/XLS sheets to CSV with sheet & delimiter choice.", fr: "Convertissez XLSX/XLS en CSV avec choix de feuille.", es: "Convierte XLSX/XLS a CSV eligiendo hoja y delimitador.", de: "XLSX/XLS zu CSV mit Blatt- und Trennwahl.", tr: "XLSX/XLS'yi CSV'ye çevir (sayfa/ayraç seçimi ile).", ru: "Конвертируйте XLSX/XLS в CSV с выбором листа.", zh: "将 XLSX/XLS 转为 CSV，可选工作表与分隔符。", hi: "XLSX/XLS को CSV में बदलें (शीट और डेलिमिटर चयन)।", pt: "Converta XLSX/XLS para CSV com escolha de planilha." },
   usage: { ar: ["اختر ملف Excel (.xlsx أو .xls).", "اختر الورقة المطلوبة من القائمة.", "حدد الفاصل: فاصلة أو فاصلة منقوطة.", "اضغط «تحويل» ونزّل CSV (كل الأوراق = ZIP)."], en: ["Pick an Excel file (.xlsx or .xls).", "Choose the sheet from the list.", "Pick the delimiter: comma or semicolon.", "Press Convert and download the CSV (all sheets = ZIP)."] },
@@ -482,7 +482,7 @@ export const TOOLS = [
 {
   slug: "csv-to-excel",
   icon: "📗",
-  category: "dev",
+  category: "convert",
   name: { ar: "CSV إلى Excel", en: "CSV to Excel", fr: "CSV vers Excel", es: "CSV a Excel", de: "CSV zu Excel", tr: "CSV'den Excel'e", ru: "CSV в Excel", zh: "CSV 转 Excel", hi: "CSV से Excel", pt: "CSV para Excel" },
   short: { ar: "حوّل ملفات CSV إلى جدول XLSX حقيقي يفتح في Excel.", en: "Turn CSV files into real XLSX spreadsheets that open in Excel.", fr: "Convertissez CSV en véritable XLSX pour Excel.", es: "Convierte CSV a XLSX real que abre en Excel.", de: "CSV in echte XLSX-Tabellen für Excel umwandeln.", tr: "CSV'yi Excel'de açılan gerçek XLSX'e çevir.", ru: "Преобразуйте CSV в настоящий XLSX для Excel.", zh: "将 CSV 转为可在 Excel 打开的 XLSX。", hi: "CSV को Excel में खुलने वाले असली XLSX में बदलें।", pt: "Transforme CSV em XLSX real para abrir no Excel." },
   usage: { ar: ["اختر ملف CSV (يكشف الفاصل تلقائياً).", "راجع عدد الصفوف والأعمدة المكتشفة.", "اضغط «تحويل إلى Excel».", "نزّل ملف XLSX الجاهز للفتح في Excel أو Google Sheets."], en: ["Pick a CSV file (delimiter auto-detected).", "Review detected row and column counts.", "Press Convert to Excel.", "Download the XLSX ready for Excel or Google Sheets."] },
@@ -496,7 +496,7 @@ export const TOOLS = [
 {
   slug: "excel-to-json",
   icon: "🧾",
-  category: "dev",
+  category: "convert",
   name: { ar: "Excel إلى JSON", en: "Excel to JSON", fr: "Excel vers JSON", es: "Excel a JSON", de: "Excel zu JSON", tr: "Excel'den JSON'a", ru: "Excel в JSON", zh: "Excel 转 JSON", hi: "Excel से JSON", pt: "Excel para JSON" },
   short: { ar: "حوّل أوراق Excel إلى JSON جاهز للمبرمجين وواجهات API.", en: "Convert Excel sheets to JSON ready for developers and APIs.", fr: "Convertissez Excel en JSON prêt pour les API.", es: "Convierte Excel a JSON listo para APIs.", de: "Excel zu API-tauglichem JSON konvertieren.", tr: "Excel'i API'lere hazır JSON'a çevir.", ru: "Конвертируйте Excel в JSON для API.", zh: "将 Excel 转为可用于 API 的 JSON。", hi: "Excel को API-रेडी JSON में बदलें।", pt: "Converta Excel em JSON pronto para APIs." },
   usage: { ar: ["اختر ملف Excel.", "اختر الورقة ووضع الإخراج: مصفوفة كائنات (الصف الأول مفاتيح) أو مصفوفة صفوف.", "اضغط «تحويل».", "انسخ JSON أو نزّله مباشرة."], en: ["Pick an Excel file.", "Choose the sheet and output mode: array of objects (first row as keys) or array of rows.", "Press Convert.", "Copy the JSON or download it."] },
@@ -510,7 +510,7 @@ export const TOOLS = [
 {
   slug: "zip-files",
   icon: "🗜️",
-  category: "dev",
+  category: "convert",
   name: { ar: "ضغط ملفات ZIP", en: "ZIP Files", fr: "Compresser en ZIP", es: "Comprimir en ZIP", de: "Dateien zippen", tr: "ZIP Sıkıştırma", ru: "Сжать в ZIP", zh: "打包 ZIP 文件", hi: "ZIP फ़ाइलें बनाएं", pt: "Compactar em ZIP" },
   short: { ar: "اجمع أي عدد من الملفات في أرشيف ZIP واحد داخل المتصفح.", en: "Pack any number of files into one ZIP archive in your browser.", fr: "Regroupez vos fichiers en un ZIP dans le navigateur.", es: "Empaqueta archivos en un ZIP desde el navegador.", de: "Beliebige Dateien im Browser zu ZIP packen.", tr: "Tarayıcıda dosyaları tek ZIP'te topla.", ru: "Упакуйте файлы в ZIP прямо в браузере.", zh: "在浏览器中将多个文件打包为 ZIP。", hi: "ब्राउज़र में फ़ाइलें एक ZIP में पैक करें।", pt: "Empacote arquivos num ZIP direto no navegador." },
   usage: { ar: ["اختر أي عدد من الملفات من أي نوع.", "اختياري: ضع الملفات داخل مجلد بأسماء محددة.", "اضغط «إنشاء ZIP».", "نزّل الأرشيف الجاهز للإرسال."], en: ["Pick any number of files of any type.", "Optional: place files inside a named folder.", "Press Create ZIP.", "Download the archive ready to share."] },
@@ -524,7 +524,7 @@ export const TOOLS = [
 {
   slug: "qr-scanner",
   icon: "📷",
-  category: "media",
+  category: "business",
   name: { ar: "قارئ QR من صورة", en: "QR Reader (Image)", fr: "Lecteur QR (image)", es: "Lector QR (imagen)", de: "QR-Leser (Bild)", tr: "QR Okuyucu (Görsel)", ru: "QR-читатель (изображение)", zh: "QR 读取器（图片）", hi: "QR रीडर (इमेज)", pt: "Leitor QR (imagem)" },
   short: { ar: "اقرأ محتوى رمز QR من صورة أو لقطة شاشة.", en: "Decode a QR code from an image or screenshot.", fr: "Décodez un QR code depuis une image.", es: "Decodifica un QR desde una imagen.", de: "QR-Code aus Bild entschlüsseln.", tr: "Görselden QR kodunu çöz.", ru: "Декодируйте QR-код из изображения.", zh: "从图片或截图解码二维码。", hi: "इमेज या स्क्रीनशॉट से QR डिकोड करें।", pt: "Decodifique um QR de imagem ou print." },
   usage: { ar: ["اختر صورة تحتوي رمز QR (لقطة شاشة أو صورة كاميرا).", "اضغط «فك الرمز».", "اقرأ المحتوى: رابط أو نص أو رقم هاتف.", "انسخه، أو افحص الرابط قبل فتحه."], en: ["Pick an image containing a QR code (screenshot or camera photo).", "Press Decode.", "Read the content: URL, text or phone number.", "Copy it, or inspect the link before opening."] },
@@ -536,7 +536,7 @@ export const TOOLS = [
   related: ["qr-code", "base64", "url-encoder"]
 },
 {
-  slug: 'pdf-organize', icon: '🗂️', category: 'media',
+  slug: 'pdf-organize', icon: '🗂️', category: 'pdf',
   name: { ar: 'ترتيب صفحات PDF', en: 'PDF Page Organizer' },
   short: { ar: 'أعد ترتيب الصفحات أو احذف صفحات محددة من PDF مجاناً داخل متصفحك، دون رفع الملف.', en: 'Reorder or remove PDF pages.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -544,7 +544,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'pdf-watermark', icon: '💧', category: 'media',
+  slug: 'pdf-watermark', icon: '💧', category: 'pdf',
   name: { ar: 'علامة مائية PDF', en: 'PDF Watermark' },
   short: { ar: 'أضف علامة مائية نصية مائلة إلى صفحات PDF واضبط حجمها وشفافيتها محلياً في المتصفح.', en: 'Add a text watermark to PDF pages.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -552,7 +552,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'pdf-page-numbers', icon: '🔢', category: 'media',
+  slug: 'pdf-page-numbers', icon: '🔢', category: 'pdf',
   name: { ar: 'ترقيم صفحات PDF', en: 'PDF Page Numbers' },
   short: { ar: 'أضف أرقاماً إلى صفحات ملف PDF وحدد موضعها ورقم البداية قبل تنزيل النسخة المعدّلة.', en: 'Add page numbers to a PDF.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -560,7 +560,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'image-crop', icon: '✂️', category: 'media',
+  slug: 'image-crop', icon: '✂️', category: 'images',
   name: { ar: 'قص الصور', en: 'Image Cropper' },
   short: { ar: 'اقص الصور بنسب أبعاد شائعة واحفظها بصيغة PNG أو JPG أو WebP مباشرة في المتصفح.', en: 'Crop images to common aspect ratios or custom dimensions.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -568,7 +568,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'image-rotate-flip', icon: '🔄', category: 'media',
+  slug: 'image-rotate-flip', icon: '🔄', category: 'images',
   name: { ar: 'تدوير وقلب الصور', en: 'Rotate and Flip Images' },
   short: { ar: 'دوّر الصور بزاوية 90 أو 180 درجة أو اقلبها أفقياً وعمودياً، ثم احفظ النسخة الجديدة.', en: 'Rotate images or flip them horizontally and vertically.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -576,7 +576,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'exif-viewer', icon: '🔎', category: 'media',
+  slug: 'exif-viewer', icon: '🔎', category: 'images',
   name: { ar: 'عارض بيانات EXIF', en: 'EXIF Viewer' },
   short: { ar: 'اعرض بيانات EXIF في صور JPEG، مثل طراز الكاميرا وتاريخ الالتقاط وبعض معلومات الموقع، محلياً.', en: 'Inspect camera and date metadata in JPEG images.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -584,7 +584,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'favicon-generator', icon: '⭐', category: 'media',
+  slug: 'favicon-generator', icon: '⭐', category: 'images',
   name: { ar: 'مولّد Favicon', en: 'Favicon Generator' },
   short: { ar: 'حوّل صورتك إلى أيقونات Favicon متعددة الأحجام وملف ICO ومقتطف HTML جاهز لموقعك.', en: 'Turn an image into multi-size site icons and an ICO file.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -592,7 +592,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'svg-to-png', icon: '🖼️', category: 'media',
+  slug: 'svg-to-png', icon: '🖼️', category: 'images',
   name: { ar: 'تحويل SVG إلى PNG', en: 'SVG to PNG' },
   short: { ar: 'حوّل رسومات SVG المتجهة إلى PNG شفاف وحدد العرض بالبكسل ولون الخلفية الاختياري.', en: 'Convert vector graphics into PNG images.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -600,7 +600,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'json-yaml', icon: '🔁', category: 'dev',
+  slug: 'json-yaml', icon: '🔁', category: 'convert',
   name: { ar: 'تحويل JSON وYAML', en: 'JSON to YAML Converter' },
   short: { ar: 'حوّل JSON إلى YAML أو YAML إلى JSON، والصق البيانات أو اختر ملفاً دون رفعه إلى خادم.', en: 'Convert JSON to YAML or back.' },
   usage: { ar: ["أدخل الملفات أو النص المطلوب.", "اختر الخيارات المناسبة.", "نفّذ العملية واحفظ النتيجة."], en: ["Add the input file or text.", "Choose options.", "Run the action and save the result."] },
@@ -648,7 +648,7 @@ export const TOOLS = [
   faq: [], related: []
 },
 {
-  slug: 'image-to-base64', icon: '🧬', category: 'media',
+  slug: 'image-to-base64', icon: '🧬', category: 'images',
   name: { ar: 'تحويل صورة إلى Base64', en: 'Image to Base64 Converter' },
   short: { ar: 'حوّل صورة إلى نص Base64 أو Data URL داخل المتصفح. حد الملف 8 ميغابايت.', en: 'Convert an image to Base64 text or a Data URL in your browser. 8 MiB file limit.' },
   usage: { ar: ["اختر صورة من جهازك.", "حدد Base64 فقط أو Data URL مع نوع MIME.", "حوّل الناتج ثم انسخه."], en: ["Choose an image from your device.", "Select Base64 only or a Data URL with its MIME type.", "Convert and copy the output."] },
@@ -675,12 +675,15 @@ export const TOOLS = [
 
 export const CATEGORIES = [
   { id: "all", label: "cat.all" },
-  { id: "dev", label: "cat.dev" },
-  { id: "encode", label: "cat.encode" },
+  { id: "pdf", label: "cat.pdf" },
+  { id: "images", label: "cat.images" },
+  { id: "media", label: "cat.media" },
+  { id: "convert", label: "cat.convert" },
   { id: "text", label: "cat.text" },
+  { id: "dev", label: "cat.dev" },
   { id: "security", label: "cat.security" },
-  { id: "color", label: "cat.color" },
-  { id: "media", label: "cat.media" }
+  { id: "calculators", label: "cat.calculators" },
+  { id: "business", label: "cat.business" }
 ];
 
 export function getTool(slug) { return TOOLS.find(t => t.slug === slug); }

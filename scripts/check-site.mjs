@@ -36,7 +36,7 @@ for (const tool of TOOLS) {
   }
 }
 
-for (const slug of ["pdf", "images", "convert", "text", "dev", "security", "calculators"]) {
+for (const slug of ["pdf", "images", "media", "convert", "text", "dev", "security", "calculators", "business"]) {
   const p = `${slug}/index.html`;
   const html = read(p);
   ok(html.includes("rel=\"canonical\""), `${p}: canonical missing`);
@@ -57,7 +57,7 @@ ok(!home.includes("most-searched") && !read("js/i18n.js").includes("most-searche
 ok(existsSync(new URL("feed.xml", ROOT)), "RSS feed missing");
 ok(existsSync(new URL("robots.txt", ROOT)), "robots.txt missing");
 const sitemap = read("sitemap.xml");
-for (const p of ["text/", "dev/", "security/", "calculators/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`${siteRoot}${p}`), `sitemap missing ${p}`);
+for (const p of ["text/", "dev/", "security/", "calculators/", "media/", "business/", "tools/pdf-organize/", "contact/"]) ok(sitemap.includes(`${siteRoot}${p}`), `sitemap missing ${p}`);
 const mailPage = read("mail/index.html");
 ok((mailPage.match(/<h1\b/g) || []).length === 1, "mail page must have exactly one H1");
 ok(mailPage.includes(`<link rel="canonical" href="${siteRoot}mail/"`), "mail page canonical missing or incorrect");
@@ -171,4 +171,4 @@ assert.match(ops.mdToHtml("[x](javascript:alert(1))"), /href="#"/); checks++;
 assert.equal((await ops.totp("GEZDGNBVGY3TQOJQGEZDGNBVGY3TQOJQ", { digits: 8, timestamp: 59000 })).code, "94287082"); checks++;
 assert.ok(ops.passwordStrength("short").score <= ops.passwordStrength("aLonger-More-Unique-Example-123").score); checks++;
 
-console.log(`✓ ${checks} checks passed for ${TOOLS.length} registered tools, 7 centers and core operations.`);
+console.log(`✓ ${checks} checks passed for ${TOOLS.length} registered tools, 9 tool centers plus temporary email and core operations.`);

@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,7 +62,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"All Tools — DouNest","url":"https://dounest.hmdevelop.me/tools/","inLanguage":"ar"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"All Tools — DouNest","url":"https://dounest.hmdevelop.me/tools/","inLanguage":"en"}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -80,10 +80,10 @@
         <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
-          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
-          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
-          <a href="../security/" data-i18n="nav.security">Security center</a>
-          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../media/" data-i18n="nav.media">Video & Audio</a><a href="../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../text/" data-i18n="nav.text">Text center</a><a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a><a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
         <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
         <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
@@ -101,407 +101,419 @@
       <h1>All Tools</h1>
       <p>61+ free tools run directly in your browser—no signup and no file uploads.</p>
     </section>
-    <section class="section"><h2 class="section-title">استكشف حسب المهمة</h2><div class="explore-strip"><a class="explore-card" href="/pdf/"><strong>📄 مركز PDF</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/images/"><strong>🖼️ مركز الصور</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/convert/"><strong>🔄 مركز التحويل</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/text/"><strong>✍️ مركز النصوص</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/dev/"><strong>🧰 مركز المطورين</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/security/"><strong>🔐 مركز الأمان</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/calculators/"><strong>🧮 الحاسبات</strong><span>أدوات وخدمات متخصصة</span></a><a class="explore-card" href="/mail/"><strong>✉️ بريد إلكتروني مؤقت</strong><span>أدوات وخدمات متخصصة</span></a></div></section>
+    <section class="section"><h2 class="section-title">Explore by center</h2><div class="explore-strip"><a class="explore-card" href="/pdf/"><strong>📄 PDF</strong><span>Focused tools and services</span></a><a class="explore-card" href="/images/"><strong>🖼️ Images & Design</strong><span>Focused tools and services</span></a><a class="explore-card" href="/media/"><strong>🎬 Video & Audio</strong><span>Focused tools and services</span></a><a class="explore-card" href="/convert/"><strong>🔄 File Conversion</strong><span>Focused tools and services</span></a><a class="explore-card" href="/text/"><strong>✍️ Text</strong><span>Focused tools and services</span></a><a class="explore-card" href="/dev/"><strong>🧰 Developers</strong><span>Focused tools and services</span></a><a class="explore-card" href="/security/"><strong>🔐 Security & Privacy</strong><span>Focused tools and services</span></a><a class="explore-card" href="/calculators/"><strong>🧮 Calculators</strong><span>Focused tools and services</span></a><a class="explore-card" href="/business/"><strong>💼 Productivity & Business</strong><span>Focused tools and services</span></a><a class="explore-card" href="/mail/"><strong>✉️ Temporary Email</strong><span>Focused tools and services</span></a></div></section>
 
     <section class="section">
-      <h2 class="section-title">مطورين</h2>
+      <h2 class="section-title">PDF</h2>
       <div class="tools-grid">
 
-        <a class="tool-card" href="json-formatter/">
-          <div class="icon cat-dev" aria-hidden="true">{}</div>
-          <h3>JSON Formatter</h3>
-          <p>Format, minify, and validate JSON.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+        <a class="tool-card" href="pdf-to-txt/">
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
+          <h3>PDF to Text</h3>
+          <p>Extract text from PDFs locally.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="jwt-decoder/">
-          <div class="icon cat-dev" aria-hidden="true">🔑</div>
-          <h3>JWT Decoder</h3>
-          <p>Inspect JWT payload.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+        <a class="tool-card" href="pdf-to-word/">
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
+          <h3>PDF to Word</h3>
+          <p>Extract PDF text to a Word-compatible DOC file; page layout may change.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
-        <a class="tool-card" href="uuid-generator/">
-          <div class="icon cat-dev" aria-hidden="true">🆔</div>
-          <h3>UUID Generator</h3>
-          <p>Generate random UUID v4.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+        <a class="tool-card" href="merge-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">📚</div>
+          <h3>Merge PDF</h3>
+          <p>Combine multiple PDFs into one.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
+        <a class="tool-card" href="compress-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">🗜️</div>
+          <h3>Compress PDF</h3>
+          <p>Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="image-to-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
+          <h3>Image to PDF</h3>
+          <p>Convert JPG/PNG images into one PDF file.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="split-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">✂️</div>
+          <h3>Split PDF</h3>
+          <p>Extract pages or ranges from a PDF into separate files.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="pdf-to-jpg/">
+          <div class="icon cat-pdf" aria-hidden="true">🖼️</div>
+          <h3>PDF to Images</h3>
+          <p>Render PDF pages to JPG images with adjustable quality.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="rotate-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">🔄</div>
+          <h3>Rotate PDF</h3>
+          <p>Fix sideways PDF pages by rotating 90/180/270 degrees.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="word-to-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">📝</div>
+          <h3>Word to PDF</h3>
+          <p>Convert DOCX documents to PDF via the print dialog.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="pdf-organize/">
+          <div class="icon cat-pdf" aria-hidden="true">🗂️</div>
+          <h3>PDF Page Organizer</h3>
+          <p>Reorder or remove PDF pages.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="pdf-watermark/">
+          <div class="icon cat-pdf" aria-hidden="true">💧</div>
+          <h3>PDF Watermark</h3>
+          <p>Add a text watermark to PDF pages.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="pdf-page-numbers/">
+          <div class="icon cat-pdf" aria-hidden="true">🔢</div>
+          <h3>PDF Page Numbers</h3>
+          <p>Add page numbers to a PDF.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Images &amp; Design</h2>
+      <div class="tools-grid">
+
+        <a class="tool-card" href="color-converter/">
+          <div class="icon cat-images" aria-hidden="true">🎨</div>
+          <h3>Color Converter</h3>
+          <p>Convert HEX, RGB, HSL.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="image-compressor/">
+          <div class="icon cat-images" aria-hidden="true">🖼️</div>
+          <h3>Image Compressor</h3>
+          <p>Compress JPG/PNG/WebP locally.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="color-picker/">
+          <div class="icon cat-images" aria-hidden="true">🖌️</div>
+          <h3>Color Picker</h3>
+          <p>Pick a color and get all formats.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="image-converter/">
+          <div class="icon cat-images" aria-hidden="true">🔄</div>
+          <h3>Image Converter</h3>
+          <p>Convert between JPG, PNG, WebP, AVIF, GIF.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="remove-background/">
+          <div class="icon cat-images" aria-hidden="true">✂️</div>
+          <h3>Remove Background</h3>
+          <p>Isolate subjects with transparent background via in-browser AI.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="ocr-image-to-text/">
+          <div class="icon cat-images" aria-hidden="true">🔍</div>
+          <h3>Image to Text (OCR)</h3>
+          <p>Extract text from images and scans — Arabic &amp; English.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="heic-to-jpg/">
+          <div class="icon cat-images" aria-hidden="true">📱</div>
+          <h3>HEIC to JPG</h3>
+          <p>Open iPhone HEIC photos and convert them to JPG.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="resize-image/">
+          <div class="icon cat-images" aria-hidden="true">📐</div>
+          <h3>Image Resizer</h3>
+          <p>Resize images by width or percentage with format conversion.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="image-crop/">
+          <div class="icon cat-images" aria-hidden="true">✂️</div>
+          <h3>Image Cropper</h3>
+          <p>Crop images to common aspect ratios or custom dimensions.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="image-rotate-flip/">
+          <div class="icon cat-images" aria-hidden="true">🔄</div>
+          <h3>Rotate and Flip Images</h3>
+          <p>Rotate images or flip them horizontally and vertically.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="exif-viewer/">
+          <div class="icon cat-images" aria-hidden="true">🔎</div>
+          <h3>EXIF Viewer</h3>
+          <p>Inspect camera and date metadata in JPEG images.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="favicon-generator/">
+          <div class="icon cat-images" aria-hidden="true">⭐</div>
+          <h3>Favicon Generator</h3>
+          <p>Turn an image into multi-size site icons and an ICO file.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="svg-to-png/">
+          <div class="icon cat-images" aria-hidden="true">🖼️</div>
+          <h3>SVG to PNG</h3>
+          <p>Convert vector graphics into PNG images.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+        <a class="tool-card" href="image-to-base64/">
+          <div class="icon cat-images" aria-hidden="true">🧬</div>
+          <h3>Image to Base64 Converter</h3>
+          <p>Convert an image to Base64 text or a Data URL in your browser. 8 MiB file limit.</p>
+          <div class="card-foot"><span class="badge tiny">Images &amp; Design</span></div>
+        </a>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">File Conversion</h2>
+      <div class="tools-grid">
+
         <a class="tool-card" href="csv-to-json/">
-          <div class="icon cat-dev" aria-hidden="true">📊</div>
+          <div class="icon cat-convert" aria-hidden="true">📊</div>
           <h3>CSV to JSON</h3>
           <p>Convert CSV data to JSON.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="json-to-csv/">
-          <div class="icon cat-dev" aria-hidden="true">📈</div>
+          <div class="icon cat-convert" aria-hidden="true">📈</div>
           <h3>JSON to CSV</h3>
           <p>Convert JSON arrays to CSV.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="regex-tester/">
-          <div class="icon cat-dev" aria-hidden="true">.*</div>
-          <h3>Regex Tester</h3>
-          <p>Test regular expressions live.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="cron-generator/">
-          <div class="icon cat-dev" aria-hidden="true">⏰</div>
-          <h3>Cron Generator</h3>
-          <p>Build and understand cron expressions.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="diff-checker/">
-          <div class="icon cat-dev" aria-hidden="true">🔍</div>
-          <h3>Diff Checker</h3>
-          <p>Compare two texts and show differences.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="sql-formatter/">
-          <div class="icon cat-dev" aria-hidden="true">🗃️</div>
-          <h3>SQL Formatter</h3>
-          <p>Format SQL queries for readability.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="timestamp-converter/">
-          <div class="icon cat-dev" aria-hidden="true">🕐</div>
-          <h3>Timestamp Converter</h3>
-          <p>Convert between Unix timestamp and date.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="unit-converter/">
-          <div class="icon cat-dev" aria-hidden="true">📏</div>
-          <h3>Unit Converter</h3>
-          <p>Convert length, weight, volume, temperature.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="percentage-calculator/">
-          <div class="icon cat-dev" aria-hidden="true">％</div>
-          <h3>Percentage Calculator</h3>
-          <p>Calculate percentages, increase, decrease.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="age-calculator/">
-          <div class="icon cat-dev" aria-hidden="true">🎂</div>
-          <h3>Age Calculator</h3>
-          <p>Calculate your age in years and days.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="bmi-calculator/">
-          <div class="icon cat-dev" aria-hidden="true">⚖️</div>
-          <h3>BMI Calculator</h3>
-          <p>Calculate body mass index.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="excel-to-csv/">
-          <div class="icon cat-dev" aria-hidden="true">📊</div>
+          <div class="icon cat-convert" aria-hidden="true">📊</div>
           <h3>Excel to CSV</h3>
           <p>Convert XLSX/XLS sheets to CSV with sheet &amp; delimiter choice.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="csv-to-excel/">
-          <div class="icon cat-dev" aria-hidden="true">📗</div>
+          <div class="icon cat-convert" aria-hidden="true">📗</div>
           <h3>CSV to Excel</h3>
           <p>Turn CSV files into real XLSX spreadsheets that open in Excel.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="excel-to-json/">
-          <div class="icon cat-dev" aria-hidden="true">🧾</div>
+          <div class="icon cat-convert" aria-hidden="true">🧾</div>
           <h3>Excel to JSON</h3>
           <p>Convert Excel sheets to JSON ready for developers and APIs.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="zip-files/">
-          <div class="icon cat-dev" aria-hidden="true">🗜️</div>
+          <div class="icon cat-convert" aria-hidden="true">🗜️</div>
           <h3>ZIP Files</h3>
           <p>Pack any number of files into one ZIP archive in your browser.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
         <a class="tool-card" href="json-yaml/">
-          <div class="icon cat-dev" aria-hidden="true">🔁</div>
+          <div class="icon cat-convert" aria-hidden="true">🔁</div>
           <h3>JSON to YAML Converter</h3>
           <p>Convert JSON to YAML or back.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="xml-formatter/">
-          <div class="icon cat-dev" aria-hidden="true">🧾</div>
-          <h3>XML Formatter</h3>
-          <p>Validate and pretty-print XML locally while rejecting DTD and external entity declarations.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
-        </a>
-        <a class="tool-card" href="html-to-markdown/">
-          <div class="icon cat-dev" aria-hidden="true">↔️</div>
-          <h3>HTML to Markdown Converter</h3>
-          <p>Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.</p>
-          <div class="card-foot"><span class="badge tiny">مطورين</span></div>
+          <div class="card-foot"><span class="badge tiny">File Conversion</span></div>
         </a>
       </div>
     </section>
     <section class="section">
-      <h2 class="section-title">ترميز</h2>
-      <div class="tools-grid">
-
-        <a class="tool-card" href="base64/">
-          <div class="icon cat-encode" aria-hidden="true">64</div>
-          <h3>Base64 Encoder</h3>
-          <p>Encode and decode Base64.</p>
-          <div class="card-foot"><span class="badge tiny">ترميز</span></div>
-        </a>
-        <a class="tool-card" href="url-encoder/">
-          <div class="icon cat-encode" aria-hidden="true">%</div>
-          <h3>URL Encoder</h3>
-          <p>Encode and decode URLs.</p>
-          <div class="card-foot"><span class="badge tiny">ترميز</span></div>
-        </a>
-      </div>
-    </section>
-    <section class="section">
-      <h2 class="section-title">نصوص</h2>
+      <h2 class="section-title">Text</h2>
       <div class="tools-grid">
 
         <a class="tool-card" href="word-counter/">
           <div class="icon cat-text" aria-hidden="true">🔢</div>
           <h3>Word Counter</h3>
           <p>Count words, chars, lines.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
         <a class="tool-card" href="text-case/">
           <div class="icon cat-text" aria-hidden="true">Aa</div>
           <h3>Text Case Converter</h3>
           <p>UPPER, lower, Title, Sentence.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
         <a class="tool-card" href="lorem-ipsum/">
           <div class="icon cat-text" aria-hidden="true">📝</div>
           <h3>Lorem Ipsum Generator</h3>
           <p>Placeholder text for design.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
+        </a>
+        <a class="tool-card" href="diff-checker/">
+          <div class="icon cat-text" aria-hidden="true">🔍</div>
+          <h3>Diff Checker</h3>
+          <p>Compare two texts and show differences.</p>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
         <a class="tool-card" href="markdown-to-html/">
           <div class="icon cat-text" aria-hidden="true">📝</div>
           <h3>Markdown to HTML</h3>
           <p>Convert Markdown into HTML locally.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
         <a class="tool-card" href="slug-generator/">
           <div class="icon cat-text" aria-hidden="true">🔗</div>
           <h3>Arabic Slug Generator</h3>
           <p>Turn titles into URL-friendly slugs.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
         <a class="tool-card" href="list-cleaner/">
           <div class="icon cat-text" aria-hidden="true">🧹</div>
           <h3>List Cleaner</h3>
           <p>Trim, deduplicate and sort lists.</p>
-          <div class="card-foot"><span class="badge tiny">نصوص</span></div>
+          <div class="card-foot"><span class="badge tiny">Text</span></div>
         </a>
       </div>
     </section>
     <section class="section">
-      <h2 class="section-title">أمان</h2>
+      <h2 class="section-title">Developers</h2>
+      <div class="tools-grid">
+
+        <a class="tool-card" href="json-formatter/">
+          <div class="icon cat-dev" aria-hidden="true">{}</div>
+          <h3>JSON Formatter</h3>
+          <p>Format, minify, and validate JSON.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="base64/">
+          <div class="icon cat-dev" aria-hidden="true">64</div>
+          <h3>Base64 Encoder</h3>
+          <p>Encode and decode Base64.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="url-encoder/">
+          <div class="icon cat-dev" aria-hidden="true">%</div>
+          <h3>URL Encoder</h3>
+          <p>Encode and decode URLs.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="jwt-decoder/">
+          <div class="icon cat-dev" aria-hidden="true">🔑</div>
+          <h3>JWT Decoder</h3>
+          <p>Inspect JWT payload.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="uuid-generator/">
+          <div class="icon cat-dev" aria-hidden="true">🆔</div>
+          <h3>UUID Generator</h3>
+          <p>Generate random UUID v4.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="regex-tester/">
+          <div class="icon cat-dev" aria-hidden="true">.*</div>
+          <h3>Regex Tester</h3>
+          <p>Test regular expressions live.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="cron-generator/">
+          <div class="icon cat-dev" aria-hidden="true">⏰</div>
+          <h3>Cron Generator</h3>
+          <p>Build and understand cron expressions.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="sql-formatter/">
+          <div class="icon cat-dev" aria-hidden="true">🗃️</div>
+          <h3>SQL Formatter</h3>
+          <p>Format SQL queries for readability.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="timestamp-converter/">
+          <div class="icon cat-dev" aria-hidden="true">🕐</div>
+          <h3>Timestamp Converter</h3>
+          <p>Convert between Unix timestamp and date.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="xml-formatter/">
+          <div class="icon cat-dev" aria-hidden="true">🧾</div>
+          <h3>XML Formatter</h3>
+          <p>Validate and pretty-print XML locally while rejecting DTD and external entity declarations.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+        <a class="tool-card" href="html-to-markdown/">
+          <div class="icon cat-dev" aria-hidden="true">↔️</div>
+          <h3>HTML to Markdown Converter</h3>
+          <p>Convert HTML headings, paragraphs, links, lists, and tables to Markdown locally.</p>
+          <div class="card-foot"><span class="badge tiny">Developers</span></div>
+        </a>
+      </div>
+    </section>
+    <section class="section">
+      <h2 class="section-title">Security &amp; Privacy</h2>
       <div class="tools-grid">
 
         <a class="tool-card" href="hash-generator/">
           <div class="icon cat-security" aria-hidden="true">#</div>
           <h3>Hash Generator</h3>
           <p>Compute SHA-1/256/512.</p>
-          <div class="card-foot"><span class="badge tiny">أمان</span></div>
+          <div class="card-foot"><span class="badge tiny">Security &amp; Privacy</span></div>
         </a>
         <a class="tool-card" href="password-generator/">
           <div class="icon cat-security" aria-hidden="true">🔐</div>
           <h3>Password Generator</h3>
           <p>Strong random passwords.</p>
-          <div class="card-foot"><span class="badge tiny">أمان</span></div>
+          <div class="card-foot"><span class="badge tiny">Security &amp; Privacy</span></div>
         </a>
         <a class="tool-card" href="totp-generator/">
           <div class="icon cat-security" aria-hidden="true">🔐</div>
           <h3>TOTP 2FA Code Generator</h3>
           <p>Generate time-based 2FA codes locally.</p>
-          <div class="card-foot"><span class="badge tiny">أمان</span></div>
+          <div class="card-foot"><span class="badge tiny">Security &amp; Privacy</span></div>
         </a>
         <a class="tool-card" href="password-strength/">
           <div class="icon cat-security" aria-hidden="true">📊</div>
           <h3>Password Strength Checker</h3>
           <p>Estimate password strength without uploading it.</p>
-          <div class="card-foot"><span class="badge tiny">أمان</span></div>
+          <div class="card-foot"><span class="badge tiny">Security &amp; Privacy</span></div>
         </a>
       </div>
     </section>
     <section class="section">
-      <h2 class="section-title">ألوان</h2>
+      <h2 class="section-title">Calculators</h2>
       <div class="tools-grid">
 
-        <a class="tool-card" href="color-converter/">
-          <div class="icon cat-color" aria-hidden="true">🎨</div>
-          <h3>Color Converter</h3>
-          <p>Convert HEX, RGB, HSL.</p>
-          <div class="card-foot"><span class="badge tiny">ألوان</span></div>
+        <a class="tool-card" href="unit-converter/">
+          <div class="icon cat-calculators" aria-hidden="true">📏</div>
+          <h3>Unit Converter</h3>
+          <p>Convert length, weight, volume, temperature.</p>
+          <div class="card-foot"><span class="badge tiny">Calculators</span></div>
         </a>
-        <a class="tool-card" href="color-picker/">
-          <div class="icon cat-color" aria-hidden="true">🖌️</div>
-          <h3>Color Picker</h3>
-          <p>Pick a color and get all formats.</p>
-          <div class="card-foot"><span class="badge tiny">ألوان</span></div>
+        <a class="tool-card" href="percentage-calculator/">
+          <div class="icon cat-calculators" aria-hidden="true">％</div>
+          <h3>Percentage Calculator</h3>
+          <p>Calculate percentages, increase, decrease.</p>
+          <div class="card-foot"><span class="badge tiny">Calculators</span></div>
+        </a>
+        <a class="tool-card" href="age-calculator/">
+          <div class="icon cat-calculators" aria-hidden="true">🎂</div>
+          <h3>Age Calculator</h3>
+          <p>Calculate your age in years and days.</p>
+          <div class="card-foot"><span class="badge tiny">Calculators</span></div>
+        </a>
+        <a class="tool-card" href="bmi-calculator/">
+          <div class="icon cat-calculators" aria-hidden="true">⚖️</div>
+          <h3>BMI Calculator</h3>
+          <p>Calculate body mass index.</p>
+          <div class="card-foot"><span class="badge tiny">Calculators</span></div>
         </a>
       </div>
     </section>
     <section class="section">
-      <h2 class="section-title">وسائط</h2>
+      <h2 class="section-title">Productivity &amp; Business</h2>
       <div class="tools-grid">
 
-        <a class="tool-card" href="pdf-to-txt/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>PDF to Text</h3>
-          <p>Extract text from PDFs locally.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
         <a class="tool-card" href="qr-code/">
-          <div class="icon cat-media" aria-hidden="true">▦</div>
+          <div class="icon cat-business" aria-hidden="true">▦</div>
           <h3>QR Code Generator</h3>
           <p>Generate QR codes for text and URLs.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-compressor/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
-          <h3>Image Compressor</h3>
-          <p>Compress JPG/PNG/WebP locally.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="pdf-to-word/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>PDF to Word</h3>
-          <p>Extract PDF text to a Word-compatible DOC file; page layout may change.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="merge-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📚</div>
-          <h3>Merge PDF</h3>
-          <p>Combine multiple PDFs into one.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="compress-pdf/">
-          <div class="icon cat-media" aria-hidden="true">🗜️</div>
-          <h3>Compress PDF</h3>
-          <p>Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-converter/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
-          <h3>Image Converter</h3>
-          <p>Convert between JPG, PNG, WebP, AVIF, GIF.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
-          <h3>Image to PDF</h3>
-          <p>Convert JPG/PNG images into one PDF file.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="remove-background/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
-          <h3>Remove Background</h3>
-          <p>Isolate subjects with transparent background via in-browser AI.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="ocr-image-to-text/">
-          <div class="icon cat-media" aria-hidden="true">🔍</div>
-          <h3>Image to Text (OCR)</h3>
-          <p>Extract text from images and scans — Arabic &amp; English.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="heic-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">📱</div>
-          <h3>HEIC to JPG</h3>
-          <p>Open iPhone HEIC photos and convert them to JPG.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="split-pdf/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
-          <h3>Split PDF</h3>
-          <p>Extract pages or ranges from a PDF into separate files.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="pdf-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
-          <h3>PDF to Images</h3>
-          <p>Render PDF pages to JPG images with adjustable quality.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="rotate-pdf/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
-          <h3>Rotate PDF</h3>
-          <p>Fix sideways PDF pages by rotating 90/180/270 degrees.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="word-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📝</div>
-          <h3>Word to PDF</h3>
-          <p>Convert DOCX documents to PDF via the print dialog.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="resize-image/">
-          <div class="icon cat-media" aria-hidden="true">📐</div>
-          <h3>Image Resizer</h3>
-          <p>Resize images by width or percentage with format conversion.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
+          <div class="card-foot"><span class="badge tiny">Productivity &amp; Business</span></div>
         </a>
         <a class="tool-card" href="qr-scanner/">
-          <div class="icon cat-media" aria-hidden="true">📷</div>
+          <div class="icon cat-business" aria-hidden="true">📷</div>
           <h3>QR Reader (Image)</h3>
           <p>Decode a QR code from an image or screenshot.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="pdf-organize/">
-          <div class="icon cat-media" aria-hidden="true">🗂️</div>
-          <h3>PDF Page Organizer</h3>
-          <p>Reorder or remove PDF pages.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="pdf-watermark/">
-          <div class="icon cat-media" aria-hidden="true">💧</div>
-          <h3>PDF Watermark</h3>
-          <p>Add a text watermark to PDF pages.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="pdf-page-numbers/">
-          <div class="icon cat-media" aria-hidden="true">🔢</div>
-          <h3>PDF Page Numbers</h3>
-          <p>Add page numbers to a PDF.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-crop/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
-          <h3>Image Cropper</h3>
-          <p>Crop images to common aspect ratios or custom dimensions.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-rotate-flip/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
-          <h3>Rotate and Flip Images</h3>
-          <p>Rotate images or flip them horizontally and vertically.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="exif-viewer/">
-          <div class="icon cat-media" aria-hidden="true">🔎</div>
-          <h3>EXIF Viewer</h3>
-          <p>Inspect camera and date metadata in JPEG images.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="favicon-generator/">
-          <div class="icon cat-media" aria-hidden="true">⭐</div>
-          <h3>Favicon Generator</h3>
-          <p>Turn an image into multi-size site icons and an ICO file.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="svg-to-png/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
-          <h3>SVG to PNG</h3>
-          <p>Convert vector graphics into PNG images.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
-        </a>
-        <a class="tool-card" href="image-to-base64/">
-          <div class="icon cat-media" aria-hidden="true">🧬</div>
-          <h3>Image to Base64 Converter</h3>
-          <p>Convert an image to Base64 text or a Data URL in your browser. 8 MiB file limit.</p>
-          <div class="card-foot"><span class="badge tiny">وسائط</span></div>
+          <div class="card-foot"><span class="badge tiny">Productivity &amp; Business</span></div>
         </a>
       </div>
     </section>

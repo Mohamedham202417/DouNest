@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#7c3aed" />
-<title>Memos — A Private Twitter for Your Thoughts — أدوات نادرة — DouNest</title>
-<meta name="description" content="Memos خدمة ملاحظات ذاتية الاستضافة بتجربة شبيهة بتدوينة مصغرة: تكتب فكرة سريعة، تُخزن فوراً في قاعدة بيانات ملكك، وتبقى قابلة للبحث بالوسوم والروابط بين الملا" />
+<title>Memos — A Private Twitter for Your Thoughts — Rare Tools — DouNest</title>
+<meta name="description" content="Memos is a self-hosted note service with a micro-blog feel: jot a quick thought, it is stored instantly in a database you own, and stays searchable through ta" />
 <meta name="robots" content="noindex,nofollow" />
 <link rel="canonical" href="https://dounest.hmdevelop.me/rare/memos/" />
 
@@ -17,14 +17,14 @@
 <link rel="apple-touch-icon" href="../../assets/icon-192.png" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="DouNest" />
-<meta property="og:title" content="Memos — A Private Twitter for Your Thoughts — أدوات نادرة — DouNest" />
-<meta property="og:description" content="Memos خدمة ملاحظات ذاتية الاستضافة بتجربة شبيهة بتدوينة مصغرة: تكتب فكرة سريعة، تُخزن فوراً في قاعدة بيانات ملكك، وتبقى قابلة للبحث بالوسوم والروابط بين الملا" />
+<meta property="og:title" content="Memos — A Private Twitter for Your Thoughts — Rare Tools — DouNest" />
+<meta property="og:description" content="Memos is a self-hosted note service with a micro-blog feel: jot a quick thought, it is stored instantly in a database you own, and stays searchable through ta" />
 <meta property="og:url" content="https://dounest.hmdevelop.me/rare/memos/" />
 <meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
-<meta property="og:locale" content="ar_AR" />
+<meta property="og:locale" content="en_US" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Memos — A Private Twitter for Your Thoughts — أدوات نادرة — DouNest" />
-<meta name="twitter:description" content="Memos خدمة ملاحظات ذاتية الاستضافة بتجربة شبيهة بتدوينة مصغرة: تكتب فكرة سريعة، تُخزن فوراً في قاعدة بيانات ملكك، وتبقى قابلة للبحث بالوسوم والروابط بين الملا" />
+<meta name="twitter:title" content="Memos — A Private Twitter for Your Thoughts — Rare Tools — DouNest" />
+<meta name="twitter:description" content="Memos is a self-hosted note service with a micro-blog feel: jot a quick thought, it is stored instantly in a database you own, and stays searchable through ta" />
 <meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -64,7 +64,7 @@
 
 </head>
 <body>
-  <a class="skip-link" href="#main">تخطَّ إلى المحتوى</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="ambient ambient-one" aria-hidden="true"></div>
   <div class="ambient ambient-two" aria-hidden="true"></div>
   <header class="topbar">
@@ -74,21 +74,21 @@
         <span class="brand-name">DouNest</span>
       </a>
       <nav id="topnav" class="topnav" aria-label="Main">
-        <a href="../../" data-i18n="nav.home">الرئيسية</a>
+        <a href="../../" data-i18n="nav.home">Home</a>
         <a href="../../tools/" data-i18n="nav.allTools">All Tools</a>
-        <a href="../../mail/" data-i18n="nav.tempMail">بريد مؤقت</a>
-        <details class="topnav-group"><summary data-i18n="nav.centers">المراكز</summary><div>
-          <a href="../../pdf/" data-i18n="nav.pdf">مركز PDF</a><a href="../../images/" data-i18n="nav.images">مركز الصور</a>
-          <a href="../../convert/" data-i18n="nav.convert">مركز التحويل</a><a href="../../text/" data-i18n="nav.text">مركز النصوص</a>
-          <a href="../../dev/" data-i18n="nav.developers">مركز المطورين</a>
-          <a href="../../security/" data-i18n="nav.security">مركز الأمان</a>
-          <a href="../../calculators/" data-i18n="nav.calculators">الحاسبات</a>
+        <a href="../../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../../media/" data-i18n="nav.media">Video & Audio</a><a href="../../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../../text/" data-i18n="nav.text">Text center</a><a href="../../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../../security/" data-i18n="nav.security">Security center</a><a href="../../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
-        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">الأسئلة الشائعة</a>
-        <a href="../../rare/" data-i18n="nav.rare">أدوات نادرة</a><a href="../../ai/" data-i18n="nav.ai">دليل AI</a>
+        <a href="../../articles/" data-i18n="nav.articles">Articles</a><a href="../../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../../ai/" data-i18n="nav.ai">AI Directory</a>
       </nav>
       <div class="topbar-actions">
-        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="فتح قائمة التنقل">☰</button>
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
         <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
         <div id="lang-menu" class="lang-menu"></div>
       </div>
@@ -98,47 +98,47 @@
 
     <nav class="breadcrumb" aria-label="breadcrumb">
       <a href="/rare/">DouNest</a><span class="sep">›</span>
-      <a href="/rare/">أدوات نادرة</a><span class="sep">›</span>
-      <a href="/rare/gems/">جواهر GitHub</a><span class="sep">›</span>
-      <span class="current">Memos — تويتر خاص لملاحظاتك الذهنية</span>
+      <a href="/rare/">Rare Tools</a><span class="sep">›</span>
+      <a href="/rare/gems/">GitHub Gems</a><span class="sep">›</span>
+      <span class="current">Memos — A Private Twitter for Your Thoughts</span>
     </nav>
     <header class="tool-header">
       <div class="tool-header-main">
         <div class="icon big rare-icon" aria-hidden="true">🗒️</div>
         <div>
-          <h1>Memos — تويتر خاص لملاحظاتك الذهنية</h1>
-          <p class="lead">أداة نادرة مختارة — شرح كامل، خطوات البدء، ووسوم البحث.</p>
+          <h1>Memos — A Private Twitter for Your Thoughts</h1>
+          <p class="lead">A curated rare tool — full explanation, getting-started steps and hashtags.</p>
           <div class="tool-meta">
-            <span class="badge ghost">جواهر GitHub</span>
-            <span class="badge success">مجاني ومفتوح المصدر</span>
+            <span class="badge ghost">GitHub Gems</span>
+            <span class="badge success">Free & open source</span>
           </div>
         </div>
       </div>
     </header>
 
     <article class="section rare-detail">
-      <h2>ما هي هذه الأداة؟</h2>
-      <div class="explanation"><p>Memos خدمة ملاحظات ذاتية الاستضافة بتجربة شبيهة بتدوينة مصغرة: تكتب فكرة سريعة، تُخزن فوراً في قاعدة بيانات ملكك، وتبقى قابلة للبحث بالوسوم والروابط بين الملاحظات. واجهتها خفيفة وجميلة، وتعمل من حاوية واحدة على أي خادم صغير.</p></div>
-      <h2>لماذا نرشحها؟</h2>
-      <div class="explanation"><p>أفكارك ليست محتوى لمنصة تملكها شركة أخرى؛ Memos يعيد مفهوم التدوين المصغر لصاحبه. سرعة الكتابة فيه تفوق تطبيقات الملاحظات التقليدية، وهذا وحده يضمن أن تسجل أفكارك فعلاً بدل تأجيلها.</p></div>
-      <h2>كيف تبدأ معها</h2>
-      <ol class="steps"><li>شغّل حاوية Memos عبر Docker على خادمك أو Raspberry Pi.</li><li>أنشئ حسابك وابدأ بتدوين أول ملاحظة خلال دقائق.</li><li>نظّم الوسوم والروابط بين الملاحظات لبناء شبكة معرفتك.</li><li>فعّل النسخ الاحتياطي الدوري لمجلد البيانات.</li><li>استخدم التطبيقات المتوافقة من الجوال للكتابة من أي مكان.</li></ol>
+      <h2>What is this tool?</h2>
+      <div class="explanation"><p>Memos is a self-hosted note service with a micro-blog feel: jot a quick thought, it is stored instantly in a database you own, and stays searchable through tags and note-to-note links. The interface is light and lovely, running from a single container on any small server.</p></div>
+      <h2>Why we recommend it</h2>
+      <div class="explanation"><p>Your thoughts are not content for a platform owned by someone else; Memos gives micro-blogging back to its owner. Writing there is faster than classic note apps, which alone ensures you actually capture ideas instead of postponing them.</p></div>
+      <h2>How to get started</h2>
+      <ol class="steps"><li>Run the Memos container via Docker on your server or a Raspberry Pi.</li><li>Create your account and write your first memo within minutes.</li><li>Organize tags and inter-note links to grow your knowledge web.</li><li>Enable periodic backups of the data directory.</li><li>Use the compatible mobile clients to write from anywhere.</li></ol>
       <div class="rare-visit-row"><a class="btn btn-primary rare-visit" href="https://github.com/usememos/memos" target="_blank" rel="noopener">
-    ↗ زيارة الأداة الرسمية</a></div>
-      <div class="hash-chips" aria-label="الوسوم">
+    ↗ Visit the official tool</a></div>
+      <div class="hash-chips" aria-label="Hashtags">
     <a class="hash-chip" href="/tools/?q=memos">#memos</a><a class="hash-chip" href="/tools/?q=notes">#notes</a><a class="hash-chip" href="/tools/?q=%D9%85%D9%84%D8%A7%D8%AD%D8%B8%D8%A7%D8%AA">#ملاحظات</a><a class="hash-chip" href="/tools/?q=self-hosted">#self-hosted</a><a class="hash-chip" href="/tools/?q=open-source">#open-source</a><a class="hash-chip" href="/tools/?q=github">#github</a>
   </div>
     </article>
   </main>
   <footer class="footer">
     <div class="container footer-inner">
-      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">تُعالج الملفات محلياً في المتصفح عندما تدعم الأداة ذلك</span></span>
-      <nav class="footer-nav" aria-label="روابط الموقع">
-        <a href="../../privacy/" data-i18n="nav.privacy">سياسة الخصوصية</a>
-        <a href="../../terms/" data-i18n="nav.terms">شروط الاستخدام</a>
-        <a href="../../about/" data-i18n="nav.about">حول</a>
-        <a href="../../contact/" data-i18n="nav.contact">التواصل والدعم</a>
-        <a href="../../ai/">دليل AI</a>
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../../about/" data-i18n="nav.about">About</a>
+        <a href="../../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../../ai/">AI Directory</a>
       </nav>
     </div>
   </footer>

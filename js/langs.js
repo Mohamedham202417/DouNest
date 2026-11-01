@@ -1,6 +1,6 @@
 export const LANGS = [
-  { code: "ar", name: "العربية",      flag: "🇸🇦", dir: "rtl" },
   { code: "en", name: "English",      flag: "🇬🇧", dir: "ltr" },
+  { code: "ar", name: "العربية",      flag: "🇸🇦", dir: "rtl" },
   { code: "fr", name: "Français",     flag: "🇫🇷", dir: "ltr" },
   { code: "es", name: "Español",      flag: "🇪🇸", dir: "ltr" },
   { code: "de", name: "Deutsch",      flag: "🇩🇪", dir: "ltr" },

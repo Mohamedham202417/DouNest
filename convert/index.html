@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,7 +62,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز التحويل — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز التحويل — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does PDF-to-Word preserve the original layout?","acceptedAnswer":{"@type":"Answer","text":"No. The current path extracts text into an HTML-based .doc file; columns, images, and layout may not be preserved. Review and edit the document before relying on it."}},{"@type":"Question","name":"Can it OCR a scanned PDF?","acceptedAnswer":{"@type":"Answer","text":"No. PDF-to-TXT reads an existing text layer. Image-only pages need a separate OCR tool."}},{"@type":"Question","name":"Does Excel conversion preserve formulas?","acceptedAnswer":{"@type":"Answer","text":"The current paths move cell data into CSV or JSON in a simplified way and do not guarantee formulas, formatting, or every worksheet."}},{"@type":"Question","name":"Are files uploaded to a server?","acceptedAnswer":{"@type":"Answer","text":"Selected files are processed in your browser and are not sent to a DouNest server; some processing libraries are loaded from a content-delivery network when needed."}},{"@type":"Question","name":"Why is my desired output format missing?","acceptedAnswer":{"@type":"Answer","text":"The hub lists only conversions supported for the detected source type. Open a related format-specific tool or choose a supported source file."}}]}</script>
 </head>
 <body>
@@ -81,10 +81,10 @@
         <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
-          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
-          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
-          <a href="../security/" data-i18n="nav.security">Security center</a>
-          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../media/" data-i18n="nav.media">Video & Audio</a><a href="../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../text/" data-i18n="nav.text">Text center</a><a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a><a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
         <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
         <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
@@ -99,94 +99,94 @@
   <main id="main" class="container" role="main" tabindex="-1">
 
     <section class="page-head">
-      <h1>مركز تحويل الملفات — صيغ شائعة ومسارات واضحة</h1>
-      <p>أضف ملفاً واحداً ليُكتشف نوعه وتظهر مسارات التحويل المدعومة: صور PNG وJPG وWebP، واستخراج النص من PDF أو تصدير صفحاته كصور، وCSV وJSON، وXLSX إلى CSV أو JSON، وDOCX إلى نص، وTXT إلى PDF، وSVG إلى PNG، وJSON إلى YAML والعكس. تُعالج الملفات المختارة في متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل مكتبات عند الطلب من شبكة خارجية.</p>
+      <h1>File Conversion — Office, Data and Archives</h1>
+      <p>Convert images, PDF, CSV, JSON, XLSX, DOCX, and archives through focused browser tools. Selected files are processed locally and are not uploaded to DouNest; libraries may load on demand.</p>
     </section>
-    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة السحب والإفلات التفاعلية.</p></section>
+    <section class="workspace"><p class="empty" style="margin:0">Open the page in your browser to use the interactive drag-and-drop workspace.</p></section>
     <section class="section">
-      <h2 class="section-title">أدوات التحويل الفردية</h2>
+      <h2 class="section-title">Conversion tools</h2>
       <div class="tools-grid">
 
         <a class="tool-card" href="/tools/image-converter/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
+          <div class="icon cat-images" aria-hidden="true">🔄</div>
           <h3>Image Converter</h3>
           <p>Convert between JPG, PNG, WebP, AVIF, GIF.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/heic-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">📱</div>
+          <div class="icon cat-images" aria-hidden="true">📱</div>
           <h3>HEIC to JPG</h3>
           <p>Open iPhone HEIC photos and convert them to JPG.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/csv-to-json/">
-          <div class="icon cat-dev" aria-hidden="true">📊</div>
+          <div class="icon cat-convert" aria-hidden="true">📊</div>
           <h3>CSV to JSON</h3>
           <p>Convert CSV data to JSON.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/json-to-csv/">
-          <div class="icon cat-dev" aria-hidden="true">📈</div>
+          <div class="icon cat-convert" aria-hidden="true">📈</div>
           <h3>JSON to CSV</h3>
           <p>Convert JSON arrays to CSV.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/excel-to-csv/">
-          <div class="icon cat-dev" aria-hidden="true">📊</div>
+          <div class="icon cat-convert" aria-hidden="true">📊</div>
           <h3>Excel to CSV</h3>
           <p>Convert XLSX/XLS sheets to CSV with sheet &amp; delimiter choice.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/csv-to-excel/">
-          <div class="icon cat-dev" aria-hidden="true">📗</div>
+          <div class="icon cat-convert" aria-hidden="true">📗</div>
           <h3>CSV to Excel</h3>
           <p>Turn CSV files into real XLSX spreadsheets that open in Excel.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/excel-to-json/">
-          <div class="icon cat-dev" aria-hidden="true">🧾</div>
+          <div class="icon cat-convert" aria-hidden="true">🧾</div>
           <h3>Excel to JSON</h3>
           <p>Convert Excel sheets to JSON ready for developers and APIs.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-txt/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>PDF to Text</h3>
           <p>Extract text from PDFs locally.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
+          <div class="icon cat-pdf" aria-hidden="true">🖼️</div>
           <h3>PDF to Images</h3>
           <p>Render PDF pages to JPG images with adjustable quality.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-word/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>PDF to Word</h3>
           <p>Extract PDF text to a Word-compatible DOC file; page layout may change.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/word-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📝</div>
+          <div class="icon cat-pdf" aria-hidden="true">📝</div>
           <h3>Word to PDF</h3>
           <p>Convert DOCX documents to PDF via the print dialog.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/image-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>Image to PDF</h3>
           <p>Convert JPG/PNG images into one PDF file.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/svg-to-png/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
+          <div class="icon cat-images" aria-hidden="true">🖼️</div>
           <h3>SVG to PNG</h3>
           <p>Convert vector graphics into PNG images.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/json-yaml/">
-          <div class="icon cat-dev" aria-hidden="true">🔁</div>
+          <div class="icon cat-convert" aria-hidden="true">🔁</div>
           <h3>JSON to YAML Converter</h3>
           <p>Convert JSON to YAML or back.</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>

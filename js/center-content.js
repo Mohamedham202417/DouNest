@@ -206,17 +206,66 @@ export const CENTER_CONTENT = {
       ],
       faq: [["Does the BMI calculator diagnose my health?", "No. BMI is a general screening measure and does not diagnose health on its own; consult a qualified professional for health decisions."], ["How do I calculate percentage change?", "Use the percentage calculator with the original and new values; check the sign to distinguish an increase from a decrease."], ["Does the age calculator handle leap years?", "Results depend on the dates entered and the tool's date conventions. Verify the birth date and time zone for dates near midnight."], ["Are my inputs sent to a server?", "No. Calculations run locally in your browser and are not sent to a DouNest server."]]
     }
-  }
+  },
+
+  media: {
+    ar: {
+      intro: "مركز جديد للفيديو والصوت يضع التحويل والضغط والقص والتسجيل في مسار واحد. تُعالج الملفات محلياً عندما يدعم المتصفح ذلك، ولا تُرفع إلى خادم DouNest.",
+      how: "كيف تستخدم مركز الفيديو والصوت",
+      steps: ["اختر أداة الفيديو أو الصوت المناسبة وأضف الملف من جهازك.", "حدد الجودة أو المقطع أو الصيغة المطلوبة، وراجع الحجم قبل التنفيذ.", "شغّل المعالجة ثم عاين الملف الناتج ونزّله بعد التحقق من الجودة."],
+      sections: [
+        { h: "مسارات العمل القادمة", p: "يُجهّز المركز لأدوات Video to MP3 وضغط الفيديو وقص الفيديو أو الصوت وتحويل الفيديو إلى GIF ومحوّل الصوت ومسجل الصوت ومسجل الشاشة." },
+        { h: "الخصوصية والأداء", p: "تعتمد عمليات الوسائط على قدرات المتصفح وffmpeg.wasm عند الحاجة. قد يُنزّل المتصفح مكتبات كبيرة أول مرة، وتحتاج الملفات الكبيرة إلى ذاكرة كافية." },
+        { h: "تحقق من الناتج", p: "ترميز الفيديو والصوت قد يغيّر الجودة أو البيانات الوصفية أو التوافق. احتفظ بالأصل وافتح الملف الناتج قبل مشاركته." }
+      ],
+      faq: [["هل تُرفع ملفات الفيديو؟", "لا تُرسل الملفات إلى خادم DouNest عندما تكون العملية محلية. قد تُحمّل مكتبات المعالجة من شبكة خارجية عند الاستخدام الأول."], ["لماذا يستغرق التحويل وقتاً؟", "ترميز الوسائط يستهلك المعالج والذاكرة، ويزداد الوقت مع الدقة والمدة وحجم الملف."], ["هل يحافظ التحويل على الجودة الأصلية؟", "لا يمكن ضمان ذلك لكل صيغة؛ راجع إعدادات الجودة وافتح الملف الناتج قبل حذف الأصل."]]
+    },
+    en: {
+      intro: "A focused home for video and audio conversion, compression, trimming, recording, and export. Processing stays local in the browser whenever the selected operation supports it; files are not uploaded to DouNest.",
+      how: "How to use the video and audio center",
+      steps: ["Choose the video or audio workflow and add a file from your device.", "Select quality, trim points, or an output format, then review the expected size.", "Run the operation, preview the result, and download it after checking quality and compatibility."],
+      sections: [
+        { h: "Planned media workflows", p: "This center is prepared for Video to MP3, video compression, video or audio trimming, Video to GIF, audio conversion, voice recording, and screen recording." },
+        { h: "Privacy and performance", p: "Media operations use browser capabilities and ffmpeg.wasm where appropriate. Large processing libraries may download on first use, and large files need enough device memory." },
+        { h: "Verify the output", p: "Video and audio encoding can change quality, metadata, or compatibility. Keep the original and open the exported file before sharing it." }
+      ],
+      faq: [["Are my video files uploaded?", "Files are not sent to a DouNest server when the operation runs locally. Processing libraries may download from a content-delivery network on first use."], ["Why does media conversion take time?", "Encoding uses CPU and memory; resolution, duration, and file size all affect processing time."], ["Does conversion preserve the original quality?", "Not for every format. Review the quality settings and inspect the output before removing the original."]]
+    }
+  },
+  business: {
+    ar: {
+      intro: "أدوات عملية للإنتاجية والأعمال اليومية: رموز QR، أدوات التوقيع والفواتير والسيرة الذاتية والمؤقتات. ابدأ بالأدوات المتاحة، وتبقى البيانات المحلية داخل متصفحك.",
+      how: "كيف تستخدم مركز الإنتاجية والأعمال",
+      steps: ["اختر الأداة التي تطابق مهمتك: QR، مستند، توقيع، فاتورة أو مؤقت.", "أدخل البيانات المطلوبة وراجع المعاينة قبل إنشاء الملف أو الرمز.", "نزّل النتيجة أو انسخها، واحتفظ بنسخة أصلية عندما تكون البيانات تجارية أو رسمية."],
+      sections: [
+        { h: "أدوات الأعمال في مكان واحد", p: "يضم المركز حالياً مولّد QR وقارئ QR، مع مساحة جاهزة لإضافة مولّد الفواتير وباني السيرة الذاتية والباركود وصانع التوقيع وWiFi QR والمؤقت والمفكرة." },
+        { h: "المعاينة قبل المشاركة", p: "راجع النصوص والأرقام والشعار والعملة قبل تنزيل أي فاتورة أو مستند. أدوات QR لا تتحقق من صحة الرابط أو البيانات التي تدخلها." },
+        { h: "بياناتك تبقى محلية", p: "الأدوات الحالية تعمل في المتصفح ولا ترفع البيانات إلى خادم DouNest. لا تحفظ بيانات حساسة في جهاز مشترك، وامسحها بعد الانتهاء." }
+      ],
+      faq: [["هل يمكن استخدام QR للبيانات الحساسة؟", "يمكن إنشاء الرمز محلياً، لكن لا تضع أسراراً أو بيانات شخصية فيه إذا كانت الصورة ستُشارك أو تُحفظ في مكان عام."], ["هل تتحقق أدوات QR من الروابط؟", "لا. المولّد يرمّز النص أو الرابط الذي تدخله؛ اختبر الرابط بنفسك قبل نشر الرمز."], ["هل تُرفع بيانات الفاتورة؟", "لا توجد في هذه الدفعة أداة فاتورة نشطة؛ الأدوات المحلية المصممة لاحقاً يجب أن تولّد الملفات داخل المتصفح."]]
+    },
+    en: {
+      intro: "Practical tools for everyday productivity and business work: QR codes, signatures, invoices, resumes, timers, and notes. Start with the available tools; local input stays in your browser.",
+      how: "How to use the productivity and business center",
+      steps: ["Choose the workflow that matches your task: QR, document, signature, invoice, or timer.", "Enter the required data and review the preview before generating a file or code.", "Download or copy the result, and keep an original when the information is business or official data."],
+      sections: [
+        { h: "Business workflows in one place", p: "The center currently includes a QR Code Generator and QR Reader, with room for Invoice Generator, CV Builder, Barcode Generator, Signature Maker, WiFi QR, Pomodoro, and Notepad." },
+        { h: "Preview before sharing", p: "Review text, numbers, logos, and currency before downloading an invoice or document. QR tools do not validate the link or data you enter." },
+        { h: "Your local input stays local", p: "The current tools run in the browser and do not upload data to a DouNest server. Avoid storing sensitive data on shared devices and clear it when finished." }
+      ],
+      faq: [["Can I use QR for sensitive data?", "You can generate the code locally, but do not place secrets or personal data in an image that will be shared or stored publicly."], ["Do QR tools validate links?", "No. The generator encodes the text or URL you provide; test the destination yourself before publishing the code."], ["Are invoice details uploaded?", "There is no active invoice tool in this batch; future local-first business tools should generate their files inside the browser."]]
+    }
+  },
 };
 
-export function centerContentMarkup(center, lang = "ar") {
+export function centerContentMarkup(center, lang = "en") {
   const data = CENTER_CONTENT[center]?.[lang] || CENTER_CONTENT[center]?.en;
   if (!data) return "";
   const esc = value => String(value).replace(/[&<>"']/g, ch => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[ch]));
   return `<section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">${esc(data.intro)}</p><h2>${esc(data.how)}</h2><ol class="hub-steps">${data.steps.map(x => `<li>${esc(x)}</li>`).join("")}</ol>${data.sections.map(x => `<section class="hub-guide-section"><h2>${esc(x.h)}</h2><p>${esc(x.p)}</p></section>`).join("")}<section class="hub-faq"><h2>${lang === "ar" ? "أسئلة شائعة" : "Frequently asked questions"}</h2>${data.faq.map(([q,a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("")}</section></section>`;
 }
 
-export function centerFaqSchema(center, lang = "ar", siteRoot = "") {
+export function centerFaqSchema(center, lang = "en", siteRoot = "") {
   const data = CENTER_CONTENT[center]?.[lang] || CENTER_CONTENT[center]?.en;
   if (!data) return null;
   return { "@context":"https://schema.org", "@type":"FAQPage", "mainEntity":data.faq.map(([q,a]) => ({ "@type":"Question", "name":q, "acceptedAnswer":{"@type":"Answer", "text":a} })) };

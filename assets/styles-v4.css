@@ -116,3 +116,14 @@
   .mail-toolbar-actions .btn { flex: 1 1 auto; }
   .mail-message summary { align-items: flex-start; flex-direction: column; }
 }
+
+/* Ten-center taxonomy accents */
+.cat-pdf { background: rgba(239, 68, 68, .11); color: #dc2626; border-color: rgba(239, 68, 68, .24); }
+.cat-images { background: rgba(245, 158, 11, .13); color: #b45309; border-color: rgba(245, 158, 11, .28); }
+.cat-media { background: rgba(217, 70, 239, .11); color: #c026d3; border-color: rgba(217, 70, 239, .25); }
+.cat-convert { background: rgba(14, 165, 233, .12); color: #0284c7; border-color: rgba(14, 165, 233, .24); }
+.cat-calculators { background: rgba(20, 184, 166, .12); color: #0f766e; border-color: rgba(20, 184, 166, .24); }
+.cat-business { background: rgba(124, 58, 237, .12); color: #6d28d9; border-color: rgba(124, 58, 237, .24); }
+.explore-card small { display: block; margin-top: .5rem; color: var(--muted-foreground); font-size: .78rem; }
+.hub-callout { padding: 1rem 1.1rem; border: 1px solid var(--border); border-radius: 1rem; background: color-mix(in srgb, var(--card) 88%, var(--primary) 12%); }
+.hub-callout p { margin: .45rem 0 .8rem; color: var(--muted-foreground); }

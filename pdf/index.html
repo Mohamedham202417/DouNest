@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,7 +62,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز PDF — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز PDF — DouNest","applicationCategory":"UtilityApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I compress a PDF without losing searchable text?","acceptedAnswer":{"@type":"Answer","text":"The current compressor rasterizes pages. Do not use it when searchable or selectable text must be preserved; keep the original and inspect the output."}},{"@type":"Question","name":"How do I merge PDFs in the right order?","acceptedAnswer":{"@type":"Answer","text":"Add files in the desired order and use the file-order arrows, when shown, before running Merge. Review the resulting document."}},{"@type":"Question","name":"Can this extract text from scanned PDFs?","acceptedAnswer":{"@type":"Answer","text":"Text extraction works when the PDF contains a text layer. Scanned image pages need OCR; exporting to TXT or Word does not perform OCR."}},{"@type":"Question","name":"Are my documents uploaded?","acceptedAnswer":{"@type":"Answer","text":"Selected files are processed in your browser and are not sent to a DouNest server. Avoid sensitive files on shared devices and clear the file list when finished."}},{"@type":"Question","name":"Why did the PDF get larger?","acceptedAnswer":{"@type":"Answer","text":"Many pages rendered at high resolution can increase size. Try lower resolution or quality on a copy and compare readability and file size."}}]}</script>
 </head>
 <body>
@@ -81,10 +81,10 @@
         <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
-          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
-          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
-          <a href="../security/" data-i18n="nav.security">Security center</a>
-          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../media/" data-i18n="nav.media">Video & Audio</a><a href="../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../text/" data-i18n="nav.text">Text center</a><a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a><a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
         <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
         <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
@@ -99,76 +99,76 @@
   <main id="main" class="container" role="main" tabindex="-1">
 
     <section class="page-head">
-      <h1>مركز PDF — أدوات شائعة للدمج والتقسيم والتحويل</h1>
-      <p>أضف ملفاتك مرة واحدة لاختيار الضغط أو الدمج أو التقسيم أو التدوير أو تصدير الصفحات إلى JPG أو استخراج النص أو التحويل إلى Word، مع تحويل الصور إلى PDF. تُعالج الملفات المختارة داخل متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل مكتبات المعالجة من شبكة خارجية.</p>
+      <h1>PDF Tools — Merge, Split, Compress and Convert</h1>
+      <p>Merge, split, compress, rotate, extract, and convert PDFs in one browser workspace. Selected files stay in your browser and are not sent to a DouNest server; processing libraries may load from a content-delivery network.</p>
     </section>
-    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات التفاعلية.</p></section>
+    <section class="workspace"><p class="empty" style="margin:0">Open the page in your browser to use the interactive file workspace.</p></section>
     <section class="section">
-      <h2 class="section-title">أدوات PDF الفردية</h2>
+      <h2 class="section-title">Popular PDF tools</h2>
       <div class="tools-grid">
 
         <a class="tool-card" href="/tools/compress-pdf/">
-          <div class="icon cat-media" aria-hidden="true">🗜️</div>
+          <div class="icon cat-pdf" aria-hidden="true">🗜️</div>
           <h3>Compress PDF</h3>
           <p>Reduce PDF size by rasterizing pages; searchable or selectable text may be lost.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/merge-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📚</div>
+          <div class="icon cat-pdf" aria-hidden="true">📚</div>
           <h3>Merge PDF</h3>
           <p>Combine multiple PDFs into one.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/split-pdf/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
+          <div class="icon cat-pdf" aria-hidden="true">✂️</div>
           <h3>Split PDF</h3>
           <p>Extract pages or ranges from a PDF into separate files.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/rotate-pdf/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
+          <div class="icon cat-pdf" aria-hidden="true">🔄</div>
           <h3>Rotate PDF</h3>
           <p>Fix sideways PDF pages by rotating 90/180/270 degrees.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
+          <div class="icon cat-pdf" aria-hidden="true">🖼️</div>
           <h3>PDF to Images</h3>
           <p>Render PDF pages to JPG images with adjustable quality.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-txt/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>PDF to Text</h3>
           <p>Extract text from PDFs locally.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-word/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>PDF to Word</h3>
           <p>Extract PDF text to a Word-compatible DOC file; page layout may change.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/image-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>Image to PDF</h3>
           <p>Convert JPG/PNG images into one PDF file.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-organize/">
-          <div class="icon cat-media" aria-hidden="true">🗂️</div>
+          <div class="icon cat-pdf" aria-hidden="true">🗂️</div>
           <h3>PDF Page Organizer</h3>
           <p>Reorder or remove PDF pages.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-watermark/">
-          <div class="icon cat-media" aria-hidden="true">💧</div>
+          <div class="icon cat-pdf" aria-hidden="true">💧</div>
           <h3>PDF Watermark</h3>
           <p>Add a text watermark to PDF pages.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-page-numbers/">
-          <div class="icon cat-media" aria-hidden="true">🔢</div>
+          <div class="icon cat-pdf" aria-hidden="true">🔢</div>
           <h3>PDF Page Numbers</h3>
           <p>Add page numbers to a PDF.</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>

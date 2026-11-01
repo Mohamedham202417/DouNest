@@ -38,7 +38,7 @@ const SITE_ROOT = (CFG.origin || "") + (CFG.repoPath ? "/" + CFG.repoPath : "");
  */
 function detectBase() {
   if (CFG.base && CFG.base !== "auto") return CFG.base.endsWith("/") ? CFG.base : CFG.base + "/";
-  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "convert", "about", "contact", "privacy", "terms", "faq", "support", "text", "dev", "security", "calculators", "mail", "index.html", "404.html"];
+  const KNOWN = ["tools", "articles", "categories", "favorites", "ai", "rare", "pdf", "images", "media", "convert", "about", "contact", "privacy", "terms", "faq", "support", "text", "dev", "security", "calculators", "business", "mail", "index.html", "404.html"];
   const segs = location.pathname.split("/").filter(Boolean);
   if (segs.length && !KNOWN.includes(segs[0]) && !segs[0].includes(".")) return "/" + segs[0] + "/";
   return "/";
@@ -345,16 +345,16 @@ function renderHome() {
     <section class="section slim">
       <h2 class="section-title">🧭 ${t("home.explore")}</h2>
       <div class="explore-strip">
-        <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${t("home.explorePdf")}</span></a>
-        <a class="explore-card" href="${link("/images")}"><strong>🖼️ ${t("nav.images")}</strong><span>${t("home.exploreImages")}</span></a>
-        <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${t("home.exploreConvert")}</span></a>
-        <a class="explore-card" href="${link("/text")}"><strong>✍️ ${getLang()==="en"?"Text center":"مركز النصوص"}</strong><span>${getLang()==="en"?"Clean, convert and analyze text":"تنظيف النصوص وتحويلها وتحليلها"}</span></a>
-        <a class="explore-card" href="${link("/dev")}"><strong>🧰 ${getLang()==="en"?"Developer center":"مركز المطورين"}</strong><span>JSON · Base64 · JWT · Hash</span></a>
-        <a class="explore-card" href="${link("/security")}"><strong>🔐 ${getLang()==="en"?"Security center":"مركز الأمان"}</strong><span>${getLang()==="en"?"Password tools and TOTP":"كلمات مرور ورموز TOTP"}</span></a>
-        <a class="explore-card" href="${link("/calculators")}"><strong>🧮 ${getLang()==="en"?"Calculators":"الحاسبات"}</strong><span>${getLang()==="en"?"Everyday calculators":"حاسبات يومية"}</span></a>
-        <a class="explore-card" href="${link("/mail")}"><strong>✉ ${escapeHtml(getMailCopy(getLang()).nav)}</strong><span>${escapeHtml(getMailCopy(getLang()).description)}</span></a>
-        <a class="explore-card" href="${link("/rare")}"><strong>💎 ${t("nav.rare")}</strong><span>${t("home.exploreRare")}</span></a>
-        <a class="explore-card" href="${link("/articles")}"><strong>📝 ${t("nav.articles")}</strong><span>${t("home.exploreArticles")}</span></a>
+        <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${getLang()==="ar"?"دمج وتقسيم وضغط وتحويل ملفات PDF":"Merge, split, compress, and convert PDFs"}</span><small>${TOOLS.filter(x => x.category === "pdf").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/images")}"><strong>🖼️ ${t("nav.images")}</strong><span>${getLang()==="ar"?"ضغط الصور وتحويلها وتنظيف بياناتها":"Compress, convert, and clean image metadata"}</span><small>${TOOLS.filter(x => x.category === "images").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/media")}"><strong>🎬 ${t("nav.media")}</strong><span>${getLang()==="ar"?"مسارات الفيديو والصوت المحلية":"Local video and audio workflows"}</span><small>${getLang()==="ar"?"قريباً":"Coming next"}</small></a>
+        <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${getLang()==="ar"?"تحويل ملفات Office والبيانات والأرشيف":"Convert Office, data, and archive files"}</span><small>${TOOLS.filter(x => x.category === "convert").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/text")}"><strong>✍️ ${t("nav.text")}</strong><span>${getLang()==="ar"?"تنظيف النصوص وتحويلها وتحليلها":"Clean, convert, and analyze text"}</span><small>${TOOLS.filter(x => x.category === "text").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/dev")}"><strong>🧰 ${t("nav.developers")}</strong><span>JSON · Base64 · JWT · XML</span><small>${TOOLS.filter(x => x.category === "dev").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/security")}"><strong>🔐 ${t("nav.security")}</strong><span>${getLang()==="ar"?"أدوات كلمات المرور وTOTP":"Passwords, hashes, and TOTP"}</span><small>${TOOLS.filter(x => x.category === "security").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/calculators")}"><strong>🧮 ${t("nav.calculators")}</strong><span>${getLang()==="ar"?"حاسبات يومية للصحة والوحدات والنسب":"Everyday health, unit, and percentage calculators"}</span><small>${TOOLS.filter(x => x.category === "calculators").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/business")}"><strong>💼 ${t("nav.business")}</strong><span>${getLang()==="ar"?"رموز QR ومسارات إنتاجية للأعمال":"QR codes and practical work tools"}</span><small>${TOOLS.filter(x => x.category === "business").length} ${t("hero.toolsCount")}</small></a>
+        <a class="explore-card" href="${link("/mail")}"><strong>✉ ${escapeHtml(getMailCopy(getLang()).nav)}</strong><span>${escapeHtml(getMailCopy(getLang()).description)}</span><small>${getLang()==="ar"?"خدمة منفصلة":"Separate service"}</small></a>
       </div>
     </section>
 
@@ -419,9 +419,19 @@ function websiteJsonLd() {
   };
 }
 
+const SEARCH_ALIASES = {
+  "ضغط": ["compress-pdf", "image-compressor"],
+  "ضغط pdf": ["compress-pdf"],
+  "دمج": ["merge-pdf"],
+  "تقسيم": ["split-pdf"],
+  "صور": ["image-compressor", "image-converter"],
+  "حاسبة": ["age-calculator", "bmi-calculator", "percentage-calculator", "unit-converter"],
+  "qr": ["qr-code", "qr-scanner"]
+};
 function score(tool, q) {
   if (!q) return true;
-  q = q.toLowerCase();
+  q = q.toLowerCase().trim();
+  if (SEARCH_ALIASES[q]?.includes(tool.slug)) return true;
   const hay = [tool.slug, ...Object.values(tool.name || {}), ...Object.values(tool.short || {}), ...(tool.tags || [])]
     .join(" ").toLowerCase();
   return hay.includes(q);
@@ -790,16 +800,20 @@ async function renderAdditionalCenter({ center }) {
   const labels = {
     text: ["✍️", "مركز النصوص — أدوات الكتابة والتحويل", "Text Center — writing and conversion tools"],
     dev: ["🧰", "مركز المطورين — أدوات البرمجة", "Developer Center — practical coding utilities"],
-    security: ["🔐", "مركز الأمان — أدوات محلية", "Security Center — local-first utilities"],
-    calculators: ["🧮", "مركز الحاسبات", "Calculators Center"]
+    security: ["🔐", "مركز الأمان والخصوصية — أدوات محلية", "Security & Privacy Center — local-first utilities"],
+    calculators: ["🧮", "مركز الحاسبات", "Calculators Center"],
+    media: ["🎬", "مركز الفيديو والصوت — معالجة محلية", "Video & Audio Center — local media workflows"],
+    business: ["💼", "مركز الإنتاجية والأعمال", "Productivity & Business Center"]
   };
   const [icon, arTitle, enTitle] = labels[center] || ["🧰", center, center];
   const title = lang === "ar" ? arTitle : enTitle;
   const related = {
     text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"],
-    dev: ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"],
+    dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown"],
     security: ["password-generator","password-strength","totp-generator","hash-generator"],
-    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]
+    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"],
+    media: [],
+    business: ["qr-code","qr-scanner"]
   };
   const description = CENTER_CONTENT[center]?.[lang]?.intro || (lang === "ar" ? "مساحة عمل موحّدة تعالج مدخلاتك محلياً في المتصفح." : "A local-first workbench; your input stays in this browser.");
   main.innerHTML = `<section class="page-head"><h1>${icon} ${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p></section><section class="workspace" id="center-workspace"></section>${hubToolLinks(related[center] || [])}${centerContentMarkup(center, lang)}`;
@@ -1118,6 +1132,16 @@ function wireHeader() {
   }
 }
 
+/* ========= Search shortcut ========= */
+document.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+    event.preventDefault();
+    const input = document.querySelector("#q, #home-q");
+    input?.focus();
+    input?.select?.();
+  }
+});
+
 /* ========= Language change ========= */
 document.addEventListener("langchange", () => {
   renderLangMenu();
@@ -1148,11 +1172,13 @@ route("/rare/classics", () => renderRareCatView({ cat: "classics" }));
 route("/rare/:slug", renderRareDetailView);
 route("/pdf", renderPdfHub);
 route("/images", renderImageHub);
+route("/media", () => renderAdditionalCenter({ center: "media" }));
 route("/convert", renderConvertHub);
 route("/text", () => renderAdditionalCenter({ center: "text" }));
 route("/dev", () => renderAdditionalCenter({ center: "dev" }));
 route("/security", () => renderAdditionalCenter({ center: "security" }));
 route("/calculators", () => renderAdditionalCenter({ center: "calculators" }));
+route("/business", () => renderAdditionalCenter({ center: "business" }));
 route("/mail", renderTempMail);
 route("/ai", renderAIDirectory);
 route("/articles", renderArticlesList);

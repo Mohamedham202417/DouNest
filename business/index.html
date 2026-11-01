@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#7c3aed" />
+<title>Productivity &amp; Business — QR and Work Tools | DouNest</title>
+<meta name="description" content="Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work." />
+<meta name="robots" content="index,follow" />
+<link rel="canonical" href="https://dounest.hmdevelop.me/business/" />
+
+
+<link rel="manifest" href="../manifest.json" />
+<link rel="alternate" type="application/rss+xml" title="DouNest" href="../feed.xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/icon-192.png" />
+<link rel="apple-touch-icon" href="../assets/icon-192.png" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="DouNest" />
+<meta property="og:title" content="Productivity &amp; Business — QR and Work Tools | DouNest" />
+<meta property="og:description" content="Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work." />
+<meta property="og:url" content="https://dounest.hmdevelop.me/business/" />
+<meta property="og:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Productivity &amp; Business — QR and Work Tools | DouNest" />
+<meta name="twitter:description" content="Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work." />
+<meta name="twitter:image" content="https://dounest.hmdevelop.me/assets/og-cover.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="dns-prefetch" href="//cdn.jsdelivr.net" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/styles.css" />
+<link rel="stylesheet" href="../assets/styles-v4.css" />
+<script>
+  try {
+    var _t = JSON.parse(localStorage.getItem("dounest.theme") || "null");
+    if (!_t) _t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    document.documentElement.dataset.theme = _t;
+  } catch (e) {}
+</script>
+<script src="../config.js"></script>
+<script>
+/* DouNest self-heal: if the served build changed, purge any stale service
+   worker + caches once so users never stay stuck on an old cached version. */
+(function(){
+  var B="v3-2026-11-01-mvxobx0u";
+  try{
+    if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
+      localStorage.setItem("dn.build",B);
+      if(!sessionStorage.getItem("dn.heal")){
+        sessionStorage.setItem("dn.heal","1");
+        var jobs=[];
+        if(navigator.serviceWorker&&navigator.serviceWorker.getRegistrations)
+          jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister();});}));
+        if(window.caches) jobs.push(caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});}));
+        Promise.all(jobs).catch(function(){}).then(function(){location.reload();});
+      }
+    }
+  }catch(e){}
+})();
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Productivity & Business — QR and Work Tools","url":"https://dounest.hmdevelop.me/business/","inLanguage":"en"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"QR Code Generator","url":"https://dounest.hmdevelop.me/tools/qr-code/"},{"@type":"ListItem","position":2,"name":"QR Reader (Image)","url":"https://dounest.hmdevelop.me/tools/qr-scanner/"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I use QR for sensitive data?","acceptedAnswer":{"@type":"Answer","text":"You can generate the code locally, but do not place secrets or personal data in an image that will be shared or stored publicly."}},{"@type":"Question","name":"Do QR tools validate links?","acceptedAnswer":{"@type":"Answer","text":"No. The generator encodes the text or URL you provide; test the destination yourself before publishing the code."}},{"@type":"Question","name":"Are invoice details uploaded?","acceptedAnswer":{"@type":"Answer","text":"There is no active invoice tool in this batch; future local-first business tools should generate their files inside the browser."}}]}</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="../" class="brand" aria-label="DouNest">
+        <img src="../assets/dounest-logo.png" class="brand-logo" alt="DouNest" width="38" height="38" />
+        <span class="brand-name">DouNest</span>
+      </a>
+      <nav id="topnav" class="topnav" aria-label="Main">
+        <a href="../" data-i18n="nav.home">Home</a>
+        <a href="../tools/" data-i18n="nav.allTools">All Tools</a>
+        <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
+        <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
+          <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
+          <a href="../media/" data-i18n="nav.media">Video & Audio</a><a href="../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../text/" data-i18n="nav.text">Text center</a><a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a><a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../business/" data-i18n="nav.business">Productivity & Business</a>
+        </div></details>
+        <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
+        <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
+      </nav>
+      <div class="topbar-actions">
+        <button id="nav-toggle" class="icon-btn nav-toggle" aria-controls="topnav" aria-expanded="false" aria-label="Open navigation menu">☰</button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">🌙</button>
+        <div id="lang-menu" class="lang-menu"></div>
+      </div>
+    </div>
+  </header>
+  <main id="main" class="container" role="main" tabindex="-1">
+<section class="page-head"><h1>Productivity &amp; Business — QR and Work Tools</h1><p>Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work.</p></section><section class="workspace" id="center-workspace"><p class="empty">Open the page in your browser to use the interactive workspace.</p></section><section class="section hub-guide" id="center-guide"><p class="hub-guide-intro">Practical tools for everyday productivity and business work: QR codes, signatures, invoices, resumes, timers, and notes. Start with the available tools; local input stays in your browser.</p><h2>How to use the productivity and business center</h2><ol class="hub-steps"><li>Choose the workflow that matches your task: QR, document, signature, invoice, or timer.</li><li>Enter the required data and review the preview before generating a file or code.</li><li>Download or copy the result, and keep an original when the information is business or official data.</li></ol><section class="hub-guide-section"><h2>Business workflows in one place</h2><p>The center currently includes a QR Code Generator and QR Reader, with room for Invoice Generator, CV Builder, Barcode Generator, Signature Maker, WiFi QR, Pomodoro, and Notepad.</p></section><section class="hub-guide-section"><h2>Preview before sharing</h2><p>Review text, numbers, logos, and currency before downloading an invoice or document. QR tools do not validate the link or data you enter.</p></section><section class="hub-guide-section"><h2>Your local input stays local</h2><p>The current tools run in the browser and do not upload data to a DouNest server. Avoid storing sensitive data on shared devices and clear it when finished.</p></section><section class="hub-faq"><h2>Frequently asked questions</h2><details><summary>Can I use QR for sensitive data?</summary><p>You can generate the code locally, but do not place secrets or personal data in an image that will be shared or stored publicly.</p></details><details><summary>Do QR tools validate links?</summary><p>No. The generator encodes the text or URL you provide; test the destination yourself before publishing the code.</p></details><details><summary>Are invoice details uploaded?</summary><p>There is no active invoice tool in this batch; future local-first business tools should generate their files inside the browser.</p></details></section></section><section class="section"><h2 class="section-title">Tools in Productivity &amp; Business </h2><div class="tools-grid"><a class="tool-card" href="/tools/qr-code/"><div class="icon cat-business" aria-hidden="true">▦</div><h3>QR Code Generator</h3><p>أنشئ رموز QR للنصوص والروابط.</p></a><a class="tool-card" href="/tools/qr-scanner/"><div class="icon cat-business" aria-hidden="true">📷</div><h3>QR Reader (Image)</h3><p>اقرأ محتوى رمز QR من صورة أو لقطة شاشة.</p></a></div></section>
+  </main>
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> DouNest — <span data-i18n="footer.local">Files are processed locally when the tool supports it</span></span>
+      <nav class="footer-nav" aria-label="Site links">
+        <a href="../privacy/" data-i18n="nav.privacy">Privacy Policy</a>
+        <a href="../terms/" data-i18n="nav.terms">Terms</a>
+        <a href="../about/" data-i18n="nav.about">About</a>
+        <a href="../contact/" data-i18n="nav.contact">Contact and Support</a>
+        <a href="../ai/">AI Directory</a>
+      </nav>
+    </div>
+  </footer>
+  <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

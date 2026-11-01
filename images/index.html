@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-10-27-mvpyczw6";
+  var B="v3-2026-11-01-mvxobx0u";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -62,7 +62,7 @@
 })();
 </script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"DouNest","url":"https://dounest.hmdevelop.me/","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://dounest.hmdevelop.me/tools/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز الصور — DouNest","applicationCategory":"MultimediaApplication","operatingSystem":"Any","inLanguage":"ar","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"مركز الصور — DouNest","applicationCategory":"MultimediaApplication","operatingSystem":"Any","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Which image format is best for web compression?","acceptedAnswer":{"@type":"Answer","text":"It depends on the image and compatibility needs. Compare WebP or JPG for photographs; use PNG when transparency or crisp graphic edges matter."}},{"@type":"Question","name":"Does JPG keep transparency?","acceptedAnswer":{"@type":"Answer","text":"No. Transparent areas are filled with white when exported as JPG. Choose PNG or WebP if you need transparency."}},{"@type":"Question","name":"Are my photos uploaded for background removal?","acceptedAnswer":{"@type":"Answer","text":"The selected image is not sent to a DouNest server. The browser may download model files from a content-delivery network on first use."}},{"@type":"Question","name":"Does stripping EXIF remove photo location?","acceptedAnswer":{"@type":"Answer","text":"Re-encoding removes much of the metadata in supported outputs, but inspect the exported file with an EXIF reader before publication if location removal is essential."}},{"@type":"Question","name":"Why won't my HEIC or AVIF image open?","acceptedAnswer":{"@type":"Answer","text":"Decoder support varies by browser and operating system. Try the dedicated HEIC tool or convert locally to a supported format first."}}]}</script>
 </head>
 <body>
@@ -81,10 +81,10 @@
         <a href="../mail/" data-i18n="nav.tempMail">Temporary Email</a>
         <details class="topnav-group"><summary data-i18n="nav.centers">Centers</summary><div>
           <a href="../pdf/" data-i18n="nav.pdf">PDF Hub</a><a href="../images/" data-i18n="nav.images">Image Hub</a>
-          <a href="../convert/" data-i18n="nav.convert">Convert Hub</a><a href="../text/" data-i18n="nav.text">Text center</a>
-          <a href="../dev/" data-i18n="nav.developers">Developer center</a>
-          <a href="../security/" data-i18n="nav.security">Security center</a>
-          <a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../media/" data-i18n="nav.media">Video & Audio</a><a href="../convert/" data-i18n="nav.convert">Convert Hub</a>
+          <a href="../text/" data-i18n="nav.text">Text center</a><a href="../dev/" data-i18n="nav.developers">Developer center</a>
+          <a href="../security/" data-i18n="nav.security">Security center</a><a href="../calculators/" data-i18n="nav.calculators">Calculators</a>
+          <a href="../business/" data-i18n="nav.business">Productivity & Business</a>
         </div></details>
         <a href="../articles/" data-i18n="nav.articles">Articles</a><a href="../faq/" data-i18n="nav.faq">FAQ</a>
         <a href="../rare/" data-i18n="nav.rare">Rare Tools</a><a href="../ai/" data-i18n="nav.ai">AI Directory</a>
@@ -99,100 +99,100 @@
   <main id="main" class="container" role="main" tabindex="-1">
 
     <section class="page-head">
-      <h1>مركز الصور — التحويل والضغط وتغيير الأبعاد</h1>
-      <p>أضف صورة أو أكثر مرة واحدة لتحويل الصيغ أو ضغطها أو تغيير أبعادها أو تدويرها وإنشاء PDF. وتتوفر أدوات منفردة لإزالة الخلفية وOCR وHEIC وQR. تبقى الملفات المختارة في متصفحك ولا تُرسل إلى خادم DouNest؛ وقد تُحمّل بعض المكتبات أو النماذج من شبكة خارجية.</p>
+      <h1>Images & Design — Convert, Compress and Edit</h1>
+      <p>Convert, compress, resize, crop, rotate, and clean image metadata locally. Selected images stay in your browser; model or processing libraries may load from a content-delivery network.</p>
     </section>
-    <section class="workspace"><p class="empty" style="margin:0">افتح الصفحة في متصفحك لتظهر منطقة الرفع والعمليات السريعة.</p></section>
+    <section class="workspace"><p class="empty" style="margin:0">Open the page in your browser to use the interactive image workspace.</p></section>
     <section class="section">
-      <h2 class="section-title">أدوات الصور الفردية والمتخصصة</h2>
+      <h2 class="section-title">Image tools</h2>
       <div class="tools-grid">
 
         <a class="tool-card" href="/tools/image-converter/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
+          <div class="icon cat-images" aria-hidden="true">🔄</div>
           <h3>Image Converter</h3>
           <p>Convert between JPG, PNG, WebP, AVIF, GIF.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/image-compressor/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
+          <div class="icon cat-images" aria-hidden="true">🖼️</div>
           <h3>Image Compressor</h3>
           <p>Compress JPG/PNG/WebP locally.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/resize-image/">
-          <div class="icon cat-media" aria-hidden="true">📐</div>
+          <div class="icon cat-images" aria-hidden="true">📐</div>
           <h3>Image Resizer</h3>
           <p>Resize images by width or percentage with format conversion.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/remove-background/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
+          <div class="icon cat-images" aria-hidden="true">✂️</div>
           <h3>Remove Background</h3>
           <p>Isolate subjects with transparent background via in-browser AI.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/image-to-pdf/">
-          <div class="icon cat-media" aria-hidden="true">📄</div>
+          <div class="icon cat-pdf" aria-hidden="true">📄</div>
           <h3>Image to PDF</h3>
           <p>Convert JPG/PNG images into one PDF file.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/ocr-image-to-text/">
-          <div class="icon cat-media" aria-hidden="true">🔍</div>
+          <div class="icon cat-images" aria-hidden="true">🔍</div>
           <h3>Image to Text (OCR)</h3>
           <p>Extract text from images and scans — Arabic &amp; English.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/heic-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">📱</div>
+          <div class="icon cat-images" aria-hidden="true">📱</div>
           <h3>HEIC to JPG</h3>
           <p>Open iPhone HEIC photos and convert them to JPG.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-jpg/">
-          <div class="icon cat-media" aria-hidden="true">🖼️</div>
+          <div class="icon cat-pdf" aria-hidden="true">🖼️</div>
           <h3>PDF to Images</h3>
           <p>Render PDF pages to JPG images with adjustable quality.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/qr-code/">
-          <div class="icon cat-media" aria-hidden="true">▦</div>
+          <div class="icon cat-business" aria-hidden="true">▦</div>
           <h3>QR Code Generator</h3>
           <p>Generate QR codes for text and URLs.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/qr-scanner/">
-          <div class="icon cat-media" aria-hidden="true">📷</div>
+          <div class="icon cat-business" aria-hidden="true">📷</div>
           <h3>QR Reader (Image)</h3>
           <p>Decode a QR code from an image or screenshot.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/color-picker/">
-          <div class="icon cat-color" aria-hidden="true">🖌️</div>
+          <div class="icon cat-images" aria-hidden="true">🖌️</div>
           <h3>Color Picker</h3>
           <p>Pick a color and get all formats.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/image-crop/">
-          <div class="icon cat-media" aria-hidden="true">✂️</div>
+          <div class="icon cat-images" aria-hidden="true">✂️</div>
           <h3>Image Cropper</h3>
           <p>Crop images to common aspect ratios or custom dimensions.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/image-rotate-flip/">
-          <div class="icon cat-media" aria-hidden="true">🔄</div>
+          <div class="icon cat-images" aria-hidden="true">🔄</div>
           <h3>Rotate and Flip Images</h3>
           <p>Rotate images or flip them horizontally and vertically.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/exif-viewer/">
-          <div class="icon cat-media" aria-hidden="true">🔎</div>
+          <div class="icon cat-images" aria-hidden="true">🔎</div>
           <h3>EXIF Viewer</h3>
           <p>Inspect camera and date metadata in JPEG images.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
         </a>
         <a class="tool-card" href="/tools/favicon-generator/">
-          <div class="icon cat-media" aria-hidden="true">⭐</div>
+          <div class="icon cat-images" aria-hidden="true">⭐</div>
           <h3>Favicon Generator</h3>
           <p>Turn an image into multi-size site icons and an ICO file.</p>
           <div class="card-foot"><span class="badge tiny">صور</span></div>
