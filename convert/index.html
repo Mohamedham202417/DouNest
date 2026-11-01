@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-11-01-mvxp2e3w";
+  var B="v3-2026-11-01-mvxphmfa";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -147,6 +147,12 @@
           <div class="icon cat-convert" aria-hidden="true">🧾</div>
           <h3>Excel to JSON</h3>
           <p>Convert Excel sheets to JSON ready for developers and APIs.</p>
+          <div class="card-foot"><span class="badge tiny">تحويل</span></div>
+        </a>
+        <a class="tool-card" href="/tools/excel-to-pdf/">
+          <div class="icon cat-convert" aria-hidden="true">📊</div>
+          <h3>Excel to PDF</h3>
+          <p>Excel to PDF</p>
           <div class="card-foot"><span class="badge tiny">تحويل</span></div>
         </a>
         <a class="tool-card" href="/tools/pdf-to-txt/">

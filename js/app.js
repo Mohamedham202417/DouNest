@@ -326,6 +326,8 @@ function renderHome() {
   const main = document.getElementById("main");
   const recentList = recent.list().map(getTool).filter(Boolean).slice(0, 6);
   const newTools = TOOLS.slice(-4);
+  const popularSlugs = ["compress-pdf","remove-background","video-to-mp3","number-to-arabic-words","qr-code","image-compressor","invoice-generator","json-formatter"];
+  const popularTools = popularSlugs.map(getTool).filter(Boolean);
 
   main.innerHTML = `
     <section class="hero">
@@ -348,7 +350,7 @@ function renderHome() {
       <div class="explore-strip">
         <a class="explore-card" href="${link("/pdf")}"><strong>📄 ${t("nav.pdf")}</strong><span>${getLang()==="ar"?"دمج وتقسيم وضغط وتحويل ملفات PDF":"Merge, split, compress, and convert PDFs"}</span><small>${TOOLS.filter(x => x.category === "pdf").length} ${t("hero.toolsCount")}</small></a>
         <a class="explore-card" href="${link("/images")}"><strong>🖼️ ${t("nav.images")}</strong><span>${getLang()==="ar"?"ضغط الصور وتحويلها وتنظيف بياناتها":"Compress, convert, and clean image metadata"}</span><small>${TOOLS.filter(x => x.category === "images").length} ${t("hero.toolsCount")}</small></a>
-        <a class="explore-card" href="${link("/media")}"><strong>🎬 ${t("nav.media")}</strong><span>${getLang()==="ar"?"مسارات الفيديو والصوت المحلية":"Local video and audio workflows"}</span><small>${getLang()==="ar"?"قريباً":"Coming next"}</small></a>
+        <a class="explore-card" href="${link("/media")}"><strong>🎬 ${t("nav.media")}</strong><span>${getLang()==="ar"?"مسارات الفيديو والصوت المحلية":"Local video and audio workflows"}</span><small>${TOOLS.filter(x => x.category === "media").length} ${t("hero.toolsCount")}</small></a>
         <a class="explore-card" href="${link("/convert")}"><strong>🔄 ${t("nav.convert")}</strong><span>${getLang()==="ar"?"تحويل ملفات Office والبيانات والأرشيف":"Convert Office, data, and archive files"}</span><small>${TOOLS.filter(x => x.category === "convert").length} ${t("hero.toolsCount")}</small></a>
         <a class="explore-card" href="${link("/text")}"><strong>✍️ ${t("nav.text")}</strong><span>${getLang()==="ar"?"تنظيف النصوص وتحويلها وتحليلها":"Clean, convert, and analyze text"}</span><small>${TOOLS.filter(x => x.category === "text").length} ${t("hero.toolsCount")}</small></a>
         <a class="explore-card" href="${link("/dev")}"><strong>🧰 ${t("nav.developers")}</strong><span>JSON · Base64 · JWT · XML</span><small>${TOOLS.filter(x => x.category === "dev").length} ${t("hero.toolsCount")}</small></a>
@@ -364,6 +366,11 @@ function renderHome() {
       <h2 class="section-title">🕘 ${t("home.recent")}</h2>
       <div class="tools-grid mini">${recentList.map(toolCard).join("")}</div>
     </section>` : ""}
+
+    <section class="section slim">
+      <h2 class="section-title">Popular tools</h2>
+      <div class="tools-grid mini">${popularTools.map(toolCard).join("")}</div>
+    </section>
 
     <section class="section slim">
       <h2 class="section-title">Arabic-first tools</h2>
@@ -824,10 +831,10 @@ async function renderAdditionalCenter({ center }) {
   const [icon, arTitle, enTitle] = labels[center] || ["🧰", center, center];
   const title = lang === "ar" ? arTitle : enTitle;
   const related = {
-    text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"],
-    dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"],
-    security: ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","protect-pdf","unlock-pdf"],
-    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"],
+    text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel","speech-to-text","text-to-speech","arabic-numerals","find-replace","social-counter"],
+    dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags","json-to-typescript","minifier","base-converter","curl-to-code","subnet-calculator","robots-sitemap","http-status-codes"],
+    security: ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","encrypt-files","password-breach-check","random-picker","protect-pdf","unlock-pdf"],
+    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat","date-difference","timezone-converter","compound-interest","currency-converter"],
     media: ["video-to-mp3","compress-video","trim-media","video-to-gif","audio-converter","voice-recorder","screen-recorder"],
     business: ["qr-code","qr-scanner","invoice-generator","cv-builder","barcode-generator","signature-maker","wifi-qr-generator","pomodoro","online-notepad"]
   };

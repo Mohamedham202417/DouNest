@@ -639,7 +639,7 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
-  const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt", "svg-to-png", "json-yaml"];
+  const convSlugs = ["image-converter", "heic-to-jpg", "csv-to-json", "json-to-csv", "excel-to-csv", "csv-to-excel", "excel-to-json", "excel-to-pdf", "pdf-to-txt", "pdf-to-jpg", "pdf-to-word", "word-to-pdf", "image-to-pdf", "pdf-to-txt", "svg-to-png", "json-yaml"];
   const convTools = [...new Set(convSlugs)].map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "convert/index.html",
@@ -679,10 +679,10 @@ console.log("→ pdf/convert hub pages");
 /* ---------- 3c) Work centers: text, dev, security and calculators ---------- */
 console.log("→ additional work centers");
 for (const [slug, title, description, modulePath, related] of [
-  ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"]],
-  ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"]],
-  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","protect-pdf","unlock-pdf"]],
-  ["calculators", "Calculators — Age, BMI, Percentages and Units", "Run everyday health, time, percentage, and unit calculations in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"]],
+  ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel","speech-to-text","text-to-speech","arabic-numerals","find-replace","social-counter"]],
+  ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags","json-to-typescript","minifier","base-converter","curl-to-code","subnet-calculator","robots-sitemap","http-status-codes"]],
+  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","encrypt-files","password-breach-check","random-picker","protect-pdf","unlock-pdf"]],
+  ["calculators", "Calculators — Age, BMI, Percentages and Units", "Run everyday health, time, percentage, and unit calculations in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat","date-difference","timezone-converter","compound-interest","currency-converter"]],
   ["media", "Video & Audio — Local Media Workflows", "Prepare a privacy-first home for video and audio conversion, trimming, compression, and recording.", "media-hub.js", ["video-to-mp3","compress-video","trim-media","video-to-gif","audio-converter","voice-recorder","screen-recorder"]],
   ["business", "Productivity & Business — QR and Work Tools", "Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work.", "business-hub.js", ["qr-code","qr-scanner","invoice-generator","cv-builder","barcode-generator","signature-maker","wifi-qr-generator","pomodoro","online-notepad"]]
 ]) {

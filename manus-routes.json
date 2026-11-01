@@ -487,6 +487,86 @@
     {
       "path": "/tools/online-notepad",
       "title": "online-notepad"
+    },
+    {
+      "path": "/tools/speech-to-text",
+      "title": "speech-to-text"
+    },
+    {
+      "path": "/tools/text-to-speech",
+      "title": "text-to-speech"
+    },
+    {
+      "path": "/tools/arabic-numerals",
+      "title": "arabic-numerals"
+    },
+    {
+      "path": "/tools/find-replace",
+      "title": "find-replace"
+    },
+    {
+      "path": "/tools/social-counter",
+      "title": "social-counter"
+    },
+    {
+      "path": "/tools/json-to-typescript",
+      "title": "json-to-typescript"
+    },
+    {
+      "path": "/tools/minifier",
+      "title": "minifier"
+    },
+    {
+      "path": "/tools/base-converter",
+      "title": "base-converter"
+    },
+    {
+      "path": "/tools/curl-to-code",
+      "title": "curl-to-code"
+    },
+    {
+      "path": "/tools/subnet-calculator",
+      "title": "subnet-calculator"
+    },
+    {
+      "path": "/tools/robots-sitemap",
+      "title": "robots-sitemap"
+    },
+    {
+      "path": "/tools/http-status-codes",
+      "title": "http-status-codes"
+    },
+    {
+      "path": "/tools/encrypt-files",
+      "title": "encrypt-files"
+    },
+    {
+      "path": "/tools/password-breach-check",
+      "title": "password-breach-check"
+    },
+    {
+      "path": "/tools/random-picker",
+      "title": "random-picker"
+    },
+    {
+      "path": "/tools/date-difference",
+      "title": "date-difference"
+    },
+    {
+      "path": "/tools/timezone-converter",
+      "title": "timezone-converter"
+    },
+    {
+      "path": "/tools/compound-interest",
+      "title": "compound-interest"
+    },
+    {
+      "path": "/tools/currency-converter",
+      "title": "currency-converter"
+    },
+    {
+      "path": "/tools/excel-to-pdf",
+      "title": "excel-to-pdf"
     }
   ]
 }
