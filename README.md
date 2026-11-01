@@ -1,192 +1,138 @@
-# DouNest v5 — أدوات مجانية تعمل داخل المتصفح | Free Browser Tools
+# DouNest
 
-> نسخة موحّدة ومعاد بناؤها بالكامل: موقع واحد بدل نسختين متنازعتين، روابط حقيقية صديقة لمحركات البحث، **58 أداة** مسجّلة، بينها أدوات v5 جديدة، صفحة أسئلة شائعة بـSchema، وبنية ربح جاهزة للتشغيل.
+**DouNest** is a privacy-first collection of free browser tools for files, text, images, media, developers, security, calculators, productivity, and business workflows. The site is static-first and SEO-friendly: every tool has a real URL, a generated landing page, localized metadata, and a client-side interface.
 
----
+## What changed
 
-## الإصدار الحالي: v5
+The latest development reorganizes DouNest from a flat collection into clear work centers and updates the catalog to **121 registered tools**. It also adds a Popular Tools section, Arabic-first tool coverage for the new utilities, complete metadata translations for all ten supported languages, and browser verification for every registered tool page.
 
-- **58 أداة** في السجل وصفحاتها المولّدة، و**7 مراكز عمل**: PDF، الصور، التحويل، النصوص، المطورون، الأمان والحاسبات.
-- 14 صفحة أداة جديدة، ومكتبة عمليات مشتركة لتقليل تكرار الشيفرة، مع إبقاء وظائف المراكز السابقة.
-- الصفحة الرئيسية ومراكز v5 مُصدّرة مسبقاً؛ sitemap محدث، RSS (`feed.xml`)، و`robots.txt` وService Worker يعاد توليدها من `build.mjs`.
-- فحوص آلية: `npm run build` ثم `npm test` (الاختبار لا يحتاج تبعيات أو استدعاءات AI).
-- أداة القوة وTOTP وملفات الصور/PDF تعمل محلياً في المتصفح؛ راجع [ملاحظات التنفيذ والقيود](reports/plan-v5-2026-10.md).
+The project now includes:
 
-## 🇸🇦 العربية
+- Ten clear work centers: **PDF**, **Images**, **Media**, **Convert**, **Text**, **Developers**, **Security**, **Calculators**, **Business**, and **Temporary Mail**.
+- Real crawlable routes such as `/tools/json-formatter/`, `/pdf/`, `/images/`, `/media/`, `/business/`, and `/mail/`.
+- Generated SEO pages, canonical URLs, Open Graph metadata, JSON-LD, sitemap, RSS feed, robots.txt, 404 fallback, and a versioned Service Worker.
+- English-first localization: English is the primary source language, Arabic is the next priority, followed by French, Spanish, German, Turkish, Russian, Simplified Chinese, Hindi, and Brazilian Portuguese.
+- Local processing wherever possible. Files are intended to stay in the browser rather than being uploaded to a DouNest server.
+- Responsive tool shells with file/text input, options, progress or preview areas where applicable, download/copy actions, related tools, explanations, and FAQ/SEO content.
+- A Popular Tools section and recently used tools stored locally in the browser.
 
-### ما الجديد في v3؟
+## Tool catalog
 
-| قبل (v1+v2) | بعد (v3) |
+The catalog currently contains 121 tools across these areas:
+
+| Center | Examples |
 |---|---|
-| نسختان متنافرتان (v1 مونوليث + v2 وحداتي) | موقع واحد موحّد بهوية واحدة |
-| روابط `#/tools/x` لا تفهرسها جوجل | روابط حقيقية `/tools/json-formatter/` قابلة للفهرسة |
-| 11 أداة مُعلنة لكنها مكسورة | **44 أداة كلها تعمل فعلياً** |
-| صفحات فارغة بدون JS | محتوى عربي مُصدَّر مسبقاً في HTML يراه الزاحف مباشرة |
-| sitemap بروابط hash غير صالحة | sitemap صالح بـ42 رابطاً حقيقياً (يُولَّد آلياً) |
-| og:image يشير لملف غير موجود | og-cover.png احترافية 1200×630 + أيقونات PWA |
-| Service Worker معطّل فعلياً | PWA يعمل **بدون إنترنت** بعد أول زيارة (مُختبَر) |
-| صفر بنية ربح | مواضع AdSense + روابط تابعة + رعاية + زر دعم |
-| تسريب ذاكرة في قائمة اللغات | مستمعات مفوَّضة واحدة، بلا تسريب |
-| هوية ToolNest/DouNest ممزقة | هوية DouNest موحّدة بتصميم "تقني عصري" زجاجي |
+| PDF | Sign, edit, protect, unlock, crop, extract images, grayscale, merge, split, rotate, compress, convert |
+| Images | Compress, convert, crop, resize, upscale, remove background, remove EXIF, watermark, blur/pixelate, collage, palette, gradients, memes |
+| Media | Video to MP3, compress, trim, GIF conversion, audio conversion, voice recorder, screen recorder |
+| Convert | ZIP extraction, Word/text conversion, Excel viewer and PDF conversion, CSV/JSON conversions |
+| Text | Arabic number words, Arabizi, tashkeel removal, Hijri conversion, speech-to-text, text-to-speech, find/replace, counters |
+| Developers | JSON, UUID, Meta Tags/Open Graph, base conversion, cURL, subnet/IP, robots.txt, sitemap, HTTP status tools |
+| Security | AES text/file encryption, password breach check, password tools, random picker and local privacy utilities |
+| Calculators | Baccalaureate average, Zakat, loan/installment, discount/VAT, date difference, timezone, compound interest, currency |
+| Business | Invoice, CV/resume, barcode, signature, WiFi QR, Pomodoro, online notepad |
+| Temporary Mail | Temporary email entry point and related privacy-oriented workflows |
 
-### هيكل المشروع
+The catalog is defined in [`js/registry.js`](js/registry.js). Shared long-form content is maintained in [`js/tool-content.js`](js/tool-content.js), and the generated metadata translations are stored in [`js/tool-translations.js`](js/tool-translations.js).
 
-```
-├── index.html            الواجهة الرئيسية (SPA)
-├── 404.html              تراجع GitHub Pages للروابط العميقة (يُولَّد)
-├── config.js             ★ كل الإعدادات: النطاق، AdSense، التابع، الرعاية، التحليلات
-├── build.mjs             ★ مولّد صفحات SEO + sitemap + sw  (node build.mjs)
-├── assets/               التصميم + الشعار + og-cover + الأيقونات
+## Languages
+
+DouNest supports these ten interface and tool-metadata languages:
+
+1. English (`en`)
+2. العربية (`ar`)
+3. Français (`fr`)
+4. Español (`es`)
+5. Deutsch (`de`)
+6. Türkçe (`tr`)
+7. Русский (`ru`)
+8. 中文简体 (`zh`)
+9. हिन्दी (`hi`)
+10. Português do Brasil (`pt`)
+
+Every registered tool has a translated name, short description, usage steps, and explanation in all ten languages. The UI falls back safely to English only when a future or custom field has not yet been localized.
+
+## Privacy and processing model
+
+DouNest is designed around local browser processing. PDF, image, text, calculator, encryption, signature, recorder, and file-conversion tools use browser APIs or client-side libraries where practical. The interface should make it clear when a feature needs a third-party browser API or an external service, such as currency rates or a password-breach range lookup.
+
+Do not treat a browser-only tool as a guarantee that every third-party dependency is offline. Review the individual tool description before processing sensitive material, and avoid entering secrets into tools or external services unless you understand the result.
+
+## Project structure
+
+```text
+├── index.html              Homepage shell
+├── config.js               Domain, repository path, analytics and monetization settings
+├── build.mjs               Static page, SEO, sitemap, feed and Service Worker generator
+├── assets/                 Styles, icons, logo and visual assets
 ├── js/
-│   ├── app.js            الراوتر (روابط حقيقية) + الصفحات + SEO الحيوي
-│   ├── registry.js       سجل الأدوات (مصدر الحقيقة الوحيد)
-│   ├── monetize.js       طبقة الربح: إعلانات، تابع، رعاية، دعم
-│   ├── i18n.js           10 لغات (واجهة عربية/إنجليزية كاملة)
-│   ├── tools/*.js        وحدات الأدوات المستقلة
-│   ├── hubs/*.js         مراكز العمل السبعة
-│   └── lib/              عمليات مشتركة + محرك المراكز
-├── tools/<slug>/         ★ 58 صفحة هبوط مولّدة (محتوى مرئي للزاحف)
-├── reports/              خطة v5 ونقد البنية وسجل التنفيذ
-└── articles/<slug>/      ★ 14 مقالاً؛ دليلان جديدان مترجمان إلى 10 لغات
-└── about|privacy|terms/  صفحات قانونية (شرط قبول AdSense)
+│   ├── app.js              Router, homepage, search, language and tool rendering
+│   ├── registry.js         Single source of truth for the 121 tools
+│   ├── langs.js            The ten supported languages
+│   ├── i18n.js             Interface translations and language switching
+│   ├── tool-content.js     Long-form descriptions, FAQ and tags
+│   ├── tool-translations.js Generated translated tool metadata
+│   ├── tools/              Individual tool adapters and implementations
+│   ├── hubs/               Work-center pages
+│   └── lib/                Shared client-side actions and helpers
+├── tools/<slug>/            Generated landing page for each registered tool
+├── pdf/, images/, media/…   Generated work-center pages
+├── articles/                SEO article pages and translations
+├── scripts/check-site.mjs   Static catalog and route validation
+└── reports/                 Planning and implementation notes
 ```
 
-### النشر على GitHub Pages (3 خطوات)
+## Local development
+
+The project is a static site and does not require a database or an AI service to run the local tools.
 
 ```bash
-# 1) عدّل config.js: اجعل repoPath مطابقاً لاسم المستودع
-#    origin: "https://mohamedham202417.github.io"  repoPath: "DouNest"
+# Install dependencies used by the build/test scripts
+pnpm install
 
-# 2) أعد توليد الصفحات (بعد أي تعديل على registry/articles/config)
-node build.mjs
+# Regenerate tool pages, center pages, sitemap, feed, routes and sw.js
+pnpm build
 
-# 3) أنشئ فرعاً وارفعه عبر Pull Request؛ لا تدفع مباشرة إلى main
-git checkout -b feat/your-change
-git add -A && git commit -m "Describe the change" && git push -u origin feat/your-change
-```
+# Run the static validation suite
+pnpm test
 
-> **نطاق مخصص؟** ضع `repoPath: ""` في config.js ثم `node build.mjs` — كل الروابط والـsitemap ستتحدث تلقائياً.
-
-> **⚠️ مهم — رابط الموقع الصحيح:** `https://mohamedham202417.github.io/DouNest/`
-> لا تفتح `.../DouNest/DouNest/` (مسار مكرر) — ستحوّلك الصفحة تلقائياً للرئيسية، لكن استخدم الرابط الأول في النشر والمشاركة وGoogle Search Console.
-
-### نظام «الشفاء الذاتي» من الكاش القديم
-
-كان السبب الأشهر لأعطال «الأزرار لا تعمل / الشريط العلوي / تبديل اللغة» هو **Service Worker قديم** مخزَّن في متصفح الزائر يقدّم ملفات من نسخة سابقة مختلطة بالجديدة.
-v3.1 يعالج هذا جذرياً:
-- كل صفحة تحمل معرّف بناء (BUILD_ID) — عند اكتشاف تغيّره يُلغى الـSW القديم وتُمسح الكاشات ويعاد التحميل مرة واحدة تلقائياً.
-- تثبيت الـSW الجديد أصبح محصّناً: ملف واحد مفقود لا يُفشل التثبيت كله (كان هذا يُبقي الـSW القديم حياً للأبد).
-- النتيجة: الزائر الذي كان عالقاً على نسخة قديمة يشفى تلقائياً من أول زيارة بعد النشر — دون أي خطوة يدوية.
-
-### الأدوات الـ14 المضافة في v3.1 (كلها تعمل داخل المتصفح)
-
-| الأداة | المكتبة مفتوحة المصدر | ملاحظات |
-|---|---|---|
-| إزالة خلفية الصورة | @imgly/background-removal (U²-Net/ONNX) | نموذج ~40MB يُحمَّل مرة واحدة ثم يعمل دون إنترنت |
-| استخراج نص من صورة OCR | Tesseract.js | عربي + إنجليزي + مزدوج |
-| صورة إلى PDF | pdf-lib | A4/Letter/مطابق للصورة + هوامش + ترتيب |
-| تحويل HEIC إلى JPG | heic2any (libheif) | صور الآيفون، دفعات → ZIP |
-| تقسيم PDF | pdf-lib + JSZip | نطاقات `1-3,5,8-10` → ملف أو ZIP |
-| PDF إلى صور | pdf.js (Mozilla) | جودة قابلة للضبط، دفعات → ZIP |
-| تدوير صفحات PDF | pdf-lib | 90/180/270 + نطاقات، تدوير دائم |
-| Word إلى PDF | mammoth.js | DOCX → معاينة → نافذة طباعة (PDF حقيقي قابل للبحث) |
-| تحجيم الصور | Canvas | بالعرض أو نسبة + صيغة وجودة، دفعات |
-| Excel إلى CSV | SheetJS | اختيار الورقة والفاصل، كل الأوراق → ZIP |
-| CSV إلى Excel | SheetJS | XLSX حقيقي بترميز UTF-8 سليم للعربية |
-| Excel إلى JSON | SheetJS | كائنات أو صفوف، جاهز لـAPI |
-| ضغط ملفات ZIP | JSZip | أي عدد ونوع، مجلد داخلي اختياري |
-| قارئ QR من صورة | jsQR | لقطات شاشة، فحص الروابط قبل فتحها |
-
-كما أُضيفت صفحة **الأسئلة الشائعة** `/faq/` (20 سؤالاً بأجوبة مفصّلة + Schema `FAQPage` + إدراج في sitemap) مستهدفة أكثر استعلامات البحث في هذا المجال، وأُصلحت روابط CDN مكسورة كانت تُعطّل أدوات PDF وQR في النسخ السابقة.
-
-### تشغيل محلي
-
-```bash
+# Preview the generated site
 python3 -m http.server 8080
-# ثم افتح http://localhost:8080/
+# Open http://localhost:8080/
 ```
 
-### 💰 تفعيل مصادر الربح (بالترتيب)
+`pnpm test` validates the registered tools, generated routes, center links, localization data, and required SEO/site files. A successful current run validates **121 registered tools** and more than one thousand catalog/site checks.
 
-**1. التحليلات أولاً (قبل أي شيء)** — في `config.js`:
-```js
-analytics: { gaId: "G-XXXXXXXXXX" }   // من analytics.google.com
-```
+## Adding or changing a tool
 
-**2. Google AdSense** — يتطلب: نطاق/محتوى حقيقي (مُوفَّر: 37 صفحة) + سياسة خصوصية تذكر الإعلانات (مُوفَّرة) + ترافيك. بعد القبول:
-```js
-adsense: {
-  client: "ca-pub-XXXXXXXXXXXXXXXX",
-  slots: { top: "1234567890", inline: "...", footer: "..." }
-}
-```
-المواضع الجاهزة: أعلى صفحة الأداة، وسط الرئيسية، أسفل المحتوى — مخفية أنيقاً كـplaceholders حتى تضع أرقامك.
+1. Add or update the tool record in `js/registry.js`.
+2. Add the implementation in `js/tools/<slug>.js` and export `render(root)`.
+3. Add the tool to the appropriate work-center list in `build.mjs` or the relevant hub module.
+4. Add English and Arabic copy first, then add the remaining language metadata before declaring the tool complete.
+5. Run `pnpm build`, `pnpm test`, and a browser smoke test for the generated route.
+6. Review generated HTML, sitemap and related-tool links before committing.
 
-**3. الروابط التابعة** — أي رابط خارجي في دليل AI/الأدوات النادرة يمكن ربطه بمعرّفك:
-```js
-affiliateId: "YOUR_ID",
-affiliates: { "hostinger.com": "ref", "namecheap.com": "ref" }
-```
-كل الروابط تُوسم `rel="sponsored"` مع بانر إفصاح تلقائي (متوافق مع سياسات جوجل).
+The build is the source of generated pages; edit the registry, content, templates, or source modules rather than hand-editing generated HTML.
 
-**4. المساحات المميزة (تبيعها لأصحاب الأدوات)**:
-```js
-featured: [
-  { title: "أداة X", desc: "شرح موجز", url: "https://...", img: "https://..." }
-]
-```
-تظهر كبطاقة "رعاية" في الرئيسية والشريط الجانبي لصفحات الأدوات.
+## GitHub Pages deployment
 
-**5. زر الدعم**: ضع رابط BuyMeACoffee/Ko-fi في `support.url`.
+The repository is configured for a static GitHub Pages-style deployment. Keep the project contents at the repository root; do not nest them under a second `DouNest` directory.
 
-**6. خارطة طريق Pro** (المرحلة الثانية): معالجة صور بالجملة، ملفات أكبر، بدون إعلانات — عبر Ko-fi/Gumroad.
+1. Set `repoPath` in `config.js` to `"DouNest"` for `https://<user>.github.io/DouNest/`.
+2. Use `repoPath: ""` for a custom domain and rebuild.
+3. Run `pnpm build`.
+4. Publish the repository root from the selected branch and verify that asset URLs do not contain `/DouNest/DouNest/`.
 
-### توجيهات مستقبلية — الانتقال إلى Next.js (خيار مزدوج)
+The generated `sitemap.xml`, `robots.txt`, `feed.xml`, `404.html`, `manus-routes.json`, and `sw.js` should be deployed together with the generated pages.
 
-البنية الحالية مثالية لـGitHub Pages، لكن حين يتجاوز الترافيك X زيارة/يوم:
-- **متى تنتقل؟** عند حاجتك لـ: SSR فوري للمحتوى، توطين i18n في الرابط (`/en/tools/...`)، A/B testing، أو قاعدة بيانات (تعليقات حقيقية).
-- **كيف؟** registry.js وarticles.js بيانات نقية ES Modules — تُستورد كما هي في Next.js. صفحات build.mjs تتحول لـ`generateStaticParams` + `generateMetadata` بسهولة. الأدوات (وحدات متصفح نقية) تعمل كـClient Components.
-- **الترتيب المقترح**: Next.js على Vercel مع الحفاظ على نفس مسارات الروابط `/tools/<slug>/` (تصدر 301 من GitHub Pages عبر ملف _redirects إذا انتقلت لـCloudflare Pages).
+## Configuration and monetization
 
----
+Optional analytics, advertising, affiliate, featured-placement, and support settings live in `config.js`. Keep secrets out of the repository. Any advertising or affiliate integration should preserve the privacy policy, disclosure text, and the local-processing promise of the individual tools.
 
-## 🇬🇧 English (quick start)
+## Current verification
 
-**DouNest v3** — unified, SEO-first rebuild: real crawlable URLs for all 44 tools, generated landing pages with prerendered Arabic content, an FAQ page with FAQPage schema, working offline PWA with automatic stale-cache self-healing, and a complete monetization layer (AdSense slots, affiliate links, sponsored placements, support button).
+The latest browser sweep loaded all 121 registered tool routes without `tool load failed` or `Something went wrong` errors. The static build and catalog checks also pass after the multilingual metadata update.
 
-```bash
-# configure config.js (repoPath / domain / ads ids) then:
-node build.mjs        # regenerates tool pages, sitemap.xml, 404.html, sw.js
-python3 -m http.server 8080   # local preview
-```
+## License and credits
 
-**Deploy:** push to GitHub Pages (set `repoPath: "DouNest"`), or any static host. Custom domain → `repoPath: ""`.
-
-**Monetize:** fill `config.js` → analytics.gaId, adsense.client/slots, affiliateId, featured[], support.url. All placements and disclosures are handled by `js/monetize.js`.
-
-**Adding a tool:** append its metadata to `js/registry.js`, create `js/tools/<slug>.js` exporting `render(root)`, run `node build.mjs` — you get a working tool + an SEO landing page automatically.
-
----
-
-## ⚠️ قاعدة النشر الحاسمة — لا تُدشّن المشروع داخل مجلد متداخل
-
-**سبب أشهر مشاكل الإطلاق** (الشريط العلوي وتبديل اللغة لا يعملان): رفع مجلد المشروع *داخل* مجلد آخر بنفس الاسم، فيصبح المسار `/DouNest/DouNest/...` وتفشل كل مسارات الموارد.
-
-### النشر الصحيح على GitHub Pages (خطوة بخطوة)
-
-1. اجعل **جذر المستودع** هو محتوى المشروع مباشرة: `index.html` و`config.js` و`js/` يجب أن تقع في الجذر — **ليس** داخل `DouNest/DouNest/`.
-2. ارفع كل الملفات المولّدة بعد `node build.mjs` (بما فيها `404.html` و`sitemap.xml` و`sw.js` ومجلدات `tools/` و`rare/` و`pdf/` و`convert/` و`articles/`).
-3. في إعدادات المستودع: Settings → Pages → Source: **Deploy from a branch** → branch: `main` → folder: **/(root)**.
-4. اترك `config.js` كما هو: `repoPath: "DouNest"` (لأن GitHub Pages سيخدم الموقع تحت `/DouNest/`).
-5. إن كان لديك دومين مخصص: اضبط `repoPath: ""` ثم أعد `node build.mjs` قبل الرفع.
-
-### فحص سريع بعد النشر
-
-- افتح `https://<user>.github.io/DouNest/` — إذا ظهرت الصفحة ثم فشلت الروابط، افتح سجل الشبكة: أي طلب إلى مسار يحتوي `/DouNest/DouNest/` يعني أنك رفعت المجلد داخل نفسه — أصلح البنية (اسحب *محتويات* المجلد لا المجلد نفسه) وأعد النشر.
-- الصفحات المصنفة noindex (قسم `/rare/security/`) طبيعي أن تُستبعد من الفهرسة — هذا مقصود.
-
----
-
-## 🇬🇧 Deployment warning (English)
-
-**Never nest the project inside a same-named folder** (`/DouNest/DouNest/...` breaks the topbar and language switcher because every resource path 404s). Upload the *contents* of this folder to the **repository root**, enable GitHub Pages from `main` / `(root)`, keep `repoPath: "DouNest"` in `config.js` (or `""` for a custom domain, then rebuild), and verify after deploy that no request contains a doubled `/DouNest/DouNest/` path.
+DouNest is a browser-tool project. Third-party libraries remain subject to their own licenses. Review the library notices and the individual tool implementation before redistributing bundled dependencies.
