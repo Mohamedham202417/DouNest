@@ -32,3 +32,7 @@
 - [x] Add local-first P1 tools: Remove EXIF, Unzip, Encrypt/Decrypt Text, and Meta Tags. Sign/Edit/Protect PDF and the first video/audio tools remain pending.
 - [ ] Add business tools: Invoice Generator, CV Builder, Barcode Generator, Signature Maker, WiFi QR, Pomodoro, and Notepad.
 - [ ] Add P2/P3 tools after usage data and Search Console evidence are available.
+
+## Latest implementation note
+
+The catalog now contains 101 registered tools. PDF editing, signing, cropping, raster extraction and grayscale conversion are local browser workflows. PDF protection uses a clearly labelled encrypted DouNest package (`.dnpdf`) rather than pretending to create a standards-based encrypted PDF. Media conversion loads ffmpeg.wasm on demand.

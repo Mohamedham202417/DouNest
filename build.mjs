@@ -567,7 +567,7 @@ ${cards}`
 /* ---------- 3b') PDF + Convert hub landing pages ---------- */
 console.log("→ pdf/convert hub pages");
 {
-  const pdfSlugs = ["compress-pdf", "merge-pdf", "split-pdf", "rotate-pdf", "pdf-to-jpg", "pdf-to-txt", "pdf-to-word", "image-to-pdf", "pdf-organize", "pdf-watermark", "pdf-page-numbers"];
+  const pdfSlugs = ["compress-pdf", "merge-pdf", "split-pdf", "rotate-pdf", "pdf-to-jpg", "pdf-to-txt", "pdf-to-word", "image-to-pdf", "pdf-organize", "pdf-watermark", "pdf-page-numbers", "sign-pdf", "edit-pdf", "crop-pdf", "extract-images-pdf", "grayscale-pdf"];
   const pdfTools = pdfSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "pdf/index.html",
@@ -603,7 +603,7 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
-  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "color-picker", "image-crop", "image-rotate-flip", "exif-viewer", "remove-exif", "favicon-generator"];
+  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "color-picker", "image-crop", "image-rotate-flip", "exif-viewer", "remove-exif", "image-upscaler", "add-watermark", "blur-pixelate", "collage-maker", "color-palette", "meme-generator", "favicon-generator"];
   const imageTools = imageSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "images/index.html",
@@ -681,10 +681,10 @@ console.log("→ additional work centers");
 for (const [slug, title, description, modulePath, related] of [
   ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"]],
   ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"]],
-  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text"]],
+  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","protect-pdf","unlock-pdf"]],
   ["calculators", "Calculators — Age, BMI, Percentages and Units", "Run everyday health, time, percentage, and unit calculations in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"]],
-  ["media", "Video & Audio — Local Media Workflows", "Prepare a privacy-first home for video and audio conversion, trimming, compression, and recording.", "media-hub.js", []],
-  ["business", "Productivity & Business — QR and Work Tools", "Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work.", "business-hub.js", ["qr-code","qr-scanner"]]
+  ["media", "Video & Audio — Local Media Workflows", "Prepare a privacy-first home for video and audio conversion, trimming, compression, and recording.", "media-hub.js", ["video-to-mp3","compress-video","trim-media","video-to-gif","audio-converter","voice-recorder","screen-recorder"]],
+  ["business", "Productivity & Business — QR and Work Tools", "Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work.", "business-hub.js", ["qr-code","qr-scanner","invoice-generator","cv-builder","barcode-generator","signature-maker","wifi-qr-generator","pomodoro","online-notepad"]]
 ]) {
   const items = related.map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
   const cards = items.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"en"))}</h3><p>${esc(pick(t.short,"ar"))}</p></a>`).join("");

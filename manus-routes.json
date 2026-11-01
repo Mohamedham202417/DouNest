@@ -375,6 +375,118 @@
     {
       "path": "/tools/discount-vat",
       "title": "discount-vat"
+    },
+    {
+      "path": "/tools/sign-pdf",
+      "title": "sign-pdf"
+    },
+    {
+      "path": "/tools/edit-pdf",
+      "title": "edit-pdf"
+    },
+    {
+      "path": "/tools/protect-pdf",
+      "title": "protect-pdf"
+    },
+    {
+      "path": "/tools/unlock-pdf",
+      "title": "unlock-pdf"
+    },
+    {
+      "path": "/tools/crop-pdf",
+      "title": "crop-pdf"
+    },
+    {
+      "path": "/tools/extract-images-pdf",
+      "title": "extract-images-pdf"
+    },
+    {
+      "path": "/tools/grayscale-pdf",
+      "title": "grayscale-pdf"
+    },
+    {
+      "path": "/tools/image-upscaler",
+      "title": "image-upscaler"
+    },
+    {
+      "path": "/tools/add-watermark",
+      "title": "add-watermark"
+    },
+    {
+      "path": "/tools/blur-pixelate",
+      "title": "blur-pixelate"
+    },
+    {
+      "path": "/tools/collage-maker",
+      "title": "collage-maker"
+    },
+    {
+      "path": "/tools/color-palette",
+      "title": "color-palette"
+    },
+    {
+      "path": "/tools/gradient-generator",
+      "title": "gradient-generator"
+    },
+    {
+      "path": "/tools/meme-generator",
+      "title": "meme-generator"
+    },
+    {
+      "path": "/tools/video-to-mp3",
+      "title": "video-to-mp3"
+    },
+    {
+      "path": "/tools/compress-video",
+      "title": "compress-video"
+    },
+    {
+      "path": "/tools/trim-media",
+      "title": "trim-media"
+    },
+    {
+      "path": "/tools/video-to-gif",
+      "title": "video-to-gif"
+    },
+    {
+      "path": "/tools/audio-converter",
+      "title": "audio-converter"
+    },
+    {
+      "path": "/tools/voice-recorder",
+      "title": "voice-recorder"
+    },
+    {
+      "path": "/tools/screen-recorder",
+      "title": "screen-recorder"
+    },
+    {
+      "path": "/tools/invoice-generator",
+      "title": "invoice-generator"
+    },
+    {
+      "path": "/tools/cv-builder",
+      "title": "cv-builder"
+    },
+    {
+      "path": "/tools/barcode-generator",
+      "title": "barcode-generator"
+    },
+    {
+      "path": "/tools/signature-maker",
+      "title": "signature-maker"
+    },
+    {
+      "path": "/tools/wifi-qr-generator",
+      "title": "wifi-qr-generator"
+    },
+    {
+      "path": "/tools/pomodoro",
+      "title": "pomodoro"
+    },
+    {
+      "path": "/tools/online-notepad",
+      "title": "online-notepad"
     }
   ]
 }

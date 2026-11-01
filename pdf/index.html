@@ -45,7 +45,7 @@
 /* DouNest self-heal: if the served build changed, purge any stale service
    worker + caches once so users never stay stuck on an old cached version. */
 (function(){
-  var B="v3-2026-11-01-mvxoutgn";
+  var B="v3-2026-11-01-mvxp2e3w";
   try{
     if(B.indexOf("__")!==0 && localStorage.getItem("dn.build")!==B){
       localStorage.setItem("dn.build",B);
@@ -171,6 +171,36 @@
           <div class="icon cat-pdf" aria-hidden="true">🔢</div>
           <h3>PDF Page Numbers</h3>
           <p>Add page numbers to a PDF.</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/tools/sign-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">✍️</div>
+          <h3>Sign PDF</h3>
+          <p>Sign PDF</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/tools/edit-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">📝</div>
+          <h3>Edit PDF / Add Text</h3>
+          <p>Edit PDF / Add Text</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/tools/crop-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">✂️</div>
+          <h3>Crop PDF</h3>
+          <p>Crop PDF</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/tools/extract-images-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">🖼️</div>
+          <h3>Extract Images from PDF</h3>
+          <p>Extract Images from PDF</p>
+          <div class="card-foot"><span class="badge tiny">PDF</span></div>
+        </a>
+        <a class="tool-card" href="/tools/grayscale-pdf/">
+          <div class="icon cat-pdf" aria-hidden="true">⚫</div>
+          <h3>Grayscale PDF</h3>
+          <p>Grayscale PDF</p>
           <div class="card-foot"><span class="badge tiny">PDF</span></div>
         </a>
       </div>

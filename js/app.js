@@ -826,10 +826,10 @@ async function renderAdditionalCenter({ center }) {
   const related = {
     text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"],
     dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"],
-    security: ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text"],
+    security: ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text","protect-pdf","unlock-pdf"],
     calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"],
-    media: [],
-    business: ["qr-code","qr-scanner"]
+    media: ["video-to-mp3","compress-video","trim-media","video-to-gif","audio-converter","voice-recorder","screen-recorder"],
+    business: ["qr-code","qr-scanner","invoice-generator","cv-builder","barcode-generator","signature-maker","wifi-qr-generator","pomodoro","online-notepad"]
   };
   const description = CENTER_CONTENT[center]?.[lang]?.intro || (lang === "ar" ? "مساحة عمل موحّدة تعالج مدخلاتك محلياً في المتصفح." : "A local-first workbench; your input stays in this browser.");
   main.innerHTML = `<section class="page-head"><h1>${icon} ${escapeHtml(title)}</h1><p>${escapeHtml(description)}</p></section><section class="workspace" id="center-workspace"></section>${hubToolLinks(related[center] || [])}${centerContentMarkup(center, lang)}`;
