@@ -327,6 +327,54 @@
     {
       "path": "/tools/html-to-markdown",
       "title": "html-to-markdown"
+    },
+    {
+      "path": "/tools/number-to-arabic-words",
+      "title": "number-to-arabic-words"
+    },
+    {
+      "path": "/tools/arabizi-to-arabic",
+      "title": "arabizi-to-arabic"
+    },
+    {
+      "path": "/tools/remove-tashkeel",
+      "title": "remove-tashkeel"
+    },
+    {
+      "path": "/tools/hijri-converter",
+      "title": "hijri-converter"
+    },
+    {
+      "path": "/tools/remove-exif",
+      "title": "remove-exif"
+    },
+    {
+      "path": "/tools/unzip",
+      "title": "unzip"
+    },
+    {
+      "path": "/tools/encrypt-text",
+      "title": "encrypt-text"
+    },
+    {
+      "path": "/tools/meta-tags",
+      "title": "meta-tags"
+    },
+    {
+      "path": "/tools/bac-average",
+      "title": "bac-average"
+    },
+    {
+      "path": "/tools/zakat-calculator",
+      "title": "zakat-calculator"
+    },
+    {
+      "path": "/tools/loan-calculator",
+      "title": "loan-calculator"
+    },
+    {
+      "path": "/tools/discount-vat",
+      "title": "discount-vat"
     }
   ]
 }

@@ -28,7 +28,7 @@
 
 ## 5. Next P1 batches
 
-- [ ] Add the Arabic-first tools: Number to Arabic Words, Arabizi to Arabic, Remove Tashkeel, Hijri/Gregorian Converter, and Arabic OCR improvements.
-- [ ] Add local-first P1 tools: Remove EXIF, Unzip, Encrypt/Decrypt Text, Meta Tags, Sign/Edit/Protect PDF, and the first video/audio tools.
+- [x] Add the first Arabic-first tools: Number to Arabic Words, Arabizi to Arabic, Remove Tashkeel, and Hijri/Gregorian Converter. Arabic OCR improvements remain pending.
+- [x] Add local-first P1 tools: Remove EXIF, Unzip, Encrypt/Decrypt Text, and Meta Tags. Sign/Edit/Protect PDF and the first video/audio tools remain pending.
 - [ ] Add business tools: Invoice Generator, CV Builder, Barcode Generator, Signature Maker, WiFi QR, Pomodoro, and Notepad.
 - [ ] Add P2/P3 tools after usage data and Search Console evidence are available.

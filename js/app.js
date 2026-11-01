@@ -325,6 +325,7 @@ function renderHome() {
   state.category = "all"; state.query = "";
   const main = document.getElementById("main");
   const recentList = recent.list().map(getTool).filter(Boolean).slice(0, 6);
+  const newTools = TOOLS.slice(-4);
 
   main.innerHTML = `
     <section class="hero">
@@ -363,6 +364,16 @@ function renderHome() {
       <h2 class="section-title">🕘 ${t("home.recent")}</h2>
       <div class="tools-grid mini">${recentList.map(toolCard).join("")}</div>
     </section>` : ""}
+
+    <section class="section slim">
+      <h2 class="section-title">Arabic-first tools</h2>
+      <div class="tools-grid mini">${["number-to-arabic-words","arabizi-to-arabic","remove-tashkeel","hijri-converter"].map(slug => getTool(slug)).filter(Boolean).map(toolCard).join("")}</div>
+    </section>
+
+    <section class="section slim">
+      <h2 class="section-title">New tools</h2>
+      <div class="tools-grid mini">${newTools.map(toolCard).join("")}</div>
+    </section>
 
     <section class="section">
       <div class="section-head">
@@ -425,7 +436,12 @@ const SEARCH_ALIASES = {
   "دمج": ["merge-pdf"],
   "تقسيم": ["split-pdf"],
   "صور": ["image-compressor", "image-converter"],
-  "حاسبة": ["age-calculator", "bmi-calculator", "percentage-calculator", "unit-converter"],
+  "حاسبة": ["age-calculator", "bmi-calculator", "percentage-calculator", "unit-converter", "bac-average", "zakat-calculator", "loan-calculator", "discount-vat"],
+  "تفقيط": ["number-to-arabic-words"],
+  "فرانكو": ["arabizi-to-arabic"],
+  "تشكيل": ["remove-tashkeel"],
+  "هجري": ["hijri-converter"],
+  "إكسف": ["remove-exif"],
   "qr": ["qr-code", "qr-scanner"]
 };
 function score(tool, q) {
@@ -808,10 +824,10 @@ async function renderAdditionalCenter({ center }) {
   const [icon, arTitle, enTitle] = labels[center] || ["🧰", center, center];
   const title = lang === "ar" ? arTitle : enTitle;
   const related = {
-    text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"],
-    dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown"],
-    security: ["password-generator","password-strength","totp-generator","hash-generator"],
-    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"],
+    text: ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"],
+    dev: ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"],
+    security: ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text"],
+    calculators: ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"],
     media: [],
     business: ["qr-code","qr-scanner"]
   };

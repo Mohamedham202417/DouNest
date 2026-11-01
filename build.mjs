@@ -251,14 +251,17 @@ console.log("→ pre-rendered home page");
     ["business/", "💼", "Productivity & Business", "Create useful codes and prepare business workflows", "business"],
     ["mail/", "✉️", "Temporary Email", "Use a separate short-lived inbox service", "mail"]
   ];
-  const popular = ["compress-pdf", "merge-pdf", "pdf-to-word", "image-compressor", "remove-background", "qr-code", "word-counter", "json-formatter"]
+  const popular = ["compress-pdf", "merge-pdf", "pdf-to-word", "image-compressor", "remove-background", "number-to-arabic-words", "qr-code", "json-formatter"]
     .map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean);
+  const newest = TOOLS.slice(-4);
   const articles = getArticles().slice(0, 3);
   const body = `<section class="page-head home-prerender"><h1>Free Browser Tools and File Converters — DouNest</h1>
     <p>Use ${TOOLS.length}+ free browser tools across ten focused centers. No signup, no file uploads, and English-first pages with Arabic support.</p>
     <form class="home-search" action="${BASE}tools/" method="get"><label for="home-q">Search for a tool</label><input id="home-q" name="q" type="search" placeholder="Try: Excel to JSON or compress PDF"><button class="btn btn-primary">Search</button></form></section>
     <section class="section"><h2 class="section-title">Work centers</h2><div class="explore-strip">${centers.map(([path,icon,name,desc,id]) => `<a class="explore-card" href="${BASE}${path}"><strong>${icon} ${name}</strong><span>${desc}</span><small>${id === "mail" ? "Separate service" : `${TOOLS.filter(t => t.category === id).length} tools`}</small></a>`).join("")}</div></section>
     <section class="section"><h2 class="section-title">Popular tools</h2><div class="tools-grid">${popular.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"en"))}</h3><p>${esc(pick(t.short,"en"))}</p></a>`).join("")}</div><p><a href="${BASE}tools/">Browse all tools →</a></p></section>
+    <section class="section"><h2 class="section-title">Arabic-first tools</h2><p>Local tools for Arabic writing, documents, and dates.</p><div class="tools-grid">${["number-to-arabic-words","arabizi-to-arabic","remove-tashkeel","hijri-converter"].map(slug => TOOLS.find(t => t.slug === slug)).filter(Boolean).map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"en"))}</h3><p>${esc(pick(t.short,"en"))}</p><div class="card-foot"><span class="badge tiny">Arabic</span></div></a>`).join("")}</div></section>
+    <section class="section"><h2 class="section-title">New tools</h2><p>The latest additions to the DouNest catalog.</p><div class="tools-grid">${newest.map(t => `<a class="tool-card" href="${BASE}tools/${t.slug}/"><div class="icon cat-${t.category}" aria-hidden="true">${t.icon}</div><h3>${esc(pick(t.name,"en"))}</h3><p>${esc(pick(t.short,"en"))}</p><div class="card-foot"><span class="badge tiny">New</span></div></a>`).join("")}</div></section>
     <section class="section"><h2 class="section-title">Guides and troubleshooting</h2><div class="tools-grid">${articles.map(a => `<a class="tool-card article" href="${BASE}articles/${a.slug}/en/"><h3>${esc(pick(a.title,"en"))}</h3><p>${esc(pick(a.excerpt,"en"))}</p></a>`).join("")}</div></section>
     <section class="section"><h2 class="section-title">Privacy by design</h2><p>Supported file tools process content locally in your browser. Temporary email is a server-side exception; read the <a href="${BASE}privacy/">Privacy Policy</a> before using it.</p></section>`;
   writePage("index.html", shell({ lang: "en", title: "DouNest – Free Browser Tools & File Converters", description: "Convert files, format JSON, and use developer tools in your browser. No signup, no uploads—your files stay on your device.", canonicalPath: "", alternateLanguages: [{ lang: "en", url: SITE }, { lang: "x-default", url: SITE }], jsonLd: [{"@context":"https://schema.org","@type":"ItemList","name":"Popular browser tools","itemListElement":centers.map(([path,_icon,name],i)=>({"@type":"ListItem","position":i+1,"name":name,"url":SITE+path}))}], bodyContent: body }));
@@ -600,7 +603,7 @@ console.log("→ pdf/convert hub pages");
     })
   );
 
-  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "qr-code", "qr-scanner", "color-picker", "image-crop", "image-rotate-flip", "exif-viewer", "favicon-generator"];
+  const imageSlugs = ["image-converter", "image-compressor", "resize-image", "remove-background", "image-to-pdf", "ocr-image-to-text", "heic-to-jpg", "pdf-to-jpg", "color-picker", "image-crop", "image-rotate-flip", "exif-viewer", "remove-exif", "favicon-generator"];
   const imageTools = imageSlugs.map(s => TOOLS.find(t2 => t2.slug === s)).filter(Boolean);
   writePage(
     "images/index.html",
@@ -676,10 +679,10 @@ console.log("→ pdf/convert hub pages");
 /* ---------- 3c) Work centers: text, dev, security and calculators ---------- */
 console.log("→ additional work centers");
 for (const [slug, title, description, modulePath, related] of [
-  ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner"]],
-  ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","hash-generator","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","json-yaml"]],
-  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator"]],
-  ["calculators", "Calculators — Age, BMI, Percentages and Units", "Run everyday health, time, percentage, and unit calculations in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter"]],
+  ["text", "Text Tools — Clean, Convert and Analyze", "Clean text, convert Markdown to HTML, create slugs, and count words in your browser.", "text-hub.js", ["word-counter","text-case","lorem-ipsum","diff-checker","markdown-to-html","slug-generator","list-cleaner","number-to-arabic-words","arabizi-to-arabic","remove-tashkeel"]],
+  ["dev", "Developer Tools — JSON, Base64 and JWT", "Everyday developer utilities for JSON, Base64, URLs, JWT, hashes, UUIDs, and timestamps.", "dev-hub.js", ["json-formatter","base64","url-encoder","jwt-decoder","uuid-generator","regex-tester","cron-generator","sql-formatter","timestamp-converter","xml-formatter","html-to-markdown","meta-tags"]],
+  ["security", "Security & Privacy — Local Password and TOTP Tools", "Generate passwords, check strength, and use TOTP without sending secrets to a server.", "security-hub.js", ["password-generator","password-strength","totp-generator","hash-generator","encrypt-text"]],
+  ["calculators", "Calculators — Age, BMI, Percentages and Units", "Run everyday health, time, percentage, and unit calculations in your browser.", "calculators-hub.js", ["age-calculator","bmi-calculator","percentage-calculator","unit-converter","hijri-converter","bac-average","zakat-calculator","loan-calculator","discount-vat"]],
   ["media", "Video & Audio — Local Media Workflows", "Prepare a privacy-first home for video and audio conversion, trimming, compression, and recording.", "media-hub.js", []],
   ["business", "Productivity & Business — QR and Work Tools", "Practical browser tools for QR codes, documents, signatures, invoices, resumes, and daily work.", "business-hub.js", ["qr-code","qr-scanner"]]
 ]) {

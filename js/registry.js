@@ -670,7 +670,104 @@ export const TOOLS = [
   usage: { ar: ["الصق مقتطف HTML في حقل الإدخال.", "حوّل المحتوى وراجع العناوين والقوائم والروابط والجداول الناتجة.", "انسخ Markdown أو عدّل النص قبل استخدامه."], en: ["Paste an HTML fragment into the input.", "Convert and review the resulting headings, lists, links, and tables.", "Copy the Markdown or edit it before use."] },
   explanation: { ar: ["يقرأ المتصفح HTML في DOM غير نشط، ثم يحوله إلى Markdown كنص عادي؛ لا تُنفذ عناصر script أو style.", "يدعم التحويل الشائع للعناوين والفقرات والتأكيد والاقتباسات والقوائم والجداول والصور. قد تتطلب التخطيطات المعقدة أو مكونات HTML المخصصة تعديلاً يدوياً.", "تُستبعد الروابط ذات البروتوكولات غير المسموح بها، ويقتصر الإدخال على 1 MiB. لا يُرسل المحتوى إلى DouNest."], en: ["The browser parses HTML into an inert DOM and converts it to plain Markdown; script and style content is not executed or copied.", "Common headings, paragraphs, emphasis, quotes, lists, tables, and images are supported. Complex layouts or custom HTML components may need manual editing.", "Links using unsupported protocols are omitted, input is limited to 1 MiB, and content is not sent to DouNest."] },
   faq: [], related: ['markdown-to-html', 'json-formatter']
-}
+},
+
+  {
+    slug: "number-to-arabic-words", icon: "١٢٣", category: "text",
+    name: { ar: "تفقيط الأرقام", en: "Number to Arabic Words" },
+    short: { ar: "حوّل الأرقام إلى كلمات عربية مع دعم العملات الشائعة.", en: "Convert numbers into Arabic words with common currency options." },
+    usage: { ar: ["أدخل الرقم.", "اختر العملة إن احتجت.", "انسخ النص العربي الناتج."], en: ["Enter a number.", "Choose a currency if needed.", "Copy the generated Arabic words."] },
+    explanation: { ar: ["تفيد الأداة في الفواتير والشيكات والمستندات الرسمية.", "تتم المعالجة محلياً داخل المتصفح."], en: ["Useful for invoices, cheques, and official documents.", "Processing runs locally in your browser."] },
+    faq: [{ q: { ar: "هل يدعم التفقيط العملات؟", en: "Does it support currencies?" }, a: { ar: "نعم، يدعم الدينار والريال والدرهم والدولار واليورو بشكل مبسط.", en: "Yes. It supports simplified dinar, riyal, dirham, dollar, and euro output." } }], related: ["discount-vat", "loan-calculator", "word-counter"]
+  },
+  {
+    slug: "arabizi-to-arabic", icon: "ع", category: "text",
+    name: { ar: "محول الفرانكو إلى العربية", en: "Arabizi to Arabic Converter" },
+    short: { ar: "حوّل الكتابة العربية بالحروف اللاتينية والأرقام إلى حروف عربية.", en: "Convert Arabizi Latin letters and numbers into Arabic text." },
+    usage: { ar: ["اكتب الفرانكو في الحقل.", "راجع التحويل أثناء الكتابة.", "صحح الكلمات الخاصة بلهجتك ثم انسخها."], en: ["Type Arabizi in the input.", "Review the live conversion.", "Correct dialect-specific words and copy the result."] },
+    explanation: { ar: ["يستخدم المحول قواعد تقريبية للأرقام الشائعة مثل 3 و7 و9، وقد تحتاج اللهجات إلى تصحيح يدوي.", "لا يُرسل النص إلى خادم."], en: ["The converter uses practical rules for common numerals such as 3, 7, and 9; dialects may need manual correction.", "Your text is not sent to a server."] },
+    faq: [], related: ["remove-tashkeel", "text-case", "word-counter"]
+  },
+  {
+    slug: "remove-tashkeel", icon: "ـ", category: "text",
+    name: { ar: "إزالة التشكيل", en: "Remove Arabic Diacritics" },
+    short: { ar: "أزل الحركات والتطويل ووحّد بعض الهمزات من النص العربي.", en: "Remove Arabic diacritics, tatweel, and optional hamza variants." },
+    usage: { ar: ["الصق النص العربي.", "اختر الخيارات.", "انسخ النتيجة المنظفة."], en: ["Paste Arabic text.", "Choose cleanup options.", "Copy the cleaned result."] },
+    explanation: { ar: ["تتم إزالة نطاقات التشكيل Unicode داخل المتصفح، مع خيار إزالة التطويل وتوحيد الهمزات.", "راجع النص قبل استخدامه في بحث أو مستند رسمي."], en: ["Unicode diacritic ranges are removed in the browser, with optional tatweel removal and hamza normalization.", "Review the result before using it in search or an official document."] },
+    faq: [], related: ["arabizi-to-arabic", "word-counter", "list-cleaner"]
+  },
+  {
+    slug: "hijri-converter", icon: "🌙", category: "calculators",
+    name: { ar: "محول التاريخ الهجري والميلادي", en: "Hijri and Gregorian Converter" },
+    short: { ar: "اعرض التاريخ الميلادي والهجري معاً من متصفحك.", en: "View Gregorian and Hijri dates together in your browser." },
+    usage: { ar: ["اختر التاريخ الميلادي.", "اقرأ المقابل الهجري.", "جرّب تاريخ اليوم أو تاريخاً مخصصاً."], en: ["Choose a Gregorian date.", "Read the Hijri equivalent.", "Try today or a custom date."] },
+    explanation: { ar: ["يستخدم المتصفح تقويم أم القرى المتاح عبر Intl عند دعمه، وقد تختلف النتائج التاريخية بين طرق الحساب.", "لا تحتاج العملية إلى API أو رفع بيانات."], en: ["The browser uses its available Umm al-Qura Islamic calendar through Intl; historical results can vary by calculation method.", "No API or upload is needed."] },
+    faq: [], related: ["age-calculator", "unit-converter", "percentage-calculator"]
+  },
+  {
+    slug: "remove-exif", icon: "🧼", category: "images",
+    name: { ar: "إزالة EXIF والبيانات الوصفية", en: "Remove EXIF Metadata" },
+    short: { ar: "أنشئ نسخة صورة جديدة بلا بيانات EXIF الشائعة، محلياً داخل المتصفح.", en: "Create a fresh image copy without common EXIF metadata, locally." },
+    usage: { ar: ["اختر صورة أو أكثر.", "اختر الصيغة والجودة.", "نزّل النسخ المنظفة."], en: ["Choose one or more images.", "Choose format and quality.", "Download cleaned copies."] },
+    explanation: { ar: ["إعادة رسم الصورة عبر Canvas تزيل معظم EXIF من النسخة الناتجة، لكنها لا تضمن إزالة كل معلومات خاصة بصيغ أو ملفات غير مدعومة.", "لا تُرفع الصور."], en: ["Redrawing through Canvas removes most EXIF from the output, but cannot guarantee removal for every format or private chunk.", "Images are not uploaded."] },
+    faq: [], related: ["exif-viewer", "image-compressor", "image-converter"]
+  },
+  {
+    slug: "unzip", icon: "🗜️", category: "convert",
+    name: { ar: "فك ضغط ZIP", en: "Unzip / Extract ZIP" },
+    short: { ar: "استعرض ملفات ZIP واستخرج الملفات المدعومة داخل المتصفح.", en: "Inspect ZIP archives and extract supported entries in your browser." },
+    usage: { ar: ["اختر ملف ZIP.", "استعرض أسماء الملفات والأحجام.", "نزّل الملفات المستخرجة."], en: ["Choose a ZIP file.", "Review names and sizes.", "Download extracted entries."] },
+    explanation: { ar: ["يدعم المستخرج ملفات ZIP المعتادة ذات الضغط Store وDeflate عبر واجهات المتصفح.", "لا يُرسل الأرشيف إلى خادم."], en: ["The extractor supports common ZIP archives using Store and Deflate through browser APIs.", "The archive is not sent to a server."] },
+    faq: [], related: ["zip-files", "json-yaml", "image-converter"]
+  },
+  {
+    slug: "encrypt-text", icon: "🔒", category: "security",
+    name: { ar: "تشفير وفك تشفير النص AES", en: "Encrypt / Decrypt Text (AES)" },
+    short: { ar: "شفّر النص محلياً باستخدام AES-GCM وكلمة مرور لا تغادر المتصفح.", en: "Encrypt text locally with AES-GCM and a password that stays in your browser." },
+    usage: { ar: ["اختر تشفير أو فك تشفير.", "أدخل النص وكلمة المرور.", "نفّذ العملية وانسخ الناتج."], en: ["Choose encrypt or decrypt.", "Enter text and a password.", "Run the operation and copy the result."] },
+    explanation: { ar: ["تستخدم الأداة PBKDF2 لاشتقاق مفتاح وAES-GCM للتحقق من سلامة النص المشفر.", "احفظ كلمة المرور؛ لا توجد طريقة لاسترجاعها من الناتج."], en: ["The tool derives a key with PBKDF2 and uses AES-GCM for authenticated encryption.", "Keep the password safe; it cannot be recovered from the ciphertext."] },
+    faq: [], related: ["hash-generator", "password-generator", "base64"]
+  },
+  {
+    slug: "meta-tags", icon: "🏷️", category: "dev",
+    name: { ar: "مولد Meta Tags وOpen Graph", en: "Meta Tags & Open Graph Generator" },
+    short: { ar: "ولّد عناوين ووصفاً ووسوم Open Graph وTwitter لمعاينة الروابط.", en: "Generate title, description, Open Graph, and Twitter tags for link previews." },
+    usage: { ar: ["أدخل عنوان الصفحة ووصفها والرابط والصورة.", "راجع المعاينة.", "انسخ كود HTML."], en: ["Enter title, description, URL, and image.", "Review the preview.", "Copy the HTML snippet."] },
+    explanation: { ar: ["تنتج الأداة وسوماً شائعة لتحسين مشاركة الصفحات، لكنها لا تضمن الفهرسة أو المعاينة في كل منصة.", "كل المدخلات تبقى محلية."], en: ["The tool creates common sharing tags; it cannot guarantee indexing or previews on every platform.", "All inputs stay local."] },
+    faq: [], related: ["json-formatter", "html-to-markdown", "slug-generator"]
+  },
+  {
+    slug: "bac-average", icon: "🎓", category: "calculators",
+    name: { ar: "حاسبة معدل البكالوريا والجامعة", en: "Bac / University Average Calculator" },
+    short: { ar: "احسب معدلاً موزوناً بالمواد والمعاملات مع حالة النجاح.", en: "Calculate a weighted average from subjects and coefficients." },
+    usage: { ar: ["أدخل علامات المواد والمعاملات.", "أضف أو احذف صفوفاً.", "راجع المعدل وحالة النجاح."], en: ["Enter subject grades and coefficients.", "Add or remove rows.", "Review the average and result status."] },
+    explanation: { ar: ["هذه حاسبة مرنة وليست بديلاً عن معايير المؤسسة أو الشعبة.", "تُحسب القيم محلياً."], en: ["This flexible calculator does not replace official school or program rules.", "Values are calculated locally."] },
+    faq: [], related: ["percentage-calculator", "number-to-arabic-words", "unit-converter"]
+  },
+  {
+    slug: "zakat-calculator", icon: "☪️", category: "calculators",
+    name: { ar: "حاسبة الزكاة", en: "Zakat Calculator" },
+    short: { ar: "قدّر زكاة المال والذهب والفضة والتجارة مع إدخال النصاب يدوياً.", en: "Estimate zakat on cash, metals, and trade assets with editable nisab." },
+    usage: { ar: ["أدخل الأصول والديون.", "حدد قيمة النصاب.", "احسب المبلغ التقديري."], en: ["Enter assets and eligible debts.", "Set the nisab value.", "Calculate the estimate."] },
+    explanation: { ar: ["النتيجة تقديرية وتعتمد على المذهب والقيم المدخلة؛ استشر جهة موثوقة في المسائل الشرعية.", "لا تُرسل البيانات."], en: ["The result is an estimate based on your inputs and interpretation; consult a trusted authority for religious guidance.", "Data is not sent anywhere."] },
+    faq: [], related: ["percentage-calculator", "unit-converter", "number-to-arabic-words"]
+  },
+  {
+    slug: "loan-calculator", icon: "📉", category: "calculators",
+    name: { ar: "حاسبة القرض والقسط", en: "Loan / Installment Calculator" },
+    short: { ar: "احسب القسط الشهري والفائدة الإجمالية وجدول السداد التقريبي.", en: "Estimate monthly payment, total interest, and repayment schedule." },
+    usage: { ar: ["أدخل المبلغ والفائدة والمدة.", "اختر طريقة الفائدة.", "راجع القسط والإجمالي."], en: ["Enter amount, rate, and term.", "Choose the interest method.", "Review payment and total cost."] },
+    explanation: { ar: ["تستخدم الحاسبة نموذج القسط الثابت، وقد تختلف رسوم البنك أو التأمين عن النتيجة.", "تتم الحسابات محلياً."], en: ["The calculator uses a standard amortizing-payment model; bank fees and insurance can differ.", "Calculations run locally."] },
+    faq: [], related: ["percentage-calculator", "discount-vat", "age-calculator"]
+  },
+  {
+    slug: "discount-vat", icon: "%", category: "calculators",
+    name: { ar: "حاسبة الخصم وTVA", en: "Discount & VAT Calculator" },
+    short: { ar: "احسب السعر بعد الخصم والضريبة مع إظهار كل مرحلة.", en: "Calculate discounted price and VAT with a clear breakdown." },
+    usage: { ar: ["أدخل السعر ونسبة الخصم والضريبة.", "راجع السعر قبل وبعد الضريبة.", "انسخ التفصيل."], en: ["Enter price, discount, and VAT.", "Review before and after tax.", "Copy the breakdown."] },
+    explanation: { ar: ["يمكن تعديل نسبة الضريبة حسب بلدك؛ القيمة الافتراضية ليست استشارة ضريبية.", "تتم الحسابات في المتصفح."], en: ["Adjust the tax rate for your jurisdiction; the default is not tax advice.", "Calculations run in the browser."] },
+    faq: [], related: ["percentage-calculator", "number-to-arabic-words", "loan-calculator"]
+  },
 ];
 
 export const CATEGORIES = [
